@@ -1,0 +1,13 @@
+---
+layout: archive
+title: "Blogs"
+permalink: /blogs/
+author_profile: true
+author: "Cisco Web Team"
+---
+
+{% include base_path %}
+
+{% for post in site.blogs %}
+  {% include archive-single.html %}
+{% endfor %}
