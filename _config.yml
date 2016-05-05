@@ -11,9 +11,9 @@ title                    : "App-Hosting @xrdocs!"
 title_separator          : "-"
 name                     : &name "Cisco Systems Inc"
 description              : &description "Documentation, Blogs and Tutorials on the Application Hosting Infrastructure in IOS-XR"
-url                      : http://localhost:4000 # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  :  # the subpath of your site, e.g. "/blog"
-gh_repo                  : "https://github.com/xrdocs/xrdocs.github.io/application-hosting"
+url                      : "https://xrdocs.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+baseurl                  : "/application-hosting" # the subpath of your site, e.g. "/blog"
+gh_repo                  : "https://github.com/xrdocs/application-hosting"
 teaser                   : # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
@@ -161,6 +161,39 @@ collections:
 
 # Defaults
 defaults:
+# _techdocs
+  - scope:
+      path: ""
+      type: techdocs
+    values:
+      layout: single
+      read_time: false
+      author_profile: false
+      share: false
+      comments: false
+
+# _blogs
+  - scope:
+      path: ""
+      type: blogs
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+# _tutorials
+  - scope:
+      path: ""
+      type: tutorials
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
   # _posts
   - scope:
       path: ""
@@ -191,32 +224,6 @@ defaults:
       comments: false
       sidebar:
         nav: "docs"
-  # _recipes
-  - scope:
-      path: ""
-      type: recipes
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
-  # _pets
-  - scope:
-      path: ""
-      type: pets
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comment: true
-  # _portfolio
-  - scope:
-      path: ""
-      type: portfolio
-    values:
-      layout: single
-      author_profile: false
-      share: true
 
 
 # Outputting

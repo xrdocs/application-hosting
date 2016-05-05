@@ -21,6 +21,9 @@ foo:
 
 # main links links
 main:
+  - title: "@xrdocs"
+    url: https://xrdocs.github.io
+
   - title: "Tech-Docs"
     url: /techdocs
 
@@ -30,66 +33,51 @@ main:
   - title: "Tutorials"
     url: /tutorials
 
-  - title: "collection"
-    url: /github-repos
-
   - title: "Developer Page"
     url: https://developer.cisco.com/site/ios-xr/
 
 
 # documentation links
-docs:
-  - title: Getting Started
+app_hosting_on_iosxr:
+  - title: Introduction
     children:
-      - title: "Quick-Start Guide"
-        url: /docs/quick-start-guide/
-      - title: "Structure"
-        url: /docs/structure/
-      - title: "Installation"
-        url: /docs/installation/
-      - title: "Upgrading"
-        url: /docs/upgrading/
+      - title: "Overview of the Architecture"
+        url: /techdocs/app_hosting_on_iosxr/architecture_overview
+      - title: "XR linux shell"
+        url: /techdocs/app_hosting_on_iosxr/xr_linux_shell
+      - title: "Setting up SSH access"
+        url: /techdocs/app_hosting_on_iosxr/ssh_access
+      - title: "XR Users and Groups"
+        url: /techdocs/app_hosting_on_iosxr/users_and_groups
+      - title: "Types of Application Hosting"
+        url: /techdocs/app_hosting_on_iosxr/users_and_groups
+        children:
+          - title: "Native Application Hosting"
+            url: /techdocs/app_hosting_on_iosxr/native_app_hosting
+          - title: "Container based Application Hosting"
+            url: /techdocs/app_hosting_on_iosxr/container_app_hosting
 
-  - title: Customization
+  - title: Tools of the trade
     children:
-      - title: "Configuration"
-        url: /docs/configuration/
-      - title: "Navigation"
-        url: /docs/navigation/
-      - title: "UI Text"
-        url: /docs/ui-text/
-      - title: "Authors"
-        url: /docs/authors/
-      - title: "Layouts"
-        url: /docs/layouts/
+      - title: "Setting up Vagrant"
+        url: /techdocs/app_hosting_on_iosxr/vagrant_setup
+      - title: "Setting up a Development Environment"
+        url: /techdocs/app_hosting_on_iosxr/dev_environment
+      - title: "Setting up a Test Environment"
+        url: /techdocs/app_hosting_on_iosxr/test_environment
+      - title: "Basic B2B topology"
+        url: /techdocs/app_hosting_on_iosxr/basic_b2b_topology
 
-  - title: Content
-    children:
-      - title: "Working with Posts"
-        url: /docs/posts/
-      - title: "Working with Pages"
-        url: /docs/pages/
-      - title: "Working with Collections"
-        url: /docs/collections/
-      - title: "Helpers"
-        url: /docs/helpers/
-      - title: "Utility Classes"
-        url: /docs/utility-classes/
 
-  - title: Extras
+  - title: Application Hosting in Action
     children:
-      - title: "Stylesheets"
-        url: /docs/stylesheets/
-      - title: "JavaScript"
-        url: /docs/javascript/
-
-  - title: Meta
-    children:
-      - title: "History"
-        url: /docs/history/
-      - title: "Contributing"
-        url: /docs/contributing/
-      - title: "Old 2.2 Docs"
-        url: /docs/docs-2-2/
-      - title: "License"
-        url: /docs/license/
+      - title: "Building a native application"
+        url: /techdocs/app_hosting_on_iosxr/building_a_native_app
+      - title: "Deploying a native application"
+        url: /techdocs/app_hosting_on_iosxr/building_a_container_app
+      - title: "Building a container based application"
+        url: /techdocs/app_hosting_on_iosxr/building_a_container_app
+      - title: "Deploying a container application"
+        url: /techdocs/app_hosting_on_iosxr/building_a_container_app
+      - title: "Testing applications using vagrant IOS-XRv"
+        url: /techdocs/app_hosting_on_iosxr/testing_apps_using_vagrant_xrv
