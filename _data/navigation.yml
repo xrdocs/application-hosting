@@ -21,6 +21,9 @@ foo:
 
 # main links links
 main:
+  - title: "@xrdocs"
+    url: https://xrdocs.github.io
+
   - title: "Tech-Docs"
     url: /techdocs
 
@@ -29,9 +32,6 @@ main:
 
   - title: "Tutorials"
     url: /tutorials
-
-  - title: "collection"
-    url: /github-repos
 
   - title: "Developer Page"
     url: https://developer.cisco.com/site/ios-xr/
