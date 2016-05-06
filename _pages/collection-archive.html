@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Posts by Collection"
+title: "Collections"
 permalink: /collection-archive/
 author_profile: false
 ---
@@ -18,7 +18,9 @@ author_profile: false
   {% endunless %}
   {% for post in collection.docs %}
     {% unless collection.output == false or collection.label == "posts" %}
-      {% include archive-single.html %}
+      {% if post.position == "top" %}
+        {% include archive-single.html %}
+      {% endif %}
     {% endunless %}
   {% endfor %}
 {% endfor %}

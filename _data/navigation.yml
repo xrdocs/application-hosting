@@ -33,8 +33,13 @@ main:
   - title: "Tutorials"
     url: /tutorials
 
-  - title: "Developer Page"
-    url: https://developer.cisco.com/site/ios-xr/
+  - title: "Archive"
+    url: /collection-archive
+
+  - title: "Tags"
+    url: /tags
+
+
 
 
 # documentation links

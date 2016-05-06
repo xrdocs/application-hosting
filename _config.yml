@@ -63,7 +63,7 @@ google_ad_slot           :
 # Site Author
 author:
   name             : Akshat Sharma
-  avatar           : "Akshat_pic.jpg"
+  avatar           : "akshat_bio_photo.jpeg"
   bio              : "Technical Marketing Engineer, Web Solutions, Cisco."
   location         : "San jose, California"
   email            : akshshar@cisco.com
@@ -183,6 +183,7 @@ defaults:
       comments: true
       share: true
       related: true
+      position: "top"
 # _tutorials
   - scope:
       path: ""
@@ -194,6 +195,7 @@ defaults:
       comments: true
       share: true
       related: true
+      position: "top"
   # _posts
   - scope:
       path: ""
@@ -280,6 +282,9 @@ tags:
 #     category: /categories/:name/
 #     tag: /tags/:name/
 
+sass:
+  sass_dir: _sass
+  style: compressed
 
 # HTML Compression
 # - http://jch.penibelst.de/
