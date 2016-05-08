@@ -1,3 +1,6 @@
+---
+title: IOXRS-Ansible
+---
 ## Introduction
 In this tutorial we are going to cover XRv4 configuration with Ansible. We will setup and try simplest configuration with Unix machine connected to XRv64.
 
@@ -7,6 +10,7 @@ In this tutorial we are going to cover XRv4 configuration with Ansible. We will 
 - Ansible;
 - [XRv64 image](http://engci-maven-master.cisco.com/artifactory/appdevci-snapshot/);
 
+### Vagrant pre-setup
 
 To add XR box, image should be downloaded, after this issue the command:
 	
@@ -27,6 +31,18 @@ $ vagrant up
 
 
 
+
+sudo apt-get install python-setuptools python-dev build-essential git
+sudo easy_install pip
+git clone http://gitlab.cisco.com/aermongk/iosxr-ansible.git
+
+conf t
+interface GigabitEthernet0/0/0/0
+ ipv4 address 10.1.1.20 255.255.255.0
+ no shutdown
+!
+commit
+end
 
 
 
