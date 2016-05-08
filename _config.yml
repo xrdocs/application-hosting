@@ -294,7 +294,7 @@ prose:
     - /_includes
     - /_posts
     - /_pages
-    - /_data
+    - /_docs
     - /_drafts
     - /_includes
     - /_layouts
