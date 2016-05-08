@@ -20,6 +20,7 @@ foo:
 
 
 # main links links
+# DO NOT TOUCH main!
 main:
   - title: "@xrdocs"
     url: https://xrdocs.github.io
@@ -33,11 +34,21 @@ main:
   - title: "Tutorials"
     url: /tutorials
 
-  - title: "Developer Page"
-    url: https://developer.cisco.com/site/ios-xr/
+  - title: "Search"
+    url: /search
+
+  - title: "Archive"
+    url: /collection-archive
+
+  - title: "Tags"
+    url: /tags
+
+
 
 
 # documentation links
+# "app_hosting_on_iosxr" document owned by "akshshar"
+
 app_hosting_on_iosxr:
   - title: Introduction
     children:

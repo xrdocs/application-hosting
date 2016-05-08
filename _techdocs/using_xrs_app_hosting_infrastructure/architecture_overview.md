@@ -4,6 +4,13 @@ permalink: /techdocs/app_hosting_on_iosxr/architecture_overview
 modified: 2016-04-13T15:54:02-04:00
 sidebar:
   nav: "app_hosting_on_iosxr"
+tags:
+  - content
+  - css
+  - edge case
+  - lists
+  - markup
+
 ---
 
 
