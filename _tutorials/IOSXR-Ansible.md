@@ -1,7 +1,7 @@
 ---
 title: "IOS-XR-Ansible"
 published: true
-author: mkorshun
+author: Mike Korshunov
 ---
 ## Introduction
 In this tutorial we are going to cover XRv4 configuration with Ansible. We will setup and try simplest configuration with Unix machine connected to XRv64.
