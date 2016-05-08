@@ -295,6 +295,7 @@ prose:
     - /_posts
     - /_pages
     - /_docs
+    - /_data/ui-test.yml
     - /_drafts
     - /_includes
     - /_layouts
