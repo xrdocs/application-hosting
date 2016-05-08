@@ -284,9 +284,9 @@ tags:
 
 
 prose:
-  siteurl: 'http://prose.github.io/starter/'
+  siteurl: 'http://xrdocs.github.io/application-hosting/'
   relativeLinks: 'http://prose.github.io/starter/links.jsonp'
-  media: 'media'
+  media: 'images'
   ignore:
     - index.md
     - _config.yml
