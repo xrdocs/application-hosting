@@ -1,5 +1,6 @@
 ---
-title: IOXRS-Ansible
+title: "IOS-XR-Ansible"
+published: true
 ---
 ## Introduction
 In this tutorial we are going to cover XRv4 configuration with Ansible. We will setup and try simplest configuration with Unix machine connected to XRv64.
@@ -43,6 +44,3 @@ interface GigabitEthernet0/0/0/0
 !
 commit
 end
-
-
-
