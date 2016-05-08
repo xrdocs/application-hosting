@@ -312,6 +312,8 @@ prose:
     - _config.yml
     - package.json
     - search_data.html
+    - .jekyll-metadata
+    - CHANGELOG.md
  
 sass:
   sass_dir: _sass
