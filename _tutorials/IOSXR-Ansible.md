@@ -15,13 +15,20 @@ In this tutorial we are going to cover XRv4 configuration with Ansible. We will 
 ### Vagrant pre-setup
 
 To add XR box, image should be downloaded, after this issue the command:
-	
-    $ vagrant box add xrv64 iosxrv-fullk9-x64.box_2016-05-07-19-04-50
+
+
+```shell
+$ vagrant box add xrv64 iosxrv-fullk9-x64.box_2016-05-07-19-04-50
+```
 
 Image for Ubuntu will be downloaded from official source:
-	
-    $ vagrant box add ubuntu/trusty64
-    
+
+
+```bash
+vagrant box add ubuntu/trusty64
+```
+
+
 Let's check for result, we should have box available, box ubuntu/trusty64 and xrv64 should be displayed:
 ![Box validation]({{site.baseurl}}/images/xr_ansible_01_box_list.png)
 
