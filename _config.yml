@@ -11,8 +11,8 @@ title                    : "App-Hosting @xrdocs!"
 title_separator          : "-"
 name                     : &name "Cisco Systems Inc"
 description              : &description "Documentation, Blogs and Tutorials on the Application Hosting Infrastructure in IOS-XR"
-url                      : "https://xrdocs.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : "/application-hosting" # the subpath of your site, e.g. "/blog"
+url                      : "http://localhost:4000" #"https://xrdocs.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+baseurl                  : #"/application-hosting" # the subpath of your site, e.g. "/blog"
 gh_repo                  : "https://github.com/xrdocs/application-hosting"
 teaser                   : # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 # breadcrumbs            : false # true, false (default)
@@ -282,6 +282,37 @@ tags:
 #     category: /categories/:name/
 #     tag: /tags/:name/
 
+
+prose:
+  siteurl: 'http://prose.github.io/starter/'
+  relativeLinks: 'http://prose.github.io/starter/links.jsonp'
+  media: 'media'
+  ignore:
+    - index.md
+    - _config.yml
+    - /_layouts
+    - /_includes
+    - /_posts
+    - /_pages
+    - /_data
+    - /_drafts
+    - /_includes
+    - /_layouts
+    - /_pages
+    - /_pets
+    - /_portfolio
+    - /_posts
+    - /_recipes
+    - /assets
+    - /images
+    - Gemfile
+    - Gemfile.lock
+    - LICENSE
+    - _config.dev.yml
+    - _config.yml
+    - package.json
+    - search_data.html
+ 
 sass:
   sass_dir: _sass
   style: compressed
