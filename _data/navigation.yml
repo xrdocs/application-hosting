@@ -20,6 +20,7 @@ foo:
 
 
 # main links links
+# DO NOT TOUCH main!
 main:
   - title: "@xrdocs"
     url: https://xrdocs.github.io
@@ -46,6 +47,8 @@ main:
 
 
 # documentation links
+# "app_hosting_on_iosxr document owned by "akshshar"
+
 app_hosting_on_iosxr:
   - title: Introduction
     children:
@@ -89,22 +92,3 @@ app_hosting_on_iosxr:
         url: /techdocs/app_hosting_on_iosxr/building_a_container_app
       - title: "Testing applications using vagrant IOS-XRv"
         url: /techdocs/app_hosting_on_iosxr/testing_apps_using_vagrant_xrv
-
-# documentation links
-doc2:
-  - title: Introduction
-    children:
-      - title: "Overview of the Architecture"
-        url: /techdocs/doc2/architecture_overview
-      - title: "XR linux shell"
-        url: /techdocs/doc2/xr_linux_shell
-
-
-  - title: Tools of the trade
-    children:
-      - title: "Setting up Vagrant"
-        url: /techdocs/doc2/vagrant_setup
-      - title: "Setting up a Development Environment"
-        url: /techdocs/doc2/dev_environment
-      - title: "Setting up a Test Environment"
-        url: /techdocs/doc2/test_environment
