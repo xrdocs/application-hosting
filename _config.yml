@@ -325,6 +325,10 @@ metadata:
         field: 
             element: "text"
             value: "Brief description of the blog"
+      - name: "author"
+        field:
+            element: "text"
+            value: "Author Name"
       - name: "tags"
         field:
             element: "multiselect"
@@ -380,6 +384,10 @@ metadata:
         field: 
             element: "text"
             value: "Brief description of the tutorial"
+      - name: "author"
+        field:
+            element: "text"
+            value: "Author Name"
       - name: "tags"
         field:
             element: "multiselect"
