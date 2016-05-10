@@ -2,7 +2,7 @@
 permalink: /tutorials/check_publishing
 author: Akshat Sharma
 excerpt: checking the publishing flag
-published: false
+published: true
 title: check_publishing
 tags: 
   - vagrant
