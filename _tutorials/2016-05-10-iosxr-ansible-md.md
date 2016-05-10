@@ -1,32 +1,32 @@
 ---
-permalink: "/tutorials/IOSXR-Ansible"
+permalink: "/tutorials/XR-Ansible"
 author: Mike Korshunov
-excerpt: Getting started with IOSXR and Ansible playbooks
+excerpt: Getting started with XR and Ansible playbooks
 published: true
-title: "IOSXR-Ansible.md"
+title: "IOSXR-Ansible"
 ---
 # Introduction
-In this tutorial we are going to cover XRv4 configuration with Ansible. We will setup and try simplest configuration with Unix machine connected to XRv64.
+In this tutorial we are going to cover IOS-XRv configuration with Ansible. We will setup and try simplest configuration with Unix machine connected to IOS-XRv.
 
 ## Prerequisites
 - Computer with with 4-5GB free RAM;
 - Vagrant;
 - Ansible;
-- [XRv64 image](http://engci-maven-master.cisco.com/artifactory/appdevci-snapshot/);
+- [IOS-XRv image](http://engci-maven-master.cisco.com/artifactory/appdevci-snapshot/);
 
 ### Vagrant pre-setup
 
-To add XR box, image should be downloaded, after this issue the command:
+Setup was tested on Windows, but it's the same for other OS. To add XR box, image should be downloaded, after this issue the command:
 	
-    $ vagrant box add xrv64 iosxrv-fullk9-x64.box_2016-05-07-19-04-50
+    $ vagrant box add xrv iosxrv-fullk9-x64.box_2016-05-07-19-04-50
 
 Image for Ubuntu will be downloaded from official source:
 	
     $ vagrant box add ubuntu/trusty64
     
-Let's check for result, we should have box available, box ubuntu/trusty64 and xrv64 should be displayed:
-![Box validation](https://cisco.box.com/shared/static/rwa6hxojdjcwu1ln8h0zu5oq6ij30def.png)
-![Box validation](https://xrdocs.github.io/xrdocs-images/assets/images/xr_ansible_01_box_list - Copy.png)
+Let's check for result, we should have box available, box ubuntu/trusty64 and xrv should be displayed:
+
+![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xr-ansible-tutorial/xr_ansible_01_box_list.png)
 
 Vagrantfile with 2 Vagrant boxes should be like:
 
@@ -41,7 +41,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "xr" do |xr|
-    xr.vm.box = "xrv64"
+    xr.vm.box = "xrv"
     xr.vm.network :private_network, virtualbox__intnet: "link1", ip: "10.1.1.20"
   end
 
@@ -108,8 +108,7 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 
 
 
-
-### XR box pre-configuration
+### IOS-XRv box pre-configuration
 
 To access XR Linux Shell: 
 > vagrant ssh xr
@@ -129,7 +128,7 @@ vagrant@localhost's password:
 RP/0/RP0/CPU0:ios#
 ```
 
-Now let's  configure IP address at XR box. Issue the commant at XR CLI.
+Now let's  configure IP address at IOS-XRv box. Issue the command at XR CLI.
 
 ```
 conf t
@@ -152,18 +151,50 @@ Success rate is 100 percent (5/5), round-trip min/avg/max = 1/5/20 ms
 RP/0/RP0/CPU0:ios#
 ```
 
-Let's copy public part of key from Ubuntu box and allow access without password. For IOS-XR image 6.1.x commands below:
 
-run vi /root/.ssh/authorized_keys
-
-
-run sed -i.bak -e '/^PermitRootLogin/s/no/yes/' /etc/ssh/sshd_config_operns
-
-run service sshd_operns restart
-
-run chkconfig --add sshd_operns
+**Doesn't work for me for now, looking for fix**
+Let's copy public part of key from Ubuntu box and allow access without password. For IOS-XRv image 6.1.x commands below:
 
 
-## Ansible Part
+```
+run vi /vagrant/home/.ssh/authorized_keys
+```
 
-At first we need to set up environment and hosts
+## Run the playbooks
+
+At Ubuntu box let's configure Ansible prerequisite. 
+We need to configure 2 files: ansible_hosts and ansible_env
+First file ansible_hosts contain ip address of our xr box. Also we will specify user for reaching out to machine: "ansible_ssh_user=vagrant"
+In second file ansible_env we should setup the environment for Ansible. 
+We will not care about about [YDK](https://github.com/CiscoDevNet/ydk-py-samples) for now, it's topic for another tutorial. 
+
+
+```
+cd iosxr-ansible/
+cd remote/
+
+vagrant@vagrant-ubuntu-trusty-64:~/iosxr-ansible/remote$ cat ansible_hosts
+[ss-xr]
+10.1.1.20 ansible_ssh_user=vagrant
+
+vagrant@vagrant-ubuntu-trusty-64:~/iosxr-ansible/remote$ cat ansible_env
+export BASEDIR=/home/vagrant
+export IOSXRDIR=$BASEDIR/iosxr-ansible
+export ANSIBLE_HOME=$BASEDIR/ansible
+export ANSIBLE_INVENTORY=$IOSXRDIR/remote/ansible_hosts
+export ANSIBLE_LIBRARY=$IOSXRDIR/remote/library
+export ANSIBLE_CONFIG=$IOSXRDIR/remote/ansible_cfg
+export YDK_DIR=$BASEDIR/ydk/ydk-py
+export PYTHONPATH=$YDK_DIR
+
+source ansible_env
+```
+
+Run the playbook:
+```
+cd ~/iosxr-ansible/remote/
+ansible-playbook samples/iosxr_get_facts.yml 
+ansible-playbook iosxr_cli.yml -e 'cmd="show interface brief"' 
+```
+
+Samples folder contain various playbooks, files started with "show" using iosxr_cli playbook and passing cmd to XR as parameter. 
