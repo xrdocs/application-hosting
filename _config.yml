@@ -315,7 +315,7 @@ prose:
     - search_data.html
     - .jekyll-metadata
     - CHANGELOG.md
-metadata:
+  metadata:
     _blogs:
       - name: "permalink"
         field: 
@@ -325,10 +325,11 @@ metadata:
         field: 
             element: "text"
             value: "Brief description of the blog"
-      - name: "author"
+      - name: "title"
         field:
             element: "text"
-            value: "Author Name"
+            label: "Title"
+            value: ""
       - name: "tags"
         field:
             element: "multiselect"
@@ -354,11 +355,15 @@ metadata:
         field: 
             element: "text"
             value: "Brief description of the blog"
+      - name: "title"
+        field:
+            element: "text"
+            label: "Title"
+            value: ""
       - name: "position"
         field:
             element: "text"
             value: "Set this to 'top' only for the first page of the techdoc"
-
       - name: "tags"
         field:
             element: "multiselect"
@@ -374,7 +379,6 @@ metadata:
                value: "cisco"
              - name: "Linux"
                value: "linux"
-
     _tutorials: 
       - name: "permalink"
         field: 
@@ -384,10 +388,11 @@ metadata:
         field: 
             element: "text"
             value: "Brief description of the tutorial"
-      - name: "author"
+      - name: "title"
         field:
             element: "text"
-            value: "Author Name"
+            label: "Title"
+            value: ""
       - name: "tags"
         field:
             element: "multiselect"
@@ -405,7 +410,7 @@ metadata:
                value: "linux"
 
 
-
+  
 sass:
   sass_dir: _sass
   style: compressed
