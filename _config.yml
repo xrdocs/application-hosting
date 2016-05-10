@@ -320,7 +320,11 @@ prose:
       - name: "permalink"
         field: 
             element: "text"
-            value: "url required relative to home url, for eg. /blogs/blog1"
+            value: "Enter url required relative to home url, for eg. /blogs/blog1"
+      - name: "author"
+        field: 
+            element: "text"
+            value: "Enter Author's full Name"
       - name: "excerpt"
         field: 
             element: "text"
@@ -350,7 +354,7 @@ prose:
       - name: "permalink"
         field: 
             element: "text"
-            value: "url required relative to home url, for eg. /blogs/blog1"
+            value: "Enter url, relative to home url, for eg. /blogs/blog1"
       - name: "excerpt" 
         field: 
             element: "text"
@@ -379,11 +383,16 @@ prose:
                value: "cisco"
              - name: "Linux"
                value: "linux"
+
     _tutorials: 
       - name: "permalink"
         field: 
             element: "text"
-            value: "url required relative to home url, for eg. /tutorials/tutorial1"
+            value: "Enter url, relative to home url, for eg. /tutorials/tutorial1"
+      - name: "author"
+        field: 
+            element: "text"
+            value: "Enter Author's full Name"      
       - name: "excerpt" 
         field: 
             element: "text"
