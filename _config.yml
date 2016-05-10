@@ -349,7 +349,11 @@ prose:
                value: "cisco"
              - name: "Linux"
                value: "linux"
-               
+      - name: "published"
+        field:
+          label: "Published"
+          element: "checkbox"
+          value: "true"             
     _techdocs:
       - name: "permalink"
         field: 
@@ -368,6 +372,11 @@ prose:
         field:
             element: "text"
             value: "Set this to 'top' only for the first page of the techdoc"
+      - name: "published"
+        field:
+          label: "Published"
+          element: "checkbox"
+          value: "true"
       - name: "tags"
         field:
             element: "multiselect"
@@ -402,6 +411,11 @@ prose:
             element: "text"
             label: "Title"
             value: ""
+      - name: "published"
+        field:
+          label: "Published"
+          element: "checkbox"
+          value: "true"
       - name: "tags"
         field:
             element: "multiselect"
