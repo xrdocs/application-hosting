@@ -1,8 +1,8 @@
 ---
 permalink: "/tutorials/tutorial-webex"
-author: Mike Korshunov
+author: "\"Mike Korshunov\""
 excerpt: Brief description of the tutorial
-published: false
+published: true
 title: "Test-for-webex"
 ---
 ## A New Post
