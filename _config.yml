@@ -353,7 +353,7 @@ prose:
         field:
           label: "Published"
           element: "checkbox"
-          value: "true"             
+          value: "false"             
     _techdocs:
       - name: "permalink"
         field: 
@@ -376,7 +376,7 @@ prose:
         field:
           label: "Published"
           element: "checkbox"
-          value: "true"
+          value: "false"
       - name: "tags"
         field:
             element: "multiselect"
@@ -415,7 +415,7 @@ prose:
         field:
           label: "Published"
           element: "checkbox"
-          value: "true"
+          value: "false"
       - name: "tags"
         field:
             element: "multiselect"
