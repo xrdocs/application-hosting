@@ -1,6 +1,7 @@
 ---
 author: Akshat Sharma
 published: true
+title: try
 ---
 
 ## A New Post
