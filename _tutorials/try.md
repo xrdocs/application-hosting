@@ -1,5 +1,6 @@
 ---
-author: "Akshat Sharma"
+author: Akshat Sharma
+published: true
 ---
 
 ## A New Post
