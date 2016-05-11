@@ -352,7 +352,13 @@ prose:
         field:
           label: "Published"
           element: "checkbox"
-          value: false            
+          value: false   
+      - name: "date"
+        field:
+          element: "text"
+          label: "Date"
+          value: "CURRENT_DATETIME"
+    
     _techdocs:
       - name: "permalink"
         field: 
