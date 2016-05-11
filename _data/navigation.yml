@@ -94,8 +94,7 @@ app_hosting_on_iosxr:
         url: /techdocs/app_hosting_on_iosxr/testing_apps_using_vagrant_xrv
         
   
- # doc3 navigation links owned by akshshar
- 
+# doc3 navigation links owned by akshshar
 doc3:
   - title: Introduction
     children:
@@ -112,3 +111,21 @@ doc3:
         url: /techdocs/doc3/building_a_native_doc
       - title: "Deploying a native doc"
         url: /techdocs/doc3/deploying_a_native_doc
+      
+# doc4 navigation links owned by akshshar
+doc4:
+  - title: Introduction
+    children:
+      - title: "Overview of the Architecture"
+        url: /techdocs/doc4/architecture_overview
+      - title: "doc3 shell"
+        url: /techdocs/doc4/doc3_shell
+      - title: "Setting up the environment"
+        url: /techdocs/doc4/doc3_env
+
+  - title: doc4 in Action
+    children:
+      - title: "Building a native doc"
+        url: /techdocs/doc4/building_a_native_doc
+      - title: "Deploying a native doc"
+        url: /techdocs/doc4/deploying_a_native_doc
