@@ -321,6 +321,10 @@ prose:
         field:
             element: "text"
             label: "name"
+      - name: "title"
+        field:
+            element: "text"
+            label: "title"      
       - name: "permalink"
         field: 
             element: "text"
