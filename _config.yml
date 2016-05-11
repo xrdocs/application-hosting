@@ -317,10 +317,10 @@ prose:
     - CHANGELOG.md
   metadata:
     _blogs:
-      - name: "title"
+      - name: "name"
         field:
             element: "text"
-            label: "title"
+            label: "name"
       - name: "permalink"
         field: 
             element: "text"
