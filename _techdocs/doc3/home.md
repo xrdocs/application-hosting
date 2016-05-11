@@ -10,7 +10,7 @@ tags:
   - linux
 title: Introduction
 sidebar: 
-  nav: "\\\"doc3\\\""
+  nav: "\"doc3\""
 ---
 ## A New Post
 
