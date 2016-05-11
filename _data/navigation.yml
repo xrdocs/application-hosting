@@ -96,7 +96,7 @@ app_hosting_on_iosxr:
   
  # doc3 navigation links owned by akshshar
  
- doc3:
+doc3:
   - title: Introduction
     children:
       - title: "Overview of the Architecture"
