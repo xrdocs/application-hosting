@@ -1,6 +1,6 @@
 ---
 published: true
-date: "2016-05-11 12:18 +0530"
+date: "2016-05-10 12:18 +0530"
 title: marashtra_cuisine
 permalink: "/tutorials/maha-cusi"
 author: Akshat Sharma
