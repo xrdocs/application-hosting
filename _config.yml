@@ -372,7 +372,7 @@ prose:
         field: 
             element: "text"
             label: "permalink"
-            help: "provide a url relative to site url, for eg. /blogs/blog1"
+            help: "provide a url relative to site url, for eg. /techdocs/doc1/home"
       - name: "author"
         field: 
             element: "text"
@@ -406,6 +406,11 @@ prose:
                value: "cisco"
              - name: "Linux"
                value: "linux"
+      - name: "date"
+        field:
+            element: "text"
+            label: "Date"
+            value: "CURRENT_DATETIME"
 
     _tutorials: 
       - name: "title"
@@ -417,7 +422,7 @@ prose:
         field: 
             element: "text"
             label: "permalink"
-            help: "provide a url relative to site url, for eg. /blogs/blog1"
+            help: "provide a url relative to site url, for eg. /tutorials/tutorial1"
       - name: "author"
         field: 
             element: "text"
@@ -447,6 +452,12 @@ prose:
                value: "cisco"
              - name: "Linux"
                value: "linux"
+      - name: "date"
+        field:
+            element: "text"
+            label: "Date"
+            value: "CURRENT_DATETIME"
+        
 
 
   
