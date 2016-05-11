@@ -94,8 +94,7 @@ app_hosting_on_iosxr:
         url: /techdocs/app_hosting_on_iosxr/testing_apps_using_vagrant_xrv
         
   
- # doc3 navigation links owned by akshshar
- 
+# doc3 navigation links owned by akshshar
 doc3:
   - title: Introduction
     children:
