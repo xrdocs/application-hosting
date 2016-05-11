@@ -315,6 +315,11 @@ prose:
     - search_data.html
     - .jekyll-metadata
     - CHANGELOG.md
+    - /_blogs
+    - /_techdocs
+    - /_data
+    - /_tutorials
+    
   metadata:
     _blogs:
       - name: "title"
