@@ -397,6 +397,11 @@ prose:
             element: "text"
             label: "Date"
             value: "CURRENT_DATETIME"
+      - name: "published"
+        field:
+            label: "Published"
+            element: "checkbox"
+            value: false   
 
     _tutorials: 
       - name: "title"
