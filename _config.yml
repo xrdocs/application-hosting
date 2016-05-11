@@ -317,27 +317,25 @@ prose:
     - CHANGELOG.md
   metadata:
     _blogs:
-      - name: "name"
-        field:
-            element: "text"
-            label: "name"
       - name: "title"
         field:
             element: "text"
-            label: "title"   
+            label: "Title"   
             value: ""
       - name: "permalink"
         field: 
             element: "text"
-            value: "Enter url required relative to home url, for eg. /blogs/blog1"
+            label: "permalink"
+            help: "provide a url relative to site url, for eg. /blogs/blog1"
       - name: "author"
         field: 
             element: "text"
-            value: "Enter Author's full Name"
+            label: "Author"
       - name: "excerpt"
         field: 
             element: "text"
-            value: "Brief description of the blog"
+            help: "Brief description of the blog"
+            label: "Excerpt"
       - name: "tags"
         field:
             element: "multiselect"
@@ -365,18 +363,29 @@ prose:
           value: "CURRENT_DATETIME"
     
     _techdocs:
+      - name: "title"
+        field:
+            element: "text"
+            label: "Title"   
+            value: ""
       - name: "permalink"
         field: 
             element: "text"
-            value: "Enter url, relative to home url, for eg. /blogs/blog1"
-      - name: "excerpt" 
+            label: "permalink"
+            help: "provide a url relative to site url, for eg. /blogs/blog1"
+      - name: "author"
         field: 
             element: "text"
-            value: "Brief description of the blog"
+            label: "Author"
+      - name: "excerpt"
+        field: 
+            element: "text"
+            help: "Brief description of the blog"
+            label: "Excerpt"
       - name: "position"
         field:
             element: "text"
-            value: "Set this to 'top' only for the first page of the techdoc"
+            help: "Set this to 'top' only for the first page of the techdoc"
       - name: "published"
         field:
           label: "Published"
@@ -399,18 +408,25 @@ prose:
                value: "linux"
 
     _tutorials: 
+      - name: "title"
+        field:
+            element: "text"
+            label: "Title"   
+            value: ""
       - name: "permalink"
         field: 
             element: "text"
-            value: "Enter url, relative to home url, for eg. /tutorials/tutorial1"
+            label: "permalink"
+            help: "provide a url relative to site url, for eg. /blogs/blog1"
       - name: "author"
         field: 
             element: "text"
-            value: "Enter Author's full Name"      
-      - name: "excerpt" 
+            label: "Author"
+      - name: "excerpt"
         field: 
             element: "text"
-            value: "Brief description of the tutorial"
+            help: "Brief description of the blog"
+            label: "Excerpt"
       - name: "published"
         field:
           label: "Published"
