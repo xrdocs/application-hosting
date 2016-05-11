@@ -3,7 +3,7 @@ permalink: /blogs/blog4
 author: Akshat Sharma
 excerpt: adasfafa
 published: true
-name: blog4
+title: blog4
 tags: 
   - iosxr
 ---
