@@ -363,20 +363,11 @@ prose:
             value: "CURRENT_DATETIME"
     
     _techdocs:
-      - name: "title"
-        field:
-            element: "text"
-            label: "Title"   
-            value: ""
       - name: "permalink"
         field: 
             element: "text"
             label: "permalink"
             help: "provide a url relative to site url, for eg. /techdocs/doc1/home"
-      - name: "author"
-        field: 
-            element: "text"
-            label: "Author"
       - name: "excerpt"
         field: 
             element: "text"
