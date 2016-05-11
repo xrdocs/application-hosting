@@ -232,8 +232,8 @@ defaults:
 permalink: /:categories/:title/
 # paginate: 5 # amount of posts to show
 # paginate_path: /page:num/
-timezone: America/New_York # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-
+timezone: Australia/ACT# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+future: true
 
 # Plugins
 gems:
@@ -363,34 +363,20 @@ prose:
             value: "CURRENT_DATETIME"
     
     _techdocs:
-      - name: "title"
-        field:
-            element: "text"
-            label: "Title"   
-            value: ""
       - name: "permalink"
         field: 
             element: "text"
             label: "permalink"
-            help: "provide a url relative to site url, for eg. /blogs/blog1"
-      - name: "author"
-        field: 
-            element: "text"
-            label: "Author"
+            help: "provide a url relative to site url, for eg. /techdocs/doc1/home"
       - name: "excerpt"
         field: 
             element: "text"
-            help: "Brief description of the blog"
+            help: "Brief description of the Technical Document"
             label: "Excerpt"
       - name: "position"
         field:
             element: "text"
             help: "Set this to 'top' only for the first page of the techdoc"
-      - name: "published"
-        field:
-            label: "Published"
-            element: "checkbox"
-            value: false
       - name: "tags"
         field:
             element: "multiselect"
@@ -406,6 +392,11 @@ prose:
                value: "cisco"
              - name: "Linux"
                value: "linux"
+      - name: "modified"
+        field:
+            element: "text"
+            label: "Date"
+            value: "CURRENT_DATETIME"
 
     _tutorials: 
       - name: "title"
@@ -417,7 +408,7 @@ prose:
         field: 
             element: "text"
             label: "permalink"
-            help: "provide a url relative to site url, for eg. /blogs/blog1"
+            help: "provide a url relative to site url, for eg. /tutorials/tutorial1"
       - name: "author"
         field: 
             element: "text"
@@ -425,7 +416,7 @@ prose:
       - name: "excerpt"
         field: 
             element: "text"
-            help: "Brief description of the blog"
+            help: "Brief description of the tutorial"
             label: "Excerpt"
       - name: "published"
         field:
@@ -447,6 +438,12 @@ prose:
                value: "cisco"
              - name: "Linux"
                value: "linux"
+      - name: "date"
+        field:
+            element: "text"
+            label: "Date"
+            value: "CURRENT_DATETIME"
+        
 
 
   

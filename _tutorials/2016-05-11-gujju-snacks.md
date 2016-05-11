@@ -1,13 +1,13 @@
 ---
 published: true
-date: "2016-05-10 11:26 +0530"
-title: blog5
-permalink: /blogs/blog5
+date: "2016-05-10 11:59 +0530"
+title: gujju_snacks
+permalink: "/tutorial/gujju-snacks"
 author: Akshat Sharma
-excerpt: asfasfa
+excerpt: aslnacla
 ---
 ## A New Post
 
 Enter text in [Markdown](http://daringfireball.net/projects/markdown/). Use the toolbar above, or click the **?** button for formatting help.
-
-adfadfafa
+a
+dcacaccac
