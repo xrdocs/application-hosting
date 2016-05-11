@@ -329,11 +329,6 @@ prose:
         field: 
             element: "text"
             value: "Brief description of the blog"
-      - name: "title"
-        field:
-            element: "text"
-            label: "Title"
-            value: ""
       - name: "tags"
         field:
             element: "multiselect"
@@ -363,11 +358,6 @@ prose:
         field: 
             element: "text"
             value: "Brief description of the blog"
-      - name: "title"
-        field:
-            element: "text"
-            label: "Title"
-            value: ""
       - name: "position"
         field:
             element: "text"
@@ -406,11 +396,6 @@ prose:
         field: 
             element: "text"
             value: "Brief description of the tutorial"
-      - name: "title"
-        field:
-            element: "text"
-            label: "Title"
-            value: ""
       - name: "published"
         field:
           label: "Published"
