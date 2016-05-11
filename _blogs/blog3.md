@@ -3,6 +3,7 @@ permalink: /blogs/blog3
 author: Akshat Sharma
 excerpt: anlsnlava
 published: true
+title: blog3
 ---
 ## A New Post
 
