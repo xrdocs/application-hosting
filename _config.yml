@@ -319,6 +319,8 @@ prose:
     - /_techdocs
     - /_data
     - /_tutorials
+    - /_site
+    - README.md
     
   metadata:
     _blogs:
