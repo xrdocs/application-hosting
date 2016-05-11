@@ -380,7 +380,7 @@ prose:
       - name: "excerpt"
         field: 
             element: "text"
-            help: "Brief description of the blog"
+            help: "Brief description of the Technical Document"
             label: "Excerpt"
       - name: "position"
         field:
@@ -430,7 +430,7 @@ prose:
       - name: "excerpt"
         field: 
             element: "text"
-            help: "Brief description of the blog"
+            help: "Brief description of the tutorial"
             label: "Excerpt"
       - name: "published"
         field:
