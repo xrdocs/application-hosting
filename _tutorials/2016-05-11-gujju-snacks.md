@@ -1,6 +1,6 @@
 ---
 published: true
-date: "2016-05-11 11:59 +0530"
+date: "2016-05-10 11:59 +0530"
 title: gujju_snacks
 permalink: "/tutorial/gujju-snacks"
 author: Akshat Sharma
