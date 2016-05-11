@@ -8,6 +8,8 @@ tags:
   - iosxr
   - linux
 title: Introduction
+sidebar: 
+  nav: doc3
 ---
 ## A New Post
 
