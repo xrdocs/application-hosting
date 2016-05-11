@@ -353,14 +353,14 @@ prose:
                value: "linux"
       - name: "published"
         field:
-          label: "Published"
-          element: "checkbox"
-          value: false   
+            label: "Published"
+            element: "checkbox"
+            value: false   
       - name: "date"
         field:
-          element: "text"
-          label: "Date"
-          value: "CURRENT_DATETIME"
+            element: "text"
+            label: "Date"
+            value: "CURRENT_DATETIME"
     
     _techdocs:
       - name: "title"
@@ -388,9 +388,9 @@ prose:
             help: "Set this to 'top' only for the first page of the techdoc"
       - name: "published"
         field:
-          label: "Published"
-          element: "checkbox"
-          value: false
+            label: "Published"
+            element: "checkbox"
+            value: false
       - name: "tags"
         field:
             element: "multiselect"
@@ -429,9 +429,9 @@ prose:
             label: "Excerpt"
       - name: "published"
         field:
-          label: "Published"
-          element: "checkbox"
-          value: false
+            label: "Published"
+            element: "checkbox"
+            value: false
       - name: "tags"
         field:
             element: "multiselect"
