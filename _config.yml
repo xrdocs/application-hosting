@@ -377,11 +377,6 @@ prose:
         field:
             element: "text"
             help: "Set this to 'top' only for the first page of the techdoc"
-      - name: "published"
-        field:
-            label: "Published"
-            element: "checkbox"
-            value: false
       - name: "tags"
         field:
             element: "multiselect"
@@ -397,7 +392,7 @@ prose:
                value: "cisco"
              - name: "Linux"
                value: "linux"
-      - name: "date"
+      - name: "modified"
         field:
             element: "text"
             label: "Date"
