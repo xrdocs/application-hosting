@@ -205,7 +205,7 @@ The workflow for a new blog is almost identical to a tutorial. If you've reached
 {: .notice}
 
 
-* Fill out the metadata fields with the Relative URL field in the form: "/blogs/<blog-name>"
+* Fill out the metadata fields with the Relative URL field in the form: `/blogs/<blog-name>`
 
 * Now enter your Markdown content and hit Save (or Ctrl+S)! 
 
