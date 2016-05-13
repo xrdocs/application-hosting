@@ -158,7 +158,7 @@ The fields are self explanatory, but quick walkthrough:
 *  Enter a Relative url to indicate where your tutorial should end up, eg. https://xrdocs.github.io/application-hosting/tutorials/tutorial-sample
 *  Enter the Author name in full as entered in the database. Read the warning below if you're not set up as an author for the website
 *  The published checkbox should be checked if you want your tutorial to show up on the website, upon the next save.
-* Use Tags (some pre-populated, you can add your own) to give some context to your document and make it searchable.
+* Use Tags (some pre-populated, you can add more on your own) to give some context to your document and make it searchable.
 {: .notice}
 
 >
