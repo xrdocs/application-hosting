@@ -25,6 +25,7 @@ In our minds, at a macro level we can classify the tools into two types:
   
   
 **@xrdocs** has been designed to address these documentation concerns. 
+{: .notice--warning}
 
 
 *   We needed a platform to quickly churn out relevant documentation and make sure it remains up-to-date with all the changes coming up in IOS-XR. 
