@@ -121,7 +121,7 @@ There are 2 types of users on @xrdocs
 
 
 
-## Starting with your first tutorial
+## Writing your first tutorial
 
 Let's assume you're a Contributor (have write access to the application-hosting github repo of @xrdocs:  [@xrdocs/application-hosting](https://github.com/xrdocs/application-hosting)    
 
@@ -143,6 +143,9 @@ Now, click on the [NEW FILE](javascript:void(0)){: .btn .btn--success} button.
 
 You will now be presented with a markdown editor to create your document:
 ![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_new_tutorial.png)
+
+
+
 
 
 
