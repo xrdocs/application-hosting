@@ -15,6 +15,14 @@ Mike Korshunov:
   bio         : "Good guy"
   avatar      : "Mike_pic.jpg"
 
+Lisa Roach:
+  name        : "Lisa Roach"
+  github      : "lisroach"
+  email       : "lisroach@cisco.com"
+  bio         : "Programmer dedicated to making good code and drinking good beer."
+  avatar      : "lisa_bio.jpeg"
+ 
+
 Cisco Web Team:
   name        : "Cisco Web Team"
   uri         : "https://developer.cisco.com/site/ios-xr"
