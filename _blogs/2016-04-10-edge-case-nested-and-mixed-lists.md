@@ -8,7 +8,7 @@ tags:
   - lists
   - markup
 published: true
-author: Akshat Sharma
+author: Lisa Roach
 ---
 
 Nested and mixed lists are an interesting beast. It's a corner case to make sure that
