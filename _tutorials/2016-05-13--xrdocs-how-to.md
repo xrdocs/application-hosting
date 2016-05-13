@@ -45,6 +45,7 @@ So here we are, @xrdocs is up and running at <https://xrdocs.github.io> with lin
 Woah! but wait. Not everyone is comfortable dealing with code while documenting. And really? git workflows each time you need to push a document? Is there an easier way? 
 Read on.
 
+---
 
 ## Introducing [prose.io](http://prose.io)
 
@@ -67,7 +68,7 @@ Advantage?
 If all you want to do is create a new document/blog, you don't need to use git workflows anymore. No more cloning of repos, no more git pull, merge, push to keep your local account up to date. Just open up your the relevant location in [prose.io](http://prose.io) and start writing in markdown.
 
 
-
+---
 
 ### Authorize [prose.io](http://prose.io) with your github account   
 
@@ -93,7 +94,7 @@ Now the page will automatically redirect to show the home page repositories for 
 You're all set! Let's now start writing a document from scratch.  
 {: .notice--success}  
 
-
+---
 
 ## Document Types on @xrdocs
 
@@ -106,7 +107,7 @@ Before we begin, a quick primer. We classify documentations into 3 primary categ
 *   **Techdocs**: These are detailed whitepapers that dive into the nitty-gritty of technical topics, cover support requirements, gotchas, different permutations etc.  
 
 
-
+---
 
 ## User types on @xrdocs
 
@@ -116,7 +117,7 @@ There are 2 types of users on @xrdocs
 *   **Owners/contributors** of the corresponding github repos (app-hosting, telemetry etc.). Their documents from prose.io directly get committed to the github repos (hence the website).
 *   **Guest Bloggers**: Do NOT have write access to repositories. All their documents from prose.io appear as pull requests on github, and are subject to a peer review by the owners/contributors before merging with the website.  
 
-
+---
 
 ## Writing your first tutorial
 
@@ -142,6 +143,8 @@ Now, click on the [NEW FILE](javascript:void(0)){: .btn .btn--success} button.
 You will now be presented with a markdown editor to create your document:
 ![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_new_tutorial.png)
 
+
+---
 
 ### Enter the title of your choice: 
 
