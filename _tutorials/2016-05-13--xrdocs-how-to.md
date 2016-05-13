@@ -33,7 +33,7 @@ In our minds, at a macro level we can classify the tools into two types:
 *   We wanted to peer-review our documentation, raise bugs against it and give control directly to the technical writers. In short, we wanted to treat documentation like code.
 {: .notice--info}
 
-The choice was simple: If you've followed the tremendous success of github-pages ever since 
+The choice was simple: If you've followed the tremendous success of github-pages ever since its inception it would be clear that using github as a platform to host and edit our documentation as code was the way to go.
 
 
 
