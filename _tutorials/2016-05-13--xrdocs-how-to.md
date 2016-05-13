@@ -93,7 +93,7 @@ Now the page will automatically redirect to show the home page repositories for 
 You're all set! Let's now start writing a document from scratch.  
 {: .notice--success}  
 
-
+{::nomarkdown}</br></br>{::nomarkdown}
 
 ## Document Types on @xrdocs
 
