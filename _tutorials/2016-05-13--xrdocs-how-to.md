@@ -68,7 +68,7 @@ If all you want to do is create a new document/blog, you don't need to use git w
 
 
 
-</br> </br> 
+<br />
 ### Authorize [prose.io](http://prose.io) with your github account   
 
 
@@ -107,7 +107,7 @@ Before we begin, a quick primer. We classify documentations into 3 primary categ
 *   **Techdocs**: These are detailed whitepapers that dive into the nitty-gritty of technical topics, cover support requirements, gotchas, different permutations etc.  
 
 
-</br> </br> 
+
 
 ## User types on @xrdocs
 
@@ -118,9 +118,9 @@ There are 2 types of users on @xrdocs
 *   **Guest Bloggers**: Do NOT have write access to repositories. All their documents from prose.io appear as pull requests on github, and are subject to a peer review by the owners/contributors before merging with the website.  
 
 
-</br> </br> 
+
 ## Writing your first tutorial
-</br> 
+
 
 Let's assume you're a Contributor (have write access to the application-hosting github repo of @xrdocs:  [@xrdocs/application-hosting](https://github.com/xrdocs/application-hosting)    
 
