@@ -139,7 +139,7 @@ Click on the Tutorials folder:
 
 ![xrdocs-images upload tutorial images](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_tutorials.png)
 
-Now, click on the [NEW FILE](javascript:void(0)){: .btn .btn--success} button.
+Click on the [NEW FILE](javascript:void(0)){: .btn .btn--success} button.
 
 
 You will now be presented with a markdown editor to create your document:
