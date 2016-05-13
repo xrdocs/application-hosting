@@ -152,6 +152,10 @@ Now a couple of steps before you start constructing your tutorial in markdown:
 1. Give your tutorial a title in the `Untitled` field you'll see at the top
 2. Now hit the metadata box on the right sidebar as shown below to enter relevant information:
 
+![Proseio metadata](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_metadata.png)
+
+This should pop a set of fields you need to fill out:
+
 >
 ![Proseio metadata](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_metadata.png)
 >
@@ -197,9 +201,10 @@ Make sure when you navigate to the main gh-pages home-page for the repo in quest
 
 
 ![Proseio apphosting xrdocs homepage](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_apphosting_ghpages.png)
-Make sure you select the _blogs folder
 {: .notice}
 
+
+Fill out the metadata fields from 
 
 
 
