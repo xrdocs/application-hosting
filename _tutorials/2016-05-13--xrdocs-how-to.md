@@ -164,7 +164,7 @@ This should pop a set of fields you need to fill out:
 >
 ![Proseio metadata](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_metadata.png)
 >
-The fields are self explanatory, but quick walkthrough:
+The fields are self explanatory, but a quick walkthrough:
 >
 *  Enter a Relative url to indicate where your tutorial should end up, eg. https://xrdocs.github.io/application-hosting/tutorials/tutorial-sample
 *  Enter the Author name in full as entered in the database. Read the warning below if you're not set up as an author for the website
