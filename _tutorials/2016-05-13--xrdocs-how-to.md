@@ -96,7 +96,7 @@ You're all set! Let's now start writing a document from scratch.
 
 ---
 
-## Document Types on @xrdocs
+## Document Types on @xrdocs&nbsp;
 
 
 >
@@ -182,6 +182,14 @@ When you hit the save button (or use Ctrl+S) , the document gets either committe
 
 And there you have it, your tutorial should be up on the website in 10-30 seconds (Try a Ctrl+shift+r to clear your cache when you refresh) !
 {: .notice--success}
+
+---
+
+## Writing your First Blog
+
+The workflow for a new blog is almost identical to a tutorial. If you've reached here and understand how to use prose to publish a tutorial, then 
+
+
 
 
 
