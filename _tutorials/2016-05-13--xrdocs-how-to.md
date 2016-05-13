@@ -96,7 +96,9 @@ You're all set! Let's now start writing a document from scratch.
 
 ---
 
-## Document Types on @xrdocs&nbsp;&nbsp;&nbsp;&nbsp;
+## Document Types on @xrdocs
+&nbsp;
+
 
 
 >
