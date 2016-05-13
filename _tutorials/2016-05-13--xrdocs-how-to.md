@@ -89,7 +89,7 @@ Now the page will automatically redirect to show the home page repositories for 
 ![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_authorized_home.png)
 
 
-You're all set! Let's now start writing a tutorial from scratch. 
+You're all set! Let's now start writing a document from scratch. 
 {: .notice--success}
 
 
@@ -104,6 +104,10 @@ Before we begin, a quick primer. We classify documentations into 3 primary categ
 * Tutorials: These are quick technical how-to's that present a technical topic from a "first-time" user's perspective.
 * Techdocs: These are detailed whitepapers that dive into the nitty-gritty of technical topics, cover support requirements, gotchas, different permutations etc.
 {. notice--warning}
+
+
+
+### Starting with you
 
 
 
