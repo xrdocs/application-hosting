@@ -38,7 +38,7 @@ In our minds, at a macro level we can classify the tools into two types:
 
 The choice was simple: If you've followed the tremendous success of github-pages ever since its inception, it would be clear that using [github](https://github.com) as a platform to host and edit our documentation-as-code, was the way to go.
 
-So here we are, @xrdocs is up and running at [https://xrdocs.github.io] with links to domains of interest.
+So here we are, @xrdocs is up and running at <https://xrdocs.github.io> with links to domains of interest.
 {: .notice--success}
 
 
