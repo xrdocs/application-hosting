@@ -33,15 +33,6 @@ In our minds, at a macro level we can classify the tools into two types:
 *   We wanted to peer-review our documentation, raise bugs against it and give control directly to the technical writers. In short, we wanted to treat documentation like code.
 {: .notice--info}
 
-{% capture notice-text %}
-*   We needed a platform to quickly churn out relevant documentation and make sure it remains up-to-date with all the changes coming up in IOS-XR. 
-
-*   We wanted to peer-review our documentation, raise bugs against it and give control directly to the technical writers. In short, we wanted to treat documentation like code.
-{% endcapture %}
-
-<div class="notice--info">
-  {{ notice-text | markdownify }}
-</div>
 
 
 
