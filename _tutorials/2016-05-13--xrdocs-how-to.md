@@ -141,6 +141,11 @@ Now, click on the [NEW FILE](#){: .btn .btn--success} button.
 {: .notice} 
 
 
+You will now be presented with a markdown editor to create your document:
+![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_tutorials.png)
+
+
+
 
 
 
