@@ -94,6 +94,8 @@ You're all set! Let's now start writing a document from scratch.
 
 
 
+
+
 ### Document Types on @xrdocs
 
 
@@ -103,6 +105,8 @@ Before we begin, a quick primer. We classify documentations into 3 primary categ
 *   Blogs:  These are news updates, architectural musings or upcoming-event updates/links.
 *   Tutorials: These are quick technical how-to's that present a technical topic from a "first-time" user's perspective.
 *   Techdocs: These are detailed whitepapers that dive into the nitty-gritty of technical topics, cover support requirements, gotchas, different permutations etc.
+
+
 
 
 ### User types on @xrdocs
