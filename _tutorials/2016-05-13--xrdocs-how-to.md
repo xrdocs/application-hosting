@@ -197,7 +197,6 @@ And there you have it, your tutorial should be up on the website in 10-30 second
 
 The workflow for a new blog is almost identical to a tutorial. If you've reached here and understand how to use prose.io to publish a tutorial, then the "diff" is essentially:
 
-&nbsp;
 
 * Make sure when you navigate to the main gh-pages home-page for the repo in question, on [prose.io](http://prose.io), you select the **_blogs** folder in the list:
 
@@ -208,6 +207,7 @@ The workflow for a new blog is almost identical to a tutorial. If you've reached
 
 * Fill out the metadata fields with the Relative URL field in the form: "/blogs/<blog-name>"
 {: .notice--info}
+
 
 Now enter your Markdown content and hit Save (or Ctrl+S)! Your blog should be live in 10-30 seconds or post-merge by an owner if you're a Guest blogger.
 {: .notice--success}
