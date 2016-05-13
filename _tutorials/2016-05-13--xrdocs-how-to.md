@@ -69,7 +69,8 @@ If all you want to do is create a new document/blog, you don't need to use git w
 
 
 
-### Authorize [prose.io](http://prose.io) with your github account
+### Authorize [prose.io](http://prose.io) with your github account   
+
 
 
 Browse to  [prose.io](http://prose.io) and if you've never authorized it before, you'll be presented with the following page:
