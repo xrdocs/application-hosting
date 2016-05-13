@@ -97,7 +97,6 @@ You're all set! Let's now start writing a document from scratch.
 ### Document Types on @xrdocs
 
 
-
 >
 Before we begin, a quick primer. We classify documentations into 3 primary categories:
 *   Blogs:  These are news updates, architectural musings or upcoming-event updates/links.
