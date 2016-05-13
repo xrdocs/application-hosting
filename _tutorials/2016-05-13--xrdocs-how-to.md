@@ -24,7 +24,10 @@ In our minds, at a macro level we can classify the tools into two types:
   
   
   
-**@xrdocs** has been designed to address these documentation concerns. We needed a platform to quickly churn out relevant documentation and make sure it remains up-to-date with all the changes coming up in IOS-XR. 
+**@xrdocs** has been designed to address these documentation concerns. 
+{: .notice}
+
+We needed a platform to quickly churn out relevant documentation and make sure it remains up-to-date with all the changes coming up in IOS-XR. 
 {: .notice--info}
 
     We wanted to peer-review our documentation, raise bugs against it and give control directly to the technical writers. In short, we wanted to treat documentation like code.
