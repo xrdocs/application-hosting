@@ -157,8 +157,9 @@ The fields are self explanatory, but quick walkthrough:
 >
 *  Enter a Relative url to indicate where your tutorial should end up, eg. https://xrdocs.github.io/application-hosting/tutorials/tutorial-sample
 *  Enter the Author name in full as entered in the database. Read the warning below if you're not set up as an author for the website
+*  Provide an excerpt to briefly describe your document
 *  The published checkbox should be checked if you want your tutorial to show up on the website, upon the next save.
-* Use Tags (some pre-populated, you can add more on your own) to give some context to your document and make it searchable.
+*  Use Tags (some pre-populated, you can add more on your own) to give some context to your document and make it searchable.
 {: .notice}
 
 >
@@ -175,11 +176,11 @@ To get your author profile setup, contact "Akshat Sharma" at the email link show
 
 Explore the sidebar on the right to see what else you can do with the editor.   
 
-When you hit the save button (or use Ctrl+S) , the document gets either committed into the github repo (if you're an owner/contributor) or a pull request is generated if you're a guest blogger and do not have write access.
+When you hit the save button (or use Ctrl+S) , the document gets either committed into the github repo (if you're an owner/contributor) or a pull request is generated if you're a guest blogger (i.e. do not have write access).
 {: .notice--info}
 
 
-And there you have it, your tutorial should be up on the website in 10-30 seconds.
+And there you have it, your tutorial should be up on the website in 10-30 seconds (Try a Ctrl+shift+r to clear your cache when you refresh) !
 {: .notice--success}
 
 
