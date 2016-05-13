@@ -49,6 +49,12 @@ Is there a better way? Read on.
 
 ## Introducing [prose.io](http://prose.io)
 
+We've completely abstracted the internals of the website running on github-pages.
+
+> Now all you need is:
+* A github account. If you don't have one, get it here: [Join Github](https://github.com/join)
+
+
 
 
 
