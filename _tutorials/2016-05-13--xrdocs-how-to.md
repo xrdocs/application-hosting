@@ -51,7 +51,7 @@ Read on.
 
 ## Introducing [prose.io](http://prose.io)
 
-We've completely abstracted the internals of the website running on github-pages using [prose.io Config](https://github.com/prose/prose/wiki/Prose-Configuration) configurations.
+We've completely abstracted the internals of the website running on github-pages using [Prose.io Metadata](https://github.com/prose/prose/wiki/Prose-Configuration) configurations.
 
 
 > 
