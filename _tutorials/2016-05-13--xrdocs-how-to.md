@@ -25,8 +25,8 @@ Cisco IOS-XR 6.0+ brings with it some key operational enhancements in the domain
   
 However, these enhancements require the right tools to aid their consumption. 
 In our minds, at a macro level we can classify the tools into two types:
-  1. **User end tools/applications**:  eg. YDK-py, Streaming Telemetry plugins for ELK/Prometheus/SignalFX, support for Config-management tools like Ansible, Puppet and Chef, YUM repositories for WRL7 apps etc.
-  2. **Documentation**: Regular Blogs, Step-by-step tutorials and detailed technical documents have to accompany tools. There is probably nothing more infuriating than a badly documented piece of code/tool/feature.
+* **User end tools/applications**:  eg. YDK-py, Streaming Telemetry plugins for ELK/Prometheus/SignalFX, support for Config-management tools like Ansible, Puppet and Chef, YUM repositories for WRL7 apps etc.
+* **Documentation**: Regular Blogs, Step-by-step tutorials and detailed technical documents have to accompany tools. There is probably nothing more infuriating than a badly documented piece of code/tool/feature.
   
   
   
