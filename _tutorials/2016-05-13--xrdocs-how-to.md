@@ -15,15 +15,8 @@ Welcome to @xrdocs!
 
 This tutorial is meant to get a new blogger/technical-writer, unfamiliar with @xrdocs, up and running in minutes.
 
-Cisco IOS-XR 6.0+ brings with it some key operational enhancements in the domains of:
- 
-* Monitoring (Streaming Telemetry)
-* Automation (APIs based on YANG models)
-* iPXE and ZTP (automated provisioning through iPXE and shell scripts)
-* Software management ( RPM based package management) and 
-* Application hosting (Direct linux access to host applications onbox as processes/containers).
-  
-However, these enhancements require the right tools to aid their consumption. 
+Cisco IOS-XR 6.0+ brings with it some key operational enhancements in the domains of monitoring, automation, application-hosting and software management. However, these enhancements require the right tools to aid their consumption. 
+
 In our minds, at a macro level we can classify the tools into two types:
 
 * **User end tools/applications**:  eg. YDK-py, Streaming Telemetry plugins for ELK/Prometheus/SignalFX, support for Config-management tools like Ansible, Puppet and Chef, YUM repositories for WRL7 apps etc.
