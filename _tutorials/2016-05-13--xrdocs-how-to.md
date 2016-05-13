@@ -85,7 +85,15 @@ Click on **Authorize Application**
 
 
 Now the page will automatically redirect to show the home page repositories for the user:
+
 ![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_authorized_home.png)
+
+
+You're all set! Let's now start writing a tutorial from scratch. 
+{: .notice--success}
+
+### 
+
 
 
 
