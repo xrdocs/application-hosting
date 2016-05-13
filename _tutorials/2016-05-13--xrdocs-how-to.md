@@ -136,6 +136,7 @@ You will be presented with a few set of repositories that you have access to fro
 
 Click on the Tutorials folder:
 
+![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_tutorials.png)
 
 
 
