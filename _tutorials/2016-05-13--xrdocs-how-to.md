@@ -126,7 +126,7 @@ There are 2 types of users on @xrdocs
 
 Let's assume you're a Contributor (have write access to the application-hosting github repo of @xrdocs:  [@xrdocs/application-hosting](https://github.com/xrdocs/application-hosting)    
 
-To start writing a tutorial, browse to the application gh-pages branch on prose.io by using the following link:
+To start writing a tutorial, browse to the application-hosting gh-pages branch on prose.io by using the following link:
 <http://prose.io/#xrdocs/application-hosting/tree/gh-pages>    
 
 
