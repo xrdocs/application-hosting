@@ -138,7 +138,7 @@ Click on the Tutorials folder:
 
 ![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_tutorials.png)
 
-Now, click on the [NEW FILE](#){: .btn--success} button 
+Now, click on the [NEW FILE](#){: .btn .btn--success} button 
 
 
 
