@@ -54,7 +54,7 @@ We've completely abstracted the internals of the website running on github-pages
 > 
 Now all you need is:
 >
-*   A github account. If you don't have one, get it here: [Join Github](https://github.com/join)
+*   A github account. If you don't have one, get it here: [Join Github](https://github.com/join.
 *   A relatively new browser (chrome would be recommended). (No IE please!)
 *   A link explaining markdown syntax if you've never used it: [Markdown Cheat-Sheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 {: .notice--warning}
