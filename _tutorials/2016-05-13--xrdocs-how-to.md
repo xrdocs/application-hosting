@@ -98,7 +98,7 @@ You're all set! Let's now start writing a document from scratch.
 
 
 
-### Document Types on @xrdocs
+## Document Types on @xrdocs
 
 
 >
@@ -111,7 +111,7 @@ Before we begin, a quick primer. We classify documentations into 3 primary categ
 
 
 
-### User types on @xrdocs
+## User types on @xrdocs
 
 >
 There are 2 types of users on @xrdocs
@@ -121,7 +121,7 @@ There are 2 types of users on @xrdocs
 
 
 
-### Starting with your first tutorial
+## Starting with your first tutorial
 
 Let's assume you're a Contributor (have write access to the application-hosting github repo of @xrdocs  @ [@xrdocs/application-hosting](https://github.com/xrdocs/application-hosting)
 
