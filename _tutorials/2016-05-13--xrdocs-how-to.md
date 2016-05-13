@@ -195,7 +195,7 @@ And there you have it, your tutorial should be up on the website in 10-30 second
 
 ## Writing your First Blog
 
-The workflow for a new blog is almost identical to a tutorial. If you've reached here and understand how to use prose to publish a tutorial, then the "diff" is essentially:
+The workflow for a new blog is almost identical to a tutorial. If you've reached here and understand how to use prose.io to publish a tutorial, then the "diff" is essentially:
 
 &nbsp;
 
