@@ -61,8 +61,10 @@ Now all you need is:
 
 [prose.io](http://prose.io) is a simple markdown editor that is built with [backbone.js](http://backbonejs.org/) and has deep integrations with github.
 
+>
 Advantage?
->  If all you want to do is create a new document, you don't need to use git workflows anymore. No more cloning of repos, no more git pull, merge, push to keep your local account up to date.
+>  
+If all you want to do is create a new document, you don't need to use git workflows anymore. No more cloning of repos, no more git pull, merge, push to keep your local account up to date.
 
 
 
