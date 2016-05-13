@@ -150,8 +150,16 @@ Now a couple of steps before you start constructing your tutorial in markdown:
 1. Give your tutorial a title in the `Untitled` field you'll see at the top
 2. Now hit the metadata box on the right sidebar as shown below to enter relevant information:
 
+>
 ![Proseio metadata](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_metadata.png)
+>
+The fields are self explanatory, but quick walkthrough:
+*  Enter a Relative url to indicate where your tutorial should end up, eg. https://xrdocs.github.io/application-hosting/tutorials/tutorial-sample
+*  Enter the Author name in full as entered in the database. Read the warning below if you're not set up as an author for the website
+*  The published checkbox should be checked if you want your tutorial to show up on the website, upon the next save.
+* Use Tags (some pre-populated, you can add your own) to give some context to your document and make it searchable.
 
+{: .notice}
 >
 You'll need your author name setup in the internal database with a bio photo to make your avatar show up on the side on the website.
 To get your author profile setup, contact "Akshat Sharma" at the email link shown under the avatar with the following minimum details:
@@ -164,8 +172,13 @@ To get your author profile setup, contact "Akshat Sharma" at the email link show
 {: .notice--warning}
 
 
-Explore the sidebar on the right to see what else you can do with the editor. When you hit the save button, the document gets either committed into the github repo (if you're an owner/contributor) or a pull request is generated if you're a guest blogger and do not have write access.
+Explore the sidebar on the right to see what else you can do with the editor.   
+
+When you hit the save button (or use Ctrl+S) , the document gets either committed into the github repo (if you're an owner/contributor) or a pull request is generated if you're a guest blogger and do not have write access.
 {: .notice--info}
+
+
+
 
 
 
