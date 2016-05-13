@@ -40,22 +40,9 @@ In our minds, at a macro level we can classify the tools into two types:
 {% endcapture %}
 
 <div class="notice--info">
-  <h4>Notice Headline:</h4>
   {{ notice-text | markdownify }}
 </div>
 
 
 
 The choice was simple: If you've followed the tremendous success of github-pages ever since its inception it would be clear that using [github](https://github.com) as a platform to host and edit our documentation as code was the way to go.
-
-
-
-
-
-
-
-
-
-
-
-
