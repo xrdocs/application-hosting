@@ -76,19 +76,19 @@ If all you want to do is create a new document/blog, you don't need to use git w
     
 Browse to  [prose.io](http://prose.io) and if you've never authorized it before, you'll be presented with the following page:
 
-![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_authorize.png)
+![Proseio Authorize](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_authorize.png)
 Click on **Authorize on Github** and you'll be taken to the Github login screen. When you login, allow prose.io to access your public and private github repos (don't worry, this is a purely client side js app).
 {: .notice}
 
 
-![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/authorise_github.png)
+![Authorize Github App](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/authorise_github.png)
 Click on **Authorize Application**
 {: .notice}
 
 
 Now the page will automatically redirect to show the home page repositories for the user:
 
-![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_authorized_home.png)
+![proseio home redirect](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_authorized_home.png)
 
 
 You're all set! Let's now start writing a document from scratch.  
@@ -129,19 +129,19 @@ To start writing a tutorial, browse to the application gh-pages branch on prose.
 
 
 
-![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_apphosting_ghpages.png)
+![Proseio apphosting xrdocs homepage](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_apphosting_ghpages.png)
 You will be presented with a few set of repositories that you have access to from prose.io:
 {: .notice}   
 
 Click on the Tutorials folder:
 
-![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_tutorials.png)
+![xrdocs-images upload tutorial images](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_tutorials.png)
 
 Now, click on the [NEW FILE](javascript:void(0)){: .btn .btn--success} button.
 
 
 You will now be presented with a markdown editor to create your document:
-![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_new_tutorial.png)
+![Proseio new tutorial](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_new_tutorial.png)
 
 
 
@@ -150,7 +150,7 @@ Now a couple of steps before you start constructing your tutorial in markdown:
 1. Give your tutorial a title in the `Untitled` field you'll see at the top
 2. Now hit the metadata box on the right sidebar as shown below to enter relevant information:
 
-![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_metadata.png)
+![Proseio metadata](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_metadata.png)
 
 
 
