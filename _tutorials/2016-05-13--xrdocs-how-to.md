@@ -64,7 +64,10 @@ Now all you need is:
 >
 Advantage?
 >  
-If all you want to do is create a new document, you don't need to use git workflows anymore. No more cloning of repos, no more git pull, merge, push to keep your local account up to date. Just open up your document in [prose.io](http://prose.io) start writing in markdown.
+If all you want to do is create a new document/blog, you don't need to use git workflows anymore. No more cloning of repos, no more git pull, merge, push to keep your local account up to date. Just open up your the relevant location in [prose.io](http://prose.io) and start writing in markdown.
+
+
+
 
 
 
