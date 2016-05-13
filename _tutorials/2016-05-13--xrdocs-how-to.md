@@ -161,11 +161,13 @@ To get your author profile setup, contact "Akshat Sharma" at the email link show
 * Email
 * attach a bio photo in jpg/jpeg/png format
 * twitter handle (optional)
-{: .notice-warning}
+{: .notice--warning}
 
 
 Explore the sidebar on the right to see what else you can do with the editor. When you hit the save button, the document gets either committed into the github repo (if you're an owner/contributor) or a pull request is generated if you're a guest blogger and do not have write access.
 {: .notice--info}
+
+
 
 
 
