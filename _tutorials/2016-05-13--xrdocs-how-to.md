@@ -1,7 +1,7 @@
 ---
 published: true
 date: "2016-05-13 16:35 +0530"
-title: "@xrdocs How-To"
+title: "@xrdocs How-To-1"
 permalink: "/tutorials/xrdocs-how-to"
 author: Akshat Sharma
 excerpt: "This tutorial provides a walkthrough of the xrdocs platform for blogging, and creating tutorials and techdocs"
@@ -32,6 +32,9 @@ In our minds, at a macro level we can classify the tools into two types:
   
   
 **@xrdocs** has been designed to address these documentation concerns. The choice was simple, we needed a platform to quickly churn out relevant documentation and make sure it remains up-to-date with all the changes coming up in IOS-XR.
+
+
+
 
 
 
