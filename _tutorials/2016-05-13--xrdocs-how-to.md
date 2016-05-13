@@ -143,11 +143,13 @@ Now, click on the [NEW FILE](javascript:void(0)){: .btn .btn--success} button.
 
 
 You will now be presented with a markdown editor to create your document:
+&nbsp;
+
 ![Proseio new tutorial](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_new_tutorial.png)
 
 
 
-Now a couple of steps before you start constructing your tutorial in markdown:
+A couple of steps before you start constructing your tutorial in markdown:
 
 1. Give your tutorial a title in the `Untitled` field you'll see at the top
 2. Now hit the metadata box on the right sidebar as shown below to enter relevant information:
