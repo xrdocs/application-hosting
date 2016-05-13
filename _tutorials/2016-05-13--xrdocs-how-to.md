@@ -13,7 +13,7 @@ position: " "
 
 Welcome to @xrdocs!
 
-This tutorial is meant to get a new blogger/technical-writer, unfamiliar with @xrdocs, to get up and running in minutes.
+This tutorial is meant to get a new blogger/technical-writer, unfamiliar with @xrdocs, up and running in minutes.
 
 Cisco IOS-XR 6.0+ brings with it some key operational enhancements in the domains of monitoring (Streaming Telemetry), automation (APIs based on YANG models), ZTP (automated provisioning through shell scripts), software management ( RPM based package management) and Application hosting (Direct linux access to host applications onbox as processes/containers).
 
