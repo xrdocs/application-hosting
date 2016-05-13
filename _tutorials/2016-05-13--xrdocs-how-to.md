@@ -179,6 +179,10 @@ When you hit the save button (or use Ctrl+S) , the document gets either committe
 {: .notice--info}
 
 
+And there you have it, your tutorial should be up on the website in 10-30 seconds.
+{: .notice--success}
+
+
 
 
 
