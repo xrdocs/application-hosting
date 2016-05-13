@@ -208,8 +208,10 @@ The workflow for a new blog is almost identical to a tutorial. If you've reached
 * Fill out the metadata fields with the Relative URL field in the form: "/blogs/<blog-name>"
 
 
+* Now enter your Markdown content and hit Save (or Ctrl+S)! 
 
-Now enter your Markdown content and hit Save (or Ctrl+S)! Your blog should be live in 10-30 seconds or post-merge by an owner if you're a Guest blogger.
+
+Your blog should be live in 10-30 seconds or post-merge by an owner if you're a Guest blogger.
 {: .notice--success}
 
 
