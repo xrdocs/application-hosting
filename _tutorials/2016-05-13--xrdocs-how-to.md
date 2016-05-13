@@ -175,7 +175,7 @@ The fields are self explanatory, but a quick walkthrough:
 
 >
 You'll need your author name setup in the internal database with a bio photo to make your avatar show up on the side of the website.
-To get your author profile setup, contact "Akshat Sharma" at the email link shown under the avatar with the following minimum details:
+To get your author profile set up, contact "Akshat Sharma" at the email link shown under the avatar with the following minimum details:
 >
 * Full Name
 * Github ID
