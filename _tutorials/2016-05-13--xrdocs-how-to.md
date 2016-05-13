@@ -75,11 +75,13 @@ Browse to  [prose.io](http://prose.io) and if you've never authorized it before,
 ![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_authorize.png)
 
 Click on **Authorize on Github** and you'll be taken to the Github login screen. When you login, allow prose.io to access your public and private github repos (don't worry, this is a purely client side js app).
+{: .notice}
 
 
 ![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/authorise_github.png)
 
 Click on **Authorize Application**
+{: .notice}
 
 
 
