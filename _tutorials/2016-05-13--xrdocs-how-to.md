@@ -32,6 +32,7 @@ In our minds, at a macro level we can classify the tools into two types:
 
 *   We wanted to peer-review our documentation, raise bugs against it and give control directly to the technical writers. In short, we wanted to treat documentation like code.
 {% endcapture %}
+
 <div class="notice--info">
   <h4>Notice Headline:</h4>
   {{ notice-text | markdownify }}
