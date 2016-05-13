@@ -128,9 +128,13 @@ Let's assume you're a Contributor (have write access to the application-hosting 
 To start writing a tutorial, browse to the application gh-pages branch on prose.io by using the following link:
 <http://prose.io/#xrdocs/application-hosting/tree/gh-pages>    
 
-You will be presented with a few set of repositories that you have access to from the prose.io:
+
 
 ![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_apphosting_ghpages.png)
+You will be presented with a few set of repositories that you have access to from the prose.io:
+{: .notice}
+
+
 
 
 
