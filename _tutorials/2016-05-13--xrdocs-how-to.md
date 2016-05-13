@@ -42,9 +42,8 @@ So here we are, @xrdocs is up and running at [https://xrdocs.github.io] with lin
 {: .notice--success}
 
 
-Woah! but wait. Not everyone is comfortable dealing with code while documenting. And really? git workflows each time you need to push a document?
-
-Is there a better way? Read on.
+Woah! but wait. Not everyone is comfortable dealing with code while documenting. And really? git workflows each time you need to push a document? Is there a better way? 
+Read on.
 
 
 ## Introducing [prose.io](http://prose.io)
