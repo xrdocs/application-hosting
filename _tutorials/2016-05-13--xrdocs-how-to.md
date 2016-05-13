@@ -57,7 +57,7 @@ Now all you need is:
 >
 *   A github account. If you don't have one, get it here: [Join Github](https://github.com/join)
 *   A relatively new browser (chrome would be recommended). (No IE please!)
-{: .notice--info}
+{: .notice--warning}
 
 
 
