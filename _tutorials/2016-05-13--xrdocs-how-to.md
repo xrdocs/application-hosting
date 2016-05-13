@@ -152,7 +152,7 @@ Now a couple of steps before you start constructing your tutorial in markdown:
 
 ![Proseio metadata](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_metadata.png)
 
-
+>
 You'll need your author name setup in the internal database with a bio photo to make your avatar show up on the side.
 To get your author profile setup, contact "Akshat Sharma" at the email link shown under the avatar with the following minimum details:
 >
@@ -161,7 +161,6 @@ To get your author profile setup, contact "Akshat Sharma" at the email link show
 * Email
 * attach a bio photo in jpg/jpeg/png format
 * twitter handle (optional)
-
 {: .notice-warning}
 
 
