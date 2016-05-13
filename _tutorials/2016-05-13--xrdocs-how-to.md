@@ -189,7 +189,18 @@ And there you have it, your tutorial should be up on the website in 10-30 second
 
 ## Writing your First Blog
 
-The workflow for a new blog is almost identical to a tutorial. If you've reached here and understand how to use prose to publish a tutorial, then 
+The workflow for a new blog is almost identical to a tutorial. If you've reached here and understand how to use prose to publish a tutorial, then the "diff" is essentially:
+
+&nbsp;
+
+Make sure when you navigate to the main gh-pages home-page for the repo in question, on [prose.io](http://prose.io), you select the **_blogs** folder in the list:
+
+
+![Proseio apphosting xrdocs homepage](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_apphosting_ghpages.png)
+Make sure you select the _blogs folder
+{: .notice}
+
+
 
 
 
