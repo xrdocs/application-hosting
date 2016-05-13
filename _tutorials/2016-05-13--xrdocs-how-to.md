@@ -68,6 +68,8 @@ If all you want to do is create a new document/blog, you don't need to use git w
 
 
 
+### Authorize [prose.io](http://prose.io) with your github account
+ ![Box validation](https://xrdocs.github.io/xrdocs-images/assets/images/proseio_authorize
 
 
 
