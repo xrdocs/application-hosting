@@ -156,7 +156,7 @@ A couple of steps before you start constructing your tutorial in markdown:
 1. Give your tutorial a title in the `Untitled` field you'll see at the top
 2. Now hit the metadata box on the right sidebar as shown below to enter relevant information:
 
-![Proseio metadata](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_metadata_button.png)
+![Proseio metadata](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_metadata_button.png){: .align-center}
 {: .notice}
 
 This should pop a set of fields you need to fill out:
