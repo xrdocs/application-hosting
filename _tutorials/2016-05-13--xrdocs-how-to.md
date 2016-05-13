@@ -89,7 +89,7 @@ Now the page will automatically redirect to show the home page repositories for 
 ![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_authorized_home.png)
 
 
-You're all set! Let's now start writing a document from scratch. 
+You're all set! Let's now start writing a document from scratch.   
 {: .notice--success}
 
 
@@ -104,7 +104,7 @@ Before we begin, a quick primer. We classify documentations into 3 primary categ
 >
 *   **Blogs**:  These are news updates, architectural musings or upcoming-event updates/links.
 *   **Tutorials**: These are quick technical how-to's that present a technical topic from a "first-time" user's perspective.
-*   **Techdocs**: These are detailed whitepapers that dive into the nitty-gritty of technical topics, cover support requirements, gotchas, different permutations etc.
+*   **Techdocs**: These are detailed whitepapers that dive into the nitty-gritty of technical topics, cover support requirements, gotchas, different permutations etc.  
 
 
 
@@ -121,6 +121,8 @@ There are 2 types of users on @xrdocs
 ### Starting with your first tutorial
 
 Let's assume you're a Contributor (have write access to the application-hosting github repo of @xrdocs  @ [@xrdocs/application-hosting](https://github.com/xrdocs/application-hosting)
+
+
 
 
 
