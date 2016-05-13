@@ -154,11 +154,13 @@ Now a couple of steps before you start constructing your tutorial in markdown:
 ![Proseio metadata](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_metadata.png)
 >
 The fields are self explanatory, but quick walkthrough:
+>
 *  Enter a Relative url to indicate where your tutorial should end up, eg. https://xrdocs.github.io/application-hosting/tutorials/tutorial-sample
 *  Enter the Author name in full as entered in the database. Read the warning below if you're not set up as an author for the website
 *  The published checkbox should be checked if you want your tutorial to show up on the website, upon the next save.
 * Use Tags (some pre-populated, you can add your own) to give some context to your document and make it searchable.
 {: .notice}
+
 >
 You'll need your author name setup in the internal database with a bio photo to make your avatar show up on the side on the website.
 To get your author profile setup, contact "Akshat Sharma" at the email link shown under the avatar with the following minimum details:
