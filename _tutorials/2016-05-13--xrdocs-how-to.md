@@ -205,7 +205,7 @@ Make sure when you navigate to the main gh-pages home-page for the repo in quest
 
 
 Fill out the metadata fields with the Relative URL field in the form: "/blogs/<blog-name>"
-{: .notice}
+{: .notice--info}
 
 
 
