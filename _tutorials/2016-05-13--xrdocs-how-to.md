@@ -89,8 +89,9 @@ Now the page will automatically redirect to show the home page repositories for 
 ![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_authorized_home.png)
 
 
-You're all set! Let's now start writing a document from scratch.   
-{: .notice--success}
+You're all set! Let's now start writing a document from scratch.  
+{: .notice--success}  
+
 
 
 
@@ -116,6 +117,7 @@ There are 2 types of users on @xrdocs
 >
 *   **Owners/contributors** of the corresponding github repos (app-hosting, telemetry etc.). Their documents from prose.io directly get committed to the github repos (hence the website).
 *   **Guest Bloggers**: Do NOT have write access to repositories. All their documents from prose.io appear as pull requests on github, and are subject to a peer review by the owners/contributors before merging with the website.  
+
 
 
 ### Starting with your first tutorial
