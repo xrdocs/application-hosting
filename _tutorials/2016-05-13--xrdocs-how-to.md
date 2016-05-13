@@ -142,7 +142,7 @@ Now, click on the [NEW FILE](javascript:void(0)){: .btn .btn--success} button.
 
 
 You will now be presented with a markdown editor to create your document:
-![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_tutorials.png)
+![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_new_tutorial.png)
 
 
 
