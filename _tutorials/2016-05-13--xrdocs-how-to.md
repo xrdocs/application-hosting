@@ -16,11 +16,12 @@ Welcome to @xrdocs!
 This tutorial is meant to get a new blogger/technical-writer, unfamiliar with @xrdocs, up and running in minutes.
 
 Cisco IOS-XR 6.0+ brings with it some key operational enhancements in the domains of:
-  1. Monitoring (Streaming Telemetry)
-  2. Automation (APIs based on YANG models)
-  3. iPXE and ZTP (automated provisioning through iPXE and shell scripts)
-  4. Software management ( RPM based package management) and 
-  5. Application hosting (Direct linux access to host applications onbox as processes/containers).
+ 
+* Monitoring (Streaming Telemetry)
+* Automation (APIs based on YANG models)
+* iPXE and ZTP (automated provisioning through iPXE and shell scripts)
+* Software management ( RPM based package management) and 
+* Application hosting (Direct linux access to host applications onbox as processes/containers).
   
 However, these enhancements require the right tools to aid their consumption. 
 In our minds, at a macro level we can classify the tools into two types:
