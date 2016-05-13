@@ -105,9 +105,17 @@ Before we begin, a quick primer. We classify documentations into 3 primary categ
 * Techdocs: These are detailed whitepapers that dive into the nitty-gritty of technical topics, cover support requirements, gotchas, different permutations etc.
 {. notice--warning}
 
+### User types on @xrdocs
+
+>
+There are 2 types of users on @xrdocs
+* **Owners/contributors** of the corresponding github repos (app-hosting, telemetry etc.). Their documents from prose.io directly get committed to the github repos (hence the website).
+* **Guest Bloggers**: Do NOT have write access to repositories. All their documents from prose.io appear as pull requests on github, and are subject to a peer review by the owners/contributors before merging with the website.
 
 
-### Starting with you
+### Starting with your first tutorial
+
+Let's assume you're a user 
 
 
 
