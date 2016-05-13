@@ -115,7 +115,9 @@ There are 2 types of users on @xrdocs
 
 ### Starting with your first tutorial
 
-Let's assume you're a Contributor of application-hosting @xrdocs github repo @ [@xrdocs/application-hosting](https://github.com/xrdocs/application-hosting) 
+Let's assume you're a Contributor of application-hosting @xrdocs github repo @ [@xrdocs/application-hosting](https://github.com/xrdocs/application-hosting)
+
+
 
 
 
