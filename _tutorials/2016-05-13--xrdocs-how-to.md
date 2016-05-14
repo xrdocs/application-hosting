@@ -249,6 +249,7 @@ You can now drag and drop your images and insert them into the markdown file.
 
 
 ---
+
 ## Writing Technical Documents (Tech-Docs/Whitepapers)
 
 
