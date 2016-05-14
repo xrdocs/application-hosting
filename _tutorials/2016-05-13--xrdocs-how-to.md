@@ -43,8 +43,11 @@ So here we are, @xrdocs is up and running at <https://xrdocs.github.io> with lin
 
 
 Woah! but wait. Not everyone is comfortable dealing with code while documenting. 
+&nbsp;
 And really? git workflows each time you need to push a document? 
+&nbsp;
 Is there an easier way? 
+&nbsp;
 Read on.
 
 ---
