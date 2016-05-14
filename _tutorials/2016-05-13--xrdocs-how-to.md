@@ -237,6 +237,8 @@ Once you have the link, reference it in your document in the form:
 `![<image context>](https://<reference-link>/<image-name.jpg/png/jpeg>`
 * **For owners/contributors only**: Hit the insert image button in the Prose.io toolbar as shown below:
 ![Proseio insert images](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_insert_image.png)
+&nbsp;
+You can now drag and drop your images and insert them into the markdown file.
 
 
 
