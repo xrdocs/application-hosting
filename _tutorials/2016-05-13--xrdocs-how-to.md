@@ -42,11 +42,10 @@ So here we are, @xrdocs is up and running at <https://xrdocs.github.io> with lin
 {: .notice--success}
 
 
-Woah! but wait. Not everyone is comfortable dealing with code while documenting. 
+Woah! but wait. Not everyone is comfortable dealing with code while documenting.   
+And really? git workflows each time you need to push a document?    
 &nbsp;
-And really? git workflows each time you need to push a document? 
-&nbsp;
-Is there an easier way? 
+Is there an easier way?    
 &nbsp;
 Read on.
 
