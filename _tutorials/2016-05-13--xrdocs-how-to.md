@@ -234,7 +234,7 @@ and follow the instructions to upload an image and obtain a link.
 &nbsp;
 Once you have the link, reference it in your document in the form:
 &nbsp;
-&nbsp;`![<image context>](https://<reference-link>/<image-name.jpg/png/jpeg>`
+`![<image context>](https://<reference-link>/<image-name.jpg/png/jpeg>`
 * **For owners/contributors only**: Hit the insert image button in the Prose.io toolbar as shown below:
 ![Proseio insert images](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_insert_image.png)
 &nbsp;
