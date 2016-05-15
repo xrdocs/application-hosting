@@ -248,22 +248,33 @@ You can now drag and drop your images and insert them into the markdown file.
 
 ## Some Useful Tips to make your blog look prettier:
 
+If you'd like to understand how this tutorial utilizes different colored Boxes to draw reader's attention or how to align text or images on the page quickly, then proceed here:  
+
 {% include base_path %}
-<{{ base_path }}/tutorials/xrdocs-formatting-useful-tips>
+[Useful Tips for Formatting]({{ base_path }}/tutorials/xrdocs-formatting-useful-tips)
 
 
 
 ---
 
-## Commit process for Guest Bloggers
+## Commit and Peer Review process for Guest Bloggers
+
+Guest Bloggers by definition do not have write access to the github repository. Since we're treating documentation like code, any document commit by a guest blogger would automatically result in a pull request on the github repo.   
+
+Reviewers can then be assigned to provide inline comments, reject or allow a guest post to appear on the website.   
+
 {% include base_path %}
-<{{ base_path }}/tutorials/xrdocs-guest-blogging>
+[Peer Review for Guest Bloggers]({{ base_path }}/tutorials/xrdocs-guest-bloggers)
 
 
 ---
 
 ## Writing Technical Documents (Tech-Docs/Whitepapers)
+
+Each Technical Document (Tech-Docs/Whitepapers) is a collection of markdown files with a navigation sidebar.
+Learn how to easily construct a tech-doc on @xrdocs:   
+
 {% include base_path %}
-<{{ base_path }}/tutorials/xrdocs-techdocs-how-to>
+[Writing Technical Documents/Whitepapers]({{ base_path }}/tutorials/techdocs-how-to)
 
 
