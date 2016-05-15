@@ -162,6 +162,16 @@ RP/0/RP0/CPU0:ios#
 
 Let's copy public part of key from Ubuntu box and allow access without password. For IOS-XR image 6.1.x commands below:   
 
+```
+vagrant port
+
+scp -P <port used for XR(guest) port 57722> /path/to/host/public_key/id_rsa.pub vagrant@localhost:/home/vagrant/
+
+vagrant ssh xr
+
+cat /home/vagrant/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
+```
+
 
 
 
