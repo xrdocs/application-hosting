@@ -3,7 +3,8 @@ permalink: "/tutorials/IOSXR-Ansible"
 author: Mike Korshunov
 excerpt: Getting started with IOSXR and Ansible playbooks
 published: true
-title: "IOSXR-Ansible.md"
+title: "IOS-XR Ansible"
+date: "2016-05-16 01:18 +0530"
 ---
 # Introduction
 In this tutorial we are going to cover XRv4 configuration with Ansible. We will setup and try simplest configuration with Unix machine connected to XRv64.
