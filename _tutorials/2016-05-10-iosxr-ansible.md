@@ -25,9 +25,10 @@ Image for Ubuntu will be downloaded from official source:
 	
     $ vagrant box add ubuntu/trusty64
     
-Let's check for result, we should have box available, box ubuntu/trusty64 and xrv64 should be displayed:
+Let's check for result, we should have box available, box ubuntu/trusty64 and xrv64 should be displayed:  
+
 ![Box validation](https://cisco.box.com/shared/static/rwa6hxojdjcwu1ln8h0zu5oq6ij30def.png)
-![Box validation](https://xrdocs.github.io/xrdocs-images/assets/images/xr_ansible_01_box_list - Copy.png)
+![Box validation](https://xrdocs.github.io/xrdocs-images/assets/images/xr_ansible_01_box_list-Copy.png)
 
 Vagrantfile with 2 Vagrant boxes should be like:
 
