@@ -246,7 +246,9 @@ You can now drag and drop your images and insert them into the markdown file.
 
 ---
 
-## Some Useful Classes to make your blog look prettier:
+## Some Useful Tips to make your blog look prettier:
+
+{{ base.path }}
 
 
 
