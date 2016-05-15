@@ -248,6 +248,7 @@ You can now drag and drop your images and insert them into the markdown file.
 
 ## Some Useful Tips to make your blog look prettier:
 
+{% include base_path %}
 {{ base_path }}
 
 
