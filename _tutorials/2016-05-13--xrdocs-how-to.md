@@ -8,7 +8,7 @@ excerpt: "This tutorial provides a walkthrough of the xrdocs platform for bloggi
 tags: 
   - iosxr
   - cisco
-position: " "
+position: hidden
 ---
 
 Welcome to @xrdocs!
