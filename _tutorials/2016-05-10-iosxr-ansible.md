@@ -115,9 +115,13 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 ### XR box pre-configuration
 
 To access XR Linux Shell: 
-> vagrant ssh xr
 
-To access XR console it takes one additional step to figure out port (credentials for ssh: vagrant/vagrant):
+``` 
+vagrant ssh xr
+```
+
+To access XR console it takes one additional step to figure out port (credentials for ssh: vagrant/vagrant):  
+
 ```
 mkorshun@MKORSHUN-2JPYH MINGW64 ~/Documents/workCisco/tutorial
 $ vagrant port xr
@@ -132,7 +136,7 @@ vagrant@localhost's password:
 RP/0/RP0/CPU0:ios#
 ```
 
-Now let's  configure IP address at XR box. Issue the commant at XR CLI.
+Now let's  configure IP address at XR box. Issue the commant at XR CLI.   
 
 ```
 conf t
@@ -144,7 +148,8 @@ commit
 end
 ```
 
-Finally, let's check connectivity between boxes:
+Finally, let's check connectivity between boxes:   
+
 ```
 RP/0/RP0/CPU0:ios#ping 10.1.1.20
 Mon May  9 08:36:33.071 UTC
@@ -155,16 +160,9 @@ Success rate is 100 percent (5/5), round-trip min/avg/max = 1/5/20 ms
 RP/0/RP0/CPU0:ios#
 ```
 
-Let's copy public part of key from Ubuntu box and allow access without password. For IOS-XR image 6.1.x commands below:
-
-run vi /root/.ssh/authorized_keys
+Let's copy public part of key from Ubuntu box and allow access without password. For IOS-XR image 6.1.x commands below:   
 
 
-run sed -i.bak -e '/^PermitRootLogin/s/no/yes/' /etc/ssh/sshd_config_operns
-
-run service sshd_operns restart
-
-run chkconfig --add sshd_operns
 
 
 ## Ansible Part
