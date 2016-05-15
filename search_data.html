@@ -3,7 +3,7 @@ layout: null
 ---
 {
   {% for post in site.blogs %}
-    {% assign next_post = site.tutorials[forloop.index] %}
+    {% assign next_post = site.blogs[forloop.index] %}
     {% unless post.position == "hidden" %}
     "{{ post.url | slugify }}": {
       "title": "{{ post.title | xml_escape }}",
