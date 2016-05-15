@@ -248,17 +248,22 @@ You can now drag and drop your images and insert them into the markdown file.
 
 ## Some Useful Tips to make your blog look prettier:
 
-
-<{{ base_path }}/tutorials/IOSXR-Ansible>
+{% include base_path %}
+<{{ base_path }}/tutorials/xrdocs-formatting-useful-tips>
 
 
 
 ---
 
 ## Commit process for Guest Bloggers
-
+{% include base_path %}
+<{{ base_path }}/tutorials/xrdocs-guest-blogging>
 
 
 ---
 
 ## Writing Technical Documents (Tech-Docs/Whitepapers)
+{% include base_path %}
+<{{ base_path }}/tutorials/xrdocs-techdocs-how-to>
+
+
