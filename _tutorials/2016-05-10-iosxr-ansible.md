@@ -78,7 +78,8 @@ git clone git://github.com/ansible/ansible.git --recursive
 cd ansible/ && sudo python setup.py install
 ```
 
-Create key to access XR in future:
+Create key to access XR in future:   
+>
 ```
 vagrant@vagrant-ubuntu-trusty-64:~$ ssh-keygen -t rsa
 Generating public/private rsa key pair.
