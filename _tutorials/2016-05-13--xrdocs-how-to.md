@@ -273,7 +273,7 @@ Reviewers can then be assigned to provide inline comments, reject or allow a gue
 
 ## Writing Technical Documents (Tech-Docs/Whitepapers)
 
-Each Technical Document (Tech-Docs/Whitepapers) is a collection of markdown files with a navigation sidebar.
+Each Technical Document (Tech-Doc/Whitepaper) is a collection of markdown files with a navigation sidebar.
 Learn how to easily construct a tech-doc on @xrdocs:   
 
 {% include base_path %}
