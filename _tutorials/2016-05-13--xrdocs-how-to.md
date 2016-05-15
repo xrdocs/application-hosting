@@ -121,7 +121,8 @@ There are 2 types of users on @xrdocs
 *   **Owners/contributors** of the corresponding github repos (app-hosting, telemetry etc.). Their documents from prose.io directly get committed to the github repos (hence the website).
 *   **Guest Bloggers**: Do NOT have write access to repositories. All their documents from prose.io appear as pull requests on github, and are subject to a peer review by the owners/contributors before merging with the website.  
 
-TMEs in the Web Solutions are by default the owners of the github repositories for each domain: Application-Hosting, Telemetry, Programmability etc.
+TMEs in the Web Solutions group at Cisco are by default the owners of the github repositories for each domain: Application-Hosting, Telemetry, Programmability etc.
+
 ---
 
 ## Writing your first tutorial
