@@ -80,7 +80,7 @@ As a Guest Blogger, document creation is very similar to an owner/contributor wo
 As a Guest Blogger, as soon as you save the markdown content in [prose.io](http://prose.io),   
 a **Pull Request** will be generated on the github repository that you contributed to (application-hosting, telemetry etc.)
 >
-* Post the commit, the owner/contributors of the github repository can then assign a reviewer of your content on Github.   
+* The owner/contributors of the github repository then assign a reviewer of your content on Github.   
 * For example let's say you contributed your content to the application-hosting xrdocs github repo [xrdocs/application-hosting](https://github.com/xrdocs/application-hosting/tree/gh-pages) using [prose.io](http://prose.io#xrdocs/application-hosting/tree/gh-pages)  
 * As a Guest Blogger, Keep updating your local copy of your markdown content based on reviewer's comments.
 * Use prose.io as a method to submit your content.   
