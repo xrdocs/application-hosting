@@ -62,6 +62,28 @@ Without going into details of how the github organization (xrdocs) and its repos
 [xrdocs/xrdocs-images](https://github.com/xrdocs/xrdocs-images/tree/gh-pages)  is the only repository that Guest bloggers will have write access to. Think of this as your image repository in the cloud.   
 
 
+## Using Prose.io? No difference, almost!
+
+If you've understood how to use [prose.io](http://prose.io) from the [@xrdocs How-To guide]({{ base_path }}/tutorials/xrdocs-how-to#introducing-proseio) section, then there is **NO DIFFERENCE** between a guest blogger and an owner/contributor workflow during document creation.
+
+* Create the desired markdown content. 
+
+* Make sure you **uncheck** the Published checkbox in the metadata field. Fill up the rest of fields as always. If you do not uncheck the published flag, then you will be asked to do so during the review process.
+
+* Commit.
+
+
+
+## Commit and Peer review: Important
+
+The difference in the workflow is post commit. As a Guest Blogger, as soon as you save the markdown content in 
+[prose.io](http://prose.io), a **Pull Request** will be generated on the github repository that you contributed to (application-hosting, telemetry etc.)
+
+* Post the commit, the owner/contributors of the github repository can then assign a reviewer of your content on Github.
+* Once the Review process is complete, the  
+
+
+
 
 
 
