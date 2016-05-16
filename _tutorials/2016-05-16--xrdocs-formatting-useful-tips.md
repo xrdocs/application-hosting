@@ -79,7 +79,7 @@ No wrap text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentes
 {: .text-nowrap}
 
 ```markdown
-No wrap text.
+No wrap text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel eleifend odio, eu elementum purus. In hac habitasse platea dictumst. Fusce sed sapien eleifend, sollicitudin neque non, faucibus est. Proin tempus nisi eu arcu facilisis, eget venenatis eros consequat.”
 {: .text-nowrap}
 ```
 
