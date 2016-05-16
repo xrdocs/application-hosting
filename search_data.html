@@ -5,6 +5,7 @@ layout: null
   {% for post in site.blogs %}
   {% assign prev_i = forloop.index0 | minus: 1 %}
   {% assign prev_post = site.blogs[prev_i] %}
+  {{ prev_post.position }}
   {% unless forloop.first %}{% unless post.position == "hidden" or prev_post.position == "hidden" %},{% endunless %}{% endunless %}
     {% unless post.position == "hidden" %}
     "{{ post.url | slugify }}": {
@@ -22,6 +23,7 @@ layout: null
   {% for post in site.techdocs %}
   {% assign prev_i = forloop.index0 | minus: 1 %}
   {% assign prev_post = site.techdocs[prev_i] %}
+  {{ prev_post.position }}
   {% unless forloop.first %}{% unless post.position == "hidden" or prev_post.position == "hidden" %},{% endunless %}{% endunless %}
     {% unless post.position == "hidden" %}
     "{{ post.url | slugify }}": {
@@ -38,6 +40,7 @@ layout: null
   {% for post in site.tutorials %}
   {% assign prev_i = forloop.index0 | minus: 1 %}
   {% assign prev_post = site.tutorials[prev_i] %}
+  {{ prev_post.position }}
   {% unless forloop.first %}{% unless post.position == "hidden" or prev_post.position == "hidden" %},{% endunless %}{% endunless %}
     {% unless post.position == "hidden" %}
     "{{ post.url | slugify }}": {
