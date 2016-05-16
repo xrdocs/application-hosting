@@ -72,7 +72,7 @@ As a Guest Blogger, document creation is very similar to an owner/contributor wo
 * Copy and Paste your markdown content into [prose.io](http://prose.io), in the right repository.
 * Make sure you **uncheck** the Published checkbox in the metadata field. Fill up the rest of fields as always. If you do not uncheck the published flag, then you will be asked to do so during the review process.
 * Commit.
-{: .notice-info}
+{: .notice--info}
 
 
 
@@ -90,7 +90,7 @@ The difference in the workflow is post commit. As a Guest Blogger, as soon as yo
 * Your document will be part of the website, but will remain unpublished until the review process is over.
 * Once, everyone is satisfied, **check** the Published checkbox in the metadata field and your document will be live.
 
-
+{: .notice--info}
 
 ## Illustration of the above workflow is shown below:
 
