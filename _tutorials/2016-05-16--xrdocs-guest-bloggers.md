@@ -81,9 +81,9 @@ As a Guest Blogger, as soon as you save the markdown content in [prose.io](http:
 a **Pull Request** will be generated on the github repository that you contributed to (application-hosting, telemetry etc.)
 >
 * The owner/contributors of the github repository then assign a reviewer of your content on Github.   
-* For example let's say you contributed your content to the application-hosting xrdocs github repo [xrdocs/application-hosting](https://github.com/xrdocs/application-hosting/tree/gh-pages) using [prose.io](http://prose.io#xrdocs/application-hosting/tree/gh-pages)  
-* As a Guest Blogger, Keep updating your local copy of your markdown content based on reviewer's comments.
-* Use prose.io as a method to submit your content.   
+* For example, let's say you contributed your content to the application-hosting xrdocs github repo [xrdocs/application-hosting](https://github.com/xrdocs/application-hosting/tree/gh-pages) using [prose.io](http://prose.io#xrdocs/application-hosting/tree/gh-pages)  
+* Keep updating the local copy of your markdown content based on reviewer's comments.
+* Use prose.io as a method to submit your content and create new pull requests.
 * Your document will be part of the website, but will remain unpublished until the review process is over.  
 * Once, everyone is satisfied, **check** the Published checkbox in the metadata field and your document will be live.  
 {: .notice--info}
