@@ -11,7 +11,7 @@ tags:
   - cisco
 ---
 {% include base_path %}
-{% include toc icon="table" title="Utility Classes" %}
+{% include toc icon="table" title="Formatting Techniques" %}
 
 
 ## Text Alignment
