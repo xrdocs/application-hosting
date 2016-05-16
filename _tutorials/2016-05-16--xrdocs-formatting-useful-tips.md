@@ -23,7 +23,10 @@ then add 2+ spaces at the end of a line and hit enter.
 Like this
 
 ```
-This is sort of a known secret with markdown. Markdown just puts directly on the next line. If you want to add a new line to your text, then add 2+ spaces at the end of a line and hit enter.<2 spaces here >
+This is sort of a known secret with markdown. 
+Markdown just puts directly on the next line. 
+If you want to add a new line to your text, 
+then add 2+ spaces at the end of a line and hit enter.<2 spaces here >
 <2 spaces here >
 Like this
 ```
