@@ -13,6 +13,8 @@ position: hidden
 
 {% include toc icon="table" title="@xrdocs How-To" %}
 
+## Introduction
+
 Welcome to @xrdocs!
 
 This tutorial is meant to get a new blogger/technical-writer, unfamiliar with @xrdocs, up and running in minutes.
