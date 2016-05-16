@@ -31,7 +31,7 @@ Link back to the xrdocs Tutorial: [@xrdocs How-To]({{ base_path }}/tutorials/xrd
 
 ```
 
-## Adding new lines
+## Add new lines (carriage return)
 This is sort of a known secret with markdown. 
 Markdown just outputs text directly on the next line as you hit enter. 
 If you want to add more carriage returns to your text, 
