@@ -129,6 +129,12 @@ Finally commit/Save the content by clicking the commit button or issuing a Ctrl+
 ![Commit the blog!](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_commit_sample_blog.png)
 
 
+Done! You've submitted a pull request!
+{: .notice--success}
+
+
+
+
 
 
 
