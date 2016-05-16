@@ -78,10 +78,11 @@ Justified text.`.text-justify` Lorem ipsum dolor sit amet, consectetur adipiscin
 No wrap text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel eleifend odio, eu elementum purus. In hac habitasse platea dictumst. Fusce sed sapien eleifend, sollicitudin neque non, faucibus est. Proin tempus nisi eu arcu facilisis, eget venenatis eros consequat."`.text-nowrap`
 {: .text-nowrap}
 
-```markdown
-No wrap text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel eleifend odio, eu elementum purus. In hac habitasse platea dictumst. Fusce sed sapien eleifend, sollicitudin neque non, faucibus est. Proin tempus nisi eu arcu facilisis, eget venenatis eros consequat.”
-{: .text-nowrap}
-```
+
+No wrap text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vel eleifend odio, eu elementum purus. In hac habitasse platea dictumst. Fusce sed sapien eleifend, sollicitudin neque non, faucibus est. Proin tempus nisi eu arcu facilisis, eget venenatis eros consequat.
+`{: .text-nowrap}`
+{: .notice}
+
 
 ## Image Alignment
 
