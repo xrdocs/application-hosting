@@ -124,6 +124,7 @@ There are 2 types of users on @xrdocs
 *   **Guest Bloggers**: Do NOT have write access to repositories. All their documents created on prose.io appear as pull requests on github, and are subject to a peer review by the owners/contributors before merging with the website.  
 
 TMEs in the Web Solutions group at Cisco are by default the owners of the internal github repositories that host the XR documentation.
+
 ---
 
 ## Writing your first tutorial
