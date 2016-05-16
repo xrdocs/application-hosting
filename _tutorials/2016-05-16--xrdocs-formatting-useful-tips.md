@@ -19,7 +19,7 @@ While some of these tips maybe hidden/less-known Markdown techniques, most of th
 
 ## Link to other posts 
 
-Include the "base_path" variable so that you only have to use relative URLs for other posts (tutorials/blogs/tech-docs) on the same website
+Include the "base_path" variable so that you only have to use relative URLs for other posts (tutorials/blogs/tech-docs) on the same website.
 For example:
 
 {% include base_path %}
