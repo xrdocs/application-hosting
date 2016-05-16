@@ -13,6 +13,9 @@ tags:
 {% include base_path %}
 {% include toc icon="table" title="Formatting Techniques" %}
 
+{% include base_path %}
+[Back to @xrdocs How-To]({{ base_path }}/tutorials/xrdocs-how-to)
+
 
 This Tutorial gives a quick walkthrough of some of the functionalities available with @xrdocs.
 While some of these tips may be hidden/less-known Markdown techniques, most of them showcase custom css classes that have been provided with @xrdocs to give you a true editor experience while still using Markdown.
