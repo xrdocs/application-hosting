@@ -10,7 +10,6 @@ tags:
   - iosxr
   - cisco
 ---
-{% include base_path %}
 {% include toc icon="table" title="Formatting Techniques" %}
 
 {% include base_path %}
@@ -277,4 +276,3 @@ To include an [auto-generated table of contents](http://kramdown.rubyforge.org/c
 ```liquid
 {% raw %}{% include toc icon="table" title="My Table of Contents" %}{% endraw %}
 ```
-
