@@ -25,7 +25,7 @@ For example:
 {% include base_path %}
 Link back to the xrdocs Tutorial:  [@xrdocs How-To]({{ base_path }}/tutorials/xrdocs-how-to)
 
-```
+```liquid
 {% include base_path %}
 Link back to the xrdocs Tutorial: [@xrdocs How-To]({{ base_path }}/tutorials/xrdocs-how-to)
 
