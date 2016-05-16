@@ -66,7 +66,7 @@ Without going into details of how the github organization (xrdocs) and its repos
 >
 As a Guest Blogger, document creation is very similar to an owner/contributor workflow, except:
 >
-* **Create a Local copy of your markdown content through the review process.  You could use any offline markdown editor or a host of online markdown editors to do so.**  
+* **Create a Local copy of your markdown content first.  You could use any offline markdown editor or a host of online markdown editors to do so.**  
 * **Use [prose.io](http://prose.io) to submit your content for review**
 {: .notice--info}
 
