@@ -24,7 +24,8 @@ Link back to the xrdocs Tutorial:  [@xrdocs How-To]({{ base_path }}/tutorials/xr
 
 ```
 {% include base_path %}
-Link back to the xrdocs Tutorial:  [@xrdocs How-To]({{ base_path }}/tutorials/xrdocs-how-to)
+Link back to the xrdocs Tutorial: 
+[@xrdocs How-To]({{ base_path }}/tutorials/xrdocs-how-to)
 
 ```
 
