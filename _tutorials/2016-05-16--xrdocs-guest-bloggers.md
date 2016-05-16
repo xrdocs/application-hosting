@@ -43,7 +43,7 @@ Without going into details of how the github organization (xrdocs) and its repos
 | xrdocs/telemetry          |[Shelly Cadora](https://github.com/scadora) |    No             |
 | xrdocs/xrdocs-images      | Cisco Web TMEs                             |    Yes            |   
 
-[xrdocs/xrdocs-images](https://github.com/xrdocs/xrdocs-images/tree/gh-pages)  is the only repository that Guest bloggers will have write access to. Think of this as your image repository in the cloud. As we've already explained in the [xrdocs How-To /adding images]({{ base_path }}/application-hosting/tutorials/xrdocs-how-to#adding-images-to-your-markdown-content)
+[xrdocs/xrdocs-images](https://github.com/xrdocs/xrdocs-images/tree/gh-pages)  is the only repository that Guest bloggers will have write access to. Think of this as your image repository in the cloud. As we've already explained in the [xrdocs How-To /adding images]({{ base_path }}/tutorials/xrdocs-how-to#adding-images-to-your-markdown-content)
 
 
 
