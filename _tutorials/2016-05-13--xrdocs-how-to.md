@@ -49,6 +49,19 @@ And really? git workflows each time you need to push a document?
 Is there an easier way?    
 Read on.
 
+## First Steps
+
+>
+Before we begin, to  gain access to the xrdocs-images repository and to have your author profile set up,
+send an email to the [xrdocs-team](mailto:xrdocs-team@cisco.com) with the following data:  
+>
+* Full Name
+* Github ID
+* Email
+* attach a bio photo in jpg/jpeg/png format
+* twitter handle (optional)
+{: .notice--warning}
+
 ---
 
 ## Introducing Prose.io
