@@ -19,13 +19,15 @@ While some of these tips maybe hidden/less-known Markdown techniques, most of th
 
 ## Link to other posts (tutorials/blogs/tech-docs) on the same website
 
+Include the "base_path" variable so that you only have to use relative URLs.  
+For example:
+
 {% include base_path %}
 Link back to the xrdocs Tutorial:  [@xrdocs How-To]({{ base_path }}/tutorials/xrdocs-how-to)
 
 ```
 {% include base_path %}
-Link back to the xrdocs Tutorial: 
-[@xrdocs How-To]({{ base_path }}/tutorials/xrdocs-how-to)
+Link back to the xrdocs Tutorial: [@xrdocs How-To]({{ base_path }}/tutorials/xrdocs-how-to)
 
 ```
 
