@@ -114,8 +114,11 @@ Click on `_blogs` folder  and then on [NEW FILE](javascript:void(0)){: .btn .btn
 
 
 
-Copy and paste your markdown content into the prose.io window and Set a title for your blog:
+Copy and paste your markdown content into the prose.io window and set a title for your blog:
 ![Copy Paste into Prose.io](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_sample_blog.png)
+
+
+
 
 
 
