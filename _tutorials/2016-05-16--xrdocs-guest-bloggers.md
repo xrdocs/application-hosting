@@ -15,7 +15,7 @@ position: hidden
 {% include base_path %}
 [Back to @xrdocs How-To]({{ base_path }}/tutorials/xrdocs-how-to)
 
-
+---
 ## First Steps:
 
 As we've already explained in the [xrdocs How-To guide/First Steps]({{ base_path }}/tutorials/xrdocs-how-to#first-steps) section, 
