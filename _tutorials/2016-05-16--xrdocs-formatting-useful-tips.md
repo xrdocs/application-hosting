@@ -15,7 +15,7 @@ tags:
 
 
 ## Using Formatting Classes
-To use any of the Formatting classes shown below, such 
+To use any of the Formatting classes shown below, place the 
 
 ## Text Alignment
 
@@ -152,8 +152,19 @@ Call attention to a block of text.
 **Watch out!** This paragraph of text has been emphasized with the `{: .notice}` class.
 {: .notice}
 
+```
+**Watch out!** This paragraph of text has been emphasized with the `{: .notice}` class.
+{: .notice}
+```
+
 **Watch out!** This paragraph of text has been emphasized with the `{: .notice--primary}` class.
 {: .notice--primary}
+
+```
+**Watch out!** This paragraph of text has been emphasized with the `{: .notice--primary}` class.
+{: .notice--primary}
+
+```
 
 **Watch out!** This paragraph of text has been emphasized with the `{: .notice--info}` class.
 {: .notice--info}
