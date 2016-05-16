@@ -11,7 +11,7 @@ tags:
 position: hidden
 ---
 
-{% include toc icon="table" title="Utility Classes" %}
+{% include toc icon="table" title="@xrdocs How-To" %}
 
 Welcome to @xrdocs!
 
