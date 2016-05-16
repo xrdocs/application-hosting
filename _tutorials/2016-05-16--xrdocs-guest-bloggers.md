@@ -133,26 +133,33 @@ Scoot over to the link: <https://github.com/xrdocs/application-hosting/pulls> an
 
 As an owner/contributor for the  Github repo in question, look around, view the commit, view the rendered markdown file:
 
-![Browse around pull request](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/pull_request_click_on_commits.png)
+![Browse around pull request](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/pull_request_click_on_commits.png)   
+   
+   
 
 
 ![Files Changed](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/pull_request_fileschanged.png)
 Click on "Files Changed" to view the diffs
-{: .notice}
+{: .notice}   
+   
+   
 
 Provide comments just like you do on code:
 
 ![Provide inline Comments](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/pull_request_provide_comments.png)
 Provide inline comments! 
-{: .notice}
+{: .notice}    
+    
+    
 
 
-As the Guest blogger, if there are any updates, edit the pull request in github itself
+As the Guest blogger, if there are any updates, edit the pull request in github itself    
 
 ![Provide inline Comments](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/github_edit_pull_request.png)
 Use github itself to make edits if needed 
-{: .notice}
-
+{: .notice}    
+    
+    
 If the changes are massive, you can submit a whole new pull request through prose.io and the reviewer can close the original pull request. 
 **However, be aware that if you submit a new pull request then your content will have to come from your local copy, prose.io is not going to reflect your earlier commit, because it wasn't accepted by the reviewer.**
 {: .notice--warning}
