@@ -81,7 +81,7 @@ As a Guest Blogger, document creation is very similar to an owner/contributor wo
 * **Create a local copy of your markdown content**
 * **Use [prose.io](http://prose.io) to submit your content for review**
 * ** Update github pull request based on reviewer's comments.**
-* ** Create new pull requests using prose.io if the changes required are massive 
+* ** Create new pull requests using prose.io if the changes required are massive**
 {: .notice--info}
 
 
