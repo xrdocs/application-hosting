@@ -166,7 +166,7 @@ Confirm merge to integrate the new blog.
 
 The Guest Blog should Appear on the website in about 10-30 seconds.
 {: .notice--success}
-![Guest Blog is Live](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/confirm_merge_pull.png)
+![Guest Blog is Live](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/Guest_blog_is_ready.png)
 
 
 
