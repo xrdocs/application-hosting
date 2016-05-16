@@ -92,6 +92,13 @@ The difference in the workflow is post commit. As a Guest Blogger, as soon as yo
 
 
 
+## Illustration of the above workflow is shown below:
+
+
+
+
+
+
 
 
 
