@@ -14,6 +14,7 @@ tags:
 {% include toc icon="table" title="Formatting Techniques" %}
 
 
+
 ## Text Alignment
 
 Align text blocks with the following classes.
@@ -175,3 +176,27 @@ You can also add the `.notice` class to a `<div>` element.
   <h4>Notice Headline:</h4>
   {{ notice-text | markdownify }}
 </div>
+
+## Adding a Table of Contents to a page
+
+## Table of Contents
+
+To include an [auto-generated table of contents](http://kramdown.rubyforge.org/converter/html.html#toc) for posts and pages, add the following helper before any actual content in your post or page.
+
+```liquid
+{% raw %}{% include toc %}{% endraw %}
+```
+
+![table of contents example]({{ base_path }}/images/mm-toc-helper-example.jpg)
+
+| Parameter   | Required | Description | Default |
+| ---------   | -------- | ----------- | ------- |
+| **title**   | Optional | Table of contents title. | `toc_label` in UI Text data file. |
+| **icon**    | Optional | Table of contents icon (shows before the title). | [Font Awesome](https://fortawesome.github.io/Font-Awesome/icons/) <i class="fa fa-file-text"></i> **file-text** icon. Any other FA icon can be used instead. |
+
+**TOC example with custom title and icon**
+
+```liquid
+{% raw %}{% include toc icon="gears" title="My Table of Contents" %}{% endraw %}
+```
+
