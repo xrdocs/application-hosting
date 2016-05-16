@@ -17,9 +17,9 @@ tags:
 This Tutorial gives a quick walkthrough of some of the functionalities available with @xrdocs.
 While some of these tips maybe hidden/less-known Markdown techniques, most of them showcase custom css classes that have been provided to give you a true editor experience while still using Markdown.
 
-## Link to other posts (tutorials/blogs/tech-docs) on the same website
+## Link to other posts 
 
-Include the "base_path" variable so that you only have to use relative URLs.  
+Include the "base_path" variable so that you only have to use relative URLs for other posts (tutorials/blogs/tech-docs) on the same website
 For example:
 
 {% include base_path %}
