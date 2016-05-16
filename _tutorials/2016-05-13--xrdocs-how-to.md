@@ -179,7 +179,7 @@ The fields are self explanatory, but a quick walkthrough:
 
 >
 You'll need your author name setup in the internal database with a bio photo to make your avatar show up on the side of the website.
-To get your author profile set up, contact "Akshat Sharma" at the email link shown under the avatar on this page,  with the following minimum details:
+Send an email to the [xrdocs-team](mailto:xrdocs-team@cisco.com) with the following data:  
 >
 * Full Name
 * Github ID
