@@ -204,6 +204,7 @@ You can also add the `.notice` class to a `<div>` element.
 >
 * Bullet point 1
 * Bullet point 2
+{: .notice}
 
 ```
 >
@@ -213,6 +214,7 @@ You can also add the `.notice` class to a `<div>` element.
 >
 * Bullet point 1
 * Bullet point 2
+{: .notice}
 ```
 
 
