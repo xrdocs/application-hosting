@@ -14,7 +14,7 @@ tags:
 {% include toc icon="table" title="Formatting Techniques" %}
 
 This Tutorial gives a quick walkthrough of some of the functionalities available with @xrdocs.
-While some of these tips maybe hidden Markdown techniques, most of them showcase custom css classes that have been provided to give you a true editor experience in Markdown.
+While some of these tips maybe hidden/less-known Markdown techniques, most of them showcase custom css classes that have been provided to give you a true editor experience in Markdown.
 
 ## Adding new lines
 This is sort of a known secret with markdown. 
