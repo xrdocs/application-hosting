@@ -11,7 +11,7 @@ tags:
   - cisco
 ---
 {% include base_path %}
-{% include toc icon="table" title="Utility Classes" %}{: .align-center}
+{% include toc icon="table" title="Utility Classes" %}
 
 
 ## Text Alignment
