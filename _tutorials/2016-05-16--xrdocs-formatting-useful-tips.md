@@ -113,8 +113,10 @@ The image above should extend outside of the parent container on right.
 
 Make any link standout more when applying the `.btn` class.
 
-```html
-<a href="#" class="btn">Link Text</a>
+This is a success button: [Text](#link){: .btn .btn--success}
+
+```
+This is a success button: [Text](#link){: .btn .btn--success}
 ```
 
 | Button Type   | Example | Class | Kramdown |
