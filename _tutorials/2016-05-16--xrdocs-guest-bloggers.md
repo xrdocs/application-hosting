@@ -15,6 +15,22 @@ position: hidden
 {% include base_path %}
 [Back to @xrdocs How-To]({{ base_path }}/tutorials/xrdocs-how-to)
 
+
+## First Steps:
+
+As we've already explained in the [xrdocs How-To/adding images]({{ base_path }}/tutorials/xrdocs-how-to#adding-images-to-your-markdown-content) section, 
+
+>
+Request access to the [xrdocs/xrdocs-images](https://github.com/xrdocs/xrdocs-images/tree/gh-pages) images repository by sending an email to the [xrdocs-team](mailto:xrdocs-team@cisco.com) with the following data:  
+>
+* Full Name
+* Github ID
+* Email
+* attach a bio photo in jpg/jpeg/png format
+* twitter handle (optional)
+{: .notice--warning}
+
+
 ---
 
 ## Quick Recap on types of Users @xrdocs:
@@ -43,7 +59,11 @@ Without going into details of how the github organization (xrdocs) and its repos
 | xrdocs/telemetry          |[Shelly Cadora](https://github.com/scadora) |    No             |
 | xrdocs/xrdocs-images      | Cisco Web TMEs                             |    Yes            |   
 
-[xrdocs/xrdocs-images](https://github.com/xrdocs/xrdocs-images/tree/gh-pages)  is the only repository that Guest bloggers will have write access to. Think of this as your image repository in the cloud. As we've already explained in the [xrdocs How-To /adding images]({{ base_path }}/tutorials/xrdocs-how-to#adding-images-to-your-markdown-content)
+[xrdocs/xrdocs-images](https://github.com/xrdocs/xrdocs-images/tree/gh-pages)  is the only repository that Guest bloggers will have write access to. Think of this as your image repository in the cloud.   
+
+
+
+
 
 
 
