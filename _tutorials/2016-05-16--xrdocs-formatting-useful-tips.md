@@ -15,7 +15,7 @@ tags:
 
 
 This Tutorial gives a quick walkthrough of some of the functionalities available with @xrdocs.
-While some of these tips may be hidden/less-known Markdown techniques, most of them showcase custom css classes that have been provided to give you a true editor experience while still using Markdown.
+While some of these tips may be hidden/less-known Markdown techniques, most of them showcase custom css classes that have been provided with @xrdocs to give you a true editor experience while still using Markdown.
 
 ## Link to other posts 
 
