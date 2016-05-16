@@ -135,7 +135,9 @@ Done! You've submitted a pull request!
 
 ### Peer Review
 
-As an owner, the following pull 
+As an owner on Github, a pull request will appear for the gh-pages branch of the application-hosting Repository:
+
+![Pull Request](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/pull_request_from_proseio.png)
 
 
 
