@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 date: "2016-05-16 20:08 +0530"
 title: Sample Blog
 permalink: "/blogs/sample-blog"
