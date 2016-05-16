@@ -179,7 +179,6 @@ You can also add the `.notice` class to a `<div>` element.
 
 ## Adding a Table of Contents to a page
 
-## Table of Contents
 
 To include an [auto-generated table of contents](http://kramdown.rubyforge.org/converter/html.html#toc) for posts and pages, add the following helper before any actual content in your post or page.
 
