@@ -84,11 +84,11 @@ The difference in the workflow is post commit. As a Guest Blogger, as soon as yo
 [prose.io](http://prose.io), a **Pull Request** will be generated on the github repository that you contributed to (application-hosting, telemetry etc.)
 >
 * Post the commit, the owner/contributors of the github repository can then assign a reviewer of your content on Github. 
-* For example if you contributed to the application-hosting xrdocs github repo [xrdocs/application-hosting](https://github.com/xrdocs/application-hosting/tree/gh-pages)
+* For example let's say you contributed your content to the application-hosting xrdocs github repo [xrdocs/application-hosting](https://github.com/xrdocs/application-hosting/tree/gh-pages) using [prose.io](http://prose.io#xrdocs/application-hosting/tree/gh-pages)
 * As a Guest Blogger, Keep updating your local copy of your markdown content based on reviewer's comments.
 * Use prose.io as a method to submit your content. 
-* During the review process
-* Your document will be part of the website, but will remain unpublished until the review process if over.
+* Your document will be part of the website, but will remain unpublished until the review process is over.
+* Once, everyone is satisfied, **check** the Published checkbox in the metadata field and your document will be live.
 
 
 
