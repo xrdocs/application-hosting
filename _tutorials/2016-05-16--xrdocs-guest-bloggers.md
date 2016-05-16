@@ -72,11 +72,10 @@ As a Guest Blogger, document creation is very similar to an owner/contributor wo
 
 If you've understood how to use [prose.io](http://prose.io) from the [@xrdocs How-To guide]({{ base_path }}/tutorials/xrdocs-how-to#introducing-proseio) section, then there is **NO DIFFERENCE** between a guest blogger and an owner/contributor workflow during document creation.  
 
->
 * Copy and Paste your markdown content into [prose.io](http://prose.io), in the right repository.
 * Make sure you **uncheck** the Published checkbox in the metadata field. Fill up the rest of fields as always. If you do not uncheck the published flag, then you will be asked to do so during the review process.
 * Commit.
-{: .notice--info}
+
 
 
 
