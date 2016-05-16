@@ -167,21 +167,52 @@ Call attention to a block of text.
 **Watch out!** This paragraph of text has been emphasized with the `{: .notice--info}` class.
 {: .notice--info}
 
+```
+**Watch out!** This paragraph of text has been emphasized with the `{: .notice--info}` class.
+{: .notice--info}
+
+```
+
 **Watch out!** This paragraph of text has been emphasized with the `{: .notice--warning}` class.
 {: .notice--warning}
+```
+**Watch out!** This paragraph of text has been emphasized with the `{: .notice--warning}` class.
+{: .notice--warning}
+```
 
 **Watch out!** This paragraph of text has been emphasized with the `{: .notice--success}` class.
 {: .notice--success}
+```
+**Watch out!** This paragraph of text has been emphasized with the `{: .notice--success}` class.
+{: .notice--success}
 
+```
 **Watch out!** This paragraph of text has been emphasized with the `{: .notice--danger}` class.
 {: .notice--danger}
 
-{% capture notice-text %}
-You can also add the `.notice` class to a `<div>` element.
+```
+**Watch out!** This paragraph of text has been emphasized with the `{: .notice--danger}` class.
+{: .notice--danger}
+```
 
+>
+Use block quotes ">" to add lists to your "notices"
+>
+You can also add the `.notice` class to a `<div>` element.
+>
 * Bullet point 1
 * Bullet point 2
-{% endcapture %}
+
+```
+>
+Use block quotes ">" to add lists to your "notices"
+>
+You can also add the `.notice` class to a `<div>` element.
+>
+* Bullet point 1
+* Bullet point 2
+```
+
 
 <div class="notice--info">
   <h4>Notice Headline:</h4>
