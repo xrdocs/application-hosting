@@ -13,8 +13,20 @@ tags:
 {% include base_path %}
 {% include toc icon="table" title="Formatting Techniques" %}
 
+
 This Tutorial gives a quick walkthrough of some of the functionalities available with @xrdocs.
 While some of these tips maybe hidden/less-known Markdown techniques, most of them showcase custom css classes that have been provided to give you a true editor experience while still using Markdown.
+
+## Link to other posts (tutorials/blogs/tech-docs) on the same website
+
+{% include base_path %}
+Link back to the xrdocs Tutorial:  [@xrdocs How-To]({{ base_path }}/tutorials/xrdocs-how-to)
+
+```
+{% include base_path %}
+Link back to the xrdocs Tutorial:  [@xrdocs How-To]({{ base_path }}/tutorials/xrdocs-how-to)
+
+```
 
 ## Adding new lines
 This is sort of a known secret with markdown. 
@@ -32,6 +44,7 @@ then add 2+ spaces at the end of a line and hit enter.
 <2 spaces here >
 Like this.
 ```
+
 
 ## Text Alignment
 
