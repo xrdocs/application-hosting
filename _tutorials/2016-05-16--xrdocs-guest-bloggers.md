@@ -89,7 +89,6 @@ The difference in the workflow is post commit. As a Guest Blogger, as soon as yo
 * Use prose.io as a method to submit your content. 
 * Your document will be part of the website, but will remain unpublished until the review process is over.
 * Once, everyone is satisfied, **check** the Published checkbox in the metadata field and your document will be live.
-
 {: .notice--info}
 
 ## Illustration of the above workflow is shown below:
