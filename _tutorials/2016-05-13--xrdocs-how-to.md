@@ -11,6 +11,8 @@ tags:
 position: hidden
 ---
 
+{% include toc icon="table" title="Utility Classes" %}
+
 Welcome to @xrdocs!
 
 This tutorial is meant to get a new blogger/technical-writer, unfamiliar with @xrdocs, up and running in minutes.
@@ -278,5 +280,3 @@ Learn how to easily construct a tech-doc on @xrdocs:
 
 {% include base_path %}
 [Writing Technical Documents/Whitepapers]({{ base_path }}/tutorials/techdocs-how-to)
-
-
