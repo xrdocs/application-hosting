@@ -103,12 +103,24 @@ This is my local markdown file, I'll use it to update my content during the revi
 
 Let's assume  we're contributing to the application-hosting xrdocs website at <https://xrdocs.github.io/application-hosting>
 
-Open up prose.io and point to the github-pages repo of the repository:
+Open up prose.io and point to the github-pages repo of the repository:  
+
 ![Prose.io App-hosting gh-pages](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_apphosting_ghpages.png)
 
 
-Click on `_blogs` folder  and then on [NEW FILE](javascript:void(0)){: .btn .btn--success} button.
+Click on `_blogs` folder  and then on [NEW FILE](javascript:void(0)){: .btn .btn--success} button.  
+
 ![Create New Blog on Prose.io](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_blogs_new_file.png)
+
+
+
+Copy and paste your markdown content into the prose.io window and Set a title for your blog:
+![Copy Paste into Prose.io](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_sample_blog.png)
+
+
+
+
+
 
 
 
