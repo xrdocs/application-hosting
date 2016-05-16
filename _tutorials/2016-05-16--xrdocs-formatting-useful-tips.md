@@ -19,9 +19,9 @@ While some of these tips may be hidden/less-known Markdown techniques, most of t
 
 ## Link to other posts 
 
-Include and use the "base_path" variable so that you only have to use relative URLs for other posts (tutorials/blogs/tech-docs) on the same website. Referencing the link is then similar to any Markdown link of the form:
+Include and use the "base_path" variable so that you only have to use relative URLs for other posts (tutorials/blogs/tech-docs) on the same website. Referencing the link is then similar to any Markdown link of the form:  
 `[link title/context](complete link)`
-For example:
+For example:  
 
 {% include base_path %}
 Link back to the xrdocs Tutorial:  [@xrdocs How-To]({{ base_path }}/tutorials/xrdocs-how-to)
