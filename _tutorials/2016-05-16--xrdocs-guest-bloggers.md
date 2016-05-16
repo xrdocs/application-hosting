@@ -66,9 +66,10 @@ Without going into details of how the github organization (xrdocs) and its repos
 >
 As a Guest Blogger, document creation is very similar to an owner/contributor workflow, except:
 >
-* **Create a Local copy of your markdown content first. You could use any offline markdown editor or a host of online markdown editors to do so.**  
+* **Create a local copy of your markdown content**
 * **Use [prose.io](http://prose.io) to submit your content for review**
-* ** Update your local markdown content based on reviewer's comments.**
+* ** Update github pull request based on reviewer's comments.**
+* ** Create new pull requests using prose.io if the changes required are massive 
 {: .notice--info}
 
 
@@ -76,25 +77,14 @@ As a Guest Blogger, document creation is very similar to an owner/contributor wo
 
 ## Commit and Peer review: Important
 
->
-As a Guest Blogger, as soon as you save the markdown content in [prose.io](http://prose.io),   
-a **Pull Request** will be generated on the github repository that you contributed to (application-hosting, telemetry etc.)
->
-* The owner/contributors of the github repository then assign a reviewer of your content on Github using the pull request.  
-* Keep updating the local copy of your markdown content based on reviewer's comments.
-* Use prose.io as a method to submit your content and create new pull requests.
-* Your document will be part of the website, but will remain unpublished until the review process is over.  
-* Once, everyone is satisfied, **check** the Published checkbox in the metadata field and your document will be live.  
-{: .notice--info}
-
-## Illustration of the above workflow is shown below:
+Let's take an illustrative example to see how the commit and peer review process may happen in real life.
 
 ### Create a Local Markdown file
 
 As a guest blogger, I open my markdown content in my markdown editor of choice, let's say the Atom.io editor.
 
 ![Local Markdown File](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/sample_blog_guest.png)
-This is my local markdown file, I'll use it to update my content during the review process.
+This is my local markdown file, I'll use it to keep my content saved and updated.
 {: .notice}
 
 
@@ -135,9 +125,50 @@ Done! You've submitted a pull request!
 
 ### Peer Review
 
-As an owner on Github, a pull request will appear for the gh-pages branch of the application-hosting Repository:
+A pull request will appear for the gh-pages branch of the application-hosting Repository.
+Scoot over to the link: <https://github.com/xrdocs/application-hosting/pulls> and you should see the pull request created.
 
 ![Pull Request](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/pull_request_from_proseio.png)
+
+
+As an owner/contributor for the  Github repo in question, look around, view the commit, view the rendered markdown file:
+
+![Browse around pull request](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/pull_request_click_on_commits.png)
+
+
+![Files Changed](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/pull_request_fileschanged.png)
+Click on "Files Changed" to view the diffs
+{: .notice}
+
+Provide comments just like you do on code:
+
+![Provide inline Comments](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/pull_request_provide_comments.png)
+Provide inline comments! 
+{: .notice}
+
+
+As the Guest blogger, if there are any updates, edit the pull request in github itself
+
+![Provide inline Comments](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/github_edit_pull_request.png)
+Use github itself to make edits if needed 
+{: .notice}
+
+If the changes are massive, you can submit a whole new pull request through prose.io. 
+{: .notice--info}
+
+If everyone is happy, the reviewer can merge the changes:
+![Provide inline Comments](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/confirm_merge_pull.png)
+Confirm merge to integrate the new blog.
+{: .notice}
+
+
+
+
+
+
+
+
+
 
 
 
