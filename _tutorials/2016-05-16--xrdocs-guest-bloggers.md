@@ -68,7 +68,7 @@ As a Guest Blogger, document creation is very similar to an owner/contributor wo
 >
 * **Create a Local copy of your markdown content first. You could use any offline markdown editor or a host of online markdown editors to do so.**  
 * **Use [prose.io](http://prose.io) to submit your content for review**
-* ** Update your local markdown content based on reviewer's comments.
+* ** Update your local markdown content based on reviewer's comments.**
 {: .notice--info}
 
 
@@ -80,8 +80,7 @@ As a Guest Blogger, document creation is very similar to an owner/contributor wo
 As a Guest Blogger, as soon as you save the markdown content in [prose.io](http://prose.io),   
 a **Pull Request** will be generated on the github repository that you contributed to (application-hosting, telemetry etc.)
 >
-* The owner/contributors of the github repository then assign a reviewer of your content on Github.   
-* For example, let's say you contributed your content to the application-hosting xrdocs github repo [xrdocs/application-hosting](https://github.com/xrdocs/application-hosting/tree/gh-pages) using [prose.io](http://prose.io#xrdocs/application-hosting/tree/gh-pages)  
+* The owner/contributors of the github repository then assign a reviewer of your content on Github using the pull request.  
 * Keep updating the local copy of your markdown content based on reviewer's comments.
 * Use prose.io as a method to submit your content and create new pull requests.
 * Your document will be part of the website, but will remain unpublished until the review process is over.  
@@ -89,6 +88,28 @@ a **Pull Request** will be generated on the github repository that you contribut
 {: .notice--info}
 
 ## Illustration of the above workflow is shown below:
+
+### Create a Local Markdown file
+
+As a guest blogger, I open my markdown content in my markdown editor of choice, let's say the Atom.io editor.
+
+![Local Markdown File](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/sample_blog_guest.png)
+This is my local markdown file, I'll use it to update my content during the review process.
+{: .notice}
+
+
+
+### Submit the content on prose.io
+
+Let's assume  we're contributing to the application-hosting xrdocs website at <https://xrdocs.github.io/application-hosting>
+
+Open up prose.io and point to the github-pages repo of the repository:
+![Prose.io App-hosting gh-pages](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_apphosting_ghpages)
+
+
+
+
+
 
 
 
