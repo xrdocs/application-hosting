@@ -15,6 +15,7 @@ position: hidden
 {% include base_path %}
 [Back to @xrdocs How-To]({{ base_path }}/tutorials/xrdocs-how-to)
 
+---
 
 ## Quick Recap on types of Users @xrdocs:
 
@@ -26,6 +27,35 @@ There are 2 types of users on @xrdocs
 *   **Guest Bloggers**: Do NOT have write access to repositories. All their documents created on prose.io appear as pull requests on github, and are subject to a peer review by the owners/contributors before merging with the website.  
 
 TMEs in the Web Solutions group at Cisco are by default the owners of the internal github repositories that host the XR documentation.
+
+---
+
+## Guest Bloggers
+
+"Guest Blogger" is a generic term we use to define any user that does not have write access to the internal github repository where the documents get stored.
+
+Without going into details of how the github organization (xrdocs) and its repositories (application-hosting, telemetry etc.) are set up, it would be good to understand which repositories a Guest Blogger will be granted access to:
+
+
+|  Github Repository        | Owner                                      | Guest Write Access| 
+| ------------------------- | -----------                                | ----------------- |
+| xrdocs/application-hosting|[Akshat Sharma](https://github.com/akshshar)|    No             |
+| xrdocs/telemetry          |[Shelly Cadora](https://github.com/scadora) |    No             |
+| xrdocs/xrdocs-images      | Cisco Web TMEs                             |    Yes            |   
+
+[xrdocs/xrdocs-images](https://github.com/xrdocs/xrdocs-images/tree/gh-pages)  is the only repository that Guest bloggers will have write access to. Think of this as your image repository in the cloud. As we've already explained in the [xrdocs How-To /adding images]({{ base_path }}/application-hosting/tutorials/xrdocs-how-to#adding-images-to-your-markdown-content)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
