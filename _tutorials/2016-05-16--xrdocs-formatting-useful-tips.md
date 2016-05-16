@@ -214,10 +214,6 @@ You can also add the `.notice` class to a `<div>` element.
 ```
 
 
-<div class="notice--info">
-  <h4>Notice Headline:</h4>
-  {{ notice-text | markdownify }}
-</div>
 
 ## Adding a Table of Contents to a page
 
