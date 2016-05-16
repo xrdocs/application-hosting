@@ -35,7 +35,7 @@ Like this.
 
 Align text blocks with the following classes.
 
-"Left aligned text" `.text-left`
+Left aligned text `.text-left`
 {: .text-left}
 
 ```markdown
@@ -45,7 +45,7 @@ Left aligned text
 
 ---
 
-'Center aligned text". `.text-center`
+Center aligned text. `.text-center`
 {: .text-center}
 
 ```markdown
@@ -55,7 +55,7 @@ Center aligned text.
 
 ---
 
-"Right aligned text". `.text-right`
+Right aligned text. `.text-right`
 {: .text-right}
 
 ```markdown
