@@ -238,6 +238,6 @@ To include an [auto-generated table of contents](http://kramdown.rubyforge.org/c
 **TOC example with custom title and icon**
 
 ```liquid
-{% raw %}{% include toc icon="gears" title="My Table of Contents" %}{% endraw %}
+{% raw %}{% include toc icon="table" title="My Table of Contents" %}{% endraw %}
 ```
 
