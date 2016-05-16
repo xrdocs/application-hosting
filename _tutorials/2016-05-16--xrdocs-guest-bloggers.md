@@ -62,15 +62,21 @@ Without going into details of how the github organization (xrdocs) and its repos
 [xrdocs/xrdocs-images](https://github.com/xrdocs/xrdocs-images/tree/gh-pages)  is the only repository that Guest bloggers will have write access to. Think of this as your image repository in the cloud.   
 
 
-## Using Prose.io? No difference, almost!
+## Document Creation Workflow:
 
-If you've understood how to use [prose.io](http://prose.io) from the [@xrdocs How-To guide]({{ base_path }}/tutorials/xrdocs-how-to#introducing-proseio) section, then there is **NO DIFFERENCE** between a guest blogger and an owner/contributor workflow during document creation.
+As a Guest Blogger, document creation is very similar to an owner/contributor workflow, except:
 
-* Create the desired markdown content. 
+* **Maker sure you keep a Local copy of your markdown content through the review process.  You could use any offline markdown editor or a host of online markdown editors to do so.**
+
+* If you've understood how to use [prose.io](http://prose.io) from the [@xrdocs How-To guide]({{ base_path }}/tutorials/xrdocs-how-to#introducing-proseio) section, then there is **NO DIFFERENCE** between a guest blogger and an owner/contributor workflow during document creation.
+
+* Copy and Paste your markdown content into [prose.io](http://prose.io), in the right repository.
 
 * Make sure you **uncheck** the Published checkbox in the metadata field. Fill up the rest of fields as always. If you do not uncheck the published flag, then you will be asked to do so during the review process.
 
 * Commit.
+{: .notice-info}
+
 
 
 
@@ -79,8 +85,12 @@ If you've understood how to use [prose.io](http://prose.io) from the [@xrdocs Ho
 The difference in the workflow is post commit. As a Guest Blogger, as soon as you save the markdown content in 
 [prose.io](http://prose.io), a **Pull Request** will be generated on the github repository that you contributed to (application-hosting, telemetry etc.)
 
-* Post the commit, the owner/contributors of the github repository can then assign a reviewer of your content on Github.
-* Once the Review process is complete, the  
+* Post the commit, the owner/contributors of the github repository can then assign a reviewer of your content on Github. For example if you contributed to the application-hosting xrdocs github repo [xrdocs/application-hosting](https://github.com/xrdocs/application-hosting/tree/gh-pages)
+
+* As a Guest Blogger, Keep a local copy of your markdown content with you.
+* Once the Review process is complete, the assigned owner will merge the content, so that your recent changes get reflected in prose.io even after you close your tab.
+* Your document will be part of the website, but will remain unpublished until the owner is comfortable.
+
 
 
 
