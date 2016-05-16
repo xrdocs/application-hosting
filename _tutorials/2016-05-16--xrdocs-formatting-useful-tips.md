@@ -200,7 +200,7 @@ Call attention to a block of text.
 >
 Use block quotes ">" to add lists to your "notices"
 >
-You can also add the `.notice` class to a `<div>` element.
+You can also add the `.notice` class to a `<div>` element,but we won't get into that.
 >
 * Bullet point 1
 * Bullet point 2
@@ -210,7 +210,7 @@ You can also add the `.notice` class to a `<div>` element.
 >
 Use block quotes ">" to add lists to your "notices"
 >
-You can also add the `.notice` class to a `<div>` element.
+You can also add the `.notice` class to a `<div>` element, but we won't get into that.
 >
 * Bullet point 1
 * Bullet point 2
