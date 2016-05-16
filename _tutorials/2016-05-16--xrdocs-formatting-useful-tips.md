@@ -19,7 +19,8 @@ tags:
 
 Align text blocks with the following classes.
 
-"Left aligned text" `.text-left`
+"Left aligned text" 
+`.text-left`
 {: .text-left}
 
 ```markdown
