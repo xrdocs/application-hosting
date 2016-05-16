@@ -153,13 +153,21 @@ As the Guest blogger, if there are any updates, edit the pull request in github 
 Use github itself to make edits if needed 
 {: .notice}
 
-If the changes are massive, you can submit a whole new pull request through prose.io. 
-{: .notice--info}
+If the changes are massive, you can submit a whole new pull request through prose.io and the reviewer can close the original pull request. 
+**However, be aware that if you submit a new pull request then your content will have to come from your local copy, prose.io is not going to reflect your earlier commit, because it wasn't accepted by the reviewer.**
+{: .notice--warning}
+
 
 If everyone is happy, the reviewer can merge the changes:
 ![Provide inline Comments](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/confirm_merge_pull.png)
 Confirm merge to integrate the new blog.
 {: .notice}
+
+
+The Guest Blog should Appear on the website in about 10-30 seconds.
+{: .notice--success}
+![Guest Blog is Live](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/confirm_merge_pull.png)
+
 
 
 
