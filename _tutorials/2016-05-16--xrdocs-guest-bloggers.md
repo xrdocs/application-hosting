@@ -53,11 +53,23 @@ TMEs in the Web Solutions group at Cisco are by default the owners of the intern
 Without going into details of how the github organization (xrdocs) and its repositories (application-hosting, telemetry etc.) are set up, it would be good to understand which repositories a Guest Blogger will be granted access to:
 
 
-|  Github Repository        | Owner                                      | Guest Write Access| 
-| ------------------------- | -----------                                | ----------------- |
-| xrdocs/application-hosting|[Akshat Sharma](https://github.com/akshshar)|    No             |
-| xrdocs/telemetry          |[Shelly Cadora](https://github.com/scadora) |    No             |
-| xrdocs/xrdocs-images      | Cisco Web TMEs                             |    Yes            |   
+appgit: https://github.com/xrdocs/application-hosting
+telgit: https://github.com/xrdocs/application-hosting
+xrimagesgit: https://github.com/xrdocs/xrdocs-images
+
+apphome:  https://xrdocs.github.io/application-hosting
+telhome:  https://xrdocs.github.io/telemetry
+xrimagehome: https://xrdocs.github.io/xrdocs-images
+
+aksgit: https://github.com/akshshar
+shellygit: https://github.com/scadora
+
+
+|  Github Repository        | Website Home                         |Owner           |       Guest Write Access| 
+| ------------------------- | -------------------------------------| ---------------------------|-------------
+| [xrdocs/application-hosting][appgit]| [Apphosting Home][apphome] |[Akshat Sharma][aksgit]     |    No       |
+| [xrdocs/telemetry][telgit]          | [Telemetry Home][telhome]   |[Shelly Cadora][shellygit] |    No       |
+| [xrdocs/xrdocs-images][xrimagesgit] | [Xrdocs-images Home][xrimagehome] |Cisco Web TMEs       |    Yes      |   
 
 [xrdocs/xrdocs-images](https://github.com/xrdocs/xrdocs-images/tree/gh-pages)  is the only repository that Guest bloggers will have write access to. Think of this as your image repository in the cloud.   
 
@@ -174,60 +186,3 @@ Confirm merge to integrate the new blog.
 The Guest Blog should Appear on the website in about 10-30 seconds.
 {: .notice--success}
 ![Guest Blog is Live](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/Guest_blog_is_ready.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
