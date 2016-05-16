@@ -33,7 +33,7 @@ Request access to the [xrdocs/xrdocs-images](https://github.com/xrdocs/xrdocs-im
 
 ---
 
-## Quick Recap on types of Users @xrdocs:
+## Quick Recap on types of Users @xrdocs
 
 
 >
@@ -62,7 +62,7 @@ Without going into details of how the github organization (xrdocs) and its repos
 [xrdocs/xrdocs-images](https://github.com/xrdocs/xrdocs-images/tree/gh-pages)  is the only repository that Guest bloggers will have write access to. Think of this as your image repository in the cloud.   
 
 
-## Document Creation Workflow:
+## Document Creation Workflow
 >
 As a Guest Blogger, document creation is very similar to an owner/contributor workflow, except:
 >
