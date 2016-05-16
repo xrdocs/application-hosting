@@ -18,7 +18,7 @@ position: hidden
 
 ## First Steps:
 
-As we've already explained in the [xrdocs How-To/adding images]({{ base_path }}/tutorials/xrdocs-how-to#adding-images-to-your-markdown-content) section, 
+As we've already explained in the [xrdocs How-To guide/First Steps]({{ base_path }}/tutorials/xrdocs-how-to#first-steps) section, 
 
 >
 Request access to the [xrdocs/xrdocs-images](https://github.com/xrdocs/xrdocs-images/tree/gh-pages) images repository and set up your author profile by sending an email to the [xrdocs-team](mailto:xrdocs-team@cisco.com) with the following data:  
