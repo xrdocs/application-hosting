@@ -14,8 +14,6 @@ tags:
 {% include toc icon="table" title="Formatting Techniques" %}
 
 
-## Using Formatting Classes
-To use any of the Formatting classes shown below, place the 
 
 ## Text Alignment
 
