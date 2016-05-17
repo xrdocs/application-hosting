@@ -106,7 +106,7 @@ This is my local markdown file, I'll use it to keep my content saved and updated
 Let's assume  we're contributing to the application-hosting xrdocs website at <https://xrdocs.github.io/application-hosting>
 
 Open up prose.io and point to the github-pages repo of the repository:  
-(Browse to <https://prose.io/#xrdocs/application-hosting/tree/gh-pages>)
+(Browse to <http://prose.io/#xrdocs/application-hosting/tree/gh-pages>)
 
 ![Prose.io App-hosting gh-pages](http://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_apphosting_ghpages.png)
 
