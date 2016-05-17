@@ -18,7 +18,7 @@ position: hidden
 ---
 
 
-##First Steps:
+## First Steps:
 
 As we've already explained in the [xrdocs How-To guide/First Steps]({{ base_path }}/tutorials/xrdocs-how-to#first-steps) section, 
 
