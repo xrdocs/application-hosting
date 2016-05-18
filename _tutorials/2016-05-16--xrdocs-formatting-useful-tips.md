@@ -10,7 +10,7 @@ tags:
   - iosxr
   - cisco
 ---
-{% include toc icon="table" title="Formatting Techniques" %}
+
 
 {% include base_path %}
 [Back to @xrdocs How-To]({{ base_path }}/tutorials/xrdocs-how-to)
