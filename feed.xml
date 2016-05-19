@@ -26,6 +26,7 @@ layout: null
 			</item>
 		{% endfor %}
     {% for post in site.tutorials limit:10 %}
+      {% unless post.position == "hidden" %}
       <item>
         <title>{{ post.title | xml_escape }}</title>
         {% if post.author %}
@@ -40,6 +41,7 @@ layout: null
         <link>{{ base_path }}{{ post.url }}</link>
         <guid isPermaLink="true">{{ base_path }}{{ post.url }}</guid>
       </item>
+      {% endunless %}
     {% endfor %}
 	</channel>
 </rss>
