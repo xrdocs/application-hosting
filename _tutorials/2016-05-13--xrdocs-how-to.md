@@ -266,7 +266,7 @@ You can now drag and drop your images and insert them into the markdown file.
 
 ---
 
-## Some Useful Tips to make your blog look prettier:
+## Some Useful Tips to make your blog look prettier
 
 If you'd like to understand how this tutorial utilizes different colored Boxes to draw a reader's attention or how to align text or images on the page quickly and easily, then proceed here:  
 
