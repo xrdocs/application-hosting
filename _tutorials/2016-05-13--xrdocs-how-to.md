@@ -150,7 +150,8 @@ Let's assume you're a Contributor (have write access to the application-hosting 
 To start writing a tutorial, browse to the application-hosting gh-pages branch on prose.io by using the following link:
 <http://prose.io/#xrdocs/application-hosting/tree/gh-pages>    
 
-
+**The gh-pages branch is important. The resultant website is rendered on the gh-pages branch of the github repository that hosts the content. But don't worry! The internal configuration has been set up to ensure that in Prose.io, you will only see the relevant folders when in the gh-pages branch. In the master branch, things will be empty!**
+{: .notice--warning}
 
 ![Proseio apphosting xrdocs homepage](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/proseio_apphosting_ghpages.png)
 You will be presented with a few set of repositories that you have access to from prose.io:
