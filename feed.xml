@@ -9,11 +9,11 @@ layout: null
 		<description>{% if site.description %}{{ site.description | xml_escape }}{% endif %}</description>
 		<link>{{ base_path }}</link>
 		<atom:link href="{{ base_path }}/{{ page.path }}" rel="self" type="application/rss+xml" />
-		{% for post in site.posts limit:10 %}
+		{% for post in site.blogs limit:10 %}
 			<item>
 				<title>{{ post.title | xml_escape }}</title>
-				{% if post.author.name %}
-					<dc:creator>{{ post.author.name | xml_escape }}</dc:creator>
+				{% if post.author %}
+					<dc:creator>{{ post.author | xml_escape }}</dc:creator>
 				{% endif %}
 				{% if post.excerpt %}
 					<description>{{ post.excerpt | xml_escape }}</description>
@@ -25,5 +25,39 @@ layout: null
 				<guid isPermaLink="true">{{ base_path }}{{ post.url }}</guid>
 			</item>
 		{% endfor %}
+    {% for post in site.tutorials limit:10 %}
+      <item>
+        <title>{{ post.title | xml_escape }}</title>
+        {% if post.author %}
+          <dc:creator>{{ post.author | xml_escape }}</dc:creator>
+        {% endif %}
+        {% if post.excerpt %}
+          <description>{{ post.excerpt | xml_escape }}</description>
+        {% else %}
+          <description>{{ post.content | xml_escape }}</description>
+        {% endif %}
+        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+        <link>{{ base_path }}{{ post.url }}</link>
+        <guid isPermaLink="true">{{ base_path }}{{ post.url }}</guid>
+      </item>
+    {% endfor %}
+    {% for post in site.techdocs limit:10 %}
+      {% if post.position == "top" %}
+      <item>
+        <title>{{ post.title | xml_escape }}</title>
+        {% if post.author %}
+          <dc:creator>{{ post.author | xml_escape }}</dc:creator>
+        {% endif %}
+        {% if post.excerpt %}
+          <description>{{ post.excerpt | xml_escape }}</description>
+        {% else %}
+          <description>{{ post.content | xml_escape }}</description>
+        {% endif %}
+        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+        <link>{{ base_path }}{{ post.url }}</link>
+        <guid isPermaLink="true">{{ base_path }}{{ post.url }}</guid>
+      </item>
+      {% endif %}
+    {% endfor %}
 	</channel>
 </rss>
