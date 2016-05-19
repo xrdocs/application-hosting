@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "App-Hosting @xrdocs!"
+title                    : "AppHosting @xrdocs!"
 title_separator          : "-"
 name                     : &name "Cisco Systems Inc"
 description              : &description "Documentation, Blogs and Tutorials on the Application Hosting Infrastructure in IOS-XR"
