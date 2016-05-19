@@ -2,13 +2,16 @@
 title: "Application Hosting on IOS-XR"
 permalink: /techdocs/app_hosting_on_iosxr/introduction
 excerpt: "A detailed Overview of IOS-XR's app-hosting infra "
-modified: 2016-04-13T15:54:02-04:00
-position: "top"
-sidebar:
-  nav: "app_hosting_on_iosxr"
+modified: "Wed Apr 13 2016 12:54:02 GMT-0700 (PDT)"
+position: top
+sidebar: 
+  nav: app_hosting_on_iosxr
+published: true
 ---
 
 {% include base_path %}
+
+Trying things out.
 
 Minimal Mistakes has been developed to be 100% compatible with hosting a site on [GitHub Pages](https://pages.github.com/). To get up and running with a new GitHub repository quickly, follow these steps or jump ahead to the [full installation guide]({{ base_path }}/docs/installation/).
 
