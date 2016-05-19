@@ -11,7 +11,7 @@ title                    : "App-Hosting @xrdocs!"
 title_separator          : "-"
 name                     : &name "Cisco Systems Inc"
 description              : &description "Documentation, Blogs and Tutorials on the Application Hosting Infrastructure in IOS-XR"
-url                      : http://localhost:4000 #"https://xrdocs.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : http://localhost:4000  #"https://xrdocs.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : #"/application-hosting" # the subpath of your site, e.g. "/blog"
 gh_repo                  : "https://github.com/xrdocs/application-hosting"
 teaser                   : # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
@@ -240,7 +240,6 @@ gems:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
-  - jekyll-feed
   - jemoji
   - jekyll-redirect-from
 
@@ -249,7 +248,6 @@ whitelist:
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
-  - jekyll-feed
   - jemoji
   - jekyll-redirect-from
 
@@ -306,6 +304,7 @@ prose:
     - /_recipes
     - /assets
     - /images
+    - /_data/ui-text.yml
     - Gemfile
     - Gemfile.lock
     - LICENSE
@@ -325,7 +324,7 @@ prose:
       - name: "permalink"
         field: 
             element: "text"
-            label: "permalink"
+            label: "Relative URL"
             help: "provide a url relative to site url, for eg. /blogs/blog1"
       - name: "author"
         field: 
@@ -366,7 +365,7 @@ prose:
       - name: "permalink"
         field: 
             element: "text"
-            label: "permalink"
+            label: "Relative URL"
             help: "provide a url relative to site url, for eg. /techdocs/doc1/home"
       - name: "excerpt"
         field: 
@@ -376,6 +375,7 @@ prose:
       - name: "position"
         field:
             element: "text"
+            label: "Techdoc Page Position"
             help: "Set this to 'top' only for the first page of the techdoc"
       - name: "tags"
         field:
@@ -412,7 +412,7 @@ prose:
       - name: "permalink"
         field: 
             element: "text"
-            label: "permalink"
+            label: "Relative URL"
             help: "provide a url relative to site url, for eg. /tutorials/tutorial1"
       - name: "author"
         field: 
