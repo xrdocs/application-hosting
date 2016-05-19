@@ -46,6 +46,7 @@ layout: null
       {% endunless %}
     {% endfor %}
     {% for post in site.techdocs limit:10 %}
+      {% if post.position == "top" %}
       <item>
         <title>{{ post.title | xml_escape }}</title>
         {% if post.excerpt %}
@@ -57,6 +58,7 @@ layout: null
         <link>{{ base_path }}{{ post.url }}</link>
         <guid isPermaLink="true">{{ base_path }}{{ post.url }}</guid>
       </item>
+      {% endif %}
     {% endfor %}
 	</channel>
 </rss>
