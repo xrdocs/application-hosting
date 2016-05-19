@@ -314,6 +314,7 @@ prose:
     - search_data.html
     - .jekyll-metadata
     - CHANGELOG.md
+    - feed.xml
   metadata:
     _blogs:
       - name: "title"
