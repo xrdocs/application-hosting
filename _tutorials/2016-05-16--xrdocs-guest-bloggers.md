@@ -3,7 +3,7 @@ published: true
 date: "2016-05-16 16:06 +0530"
 title: "@xrdocs Guest Bloggers"
 permalink: "/tutorials/xrdocs-guest-bloggers"
-author: Akshat Sharma
+author: Jose Palafox
 excerpt: "A Brief walkthrough of the Github based Documentation review process with @xrdocs"
 tags: 
   - iosxr
