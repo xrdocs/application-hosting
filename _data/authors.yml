@@ -31,6 +31,12 @@ Jose Palafox:
   bio         : "Business Development Manager, Web Solutions, Cisco"
   avatar      : "josep_bio.jpeg"
 
+Bruce McDougall:
+  name        : "Bruce McDougall"
+  github      : "brmcdoug"
+  email       : "brmcdoug@cisco.com"
+  avatar      : "brucemc_bio.jpg"
+  bio         : "Systems Engineer, Web Solutions, Cisco."
 
 Cisco Web Team:
   name        : "Cisco Web Team"
