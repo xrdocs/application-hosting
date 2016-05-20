@@ -277,7 +277,7 @@ If you'd like to understand how this tutorial utilizes different colored Boxes t
 
 ---
 
-## Commit and Peer Review process for Guest Bloggers
+## Guest Bloggers
 
 Guest Bloggers by definition do not have write access to the github repository. Since we're treating documentation like code, any document commit by a guest blogger would automatically result in a pull request on the github repo.   
 
