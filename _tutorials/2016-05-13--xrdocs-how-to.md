@@ -15,7 +15,7 @@ position: hidden
 
 ## Introduction to @xrdocs
 
-Welcome to @xrdocs!
+Welcome to the @xrdocs tutorial!
 
 This tutorial is meant to get a new blogger/technical-writer, unfamiliar with @xrdocs, up and running in minutes.
 
