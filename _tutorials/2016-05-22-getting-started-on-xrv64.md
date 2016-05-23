@@ -14,51 +14,33 @@ tags:
 ### Quick Start Using XRv64 Box image
 Quick guide to get up and running with XRv64 and vagrant/Virtualbox.
  
-Install Virtualbox and vagrant tools to your mac:
-
-Source: http://sourabhbajaj.com/mac-setup/Vagrant/README.html
-
-*	Recommend using the Homebrew package manager.
-
-*	Make sure you install version 5.x virtualbox
-
-*	Vagrant latest version is: 1.8.2
-
-*	Website:  http://brew.sh/
-
-        /usr/bin/ruby -e "$(curl -fsSLhttps://raw.githubusercontent.com/Homebrew/install/master/install)"
-        brew cask install virtualbox
-        brew cask install vagrant
-        brew install socat
-
-Note you may need to install pexpect:
-
-	brew cask install python
-	pip install pexpect
+#### Requirements:
+- [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/) installed on your laptop
 
 #### Single Node:
 
 	vagrant init xrv64
-  ![vagrant init xrv64](https://xrdocs.github.io/xrdocs-images/assets/images/xrv64_vagrant_init.png)
+  ![vagrant init xrv64](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_init.png)
    
 	vagrant box add --name xrv64 <REPLACE THIS WITH PUBLIC VAGRANT BOX URL> --force
     
-  ![vagrant box add](https://xrdocs.github.io/xrdocs-images/assets/images/xrv64_vagrant_add.png)
+  ![vagrant box add](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_add.png)
   
 	vagrant up 
 
 This will take some time, possibly over 10 minutes once you see the "Waiting for machine to boot" message.  Look for the green "vagrant up" welcome message to confirm the machine has booted:
 	
-   ![vagrant up](https://xrdocs.github.io/xrdocs-images/assets/images/xrv64_vagrant_up_s.png)
+   ![vagrant up](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_up_s.png)
     
 
 
 Now you have two options for accessing the Vagrant instance:
+
 1. Access the XR Linux shell:
   		
        vagrant ssh
 
-  ![vagrant ssh](https://xrdocs.github.io/xrdocs-images/assets/images/xrv64_vagrant_ssh_s.png)
+  ![vagrant ssh](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_ssh_s.png)
 
 2.  Access XR Console:
  
@@ -72,34 +54,35 @@ Now you have two options for accessing the Vagrant instance:
       
     * The password is “vagrant” 
     
-  ![ssh console](https://xrdocs.github.io/xrdocs-images/assets/images/xrv64_ssh_console_s.png)
+  ![ssh console](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_ssh_console_s.png)
 
 #### Multi Node:
 
-![Topology](https://xrdocs.github.io/xrdocs-images/assets/images/xrv64_topo_m.png)
+![Topology](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_topo_m.png)
 
 Copy the multi-node Vagrantfile: `cp xr-cp-vbox/Vagrantfile`
 
 Add the box to vagrant: `vagrant box add --name IOS-XRv iosxrv-fullk9-x64.box --force;`
 * Or point to a URL: `vagrant box add --name xrv64 <REPLACE THIS WITH PUBLIC VAGRANT BOX URL> --force`
 
-![cp, add vagrantfile](https://xrdocs.github.io/xrdocs-images/assets/images/xrv64_cp_vagrantfile_m.png)
+![cp, add vagrantfile](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_cp_vagrantfile_m.png)
 
 
 `vagrant up` - this will take some time, possibly over 10 minutes once you see the "Waiting for machine to boot" message. Look for the green "vagrant up" welcome message to confirm the three machines have booted:
 	
-   ![vagrant up- multi](https://xrdocs.github.io/xrdocs-images/assets/images/xrv64_vagrant_up_m.png)
+   ![vagrant up- multi](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_up_m.png)
    
  Post up message:
-   ![post up message](https://xrdocs.github.io/xrdocs-images/assets/images/xrv64_post_up_m.png)
+   ![post up message](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_post_up_m.png)
 
 
 As with the Single Node setup, you have two ways to access the Vagrant instances:
+
 1. Access the XR Linux shell:
 
 		vagrant ssh rtr1 / vagrant ssh rtr2
         
-   ![vagrant ssh- multi](https://xrdocs.github.io/xrdocs-images/assets/images/xrv64_vagrant_ssh_1_m.png)
+   ![vagrant ssh- multi](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_ssh_1_m.png)
 
 2. Access XR Console:
 
@@ -115,4 +98,4 @@ As with the Single Node setup, you have two ways to access the Vagrant instances
 
    * Repeat these steps for each node.
    
- ![ssh console- multi](https://xrdocs.github.io/xrdocs-images/assets/images/xrv64_ssh_console_m.png)
+ ![ssh console- multi](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_ssh_console_m.png)
