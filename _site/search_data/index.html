@@ -1,0 +1,75 @@
+{
+  
+  
+
+
+  
+  
+  
+    
+    "techdocs-app-hosting-on-iosxr-architecture-overview": {
+      "title": "Overview of the Architecture",
+      "content"	 : "Minimal Mistakes has been developed to be 100% compatible with hosting a site on GitHub Pages. To get up and running with a new GitHub repository quickly, follow these steps or jump ahead to the full installation guide.Fork the ThemeFork the Minimal Mistakes theme, then rename the repo to USERNAME.github.io &#8212; replacing USERNAME with your GitHub username.  Note# Your Jekyll site should be viewable immediately at http#//USERNAME.github.io. If it&#8217;s not, you can force a rebuild by Customizing Your Site (see below for more details).If you&#8217;re hosting several Jekyll based sites under the same GitHub username you will have to use Project Pages instead of User Pages. Essentially you rename the repo to something other than USERNAME.github.io and create a gh-pages branch off of master. For more details on how to set things up check GitHub&#8217;s documentation.  ProTip# Be sure to delete the gh-pages branch if you forked Minimal Mistakes. This branch contains the documentation and demo site for the theme and you probably don&#8217;t want that showing up in your repo.Customize Your SiteOpen up _config.yml found in the root of the repo and edit anything under Site Settings. For a full explanation of every setting be sure to read the Configuration section, but for now let&#8217;s just change the site&#8217;s title.    Edit text files without leaving GitHub.comCommitting a change to _config.yml (or any file in your repository) will force GitHub Pages to rebuild your site with Jekyll. It should then be viewable a few seconds later at https#//USERNAME.github.io.Congratulations! You&#8217;ve successfully forked the theme and are up an running with GitHub Pages. Now you&#8217;re ready to add content and customize the site further.",
+      "url": "/techdocs/app_hosting_on_iosxr/architecture_overview",
+      "tags": "content, css, edge case, lists, markup"
+    }
+    
+    ,
+  
+  
+    
+    "techdocs-app-hosting-on-iosxr-introduction": {
+      "title": "Application Hosting on IOS-XR",
+      "content"	 : "Trying things out. Again. Work.Minimal Mistakes has been developed to be 100% compatible with hosting a site on GitHub Pages. To get up and running with a new GitHub repository quickly, follow these steps or jump ahead to the full installation guide.Fork the ThemeFork the Minimal Mistakes theme, then rename the repo to USERNAME.github.io &#8212; replacing USERNAME with your GitHub username.  Note# Your Jekyll site should be viewable immediately at http#//USERNAME.github.io. If it&#8217;s not, you can force a rebuild by Customizing Your Site (see below for more details).If you&#8217;re hosting several Jekyll based sites under the same GitHub username you will have to use Project Pages instead of User Pages. Essentially you rename the repo to something other than USERNAME.github.io and create a gh-pages branch off of master. For more details on how to set things up check GitHub&#8217;s documentation.  ProTip# Be sure to delete the gh-pages branch if you forked Minimal Mistakes. This branch contains the documentation and demo site for the theme and you probably don&#8217;t want that showing up in your repo.Customize Your SiteOpen up _config.yml found in the root of the repo and edit anything under Site Settings. For a full explanation of every setting be sure to read the Configuration section, but for now let&#8217;s just change the site&#8217;s title.    Edit text files without leaving GitHub.comCommitting a change to _config.yml (or any file in your repository) will force GitHub Pages to rebuild your site with Jekyll. It should then be viewable a few seconds later at https#//USERNAME.github.io.Congratulations! You&#8217;ve successfully forked the theme and are up an running with GitHub Pages. Now you&#8217;re ready to add content and customize the site further.",
+      "url": "/techdocs/app_hosting_on_iosxr/introduction",
+      "tags": ""
+    }
+    
+    ,
+  
+  
+    
+    "techdocs-app-hosting-on-iosxr-xr-linux-shell": {
+      "title": "XR Linux Shell",
+      "content"	 : "Minimal Mistakes has been developed to be 100% compatible with hosting a site on GitHub Pages. To get up and running with a new GitHub repository quickly, follow these steps or jump ahead to the full installation guide.Fork the ThemeFork the Minimal Mistakes theme, then rename the repo to USERNAME.github.io &#8212; replacing USERNAME with your GitHub username.  Note# Your Jekyll site should be viewable immediately at http#//USERNAME.github.io. If it&#8217;s not, you can force a rebuild by Customizing Your Site (see below for more details).If you&#8217;re hosting several Jekyll based sites under the same GitHub username you will have to use Project Pages instead of User Pages. Essentially you rename the repo to something other than USERNAME.github.io and create a gh-pages branch off of master. For more details on how to set things up check GitHub&#8217;s documentation.  ProTip# Be sure to delete the gh-pages branch if you forked Minimal Mistakes. This branch contains the documentation and demo site for the theme and you probably don&#8217;t want that showing up in your repo.Customize Your SiteOpen up _config.yml found in the root of the repo and edit anything under Site Settings. For a full explanation of every setting be sure to read the Configuration section, but for now let&#8217;s just change the site&#8217;s title.    Edit text files without leaving GitHub.comCommitting a change to _config.yml (or any file in your repository) will force GitHub Pages to rebuild your site with Jekyll. It should then be viewable a few seconds later at https#//USERNAME.github.io.Congratulations! You&#8217;ve successfully forked the theme and are up an running with GitHub Pages. Now you&#8217;re ready to add content and customize the site further.",
+      "url": "/techdocs/app_hosting_on_iosxr/xr_linux_shell",
+      "tags": ""
+    }
+    
+    
+  
+,
+
+  
+  
+    
+       "#": {}
+     ,
+    
+    
+  
+    
+    
+    "tutorials-iosxr-ansible": {
+      "title": "IOS-XR Ansible",
+      "content"	 : "IntroductionIn this tutorial we are going to cover XRv4 configuration with Ansible. We will setup and try simplest configuration with Unix machine connected to XRv64.Prerequisites  Computer with with 4-5GB free RAM;  Vagrant;  Ansible;  XRv64 image;Vagrant pre-setupTo add XR box, image should be downloaded, after this issue the command#$ vagrant box add xrv64 iosxrv-fullk9-x64.box_2016-05-07-19-04-50Image for Ubuntu will be downloaded from official source#$ vagrant box add ubuntu/trusty64Let’s check for result, we should have box available, box ubuntu/trusty64 and xrv64 should be displayed#Vagrantfile with 2 Vagrant boxes should be like#Vagrant.configure(2) do |config|  config.vm.provision ~shell~, inline# ~echo Hello User~  config.vm.define ~ubuntu~ do |ubuntu|    ubuntu.vm.box = ~ubuntu/trusty64~    ubuntu.vm.network #private_network, virtualbox__intnet# ~link1~, ip# ~10.1.1.10~  end  config.vm.define ~xr~ do |xr|    xr.vm.box = ~xrv64~    xr.vm.network #private_network, virtualbox__intnet# ~link1~, ip# ~10.1.1.20~  endendNext step to create Vagrantfile and boot up boxes#mkorshun@MKORSHUN-2JPYH MINGW64 ~/Documents/workCisco/tutorial$ vagrant upUbuntu box pre-configurationTo access Ubuntu box just issue the command (no password required)#vagrant sshInstall Ansible and all required packages for it.sudo apt-get install python-setuptools python-dev build-essential git libssl-dev libffi-devsudo easy_install pip sshpasswget https#//bootstrap.pypa.io/ez_setup.py -O - | sudo pythongit clone http#//gitlab.cisco.com/aermongk/iosxr-ansible.gitgit clone git#//github.com/ansible/ansible.git --recursivecd ansible/ &amp;&amp; sudo python setup.py installCreate key to access XR in future#vagrant@vagrant-ubuntu-trusty-64#~$ ssh-keygen -t rsaGenerating public/private rsa key pair.Enter file in which to save the key (/home/vagrant/.ssh/id_rsa)#Enter passphrase (empty for no passphrase)#Enter same passphrase again#.our identification has been saved in.pub.public key has been saved inThe key fingerprint is#4e#a5#24#de#e1#51#7c#85#78#a1#65#b1#08#17#e3#be vagrant@vagrant-ubuntu-trusty-64The key's randomart image is#+--[ RSA 2048]----+|        ..=o==.  ||         =o*+.   ||      . + =o.    ||     . = *       ||      . S .      ||       o   .     ||        . E      ||                 ||                 |+-----------------+vagrant@vagrant-ubuntu-trusty-64#~$ vagrant@vagrant-ubuntu-trusty-64#~$ cat ~/.ssh/id_rsa.pubssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfbpi4N3Lcl5i9Y8gd/g4x05IvnIfoPJkhdmGBW2HMFwqWgJQkJF1BM8SuukWeG8+Su4g0Un5tU4/nvbAcqBDR7wFEmB7z7k8VQrXZUxeB4Lc1jEwdDLbxxGOUitLQO+IXlHFJVpkp9Ps6tT82xopaSOQFXKDq0vYXdeEMD/k3NG++0u5pOsJu+kXLIULy1Ix6qvcFDRKbqfT14fU/K7vBYz8gP8Cl+sql9ySm7aOSb0liCBx46/SueBX6uadnMgecVBc1GyvmEX5PwBppUr3Cpby2yOf69iX4NnNcWTTrPY7o7LWuXPNiAgbSAS3R7jVBPyTltB9zCbGq8We5UuVX vagrant@vagrant-ubuntu-trusty-64vagrant@vagrant-ubuntu-trusty-64#~$ XR box pre-configurationTo access XR Linux Shell#vagrant ssh xrTo access XR console it takes one additional step to figure out port (credentials for ssh# vagrant/vagrant)#mkorshun@MKORSHUN-2JPYH MINGW64 ~/Documents/workCisco/tutorial$ vagrant port xrThe forwarded ports for the machine are listed below. Please note thatthese values may differ from values configured in the Vagrantfile if theprovider supports automatic port collision detection and resolution. 22 (guest) = 2223 (host) 57722 (guest) = 2200 (host)mkorshun@MKORSHUN-2JPYH MINGW64 ~/Documents/workCisco/tutorial$ ssh -p 2223 vagrant@localhostvagrant@localhost's password#RP/0/RP0/CPU0#ios#Now let’s  configure IP address at XR box. Issue the commant at XR CLI.conf tinterface GigabitEthernet0/0/0/0 ipv4 address 10.1.1.20 255.255.255.0 no shutdown!commitendFinally, let’s check connectivity between boxes#RP/0/RP0/CPU0#ios#ping 10.1.1.20Mon May  9 08#36#33.071 UTCType escape sequence to abort.Sending 5, 100-byte ICMP Echos to 10.1.1.20, timeout is 2 seconds#!!!!!Success rate is 100 percent (5/5), round-trip min/avg/max = 1/5/20 msRP/0/RP0/CPU0#ios#Let’s copy public part of key from Ubuntu box and allow access without password. For IOS-XR image 6.1.x commands below#vagrant portscp -P &lt;port used for XR(guest) port 57722&gt; /path/to/host/public_key/id_rsa.pub vagrant@localhost#/home/vagrant/vagrant ssh xrcat /home/vagrant/id_rsa.pub &gt;&gt; /home/vagrant/.ssh/authorized_keysAnsible PartAt first we need to set up environment and hosts",
+      "url": "/tutorials/IOSXR-Ansible",
+      "author": "Mike Korshunov",
+      "tags": ""
+    }
+    
+    ,
+  
+    
+       "#": {}
+     ,
+    
+    
+  
+    
+       "#": {}
+     
+    
+    
+  
+}
