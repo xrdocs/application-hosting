@@ -1,6 +1,6 @@
 ---
 permalink: "/tutorials/IOSXR-Ansible"
-author: Mike Korshunov 
+author: Bruce Mcdougall
 excerpt: Getting started with IOSXR and Ansible playbooks
 published: true
 title: "IOS-XR Ansible"
