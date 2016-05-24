@@ -98,11 +98,10 @@ vagrant ssh ubuntu
 Ubuntu is already configured via file "ubuntu.sh". No action required in this section!
 {: .notice--warning}
 
-
+>
 Let's review the content of configuration file "ubuntu.sh". 
 First four lines responsible for downloading required packages for Ansible and updating the system. 
-{: .notice--info}
-
+>
 ```
 sudo apt-get update
 sudo apt-get install -y python-setuptools python-dev build-essential git libssl-dev libffi-dev sshpass
