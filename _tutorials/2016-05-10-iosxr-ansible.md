@@ -266,6 +266,6 @@ ansible-playbook samples/iosxr_get_facts.yml
 ansible-playbook iosxr_cli.yml -e 'cmd="show interface brief"' 
 ```
 
-Samples folder contain various playbooks, files started with "show_" using iosxr_cli playbook and passing cmd to XR as parameter. To run playbook as "vagrant" user, playbook should contain string: "become: yes"
+Samples folder contains various playbooks, files started with "show_" using iosxr_cli playbook and passing cmd to XR as parameter. To run playbook as "vagrant" user, playbook should contain string: "become: yes"
 Feel free to play with any playbook!
 {: .notice--success}
