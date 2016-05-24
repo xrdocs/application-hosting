@@ -109,21 +109,21 @@ sudo easy_install pip
 wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python
 ```
 >
-Now we are ready to download Ansible itself and IOXR-Ansible repo.
+Now we are ready to download Ansible itself and the  IOSXR-Ansible repo.
 >
 ```
 git clone -b vagrant http://gitlab.cisco.com/mkorshun/iosxr-ansible.git
 git clone git://github.com/ansible/ansible.git --recursive
 ```
 >
-All files are downloaded and ready for installation. Variables from "ansible_env" should be applied in the system.
+Now install Ansible and apply the variables from "ansible_env" to the system.
 >
 ```
 cd ansible/ && sudo python setup.py install
 echo "source /home/vagrant/iosxr-ansible/remote/ansible_env" >> /home/vagrant/.profile
 ```
 >
-Last section responsible for generating key for paswordless authorization and generating base 64 version of it:
+The last section is responsible for generating a public key for paswordless authorization and a base 64 version of it:
 >
 ```
 ssh-keygen -t rsa -f /home/vagrant/.ssh/id_rsa -q -P ""
