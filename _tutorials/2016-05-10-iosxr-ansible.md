@@ -1,9 +1,9 @@
 ---
-permalink: "/tutorials/IOSXR-Ansible"
+permalink: "/tutorials/IOSXR-vagrant-ansible"
 author: Mike Korshunov
 excerpt: Getting started with IOSXR and Ansible playbooks
 published: true
-title: "IOS-XR Ansible"
+title: "Ansible with Vagrant IOS-XR"
 date: "2016-05-16 01:18 +0530"
 tags: 
   - vagrant
