@@ -53,7 +53,7 @@ Let's check for result, we should have box available, box ubuntu/trusty64 and xr
 
 ![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xr-ansible-tutorial/xr_ansible_01_box_list.png)
 
-Vagrantfile contain 2 Vagrant boxes and looks like:
+The Vagrantfile contains 2 Vagrant boxes and looks like:
 
 ```
 Vagrant.configure(2) do |config|
