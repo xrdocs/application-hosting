@@ -151,7 +151,8 @@ The forwarded ports for the machine are listed below. Please note that
 these values may differ from values configured in the Vagrantfile if the
 provider supports automatic port collision detection and resolution.
  22 (guest) = 2223 (host)
- 57722 (guest) = 2200 (host)
+ 57722 (guest) = 2200 (host)  
+ 
 mkorshun@MKORSHUN-2JPYH MINGW64 ~/Documents/workCisco/tutorial
 $ ssh -p 2223 vagrant@localhost
 vagrant@localhost's password:
