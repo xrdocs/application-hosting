@@ -112,7 +112,6 @@ wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python
 ```
 >
 Next, the script clones the  Ansible and the  IOSXR-Ansible repos:
-{: .notice--info}
 >
 ```
 git clone -b vagrant http://gitlab.cisco.com/mkorshun/iosxr-ansible.git
