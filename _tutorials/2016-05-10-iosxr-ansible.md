@@ -87,20 +87,21 @@ $ vagrant up
 ```
 
 
-### Ubuntu box pre-configuration
-To access Ubuntu box just issue the command (no password required):
+### Ubuntu box pre-configuration  
+
+To access the Ubuntu box just issue the command (no password required):
 
 ```
 vagrant ssh ubuntu
 ```
 
 Ubuntu is already configured via file "ubuntu.sh". No action required in this section!
-
-
+{: .notice--warning}
 
 
 Let's review the content of configuration file "ubuntu.sh". 
 First four lines responsible for downloading required packages for Ansible and updating the system. 
+{: .notice--info}
 
 ```
 sudo apt-get update
@@ -108,13 +109,15 @@ sudo apt-get install -y python-setuptools python-dev build-essential git libssl-
 sudo easy_install pip 
 wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python
 ```
+{: .notice--info}
 
-Now we are ready to download Ansible itself and IOXR-Ansible repo. 
+Now we are ready to download Ansible itself and IOXR-Ansible repo. {: .notice--info}
 
 ```
 git clone -b vagrant http://gitlab.cisco.com/mkorshun/iosxr-ansible.git
 git clone git://github.com/ansible/ansible.git --recursive
 ```
+{: .notice--info}
 
 All files are downloaded and ready for installation. Variables from "ansible_env" should be applied in the system.
 
@@ -130,7 +133,7 @@ ssh-keygen -t rsa -f /home/vagrant/.ssh/id_rsa -q -P ""
 cut -d" " -f2 ~/.ssh/id_rsa.pub | base64 -d > ~/.ssh/id_rsa_pub.b64
 ```  
 
-{: .notice--info}
+
 
 ### IOS-XRv box pre-configuration
 
