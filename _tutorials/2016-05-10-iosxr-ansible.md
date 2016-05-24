@@ -197,7 +197,8 @@ scp -P 57722 /home/vagrant/.ssh/id_rsa.pub  vagrant@10.1.1.20:/home/vagrant/id_r
 Now add the copied keys to authorized_keys in XR linux
 
 ```
-vagrant ssh xr
+vagrant ssh xr  
+
 cat /home/vagrant/id_rsa_ubuntu.pub >> /home/vagrant/.ssh/authorized_keys
 ```
 
