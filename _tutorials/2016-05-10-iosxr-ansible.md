@@ -124,7 +124,6 @@ echo "source /home/vagrant/iosxr-ansible/remote/ansible_env" >> /home/vagrant/.p
 ```
 >
 The last section is responsible for generating a public key for paswordless authorization (for XR linux) and a base 64 version of it (for XR CLI):
-{: .notice--info}
 ```
 ssh-keygen -t rsa -f /home/vagrant/.ssh/id_rsa -q -P ""
 cut -d" " -f2 ~/.ssh/id_rsa.pub | base64 -d > ~/.ssh/id_rsa_pub.b64
