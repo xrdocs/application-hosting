@@ -201,7 +201,7 @@ cat /home/vagrant/id_rsa_ubuntu.pub >> /home/vagrant/.ssh/authorized_keys
 ```
 
 ### Configure Passwordless Access into XR CLI
-If we want passwordless SSH from Ubuntu to XR CLI, issue the following commands.
+If we want passwordless SSH from Ubuntu to XR CLI, issue the following commands:
 
 Bear in mind, These commands must be executed in XR CLI. 
 {: .notice--warning}
