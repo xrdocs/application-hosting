@@ -49,7 +49,8 @@ Image for Ubuntu will be downloaded from official source:
   
     $ vagrant box add ubuntu/trusty64
     
-We should now have both the boxes available, Use the ``vagrant box list`` command to display the current set of boxes on your system as shown below:
+We should now have both the boxes available, Use the ``vagrant box list`` command to display the current set of boxes on your system as shown below:  
+
 
 ![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xr-ansible-tutorial/xr_ansible_01_box_list.png){: .align-center}
 {: .notice}
