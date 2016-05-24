@@ -75,7 +75,7 @@ end
 
 ```
 
-Now are ready to boot up boxes:
+Now we are ready to boot up the boxes:
 
 ```
 mkorshun@MKORSHUN-2JPYH MINGW64 ~/Documents/workCisco/tutorial
