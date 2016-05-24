@@ -95,12 +95,12 @@ To access the Ubuntu box just issue the command (no password required):
 vagrant ssh ubuntu
 ```
 
-Ubuntu is already configured via file "ubuntu.sh". No action required in this section!
+The Ubuntu instance is already configured via file ["ubuntu.sh"](https://github.com/Maikor/IOSXR-Ansible-tutorial/blob/master/ubuntu.sh). This section is only for the user's information.
 {: .notice--warning}
 
 >
 Let's review the content of configuration file "ubuntu.sh". 
-First four lines responsible for downloading required packages for Ansible and updating the system. 
+The first four lines are responsible for downloading required packages for Ansible and updating the system. 
 >
 ```
 sudo apt-get update
