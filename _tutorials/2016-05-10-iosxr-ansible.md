@@ -99,7 +99,7 @@ The Ubuntu instance is already configured via file ["ubuntu.sh"](https://github.
 {: .notice--warning}
 
 >
-Let's review the content of configuration file "ubuntu.sh". 
+Let's review the content of the script ["ubuntu.sh"](https://github.com/Maikor/IOSXR-Ansible-tutorial/blob/master/ubuntu.sh) 
 The first four lines are responsible for downloading required packages for Ansible and updating the system. 
 >
 ```
