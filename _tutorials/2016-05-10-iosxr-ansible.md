@@ -111,14 +111,14 @@ sudo easy_install pip
 wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python
 ```
 >
-Now we are ready to download Ansible itself and the  IOSXR-Ansible repo.
+Next, the script clones the  Ansible and the  IOSXR-Ansible repos:
 >
 ```
 git clone -b vagrant http://gitlab.cisco.com/mkorshun/iosxr-ansible.git
 git clone git://github.com/ansible/ansible.git --recursive
 ```
 >
-Now install Ansible and apply the variables from "ansible_env" to the system.
+It then installs Ansible and applies the variables from "ansible_env" to the system.
 >
 ```
 cd ansible/ && sudo python setup.py install
