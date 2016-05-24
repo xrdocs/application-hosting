@@ -52,6 +52,7 @@ Image for Ubuntu will be downloaded from official source:
 Let's check for result, we should have box available, box ubuntu/trusty64 and xrv should be displayed:
 
 ![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xr-ansible-tutorial/xr_ansible_01_box_list.png)
+{: .notice}
 
 The Vagrantfile contains 2 Vagrant boxes and looks like:
 
