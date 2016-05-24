@@ -5,32 +5,54 @@ excerpt: Getting started with IOSXR and Ansible playbooks
 published: true
 title: "IOS-XR Ansible"
 date: "2016-05-16 01:18 +0530"
+tags: 
+  - vagrant
+  - iosxr
+  - cisco
+  - linux
+  - Ansible
 ---
+
+{% include toc icon="table" title="IOS-XR Ansible" %}
+
+
+
 # Introduction
-In this tutorial we are going to cover XRv4 configuration with Ansible. We will setup and try simplest configuration with Unix machine connected to XRv64.
+The goal of this tutorial is to set up an environment that is identical for Windows, Linux or Mac-OSX users. So instead of setting up Ansible directly on the User's Desktop/Host, we simply spin up an Ubuntu vagrant instance to host our Ansible playbooks and environment. We'll do a separate tutorial on using Ansible directly on Mac-OSX/Windows.
+{: .notice--info}  
+
 
 ## Prerequisites
-- Computer with with 4-5GB free RAM;
+- Computer with 4-5GB free RAM;
 - Vagrant;
 - Ansible;
-- [XRv64 image](http://engci-maven-master.cisco.com/artifactory/appdevci-snapshot/);
+- [IOS-XRv image](http://engci-maven-master.cisco.com/artifactory/appdevci-snapshot/);
+- [Vagrantfile and scripts for provisioning](https://github.com/Maikor/IOSXR-Ansible-tutorial)
 
 ### Vagrant pre-setup
 
-To add XR box, image should be downloaded, after this issue the command:
-	
-    $ vagrant box add xrv64 iosxrv-fullk9-x64.box_2016-05-07-19-04-50
+Clone the repo with Vagrantfile and assisting files:
+
+```
+$ git clone https://github.com/Maikor/IOSXR-Ansible-tutorial
+$ cd IOSXR-Ansible-tutorial/
+$ ls
+ubuntu.sh*  Vagrantfile  xr-config
+```
+
+Setup was tested on Windows, but it's the same for other OS. To add XR box, box file should be downloaded, after this issue the command:
+  
+    $ vagrant box add xrv iosxrv-fullk9-x64.box_2016-05-07-19-04-50.box
 
 Image for Ubuntu will be downloaded from official source:
-	
+  
     $ vagrant box add ubuntu/trusty64
     
-Let's check for result, we should have box available, box ubuntu/trusty64 and xrv64 should be displayed:  
+Let's check for result, we should have box available, box ubuntu/trusty64 and xrv should be displayed:
 
-![Box validation](https://cisco.box.com/shared/static/rwa6hxojdjcwu1ln8h0zu5oq6ij30def.png)
-![Box validation](https://xrdocs.github.io/xrdocs-images/assets/images/xr_ansible_01_box_list-Copy.png)
+![Box validation](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xr-ansible-tutorial/xr_ansible_01_box_list.png)
 
-Vagrantfile with 2 Vagrant boxes should be like:
+Vagrantfile contain 2 Vagrant boxes and looks like:
 
 ```
 Vagrant.configure(2) do |config|
@@ -40,88 +62,73 @@ Vagrant.configure(2) do |config|
   config.vm.define "ubuntu" do |ubuntu|
     ubuntu.vm.box = "ubuntu/trusty64"
     ubuntu.vm.network :private_network, virtualbox__intnet: "link1", ip: "10.1.1.10"
+    ubuntu.vm.provision :shell, path: "ubuntu.sh", privileged: false
   end
 
   config.vm.define "xr" do |xr|
     xr.vm.box = "xrv64"
     xr.vm.network :private_network, virtualbox__intnet: "link1", ip: "10.1.1.20"
   end
-
+   
 end
 
 ```
 
+Now are ready to boot up boxes:
 
-Next step to create Vagrantfile and boot up boxes:
+```
+mkorshun@MKORSHUN-2JPYH MINGW64 ~/Documents/workCisco/tutorial
+$ ls
+ubuntu.sh*  Vagrantfile  xr-config
 
 mkorshun@MKORSHUN-2JPYH MINGW64 ~/Documents/workCisco/tutorial
 $ vagrant up
-
+```
 
 
 ### Ubuntu box pre-configuration
-
 To access Ubuntu box just issue the command (no password required):
 ```
-vagrant ssh
+vagrant ssh ubuntu
 ```
-
-
-Install Ansible and all required packages for it. 
-
+Ubuntu is already configured via file "ubuntu.sh".
+The public key is generated for usage in further passwordless authorization. 
+Let's review the content of configuration file "ubuntu.sh". First four lines responsible for downloading required packages for Ansible and updating the system. 
 ```
-sudo apt-get install python-setuptools python-dev build-essential git libssl-dev libffi-dev
-sudo easy_install pip sshpass
+sudo apt-get update
+sudo apt-get install -y python-setuptools python-dev build-essential git libssl-dev libffi-dev sshpass
+sudo easy_install pip 
 wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python
-
-git clone http://gitlab.cisco.com/aermongk/iosxr-ansible.git
+```
+Now we are ready to download Ansible itself and IOXR-Ansible repo. 
+```
+git clone -b vagrant http://gitlab.cisco.com/mkorshun/iosxr-ansible.git
 git clone git://github.com/ansible/ansible.git --recursive
+```
+All files are downloaded and ready for installation. Variables from "ansible_env" should be applied in the system.
+
+```
 cd ansible/ && sudo python setup.py install
-```
-
-Create key to access XR in future:   
+echo "source /home/vagrant/iosxr-ansible/remote/ansible_env" >> /home/vagrant/.profile
 
 ```
-vagrant@vagrant-ubuntu-trusty-64:~$ ssh-keygen -t rsa
-Generating public/private rsa key pair.
-Enter file in which to save the key (/home/vagrant/.ssh/id_rsa):
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-.our identification has been saved in
-.pub.public key has been saved in
-The key fingerprint is:
-4e:a5:24:de:e1:51:7c:85:78:a1:65:b1:08:17:e3:be vagrant@vagrant-ubuntu-trusty-64
-The key's randomart image is:
-+--[ RSA 2048]----+
-|        ..=o==.  |
-|         =o*+.   |
-|      . + =o.    |
-|     . = *       |
-|      . S .      |
-|       o   .     |
-|        . E      |
-|                 |
-|                 |
-+-----------------+
-vagrant@vagrant-ubuntu-trusty-64:~$ 
-vagrant@vagrant-ubuntu-trusty-64:~$ cat ~/.ssh/id_rsa.pub
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfbpi4N3Lcl5i9Y8gd/g4x05IvnIfoPJkhdmGBW2HMFwqWgJQkJF1BM8SuukWeG8+Su4g0Un5tU4/nvbAcqBDR7wFEmB7z7k8VQrXZUxeB4Lc1jEwdDLbxxGOUitLQO+IXlHFJVpkp9Ps6tT82xopaSOQFXKDq0vYXdeEMD/k3NG++0u5pOsJu+kXLIULy1Ix6qvcFDRKbqfT14fU/K7vBYz8gP8Cl+sql9ySm7aOSb0liCBx46/SueBX6uadnMgecVBc1GyvmEX5PwBppUr3Cpby2yOf69iX4NnNcWTTrPY7o7LWuXPNiAgbSAS3R7jVBPyTltB9zCbGq8We5UuVX vagrant@vagrant-ubuntu-trusty-64
-vagrant@vagrant-ubuntu-trusty-64:~$ 
+Last section responsible for generating key for paswordless authorization and generating base 64 version of it:
 ```
+ssh-keygen -t rsa -f /home/vagrant/.ssh/id_rsa -q -P ""
+cut -d" " -f2 ~/.ssh/id_rsa.pub | base64 -d > ~/.ssh/id_rsa_pub.b64
+```
+{: .notice--info}
 
 
 
-
-### XR box pre-configuration
+### IOS-XRv box pre-configuration
 
 To access XR Linux Shell: 
-
-``` 
+```
 vagrant ssh xr
 ```
 
-To access XR console it takes one additional step to figure out port (credentials for ssh: vagrant/vagrant):  
-
+To access XR console it takes one additional step to figure out port (credentials for ssh: vagrant/vagrant):
 ```
 mkorshun@MKORSHUN-2JPYH MINGW64 ~/Documents/workCisco/tutorial
 $ vagrant port xr
@@ -136,10 +143,11 @@ vagrant@localhost's password:
 RP/0/RP0/CPU0:ios#
 ```
 
-Now let's  configure IP address at XR box. Issue the commant at XR CLI.   
+Now let's configure an IP address on the IOS-XRv instance. Issue the following command on the XR cli:
 
 ```
 conf t
+hostname xr
 interface GigabitEthernet0/0/0/0
  ipv4 address 10.1.1.20 255.255.255.0
  no shutdown
@@ -148,33 +156,82 @@ commit
 end
 ```
 
-Finally, let's check connectivity between boxes:   
-
+Checking connectivity between boxes:
 ```
-RP/0/RP0/CPU0:ios#ping 10.1.1.20
+RP/0/RP0/CPU0:ios#ping 10.1.1.10
 Mon May  9 08:36:33.071 UTC
 Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 10.1.1.20, timeout is 2 seconds:
+Sending 5, 100-byte ICMP Echos to 10.1.1.10, timeout is 2 seconds:
 !!!!!
 Success rate is 100 percent (5/5), round-trip min/avg/max = 1/5/20 ms
 RP/0/RP0/CPU0:ios#
 ```
 
-Let's copy public part of key from Ubuntu box and allow access without password. For IOS-XR image 6.1.x commands below:   
+### Configure Passwordless Access into XR Linux shell
+Let's copy public part of key from **Ubuntu** box and allow access without password. At first we should connect to Ubuntu and copy file to XR via SCP:
+```
+vagrant ssh ubuntu
+scp -P 57722 /home/vagrant/.ssh/id_rsa.pub  vagrant@<XR's interface address>:/home/vagrant/id_rsa_ubuntu.pub
 
 ```
-vagrant port
 
-scp -P <port used for XR(guest) port 57722> /path/to/host/public_key/id_rsa.pub vagrant@localhost:/home/vagrant/
-
+Next step to apply copied key inside XR:
+```
 vagrant ssh xr
-
-cat /home/vagrant/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys
+cat /home/vagrant/id_rsa_ubuntu.pub >> /home/vagrant/.ssh/authorized_keys
 ```
 
+### Configure Passwordless Access into XR CLI
+If we want paswordless SSH from Ubuntu to XR CLI, issue the following commands on **XR CLI**. First command using scp to copy public part of key in base 64 encoding to XR. When we have the key locally, we should import it to start passwordless authorization.
+```
+scp vagrant@10.1.1.10:/home/vagrant/.ssh/id_rsa_pub.b64 /disk0:/id_rsa_pub.b64
+
+crypto key import authentication rsa disk0:/id_rsa_pub.b64
+```
+
+File id_rsa_pub.b64 was created by provisioning script "Ubuntu.sh", during Vagrant provisioning.
+
+## Using Ansible Playbooks
+
+### Ansible Pre-requisites
+
+At Ubuntu box let's configure Ansible prerequisites. 
+We need to configure 2 files.
+1. File "ansible_hosts". It contains the ip address of the XR instance.
+We also specify a user to connect to the machine: "ansible_ssh_user=vagrant"
+2. File "ansible_env", we are setting up the environment for Ansible.
+
+We will not care about [YDK](https://github.com/CiscoDevNet/ydk-py-samples) for now, it's topic for another tutorial. Note, that files ansible_hosts and ansible_env preconfigured for our needs. 
 
 
+```
+cd iosxr-ansible/
+cd remote/
 
-## Ansible Part
+vagrant@vagrant-ubuntu-trusty-64:~/iosxr-ansible/remote$ cat ansible_hosts
+[ss-xr]
+10.1.1.20 ansible_ssh_user=vagrant
 
-At first we need to set up environment and hosts
+vagrant@vagrant-ubuntu-trusty-64:~/iosxr-ansible/remote$ cat ansible_env
+export BASEDIR=/home/vagrant
+export IOSXRDIR=$BASEDIR/iosxr-ansible
+export ANSIBLE_HOME=$BASEDIR/ansible
+export ANSIBLE_INVENTORY=$IOSXRDIR/remote/ansible_hosts
+export ANSIBLE_LIBRARY=$IOSXRDIR/remote/library
+export ANSIBLE_CONFIG=$IOSXRDIR/remote/ansible_cfg
+export YDK_DIR=$BASEDIR/ydk/ydk-py
+export PYTHONPATH=$YDK_DIR
+
+```
+
+### Running Playbooks
+
+```
+cd ~/iosxr-ansible/remote/
+ansible-playbook samples/iosxr_get_facts.yml 
+ansible-playbook iosxr_cli.yml -e 'cmd="show interface brief"' 
+```
+
+Samples folder contain various playbooks, files started with "show_" using iosxr_cli playbook and passing cmd to XR as parameter. To run playbook as "vagrant" user, playbook should contain string: "become: yes"
+Feel free to play with any playbook!
+{: .notice--success}
