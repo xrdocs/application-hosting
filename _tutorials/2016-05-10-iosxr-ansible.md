@@ -132,7 +132,8 @@ cut -d" " -f2 ~/.ssh/id_rsa.pub | base64 -d > ~/.ssh/id_rsa_pub.b64
 
 ### IOS-XRv box pre-configuration
 
-To access XR Linux Shell: 
+To access XR Linux Shell:   
+
 ```
 vagrant ssh xr
 ```
@@ -153,7 +154,7 @@ vagrant@localhost's password:
 RP/0/RP0/CPU0:ios#
 ```
 
-Now let's configure an IP address on the IOS-XRv instance. Issue the following command on the XR cli:
+Now, let's configure an IP address on the IOS-XRv instance. Issue the following command on the XR cli:
 
 ```
 conf t
@@ -179,14 +180,15 @@ RP/0/RP0/CPU0:ios#
 ```
 
 ### Configure Passwordless Access into XR Linux shell
-Let's copy public part of key from **Ubuntu** box and allow access without password. At first we should connect to Ubuntu and copy file to XR via SCP:
+Let's copy public part of key from **Ubuntu** box and allow access without password. 
+First,  connect to the Ubuntu instance and copy file to XR via SCP:
 
 ```
 vagrant ssh ubuntu
-scp -P 57722 /home/vagrant/.ssh/id_rsa.pub  vagrant@<XR's interface address>:/home/vagrant/id_rsa_ubuntu.pub
+scp -P 57722 /home/vagrant/.ssh/id_rsa.pub  vagrant@10.1.1.20:/home/vagrant/id_rsa_ubuntu.pub
 ```
 
-Next step to apply copied key inside XR:
+Now add the copied keys to authorized_keys in XR linux
 
 ```
 vagrant ssh xr
@@ -194,8 +196,13 @@ cat /home/vagrant/id_rsa_ubuntu.pub >> /home/vagrant/.ssh/authorized_keys
 ```
 
 ### Configure Passwordless Access into XR CLI
-If we want paswordless SSH from Ubuntu to XR CLI, issue the following commands on **XR CLI**. 
-First command using scp to copy public part of key in base 64 encoding to XR. When we have the key locally, we should import it to start passwordless authorization.
+If we want passwordless SSH from Ubuntu to XR CLI, issue the following commands.
+
+Bear in mind, These commands must be executed in XR CLI. {: .notice--warning}
+
+The first command uses scp to copy public of key (base 64 encoded) to XR.   
+Once we have the key locally, we import it using XR CLI's ``crypto key import`` command.  
+
 
 ```
 scp vagrant@10.1.1.10:/home/vagrant/.ssh/id_rsa_pub.b64 /disk0:/id_rsa_pub.b64
@@ -205,19 +212,20 @@ crypto key import authentication rsa disk0:/id_rsa_pub.b64
 
 File "id_rsa_pub.b64" was created by provisioning script "Ubuntu.sh", during Vagrant provisioning.
 
+
 ## Using Ansible Playbooks
 
 ### Ansible Pre-requisites
 
-At Ubuntu box let's configure Ansible prerequisites. 
-We need to configure 2 files.
+On the Ubuntu box let's configure Ansible prerequisites. 
+We need to configure 2 files:
 
-1. File "ansible_hosts". It contains the ip address of the XR instance.
+1. File "ansible_hosts":  It contains the ip address of the XR instance.
 We also specify a user to connect to the machine: "ansible_ssh_user=vagrant"
 
-2. File "ansible_env", we are setting up the environment for Ansible.
+2. File "ansible_env": Used to set up the environment for Ansible.
 
-We will not care about [YDK](https://github.com/CiscoDevNet/ydk-py-samples) for now, it's topic for another tutorial. Note, that files ansible_hosts and ansible_env preconfigured for our needs. 
+We do not delve into [YDK](https://github.com/CiscoDevNet/ydk-py-samples) for now, it's a topic for another tutorial. Note, that files ansible_hosts and ansible_env are preconfigured for our needs. 
 
 
 ```
