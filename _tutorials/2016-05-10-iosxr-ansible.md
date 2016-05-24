@@ -203,7 +203,8 @@ cat /home/vagrant/id_rsa_ubuntu.pub >> /home/vagrant/.ssh/authorized_keys
 ### Configure Passwordless Access into XR CLI
 If we want passwordless SSH from Ubuntu to XR CLI, issue the following commands.
 
-Bear in mind, These commands must be executed in XR CLI. {: .notice--warning}
+Bear in mind, These commands must be executed in XR CLI. 
+{: .notice--warning}
 
 The first command uses scp to copy public of key (base 64 encoded) to XR.   
 Once we have the key locally, we import it using XR CLI's ``crypto key import`` command.  
