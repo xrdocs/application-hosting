@@ -51,10 +51,10 @@ social:
 
 # Analytics
 analytics:
-  provider               : # false (default), "google", "google-universal", "custom"
+  provider               : "google-universal" # false (default), "google", "google-universal", "custom"
   google:
-    tracking_id          :
-
+    tracking_id          : "UA-78256516-1"
+    
 # Google AdSense
 google_ad_client         :
 google_ad_slot           :
@@ -64,9 +64,9 @@ google_ad_slot           :
 author:
   name             : "Cisco Web Team"
   avatar           : "app-hosting-team.jpg"
-  bio              : "A Team of coders and network engineers determined to build the best network operating system for Web-Scale Service Providers" 
+  bio              : "A Team of coders and network engineers determined to build the best network operating system for Web-Scale Service Providers"
   location         : "San jose, California"
-  email            : 
+  email            :
   uri              :
   bitbucket        :
   codepen          :
@@ -85,7 +85,7 @@ author:
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          :  
+  twitter          :
   vine             :
   weibo            :
   xing             :
@@ -320,19 +320,19 @@ prose:
       - name: "title"
         field:
             element: "text"
-            label: "Title"   
+            label: "Title"
             value: ""
       - name: "permalink"
-        field: 
+        field:
             element: "text"
             label: "Relative URL"
             help: "provide a url relative to site url, for eg. /blogs/blog1"
       - name: "author"
-        field: 
+        field:
             element: "text"
             label: "Author"
       - name: "excerpt"
-        field: 
+        field:
             element: "text"
             help: "Brief description of the blog"
             label: "Excerpt"
@@ -355,21 +355,21 @@ prose:
         field:
             label: "Published"
             element: "checkbox"
-            value: false   
+            value: false
       - name: "date"
         field:
             element: "text"
             label: "Date"
             value: "CURRENT_DATETIME"
-    
+
     _techdocs:
       - name: "permalink"
-        field: 
+        field:
             element: "text"
             label: "Relative URL"
             help: "provide a url relative to site url, for eg. /techdocs/doc1/home"
       - name: "excerpt"
-        field: 
+        field:
             element: "text"
             help: "Brief description of the Technical Document"
             label: "Excerpt"
@@ -388,7 +388,7 @@ prose:
              - name: "Vagrant"
                value: "vagrant"
              - name: "IOS-XR"
-               value: "iosxr"  
+               value: "iosxr"
              - name: "Cisco"
                value: "cisco"
              - name: "Linux"
@@ -402,25 +402,25 @@ prose:
         field:
             label: "Published"
             element: "checkbox"
-            value: false   
+            value: false
 
-    _tutorials: 
+    _tutorials:
       - name: "title"
         field:
             element: "text"
-            label: "Title"   
+            label: "Title"
             value: ""
       - name: "permalink"
-        field: 
+        field:
             element: "text"
             label: "Relative URL"
             help: "provide a url relative to site url, for eg. /tutorials/tutorial1"
       - name: "author"
-        field: 
+        field:
             element: "text"
             label: "Author"
       - name: "excerpt"
-        field: 
+        field:
             element: "text"
             help: "Brief description of the tutorial"
             label: "Excerpt"
@@ -439,7 +439,7 @@ prose:
              - name: "Vagrant"
                value: "vagrant"
              - name: "IOS-XR"
-               value: "iosxr"  
+               value: "iosxr"
              - name: "Cisco"
                value: "cisco"
              - name: "Linux"
@@ -449,10 +449,10 @@ prose:
             element: "text"
             label: "Date"
             value: "CURRENT_DATETIME"
-        
 
 
-  
+
+
 sass:
   sass_dir: _sass
   style: compressed
