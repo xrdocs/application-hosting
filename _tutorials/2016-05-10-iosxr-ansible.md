@@ -27,7 +27,7 @@ So instead of setting up Ansible directly on the User's Desktop/Host, we simply 
 - Computer with 4-5GB free RAM;
 - Vagrant;
 - Ansible;
-- [IOS-XRv image](http://engci-maven-master.cisco.com/artifactory/appdevci-snapshot/);
+- [IOS-XRv Vagrant Box](http://engci-maven-master.cisco.com/artifactory/appdevci-snapshot/);
 - [Vagrantfile and scripts for provisioning](https://github.com/Maikor/IOSXR-Ansible-tutorial)
 
 ### Vagrant pre-setup
