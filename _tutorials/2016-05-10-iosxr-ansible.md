@@ -209,7 +209,7 @@ Bear in mind, These commands must be executed in XR CLI.
 The first command uses scp to copy the public key (base 64 encoded) to XR.   
 Once we have the key locally, we import it using XR CLI's ``crypto key import`` command.  
 
-Execute in XR CLI
+**Execute in XR CLI**
 {: .text-center}
 {: .notice--info}
 ```
