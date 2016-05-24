@@ -125,7 +125,7 @@ cd ansible/ && sudo python setup.py install
 echo "source /home/vagrant/iosxr-ansible/remote/ansible_env" >> /home/vagrant/.profile
 ```
 >
-The last section is responsible for generating a public key for paswordless authorization and a base 64 version of it (for XR CLI):
+The last section is responsible for generating a public key for paswordless authorization (for XR linux) and a base 64 version of it (for XR CLI):
 >
 ```
 ssh-keygen -t rsa -f /home/vagrant/.ssh/id_rsa -q -P ""
