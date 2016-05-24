@@ -266,6 +266,15 @@ ansible-playbook samples/iosxr_get_facts.yml
 ansible-playbook iosxr_cli.yml -e 'cmd="show interface brief"' 
 ```
 
+Usual playbook will look like:
+![Playbook content](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xr-ansible-tutorial/ansible_tutorial_cat_playbook.png){: .align-center}
+{: .notice}
+
+Output from our XR instance:
+
+![Playbook result](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xr-ansible-tutorial/ansible_tutorial_run_playbook.png){: .align-center}
+{: .notice}
+
 Samples folder contains various playbooks, files started with "show_" using iosxr_cli playbook and passing cmd to XR as parameter. To run playbook as "vagrant" user, playbook should contain string: "become: yes"
 Feel free to play with any playbook!
 {: .notice--success}
