@@ -108,8 +108,6 @@ sudo apt-get install -y python-setuptools python-dev build-essential git libssl-
 sudo easy_install pip 
 wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python
 ```
-{: .notice--info}
-
 >
 Now we are ready to download Ansible itself and IOXR-Ansible repo.
 >
@@ -117,8 +115,6 @@ Now we are ready to download Ansible itself and IOXR-Ansible repo.
 git clone -b vagrant http://gitlab.cisco.com/mkorshun/iosxr-ansible.git
 git clone git://github.com/ansible/ansible.git --recursive
 ```
-{: .notice--info}
-
 >
 All files are downloaded and ready for installation. Variables from "ansible_env" should be applied in the system.
 >
