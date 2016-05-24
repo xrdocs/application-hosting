@@ -209,8 +209,8 @@ Bear in mind, These commands must be executed in XR CLI.
 The first command uses scp to copy the public key (base 64 encoded) to XR.   
 Once we have the key locally, we import it using XR CLI's ``crypto key import`` command.  
 
-<center>Execute in XR CLI</center>
-{: .notice--info}
+Execute in XR CLI
+{: .text-center}{: .notice--info}
 ```
 scp vagrant@10.1.1.10:/home/vagrant/.ssh/id_rsa_pub.b64 /disk0:/id_rsa_pub.b64
 
