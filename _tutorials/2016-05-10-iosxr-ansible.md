@@ -256,7 +256,8 @@ export PYTHONPATH=$YDK_DIR
 
 ```
 
-### Running Playbooks
+### Running Playbooks  
+
 
 ```
 cd ~/iosxr-ansible/remote/  
