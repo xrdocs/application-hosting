@@ -266,7 +266,8 @@ ansible-playbook samples/iosxr_get_facts.yml
 ansible-playbook iosxr_cli.yml -e 'cmd="show interface brief"' 
 ```
 
-Usual playbook will look like:
+Usual playbook will look like:  
+
 ![Playbook content](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xr-ansible-tutorial/ansible_tutorial_cat_playbook.png){: .align-center}
 {: .notice}
 
