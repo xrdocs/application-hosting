@@ -13,7 +13,7 @@ tags:
   - Ansible
 ---
 
-{% include toc icon="table" title="Ansible with Vagrant IOS-XR" %}
+{% include toc icon="table" title="IOS-XR: Ansible and Vagrant" %}
 
 
 
