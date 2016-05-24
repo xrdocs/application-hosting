@@ -189,7 +189,8 @@ Let's copy public part of key from **Ubuntu** box and allow access without passw
 First,  connect to the Ubuntu instance and copy file to XR via SCP:
 
 ```
-vagrant ssh ubuntu
+vagrant ssh ubuntu  
+
 scp -P 57722 /home/vagrant/.ssh/id_rsa.pub  vagrant@10.1.1.20:/home/vagrant/id_rsa_ubuntu.pub
 ```
 
