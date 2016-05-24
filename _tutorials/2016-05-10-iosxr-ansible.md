@@ -257,8 +257,10 @@ export PYTHONPATH=$YDK_DIR
 ### Running Playbooks
 
 ```
-cd ~/iosxr-ansible/remote/
-ansible-playbook samples/iosxr_get_facts.yml 
+cd ~/iosxr-ansible/remote/  
+
+ansible-playbook samples/iosxr_get_facts.yml   
+
 ansible-playbook iosxr_cli.yml -e 'cmd="show interface brief"' 
 ```
 
