@@ -231,7 +231,7 @@ We also specify a user to connect to the machine: "ansible_ssh_user=vagrant"
 
 2. File "ansible_env": Used to set up the environment for Ansible.
 
-We do not delve into [YDK](https://github.com/CiscoDevNet/ydk-py-samples) for now, it's a topic for another tutorial. Note that files ansible_hosts and ansible_env are preconfigured for our needs. 
+We do not delve into [YDK](https://github.com/CiscoDevNet/ydk-py-samples) for now, it's a topic for another tutorial. Note that the files ansible_hosts and ansible_env are preconfigured for our needs. 
 
 
 ```
