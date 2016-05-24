@@ -103,6 +103,7 @@ The Ubuntu instance is already configured via file ["ubuntu.sh"](https://github.
 >
 Let's review the content of the script ["ubuntu.sh"](https://github.com/Maikor/IOSXR-Ansible-tutorial/blob/master/ubuntu.sh)  
 The first four lines are responsible for downloading required packages for Ansible and updating the system. 
+>
 ```
 sudo apt-get update
 sudo apt-get install -y python-setuptools python-dev build-essential git libssl-dev libffi-dev sshpass
@@ -112,18 +113,21 @@ wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python
 >
 Next, the script clones the  Ansible and the  IOSXR-Ansible repos:
 {: .notice--info}
+>
 ```
 git clone -b vagrant http://gitlab.cisco.com/mkorshun/iosxr-ansible.git
 git clone git://github.com/ansible/ansible.git --recursive
 ```
 >
 It then installs Ansible and applies the variables from "ansible_env" to the system.
+>
 ```
 cd ansible/ && sudo python setup.py install
 echo "source /home/vagrant/iosxr-ansible/remote/ansible_env" >> /home/vagrant/.profile
 ```
 >
 The last section is responsible for generating a public key for paswordless authorization (for XR linux) and a base 64 version of it (for XR CLI):
+>
 ```
 ssh-keygen -t rsa -f /home/vagrant/.ssh/id_rsa -q -P ""
 cut -d" " -f2 ~/.ssh/id_rsa.pub | base64 -d > ~/.ssh/id_rsa_pub.b64
