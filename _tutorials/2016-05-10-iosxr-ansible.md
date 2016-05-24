@@ -110,28 +110,30 @@ wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python
 ```
 {: .notice--info}
 
-Now we are ready to download Ansible itself and IOXR-Ansible repo. {: .notice--info}
-
+>
+Now we are ready to download Ansible itself and IOXR-Ansible repo.
+>
 ```
 git clone -b vagrant http://gitlab.cisco.com/mkorshun/iosxr-ansible.git
 git clone git://github.com/ansible/ansible.git --recursive
 ```
 {: .notice--info}
 
+>
 All files are downloaded and ready for installation. Variables from "ansible_env" should be applied in the system.
-
+>
 ```
 cd ansible/ && sudo python setup.py install
 echo "source /home/vagrant/iosxr-ansible/remote/ansible_env" >> /home/vagrant/.profile
 ```
-
+>
 Last section responsible for generating key for paswordless authorization and generating base 64 version of it:
-
+>
 ```
 ssh-keygen -t rsa -f /home/vagrant/.ssh/id_rsa -q -P ""
 cut -d" " -f2 ~/.ssh/id_rsa.pub | base64 -d > ~/.ssh/id_rsa_pub.b64
 ```  
-
+{: .notice--info}
 
 
 ### IOS-XRv box pre-configuration
