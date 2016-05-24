@@ -159,7 +159,7 @@ vagrant@localhost's password:
 RP/0/RP0/CPU0:ios#
 ```
 
-Now, let's configure an IP address on the IOS-XRv instance. Issue the following command on the XR cli:
+Now, let's configure an IP address on the IOS-XRv instance. Issue the following command on XR cli:
 
 ```
 conf t
