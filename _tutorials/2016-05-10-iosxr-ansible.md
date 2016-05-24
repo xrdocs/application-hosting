@@ -95,7 +95,7 @@ vagrant ssh ubuntu
 ```
 
 Ubuntu is already configured via file "ubuntu.sh". No action required in this section!
-{: .notice--info}
+
 
 
 
@@ -129,7 +129,7 @@ Last section responsible for generating key for paswordless authorization and ge
 ssh-keygen -t rsa -f /home/vagrant/.ssh/id_rsa -q -P ""
 cut -d" " -f2 ~/.ssh/id_rsa.pub | base64 -d > ~/.ssh/id_rsa_pub.b64
 ```
-
+{: .notice--info}
 
 ### IOS-XRv box pre-configuration
 
