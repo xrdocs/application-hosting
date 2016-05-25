@@ -1,8 +1,8 @@
 ---
 published: false
 date: "2016-05-22 13:49 -0700"
-title: Getting Started on XRv64
-permalink: "https://xrdocs.github.io/application-hosting/tutorials/xrv64-quickstart"
+title: "Getting Started on Vagrant IOS-XR"
+permalink: "/tutorials/iosxrv-vagrant-quickstart"
 author: Lisa Roach
 excerpt: "Getting started with Cisco's XRv64 Vagrant Instance."
 tags: 
