@@ -10,6 +10,7 @@ tags:
   - iosxr
   - cisco
   - XRv64
+position: hidden
 ---
 ### Quick Start Using XRv64 Box image
 Quick guide to get up and running with XRv64 and vagrant/Virtualbox.
