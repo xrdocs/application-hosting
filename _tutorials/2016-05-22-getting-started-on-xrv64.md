@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 date: "2016-05-22 13:49 -0700"
 title: "Getting Started on Vagrant IOS-XR"
 permalink: "/tutorials/iosxr-vagrant-quickstart"
