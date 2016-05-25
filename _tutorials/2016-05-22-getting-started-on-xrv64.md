@@ -2,7 +2,7 @@
 published: false
 date: "2016-05-22 13:49 -0700"
 title: "Getting Started on Vagrant IOS-XR"
-permalink: "/tutorials/iosxrv-vagrant-quickstart"
+permalink: "/tutorials/iosxr-vagrant-quickstart"
 author: Lisa Roach
 excerpt: "Getting started with Cisco's XRv64 Vagrant Instance."
 tags: 
