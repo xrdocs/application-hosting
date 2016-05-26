@@ -37,7 +37,7 @@ function filesize
 }
 </code>
 </pre>
-
+{: .highlight}
 
 #### Requirements:
 - [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/) installed on your laptop
