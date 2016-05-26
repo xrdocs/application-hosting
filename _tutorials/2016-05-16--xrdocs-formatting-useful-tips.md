@@ -72,7 +72,9 @@ Use this exact set up:
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
+
 Your code here
+
 </code>
 </pre>
 </div>
