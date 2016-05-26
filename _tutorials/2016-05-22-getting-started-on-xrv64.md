@@ -15,7 +15,7 @@ position: hidden
 ### Quick Start Using XRv64 Box image
 Quick guide to get up and running with XRv64 and vagrant/Virtualbox.
 
-<div>
+<div class="highlighter-rouge">
 <pre class="highlight">
 <code>
 function filesize
@@ -39,8 +39,6 @@ function filesize
 </code>
 </pre>
 </div>
-{: .highlighter-rouge}
-
 
 
 
