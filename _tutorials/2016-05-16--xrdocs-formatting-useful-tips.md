@@ -86,7 +86,7 @@ I could now easily use the `<b>` (bold) tag or `<mark>` (highlight) tags from ht
 
 For example, if I use:
 
-```
+```html
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
