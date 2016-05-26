@@ -14,7 +14,14 @@ position: hidden
 ---
 ### Quick Start Using XRv64 Box image
 Quick guide to get up and running with XRv64 and vagrant/Virtualbox.
- 
+
+
+<pre><code>
+print s
+</code></pre>
+
+
+
 #### Requirements:
 - [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/) installed on your laptop
 
