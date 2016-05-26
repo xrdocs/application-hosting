@@ -38,7 +38,7 @@ function filesize
 }
 </code>
 </pre>
-{: .highlight}
+{: .notice}
 </div>
 {: .highlighter-rouge}
 
