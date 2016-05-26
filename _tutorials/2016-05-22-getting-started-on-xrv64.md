@@ -21,7 +21,7 @@ Quick guide to get up and running with XRv64 and vagrant/Virtualbox.
 function filesize
 {
     local file=$1
-    <b>size=`stat -c %s $file 2>/dev/null` # linux</b>
+    <mark>size=`stat -c %s $file 2>/dev/null` # linux</mark>
     if [[ $? -eq 0 ]]; then
         echo $size
         return 0
