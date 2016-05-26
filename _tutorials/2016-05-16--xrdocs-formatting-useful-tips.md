@@ -82,7 +82,7 @@ Your code here
 
 The advantage?
 
-I could now easily use the `<b>` (bold) tag or `<mark>` (highlight) tags from html to make my code content stand out.
+I could now easily use the `<b>` (bold) tag or `<mark>` (highlight) tag or the `<span>` (custom color highlight) tag from html to make my code content stand out.
 
 For example, if I use:
 
