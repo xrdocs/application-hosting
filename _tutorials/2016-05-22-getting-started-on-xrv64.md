@@ -15,8 +15,8 @@ position: hidden
 ### Quick Start Using XRv64 Box image
 Quick guide to get up and running with XRv64 and vagrant/Virtualbox.
 
+<div>
 <pre>
-<code>
 function filesize
 {
     local file=$1
@@ -35,8 +35,8 @@ function filesize
     echo 0
     return -1
 }
-</code>
 </pre>
+</div>
 {: .highlighter-rouge}
 
 
