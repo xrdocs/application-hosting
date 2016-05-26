@@ -68,7 +68,7 @@ Your code here
 
 Use this exact set up:
 
-```
+```html
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
