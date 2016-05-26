@@ -35,7 +35,7 @@ function filesize
     return -1
 }
 </pre>
-
+{: .notice}
 
 #### Requirements:
 - [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/) installed on your laptop
