@@ -16,9 +16,9 @@ position: hidden
 Quick guide to get up and running with XRv64 and vagrant/Virtualbox.
 
 
-<pre><code>
+<code>
 print s
-</code></pre>
+</code>
 
 
 
