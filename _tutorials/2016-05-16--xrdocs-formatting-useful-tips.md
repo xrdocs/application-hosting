@@ -115,8 +115,6 @@ function filesize
 
 Then the result is:
 
-You can get the color code for your favorite highlight color from here: [Color Codes](http://www.computerhope.com/htmcolor.htm)
-{: .notice--info}
 
 <div class="highlighter-rouge">
 <pre class="highlight">
@@ -142,6 +140,9 @@ function filesize
 </code>
 </pre>
 </div>
+
+**P.S.** You can get the color code for your favorite highlight color from here: [Color Codes](http://www.computerhope.com/htmcolor.htm)
+{: .notice--info}
 
 ## Text Alignment
 
