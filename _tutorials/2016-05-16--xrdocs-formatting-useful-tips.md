@@ -113,7 +113,7 @@ function filesize
 </div>
 ```
 
-Then the result is
+Then the result is:
 
 <div class="highlighter-rouge">
 <pre class="highlight">
