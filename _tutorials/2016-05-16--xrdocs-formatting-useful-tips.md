@@ -127,7 +127,7 @@ function filesize
         return 0
     fi
 
-    eval $(stat -s $file) # macos
+    <b>eval $(stat -s $file) # macos</b>
     if [[ $? -eq 0 ]]; then
         echo $st_size
         return 0
