@@ -17,7 +17,25 @@ Quick guide to get up and running with XRv64 and vagrant/Virtualbox.
 
 
 <code>
-print s
+function filesize
+{
+    local file=$1
+    size=`stat -c %s $file 2>/dev/null` # linux
+    if [[ $? -eq 0 ]]; then
+        echo $size
+        return 0
+    fi
+
+    eval $(stat -s $file) # macos
+    if [[ $? -eq 0 ]]; then
+        echo $st_size
+        return 0
+    fi
+
+    echo 0
+    return -1
+}
+
 </code>
 
 
