@@ -80,6 +80,66 @@ Your code here
 </div>
 ```
 
+The advantage?
+
+I could now easily use the `<b>` (bold) tag or `<mark>` (highlight) tags from html to make my code content stand out.
+
+For example, if I use:
+
+```
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+function filesize
+{
+    local file=$1
+    <mark>size=`stat -c %s $file 2>/dev/null` # linux</mark>
+    if [[ $? -eq 0 ]]; then
+        echo $size
+        return 0
+    fi
+
+    <b>eval $(stat -s $file) # macos </b>
+    if [[ $? -eq 0 ]]; then
+        echo $st_size
+        return 0
+    fi
+
+    echo 0
+    return -1
+}
+</code>
+</pre>
+</div>
+```
+
+Then the result is
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+function filesize
+{
+    local file=$1
+    <mark>size=`stat -c %s $file 2>/dev/null` # linux</mark>
+    if [[ $? -eq 0 ]]; then
+        echo $size
+        return 0
+    fi
+
+    eval $(stat -s $file) # macos
+    if [[ $? -eq 0 ]]; then
+        echo $st_size
+        return 0
+    fi
+
+    echo 0
+    return -1
+}
+</code>
+</pre>
+</div>
+
 ## Text Alignment
 
 Align text blocks with the following classes.
