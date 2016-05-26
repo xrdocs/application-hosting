@@ -105,7 +105,7 @@ function filesize
         return 0
     fi
 
-<span style="background-color: #F9966B">echo 0</span>
+<span style="background-color: #E8ADAA">echo 0</span>
     return -1
 }
 </code>
@@ -133,7 +133,7 @@ function filesize
         return 0
     fi
 
-<span style="background-color: #F9966B">echo 0</span>
+<span style="background-color: #E8ADAA">echo 0</span>
     return -1
 }
 </code>
