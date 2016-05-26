@@ -15,7 +15,7 @@ position: hidden
 ### Quick Start Using XRv64 Box image
 Quick guide to get up and running with XRv64 and vagrant/Virtualbox.
 
-
+<pre>
 <code>
 function filesize
 {
@@ -36,7 +36,7 @@ function filesize
     return -1
 }
 </code>
-
+</pre>
 
 
 #### Requirements:
