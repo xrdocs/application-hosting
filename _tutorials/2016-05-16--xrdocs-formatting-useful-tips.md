@@ -49,6 +49,33 @@ at the end of a line and hit enter.
 Like this.
 ```
 
+## Formatting inside a code block!
+
+Sometimes you might want to highlight text inside a code block or to show it in a bold font. By default, markdown doesn't support it.
+But, here is a technique that can be used and it delivers great results:
+
+Instead of using:
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+```
+Your code here
+```
+</code>
+</pre>
+</div>
+
+Use this exact set up:
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+Your code here
+</code>
+</pre>
+</div>
+
 
 ## Text Alignment
 
