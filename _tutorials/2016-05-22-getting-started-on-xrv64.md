@@ -16,7 +16,7 @@ position: hidden
 Quick guide to get up and running with XRv64 and vagrant/Virtualbox.
 
 <div>
-<pre>
+<pre class="highlight">
 <code>
 function filesize
 {
@@ -38,7 +38,6 @@ function filesize
 }
 </code>
 </pre>
-{: .notice}
 </div>
 {: .highlighter-rouge}
 
