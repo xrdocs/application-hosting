@@ -10,6 +10,7 @@ tags:
   - iosxr
   - cisco
 layout: default
+sitemap: false
 ---
 
 <meta http-equiv="refresh" content="0; url={{ site.url }}/helpdocs/xrdocs-formatting-useful-tips">
