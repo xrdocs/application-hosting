@@ -1,6 +1,7 @@
 ---
 title: "Splash Page"
 layout: splash
+sitemap: false
 permalink: /splash-page/
 date: 2016-03-23T11:48:41-04:00
 header:
