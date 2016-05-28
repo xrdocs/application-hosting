@@ -11,7 +11,7 @@ tags:
 position: hidden
 ---
 
-<meta http-equiv="refresh" content="0; url="{{ site.url }}/helpdocs/xrdocs-how-to" />  
+<meta http-equiv="refresh" content="0; url={{ site.url }}/helpdocs/xrdocs-how-to">
 <link rel="canonical" href="{{ site.url }}/helpdocs/xrdocs-how-to" />
 
 {% include toc icon="table" title="@xrdocs How-To" %}
