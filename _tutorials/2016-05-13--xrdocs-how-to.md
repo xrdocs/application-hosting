@@ -10,7 +10,7 @@ tags:
   - cisco
 position: hidden
 layout: default
-sitemap: true
+sitemap: false
 ---
 
 <meta http-equiv="refresh" content="0; url={{ site.url }}/helpdocs/xrdocs-how-to">
