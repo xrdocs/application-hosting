@@ -11,8 +11,8 @@ tags:
 position: hidden
 ---
 
-<meta http-equiv="refresh" content="0; url=http://konradpodgorski.com/blog/2013/10/21/how-i-migrated-my-blog-from-wordpress-to-octopress/">
-<link rel="canonical" href="http://konradpodgorski.com/blog/2013/10/21/how-i-migrated-my-blog-from-wordpress-to-octopress/" />
+<meta http-equiv="refresh" content="0; url="{{ site.url }}/helpdocs/xrdocs-how-to" />  
+<link rel="canonical" href="{{ site.url }}/helpdocs/xrdocs-how-to" />
 
 {% include toc icon="table" title="@xrdocs How-To" %}
 
