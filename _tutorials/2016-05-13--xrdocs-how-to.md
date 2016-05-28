@@ -9,6 +9,7 @@ tags:
   - iosxr
   - cisco
 position: hidden
+layout: default
 ---
 
 <meta http-equiv="refresh" content="0; url={{ site.url }}/helpdocs/xrdocs-how-to">
