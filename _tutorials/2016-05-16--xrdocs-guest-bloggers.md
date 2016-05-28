@@ -10,6 +10,7 @@ tags:
   - cisco
 position: hidden
 layout: default
+sitemap: false
 ---
 <meta http-equiv="refresh" content="0; url={{ site.url }}/helpdocs/xrdocs-guest-bloggers">
 <link rel="canonical" href="{{ site.url }}/helpdocs/xrdocs-guest-bloggers" />
