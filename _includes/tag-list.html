@@ -1,7 +1,7 @@
 {% include base_path %}
 
-{% assign site.tags.path "/tags/" %}
-{% assign path_type "#" %}
+{% assign site.tags.path = "/tags/" %}
+{% assign path_type = "#" %}
 {% if page.tags[0] %}
   {% comment %}
     <!-- Sort alphabetically regardless of case e.g. a B c d E -->
