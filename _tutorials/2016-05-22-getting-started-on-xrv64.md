@@ -29,10 +29,19 @@ For a more detailed walkthrough of Vagrant with IOS-XR, along with examples of t
 
 
 ## Pre-requisites:
-- [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/) installed on your laptop
+* [Vagrant](https://www.vagrantup.com/downloads.html) for your Operating system
+* [Virtualbox](https://www.virtualbox.org/wiki/Downloads) installed on your laptop
 
-### Single Node:
 
+## Single Node Bringup
+
+### Download and Add the IOS-XRv vagrant box
+This can be achieved with a single command as follows:
+
+```
+vagrant box add --name xrv64 http://engci-maven-master.cisco.com/artifactory/simple/appdevci-snapshot/XRv64/latest/iosxrv-fullk9-x64.box --force
+
+```
 	vagrant init xrv64
   ![vagrant init xrv64](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_init.png)
    
