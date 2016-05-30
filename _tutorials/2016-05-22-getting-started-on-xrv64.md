@@ -22,8 +22,7 @@ This tutorial is meant to be a quick-start guide to get you up and running with 
 
 If you're unfamiliar with Vagrant as a tool for development, testing and design, then here's a quick look at why Vagrant is useful, directly from the folks at Hashicorp:
 
->
-<https://www.vagrantup.com/docs/why-vagrant/>
+><https://www.vagrantup.com/docs/why-vagrant/>
 
 For a more detailed walkthrough of Vagrant with IOS-XR, along with examples of topologies and configuration, take a look at the ["XR toolbox" series]({{ base_path }}/tags/#xr-toolbox)
 {: .notice--info}
