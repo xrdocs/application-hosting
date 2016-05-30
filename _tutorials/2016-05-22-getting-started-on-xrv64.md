@@ -12,41 +12,26 @@ tags:
   - XRv64
 position: hidden
 ---
-### Quick Start Using XRv64 Box image
-Quick guide to get up and running with XRv64 and vagrant/Virtualbox.
 
-<div class="highlighter-rouge">
-<pre class="highlight">
-<code>
-function filesize
-{
-    local file=$1
-    <mark>size=`stat -c %s $file 2>/dev/null` # linux</mark>
-    if [[ $? -eq 0 ]]; then
-        echo $size
-        return 0
-    fi
+{% include toc icon="table" title="@xrdocs How-To" %}
+{% include base_path %}
 
-    eval $(stat -s $file) # macos
-    if [[ $? -eq 0 ]]; then
-        echo $st_size
-        return 0
-    fi
+## Introduction
 
-    echo 0
-    return -1
-}
-</code>
-</pre>
-</div>
+This tutorial is meant to be a quick-start guide to get you up and running with an IOS-XRv Vagrant box.
+
+If you're unfamiliar with Vagrant as a tool for development, testing and design, then here's a quick look at why Vagrant is useful, directly from the folks at Hashicorp:
+
+>
+<https://www.vagrantup.com/docs/why-vagrant/>
+
+For a more detailed walkthrough of Vagrant with IOS-XR, along with examples of topologies and configuration, take a look at the ["Setting up the XR toolbox" series]({{ base_path }})
 
 
-
-
-#### Requirements:
+## Pre-requisites:
 - [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/) installed on your laptop
 
-#### Single Node:
+### Single Node:
 
 	vagrant init xrv64
   ![vagrant init xrv64](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_init.png)
