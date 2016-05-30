@@ -316,6 +316,7 @@ prose:
     - .jekyll-metadata
     - CHANGELOG.md
     - feed.xml
+    - README.md
   metadata:
     _blogs:
       - name: "title"
