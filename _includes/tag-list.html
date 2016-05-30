@@ -7,6 +7,8 @@
     {% assign path_type = nil %}
 {% endcase %}
 
+<p>{{ path_type }}</p>
+<p>{{ site.tags.path }}</p>
 {% if site.tags.path %}
   {% comment %}
     <!-- Sort alphabetically regardless of case e.g. a B c d E -->
