@@ -247,11 +247,12 @@ Assuming that the box (IOS-XRv) is already in the vagrant box list as shown in t
 
 ![Shell provisioner single node](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/shell_provisioner_single_node.png)
    
-   
+  
+Let's get into the XR CLI to check that it worked:   
+
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-Let's get into the XR CLI to check that it worked:
 
 AKSHSHAR-M-K0DS:single_node_bootstrap akshshar$<mark> vagrant port </mark>
 The forwarded ports for the machine are listed below. Please note that
@@ -266,13 +267,13 @@ vagrant@localhost's password:
 
 
 RP/0/RP0/CPU0:ios#
-RP/0/RP0/CPU0:ios#show  running-config grpc 
+RP/0/RP0/CPU0:ios#<mark>show  running-config grpc</mark>
 Tue May 31 16:59:44.581 UTC
 grpc
  port 57891
 !
 
-RP/0/RP0/CPU0:ios#show configuration commit changes last 1
+RP/0/RP0/CPU0:ios#<mark>show configuration commit changes last 1</mark>
 Tue May 31 17:02:45.770 UTC
 Building configuration...
 !! IOS XR Configuration version = 6.1.1.17I
