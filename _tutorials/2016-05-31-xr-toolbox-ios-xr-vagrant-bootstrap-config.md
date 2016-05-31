@@ -23,6 +23,7 @@ The [IOS-XR Vagrant Quick Start guide]({{ base_path }}/tutorials/iosxr-vagrant-q
 showcases how a user can get started with IOS-XR, running as a vagrant instance, either as a single node or in a multi-node topology.
 
 This tutorial will extend the quick-start guide to showcase how one can apply a node-specific configuration to an XR vagrant instance during boot-up itself.
+{: .notice--info}
 
 >
 Bear in mind that the IOS-XR vagrant box is published without a need for any custom plugins.
