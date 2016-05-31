@@ -44,7 +44,6 @@ The concept is simple: We'll use the Vagrant shell provisioner to apply a boostr
 All we need is a shell provisioner section in the Vagrantfile for each node:
 
 ```ruby 
-
  #Source a config file and apply it to XR
       
  config.vm.provision "file", source: "configs/rtr_config", destination: "/home/vagrant/rtr_config"
@@ -53,7 +52,6 @@ All we need is a shell provisioner section in the Vagrantfile for each node:
    s.path =  "scripts/apply_config.sh"
    s.args = ["/home/vagrant/rtr_config"]
  end
-
 ```
 
 We will look at a complete Vagrantfile in a bit. But let's desconstruct the above piece of code.
