@@ -179,20 +179,35 @@ Look for the green "vagrant up" welcome message to confirm the three machines ha
  Post up message:
    ![post up message](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_post_up_m.png)
 
+
+### Access the nodes
+
 The only point to remember is that in a multinode setup, we "name" each node in the topology.
 {: .notice--info}
 
-For example, let's access "rtr1"
+For example, let's access "rtr2"
 
 * Access the XR Linux shell:
 
 ```
-vagrant ssh rtr1 
+vagrant ssh rtr2 
 ```        
-   ![vagrant ssh- multi](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_ssh_1_m.png)
+![vagrant ssh- multi](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_ssh_1_m.png)
 
 * Access XR Console:
 
+Determine the forwarded port for port 22 (XR SSH) for rtr2:
 
-   
- ![ssh console- multi](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_ssh_console_m.png)
+```
+vagrant port rtr2
+
+```
+For rtr2 port 22, the forwarded port is 2201. So, to get into the XR CLI of rtr2, we use:
+
+```
+ssh -p 2201 vagrant@localhost
+```
+
+![ssh console- multi](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_ssh_console_m.png)
+
+
