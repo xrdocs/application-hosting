@@ -37,6 +37,31 @@ We thought about it and felt that masking the core functionality of the router w
 This tutorial invariably ends up using the new shell/bash based automation techniques that have been introduced as part of the Zero Touch provisioning (ZTP) functionality in IOS-XR.
 
 
+## Pre-requisite
+* Meet the pre-requisites specified in the [IOS-XR Vagrant Quick Start guide]({{ base_path }}/tutorials/iosxr-vagrant-quickstart)
+* Clone the following repository before we start:
+
+```shell
+cd ~/
+git clone https://github.com/akshshar/vagrant-xr.git
+cd vagrant-xr/
+```
+
+You will notice a couple of bootstrap directories. We will utilize these directories in the rest of the tutorial.
+
+```shell
+AKSHSHAR-M-K0DS:vagrant-xr akshshar$ ls *bootstrap
+multi_node_bootstrap:
+Vagrantfile	configs		scripts
+
+single_node_bootstrap:
+Vagrantfile	configs		scripts
+AKSHSHAR-M-K0DS:vagrant-xr akshshar$ 
+
+```
+
+
+
 ## Bootstrap Configuration: Shell Provisioner
 
 The concept is simple: We'll use the Vagrant shell provisioner to apply a boostrap configuration to an XR instance when we issue a `vagrant up`.  
@@ -103,6 +128,9 @@ AKSHSHAR-M-K0DS:iosxrv akshshar$ tree ./
 
 
 ## Single node bootstrap
+
+### Clone existing repo
+
 
 ### Configuration File
 Let's assume we're applying a simple XR config that configures the grpc server on port 57788.
