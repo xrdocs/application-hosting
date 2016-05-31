@@ -1,7 +1,7 @@
 ---
 published: true
 date: "2016-05-22 13:49 -0700"
-title: "Getting Started on Vagrant IOS-XR"
+title: "Getting Started with Vagrant IOS-XR"
 permalink: "/tutorials/iosxr-vagrant-quickstart"
 author: Lisa Roach
 excerpt: "Getting started with Cisco's XRv64 Vagrant Instance."
@@ -13,7 +13,7 @@ tags:
 position: hidden
 ---
 
-{% include toc icon="table" title="@xrdocs How-To" %}
+{% include toc icon="table" title="Getting Started with IOS-XR Vagrant" %}
 {% include base_path %}
 
 ## Introduction
@@ -232,5 +232,3 @@ ssh -p 2201 vagrant@localhost
 ```
 
 ![ssh console- multi](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_ssh_console_m.png)
-
-
