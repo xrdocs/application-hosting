@@ -104,6 +104,7 @@ AKSHSHAR-M-K0DS:iosxrv akshshar$ tree ./
 
 ## Single node bootstrap
 
+### Configuration File
 Let's assume we're applying a simple XR config that configures the grpc server on port 57788.
 This will be the contents of our `configs/rtr_config` file
 
@@ -120,6 +121,7 @@ grpc
 end
 ```
 
+### Bootstrap script
 The shell script to apply the configuration will run on XR bash. Three new shell commands are made available to enable this:
 * **xrcmd**: This command allows a user to run "exec" commands on XR CLI from the shell. For eg. "show run", "show version" etc.
 * **xrapply**: This command allows a user to apply (append) a config file to the existing configuration.
@@ -129,6 +131,41 @@ The shell script to apply the configuration will run on XR bash. Three new shell
 Only the root user is allowed to run the above commands as a good security practice. 
 {: .notice--danger}
 
+Our shell script will look something like this:
+
+```shell
+AKSHSHAR-M-K0DS:iosxrv akshshar$ cat scripts/apply_config.sh 
+#!/bin/bash
+
+source /pkg/bin/ztp_helper.sh
+
+function configure_xr() 
+{
+   ## Apply a blind config 
+   xrapply $1
+   if [ $? -ne 0 ]; then
+       echo "xrapply failed to run"
+   fi
+   xrcmd "show config failed" > /home/vagrant/config_failed_check
+}
+
+config_file=$1
+configure_xr $config_file
+
+cat /home/vagrant/config_failed_check
+grep -q "ERROR" /home/vagrant/config_failed_check
+ 
+if [ $? -ne 0 ]; then
+    echo "Configuration was successful!"
+    echo "Last applied configuration was:"
+    xrcmd "show configuration commit changes last 1"
+else
+    echo "Configuration Failed. Check /home/vagrant/config_failed on the router for logs"
+    xrcmd "show configuration failed" > /home/vagrant/config_failed
+    exit 1
+fi
+
+```
 
 
 
