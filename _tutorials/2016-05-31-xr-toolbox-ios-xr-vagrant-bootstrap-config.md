@@ -165,6 +165,7 @@ Our shell script will look something like this:
 AKSHSHAR-M-K0DS:iosxrv akshshar$ cat scripts/apply_config.sh 
 #!/bin/bash
 
+## Source ztp_helper.sh to get the xrapply and xrcmd functions.
 source /pkg/bin/ztp_helper.sh
 
 function configure_xr() 
@@ -202,6 +203,7 @@ fi
 Few things to note in the above script:
 >
 * `source /pkg/bin/ztp_helper.sh` is necessary for the `xrapply`, `xrcmd` commands to be availble.
-* 
+* There are comments in the script to help understand the steps taken.
+{: .notice--info}
 
 
