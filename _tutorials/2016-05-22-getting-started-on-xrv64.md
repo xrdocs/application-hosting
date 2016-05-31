@@ -144,8 +144,11 @@ provider supports automatic port collision detection and resolution.
 As shown above, port 22 of XR is fowarded to port 2223:
 
 
-Use port 2223 to now ssh into XR CLI
-    
+Use port 2223 to now ssh into XR CLI   
+
+The password is "vagrant"
+{: .notice--info}
+
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
@@ -164,8 +167,6 @@ RP/0/RP0/CPU0:ios#
 </pre>
 </div>
     
-The password is "vagrant"
-{: .notice--info}
 
 
 
