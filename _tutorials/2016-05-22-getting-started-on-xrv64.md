@@ -86,32 +86,34 @@ Look for the green "vagrant up" welcome message to confirm the machine has boote
 
 Now we have two options to access the Vagrant instance:
 
-* **Access the XR Linux shell**:
+* **Access the XR Linux shell**:   
   
-  ```
-  vagrant ssh
-  ```
+ 
+```
+vagrant ssh
+```
    
 
 * **Access XR Console**:
 XR SSH runs on port 22 of the guest IOS-XR instance.  
 First, determine the port to which the XR SSH (port 22) is forwarded by vagrant:
     
-    ```
-    vagrant port
-    ```
-    As shown in the example below, port 22 of XR is fowarded to port 2223:
+```
+vagrant port
+```
+
+
+As shown in the example below, port 22 of XR is fowarded to port 2223:
+
+
+Use port 2223 to now ssh into XR CLI
     
+```
+ssh -p 2223 vagrant@localhost
+```
     
-    
-    Use port 2223 to now ssh into XR CLI
-    
-    ```
-    ssh -p 2223 vagrant@localhost
-    ```
-    
-    The password is "vagrant"
-    {: .notice--info}
+The password is "vagrant"
+{: .notice--info}
 
 
 
