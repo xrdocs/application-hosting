@@ -48,6 +48,7 @@ cd vagrant-xr/
 ```
 
 You will notice a couple of bootstrap directories. We will utilize these directories in the rest of the tutorial.
+{: .notice--info}
 
 ```shell
 AKSHSHAR-M-K0DS:vagrant-xr akshshar$ ls *bootstrap
