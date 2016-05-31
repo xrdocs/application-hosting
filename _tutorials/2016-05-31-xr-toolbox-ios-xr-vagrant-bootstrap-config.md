@@ -35,7 +35,26 @@ We thought about it and felt that masking the core functionality of the router w
 * Day 2: Streaming Telemetry and application-hosting 
 
 
-## Single Node Bootstrap Configuration
+## Bootstrap Configuration
+
+The concept is simple: We'll use the Vagrant shell provisioner to apply a boostrap configuration to an XR instance when we issue a `vagrant up`.  
+  
+All we need is a shell provisioner section in the Vagrantfile:
+
+```ruby 
+
+ #Source a config file and apply it to XR
+      
+ config.vm.provision "file", source: "configs/_config", destination: "/home/vagrant/rtr_config"
+      
+ config.vm.provision "shell" do |s|
+   s.path =  "#{rtr_xr_scripts_dir_host}/apply_config.sh"
+   s.args = ["#{rtr_xr_cfg_file_remote}"]
+ end
+
+
+```
+
 
 
 
