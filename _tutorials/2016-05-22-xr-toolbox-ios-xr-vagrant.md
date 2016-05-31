@@ -133,7 +133,7 @@ First, determine the port to which the XR SSH port (port 22) is forwarded by vag
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-AKSHSHAR-M-K0DS:~ akshshar$ <mark> vagrant port </mark>
+AKSHSHAR-M-K0DS:simple-mixed-topo akshshar$ <mark> vagrant port </mark>
 The forwarded ports for the machine are listed below. Please note that
 these values may differ from values configured in the Vagrantfile if the
 provider supports automatic port collision detection and resolution.
@@ -157,7 +157,7 @@ The password is "vagrant"
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-AKSHSHAR-M-K0DS:~ akshshar$<mark> ssh -p 2223 vagrant@localhost</mark>
+AKSHSHAR-M-K0DS:simple-mixed-topo akshshar$<mark> ssh -p 2223 vagrant@localhost</mark>
 The authenticity of host '[localhost]:2223 ([127.0.0.1]:2223)' can't be established.
 RSA key fingerprint is 65:d1:b8:f6:68:9c:04:a2:d5:db:17:d8:de:04:cb:22.
 Are you sure you want to continue connecting (yes/no)? yes
@@ -255,10 +255,17 @@ For example, let's access "rtr2"
 
 * **Access the XR Linux shell**:
 
-```
-vagrant ssh rtr2 
-```        
-![vagrant ssh- multi](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_ssh_1_m.png)
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:simple-mixed-topo akshshar$<mark> vagrant ssh rtr2</mark> 
+Last login: Tue May 31 05:43:44 2016 from 10.0.2.2
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ 
+</code>
+</pre>
+</div>       
+
 
 * **Access XR Console**:
 
