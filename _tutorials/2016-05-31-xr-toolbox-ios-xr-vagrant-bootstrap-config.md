@@ -83,13 +83,20 @@ Further, the script needs the location of the router config file as an argument.
 So, in short, Vagrant copies a config file to the router bash, and then runs a shell script on the router bash to apply the config file that was copied!
 {: .notice--success}
 
+     
+      
+For example, I'm running my single Vagrant node from the directory ~/iosxrv. My directory structure looks something like:
 
+```shell
+AKSHSHAR-M-K0DS:iosxrv akshshar$ tree .
+.
+├── Vagrantfile
+├── configs
+│   └── rtr_config
+└── scripts
+    └── apply_config.sh
 
-For example, I'm running my single Vagrant node from the directory ~/iosxrv
-
-```
-
-
+2 directories, 3 files
 ```
 
 
