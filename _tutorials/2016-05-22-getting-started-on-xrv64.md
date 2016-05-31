@@ -37,24 +37,29 @@ Tha above items are applicable to all operating systems - Mac OSX, Linux or Wind
 If you're using Windows, we would urge you to download a utility like [Git Bash](https://git-scm.com/download/win) so that "vagrant ssh" works out of the box.
 {: .notice--danger}
 
+
 ## Single Node Bringup
 
 ### Download and Add the IOS-XRv vagrant box
 This can be achieved with a single command as follows:
 
 ```
-vagrant box add --name xrv64 http://engci-maven-master.cisco.com/artifactory/simple/appdevci-snapshot/XRv64/latest/iosxrv-fullk9-x64.box --force
+BOX_URL = http://engci-maven-master.cisco.com/artifactory/simple/appdevci-snapshot/XRv64/latest/iosxrv-fullk9-x64.box
+
+vagrant box add --name iosxrv $BOX_URL
 
 ```
+
 ### Initialize a Vagrantfile
 Let's create a working directory (any name would do) for our next set of tasks
 
 ```
-mkdir iosxrv
-cd 
+mkdir ~/iosxrv
+cd ~/iosxrv
 ```
 
-	vagrant init xrv64
+```
+vagrant init xrv64
   ![vagrant init xrv64](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_init.png)
    
 	vagrant box add --name xrv64 <REPLACE THIS WITH PUBLIC VAGRANT BOX URL> --force
