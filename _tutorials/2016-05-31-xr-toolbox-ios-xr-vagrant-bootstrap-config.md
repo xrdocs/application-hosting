@@ -104,7 +104,8 @@ AKSHSHAR-M-K0DS:iosxrv akshshar$ tree ./
 
 ## Single node bootstrap
 
-Let's assume we're applying a simple XR config that configures Gig0/0/0/0 and enables the grpc server on port 57788:
+Let's assume we're applying a simple XR config that configures the grpc server on port 57788.
+This will be the contents of our `configs/rtr_config` file
 
 This configuration will be an **addendum** to the pre-existing configuration on the vagrant instance.
 {: .notice--info}
@@ -113,29 +114,20 @@ This configuration will be an **addendum** to the pre-existing configuration on 
 AKSHSHAR-M-K0DS:iosxrv akshshar$ cat configs/rtr_config 
 !! XR configuration
 !
-interface GigabitEthernet0/0/0/0
-  ip address 11.1.1.2/24
-  no shutdown
-!
 grpc
   port 57788
 !
 end
 ```
 
-The shell script to apply the configuration will run on XR bash. Two new shell commands are made available to enable this:
+The shell script to apply the configuration will run on XR bash. Three new shell commands are made available to enable this:
 * **xrcmd**: This command allows a user to run "exec" commands on XR CLI from the shell. For eg. "show run", "show version" etc.
-* **xrapply**: This command allows a user to apply (append) a config file to the 
+* **xrapply**: This command allows a user to apply (append) a config file to the existing configuration.
+* **xrapply_string**: This command can be used to apply a config directly using a single inline string. For eg. `xrapply_string "interface Gig0/0/0/0\n ip address 1.1.1.2/24 \n no shutdown"`
 
 
-
-
-
-
-
-
-
-
+Only the root user is allowed to run the above commands as a good security practice. 
+{: .notice--danger}
 
 
 
