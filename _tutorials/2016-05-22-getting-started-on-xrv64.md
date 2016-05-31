@@ -46,61 +46,81 @@ This can be achieved with a single command as follows:
 ```
 BOX_URL = "http://engci-maven-master.cisco.com/artifactory/simple/appdevci-snapshot/XRv64/latest/iosxrv-fullk9-x64.box"
 
-vagrant box add --name iosxrv $BOX_URL
+vagrant box add --name iosxr-box $BOX_URL
 
 ```
 
 ### Initialize a Vagrantfile
-Let's create a working directory (any name would do) for our next set of tasks
+
+Let's create a working directory (any name would do) for our next set of tasks:
 
 ```
-mkdir ~/iosxrv
-cd ~/iosxrv
+mkdir ~/iosxrv; cd ~/iosxrv
 ```
 
-```
-vagrant init xrv64
-  ![vagrant init xrv64](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_init.png)
-   
-	vagrant box add --name xrv64 <REPLACE THIS WITH PUBLIC VAGRANT BOX URL> --force
-    
-  ![vagrant box add](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_add.png)
-  
-	vagrant up 
-
-This will take some time, possibly over 10 minutes once you see the "Waiting for machine to boot" message.  Look for the green "vagrant up" welcome message to confirm the machine has booted:
-	
-   ![vagrant up](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_up_s.png)
-    
-
-
-Now you have two options for accessing the Vagrant instance:
-
-1. Access the XR Linux shell:
-  		
-       vagrant ssh
-
-  ![vagrant ssh](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_ssh_s.png)
-
-2.  Access XR Console:
+Now, in this directory, let's initialize a Vagrantfile with the name of the box we added.
  
-        ssh -p <forwarded port> vagrant@127.0.0.1
 
-   * Replace `<forwarded port>` with the port forwarded for your 22 port
+```
+vagrant init iosxrv-box
+  
+```
 
-      * You can check which ports were forwarded with the command:
+### Bring up the Vagrant Instance
 
-		    vagrant port
-      
-    * The password is “vagrant” 
+A simple `vagrant up` will bring up the XR instance
+
+```
+vagrant up 
+```
+
+This bootup process will take some time, (close to 6 minutes).
+{: .notice--info}
+
+
+Look for the green "vagrant up" welcome message to confirm the machine has booted:
+	
+     
     
-  ![ssh console](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_ssh_console_s.png)
+   
 
-#### Multi Node:
+Now we have two options to access the Vagrant instance:
 
+* **Access the XR Linux shell**:
+  
+  ```
+  vagrant ssh
+  ```
+   
+
+* **Access XR Console**:
+XR SSH runs on port 22 of the guest IOS-XR instance.  
+First, determine the port to which the XR SSH (port 22) is forwarded by vagrant:
+    
+    ```
+    vagrant port
+    ```
+    As shown in the example below, port 22 of XR is fowarded to port 2223:
+    
+    
+    
+    Use port 2223 to now ssh into XR CLI
+    
+    ```
+    ssh -p 2223 vagrant@localhost
+    ```
+    
+    The password is "vagrant"
+    {: .notice--info}
+
+
+
+#### Multi Node Bringup:
+
+Let's try to bring up a multi-node topology as shown below:
 ![Topology](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_topo_m.png)
 
-Copy the multi-node Vagrantfile: `cp xr-cp-vbox/Vagrantfile`
+For this purpose, we will use a Vagrantfile
 
 Add the box to vagrant: `vagrant box add --name IOS-XRv iosxrv-fullk9-x64.box --force;`
 * Or point to a URL: `vagrant box add --name xrv64 <REPLACE THIS WITH PUBLIC VAGRANT BOX URL> --force`
