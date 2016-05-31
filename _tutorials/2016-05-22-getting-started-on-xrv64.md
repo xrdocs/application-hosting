@@ -105,13 +105,18 @@ Now we have two options to access the Vagrant instance:
 ### Access the XR Linux shell   
 
 Vagrant takes care of key exchange automatically. We've set things up to make sure that the XR linux shell (running SSH on port 57722) is the environment a user gets dropped into when using `vagrant ssh`
- 
-```
-AKSHSHAR-M-K0DS:simple-mixed-topo akshshar$ vagrant ssh 
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:simple-mixed-topo akshshar$<mark> vagrant ssh </mark>
 xr-vm_node0_RP0_CPU0:~$ 
 xr-vm_node0_RP0_CPU0:~$ 
 xr-vm_node0_RP0_CPU0:~$ 
-```
+</code>
+</pre>
+</div>
+
 The reason we select the XR linux shell as the default environment and not XR CLI, should be obvious to seasoned users of Vagrant. In the future,Vagrantfiles that integrate chef/puppet/Ansible/Shell as Vagrant provisioners would benefit from linux as the default environment.
 {: .notice--info}
 
