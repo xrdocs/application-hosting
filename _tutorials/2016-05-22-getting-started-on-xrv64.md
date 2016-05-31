@@ -65,10 +65,18 @@ mkdir ~/iosxrv; cd ~/iosxrv
 Now, in this directory, let's initialize a Vagrantfile with the name of the box we added.
  
 
-```
-vagrant init IOS-XRv
-  
-```
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:iosxrv akshshar$<mark> vagrant init iosxrv </mark>
+A `Vagrantfile` has been placed in this directory. You are now
+ready to `vagrant up` your first virtual environment! Please read
+the comments in the Vagrantfile as well as documentation on
+`vagrantup.com` for more information on using Vagrant.
+AKSHSHAR-M-K0DS:iosxrv akshshar$
+</code >
+</pre>
+</div>
 
 ### Bring up the Vagrant Instance
 
