@@ -1,7 +1,7 @@
 ---
 published: true
 date: "2016-05-22 13:49 -0700"
-title: "XR toolbox: IOS-XR Vagrant"
+title: "XR toolbox: IOS-XR Vagrant Quick Start"
 permalink: "/tutorials/iosxr-vagrant-quickstart"
 author: Akshat Sharma
 excerpt: "Getting started with Cisco's IOS-XR Vagrant box"
