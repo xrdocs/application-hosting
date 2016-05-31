@@ -30,7 +30,7 @@ To learn more about how to use IOS-XR + Vagrant to test native and container app
 
 ## Pre-requisites:
 * [Vagrant](https://www.vagrantup.com/downloads.html) for your Operating system.
-* [Virtualbox](https://www.virtualbox.org/wiki/Downloads) installed on your laptop.
+* [Virtualbox](https://www.virtualbox.org/wiki/Downloads) for your OS.
 * A laptop with atleast 4-5G free RAM. (Each XR vagrant instance uses upto 4G RAM, so plan ahead based on the number of XR nodes you want to run)
 
 
