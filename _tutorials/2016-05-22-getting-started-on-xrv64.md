@@ -29,7 +29,8 @@ If you're unfamiliar with Vagrant as a tool for development, testing and design,
 To learn more about how to use IOS-XR + Vagrant to 
 >
 * test native and container applications on IOS-XR
-* use configuration management tools like Chef/Puppet/Ansible/Shell as vagrant provisioners   
+* use configuration management tools like Chef/Puppet/Ansible/Shell as Vagrant provisioners   
+>
 and a variety of other use cases, take a look at the rest of the ["XR toolbox" series]({{ base_path }}/tags/#xr-toolbox)
 {: .notice--info}
 
