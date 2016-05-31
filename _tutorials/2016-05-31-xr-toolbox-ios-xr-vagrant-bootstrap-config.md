@@ -239,16 +239,56 @@ end
 
 ## Bootstrap in action!
 
-Assuming that the box (IOS-XRv) is already in the vagrant box list as shown in the  [IOS-XR Vagrant Quick Start guide]({{ base_path }}/tutorials/iosxr-vagrant-quickstart), just issue a `vagrant up` to see the magic happen:
+Assuming that the box (IOS-XRv) is already in the vagrant box list as shown in the  [IOS-XR Vagrant Quick Start guide]({{ base_path }}/tutorials/iosxr-vagrant-quickstart), just issue a `vagrant up` to see the magic happen:   
+
 
 ![Shell provisioner single node](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/shell_provisioner_single_node.png)
+   
+   
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+Let's get into the XR CLI to check that it worked:
+
+AKSHSHAR-M-K0DS:single_node_bootstrap akshshar$<mark> vagrant port </mark>
+The forwarded ports for the machine are listed below. Please note that
+these values may differ from values configured in the Vagrantfile if the
+provider supports automatic port collision detection and resolution.
+
+    <mark>22 (guest) => 2223 (host) </mark>
+ 57722 (guest) => 2222 (host)
+AKSHSHAR-M-K0DS:single_node_bootstrap akshshar$ 
+AKSHSHAR-M-K0DS:single_node_bootstrap akshshar$<mark> ssh -p 2223 vagrant@localhost </mark>
+vagrant@localhost's password: 
+
+
+RP/0/RP0/CPU0:ios#
+RP/0/RP0/CPU0:ios#show  running-config grpc 
+Tue May 31 16:59:44.581 UTC
+grpc
+ port 57891
+!
+
+RP/0/RP0/CPU0:ios#show configuration commit changes last 1
+Tue May 31 17:02:45.770 UTC
+Building configuration...
+!! IOS XR Configuration version = 6.1.1.17I
+grpc
+ port 57891
+!
+end
+
+RP/0/RP0/CPU0:ios#
+
+</code>
+</pre>
+</div>
 
 
 
 
 
-
-
+It worked! The config was
 
 
 
