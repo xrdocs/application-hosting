@@ -1,16 +1,15 @@
 ---
-title: "Overview of the Architecture"
+title: Overview of the Architecture
 permalink: /techdocs/app_hosting_on_iosxr/architecture_overview
-modified: 2016-04-13T15:54:02-04:00
-sidebar:
-  nav: "app_hosting_on_iosxr"
-tags:
-  - content
-  - css
-  - edge case
-  - lists
-  - markup
-
+modified: "Wed Apr 13 2016 12:54:02 GMT-0700 (PDT)"
+sidebar: 
+  nav: app_hosting_on_iosxr
+published: true
+tags: 
+  - vagrant
+  - cisco
+  - linux
+  - xr toolbox
 ---
 
 
