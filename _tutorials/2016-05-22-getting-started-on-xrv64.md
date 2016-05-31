@@ -122,7 +122,7 @@ The reason we select the XR linux shell as the default environment and not XR CL
 
 ### Access XR Console
 XR SSH runs on port 22 of the guest IOS-XR instance.  
-First, determine the port to which the XR SSH (port 22) is forwarded by vagrant by using the `vagrant port` command:
+First, determine the port to which the XR SSH port (port 22) is forwarded by vagrant by using the `vagrant port` command:
   
   
 <div class="highlighter-rouge">
