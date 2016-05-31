@@ -74,7 +74,7 @@ ready to `vagrant up` your first virtual environment! Please read
 the comments in the Vagrantfile as well as documentation on
 `vagrantup.com` for more information on using Vagrant.
 AKSHSHAR-M-K0DS:iosxrv akshshar$
-</code >
+</code>
 </pre>
 </div>
 
