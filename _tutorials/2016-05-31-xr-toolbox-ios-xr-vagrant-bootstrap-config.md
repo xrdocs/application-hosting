@@ -155,7 +155,7 @@ The shell script to apply the configuration will run on XR bash. The following n
 * **xrapply_string**: This command can be used to apply a config directly using a single inline string. For eg. `xrapply_string "interface Gig0/0/0/0\n ip address 1.1.1.2/24 \n no shutdown"`  
 
 
-Only the root user is allowed to run the above commands as a good security practice. 
+Only the root user is allowed to run the above commands as a good security practice. Unless specified, Vagrant will always escalate the privilege to run the shell provisioner script as root.
 {: .notice--danger}
 
 Our shell script will look something like this:
