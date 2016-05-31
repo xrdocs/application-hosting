@@ -129,6 +129,9 @@ AKSHSHAR-M-K0DS:single_node_bootstrap akshshar$ tree ./
 2 directories, 3 files
 ```
 
+We will stick to the single_node_bootstrap directory throughout this section.
+{: .notice--info}
+
 
 ### Configuration File
 Let's assume we're applying a simple XR config that configures the grpc server on port 57891.
