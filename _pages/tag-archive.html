@@ -19,7 +19,7 @@ author_profile: false
   {% endunless %}
 {% endfor %}
 
-{% assign sortedtags = tag_array_local | split:' ' | sort %}
+{% assign sortedtags = tag_array_local | sort %}
 
 
 {% for tag_super in sortedtags %}
