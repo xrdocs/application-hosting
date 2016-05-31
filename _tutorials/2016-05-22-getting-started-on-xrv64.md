@@ -110,7 +110,7 @@ The forwarded ports for the machine are listed below. Please note that
 these values may differ from values configured in the Vagrantfile if the
 provider supports automatic port collision detection and resolution.
 
-<mark>22 (guest) => 2223 (host) </mark>
+    <mark>22 (guest) => 2223 (host) </mark>
  57722 (guest) => 2222 (host)
 </code>
 </pre>
