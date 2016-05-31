@@ -192,7 +192,7 @@ cd vagrant-xr/simple-mixed-topo
 
 Shown below is a snippet of the Vagrantfile:
 
-```
+```ruby
 Vagrant.configure(2) do |config|
 
     config.vm.define "rtr1" do |node|
