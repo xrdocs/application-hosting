@@ -131,7 +131,7 @@ AKSHSHAR-M-K0DS:single_node_bootstrap akshshar$ tree ./
 
 
 ### Configuration File
-Let's assume we're applying a simple XR config that configures the grpc server on port 57788.
+Let's assume we're applying a simple XR config that configures the grpc server on port 57891.
 This will be the contents of our `configs/rtr_config` file
 
 This configuration will be an **addendum** to the pre-existing configuration on the vagrant instance.
@@ -142,7 +142,7 @@ AKSHSHAR-M-K0DS:iosxrv akshshar$ cat configs/rtr_config
 !! XR configuration
 !
 grpc
-  port 57788
+  port 57891
 !
 end
 ```
@@ -208,7 +208,7 @@ Few things to note in the above script:
 
 
 
-## Vagrantfile
+### Vagrantfile
 
 Take a look at the Vagrantfile in the same directory. The shell provisioner code has been added:
 
@@ -235,6 +235,10 @@ Vagrant.configure(2) do |config|
   end
 end
 ```
+
+
+## Bootstrap in action!
+Now 
 
 
 
