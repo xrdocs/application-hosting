@@ -46,7 +46,7 @@ This can be achieved with a single command as follows:
 ```
 BOX_URL = "http://engci-maven-master.cisco.com/artifactory/simple/appdevci-snapshot/XRv64/latest/iosxrv-fullk9-x64.box"
 
-vagrant box add --name iosxr-box $BOX_URL
+vagrant box add --name IOS-XRv $BOX_URL
 
 ```
 
@@ -62,7 +62,7 @@ Now, in this directory, let's initialize a Vagrantfile with the name of the box 
  
 
 ```
-vagrant init iosxrv-box
+vagrant init IOS-XRv
   
 ```
 
@@ -117,47 +117,82 @@ The password is "vagrant"
 
 
 
-#### Multi Node Bringup:
+## Multi Node Bringup
+
 
 Let's try to bring up a multi-node topology as shown below:
 ![Topology](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_topo_m.png)
 
-For this purpose, we will use a Vagrantfile
+### Set up the Vagrantfile
+For this purpose, Let's use a Sample vagrantfile located here:  
+<https://github.com/akshshar/vagrant-xr/blob/master/simple-mixed-topo/Vagrantfile>
 
-Add the box to vagrant: `vagrant box add --name IOS-XRv iosxrv-fullk9-x64.box --force;`
-* Or point to a URL: `vagrant box add --name xrv64 <REPLACE THIS WITH PUBLIC VAGRANT BOX URL> --force`
+```
+git clone https://github.com/akshshar/vagrant-xr.git
+cd vagrant-xr/simple-mixed-topo
+```
 
-![cp, add vagrantfile](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_cp_vagrantfile_m.png)
+Shown below is a snippet of the Vagrantfile:
 
+```
+Vagrant.configure(2) do |config|
 
-`vagrant up` - this will take some time, possibly over 10 minutes once you see the "Waiting for machine to boot" message. Look for the green "vagrant up" welcome message to confirm the three machines have booted:
+    config.vm.define "rtr1" do |node|
+      node.vm.box =  "IOS-XRv"
+
+      # gig0/0/0/0 connected to link2, gig00/0/1 connected to link1, gig0/0/0/2 connected to link3, auto-config not supported.
+
+      node.vm.network :private_network, virtualbox__intnet: "link2", auto_config: false
+      node.vm.network :private_network, virtualbox__intnet: "link1", auto_config: false
+      node.vm.network :private_network, virtualbox__intnet: "link3", auto_config: false 
+
+    end
+
+    config.vm.define "rtr2" do |node|
+      node.vm.box =  "IOS-XRv"
+
+      # gig0/0/0/0 connected to link1, gig0/0/0/1 connected to link3, auto-config not supported
+
+      node.vm.network :private_network, virtualbox__intnet: "link1", auto_config: false
+      node.vm.network :private_network, virtualbox__intnet: "link3", auto_config: false
+
+    end
+
+```
+
+If you compare this with the topology above it becomes pretty clear how the interfaces are mapped. 
+
+### Bring up the topology
+As before, we'll issue a `vagrant up` to bring up the topology.
+
+```
+vagrant up
+``` 
+
+This will take some time, possibly over 10 minutes. 
+{: .notice--warning}
+
+Look for the green "vagrant up" welcome message to confirm the three machines have booted:
 	
    ![vagrant up- multi](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_up_m.png)
    
  Post up message:
    ![post up message](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_post_up_m.png)
 
+The only point to remember is that in a multinode setup, we "name" each node in the topology.
+{: .notice--info}
 
-As with the Single Node setup, you have two ways to access the Vagrant instances:
+For example, let's access "rtr1"
 
-1. Access the XR Linux shell:
+* Access the XR Linux shell:
 
-		vagrant ssh rtr1 / vagrant ssh rtr2
-        
+```
+vagrant ssh rtr1 
+```        
    ![vagrant ssh- multi](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_ssh_1_m.png)
 
-2. Access XR Console:
+* Access XR Console:
 
-         ssh -p <forwarded port> vagrant@127.0.0.1
 
-   * Replace `<forwarded port>` with the port forwarded for your 22 port of the router you wish to access.
-
-      * You can check which ports were forwarded with the command:
-
-		    vagrant port
-      
-    * The password is “vagrant”.
-
-   * Repeat these steps for each node.
    
  ![ssh console- multi](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_ssh_console_m.png)
