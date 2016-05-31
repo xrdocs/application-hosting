@@ -85,7 +85,9 @@ You might see some ` Warning: Remote connection disconnect. Retrying...` message
 
 Look for the green "vagrant up" welcome message to confirm the machine has booted:
 	
-     
+
+![Vagrant up message](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/vagrant_up_single_node.png)
+ 
     
    
 
@@ -125,9 +127,23 @@ As shown above, port 22 of XR is fowarded to port 2223:
 
 Use port 2223 to now ssh into XR CLI
     
-```
-ssh -p 2223 vagrant@localhost
-```
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:~ akshshar$<mark> ssh -p 2223 vagrant@localhost</mark>
+The authenticity of host '[localhost]:2223 ([127.0.0.1]:2223)' can't be established.
+RSA key fingerprint is 65:d1:b8:f6:68:9c:04:a2:d5:db:17:d8:de:04:cb:22.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '[localhost]:2223' (RSA) to the list of known hosts.
+vagrant@localhost's password: 
+
+
+RP/0/RP0/CPU0:ios#
+RP/0/RP0/CPU0:ios#
+RP/0/RP0/CPU0:ios#
+</code>
+</pre>
+</div>
     
 The password is "vagrant"
 {: .notice--info}
