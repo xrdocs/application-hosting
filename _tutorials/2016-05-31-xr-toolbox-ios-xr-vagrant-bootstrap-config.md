@@ -11,7 +11,7 @@ tags:
   - cisco
   - xr toolbox
   - configuration
-position: hidden
+position: top
 ---
 
 {% include toc icon="table" title="IOS-XR Vagrant: Bootstrap Config" %}
