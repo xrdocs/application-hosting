@@ -77,7 +77,7 @@ A simple `vagrant up` will bring up the XR instance
 vagrant up 
 ```
 
-This bootup process will take some time, (close to 6 minutes).
+This bootup process will take some time, (close to 5 minutes).
 {: .notice--info}
 
 
