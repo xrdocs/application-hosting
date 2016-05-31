@@ -27,11 +27,16 @@ showcases how a user can get started with IOS-XR, running as a vagrant instance,
 
 >
 Bear in mind that the IOS-XR vagrant box is published without a need for any custom plugins.
-We thought about it and felt that masking the core functionality of the router with Vagrant workflows could prevent us from showcasing some core functionalities of IOS-XR :
+We thought about it and felt that masking the core functionality of the router with Vagrant workflows could prevent us from showcasing some core functionalities of IOS-XR, namely :
 >
 * Day 0: ZTP helpers and shell/bash based automation
 * Day 1: automation techniques based off YANG models
 * Day 2: Streaming Telemetry and application-hosting 
+
+
+## Single Node Bootstrap Configuration
+
+
 
 
 
