@@ -20,7 +20,15 @@ author_profile: false
     {% endif %}
   {% endunless %}
 
-{% for tag_super in collection.all_tags %}
+{% assign tag_array_local = site.tag_array %}
+
+{% for post in collection.docs %}
+  {% for tag in post.tags %}
+  {% assign tag_array_local = tag_array_local | push: tag %}
+  {% endfor %}
+{% endfor %}  
+
+{% for tag_super in tag_array_local %}
  <h3 id="{{ tag_super | slugify }}" class="archive__subtitle">{{ tag_super }}</h3>
   {% for post in collection.docs %}
     {% unless collection.output == false or collection.label == "posts" or post.position == "hidden" %}
