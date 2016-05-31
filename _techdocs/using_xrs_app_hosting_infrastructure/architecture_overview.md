@@ -10,6 +10,7 @@ tags:
   - cisco
   - linux
   - xr toolbox
+excerpt: "Brief overview of the application hosting Infrastructure on IOS-XR"
 ---
 
 
