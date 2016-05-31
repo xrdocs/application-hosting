@@ -31,6 +31,9 @@ For a more detailed walkthrough of Vagrant with IOS-XR, along with examples of t
 ## Pre-requisites:
 * [Vagrant](https://www.vagrantup.com/downloads.html) for your Operating system
 * [Virtualbox](https://www.virtualbox.org/wiki/Downloads) installed on your laptop
+* A laptop with atleast 4-5G free RAM. (Each XR vagrant instance uses upto 4G RAM, so plan ahead based on the number of XR nodes you want to run)
+
+
 
 Tha above items are applicable to all operating systems - Mac OSX, Linux or Windows.  
 
