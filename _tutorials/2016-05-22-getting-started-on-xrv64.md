@@ -100,9 +100,21 @@ vagrant ssh
 * **Access XR Console**:
 XR SSH runs on port 22 of the guest IOS-XR instance.  
 First, determine the port to which the XR SSH (port 22) is forwarded by vagrant:
-    
-```
-vagrant port
+  
+  
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:~ akshshar$ <mark> vagrant port </mark>
+The forwarded ports for the machine are listed below. Please note that
+these values may differ from values configured in the Vagrantfile if the
+provider supports automatic port collision detection and resolution.
+
+    22 (guest) => 2223 (host)
+ 57722 (guest) => 2222 (host)
+</code>
+</pre>
+</div>
 ```
 
 
