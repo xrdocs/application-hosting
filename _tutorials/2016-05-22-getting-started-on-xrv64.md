@@ -222,9 +222,9 @@ If you compare this with the topology above it becomes pretty clear how the inte
 
   
 >
-**The order of the "private_networks" is important.  
+**The order of the "private_networks" is important**  
 >
-For each XR node, the first "private_network" corresponds to gig0/0/0/0, the second "private_network" to gig0/0/0/1 and so on.**
+**For each XR node, the first "private_network" corresponds to gig0/0/0/0, the second "private_network" to gig0/0/0/1 and so on.**
 {: .notice--warning}
 
 ### Bring up the topology
