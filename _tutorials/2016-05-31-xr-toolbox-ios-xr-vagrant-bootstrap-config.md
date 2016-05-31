@@ -52,8 +52,10 @@ All we need is a shell provisioner section in the Vagrantfile:
    s.args = ["#{rtr_xr_cfg_file_remote}"]
  end
 
-
 ```
+
+
+
 
 
 
