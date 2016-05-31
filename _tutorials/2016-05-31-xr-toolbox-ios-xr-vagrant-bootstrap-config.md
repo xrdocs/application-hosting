@@ -88,6 +88,8 @@ So, in short, Vagrant copies a config file to the router bash, and then runs a s
 For example, I'm running my single Vagrant node from the directory ~/iosxrv. My directory structure looks something like:
 
 ```shell
+AKSHSHAR-M-K0DS:iosxrv akshshar$ pwd
+/Users/akshshar/iosxrv
 AKSHSHAR-M-K0DS:iosxrv akshshar$ tree .
 .
 ├── Vagrantfile
