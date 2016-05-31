@@ -34,6 +34,8 @@ We thought about it and felt that masking the core functionality of the router w
 * Day 1: automation techniques based off YANG models
 * Day 2: Streaming Telemetry and application-hosting 
 
+This tutorial invariably ends up using the new shell/bash based automation techniques that have been introduced as part of the Zero Touch provisioning (ZTP) functionality in IOS-XR.
+
 
 ## Bootstrap Configuration
 
