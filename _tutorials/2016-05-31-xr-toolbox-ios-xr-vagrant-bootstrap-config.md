@@ -238,7 +238,15 @@ end
 
 
 ## Bootstrap in action!
-Now 
+
+Assuming that the box (IOS-XRv) is already in the vagrant box list as shown in the  [IOS-XR Vagrant Quick Start guide]({{ base_path }}/tutorials/iosxr-vagrant-quickstart), just issue a `vagrant up` to see the magic happen:
+
+![Shell provisioner single node](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/shell_provisioner_single_node.png)
+
+
+
+
+
 
 
 
