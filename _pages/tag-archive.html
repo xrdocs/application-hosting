@@ -26,7 +26,7 @@ author_profile: false
     {% unless collection.output == false or collection.label == "posts" or post.position == "hidden" %}
       {% if post.tags contains tag_super %}
         {% include archive-single.html %}
-      {% endfor %}
+      {% endif %}
     {% endunless %}
   {% endfor %}
   
