@@ -223,16 +223,16 @@ Take a look at the Vagrantfile in the same directory. The shell provisioner code
 
 Vagrant.configure(2) do |config|
   
-    config.vm.box = "IOS-XRv"
+  config.vm.box = "IOS-XRv"
 
-    #Source a config file and apply it to XR
+  #Source a config file and apply it to XR
       
-    config.vm.provision "file", source: "configs/rtr_config", destination: "/home/vagrant/rtr_config"
+  config.vm.provision "file", source: "configs/rtr_config", destination: "/home/vagrant/rtr_config"
 
-    config.vm.provision "shell" do |s|
-        s.path =  "scripts/apply_config.sh"
-        s.args = ["/home/vagrant/rtr_config"]
-    end
+  config.vm.provision "shell" do |s|
+    s.path =  "scripts/apply_config.sh"
+    s.args = ["/home/vagrant/rtr_config"]
+  end
 end
 ```
 
