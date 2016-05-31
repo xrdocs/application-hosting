@@ -123,6 +123,10 @@ grpc
 end
 ```
 
+The shell script to apply the configuration will run on XR bash. Two new shell commands are made available to enable this:
+* **xrcmd**: This command allows a user to run "exec" commands on XR CLI from the shell. For eg. "show run", "show version" etc.
+* **xrapply**: This command allows a user to apply (append) a config file to the 
+
 
 
 
