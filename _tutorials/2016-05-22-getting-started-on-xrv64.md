@@ -34,6 +34,7 @@ For a more detailed walkthrough of Vagrant with IOS-XR, along with examples of t
 
 Tha above items are applicable to all operating systems - Mac OSX, Linux or Windows.  
 If you're using Windows, we would urge you to download a utility like [Git Bash](https://git-scm.com/download/win) so that "vagrant ssh" works out of the box.
+{: .notice--warning}
 
 ## Single Node Bringup
 
