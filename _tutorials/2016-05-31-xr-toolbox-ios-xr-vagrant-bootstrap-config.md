@@ -183,9 +183,10 @@ config_file=$1
 ## Call the configure_xr() function to use xrapply and xrcmd in parallel
 configure_xr $config_file
 
-cat /home/vagrant/config_failed_check
+## Check if there was an error during config application
 grep -q "ERROR" /home/vagrant/config_failed_check
- 
+
+## Condition based on the result of grep ($?)
 if [ $? -ne 0 ]; then
     echo "Configuration was successful!"
     echo "Last applied configuration was:"
@@ -201,6 +202,6 @@ fi
 Few things to note in the above script:
 >
 * `source /pkg/bin/ztp_helper.sh` is necessary for the `xrapply`, `xrcmd` commands to be availble.
-
+* 
 
 
