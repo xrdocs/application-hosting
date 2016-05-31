@@ -1,15 +1,16 @@
 ---
 published: true
 date: "2016-05-22 13:49 -0700"
-title: "Getting Started with IOS-XR Vagrant"
+title: "XR toolbox: IOS-XR Vagrant"
 permalink: "/tutorials/iosxr-vagrant-quickstart"
-author: Lisa Roach
+author: Akshat Sharma
 excerpt: "Getting started with Cisco's XRv64 Vagrant Instance."
 tags: 
   - vagrant
   - iosxr
   - cisco
   - XRv64
+  - xr toolbox
 position: hidden
 ---
 
@@ -93,7 +94,7 @@ Look for the green "vagrant up" welcome message to confirm the machine has boote
 
 Now we have two options to access the Vagrant instance:
 
-* **Access the XR Linux shell**:   
+### Access the XR Linux shell   
   
  
 ```
@@ -101,7 +102,7 @@ vagrant ssh
 ```
    
 
-* **Access XR Console**:
+### Access XR Console
 XR SSH runs on port 22 of the guest IOS-XR instance.  
 First, determine the port to which the XR SSH (port 22) is forwarded by vagrant by using the `vagrant port` command:
   
@@ -214,11 +215,8 @@ This will take some time, possibly over 10 minutes.
 {: .notice--warning}
 
 Look for the green "vagrant up" welcome message to confirm the three machines have booted:
-	
-   ![vagrant up- multi](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_up_m.png)
-   
- Post up message:
-   ![post up message](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_post_up_m.png)
+![Vagrant up message](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/vagrant_up_multiple_node.png)
+
 
 
 ### Access the nodes
@@ -228,25 +226,52 @@ The only point to remember is that in a multinode setup, we "name" each node in 
 
 For example, let's access "rtr2"
 
-* Access the XR Linux shell:
+* **Access the XR Linux shell**:
 
 ```
 vagrant ssh rtr2 
 ```        
 ![vagrant ssh- multi](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_vagrant_ssh_1_m.png)
 
-* Access XR Console:
+* **Access XR Console**:
 
 Determine the forwarded port for port 22 (XR SSH) for rtr2:
 
-```
-vagrant port rtr2
 
-```
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:simple-mixed-topo akshshar$<mark> vagrant port rtr2 </mark>
+The forwarded ports for the machine are listed below. Please note that
+these values may differ from values configured in the Vagrantfile if the
+provider supports automatic port collision detection and resolution.
+
+    <mark>22 (guest) => 2201 (host)</mark>
+ 57722 (guest) => 2200 (host)
+AKSHSHAR-M-K0DS:simple-mixed-topo akshshar$ 
+</code>
+</pre>
+</div>
+
 For rtr2 port 22, the forwarded port is 2201. So, to get into the XR CLI of rtr2, we use:
 
-```
-ssh -p 2201 vagrant@localhost
-```
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:simple-mixed-topo akshshar$<mark> ssh -p 2201 vagrant@localhost </mark>
+The authenticity of host '[localhost]:2201 ([127.0.0.1]:2201)' can't be established.
+RSA key fingerprint is 65:d1:b8:f6:68:9c:04:a2:d5:db:17:d8:de:04:cb:22.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '[localhost]:2201' (RSA) to the list of known hosts.
+vagrant@localhost's password: 
 
-![ssh console- multi](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_ssh_console_m.png)
+
+RP/0/RP0/CPU0:ios#
+RP/0/RP0/CPU0:ios#
+</code>
+</pre>
+</div>
+
+
+That's it for the quick-start guide on XR vagrant. Launch your very own XR instance using vagrant and let us know your feedback in the comments below!
+{: .notice--success}
