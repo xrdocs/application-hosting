@@ -9,7 +9,6 @@ tags:
   - vagrant
   - iosxr
   - cisco
-  - XRv64
   - xr toolbox
 position: top
 ---
