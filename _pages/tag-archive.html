@@ -19,10 +19,11 @@ author_profile: false
   {% endunless %}
 {% endfor %}
 
+{% assign sortedtags = tag_array_local | split:' ' | sort %}
 
 
-{% for tag_super in tag_array_local %}
- <h3 id="{{ tag_super | slugify }}" class="archive__subtitle">{{ tag_super }}</h3>
+{% for tag_super in sortedtags %}
+ <h2 id="{{ tag_super | slugify }}" class="archive__subtitle">{{ tag_super }}</h2>
   {% for collection in site.collections %}
     {% for post in collection.docs %}
       {% unless collection.output == false or collection.label == "posts" or post.position == "hidden" %}
