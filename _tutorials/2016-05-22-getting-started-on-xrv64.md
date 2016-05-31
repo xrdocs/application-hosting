@@ -140,7 +140,10 @@ Vagrant.configure(2) do |config|
     config.vm.define "rtr1" do |node|
       node.vm.box =  "IOS-XRv"
 
-      # gig0/0/0/0 connected to link2, gig00/0/1 connected to link1, gig0/0/0/2 connected to link3, auto-config not supported.
+      # gig0/0/0/0 connected to link2, 
+      # gig0/0/0/1 connected to link1, 
+      # gig0/0/0/2 connected to link3,
+      # auto-config not supported.
 
       node.vm.network :private_network, virtualbox__intnet: "link2", auto_config: false
       node.vm.network :private_network, virtualbox__intnet: "link1", auto_config: false
@@ -151,7 +154,9 @@ Vagrant.configure(2) do |config|
     config.vm.define "rtr2" do |node|
       node.vm.box =  "IOS-XRv"
 
-      # gig0/0/0/0 connected to link1, gig0/0/0/1 connected to link3, auto-config not supported
+      # gig0/0/0/0 connected to link1,
+      # gig0/0/0/1 connected to link3, 
+      # auto-config not supported
 
       node.vm.network :private_network, virtualbox__intnet: "link1", auto_config: false
       node.vm.network :private_network, virtualbox__intnet: "link3", auto_config: false
@@ -160,7 +165,10 @@ Vagrant.configure(2) do |config|
 
 ```
 
-If you compare this with the topology above it becomes pretty clear how the interfaces are mapped. 
+If you compare this with the topology above it becomes pretty clear how the interfaces of the XR instances are mapped to individual links.
+
+**The order of the "private_networks" is important. For each XR node, the first "private_network" corresponds to gig0/0/0/0, the second "private_network" to gig0/0/0/1 and so on.**
+{: .notice--warning}
 
 ### Bring up the topology
 As before, we'll issue a `vagrant up` to bring up the topology.
