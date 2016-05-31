@@ -288,7 +288,8 @@ RP/0/RP0/CPU0:ios#
 
 
 
-It worked! The config was
+It worked! The config was applied as part of the vagrant up process.  
+{: .notice--success}
 
 
 
