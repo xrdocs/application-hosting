@@ -11,7 +11,7 @@ tags:
   - cisco
   - XRv64
   - xr toolbox
-position: t
+position: top
 ---
 
 {% include toc icon="table" title="IOS-XR Vagrant: Quick Start" %}
