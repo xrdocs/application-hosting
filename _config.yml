@@ -317,6 +317,7 @@ prose:
     - CHANGELOG.md
     - feed.xml
     - README.md
+    - _config.pdf.yml
   metadata:
     _blogs:
       - name: "title"
