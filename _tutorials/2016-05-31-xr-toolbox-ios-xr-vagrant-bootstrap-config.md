@@ -110,13 +110,15 @@ So, in short, Vagrant copies a config file to the router bash, and then runs a s
 {: .notice--success}
 
      
-      
-For example, I'm running my single Vagrant node from the directory ~/iosxrv. My directory structure looks something like:
+
+## Single node bootstrap
+
+To meet the above requirements, you will need a directory structure as laid out under ~/vagrant-xr/single_node_bootstrap:
 
 ```shell
-AKSHSHAR-M-K0DS:iosxrv akshshar$ pwd
-/Users/akshshar/iosxrv
-AKSHSHAR-M-K0DS:iosxrv akshshar$ tree ./
+AKSHSHAR-M-K0DS:single_node_bootstrap akshshar$ pwd
+/Users/akshshar/vagrant-xr/single_node_bootstrap
+AKSHSHAR-M-K0DS:single_node_bootstrap akshshar$ tree ./
 ./
 ├── Vagrantfile
 ├── configs
@@ -126,11 +128,6 @@ AKSHSHAR-M-K0DS:iosxrv akshshar$ tree ./
 
 2 directories, 3 files
 ```
-
-
-## Single node bootstrap
-
-### Clone existing repo
 
 
 ### Configuration File
@@ -162,6 +159,8 @@ Only the root user is allowed to run the above commands as a good security pract
 
 Our shell script will look something like this:
 
+
+
 ```shell
 AKSHSHAR-M-K0DS:iosxrv akshshar$ cat scripts/apply_config.sh 
 #!/bin/bash
@@ -178,7 +177,10 @@ function configure_xr()
    xrcmd "show config failed" > /home/vagrant/config_failed_check
 }
 
+## The location of the config file is an argument to the script
 config_file=$1
+
+## Call the configure_xr() function to use xrapply and xrcmd in parallel
 configure_xr $config_file
 
 cat /home/vagrant/config_failed_check
@@ -195,6 +197,10 @@ else
 fi
 
 ```
+>
+Few things to note in the above script:
+>
+* `source /pkg/bin/ztp_helper.sh` is necessary for the `xrapply`, `xrcmd` commands to be availble.
 
 
 
