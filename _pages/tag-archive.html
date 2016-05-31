@@ -5,6 +5,7 @@ title: "Posts by Tags"
 author_profile: false
 ---
 
+{% capture written_tag %}'None'{% endcapture %}
 {% include base_path %}
 
 {% assign tag_array_local = site.tag_array %}
@@ -13,7 +14,10 @@ author_profile: false
   {% unless collection.output == false or collection.label == "posts" %}
     {% for post in collection.docs %}
       {% for tag in post.tags %}
-        {% assign tag_array_local = tag_array_local | push: tag %}
+        {% if tag != written_tag %}
+          {% assign tag_array_local = tag_array_local | push: tag %}
+        {% endif %}
+        {% capture written_tag %}{{ tag }}{% endcapture %}
       {% endfor %}
     {% endfor %}  
   {% endunless %}
