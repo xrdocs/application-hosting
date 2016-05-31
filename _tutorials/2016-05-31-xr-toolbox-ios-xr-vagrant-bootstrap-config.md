@@ -148,10 +148,11 @@ end
 ```
 
 ### Bootstrap script
-The shell script to apply the configuration will run on XR bash. Three new shell commands are made available to enable this:
-* **xrcmd**: This command allows a user to run "exec" commands on XR CLI from the shell. For eg. "show run", "show version" etc.
-* **xrapply**: This command allows a user to apply (append) a config file to the existing configuration.
-* **xrapply_string**: This command can be used to apply a config directly using a single inline string. For eg. `xrapply_string "interface Gig0/0/0/0\n ip address 1.1.1.2/24 \n no shutdown"`
+The shell script to apply the configuration will run on XR bash. Three new shell commands are made available to enable this:  
+
+* **xrcmd**: This command allows a user to run "exec" commands on XR CLI from the shell. For eg. "show run", "show version" etc.  
+* **xrapply**: This command allows a user to apply (append) a config file to the existing configuration.  
+* **xrapply_string**: This command can be used to apply a config directly using a single inline string. For eg. `xrapply_string "interface Gig0/0/0/0\n ip address 1.1.1.2/24 \n no shutdown"`  
 
 
 Only the root user is allowed to run the above commands as a good security practice. 
