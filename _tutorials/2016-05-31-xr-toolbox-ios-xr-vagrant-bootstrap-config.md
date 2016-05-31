@@ -203,7 +203,7 @@ fi
 >
 Few things to note in the above script:
 >
-1. `source /pkg/bin/ztp_helper.sh` is necessary for the `xrapply`, `xrcmd` commands to be availble.
+1. `source /pkg/bin/ztp_helper.sh` is necessary for the `xrapply`, `xrcmd` commands to be available.
 2. There are comments in the script to help understand the steps taken. Essentially, the shell script blindly applies the config file specified as an argument ($1) and then checks to see if there was an error during config application.
 
 
