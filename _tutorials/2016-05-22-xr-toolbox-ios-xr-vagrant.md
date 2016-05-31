@@ -179,7 +179,7 @@ RP/0/RP0/CPU0:ios#
 
 
 Let's try to bring up a multi-node topology as shown below:
-![Topology](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/xrv64_topo_m.png)
+![Topology](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/vagrant_simple_mixed_topo.png)
 
 ### Set up the Vagrantfile
 For this purpose, Let's use a Sample vagrantfile located here:  
