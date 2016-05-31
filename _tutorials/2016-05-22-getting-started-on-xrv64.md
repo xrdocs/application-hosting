@@ -80,6 +80,8 @@ vagrant up
 This bootup process will take some time, (close to 5 minutes).
 {: .notice--info}
 
+You might see some ` Warning: Remote connection disconnect. Retrying...` messages. Ignore them. The box takes longer than a normal linux machine to boot.
+{: .notice--warning}
 
 Look for the green "vagrant up" welcome message to confirm the machine has booted:
 	
