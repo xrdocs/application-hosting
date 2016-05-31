@@ -44,7 +44,7 @@ If you're using Windows, we would urge you to download a utility like [Git Bash]
 This can be achieved with a single command as follows:
 
 ```
-BOX_URL = http://engci-maven-master.cisco.com/artifactory/simple/appdevci-snapshot/XRv64/latest/iosxrv-fullk9-x64.box
+BOX_URL = "http://engci-maven-master.cisco.com/artifactory/simple/appdevci-snapshot/XRv64/latest/iosxrv-fullk9-x64.box"
 
 vagrant box add --name iosxrv $BOX_URL
 
