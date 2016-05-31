@@ -218,7 +218,8 @@ Vagrant.configure(2) do |config|
 
 ```
 
-If you compare this with the topology above it becomes pretty clear how the interfaces of the XR instances are mapped to individual links.
+If you compare this with the topology above it becomes pretty clear how the interfaces of the XR instances are mapped to individual links.   
+
   
 >
 **The order of the "private_networks" is important.  
