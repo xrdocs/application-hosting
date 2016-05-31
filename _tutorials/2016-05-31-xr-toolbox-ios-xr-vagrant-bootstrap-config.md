@@ -90,8 +90,8 @@ For example, I'm running my single Vagrant node from the directory ~/iosxrv. My 
 ```shell
 AKSHSHAR-M-K0DS:iosxrv akshshar$ pwd
 /Users/akshshar/iosxrv
-AKSHSHAR-M-K0DS:iosxrv akshshar$ tree .
-.
+AKSHSHAR-M-K0DS:iosxrv akshshar$ tree ./
+./
 ├── Vagrantfile
 ├── configs
 │   └── rtr_config
@@ -100,6 +100,7 @@ AKSHSHAR-M-K0DS:iosxrv akshshar$ tree .
 
 2 directories, 3 files
 ```
+
 
 
 
