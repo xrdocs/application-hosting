@@ -102,7 +102,26 @@ AKSHSHAR-M-K0DS:iosxrv akshshar$ tree ./
 ```
 
 
+## Single node bootstrap
 
+Let's assume we're applying a simple XR config that configures Gig0/0/0/0 and enables the grpc server on port 57788:
+
+This configuration will be an **addendum** to the pre-existing configuration on the vagrant instance.
+{: .notice--info}
+
+```shell
+AKSHSHAR-M-K0DS:iosxrv akshshar$ cat configs/rtr_config 
+!! XR configuration
+!
+interface GigabitEthernet0/0/0/0
+  ip address 11.1.1.2/24
+  no shutdown
+!
+grpc
+  port 57788
+!
+end
+```
 
 
 
