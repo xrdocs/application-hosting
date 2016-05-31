@@ -57,7 +57,7 @@ All we need is a shell provisioner section in the Vagrantfile for each node:
 We will look at a complete Vagrantfile in a bit. But let's desconstruct the above piece of code.
 
 
-### Transfer a Configuration file to XR bash:
+### Transfer a Configuration file to XR bash
    
 ```ruby 
 config.vm.provision "file", source: "configs/rtr_config", destination: "/home/vagrant/rtr_config"
@@ -67,7 +67,7 @@ The above line uses the Vagrant "file" provisioner to transfer a file from the h
 
 The root of the source directory is the working directory for your vagrant instance. Hence, the `rtr_config` file is located in the `configs` directory.
 
-### Use a Shell script to Apply XR Config:
+### Use a Shell script to Apply XR Config
 
 ```ruby
 config.vm.provision "shell" do |s|
