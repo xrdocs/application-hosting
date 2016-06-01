@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 date: '2016-06-01 13:31 -0700'
 title: Sample Tutorial
 permalink: /tutorials/sample-tutorial
