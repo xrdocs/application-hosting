@@ -46,7 +46,7 @@ Setup was tested on Windows, but the workflow is the same for other environments
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-$ vagrant box add --name xrv64 <mark>&ltpath to downloaded box&gt</mark>/iosxrv-fullk9-x64.box_2016-05-07-19-04-50.box
+$ vagrant box add --name xrv64 <mark>&lt;path to downloaded box&gt;</mark>/iosxrv-fullk9-x64.box_2016-05-07-19-04-50.box
 </code>
 </pre>
 </div>
