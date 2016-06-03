@@ -34,7 +34,7 @@ So instead of setting up Ansible directly on the User's Desktop/Host, we simply 
 
 Clone the repo with Vagrantfile and assisting files:
 
-```
+```shell
 $ git clone https://github.com/Maikor/IOSXR-Ansible-tutorial
 $ cd IOSXR-Ansible-tutorial/
 $ ls
@@ -51,9 +51,10 @@ $ vagrant box add --name IOS-XRv $BOX_URL
 ```
 
 Image for Ubuntu will be downloaded from official source:
-  
-    $ vagrant box add ubuntu/trusty64
-    
+
+```shell
+$ vagrant box add ubuntu/trusty64
+```    
 We should now have both the boxes available, Use the ``vagrant box list`` command to display the current set of boxes on your system as shown below:  
 
 
@@ -62,7 +63,7 @@ We should now have both the boxes available, Use the ``vagrant box list`` comman
 
 The Vagrantfile contains 2 Vagrant boxes and looks like:
 
-```
+```ruby
 Vagrant.configure(2) do |config|
 
   config.vm.provision "shell", inline: "echo Hello User"
@@ -84,7 +85,7 @@ end
 
 Now we are ready to boot up the boxes:
 
-```
+```shell
 mkorshun@MKORSHUN-2JPYH MINGW64 ~/Documents/workCisco/tutorial
 $ ls
 ubuntu.sh*  Vagrantfile  xr-config
@@ -98,8 +99,8 @@ $ vagrant up
 
 To access the Ubuntu box just issue the command (no password required):
 
-```
-vagrant ssh ubuntu
+```shell
+$ vagrant ssh ubuntu
 ```
 
 The Ubuntu instance is already configured via file ["ubuntu.sh"](https://github.com/Maikor/IOSXR-Ansible-tutorial/blob/master/ubuntu.sh). This section is only for the user's information.
@@ -109,7 +110,7 @@ The Ubuntu instance is already configured via file ["ubuntu.sh"](https://github.
 Let's review the content of the script ["ubuntu.sh"](https://github.com/Maikor/IOSXR-Ansible-tutorial/blob/master/ubuntu.sh)  
 The first four lines are responsible for downloading required packages for Ansible and updating the system. 
 >
-```
+```shell
 sudo apt-get update
 sudo apt-get install -y python-setuptools python-dev build-essential git libssl-dev libffi-dev sshpass
 sudo easy_install pip 
@@ -118,21 +119,21 @@ wget https://bootstrap.pypa.io/ez_setup.py -O - | sudo python
 >
 Next, the script clones the  Ansible and the  IOSXR-Ansible repos:
 >
-```
+```shell
 git clone -b vagrant http://gitlab.cisco.com/mkorshun/iosxr-ansible.git
 git clone git://github.com/ansible/ansible.git --recursive
 ```
 >
 It then installs Ansible and applies the variables from "ansible_env" to the system.
 >
-```
+```shell
 cd ansible/ && sudo python setup.py install
 echo "source /home/vagrant/iosxr-ansible/remote/ansible_env" >> /home/vagrant/.profile
 ```
 >
 The last section is responsible for generating a public key for paswordless authorization (for XR linux) and a base 64 version of it (for XR CLI):
 >
-```
+```shell
 ssh-keygen -t rsa -f /home/vagrant/.ssh/id_rsa -q -P ""
 cut -d" " -f2 ~/.ssh/id_rsa.pub | base64 -d > ~/.ssh/id_rsa_pub.b64
 ```  
@@ -143,13 +144,13 @@ cut -d" " -f2 ~/.ssh/id_rsa.pub | base64 -d > ~/.ssh/id_rsa_pub.b64
 
 To access XR Linux Shell:   
 
-```
-vagrant ssh xr
+```shell
+$ vagrant ssh xr
 ```
 
 To access XR console it takes one additional step to figure out port (credentials for ssh: vagrant/vagrant):
 
-```
+```shell
 mkorshun@MKORSHUN-2JPYH MINGW64 ~/Documents/workCisco/tutorial
 $ vagrant port xr
 The forwarded ports for the machine are listed below. Please note that
@@ -193,7 +194,7 @@ RP/0/RP0/CPU0:ios#
 Let's copy public part of key from **Ubuntu** box and allow access without password. 
 First,  connect to the Ubuntu instance and copy file to XR via SCP:
 
-```
+```shell
 vagrant ssh ubuntu  
 
 scp -P 57722 /home/vagrant/.ssh/id_rsa.pub  vagrant@10.1.1.20:/home/vagrant/id_rsa_ubuntu.pub
@@ -201,7 +202,7 @@ scp -P 57722 /home/vagrant/.ssh/id_rsa.pub  vagrant@10.1.1.20:/home/vagrant/id_r
 
 Now add the copied keys to authorized_keys in XR linux
 
-```
+```shell
 vagrant ssh xr  
 
 cat /home/vagrant/id_rsa_ubuntu.pub >> /home/vagrant/.ssh/authorized_keys
@@ -241,7 +242,7 @@ We also specify a user to connect to the machine: "ansible_ssh_user=vagrant"
 We do not delve into [YDK](https://github.com/CiscoDevNet/ydk-py-samples) for now, it's a topic for another tutorial. Note that the files ansible_hosts and ansible_env are preconfigured for our needs. 
 
 
-```
+```shell
 cd iosxr-ansible/
 cd remote/
 
@@ -265,7 +266,7 @@ export PYTHONPATH=$YDK_DIR
   
   
 
-```
+```shell
 cd ~/iosxr-ansible/remote/  
 
 ansible-playbook samples/iosxr_get_facts.yml   
