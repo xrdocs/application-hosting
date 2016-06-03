@@ -1,11 +1,11 @@
 ---
 published: true
-date: "2016-05-22 13:49 -0700"
-title: "XR toolbox: IOS-XR Vagrant Quick Start"
-permalink: "/tutorials/iosxr-vagrant-quickstart"
+date: '2016-05-22 13:49 -0700'
+title: 'XR toolbox: IOS-XR Vagrant Quick Start'
+permalink: /tutorials/iosxr-vagrant-quickstart
 author: Akshat Sharma
-excerpt: "Getting started with Cisco's IOS-XR Vagrant box"
-tags: 
+excerpt: Getting started with Cisco's IOS-XR Vagrant box
+tags:
   - vagrant
   - iosxr
   - cisco
@@ -43,7 +43,7 @@ take a look at the rest of the ["XR toolbox" series]({{ base_path }}/tags/#xr-to
 
 Tha above items are applicable to all operating systems - Mac OSX, Linux or Windows.  
 
-If you're using Windows, we would urge you to download a utility like [Git Bash](https://git-scm.com/download/win) so that "vagrant ssh" works out of the box.
+**If you're using Windows, we would urge you to download a utility like [Git Bash](https://git-scm.com/download/win) so that all the commands provided below work as advertised.**
 {: .notice--danger}
 
 
@@ -58,6 +58,19 @@ BOX_URL="http://engci-maven-master.cisco.com/artifactory/simple/appdevci-snapsho
 vagrant box add --name IOS-XRv $BOX_URL
 
 ```
+The `vagrant box add` command will take around 10-15 mins.
+{: .notice--info}
+
+Once it completes, you should be able to see the box added as "IOS-XRv" in your local vagrant box list:
+
+```shell
+
+AKSHSHAR-M-K0DS:~ akshshar$ vagrant box list
+IOS-XRv (virtualbox, 0)
+AKSHSHAR-M-K0DS:~ akshshar$ 
+
+```
+
 
 ### Initialize a Vagrantfile
 
