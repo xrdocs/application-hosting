@@ -43,11 +43,10 @@ ubuntu.sh*  Vagrantfile  xr-config
 
 Setup was tested on Windows, but the workflow is the same for other environments. To add an IOS-XR box, download the [box](http://engci-maven-master.cisco.com/artifactory/simple/appdevci-snapshot/XRv64/latest/) and issue the following command:
 
-```
-BOX_URL="http://engci-maven-master.cisco.com/artifactory/simple/appdevci-snapshot/XRv64/latest/iosxrv-fullk9-x64.box"
+```shell
+$ BOX_URL="http://engci-maven-master.cisco.com/artifactory/simple/appdevci-snapshot/XRv64/latest/iosxrv-fullk9-x64.box"
 
-vagrant box add --name IOS-XRv $BOX_URL
-
+$ vagrant box add --name IOS-XRv $BOX_URL
 
 ```
 
