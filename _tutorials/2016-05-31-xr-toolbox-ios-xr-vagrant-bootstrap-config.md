@@ -1,11 +1,11 @@
 ---
 published: true
-date: "2016-05-31 02:13 -0700"
-title: "XR Toolbox: Boostrap XR configuration with Vagrant"
-permalink: "/tutorials/iosxr-vagrant-bootstrap-config"
+date: '2016-05-31 02:13 -0700'
+title: 'XR Toolbox: Bootstrap XR configuration with Vagrant'
+permalink: /tutorials/iosxr-vagrant-bootstrap-config
 author: Akshat Sharma
-excerpt: "Configure an IOS-XR Vagrant box on boot using a Shell provisioner"
-tags: 
+excerpt: Configure an IOS-XR Vagrant box on boot using a Shell provisioner
+tags:
   - vagrant
   - iosxr
   - cisco
@@ -17,6 +17,7 @@ position: top
 {% include toc icon="table" title="IOS-XR Vagrant: Bootstrap Config" %}
 {% include base_path %}
 
+Hey
 ## Introduction
 
 The [IOS-XR Vagrant Quick Start guide]({{ base_path }}/tutorials/iosxr-vagrant-quickstart)
@@ -65,7 +66,7 @@ AKSHSHAR-M-K0DS:vagrant-xr akshshar$
 
 ## Bootstrap Configuration: Shell Provisioner
 
-The concept is simple: We'll use the Vagrant shell provisioner to apply a boostrap configuration to an XR instance when we issue a `vagrant up`.  
+The concept is simple: We'll use the Vagrant shell provisioner to apply a bootstrap configuration to an XR instance when we issue a `vagrant up`.  
   
 All we need is a shell provisioner section in the Vagrantfile for each node:
 
@@ -293,7 +294,3 @@ RP/0/RP0/CPU0:ios#
 
 It worked! The config was applied as part of the vagrant up process.  
 {: .notice--success}
-
-
-
-
