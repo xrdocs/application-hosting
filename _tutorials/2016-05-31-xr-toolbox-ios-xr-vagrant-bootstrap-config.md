@@ -164,7 +164,6 @@ Only the root user is allowed to run the above commands as a good security pract
 Our shell script will look something like this:
 
 
-
 ```shell
 AKSHSHAR-M-K0DS:iosxrv akshshar$ cat scripts/apply_config.sh 
 #!/bin/bash
