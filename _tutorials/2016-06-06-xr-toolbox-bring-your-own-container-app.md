@@ -401,19 +401,21 @@ ubuntu@ubuntu_xr:~$ sudo sed -i s/"Port 22"/"Port 58822"/   /etc/ssh/sshd_config
 ubuntu@ubuntu_xr:~$ 
 ```
 
-Shutdown the container
-```shell
-ubuntu@ubuntu_xr:~$ sudo shutdown -h now
-ubuntu@ubuntu_xr:~$ 
-Broadcast message from ubuntu@ubuntu_xr
-	(/dev/pts/1) at 13:05 ...
+Stop the container:
 
-The system is going down for halt NOW!
-Connection to 10.0.3.45 closed by remote host.
+```shell
+ubuntu@ubuntu_xr:~$ 
+ubuntu@ubuntu_xr:~$ exit
+logout
 Connection to 10.0.3.45 closed.
 vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo lxc-stop --name ubuntu_xr
+vagrant@vagrant-ubuntu-trusty-64:~$
 
 ```
+
+
 
 
 
