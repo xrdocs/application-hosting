@@ -9,9 +9,9 @@ tags:
   - iosxr
   - cisco
   - linux
-  - containers
-  - LXC
   - xr toolbox
+  - apphosting
+  - topology
 permalink: /tutorials/2016-06-06-xr-toolbox-app-development-topology
 ---
 
