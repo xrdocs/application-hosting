@@ -57,7 +57,11 @@ AKSHSHAR-M-K0DS:vagrant-xr akshshar$
 
 ## Understand the topology
 
-For this tutorial, we'll use a two-node topology. 
+For this tutorial, we'll use a two-node topology: An XR vagrant instance connected to an Ubuntu vagrant instance:
+
+![LXC app bootstrap topo](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/lxc-app-bootstroop-topo.png
+
+
 
 
 
