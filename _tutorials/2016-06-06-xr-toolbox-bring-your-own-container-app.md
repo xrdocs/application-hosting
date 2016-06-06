@@ -326,8 +326,9 @@ I: Validating Packages
 </div>
 
 
+Once it is ready, you should see a message like the following:
 
-
+![LXC up message](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/lxc_devbox_up_msg.png)
 
 
 
