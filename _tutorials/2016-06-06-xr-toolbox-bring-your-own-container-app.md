@@ -224,6 +224,8 @@ xr-vm_node0_RP0_CPU0:~$
 xr-vm_node0_RP0_CPU0:~$ 
 ```
 
+As we can see, `ifconfig Gi0_0_0_0` shows the ip-address 11.1.1.10, that was assigned by the shell provisioner in the Vagrantfile.
+
 
 
 
