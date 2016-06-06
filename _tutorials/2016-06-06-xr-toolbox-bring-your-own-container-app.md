@@ -62,6 +62,16 @@ For this tutorial, we'll use a two-node topology: An XR vagrant instance connect
 ![LXC app bootstrap topo](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/lxc-app-bootstroop-topo.png)
 
 
+The Vagrantfile to bring up this topology is already in your cloned directory (`vagrant-xr/lxc-app-topo-bootstrap/Vagrantfile`):
+
+```shell
+AKSHSHAR-M-K0DS:vagrant-xr akshshar$ ls lxc-app-topo-bootstrap/Vagrantfile
+Vagrantfile	
+AKSHSHAR-M-K0DS:vagrant-xr akshshar$ 
+```
+
+
+
 
 
 
