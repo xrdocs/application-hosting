@@ -33,14 +33,37 @@ So, let's get started!
 
 ## Pre-requisites
 
-Meet the pre-requisites specified in the [IOS-XR Vagrant Quick Start guide: Pre-requisites]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#pre-requisites) 
+* Meet the pre-requisites specified in the [IOS-XR Vagrant Quick Start guide: Pre-requisites]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#pre-requisites) 
+* Clone the following repository: <https://github.com/akshshar/vagrant-xr>, before we start.
+
+```shell
+cd ~/
+git clone https://github.com/akshshar/vagrant-xr.git
+cd vagrant-xr/
+```
+
+You will notice a few directories. We will utilize the `lxc-app-topo-bootstrap` directory in this tutorial.
+{: .notice--info}
+
+```shell
+AKSHSHAR-M-K0DS:vagrant-xr akshshar$ ls *bootstrap
+multi_node_bootstrap:
+Vagrantfile	configs		scripts
+
+single_node_bootstrap:
+Vagrantfile	configs		scripts
+AKSHSHAR-M-K0DS:vagrant-xr akshshar$ 
+
+``` 
  
 
 
-## Bring up the XR Vagrant instance  
+## Understand the topology
+
+For this tutorial, we'll use a two-node topology. 
 
 
-We'll just need a single XR instance for this guide, so follow the  [Single Node Bringup ]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#single-node-bringup) section to bring up a single XR node.
+
 
 
 
