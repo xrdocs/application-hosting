@@ -25,7 +25,9 @@ The Techdoc: [Application Hosting on IOS-XR]({{ base_path}}/techdocs/app_hosting
 *  as a container (LXC)
 
 
-In this quick start guide we intend to introduce a typical vagrant topology that we intend to use in other quick start guides in the [XR Toolbox series]({{ base_path }}/tags/#xr-toolbox)
+In this quick start guide we introduce a typical vagrant topology that we intend to use in other quick start guides in the [XR Toolbox series]({{ base_path }}/tags/#xr-toolbox).   
+This topology will be used to build and deploy container (LXC) as well as native XR applications and test them on Vagrant IOS-XR.
+{: .notice--warning}
 
 So, let's get started!
 
