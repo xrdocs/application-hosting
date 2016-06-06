@@ -51,7 +51,7 @@ You will notice a couple of  directories. We will utilize the `single_node_boots
 {: .notice--info}
 
 ```shell
-KSHSHAR-M-K0DS:vagrant-xr akshshar$ ls single_node_bootstrap/
+AKSHSHAR-M-K0DS:vagrant-xr akshshar$ ls single_node_bootstrap/
 Vagrantfile	configs		scripts
 AKSHSHAR-M-K0DS:vagrant-xr akshshar$ 
 
