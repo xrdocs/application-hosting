@@ -64,7 +64,7 @@ For this tutorial, we'll use a two-node topology: An XR vagrant instance connect
 
 The Vagrantfile to bring up this topology is already in your cloned directory:  
 
-`vagrant-xr/lxc-app-topo-bootstrap/Vagrantfile`)
+`vagrant-xr/lxc-app-topo-bootstrap/Vagrantfile`
 
 ```ruby
 
