@@ -117,7 +117,7 @@ For now, all you need to know is:
 
 
 
-The configuration we wish to apply to XR is pretty simple. We want to configure the XR interface: GigabitEthernet0/0/0/0 with the ip-address: `11.1.1.10`:
+The configuration we wish to apply to XR is pretty simple. We want to configure the XR interface: `GigabitEthernet0/0/0/0`s with the ip-address: `11.1.1.10`:
 
 ```shell
 AKSHSHAR-M-K0DS:vagrant-xr akshshar$ cat lxc-app-topo-bootstrap/configs/rtr_config 
@@ -132,7 +132,10 @@ AKSHSHAR-M-K0DS:vagrant-xr akshshar$
 ```
 
 Take a look at the Vagrantfile above, again. We use the Vagrant auto_config capabilities to make sure "eth1" interface of the Ubuntu VM (called devbox) is configured in the same subnet (11.1.1.20) as XR gig0/0/0/0.
-{: notice--info}
+{: .notice--info}
+
+
+
 
 
 
