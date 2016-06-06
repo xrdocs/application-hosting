@@ -47,7 +47,7 @@ git clone https://github.com/akshshar/vagrant-xr.git
 cd vagrant-xr/
 ```
 
-You will notice a couple of  directories. We will utilize the `single_node_bootstrap` directory in the this tutorial.
+You will notice a couple of  directories. We will utilize the `single_node_bootstrap` directory in this tutorial.
 {: .notice--info}
 
 ```shell
