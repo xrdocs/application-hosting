@@ -26,7 +26,7 @@ The Techdoc: [Application Hosting on IOS-XR]({{ base_path}}/techdocs/app_hosting
 *  as a container (LXC)
 
 
-Here, we give a quick start guide with the IOS-XR vagrant box to bring up an Ubuntu container on IOS-XR and host an application within it.
+In this quick start guide we use the IOS-XR vagrant box to bring up an Ubuntu container on IOS-XR and host an application within it.
 
 So, let's get started!
 
