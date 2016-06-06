@@ -47,15 +47,11 @@ git clone https://github.com/akshshar/vagrant-xr.git
 cd vagrant-xr/
 ```
 
-You will notice a couple of bootstrap directories. We will utilize these directories in the rest of the tutorial.
+You will notice a couple of  directories. We will utilize the `single_node_bootstrap` directory in the this tutorial.
 {: .notice--info}
 
 ```shell
-AKSHSHAR-M-K0DS:vagrant-xr akshshar$ ls *bootstrap
-multi_node_bootstrap:
-Vagrantfile	configs		scripts
-
-single_node_bootstrap:
+KSHSHAR-M-K0DS:vagrant-xr akshshar$ ls single_node_bootstrap/
 Vagrantfile	configs		scripts
 AKSHSHAR-M-K0DS:vagrant-xr akshshar$ 
 
