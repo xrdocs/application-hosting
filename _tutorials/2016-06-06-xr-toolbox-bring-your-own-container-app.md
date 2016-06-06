@@ -429,6 +429,23 @@ root@vagrant-ubuntu-trusty-64:/var/lib/lxc/ubuntu_xr#
 
 ```
 
+Finally package the rootfs and create the custom LXC tarball:
+
+```shell
+
+root@vagrant-ubuntu-trusty-64:/var/lib/lxc/ubuntu_xr# cd rootfs/
+root@vagrant-ubuntu-trusty-64:/var/lib/lxc/ubuntu_xr/rootfs# ls
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@vagrant-ubuntu-trusty-64:/var/lib/lxc/ubuntu_xr/rootfs# 
+root@vagrant-ubuntu-trusty-64:/var/lib/lxc/ubuntu_xr/rootfs# tar -czf ubuntu_xr_rootfs.tar.gz  *
+tar: dev/log: socket ignored
+root@vagrant-ubuntu-trusty-64:/var/lib/lxc/ubuntu_xr/rootfs# 
+root@vagrant-ubuntu-trusty-64:/var/lib/lxc/ubuntu_xr/rootfs# ls -l ubuntu_xr_rootfs.tar.gz 
+-rw-r--r-- 1 root root 101217705 Jun  6 13:10 ubuntu_xr_rootfs.tar.gz
+root@vagrant-ubuntu-trusty-64:/var/lib/lxc/ubuntu_xr/rootfs# 
+
+```
+
 
 
 
