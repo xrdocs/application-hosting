@@ -131,7 +131,8 @@ end
 AKSHSHAR-M-K0DS:vagrant-xr akshshar$ 
 ```
 
-
+Take a look at the Vagrantfile above, again. We use the Vagrant auto_config capabilities to make sure "eth1" interface of the Ubuntu VM (called devbox) is configured in the same subnet (11.1.1.20) as XR gig0/0/0/0.
+{: notice--info}
 
 
 
