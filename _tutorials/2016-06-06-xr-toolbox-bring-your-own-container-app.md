@@ -279,6 +279,14 @@ The topology is up!
 ## Build a Container tar ball
 
 Before we deploy an LXC on XR, we must build an LXC rootfs tar-ball.
+
+We're not going to do much, except change the port used by sshd inside the container. These steps will give you an idea of what to do to create your own custom container tar ball. 
+{: .notice--info}
+
+It is important to note that the LXC container must use a port other than 22 (used by XR CLI ssh) and 57722 (Used by XR linux SSH).
+{: .notice--danger}  
+
+
 For this purpose, install lxc-tools inside the devbox:
 
 ```shell
@@ -326,9 +334,27 @@ I: Validating Packages
 </div>
 
 
-Once it is ready, you should see a message like the following:
+Once created, you should see a message like the following:
 
 ![LXC up message](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/lxc_devbox_up_msg.png)
+
+Start the container:  
+
+```shell
+
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo lxc-start -d --name ubuntu_xr
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo lxc-ls --fancy
+NAME       STATE    IPV4       IPV6  AUTOSTART  
+----------------------------------------------
+ubuntu_xr  RUNNING  10.0.3.45  -     NO         
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+
+```
+
+Connect to the Container console:
+
+
+
 
 
 
