@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 date: '2016-06-06 00:13 -0700'
 title: 'XR Toolbox: Bring your own Container App'
 author: Akshat Sharma
