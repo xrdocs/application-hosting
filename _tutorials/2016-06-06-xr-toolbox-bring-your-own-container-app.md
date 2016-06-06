@@ -403,7 +403,15 @@ ubuntu@ubuntu_xr:~$
 
 Shutdown the container
 ```shell
+ubuntu@ubuntu_xr:~$ sudo shutdown -h now
+ubuntu@ubuntu_xr:~$ 
+Broadcast message from ubuntu@ubuntu_xr
+	(/dev/pts/1) at 13:05 ...
 
+The system is going down for halt NOW!
+Connection to 10.0.3.45 closed by remote host.
+Connection to 10.0.3.45 closed.
+vagrant@vagrant-ubuntu-trusty-64:~$ 
 
 ```
 
