@@ -100,6 +100,8 @@ Vagrant.configure(2) do |config|
 
    node.vm.network :private_network, virtualbox__intnet: "link1", ip: "11.1.1.20"
    
+   # Add a static route to XR's loopback address
+   
    node.vm.provision "shell",  
        inline: "ip route add 1.1.1.1/32 via 11.1.1.10"   
    end
@@ -121,7 +123,10 @@ For now, all you need to know is:
 
 
 
-The configuration we wish to apply to XR is pretty simple. We want to configure the XR interface: `GigabitEthernet0/0/0/0`s with the ip-address: `11.1.1.10`:
+The configuration we wish to apply to XR is pretty simple. We want to :  
+*  configure the XR interface: `GigabitEthernet0/0/0/0`s with the ip-address: `11.1.1.10`
+*  Configure loopback 0 as the router identifier
+*  Configure a "source-hint" for all linux packets in XR (so that they use 
 
 ```shell
 AKSHSHAR-M-K0DS:vagrant-xr akshshar$ cat lxc-app-topo-bootstrap/configs/rtr_config 
