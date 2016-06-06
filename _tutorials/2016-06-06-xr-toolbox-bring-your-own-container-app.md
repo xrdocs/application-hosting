@@ -304,6 +304,19 @@ Suggested packages:
 
 Now bring up an ubuntu LXC inside the devbox:
 
+```shell
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo lxc-create -n ubuntu_xr -t ubuntu
+Checking cache download in /var/cache/lxc/trusty/rootfs-amd64 ... 
+Installing packages in template: ssh,vim,language-pack-en
+Downloading ubuntu trusty minimal ...
+I: Retrieving Release 
+I: Retrieving Release.gpg 
+I: Checking Release signature
+I: Valid Release signature (key id 790BC7277767219C42C86F933B4FE6ACC0B21F32)
+I: Retrieving Packages 
+I: Validating Packages 
+
+```
 
 
 
