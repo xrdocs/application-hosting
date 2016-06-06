@@ -82,9 +82,9 @@ Vagrant.configure(2) do |config|
 
    #Source a config file and apply it to XR
 
-   config.vm.provision "file", source: "configs/rtr_config", destination: "/home/vagrant/rtr_config"
+   node.vm.provision "file", source: "configs/rtr_config", destination: "/home/vagrant/rtr_config"
 
-   config.vm.provision "shell" do |s|
+   node.vm.provision "shell" do |s|
      s.path =  "scripts/apply_config.sh"
      s.args = ["/home/vagrant/rtr_config"]
    end
@@ -99,6 +99,10 @@ Vagrant.configure(2) do |config|
    # auto_config is supported for an ubuntu instance
 
    node.vm.network :private_network, virtualbox__intnet: "link1", ip: "11.1.1.20"
+   
+   node.vm.provision "shell",  
+       inline: "ip route add 1.1.1.1/32 via 11.1.1.10"   
+   end
 
  end
 
@@ -127,6 +131,10 @@ interface GigabitEthernet0/0/0/0
   ip address 11.1.1.10/24
   no shutdown
 !
+interface loopback0
+  ip address 1.1.1.1/32
+!
+tpa address-family ipv4 update-source GigabitEthernet0/0/0/0
 end
 AKSHSHAR-M-K0DS:vagrant-xr akshshar$ 
 ```
@@ -452,6 +460,26 @@ ubuntu_xr_rootfs.tar.gz
 vagrant@vagrant-ubuntu-trusty-64:~$ 
 
 ```
+
+
+## Deploy the Container Tar ball
+
+IOS-XR platforms use libvirt natively to launch and manage containers. To deploy a container using libvirt, we need to accomplish 3 basic steps:
+
+*  Download the LXC rootfs tar ball.
+*  Untar the rootfs and place in a mounted volume.
+*  Create an XML file to define container specs and launch the container
+
+
+### Download the container tar ball
+
+We can download the LXC rootfs tar ball from the devbox, over scp:
+
+
+
+
+
+
 
 
 
