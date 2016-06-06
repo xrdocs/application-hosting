@@ -226,6 +226,54 @@ xr-vm_node0_RP0_CPU0:~$
 
 As we can see, `ifconfig Gi0_0_0_0` shows the ip-address 11.1.1.10, that was assigned by the shell provisioner in the Vagrantfile.
 
+To get into the Ubuntu "devbox", issue a `vagrant ssh devbox`:
+
+```shell
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant ssh devbox
+Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-87-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+  System information as of Mon Jun  6 11:20:37 UTC 2016
+
+  System load:  0.0               Processes:           74
+  Usage of /:   3.5% of 39.34GB   Users logged in:     0
+  Memory usage: 25%               IP address for eth0: 10.0.2.15
+  Swap usage:   0%                IP address for eth1: 11.1.1.20
+
+  Graph this data and manage this system at:
+    https://landscape.canonical.com/
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+0 packages can be updated.
+0 updates are security updates.
+
+
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+```
+
+
+From the Ubuntu box, you should be able to Ping the XR Gig0/0/0/0 interface:
+
+```shell
+vagrant@vagrant-ubuntu-trusty-64:~$ ping 11.1.1.10 -c 2
+PING 11.1.1.10 (11.1.1.10) 56(84) bytes of data.
+64 bytes from 11.1.1.10: icmp_seq=1 ttl=255 time=1.56 ms
+64 bytes from 11.1.1.10: icmp_seq=2 ttl=255 time=1.44 ms
+
+--- 11.1.1.10 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1003ms
+rtt min/avg/max/mdev = 1.447/1.504/1.562/0.069 ms
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+```
+
+
+
+
+
+
 
 
 
