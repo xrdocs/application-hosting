@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2016-06-06 00:13 -0700'
-title: 'XR Toolbox: App Development Topology with Vagrant'
+title: 'XR Toolbox: App Development Topology '
 author: Akshat Sharma
 excerpt: Bring up your own Container (LXC) + Application on IOS-XR
 tags:
@@ -11,11 +11,10 @@ tags:
   - linux
   - containers
   - LXC
-  - iperf
 ---
 
 {% include base_path %}
-{% include toc icon="table" title="Bring your own Container" %}
+{% include toc icon="table" title="App Development Topology" %}
 
 
 ## Introduction
@@ -26,7 +25,7 @@ The Techdoc: [Application Hosting on IOS-XR]({{ base_path}}/techdocs/app_hosting
 *  as a container (LXC)
 
 
-In this quick start guide we use the IOS-XR vagrant box to bring up an Ubuntu container on IOS-XR and host an application within it.
+In this quick start guide we intend to introduce a typical vagrant topology that we intend to use in other quick start guides in the [XR Toolbox series]({{ base_path }}/tags/#xr-toolbox)
 
 So, let's get started!
 
