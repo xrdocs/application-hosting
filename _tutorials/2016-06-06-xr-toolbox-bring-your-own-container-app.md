@@ -117,6 +117,22 @@ For now, all you need to know is:
 
 
 
+The configuration we wish to apply to XR is pretty simple. We want to configure the XR interface: GigabitEthernet0/0/0/0 with the ip-address: `11.1.1.10`:
+
+```shell
+AKSHSHAR-M-K0DS:vagrant-xr akshshar$ cat lxc-app-topo-bootstrap/configs/rtr_config 
+!! XR configuration
+!
+interface GigabitEthernet0/0/0/0
+  ip address 11.1.1.10/24
+  no shutdown
+!
+end
+AKSHSHAR-M-K0DS:vagrant-xr akshshar$ 
+```
+
+
+
 
 
 
