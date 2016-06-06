@@ -341,6 +341,26 @@ Once created, you should see a message like the following:
 
 Start the container:  
 
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo lxc-start -d --name ubuntu_xr </mark>
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo lxc-ls --fancy </mark>
+NAME       STATE    IPV4       IPV6  AUTOSTART  
+----------------------------------------------
+ubuntu_xr  RUNNING  10.0.3.45  -     NO         
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+
+</code>
+</pre>
+</div>
+  
+  
+Connect to the Container console:
+
+Make sure you specify the escape character you want to use with the -e option as shown below.
+{: .notice--warning}
 
 <div class="highlighter-rouge">
 <pre class="highlight">
@@ -357,7 +377,6 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 </pre>
 </div>
 
-Connect to the Container console:
 
 
 
