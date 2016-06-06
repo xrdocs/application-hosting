@@ -390,40 +390,22 @@ ubuntu@ubuntu_xr:~$
 
 ```
 
-Let's create a custom user, say cisco (Password cisco123) and change the SSH port to 58822:
+Now, change the default port 22 to port 58822:
 
-<div class="highlighter-rouge">
-<pre class="highlight">
-<code>
-ubuntu@ubuntu_xr:~$ <mark>sudo adduser cisco </mark>
-Adding user `cisco' ...
-Adding new group `cisco' (1001) ...
-Adding new user `cisco' (1001) with group `cisco' ...
-Creating home directory `/home/cisco' ...
-Copying files from `/etc/skel' ...
-Enter new UNIX password: 
-Retype new UNIX password: 
-passwd: password updated successfully
-Changing the user information for cisco
-Enter the new value, or press ENTER for the default
-	Full Name []: 
-	Room Number []: 
-	Work Phone []: 
-	Home Phone []: 
-	Other []: 
-Is the information correct? [Y/n] Y
-ubuntu@ubuntu_xr:~$ 
-ubuntu@ubuntu_xr:~$ <mark> sudo adduser cisco sudo </mark>
-Adding user `cisco' to group `sudo' ...
-Adding user cisco to group sudo
-Done.
-ubuntu@ubuntu_xr:~$ 
-ubuntu@ubuntu_xr:~$ 
-ubuntu@ubuntu_xr:~$ 
+sudo password for the user `ubuntu` is `ubuntu`.
+{: .notice--info}
 
-</code>
-</pre>
-</div>
+```shell
+ubuntu@ubuntu_xr:~$ sudo sed -i s/"Port 22"/"Port 58822"/   /etc/ssh/sshd_config 
+[sudo] password for ubuntu: 
+ubuntu@ubuntu_xr:~$ 
+```
+
+Shutdown the container
+```shell
+
+
+```
 
 
 
