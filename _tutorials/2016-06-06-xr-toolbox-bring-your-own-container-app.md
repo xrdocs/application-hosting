@@ -276,7 +276,28 @@ As we can see, `Gi0_0_0_0`, which corresponds to Gig0/0/0/0 (in XR CLI) shows th
 The topology is up!
 
 
-## 
+## Build a Container tar ball
+
+Before we deploy a LXC on XR, we must build an LXC rootfs tar-ball.
+For this purpose, install lxc-tools inside the devbox:
+
+```shell
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo apt-get -y install lxc
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following extra packages will be installed:
+  bridge-utils cgmanager cloud-image-utils debootstrap dnsmasq-base euca2ools
+  genisoimage libaio1 libboost-system1.54.0 libboost-thread1.54.0 liblxc1
+  libmnl0 libnetfilter-conntrack3 libnspr4 libnss3 libnss3-nssdb librados2
+  librbd1 libseccomp2 libxslt1.1 lxc-templates python-distro-info python-lxml
+  python-requestbuilder python-setuptools python3-lxc qemu-utils sharutils
+  uidmap
+Suggested packages:
+```
+
+
 
 
 
