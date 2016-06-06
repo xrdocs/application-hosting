@@ -71,36 +71,36 @@ The Vagrantfile to bring up this topology is already in your cloned directory:
 Vagrant.configure(2) do |config|
   
 
-   config.vm.define "rtr" do |node|
-      node.vm.box =  "IOS-XRv"
+ config.vm.define "rtr" do |node|
+   node.vm.box =  "IOS-XRv"
 
-      # gig0/0/0 connected to "link1"
-      # auto_config is not supported for XR, set to false
+   # gig0/0/0 connected to "link1"
+   # auto_config is not supported for XR, set to false
 
-      node.vm.network :private_network, virtualbox__intnet: "link1", auto_config: false
+   node.vm.network :private_network, virtualbox__intnet: "link1", auto_config: false
 
 
-      #Source a config file and apply it to XR
+   #Source a config file and apply it to XR
 
-      config.vm.provision "file", source: "configs/rtr_config", destination: "/home/vagrant/rtr_config"
+   config.vm.provision "file", source: "configs/rtr_config", destination: "/home/vagrant/rtr_config"
 
-      config.vm.provision "shell" do |s|
-          s.path =  "scripts/apply_config.sh"
-          s.args = ["/home/vagrant/rtr_config"]
-      end
+   config.vm.provision "shell" do |s|
+     s.path =  "scripts/apply_config.sh"
+     s.args = ["/home/vagrant/rtr_config"]
+   end
 
-    end
+ end
 
  
-    config.vm.define "devbox" do |node|
-      node.vm.box =  "ubuntu/trusty64"
+ config.vm.define "devbox" do |node|
+   node.vm.box =  "ubuntu/trusty64"
 
-      # eth1 connected to link1
-      # auto_config is supported for an ubuntu instance
+   # eth1 connected to link1
+   # auto_config is supported for an ubuntu instance
 
-      node.vm.network :private_network, virtualbox__intnet: "link1", ip: "11.1.1.20"
+   node.vm.network :private_network, virtualbox__intnet: "link1", ip: "11.1.1.20"
 
-    end
+ end
 
 end
 ```
