@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2016-06-06 00:13 -0700'
-title: 'XR Toolbox: Bring your own Container App'
+title: 'XR Toolbox: Development Topology with Vagrant'
 author: Akshat Sharma
 excerpt: Bring up your own Container (LXC) + Application on IOS-XR
 tags:
@@ -129,11 +129,6 @@ AKSHSHAR-M-K0DS:vagrant-xr akshshar$ cat lxc-app-topo-bootstrap/configs/rtr_conf
 interface GigabitEthernet0/0/0/0
   ip address 11.1.1.10/24
   no shutdown
-!
-interface loopback0
-  ip address 1.1.1.1/32
-!
-tpa address-family ipv4 update-source GigabitEthernet0/0/0/0
 !
 end
 AKSHSHAR-M-K0DS:vagrant-xr akshshar$ 
