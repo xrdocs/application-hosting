@@ -198,7 +198,7 @@ Bringing machine 'devbox' up with 'virtualbox' provider...
 
 
 
-
+![Vagrant Status output](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/vagrant_status_lxc_app.png
 
 
 
