@@ -38,7 +38,7 @@ This tutorial invariably ends up using the new shell/bash based automation techn
 
 
 ## Pre-requisite
-* Meet the pre-requisites specified in the [IOS-XR Vagrant Quick Start guide: Pre-requisites]({{ https://xrdocs.github.io/application-hosting/tutorials/iosxr-vagrant-quickstart#pre-requisites)
+* Meet the pre-requisites specified in the [IOS-XR Vagrant Quick Start guide: Pre-requisites]({{ {{ base_path }}/tutorials/iosxr-vagrant-quickstart#pre-requisites)
 * Clone the following repository before we start:
 
 ```shell
