@@ -108,10 +108,13 @@ end
 **Notice the `  #Source a config file and apply it to XR  ` section of the Vagrantfile? This is derived from the [Bootstrap XR configuration with Vagrant]({{ base_path }}/tutorials/iosxr-vagrant-bootstrap-config) tutorial. Check it out if you want to know more about how shell provisioning with XR works**
 {: .notice--warning}
 
-
+>
 For now, all you need to know is:
+>
+*  Config that you want to apply to XR on boot goes into the ` lxc-app-topo-bootstrap/configs ` directory. It is named  "rtr_config" in this example.
+*  The script to apply XR config resides in the lxc-app-topo-bootstrap/scripts directory. You will not need to bother about it in this tutorial.
+{: .notice--info}
 
-*  Config that you want to apply goes into the ` lxc-app-topo-bootstrap/configs ` directory.
 
 
 
