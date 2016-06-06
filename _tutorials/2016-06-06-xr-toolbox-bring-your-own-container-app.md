@@ -30,11 +30,11 @@ So, let's get started!
 ## Pre-requisites
 
 *  Meet the pre-requisites specified in the [IOS-XR Vagrant Quick Start guide: Pre-requisites]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#pre-requisites) 
-* 
+ 
 
 
 ## Bring up the XR Vagrant instance
 The [IOS-XR Vagrant Quick Start guide]({{ base_path }}/tutorials/iosxr-vagrant-quickstart)
 showcases how a user can get started with an IOS-XR vagrant box.
 
-We'll just need a single XR instance for this guide, so follow the above [link]( to bring up a single XR node 
+We'll just need a single XR instance for this guide, so follow the above [link]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#pre-requisites) to bring up a single XR node 
