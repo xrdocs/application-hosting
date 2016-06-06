@@ -367,9 +367,11 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 
 Now enter the container using ssh:
 
-Username: ubuntu  
-Password: ubuntu
+Username: **ubuntu**  
+Password: **ubuntu**
 {: .notice--info}
+
+
 
 
 
