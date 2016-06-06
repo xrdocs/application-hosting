@@ -208,7 +208,8 @@ To get into XR linux shell, issue `vagrant ssh rtr`
 ```shell
 AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant ssh rtr
 Last login: Mon Jun  6 11:20:58 2016 from 10.0.2.2
-xr-vm_node0_RP0_CPU0:~$ ifconfig Gi0_0_0_0
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ifconfig Gi0_0_0_0
 Gi0_0_0_0 Link encap:Ethernet  HWaddr 08:00:27:46:1f:b2  
           inet addr:11.1.1.10  Mask:255.255.255.0
           inet6 addr: fe80::a00:27ff:fe46:1fb2/64 Scope:Link
