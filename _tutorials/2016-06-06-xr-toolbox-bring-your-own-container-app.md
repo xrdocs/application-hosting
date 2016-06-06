@@ -104,7 +104,6 @@ Vagrant.configure(2) do |config|
    
    node.vm.provision "shell",  
        inline: "ip route add 1.1.1.1/32 via 11.1.1.10"   
-   end
 
  end
 
