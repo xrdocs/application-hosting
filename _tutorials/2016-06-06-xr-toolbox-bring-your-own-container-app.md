@@ -286,9 +286,11 @@ vagrant ssh devbox
 
 ```
 
-```shell
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
 vagrant@vagrant-ubuntu-trusty-64:~$ 
-vagrant@vagrant-ubuntu-trusty-64:~$ sudo apt-get -y install lxc
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo apt-get -y install lxc </mark>
 Reading package lists... Done
 Building dependency tree       
 Reading state information... Done
@@ -300,12 +302,16 @@ The following extra packages will be installed:
   python-requestbuilder python-setuptools python3-lxc qemu-utils sharutils
   uidmap
 Suggested packages:
-```
+</code>
+</pre>
+</div>
 
 Now bring up an ubuntu LXC inside the devbox:
 
-```shell
-vagrant@vagrant-ubuntu-trusty-64:~$ sudo lxc-create -n ubuntu_xr -t ubuntu
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo lxc-create -n ubuntu_xr -t ubuntu </mark>
 Checking cache download in /var/cache/lxc/trusty/rootfs-amd64 ... 
 Installing packages in template: ssh,vim,language-pack-en
 Downloading ubuntu trusty minimal ...
@@ -315,8 +321,9 @@ I: Checking Release signature
 I: Valid Release signature (key id 790BC7277767219C42C86F933B4FE6ACC0B21F32)
 I: Retrieving Packages 
 I: Validating Packages 
-
-```
+</code>
+</pre>
+</div>
 
 
 
