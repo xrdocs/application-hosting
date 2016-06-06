@@ -429,7 +429,7 @@ root@vagrant-ubuntu-trusty-64:/var/lib/lxc/ubuntu_xr#
 
 ```
 
-Finally package the rootfs and create the custom LXC tarball:
+Package the rootfs and create the custom LXC tarball. We copy it over to the home directory (/home/vagrant), once done:
 
 ```shell
 
@@ -442,9 +442,22 @@ tar: dev/log: socket ignored
 root@vagrant-ubuntu-trusty-64:/var/lib/lxc/ubuntu_xr/rootfs# 
 root@vagrant-ubuntu-trusty-64:/var/lib/lxc/ubuntu_xr/rootfs# ls -l ubuntu_xr_rootfs.tar.gz 
 -rw-r--r-- 1 root root 101217705 Jun  6 13:10 ubuntu_xr_rootfs.tar.gz
-root@vagrant-ubuntu-trusty-64:/var/lib/lxc/ubuntu_xr/rootfs# 
+root@vagrant-ubuntu-trusty-64:/var/lib/lxc/ubuntu_xr/rootfs# cp ubuntu_xr_rootfs.tar.gz /home/vagrant/
+root@vagrant-ubuntu-trusty-64:/var/lib/lxc/ubuntu_xr/rootfs# cd
+root@vagrant-ubuntu-trusty-64:~# exit
+exit
+vagrant@vagrant-ubuntu-trusty-64:~$ ls
+ubuntu_xr_rootfs.tar.gz
+vagrant@vagrant-ubuntu-trusty-64:~$ pwd
+/home/vagrant
+vagrant@vagrant-ubuntu-trusty-64:~$ ls
+ubuntu_xr_rootfs.tar.gz
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+
 
 ```
+
+
 
 
 
