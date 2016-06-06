@@ -196,7 +196,7 @@ Bringing machine 'devbox' up with 'virtualbox' provider...
 </div>
 
 
-
+Once it completes, you should be able to see both the VMs running by using the `vagrant status` command inside the `lxc-app-topo-bootstrap/` directory:
 
 ![Vagrant Status output](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/vagrant_status_lxc_app.png
 
