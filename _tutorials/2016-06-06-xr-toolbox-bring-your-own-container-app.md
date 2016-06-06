@@ -372,6 +372,21 @@ Password:   **ubuntu**
 {: .notice--info}
 
 
+```shell
+vagrant@vagrant-ubuntu-trusty-64:~$ ssh ubuntu@10.0.3.45
+The authenticity of host '10.0.3.45 (10.0.3.45)' can't be established.
+ECDSA key fingerprint is 24:64:0b:b4:a7:ca:cb:e2:8a:67:c4:9e:28:66:10:2d.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '10.0.3.45' (ECDSA) to the list of known hosts.
+ubuntu@10.0.3.45's password: 
+Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-87-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+Last login: Mon Jun  6 12:29:53 2016
+ubuntu@ubuntu_xr:~$ 
+
+```
+
 
 
 
