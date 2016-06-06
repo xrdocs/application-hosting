@@ -125,8 +125,8 @@ For now, all you need to know is:
 
 The configuration we wish to apply to XR is pretty simple. We want to :  
     
-*  configure the XR interface: `GigabitEthernet0/0/0/0`s with the ip-address: `11.1.1.10`
-*  Configure loopback 0 as the router identifier
+*  configure the XR interface: `GigabitEthernet0/0/0/0`s with the ip-address: `11.1.1.10`  
+*  Configure loopback 0 as the router identifier  
 *  Configure a "source-hint" for all application traffic in XR (so that they use loopback0 as the source address for all linux packets)
 
 ```shell
@@ -146,7 +146,8 @@ end
 AKSHSHAR-M-K0DS:vagrant-xr akshshar$ 
 ```
 
-Take a look at the Vagrantfile above, again. We use the Vagrant auto_config capabilities to make sure "eth1" interface of the Ubuntu VM (called devbox) is configured in the same subnet (11.1.1.20) as XR gig0/0/0/0.
+Take a look at the Vagrantfile above, again. We use the Vagrant auto_config capabilities to make sure "eth1" interface of the Ubuntu VM (called devbox) is configured in the same subnet (11.1.1.20) as XR gig0/0/0/0.  
+We also use the "inline" shell provisioner to automatically add a static route on the "devbox" to point to the loopback address on XR.
 {: .notice--info}
 
 
