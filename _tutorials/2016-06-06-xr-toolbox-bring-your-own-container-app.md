@@ -40,4 +40,9 @@ So, let's get started!
 ## Bring up the XR Vagrant instance  
 
 
-We'll just need a single XR instance for this guide, so follow the  [Single Node Bringup ]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#single-node-bringup) to bring up a single XR node.
+We'll just need a single XR instance for this guide, so follow the  [Single Node Bringup ]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#single-node-bringup) section to bring up a single XR node.
+
+
+
+
+
