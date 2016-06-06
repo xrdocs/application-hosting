@@ -11,6 +11,7 @@ tags:
   - linux
   - containers
   - LXC
+permalink: /tutorials/2016-06-06-xr-toolbox-app-development-topology
 ---
 
 {% include base_path %}
