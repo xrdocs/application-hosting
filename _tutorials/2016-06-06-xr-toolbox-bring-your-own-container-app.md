@@ -46,14 +46,11 @@ You will notice a few directories. We will utilize the `lxc-app-topo-bootstrap` 
 {: .notice--info}
 
 ```shell
-AKSHSHAR-M-K0DS:vagrant-xr akshshar$ ls *bootstrap
-multi_node_bootstrap:
-Vagrantfile	configs		scripts
-
-single_node_bootstrap:
+AKSHSHAR-M-K0DS:vagrant-xr akshshar$ pwd
+/Users/akshshar/vagrant-xr
+AKSHSHAR-M-K0DS:vagrant-xr akshshar$ ls lxc-app-topo-bootstrap/
 Vagrantfile	configs		scripts
 AKSHSHAR-M-K0DS:vagrant-xr akshshar$ 
-
 ``` 
  
 
