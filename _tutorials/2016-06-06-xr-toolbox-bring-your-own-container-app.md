@@ -105,7 +105,7 @@ Vagrant.configure(2) do |config|
 end
 ```
 
-**Notice the   `#Source a config file and apply it to XR`   section of the Vagrantfile? This is derived from the [Bootstrap XR configuration with Vagrant]({{ base_path }}/tutorials/iosxr-vagrant-bootstrap-config) tutorial. Check it out if you want to know more about how shell provisioning with XR works**
+**Notice the `  #Source a config file and apply it to XR  ` section of the Vagrantfile? This is derived from the [Bootstrap XR configuration with Vagrant]({{ base_path }}/tutorials/iosxr-vagrant-bootstrap-config) tutorial. Check it out if you want to know more about how shell provisioning with XR works**
 {: .notice--warning}
 
 
