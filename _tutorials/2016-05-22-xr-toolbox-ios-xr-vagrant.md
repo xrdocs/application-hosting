@@ -114,6 +114,7 @@ Look for the green "vagrant up" welcome message to confirm the machine has boote
 	
 
 ![Vagrant up message](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/vagrant_up_single_node.png)
+{: .notice}
  
     
    
@@ -257,6 +258,7 @@ This will take some time, possibly over 10 minutes.
 Look for the green "vagrant up" welcome message to confirm the three machines have booted:  
 
 ![Vagrant up message](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/vagrant_up_multiple_node.png)
+{: .notice}
 
 
 
