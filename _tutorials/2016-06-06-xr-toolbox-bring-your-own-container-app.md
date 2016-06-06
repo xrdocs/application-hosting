@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2016-06-06 00:13 -0700'
-title: 'XR Toolbox: Development Topology with Vagrant'
+title: 'XR Toolbox: App Development Topology with Vagrant'
 author: Akshat Sharma
 excerpt: Bring up your own Container (LXC) + Application on IOS-XR
 tags:
