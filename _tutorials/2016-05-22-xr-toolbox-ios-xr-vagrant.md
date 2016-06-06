@@ -58,7 +58,7 @@ BOX_URL="http://engci-maven-master.cisco.com/artifactory/simple/appdevci-snapsho
 vagrant box add --name IOS-XRv $BOX_URL
 
 ```
-The `vagrant box add` command will take around 10-15 mins.
+The `vagrant box add` command will take around 10-15 mins as it downloads the box for you.
 {: .notice--info}
 
 Once it completes, you should be able to see the box added as "IOS-XRv" in your local vagrant box list:
