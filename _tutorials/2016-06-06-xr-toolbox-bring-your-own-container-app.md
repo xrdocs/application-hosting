@@ -135,6 +135,63 @@ Take a look at the Vagrantfile above, again. We use the Vagrant auto_config capa
 {: .notice--info}
 
 
+## Bring up the topology
+
+### Download and Add the XR Vagrant box
+
+```
+BOX_URL="http://engci-maven-master.cisco.com/artifactory/simple/appdevci-snapshot/XRv64/latest/iosxrv-fullk9-x64.box"
+
+vagrant box add --name IOS-XRv $BOX_URL
+
+```
+The `vagrant box add` command will take around 10-15 mins as it downloads the box for you.
+{: .notice--info}
+
+Once it completes, you should be able to see the box added as "IOS-XRv" in your local vagrant box list:
+
+```shell
+
+AKSHSHAR-M-K0DS:~ akshshar$ vagrant box list
+IOS-XRv (virtualbox, 0)
+AKSHSHAR-M-K0DS:~ akshshar$ 
+
+```
+
+### Bring up the topology
+
+Make sure you're in the `lxc-app-topo-bootstrap/` directory and issue a `vagrant up`
+
+```shell
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ pwd
+/Users/akshshar/vagrant-xr/lxc-app-topo-bootstrap
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant up
+Bringing machine 'rtr' up with 'virtualbox' provider...
+Bringing machine 'devbox' up with 'virtualbox' provider...
+==> rtr: Importing base box 'IOS-XRv'...
+==> rtr: Matching MAC address for NAT networking...
+==> rtr: Setting the name of the VM: lxc-app-topo-bootstrap_rtr_1465208784531_75603
+==> rtr: Clearing any previously set network interfaces...
+==> rtr: Preparing network interfaces based on configuration...
+    rtr: Adapter 1: nat
+    rtr: Adapter 2: intnet
+==> rtr: Forwarding ports...
+    rtr: 57722 (guest) => 2222 (host) (adapter 1)
+    rtr: 22 (guest) => 2223 (host) (adapter 1)
+==> rtr: Running 'pre-boot' VM customizations...
+==> rtr: Booting VM...
+==> rtr: Waiting for machine to boot. This may take a few minutes...
+    rtr: SSH address: 127.0.0.1:2222
+    rtr: SSH username: vagrant
+    rtr: SSH auth method: private key
+    rtr: Warning: Remote connection disconnect. Retrying...
+    rtr: Warning: Remote connection disconnect. Retrying...
+
+
+```
+
+
+
 
 
 
