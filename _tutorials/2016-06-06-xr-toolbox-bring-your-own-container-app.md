@@ -109,6 +109,11 @@ end
 {: .notice--warning}
 
 
+For now, all you need to know is:
+
+*  Config that you want to apply goes into the ` lxc-app-topo-bootstrap/configs ` directory.
+
+
 
 
 
