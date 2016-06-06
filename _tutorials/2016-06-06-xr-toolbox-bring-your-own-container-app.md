@@ -274,7 +274,8 @@ As we can see, `Gi0_0_0_0`, which corresponds to Gig0/0/0/0 (in XR CLI) shows th
 
 
 The topology is up!
-{: .notice--success}
+{: .notice--success}  
+
 
 ## Build a Container tar ball
 
