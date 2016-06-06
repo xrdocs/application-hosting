@@ -39,7 +39,7 @@ This tutorial invariably ends up using the new shell/bash based automation techn
 
 ## Pre-requisite
 * Meet the pre-requisites specified in the [IOS-XR Vagrant Quick Start guide: Pre-requisites]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#pre-requisites)
-* Clone the following repository before we start:
+* Clone the following repository <https://github.com/akshshar/vagrant-xr> before we start:
 
 ```shell
 cd ~/
