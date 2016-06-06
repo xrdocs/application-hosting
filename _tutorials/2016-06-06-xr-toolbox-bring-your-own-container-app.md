@@ -150,6 +150,7 @@ We also use the "inline" shell provisioner to automatically add a static route o
 {: .notice--info}
 
 
+
 ## Bring up the topology
 
 ### Download and Add the XR Vagrant box
