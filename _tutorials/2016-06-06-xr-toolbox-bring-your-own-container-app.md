@@ -115,7 +115,8 @@ end
 
 
 
-The configuration we wish to apply to XR is pretty simple. We want to :  
+The configuration we wish to apply to XR is pretty simple. You can find it in the `lxc-app-topo-bootstrap/configs` directory.  
+We want to :  
     
 *  configure the XR interface: `GigabitEthernet0/0/0/0`s with the ip-address: `11.1.1.10`  
 *  Configure loopback 0 as the router identifier  
