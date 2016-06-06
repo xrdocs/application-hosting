@@ -278,8 +278,20 @@ The topology is up!
 
 ## Build a Container tar ball
 
-Before we deploy a LXC on XR, we must build an LXC rootfs tar-ball.
+Before we deploy an LXC on XR, we must build an LXC rootfs tar-ball.
 For this purpose, install lxc-tools inside the devbox:
+
+```shell
+KSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant ssh devbox
+Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-87-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+  System information as of Mon Jun  6 11:20:37 UTC 2016
+
+
+
+```
 
 ```shell
 vagrant@vagrant-ubuntu-trusty-64:~$ 
@@ -296,6 +308,9 @@ The following extra packages will be installed:
   uidmap
 Suggested packages:
 ```
+
+Now bring up an ubuntu LXC inside the devbox:
+
 
 
 
