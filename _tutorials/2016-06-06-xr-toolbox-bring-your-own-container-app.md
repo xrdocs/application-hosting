@@ -415,7 +415,19 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 
 ```
 
+Now let's scoot over to the directory /var/lib/lxc/ubuntu_xr:
 
+To be able to access the directory, you must become root first, using sudo
+{: .notice--danger}
+
+```shell
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo -s
+root@vagrant-ubuntu-trusty-64:~# cd /var/lib/lxc/ubuntu_xr/
+root@vagrant-ubuntu-trusty-64:/var/lib/lxc/ubuntu_xr# ls
+config  fstab  rootfs
+root@vagrant-ubuntu-trusty-64:/var/lib/lxc/ubuntu_xr# 
+
+```
 
 
 
