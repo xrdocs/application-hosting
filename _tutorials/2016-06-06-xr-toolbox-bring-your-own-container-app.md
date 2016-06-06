@@ -33,8 +33,7 @@ So, let's get started!
  
 
 
-## Bring up the XR Vagrant instance
-The [IOS-XR Vagrant Quick Start guide]({{ base_path }}/tutorials/iosxr-vagrant-quickstart)
-showcases how a user can get started with an IOS-XR vagrant box.
+## Bring up the XR Vagrant instance  
 
-We'll just need a single XR instance for this guide, so follow the above [link]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#pre-requisites) to bring up a single XR node 
+
+We'll just need a single XR instance for this guide, so follow the  [Single Node Bringup ]({{ base_path}/tutorials/iosxr-vagrant-quickstart#single-node-bringup) to bring up a single XR node.
