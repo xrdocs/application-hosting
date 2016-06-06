@@ -288,6 +288,7 @@ It is important to note that the LXC container must use a port other than 22 (us
 {: .notice--danger}  
 
 
+### Start and ubuntu container
 For this purpose, install lxc-tools inside the devbox:
 
 ```shell
@@ -384,8 +385,45 @@ Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-87-generic x86_64)
  * Documentation:  https://help.ubuntu.com/
 Last login: Mon Jun  6 12:29:53 2016
 ubuntu@ubuntu_xr:~$ 
+ubuntu@ubuntu_xr:~$ 
+ubuntu@ubuntu_xr:~$ 
 
 ```
+
+Let's create a custom user, say cisco (Password cisco123) and change the SSH port to 58822:
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+ubuntu@ubuntu_xr:~$ <mark>sudo adduser cisco </mark>
+Adding user `cisco' ...
+Adding new group `cisco' (1001) ...
+Adding new user `cisco' (1001) with group `cisco' ...
+Creating home directory `/home/cisco' ...
+Copying files from `/etc/skel' ...
+Enter new UNIX password: 
+Retype new UNIX password: 
+passwd: password updated successfully
+Changing the user information for cisco
+Enter the new value, or press ENTER for the default
+	Full Name []: 
+	Room Number []: 
+	Work Phone []: 
+	Home Phone []: 
+	Other []: 
+Is the information correct? [Y/n] Y
+ubuntu@ubuntu_xr:~$ 
+ubuntu@ubuntu_xr:~$ <mark> sudo adduser cisco sudo </mark>
+Adding user `cisco' to group `sudo' ...
+Adding user cisco to group sudo
+Done.
+ubuntu@ubuntu_xr:~$ 
+ubuntu@ubuntu_xr:~$ 
+ubuntu@ubuntu_xr:~$ 
+
+</code>
+</pre>
+</div>
 
 
 
