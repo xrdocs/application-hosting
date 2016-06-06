@@ -201,6 +201,29 @@ Once it completes, you should be able to see both the VMs running by using the `
 ![Vagrant Status output](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/vagrant_status_lxc_app.png)
 
 
+### Check Reachability
+
+To get into XR linux shell, issue `vagrant ssh rtr`
+
+```shell
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant ssh rtr
+Last login: Mon Jun  6 11:20:58 2016 from 10.0.2.2
+xr-vm_node0_RP0_CPU0:~$ ifconfig Gi0_0_0_0
+Gi0_0_0_0 Link encap:Ethernet  HWaddr 08:00:27:46:1f:b2  
+          inet addr:11.1.1.10  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:fe46:1fb2/64 Scope:Link
+          UP RUNNING NOARP MULTICAST  MTU:1514  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1 errors:0 dropped:3 overruns:0 carrier:1
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:42 (42.0 B)
+
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ 
+```
+
+
 
 
 
