@@ -357,25 +357,13 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 </div>
   
   
-Connect to the Container console:
+Get the container's IP:
 
-Make sure you specify the escape character you want to use with the -e option as shown below.
-{: .notice--warning}
-
-<div class="highlighter-rouge">
-<pre class="highlight">
-<code>
-
-vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo lxc-start -d --name ubuntu_xr </mark>
-vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo lxc-ls --fancy </mark>
-NAME       STATE    IPV4       IPV6  AUTOSTART  
-----------------------------------------------
-ubuntu_xr  RUNNING  10.0.3.45  -     NO         
+```shell
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo lxc-info --name ubuntu_xr | grep IP
+IP:             10.0.3.45
 vagrant@vagrant-ubuntu-trusty-64:~$ 
-
-</code>
-</pre>
-</div>
+```
 
 
 
