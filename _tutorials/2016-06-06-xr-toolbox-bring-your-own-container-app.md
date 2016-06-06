@@ -162,10 +162,12 @@ AKSHSHAR-M-K0DS:~ akshshar$
 
 Make sure you're in the `lxc-app-topo-bootstrap/` directory and issue a `vagrant up`
 
-```shell
-AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ pwd
-/Users/akshshar/vagrant-xr/lxc-app-topo-bootstrap
-AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant up
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$<mark>pwd</mark>
+<mark>/Users/akshshar/vagrant-xr/lxc-app-topo-bootstrap</mark>
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$<mark> vagrant up </mark>
 Bringing machine 'rtr' up with 'virtualbox' provider...
 Bringing machine 'devbox' up with 'virtualbox' provider...
 ==> rtr: Importing base box 'IOS-XRv'...
@@ -189,7 +191,9 @@ Bringing machine 'devbox' up with 'virtualbox' provider...
     
    
 
-```
+</code>
+</pre>
+</div>
 
 
 
