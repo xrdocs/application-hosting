@@ -162,7 +162,7 @@ AKSHSHAR-M-K0DS:~ akshshar$
 
 ```
 
-### Bring up the topology
+### Launch the nodes
 
 Make sure you're in the `lxc-app-topo-bootstrap/` directory and issue a `vagrant up`
 
@@ -272,6 +272,57 @@ xr-vm_node0_RP0_CPU0:~$
 xr-vm_node0_RP0_CPU0:~$ 
 xr-vm_node0_RP0_CPU0:~$ 
 ```
+
+To get into XR CLI, remember that XR SSH runs on port 22 of the guest IOS-XR instance.  
+First, determine the port to which the XR SSH port (port 22) is forwarded by vagrant by using the `vagrant port` command:
+  
+  
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$<mark> vagrant port rtr </mark>
+The forwarded ports for the machine are listed below. Please note that
+these values may differ from values configured in the Vagrantfile if the
+provider supports automatic port collision detection and resolution.
+
+    22 (guest) => 2223 (host)
+ 57722 (guest) => 2222 (host)
+
+</code>
+</pre>
+</div>
+
+
+As shown above, port 22 of XR is fowarded to port 2223:
+
+Use port 2223 to now ssh into XR CLI   
+
+The password is "vagrant"
+{: .notice--info}
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+KSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$<mark> ssh -p 2223 vagrant@localhost</mark>
+The authenticity of host '[localhost]:2223 ([127.0.0.1]:2223)' can't be established.
+RSA key fingerprint is 7f:1a:56:e1:3c:7f:cf:a4:ee:ac:20:3a:e6:cf:ad:f5.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '[localhost]:2223' (RSA) to the list of known hosts.
+vagrant@localhost's password: 
+
+
+RP/0/RP0/CPU0:ios#
+RP/0/RP0/CPU0:ios#show ipv4 interface gigabitEthernet 0/0/0/0 brief 
+Tue Jun  7 03:23:31.324 UTC
+
+Interface                      IP-Address      Status                Protocol
+GigabitEthernet0/0/0/0      s   11.1.1.10       Up                    Up      
+RP/0/RP0/CPU0:ios#
+
+</code>
+</pre>
+</div>
+    
 
 You're all set! You can now use this topology to build applications (native-WRL7 or LXC containers) on the "devbox" and test them out on the IOS-XR vagrant node.
 {: .notice--success}
