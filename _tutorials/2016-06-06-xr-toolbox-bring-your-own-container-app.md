@@ -316,7 +316,7 @@ RP/0/RP0/CPU0:ios#show ipv4 interface gigabitEthernet 0/0/0/0 brief
 Tue Jun  7 03:23:31.324 UTC
 
 Interface                      IP-Address      Status                Protocol
-GigabitEthernet0/0/0/0      s   11.1.1.10       Up                    Up      
+GigabitEthernet0/0/0/0         11.1.1.10       Up                    Up      
 RP/0/RP0/CPU0:ios#
 
 </code>
