@@ -31,7 +31,6 @@ In this quick start guide we introduce a typical vagrant topology that we intend
 This topology will be used to build and deploy container (LXC) as well as native XR applications and test them on Vagrant IOS-XR.
 {: .notice--warning}
 
-So, let's get started!
 
 
 ## Pre-requisites
