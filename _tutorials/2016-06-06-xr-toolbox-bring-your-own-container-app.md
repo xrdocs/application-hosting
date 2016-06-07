@@ -237,7 +237,7 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 ```
 
 
-From the Ubuntu box, you should be able to Ping the XR Gig0/0/0/0 interface:
+From the Ubuntu box, you should be able to ping the XR Gig0/0/0/0 interface:
 
 ```shell
 vagrant@vagrant-ubuntu-trusty-64:~$ ping 11.1.1.10 -c 2
