@@ -303,7 +303,7 @@ The password is "vagrant"
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-KSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$<mark> ssh -p 2223 vagrant@localhost</mark>
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$<mark> ssh -p 2223 vagrant@localhost</mark>
 The authenticity of host '[localhost]:2223 ([127.0.0.1]:2223)' can't be established.
 RSA key fingerprint is 7f:1a:56:e1:3c:7f:cf:a4:ee:ac:20:3a:e6:cf:ad:f5.
 Are you sure you want to continue connecting (yes/no)? yes
