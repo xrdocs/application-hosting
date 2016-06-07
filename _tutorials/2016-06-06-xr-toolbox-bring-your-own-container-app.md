@@ -35,7 +35,8 @@ This topology will be used to build and deploy container (LXC) as well as native
 
 ## Pre-requisites
 
-* Meet the pre-requisites specified in the [IOS-XR Vagrant Quick Start guide: Pre-requisites]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#pre-requisites) 
+* Meet the pre-requisites specified in the [IOS-XR Vagrant Quick Start guide: Pre-requisites]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#pre-requisites).   
+The topology here will require about 5G RAM and 2 cores on the user's laptop.
 * Clone the following repository: <https://github.com/akshshar/vagrant-xr>, before we start.
 
 ```shell
