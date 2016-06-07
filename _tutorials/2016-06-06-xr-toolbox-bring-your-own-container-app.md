@@ -60,7 +60,7 @@ AKSHSHAR-M-K0DS:vagrant-xr akshshar$
 
 ## Understand the topology
 
-For this tutorial, we'll use a two-node topology: An XR vagrant instance connected to an Ubuntu vagrant instance:
+For this tutorial, we'll use a two-node topology: An XR vagrant instance connected to Linux instance (devbox). For illustrative purposes, we use Ubuntu as our devbox OS:
 
 ![app dev topo](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/app_dev_topology.png)
 
