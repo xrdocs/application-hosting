@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2016-05-31 02:13 -0700'
-title: 'XR Toolbox, Part 2: Bootstrap XR configuration with Vagrant'
+title: 'XR Toolbox, Part 2 : Bootstrap XR configuration with Vagrant'
 permalink: /tutorials/iosxr-vagrant-bootstrap-config
 author: Akshat Sharma
 excerpt: Configure an IOS-XR Vagrant box on boot using a Shell provisioner
