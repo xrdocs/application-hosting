@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2016-06-06 00:13 -0700'
-title: 'XR Toolbox: App Development Topology '
+title: 'XR Toolbox, Part 3: App Development Topology '
 author: Akshat Sharma
 excerpt: Typical Vagrant Developer Topology to build and test Apps for IOS-XR
 tags:
