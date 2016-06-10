@@ -1,10 +1,10 @@
 ---
-title: "Application Hosting on IOS-XR"
+title: Application Hosting on IOS-XR
 permalink: /techdocs/app_hosting_on_iosxr/introduction
-excerpt: "A detailed Overview of IOS-XR's app-hosting infra "
-modified: "Wed Apr 13 2016 12:54:02 GMT-0700 (PDT)"
-position: top
-sidebar: 
+excerpt: 'A detailed Overview of IOS-XR''s app-hosting infra '
+modified: 'Wed Apr 13 2016 12:54:02 GMT-0700 (PDT)'
+position: hidden
+sidebar:
   nav: app_hosting_on_iosxr
 published: true
 ---
