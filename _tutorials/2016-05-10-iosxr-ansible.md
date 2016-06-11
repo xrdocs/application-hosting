@@ -51,7 +51,13 @@ ubuntu.sh*  Vagrantfile  xr-config
 
 Setup was tested on Windows, but the workflow is the same for other environments. To add an IOS-XR box, you must first download it.
 
-
+>
+Make sure you have access to the IOS-XR vagrant box at by submitting your request here:
+>  
+[IOS-XR Vagrant Private-Beta]({{ site.url }}/getting-started/iosxr-vagrant-beta)  
+>
+You will be notified of the link to download the box.
+{: .notice--danger}
 
 
 ```shell
