@@ -33,7 +33,8 @@ So instead of setting up Ansible directly on the User's Desktop/Host, we simply 
 
 **IOS-XR Vagrant is currently in Private Beta**  
 Please browse to the following link:
-<{{ site.url }}/getting-started/iosxr-vagrant-beta> to gain access to the box.
+<{{ site.url }}/getting-started/iosxr-vagrant-beta>   
+to gain access to the box.
 {: .notice--danger}
 
 ### Vagrant pre-setup
