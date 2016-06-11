@@ -54,7 +54,7 @@ Tha above items are applicable to all operating systems - Mac OSX, Linux or Wind
 >
 **IOS-XR Vagrant is currently in Private Beta**  
 >
-To download the box, please browse to the following link:   
+To download the box, please browse to the following page:   
 [IOS-XR Vagrant Private-Beta]({{ site.url }}/getting-started/iosxr-vagrant-beta)  
 >
 You will be notified of the link to download the box.
