@@ -35,8 +35,10 @@ So instead of setting up Ansible directly on the User's Desktop/Host, we simply 
 Please browse to the following link:
 >
 <{{ site.url }}/getting-started/iosxr-vagrant-beta>   
-to gain access to the box.
 {: .notice--danger}
+>
+to gain access to the box.
+
 
 ### Vagrant pre-setup
 
