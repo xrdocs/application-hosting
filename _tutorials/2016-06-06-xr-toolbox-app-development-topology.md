@@ -37,11 +37,11 @@ This topology will be used to build and deploy container (LXC) as well as native
 
 * Meet the pre-requisites specified in the [IOS-XR Vagrant Quick Start guide: Pre-requisites]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#pre-requisites).   
 The topology here will require about 5G RAM and 2 cores on the user's laptop.
-* Clone the following repository: <https://github.com/akshshar/vagrant-xr>, before we start.
+* Clone the following repository: <https://github.com/ios-xr/vagrant-xr>, before we start.
 
 ```shell
 cd ~/
-git clone https://github.com/akshshar/vagrant-xr.git
+git clone https://github.com/ios-xr/vagrant-xr.git
 cd vagrant-xr/
 ```
 
@@ -143,12 +143,27 @@ Take a look at the Vagrantfile above, again. We use the Vagrant auto_config capa
 
 ### Download and Add the XR Vagrant box
 
-```
-BOX_URL="http://engci-maven-master.cisco.com/artifactory/simple/appdevci-snapshot/XRv64/latest/iosxrv-fullk9-x64.box"
+>
+**IOS-XR Vagrant is currently in Private Beta**  
+>
+To download the box, please browse to the following page:   
+[IOS-XR Vagrant Private-Beta]({{ site.url }}/getting-started/iosxr-vagrant-beta)  
+>
+You will be notified of the link to download the box.
+{: .notice--danger}
 
-vagrant box add --name IOS-XRv $BOX_URL
 
-```
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+$ curl  <b><mark>&lt;link obtained through the private-beta process&gt;</mark></b> --output ~/iosxrv-fullk9-x64.box
+
+$ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
+</code>
+</pre>
+</div>
+
+
 The `vagrant box add` command will take around 10-15 mins as it downloads the box for you.
 {: .notice--info}
 
