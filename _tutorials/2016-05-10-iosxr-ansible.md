@@ -30,7 +30,7 @@ So instead of setting up Ansible directly on the User's Desktop/Host, we simply 
 - IOS-XRv Vagrant Box
 - [Vagrantfile and scripts for provisioning](https://github.com/Maikor/IOSXR-Ansible-tutorial)
 
-**IOS-XR Vagrant is currently in Private Beta**
+### IOS-XR Vagrant is currently in Private Beta**
 Please browse to the following link:
 <{{ site.url }}/getting-started/iosxr-vagrant-beta> to gain access to the box.
 {: .notice--danger}
@@ -47,6 +47,7 @@ ubuntu.sh*  Vagrantfile  xr-config
 ```
 
 Setup was tested on Windows, but the workflow is the same for other environments. To add an IOS-XR box, you must first download it.
+
 
 
 
