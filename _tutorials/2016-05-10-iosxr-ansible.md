@@ -38,7 +38,7 @@ Please browse to the following link:
 {: .notice--danger}
 >
 to gain access to the box.
-
+{: .notice--danger}
 
 ### Vagrant pre-setup
 
