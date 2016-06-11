@@ -50,14 +50,29 @@ Tha above items are applicable to all operating systems - Mac OSX, Linux or Wind
 ## Single Node Bringup
 
 ### Download and Add the IOS-XRv vagrant box
-This can be achieved with a single command as follows:
 
-```
-BOX_URL="http://engci-maven-master.cisco.com/artifactory/simple/appdevci-snapshot/XRv64/latest/iosxrv-fullk9-x64.box"
+>
+**IOS-XR Vagrant is currently in Private Beta**  
+>
+To download the box, please browse to the following link:   
+>  
+[IOS-XR Vagrant Private-Beta]({{ site.url }}/getting-started/iosxr-vagrant-beta)  
+You will be notified of the link to download the box.
+{: .notice--danger}
 
-vagrant box add --name IOS-XRv $BOX_URL
 
-```
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+$ curl  <b><mark>&lt;link obtained through the private-beta process&gt;</mark></b> --output ~/iosxrv-fullk9-x64.box
+​
+$ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
+​
+</code>
+</pre>
+</div>
+
+
 The `vagrant box add` command will take around 10-15 mins as it downloads the box for you.
 {: .notice--info}
 
