@@ -31,7 +31,7 @@ So instead of setting up Ansible directly on the User's Desktop/Host, we simply 
 - [Vagrantfile and scripts for provisioning](https://github.com/Maikor/IOSXR-Ansible-tutorial)
 
 
-**IOS-XR Vagrant is currently in Private Beta**
+**IOS-XR Vagrant is currently in Private Beta**  
 Please browse to the following link:
 <{{ site.url }}/getting-started/iosxr-vagrant-beta> to gain access to the box.
 {: .notice--danger}
