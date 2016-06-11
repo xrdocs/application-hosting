@@ -339,5 +339,5 @@ RP/0/RP0/CPU0:ios#
 </div>
     
 
-You're all set! You can now use this topology to build applications (native-WRL7 or LXC containers) on the "devbox" and test them out on the IOS-XR vagrant node.
+You're all set! You can now use this topology to build applications (native-WRL7 or LXC containers) on the "devbox" and test them out on the IOS-XR vagrant node. We will explore these scenarios in the next part to the [XR Toolbox]({{ base_path }}/tags/#xr-toolbox)
 {: .notice--success}
