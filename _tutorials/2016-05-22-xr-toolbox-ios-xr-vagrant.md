@@ -65,9 +65,8 @@ You will be notified of the link to download the box.
 <pre class="highlight">
 <code>
 $ curl  <b><mark>&lt;link obtained through the private-beta process&gt;</mark></b> --output ~/iosxrv-fullk9-x64.box
-​
+
 $ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
-​
 </code>
 </pre>
 </div>
