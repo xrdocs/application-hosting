@@ -63,7 +63,7 @@ If you haven't heard about it yet, take a look at the following quick-start guid
 [IOS-XR Vagrant Quick-Start](https://xrdocs.github.io/application-hosting/tutorials/iosxr-vagrant-quickstart)
 
 
-See you in Chicago!
+**See you in Chicago!**
 {: .notice--success}
 
 
