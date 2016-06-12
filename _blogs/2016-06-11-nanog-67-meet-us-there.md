@@ -62,6 +62,7 @@ Further, We bring you these demos using the new IOS-XR Vagrant box. If you haven
 
 
 See you in Chicago!
+{: .notice--success}
 
 
 
