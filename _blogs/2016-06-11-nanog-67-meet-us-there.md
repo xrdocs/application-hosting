@@ -43,7 +43,9 @@ Akshat Sharma, Cisco Systems
 
 That's a lot to look out for! But as part of the application-hosting team in IOS-XR, we're particularly excited about showing you the underlying linux infrastructure in IOS-XR and its integration with typical linux applications.
 
-At the Beer
+At the Beer-n-Gear demo booth, We will have our own booth showcasing some cool new tricks with IOS-XR.
+The demo would be based of the following application on Github:
+
 
 
 
