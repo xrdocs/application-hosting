@@ -22,7 +22,7 @@ Of course, if you're looking to talk about IOS-XR and other Cisco solutions for 
 If you're heading over to NANOG 67,  then check out the following sessions to get a gist of the upcoming enhancements in IOS-XR:
 
 
-**[Ten Lessons From Telemetry](https://www.nanog.org/meetings/abstract?id=2852)**   
+**[Ten Lessons From Telemetry](https://www.nanog.org/meetings/abstract?id=2852)**    
 Shelly Cadora, Cisco Systems
 {: .notice--warning}   
 
