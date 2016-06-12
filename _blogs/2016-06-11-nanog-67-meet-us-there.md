@@ -57,7 +57,8 @@ The figure below should pretty much explains what we're going for:
 
 We'll show how you can bring up Containers on XR to run iperf with XR interfaces, and leverage [YDK](https://github.com/CiscoDevNet/ydk-py) to affect OSPF path cost.
 
-Further, We bring you these demos using the new IOS-XR Vagrant box. If you haven't heard about it yet, take a look at the following quick-start guide to get you going:     
+Further, We bring you these demos using the new [IOS-XR Vagrant box](https://xrdocs.github.io/getting-started/iosxr-vagrant-beta) that is current in private-beta.  
+If you haven't heard about it yet, take a look at the following quick-start guide to get you going:     
 [IOS-XR Vagrant Quick-Start](https://xrdocs.github.io/application-hosting/tutorials/iosxr-vagrant-quickstart)
 
 
