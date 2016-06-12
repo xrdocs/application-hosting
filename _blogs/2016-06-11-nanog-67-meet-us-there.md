@@ -12,7 +12,7 @@ tags:
 
 We're up at [NANOG 67](https://www.nanog.org/meetings/NANOG67/home) in Chicago, IL, next week!
 
-Over the course of more than 2 decades, the **N**orth **A**merican **N**etwork **O**perators' Group ([NANOG](https://www.nanog.org)) has been at the epicenter of the net-ops transformation.    
+Over the course of more than 2 decades, the **N**orth **A**merican **N**etwork **O**perators' **G**roup ([NANOG](https://www.nanog.org)) has been at the epicenter of the net-ops transformation.    
 This unique congregation of vendors, service-provider, Data-Center and Enterprise SMEs and network engineers provides a perfect opportunity to showcase some of the new enhancements in IOS-XR.   
 
 
@@ -40,7 +40,7 @@ Akshat Sharma, Cisco Systems
 
 
 
-W
+That's a lot to look out for. But as part of the application-hosting team in IOS-XR
 
 
 
