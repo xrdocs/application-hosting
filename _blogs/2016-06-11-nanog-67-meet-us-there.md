@@ -36,7 +36,7 @@ Nick Slabakov, Juniper Networks
 
 
 **Beer-n-Gear Demo Booth: iperf driven OSPF path remediation demo**  
-Tuesday, June 14 2016:  6:00 - 8:00 pm. 
+Tuesday, June 14 2016:  6:00 - 8:00 pm.  
 Akshat Sharma, Cisco Systems
 {: .notice--warning}
 
