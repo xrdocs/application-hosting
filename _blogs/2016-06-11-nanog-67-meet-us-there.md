@@ -36,11 +36,14 @@ Nick Slabakov, Juniper Networks
 
 
 **Beer-n-Gear Demo Booth: iperf driven OSPF path remediation demo**  
+Tuesday, June 14 2016:  6:00 - 8:00 pm. 
 Akshat Sharma, Cisco Systems
 {: .notice--warning}
 
 
-That's a lot to look out for! But as part of the application-hosting team in IOS-XR, we're particularly excited about showing you the underlying linux infrastructure in IOS-XR, along with goodies such as Vagrant
+That's a lot to look out for! But as part of the application-hosting team in IOS-XR, we're particularly excited about showing you the underlying linux infrastructure in IOS-XR and its integration with typical linux applications.
+
+At the Beer
 
 
 
