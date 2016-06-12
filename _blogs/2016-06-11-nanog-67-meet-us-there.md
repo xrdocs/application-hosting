@@ -1,7 +1,13 @@
 ---
-published: false
+published: true
 date: '2016-06-11 18:31 -0700'
 title: 'NANOG 67:  Meet us there!'
+author: Akshat Sharma
+excerpt: 'Meet us at Nanog-67 in Chicago. Beer-n-Gear, Demos and sessions and much more!'
+tags:
+  - iosxr
+  - cisco
+  - linux
 ---
 
 We're up at [NANOG 67](https://www.nanog.org/meetings/NANOG67/home) in Chicago, IL, next week!
@@ -20,6 +26,11 @@ If you're heading over to NANOG 67,  then check out the following sessions to ge
 Shelly Cadora, Cisco Systems
 {: .notice--warning}
 
+**[Suffering Withdrawal; an automated approach to connectivity evaluation](https://www.nanog.org/meetings/abstract?id=2851)**
+Micah Croff, GitHub  
+Tim Hoffman, Twitter  
+Bruce McDougall, Cisco  
+Nick Slabakov, Juniper Networks  
 
 
 
