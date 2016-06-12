@@ -42,9 +42,16 @@ Akshat Sharma, Cisco Systems
 
 
 That's a lot to look out for! But as part of the application-hosting team in IOS-XR, we're particularly excited about showing you the underlying linux infrastructure in IOS-XR and its integration with typical linux applications.
+At the Beer-n-Gear demo booth, We will have our own booth showcasing some cool new tricks with IOS-XR.  
 
-At the Beer-n-Gear demo booth, We will have our own booth showcasing some cool new tricks with IOS-XR.
-The demo would be based of the following application on Github:
+   
+   
+The demo would be based off the following application on Github:
+<https://github.com/ios-xr/ospf-iperf-ncclient>:
+
+The figure below should pretty much explain what we're going for:
+[iperf based OSPF path remediation](https://camo.githubusercontent.com/a30938cc2dd9c0788b701677fbb5398bc5bb6646/68747470733a2f2f7872646f63732e6769746875622e696f2f7872646f63732d696d616765732f6173736574732f7475746f7269616c2d696d616765732f6f7370665f6e635f69706572662e6a7067)
+
 
 
 
