@@ -50,7 +50,7 @@ The demo would be based off the following application on Github:
 
 <https://github.com/ios-xr/ospf-iperf-ncclient>:
 
-The figure below should pretty much explains what we're going for:  
+The figure below should pretty much explain what we're going for:  
 
 ![iperf based OSPF path remediation](https://camo.githubusercontent.com/a30938cc2dd9c0788b701677fbb5398bc5bb6646/68747470733a2f2f7872646f63732e6769746875622e696f2f7872646f63732d696d616765732f6173736574732f7475746f7269616c2d696d616765732f6f7370665f6e635f69706572662e6a7067)  
   
@@ -65,21 +65,3 @@ If you haven't heard about it yet, take a look at the following quick-start guid
 
 **See you in Chicago!**
 {: .notice--success}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
