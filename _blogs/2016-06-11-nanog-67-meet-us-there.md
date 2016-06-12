@@ -24,13 +24,29 @@ If you're heading over to NANOG 67,  then check out the following sessions to ge
 
 **[Ten Lessons From Telemetry](https://www.nanog.org/meetings/abstract?id=2852)** 
 Shelly Cadora, Cisco Systems
-{: .notice--warning}
+{: .notice--warning}   
+
 
 **[Suffering Withdrawal; an automated approach to connectivity evaluation](https://www.nanog.org/meetings/abstract?id=2851)**
 Micah Croff, GitHub  
 Tim Hoffman, Twitter  
 Bruce McDougall, Cisco  
 Nick Slabakov, Juniper Networks  
+{: .notice--warning}   
+
+
+**Beer-n-Gear Demo Booth: iperf driven OSPF path remediation demo**
+Akshat Sharma, Cisco Systems
+
+
+
+W
+
+
+
+
+
+
 
 
 
