@@ -37,7 +37,7 @@ Nick Slabakov, Juniper Networks
 
 **Beer-n-Gear Demo Booth: iperf driven OSPF path remediation demo**  
 Akshat Sharma, Cisco Systems
-
+{: .notice--warning}
 
 
 That's a lot to look out for! But as part of the application-hosting team in IOS-XR, we're particularly excited about showing you the underlying linux infrastructure in IOS-XR, along with goodies such as Vagrant
