@@ -51,7 +51,16 @@ The demo would be based off the following application on Github:
 
 The figure below should pretty much explain what we're going for:  
 
-[iperf based OSPF path remediation](https://camo.githubusercontent.com/a30938cc2dd9c0788b701677fbb5398bc5bb6646/68747470733a2f2f7872646f63732e6769746875622e696f2f7872646f63732d696d616765732f6173736574732f7475746f7269616c2d696d616765732f6f7370665f6e635f69706572662e6a7067)
+[iperf based OSPF path remediation](https://camo.githubusercontent.com/a30938cc2dd9c0788b701677fbb5398bc5bb6646/68747470733a2f2f7872646f63732e6769746875622e696f2f7872646f63732d696d616765732f6173736574732f7475746f7269616c2d696d616765732f6f7370665f6e635f69706572662e6a7067)  
+  
+  
+
+We'll show how you can bring up Containers on XR to run iperf with XR interfaces, and leverage [YDK](https://github.com/CiscoDevNet/ydk-py) to affect OSPF path cost.
+
+Further, We bring you these demos using the new IOS-XR Vagrant box. If you haven't heard about it yet, take a look at the following quick-start guide to get you going:   
+[IOS-XR Vagrant Quick-Start](https://xrdocs.github.io/application-hosting/tutorials/iosxr-vagrant-quickstart)
+
+
 
 
 
