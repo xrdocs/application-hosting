@@ -27,7 +27,7 @@ Shelly Cadora, Cisco Systems
 {: .notice--warning}   
 
 
-**[Suffering Withdrawal; an automated approach to connectivity evaluation](https://www.nanog.org/meetings/abstract?id=2851)**
+**[Suffering Withdrawal; an automated approach to connectivity evaluation](https://www.nanog.org/meetings/abstract?id=2851)**  
 Micah Croff, GitHub  
 Tim Hoffman, Twitter  
 Bruce McDougall, Cisco  
@@ -35,12 +35,12 @@ Nick Slabakov, Juniper Networks
 {: .notice--warning}   
 
 
-**Beer-n-Gear Demo Booth: iperf driven OSPF path remediation demo**
+**Beer-n-Gear Demo Booth: iperf driven OSPF path remediation demo**  
 Akshat Sharma, Cisco Systems
 
 
 
-That's a lot to look out for. But as part of the application-hosting team in IOS-XR
+That's a lot to look out for! But as part of the application-hosting team in IOS-XR, we're particularly excited about showing you the underlying linux infrastructure in IOS-XR, along with goodies such as Vagrant
 
 
 
