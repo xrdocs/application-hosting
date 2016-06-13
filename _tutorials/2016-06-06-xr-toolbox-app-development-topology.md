@@ -148,8 +148,8 @@ Take a look at the Vagrantfile above, again. We use the Vagrant auto_config capa
 >
 To download the box, you will need an **API-KEY** and a **CCO-ID**
 >
-To get the API-KEY and a CCO-ID, browse to this link:  
-{{ site.url }}/getting-started/steps-download-iosxr-vagrant
+To get the API-KEY and a CCO-ID, browse to this link and follow the steps:  
+<{{ site.url }}/getting-started/steps-download-iosxr-vagrant>
 {: .notice--danger}
 
 
