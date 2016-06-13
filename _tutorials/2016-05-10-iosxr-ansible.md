@@ -54,7 +54,7 @@ Setup was tested on Windows, but the workflow is the same for other environments
 To download the box, you will need an **API-KEY** and a **CCO-ID**
 >
 To get the API-KEY and a CCO-ID, browse to this link:  
-{{ site.url }}/getting-started/steps-download-iosxr-vagrant
+<{{ site.url }}/getting-started/steps-download-iosxr-vagrant>
 {: .notice--danger}
 
 
