@@ -65,6 +65,7 @@ To get the API-KEY and a CCO-ID, browse to this link:
 <pre class="highlight">
 <code>
 $ BOXURL="http://devhub.cisco.com/artifactory/appdevci-release/XRv64/latest/iosxrv-fullk9-x64.box"
+
 $ curl <b><mark>-u &lt;your-cco-id:API-KEY&gt;</mark></b> $BOXURL --output ~/iosxrv-fullk9-x64.box
 
 $ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
