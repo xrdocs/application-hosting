@@ -33,10 +33,7 @@ So instead of setting up Ansible directly on the User's Desktop/Host, we simply 
 >
 **IOS-XR Vagrant is currently in Private Beta**  
 >
-To gain access, please browse to the following page:   
->  
-[IOS-XR Vagrant Private-Beta]({{ site.url }}/getting-started/iosxr-vagrant-beta)  
-{: .notice--danger}
+We explain the steps to in the section below:
 
 ### Vagrant pre-setup
 
@@ -56,14 +53,14 @@ Make sure you have access to the IOS-XR vagrant box by submitting your request h
 >  
 [IOS-XR Vagrant Private-Beta]({{ site.url }}/getting-started/iosxr-vagrant-beta)  
 >
-You will be notified of the link to download the box.
+You will be notified of the link to download the box and the steps to get an API-KEY needed to download the box.
 {: .notice--danger}
 
 
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-$ curl  <b><mark>&lt;link obtained through the private-beta process&gt;</mark></b> --output ~/iosxrv-fullk9-x64.box
+$ curl  <b><mark>-u &lt;your-CCO-ID:API-KEY&gt; &lt;link for the box&gt;</mark></b> --output ~/iosxrv-fullk9-x64.box
 
 $ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
 </code>
