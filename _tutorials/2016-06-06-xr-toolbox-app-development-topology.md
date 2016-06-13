@@ -149,14 +149,14 @@ Take a look at the Vagrantfile above, again. We use the Vagrant auto_config capa
 To download the box, please browse to the following page and submit your details:   
 [IOS-XR Vagrant Private-Beta]({{ site.url }}/getting-started/iosxr-vagrant-beta)  
 >
-You will be notified of the link to download the box.
+You will be notified of the link to download the box and the steps to get an API-KEY needed to download the box.
 {: .notice--danger}
 
 
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-$ curl  <b><mark>&lt;link obtained through the private-beta process&gt;</mark></b> --output ~/iosxrv-fullk9-x64.box
+$ curl  <b><mark>-u &lt;your-CCO-ID:API-KEY&gt; &lt;link for the box&gt;</mark></b> --output ~/iosxrv-fullk9-x64.box
 
 $ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
 </code>
