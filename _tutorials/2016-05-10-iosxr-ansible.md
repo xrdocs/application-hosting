@@ -49,18 +49,20 @@ ubuntu.sh*  Vagrantfile  xr-config
 Setup was tested on Windows, but the workflow is the same for other environments. To add an IOS-XR box, you must first download it.
 
 >
-Make sure you have access to the IOS-XR vagrant box by submitting your request here:
->  
-[IOS-XR Vagrant Private-Beta]({{ site.url }}/getting-started/iosxr-vagrant-beta)  
+**IOS-XR Vagrant is currently in Private Beta**  
 >
-You will be notified of the link to download the box and the steps to get an API-KEY needed to download the box.
+To download the box, you will need an **API-KEY** and a **CCO-ID**
+>
+To get the API-KEY and a CCO-ID, browse to this link:  
+{{ site.url }}/getting-started/steps-download-iosxr-vagrant
 {: .notice--danger}
 
 
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-$ curl  <b><mark>-u &lt;your-CCO-ID:API-KEY&gt; &lt;link for the box&gt;</mark></b> --output ~/iosxrv-fullk9-x64.box
+$ BOX_URL="http://devhub.cisco.com/artifactory/appdevci-release/XRv64/latest/iosxrv-fullk9-x64.box"
+$ curl <b><mark>-u &lt;your-cco-id:API-KEY&gt;</mark></b> $BOX_URL --output ~/iosxrv-fullk9-x64.box
 
 $ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
 </code>
