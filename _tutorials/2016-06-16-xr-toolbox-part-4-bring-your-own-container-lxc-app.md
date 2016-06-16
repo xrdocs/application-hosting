@@ -166,7 +166,7 @@ The only point to remember is that if you expect to use SSH access into the cont
 [Change SSH port inside your container]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#change-ssh-port-inside-your-container) section below and select an SSH port other than 22/57722 (or any other port you expect XR to use based on your config).
 {% endcapture %}
 
-<div class="notice--info">
+<div class="notice--warning">
   {{ notice-text | markdownify }}
 </div>
 
