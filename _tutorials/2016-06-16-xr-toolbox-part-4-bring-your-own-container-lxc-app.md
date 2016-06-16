@@ -369,8 +369,6 @@ root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs#
 </pre>
 </div>  
 
-Your LXC app is now ready to be deployed!
-{: .notice--success}  
 
 
 ### Create LXC SPEC XML File
@@ -433,7 +431,11 @@ A couple of configuration knobs seem interesting in the above XML file:
 {: .notice--info} 
 
 
+Your LXC app is now ready to be deployed!
+{: .notice--success}  
 
+
+## 
 
 
 
