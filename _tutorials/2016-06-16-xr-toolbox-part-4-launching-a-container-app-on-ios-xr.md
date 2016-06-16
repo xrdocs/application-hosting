@@ -42,6 +42,11 @@ Follow the instructions to get your topology up and running as shown below:
 ![app dev topo](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/app_dev_topology.png)
 
 
+If you've reached the end of the above tutorial, you should be able to issue a `vagrant status` to see a rtr (IOS-XR) and a devbox (Ubuntu) instance running.  
+
+
+
+
 
 
 
