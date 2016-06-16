@@ -189,7 +189,6 @@ vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo lxc-start --name xr-lxc-app </mar
 
 ------------------------------ snip output ------------------------------------
 
-
 </code>
 </pre>
 </div> 
@@ -267,7 +266,26 @@ ubuntu@xr-lxc-app:~$ iperf -v
 iperf version 2.0.5 (08 Jul 2010) pthreads
 ubuntu@xr-lxc-app:~$ 
 
-```
+```  
+
+
+### Change SSH port inside your container
+
+When we deploy the container to IOS-XR, we will share XR's network namespace. Since IOS-XR already uses up port 22 and port 57722 for its own purposes, we need to pick some other port for our container.  
+
+**Our reccommendation? - Pick some port in the 58xxx range.**
+{: .notice--info}  
+
+Let's change the SSH port to 58822:
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+ubuntu@xr-lxc-app:~$<mark> sudo sed -i s/Port\ 22/Port\ 58822/ /etc/ssh/sshd_config </mark>
+ubuntu@xr-lxc-app:~$ 
+</code>
+</pre>
+</div> 
 
 
 
