@@ -126,12 +126,23 @@ sudo apt-get -y install lxc
 Check that lxc was properly installed:
 
 ```shell
-vagrant@vagrant-ubuntu-trusty-64:~$ lxc-start --version
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo lxc-start --version
 1.0.8
 vagrant@vagrant-ubuntu-trusty-64:~$ 
 ```
 
+### Launch an Ubuntu LXC container  
 
+Using the standard ubuntu templates available with lxc, let's create and start the ubuntu container inside devbox:  
+
+```shell
+
+
+```  
+
+
+This process will take some time as ubuntu rootfs template is downloaded for you by the lxc tools. 
+{: .notice--info}
 
 
 
