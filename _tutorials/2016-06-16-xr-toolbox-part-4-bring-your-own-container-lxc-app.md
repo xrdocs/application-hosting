@@ -173,8 +173,25 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 </pre>
 </div> 
 
+Now let's start the container:
 
 
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo lxc-start --name xr-lxc-app </mark>
+&lt;4&gt;init: plymouth-upstart-bridge main process (5) terminated with status 1
+&lt;4&gt;init: plymouth-upstart-bridge main process ended, respawning
+&lt;4&gt;>init: hwclock main process (7) terminated with status 77
+&lt;4&gt;>init: plymouth-upstart-bridge main process (15) terminated with status 1
+&lt;4&gt;>init: plymouth-upstart-bridge main process ended, respawning
+
+------------------------------ snip output ------------------------------------
+
+
+</code>
+</pre>
+</div> 
 
 
 
