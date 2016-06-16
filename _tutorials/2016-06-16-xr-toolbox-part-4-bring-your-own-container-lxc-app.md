@@ -133,7 +133,7 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 
 ### Launch an Ubuntu LXC container  
 
-Using the standard ubuntu templates available with lxc, let's create and start the ubuntu container inside devbox:  
+Using the standard ubuntu template available with lxc, let's create and start the ubuntu container inside devbox:  
 
 <div class="highlighter-rouge">
 <pre class="highlight">
@@ -155,7 +155,23 @@ I: Retrieving Packages
 
 
 This process will take some time as the ubuntu rootfs template is downloaded for you by the lxc tools. 
-{: .notice--info}
+{: .notice--info}  
+
+
+Once the container template is installed successfully, it should show up in the lxc-ls output:
+
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo lxc-ls --fancy </mark>
+NAME        STATE    IPV4  IPV6  AUTOSTART  
+------------------------------------------
+xr-lxc-app  STOPPED  -     -     NO         
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+</code>
+</pre>
+</div> 
 
 
 
