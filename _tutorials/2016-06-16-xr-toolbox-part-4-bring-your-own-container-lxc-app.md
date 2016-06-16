@@ -319,7 +319,11 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 vagrant@vagrant-ubuntu-trusty-64:~$ 
 ```  
 
+We're back on our devbox.
+Now hop over to the directory `/var/lib/lxc/xr-lxc-app` and package the rootfs into a tar ball.
 
+**You will need to be root for this operation**
+{: .notice--warning}
 
 
 
