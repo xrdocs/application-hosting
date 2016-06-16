@@ -59,8 +59,14 @@ above with their current state. For more information about a specific
 VM, run `vagrant status NAME`.
 AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ 
 
-
 ```
+
+All good? Perfect, let's start building our container application tar ball.
+{: .notice--success}  
+
+
+
+
 
 
 
