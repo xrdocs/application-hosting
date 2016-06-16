@@ -10,7 +10,7 @@ tags:
   - linux
   - lxc
   - containers
-position: hidden
+position: top
 excerpt: Launch a Container app (LXC) on IOS-XR
 ---
 
