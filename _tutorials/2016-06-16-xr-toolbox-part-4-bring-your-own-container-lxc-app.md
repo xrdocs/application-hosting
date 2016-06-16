@@ -199,7 +199,38 @@ You will taken to the login prompt.
 The Default credentials are:
 Username:  **ubuntu**
 Password:  **ubuntu**
-{: .notice--info}
+{: .notice--info}  
+
+
+```shell
+Ubuntu 14.04.4 LTS xr-lxc-app console
+
+xr-lxc-app login: <4>init: setvtrgb main process (428) terminated with status 1
+<4>init: plymouth-upstart-bridge main process (23) killed by TERM signal
+
+
+Ubuntu 14.04.4 LTS xr-lxc-app console
+
+xr-lxc-app login: ubuntu
+Password: 
+Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-87-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+ubuntu@xr-lxc-app:~$ 
+
+
+```
+
+Perfect! You've launched an ubuntu container on your devbox.
+{: .notice--success}
 
 
 
