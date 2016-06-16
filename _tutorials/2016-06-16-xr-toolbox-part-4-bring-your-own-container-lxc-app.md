@@ -373,7 +373,7 @@ Your LXC app is now ready to be deployed!
 {: .notice--success}  
 
 
-### Create an XML file for container launch on XR
+### Create LXC SPEC XML File
 
 We need to create an XML file that will define different parameters (cpu, mem, rootfs location etc.) for the container launch on IOS-XR (which uses libvirt).
 On the devbox, use your favorite editor (vi, nano, pico etc.) to create a new file called   
