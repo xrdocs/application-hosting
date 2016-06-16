@@ -44,9 +44,11 @@ Follow the instructions to get your topology up and running as shown below:
 
 If you've reached the end of the above tutorial, you should be able to issue a `vagrant status` in the `vagrant-xr/lxc-app-topo-bootstrap` directory to see a rtr (IOS-XR) and a devbox (Ubuntu/trusty) instance running.  
 
-```shell
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
 AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ pwd
-/Users/akshshar/vagrant-xr/lxc-app-topo-bootstrap
+<mark>/Users/akshshar/vagrant-xr/lxc-app-topo-bootstrap </mark>
 AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ 
 AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant status
 Current machine states:
@@ -59,7 +61,10 @@ above with their current state. For more information about a specific
 VM, run `vagrant status NAME`.
 AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ 
 
-```
+</code>
+</pre>
+</div>
+
 
 All good? Perfect. Let's start building our container application tar ball.
 {: .notice--success}  
