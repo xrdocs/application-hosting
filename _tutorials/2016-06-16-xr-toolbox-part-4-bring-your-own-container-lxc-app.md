@@ -299,6 +299,20 @@ We're good!
 {: .notice--success}
 
 
+### Shutdown and package your container  
+
+```shell
+ubuntu@xr-lxc-app:~$ sudo shutdown -h now
+ubuntu@xr-lxc-app:~$ 
+Broadcast message from ubuntu@xr-lxc-app
+	(/dev/lxc/console) at 19:37 ...
+
+The system is going down for halt NOW!
+
+------------------------------ snip output ------------------------------------
+
+
+```
 
 
 
