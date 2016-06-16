@@ -61,11 +61,16 @@ AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$
 
 ```
 
-All good? Perfect, let's start building our container application tar ball.
+All good? Perfect. Let's start building our container application tar ball.
 {: .notice--success}  
 
 
-## Build an LXC tar ball
+## Build an LXC tar ball  
+  
+To launch an LXC container we need two things:  
+*  A container rootfs tar ball
+*  An XML file to launch the container
+
 
 
 
