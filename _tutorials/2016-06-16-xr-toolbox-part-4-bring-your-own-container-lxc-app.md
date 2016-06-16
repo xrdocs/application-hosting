@@ -233,6 +233,14 @@ Perfect! You've launched an ubuntu container on your devbox.
 {: .notice--success}
 
 
+### Create your app
+
+In this example we'll install iperf as a sample application.  
+
+sudo password:  **ubuntu**
+{: .notice--info}
+
+
 
 
 
