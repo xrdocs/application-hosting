@@ -442,7 +442,7 @@ root@vagrant-ubuntu-trusty-64:~# pwd
 root@vagrant-ubuntu-trusty-64:~# ls -l
 total 119988
 -rw-r--r-- 1 root root 122863332 Jun 16 19:41 xr-lxc-app-rootfs.tar.gz
--rw-r--r-- 1 root root       590 Jun 16 23:29 xr-lxc-app-rootfs.xml
+-rw-r--r-- 1 root root       590 Jun 16 23:29 xr-lxc-app.xml
 root@vagrant-ubuntu-trusty-64:~# 
 ```
 {: .notice--success}  
@@ -450,7 +450,17 @@ root@vagrant-ubuntu-trusty-64:~#
 
 ## Transfer rootfs and XML file to XR
 
-We will 
+We can either use the XR Gig or Mgmt interface to transfer the files.
+IOS-XR runs openssh in the linux environment on port 57722.
+
+**To transfer using the Gig interface:**
+```
+scp -P 57722 /home/vagrant/* vagrant@11.1.1.10:/misc/app_host/scratch/
+
+```  
+Where 11.1.1.10 is the directly connected Gig0/0/0/0 interface of IOS-XR instance (this config was explained in the [XR Toolbox, Part 3: App Development Topology]({{ base_path }}/tutorials/2016-06-06-xr-toolbox-app-development-topology) tutorial).
+  
+
 
 ## Untar rootfs under /misc/app_host/
 
