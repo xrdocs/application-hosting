@@ -365,6 +365,7 @@ root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs#<mark> tar -czf xr-
 tar: dev/log: socket ignored
 root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs# ls -l xr-lxc-app-rootfs.tar.gz 
 -rw-r--r-- 1 root root 122863332 Jun 16 19:41 <mark>xr-lxc-app-rootfs.tar.gz</mark>
+root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs# mv xr-lxc-app-rootfs.tar.gz /home/vagrant/
 root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs# 
 </code>
 </pre>
@@ -433,7 +434,7 @@ A couple of configuration knobs seem interesting in the above XML file:
 {: .notice--info} 
 
 
-Your LXC app is now ready to be deployed!
+Your LXC app is now ready to be deployed! You should have the following two components
 {: .notice--success}  
 
 
