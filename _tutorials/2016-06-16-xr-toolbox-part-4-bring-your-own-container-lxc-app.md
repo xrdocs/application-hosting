@@ -158,7 +158,7 @@ This process will take some time as the ubuntu rootfs template is downloaded for
 {: .notice--info}  
 
 The technique presented here focuses on the creation of a container from scratch (using a base ubuntu template) followed by the installation of an application. A user can easily use their own pre-built rootfs tar ball. Create a the config file for the lxc container and untar your rootfs into /var/lib/lxc/ of the devbox.   
-The only point to remember is that if you expect to use SSH access into the container, then follow the steps [Change SSH port inside your container]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#change-ssh-port-inside-your-container)
+The only point to remember is that if you expect to use SSH access into the container, then follow the steps in the [Change SSH port inside your container]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#change-ssh-port-inside-your-container) section and select a port other than 22/57722 and any port that you expect XR to use up based on your config.
 
 
 Once the container template is installed successfully, it should show up in the lxc-ls output:
