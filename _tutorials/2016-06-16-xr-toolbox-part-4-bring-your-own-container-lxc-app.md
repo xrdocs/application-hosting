@@ -412,7 +412,7 @@ A couple of configuration knobs seem interesting in the above XML file:
 
 *  The netns (network namespace) setting for the 
    ```
-   <sharenet type='netns' value='global-vrf'/>
+   &lt;sharenet type='netns' value='global-vrf'&gt;
    ```  
    **In IOS-XR the 'global-vrf' network namespace houses all the XR Gig/Mgmt interfaces that are 
    in the global/default VRF. The sharenet setting above makes sure that the container on launch 
@@ -420,14 +420,13 @@ A couple of configuration knobs seem interesting in the above XML file:
    
 *  The rootfs mount volume:
    ```
-   <source dir='/misc/app_host/rootfs'/>
+   &lt;source dir='/misc/app_host/rootfs'&gt;
    ```
    ** /misc/app_host/ in IOS-XR is a special mount volume that is designed to provide nearly 3.9G 
    of Disk space on IOS-XRv and varying amounts on other platforms (NCS5508, ASR9k) etc. This 
    mount volume may be used to host custom container rootfs and other large files without using up 
    XR's disk space **
    
-
 {% endcapture %}
 
 <div class="notice--info">
