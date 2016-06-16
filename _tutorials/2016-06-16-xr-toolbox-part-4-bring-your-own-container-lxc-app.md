@@ -417,7 +417,8 @@ A couple of configuration knobs seem interesting in the above XML file:
 ``` 
 **In IOS-XR the 'global-vrf' network namespace houses all the XR Gig/Mgmt interfaces that are 
 in the global/default VRF. The sharenet setting above makes sure that the container on launch 
-will also have access to all of XR's interfaces natively **
+will also have access to all of XR's interfaces natively **  
+>
 *  The rootfs mount volume:  
 >
 ```html
