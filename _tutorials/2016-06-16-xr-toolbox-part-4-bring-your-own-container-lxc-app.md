@@ -434,7 +434,18 @@ A couple of configuration knobs seem interesting in the above XML file:
 {: .notice--info} 
 
 
-Your LXC app is now ready to be deployed! You should have the following two components
+Your LXC app is now ready to be deployed! You should have the following two components in the home directory of the devbox:
+
+```shell
+root@vagrant-ubuntu-trusty-64:~# pwd
+/home/vagrant
+root@vagrant-ubuntu-trusty-64:~# ls -l
+total 119988
+-rw-r--r-- 1 root root 122863332 Jun 16 19:41 xr-lxc-app-rootfs.tar.gz
+-rw-r--r-- 1 root root       590 Jun 16 23:29 xr-lxc-app-rootfs.xml
+root@vagrant-ubuntu-trusty-64:~# 
+
+```
 {: .notice--success}  
 
 
