@@ -303,6 +303,7 @@ We're good!
 
 
 Issue a shutdown to escape 
+
 ```shell
 ubuntu@xr-lxc-app:~$ sudo shutdown -h now
 ubuntu@xr-lxc-app:~$ 
