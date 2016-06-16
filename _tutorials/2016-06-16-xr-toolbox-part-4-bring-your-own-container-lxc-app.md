@@ -444,7 +444,6 @@ total 119988
 -rw-r--r-- 1 root root 122863332 Jun 16 19:41 xr-lxc-app-rootfs.tar.gz
 -rw-r--r-- 1 root root       590 Jun 16 23:29 xr-lxc-app-rootfs.xml
 root@vagrant-ubuntu-trusty-64:~# 
-
 ```
 {: .notice--success}  
 
