@@ -196,8 +196,8 @@ vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo lxc-start --name xr-lxc-app </mar
 
 You will taken to the login prompt.
 
-The Default credentials are:
-Username:  **ubuntu**
+The Default credentials are:  
+Username:  **ubuntu**  
 Password:  **ubuntu**
 {: .notice--info}  
 
