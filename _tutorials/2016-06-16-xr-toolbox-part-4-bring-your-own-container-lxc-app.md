@@ -84,8 +84,10 @@ To create them, we'll hop onto our devbox (Ubuntu/trusty) VM in the topology and
 
 SSH into the devbox:
 
-```shell
-AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant ssh devbox
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$<mark> vagrant ssh devbox</mark>
 Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-87-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com/
@@ -109,11 +111,17 @@ Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-87-generic x86_64)
 
 Last login: Thu Jun 16 14:27:47 2016 from 10.0.2.2
 vagrant@vagrant-ubuntu-trusty-64:~$ 
-
-```  
+</code>
+</pre>
+</div> 
 
   
-Install lxc tools:
+Install lxc tools inside the devbox
+
+```shell
+sudo apt-get update
+sudo apt-get -y install lxc
+```
 
 
 
