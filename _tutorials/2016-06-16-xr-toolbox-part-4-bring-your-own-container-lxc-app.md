@@ -424,7 +424,7 @@ A couple of configuration knobs seem interesting in the above XML file:
    of Disk space on IOS-XRv and varying amounts on other platforms (NCS5508, ASR9k) etc. This 
    mount volume may be used to host custom container rootfs and other large files without using up 
    XR's disk space **
-{: .notice--info}   
+ 
 
 
 
