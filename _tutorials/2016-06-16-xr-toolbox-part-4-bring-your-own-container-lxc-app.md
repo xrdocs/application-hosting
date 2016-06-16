@@ -267,8 +267,6 @@ ubuntu@xr-lxc-app:~$ iperf -v
 iperf version 2.0.5 (08 Jul 2010) pthreads
 ubuntu@xr-lxc-app:~$ 
 
-
-
 ```
 
 
