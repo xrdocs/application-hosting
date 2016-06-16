@@ -422,7 +422,7 @@ A couple of configuration knobs seem interesting in the above XML file:
 *  The rootfs mount volume:  
 >
    ```html
-   `<source dir='/misc/app_host/rootfs'/>`;
+   `<source dir='/misc/app_host/xr-lxc-app/'/>`;
    ```
 >
    **/misc/app_host/ in IOS-XR is a special mount volume** that is designed to provide nearly 3.9G 
@@ -439,6 +439,7 @@ Your LXC app is now ready to be deployed!
 
 ## Transfer rootfs and XML file to XR
 
+We will 
 
 ## Untar rootfs under /misc/app_host/
 
