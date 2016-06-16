@@ -42,7 +42,7 @@ Follow the instructions to get your topology up and running as shown below:
 ![app dev topo](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/app_dev_topology.png)
 
 
-If you've reached the end of the above tutorial, you should be able to issue a `vagrant status` to see a rtr (IOS-XR) and a devbox (Ubuntu) instance running.  
+If you've reached the end of the above tutorial, you should be able to issue a `vagrant status` in the `vagrant-xr/lxc-app-topo-bootstrap` directory to see a rtr (IOS-XR) and a devbox (Ubuntu) instance running.  
 
 ```shell
 AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ pwd
@@ -71,6 +71,7 @@ To launch an LXC container we need two things:
 
 *  A container rootfs tar ball
 *  An XML file to launch the container
+
 
 
 
