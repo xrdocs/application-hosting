@@ -453,7 +453,8 @@ root@vagrant-ubuntu-trusty-64:~#
 We can either use the XR Gig or Mgmt interface to transfer the files.
 IOS-XR runs openssh in the linux environment on port 57722.
 
-**To transfer using the Gig interface:**
+**To transfer using the Gig interface:**  
+
 ```
 scp -P 57722 /home/vagrant/* vagrant@11.1.1.10:/misc/app_host/scratch/
 
