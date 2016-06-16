@@ -373,6 +373,49 @@ Your LXC app is now ready to be deployed!
 {: .notice--success}  
 
 
+### Create an XML file for container launch
+
+On the devbox, use your favorite editor (vi, nano, pico etc.) to create a new file called   
+`xr-lxc-app.xml` with the following content:  
+
+```html
+<domain type='lxc' xmlns:lxc='http://libvirt.org/schemas/domain/lxc/1.0' >
+<name>xr-lxc-app</name>
+<memory>327680</memory>
+<os>
+<type>exe</type>
+<init>/sbin/init</init>
+</os>
+<lxc:namespace>
+<sharenet type='netns' value='global-vrf'/>
+</lxc:namespace>
+<vcpu>1</vcpu>
+<clock offset='utc'/>
+<on_poweroff>destroy</on_poweroff>
+<on_reboot>restart</on_reboot>
+<on_crash>destroy</on_crash>
+<devices>
+<emulator>/usr/lib64/libvirt/libvirt_lxc</emulator>
+<filesystem type='mount'>
+<source dir='/misc/app_host/rootfs'/>
+<target dir='/'/>
+</filesystem>
+<console type='pty'/>
+</devices>
+</domain>
+
+```
+
+{% capture notice-text %}
+A couple configuration knobs seem interesting in the above XML file:  
+
+{% endcapture %}
+
+<div class="notice--info">
+  {{ notice-text | markdownify }}
+</div>
+
+
 
 
 
