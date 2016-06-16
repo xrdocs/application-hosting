@@ -135,13 +135,26 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 
 Using the standard ubuntu templates available with lxc, let's create and start the ubuntu container inside devbox:  
 
-```shell
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo lxc-create -t ubuntu --name xr-lxc-app</mark>
+Checking cache download in /var/cache/lxc/trusty/rootfs-amd64 ... 
+Installing packages in template: ssh,vim,language-pack-en
+Downloading ubuntu trusty minimal ...
+I: Retrieving Release 
+I: Retrieving Release.gpg 
+I: Checking Release signature
+I: Valid Release signature (key id 790BC7277767219C42C86F933B4FE6ACC0B21F32)
+I: Retrieving Packages 
 
 
-```  
+</code>
+</pre>
+</div> 
 
 
-This process will take some time as ubuntu rootfs template is downloaded for you by the lxc tools. 
+This process will take some time as the ubuntu rootfs template is downloaded for you by the lxc tools. 
 {: .notice--info}
 
 
