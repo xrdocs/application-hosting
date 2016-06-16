@@ -326,7 +326,9 @@ Now hop over to the directory `/var/lib/lxc/xr-lxc-app` and package the rootfs i
 {: .notice--warning}
 
 
-
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
 vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo -s </mark>
 root@vagrant-ubuntu-trusty-64:~# 
 root@vagrant-ubuntu-trusty-64:~#<mark> whoami </mark>
@@ -343,6 +345,9 @@ tar: dev/log: socket ignored
 root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs# ls -l xr-lxc-app-rootfs.tar.gz 
 -rw-r--r-- 1 root root 122863332 Jun 16 19:41 xr-lxc-app-rootfs.tar.gz
 root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs# 
+</code>
+</pre>
+</div>  
 
 
 
