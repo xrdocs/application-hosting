@@ -170,7 +170,7 @@ and select an SSH port other than 22/57722 (or any other port you expect XR to u
 {% endcapture %}
 
 <div class="notice--warning">
-<h4> Using your own rootfs tar ball </h4>
+<h4> Using a custom rootfs tar ball </h4>
   {{ notice-text | markdownify }}
 </div>
 
