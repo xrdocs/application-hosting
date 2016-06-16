@@ -273,7 +273,7 @@ ubuntu@xr-lxc-app:~$
 
 When we deploy the container to IOS-XR, we will share XR's network namespace. Since IOS-XR already uses up port 22 and port 57722 for its own purposes, we need to pick some other port for our container.  
 
-**Our reccommendation? - Pick some port in the 58xxx range.**
+**Our recommendation? - Pick some port in the 58xxx range.**
 {: .notice--info}  
 
 Let's change the SSH port to 58822:
@@ -297,6 +297,7 @@ ubuntu@xr-lxc-app:~$
 
 We're good!
 {: .notice--success}
+
 
 
 
