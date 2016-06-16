@@ -363,7 +363,7 @@ bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  s
 root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs#<mark> tar -czf xr-lxc-app-rootfs.tar.gz * </mark>
 tar: dev/log: socket ignored
 root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs# ls -l xr-lxc-app-rootfs.tar.gz 
--rw-r--r-- 1 root root 122863332 Jun 16 19:41 xr-lxc-app-rootfs.tar.gz
+-rw-r--r-- 1 root root 122863332 Jun 16 19:41 <mark>xr-lxc-app-rootfs.tar.gz</mark>
 root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs# 
 </code>
 </pre>
