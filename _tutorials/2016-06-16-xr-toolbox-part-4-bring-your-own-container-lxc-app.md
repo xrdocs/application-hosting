@@ -80,7 +80,40 @@ To launch an LXC container we need two things:
 To create them, we'll hop onto our devbox (Ubuntu/trusty) VM in the topology and install lxc-tools. lxc-tools will be used to create a container rootfs tar ball.  
 
 
-### Install lxc-tools on devbox  
+### Install lxc tools on devbox  
+
+SSH into the devbox:
+
+```shell
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant ssh devbox
+Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-87-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+  System information as of Thu Jun 16 14:27:47 UTC 2016
+
+  System load:  0.0               Processes:           74
+  Usage of /:   3.5% of 39.34GB   Users logged in:     0
+  Memory usage: 25%               IP address for eth0: 10.0.2.15
+  Swap usage:   0%                IP address for eth1: 11.1.1.20
+
+  Graph this data and manage this system at:
+    https://landscape.canonical.com/
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+0 packages can be updated.
+0 updates are security updates.
+
+
+Last login: Thu Jun 16 14:27:47 2016 from 10.0.2.2
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+
+```  
+
+  
+Install lxc tools:
 
 
 
