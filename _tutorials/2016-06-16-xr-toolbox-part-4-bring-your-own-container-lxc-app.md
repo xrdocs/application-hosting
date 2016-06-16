@@ -173,6 +173,7 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 </pre>
 </div> 
 
+
 Now let's start the container:
 
 
@@ -192,6 +193,13 @@ vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo lxc-start --name xr-lxc-app </mar
 </code>
 </pre>
 </div> 
+
+You will taken to the login prompt.
+
+The Default credentials are:
+Username:  ubuntu
+Password:  ubuntu
+{: .notice--info}
 
 
 
