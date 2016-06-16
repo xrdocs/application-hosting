@@ -159,13 +159,15 @@ To get the API-KEY and a CCO-ID, browse to the following link and follow the ste
 <code>
 $ BOXURL="http://devhub.cisco.com/artifactory/appdevci-release/XRv64/latest/iosxrv-fullk9-x64.box"
 
-$ curl <b><mark>-u &lt;your-cco-id:API-KEY&gt;</mark></b> $BOXURL --output ~/iosxrv-fullk9-x64.box
+$ curl <b><mark>-u your-cco-id:API-KEY </mark></b> $BOXURL --output ~/iosxrv-fullk9-x64.box
 
 $ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
 </code>
 </pre>
 </div>
 
+Of course, you should replace  your-cco-id with your actual Cisco.com ID and API-KEY with the key you generated and copied using the above [link]({{ site.url }}/getting-started/steps-download-iosxr-vagrant).
+{: .notice--danger}
 
 The `vagrant box add` command will take around 10-15 mins as it downloads the box for you.
 {: .notice--info}
