@@ -32,10 +32,17 @@ In this part, we explore how a user can build and deploy their own container (LX
 
 ## Pre-requisites
 
-Before we begin, let's make sure you're set up with your development environment.
+Before we begin, let's make sure you've set up your development environment.
 If you haven't checked it out, go through the "App-Development Topology" tutorial here:  
 
 [XR Toolbox, Part 3: App Development Topology]({{ base_path }}/tutorials/2016-06-06-xr-toolbox-app-development-topology)  
+  
+Follow the instructions to get your topology up and running as shown below:  
+
+![app dev topo](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/app_dev_topology.png)
+
+
+
 
 
 
