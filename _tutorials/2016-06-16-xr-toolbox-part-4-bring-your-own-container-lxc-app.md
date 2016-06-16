@@ -158,8 +158,8 @@ This process will take some time as the ubuntu rootfs template is downloaded for
 {: .notice--info}  
 
 {% capture notice-text %}
-  
-  
+#### Using a custom rootfs tar ball  
+
 The technique presented here focuses on the creation of a container from scratch (using a base ubuntu template) followed by the installation of an application.   
 A user can easily use their own pre-built rootfs tar ball and replace the ubuntu rootfs created under `/var/lib/lxc/xr-lxc-app/rootfs/` by the above command, with their own.  
   
