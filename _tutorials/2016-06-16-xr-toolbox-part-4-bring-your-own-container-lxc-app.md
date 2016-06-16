@@ -301,6 +301,8 @@ We're good!
 
 ### Shutdown and package your container  
 
+
+Issue a shutdown to escape 
 ```shell
 ubuntu@xr-lxc-app:~$ sudo shutdown -h now
 ubuntu@xr-lxc-app:~$ 
@@ -311,8 +313,14 @@ The system is going down for halt NOW!
 
 ------------------------------ snip output ------------------------------------
 
+mount: cannot mount block device /dev/sda1 read-only
+ * Will now halt
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+```  
 
-```
+
+
 
 
 
