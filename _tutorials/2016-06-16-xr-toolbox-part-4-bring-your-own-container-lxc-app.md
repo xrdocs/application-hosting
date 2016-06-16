@@ -131,7 +131,7 @@ vagrant@vagrant-ubuntu-trusty-64:~$ sudo lxc-start --version
 vagrant@vagrant-ubuntu-trusty-64:~$ 
 ```
 
-### Launch an Ubuntu LXC container  
+### Launch an LXC container on the devbox
 
 Using the standard ubuntu template available with lxc, let's create and start the ubuntu container inside devbox:  
 
@@ -156,6 +156,9 @@ I: Retrieving Packages
 
 This process will take some time as the ubuntu rootfs template is downloaded for you by the lxc tools. 
 {: .notice--info}  
+
+The technique presented here focuses on the creation of a container from scratch (using a base ubuntu template) followed by the installation of an application. A user can easily use their own pre-built rootfs tar ball. Create a the config file for the lxc container and untar your rootfs into /var/lib/lxc/ of the devbox.   
+The only point to remember is that if you expect to use SSH access into the container, then follow the steps [Change SSH port inside your container]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#change-ssh-port-inside-your-container)
 
 
 Once the container template is installed successfully, it should show up in the lxc-ls output:
@@ -232,7 +235,7 @@ Perfect! You've launched an ubuntu container on your devbox.
 {: .notice--success}
 
 
-### Create your app
+### Create/Install your app
 
 In this example we'll install iperf as a sample application.  
 
@@ -352,7 +355,10 @@ root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs#
 </div>  
 
 Your LXC app is now ready to be deployed!
-{: .notice--success}
+{: .notice--success}  
+
+
+
 
 
 
