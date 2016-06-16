@@ -342,6 +342,7 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 
 We're back on our devbox.
 Now hop over to the directory `/var/lib/lxc/xr-lxc-app` and package the rootfs into a tar ball.
+In the end we transfer the tar ball to the home directory (~/ or /home/vagrant)
 
 **You will need to be root for this operation**
 {: .notice--warning}
@@ -359,13 +360,10 @@ root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app# ls
 config  fstab  rootfs
 root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app# <mark>cd rootfs </mark>
 root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs# 
-root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs# ls
-bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
 root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs#<mark> tar -czf xr-lxc-app-rootfs.tar.gz * </mark>
 tar: dev/log: socket ignored
-root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs# ls -l xr-lxc-app-rootfs.tar.gz 
--rw-r--r-- 1 root root 122863332 Jun 16 19:41 <mark>xr-lxc-app-rootfs.tar.gz</mark>
-root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs# mv xr-lxc-app-rootfs.tar.gz /home/vagrant/
+root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs#
+root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs#<mark>mv xr-lxc-app-rootfs.tar.gz /home/vagrant</mark>
 root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs# 
 </code>
 </pre>
