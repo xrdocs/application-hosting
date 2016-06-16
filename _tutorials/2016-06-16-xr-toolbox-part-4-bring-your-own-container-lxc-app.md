@@ -148,7 +148,7 @@ I: Checking Release signature
 I: Valid Release signature (key id 790BC7277767219C42C86F933B4FE6ACC0B21F32)
 I: Retrieving Packages 
 
-
+------------------------------ snip output ------------------------------------
 </code>
 </pre>
 </div> 
@@ -156,6 +156,8 @@ I: Retrieving Packages
 
 This process will take some time as the ubuntu rootfs template is downloaded for you by the lxc tools. 
 {: .notice--info}
+
+
 
 
 
