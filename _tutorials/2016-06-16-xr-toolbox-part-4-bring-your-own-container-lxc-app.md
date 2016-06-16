@@ -121,7 +121,21 @@ Install lxc tools inside the devbox
 ```shell
 sudo apt-get update
 sudo apt-get -y install lxc
+```  
+
+Check that lxc was properly installed:
+
+```shell
+vagrant@vagrant-ubuntu-trusty-64:~$ lxc-start --version
+1.0.8
+vagrant@vagrant-ubuntu-trusty-64:~$ 
 ```
+
+
+
+
+
+
 
 
 
