@@ -433,8 +433,9 @@ A couple of configuration knobs seem interesting in the above XML file:
    /misc/app_host/xr-lxc-app/ directory**
 {: .notice--info} 
 
-
+>
 Your LXC app is now ready to be deployed! You should have the following two components in the home directory of the devbox:  
+>
 ```shell
 root@vagrant-ubuntu-trusty-64:~# pwd
 /home/vagrant
