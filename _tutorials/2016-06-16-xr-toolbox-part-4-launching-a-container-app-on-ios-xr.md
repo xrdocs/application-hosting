@@ -21,7 +21,7 @@ excerpt: Launch a Container app (LXC) on IOS-XR
 
 If you haven't checked out the earlier parts to the XR toolbox Series, then you can do so here:  
 
-[XR Toolbox Series]({{ base_path }}/tags/#xr-toolbox)
+**[XR Toolbox Series]({{ base_path }}/tags/#xr-toolbox)**
 {: .notice--info}
   
 The purpose of this series is simple. Get users started with an IOS-XR setup on their laptop and incrementally enable them to try out the application-hosting infrastructure on IOS-XR.
