@@ -253,7 +253,7 @@ Perfect! You've launched an ubuntu container on your devbox.
 
 ### Create/Install your app
 
-In this example we'll install iperf as a sample application.  
+In this example we'll install iperf as a sample application.You may choose to skip this step if you have another app in mind.
 
 sudo password:  **ubuntu**
 {: .notice--info}   
@@ -397,7 +397,7 @@ On the devbox, use your favorite editor (vi, nano, pico etc.) to create a new fi
 <devices>
 <emulator>/usr/lib64/libvirt/libvirt_lxc</emulator>
 <filesystem type='mount'>
-<source dir='/misc/app_host/rootfs'/>
+<source dir='/misc/app_host/xr-lxc-app/'/>
 <target dir='/'/>
 </filesystem>
 <console type='pty'/>
@@ -429,7 +429,7 @@ A couple of configuration knobs seem interesting in the above XML file:
    of Disk space on IOS-XRv and varying amounts on other platforms (NCS5508, ASR9k) etc. This 
    mount volume may be used to host custom container rootfs and other large files without using up 
    XR's disk space. **In this case we expect the rootfs to be untarred in the 
-   /misc/app_host/rootfs directory**
+   /misc/app_host/xr-lxc-app/ directory**
 {: .notice--info} 
 
 
@@ -440,7 +440,13 @@ Your LXC app is now ready to be deployed!
 ## Transfer rootfs and XML file to XR
 
 
-## Set
+## Untar rootfs under /misc/app_host/
+
+
+## Use virsh to launch container
+
+
+## Test your app!
 
 
 
