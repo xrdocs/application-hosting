@@ -351,6 +351,9 @@ root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs#
 </pre>
 </div>  
 
+Your LXC app is now ready to be deployed!
+{: .notice--success}
+
 
 
 
