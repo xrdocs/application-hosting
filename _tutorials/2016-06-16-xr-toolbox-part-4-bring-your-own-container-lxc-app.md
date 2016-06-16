@@ -428,7 +428,8 @@ A couple of configuration knobs seem interesting in the above XML file:
    **/misc/app_host/ in IOS-XR is a special mount volume** that is designed to provide nearly 3.9G 
    of Disk space on IOS-XRv and varying amounts on other platforms (NCS5508, ASR9k) etc. This 
    mount volume may be used to host custom container rootfs and other large files without using up 
-   XR's disk space
+   XR's disk space. **In this case we expect the rootfs to be untarred in the 
+   /misc/app_host/rootfs directory**
 {: .notice--info} 
 
 
@@ -436,7 +437,10 @@ Your LXC app is now ready to be deployed!
 {: .notice--success}  
 
 
-## 
+## Transfer rootfs and XML file to XR
+
+
+## Set
 
 
 
