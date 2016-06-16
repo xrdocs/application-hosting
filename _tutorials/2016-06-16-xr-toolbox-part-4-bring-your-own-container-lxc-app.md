@@ -373,8 +373,9 @@ Your LXC app is now ready to be deployed!
 {: .notice--success}  
 
 
-### Create an XML file for container launch
+### Create an XML file for container launch on XR
 
+We need to create an XML file that will define different parameters (cpu, mem, rootfs location etc.) for the container launch on IOS-XR (which uses libvirt).
 On the devbox, use your favorite editor (vi, nano, pico etc.) to create a new file called   
 `xr-lxc-app.xml` with the following content:  
 
@@ -407,7 +408,25 @@ On the devbox, use your favorite editor (vi, nano, pico etc.) to create a new fi
 ```
 
 {% capture notice-text %}
-A couple configuration knobs seem interesting in the above XML file:  
+A couple of configuration knobs seem interesting in the above XML file:  
+
+*  The netns (network namespace) setting for the 
+   ```html
+   <sharenet type='netns' value='global-vrf'/>
+   ```  
+   **In IOS-XR the 'global-vrf' network namespace houses all the XR Gig/Mgmt interfaces that are 
+   in the global/default VRF. The sharenet setting above makes sure that the container on launch 
+   will also have access to all of XR's interfaces natively **
+   
+*  The rootfs mount volume:
+   ```html
+   <source dir='/misc/app_host/rootfs'/>
+   ```
+   ** /misc/app_host/ in IOS-XR is a special mount volume that is designed to provide nearly 3.9G 
+   of Disk space on IOS-XRv and varying amounts on other platforms (NCS5508, ASR9k) etc. This 
+   mount volume may be used to host custom container rootfs and other large files without using up 
+   XR's disk space **
+   
 
 {% endcapture %}
 
