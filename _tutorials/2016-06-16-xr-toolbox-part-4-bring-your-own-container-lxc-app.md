@@ -407,8 +407,9 @@ On the devbox, use your favorite editor (vi, nano, pico etc.) to create a new fi
 
 ```
 
-
+>
 A couple of configuration knobs seem interesting in the above XML file:  
+>
 *  The netns (network namespace) setting for the 
    ```html
    <sharenet type='netns' value='global-vrf'/>
