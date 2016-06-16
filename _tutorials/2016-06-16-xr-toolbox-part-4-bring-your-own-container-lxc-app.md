@@ -285,7 +285,15 @@ ubuntu@xr-lxc-app:~$<mark> sudo sed -i s/Port\ 22/Port\ 58822/ /etc/ssh/sshd_con
 ubuntu@xr-lxc-app:~$ 
 </code>
 </pre>
-</div> 
+</div>  
+
+Check that your port was updated successfully:
+
+```shell
+ubuntu@xr-lxc-app:~$ cat /etc/ssh/sshd_config | grep Port
+Port 58822
+ubuntu@xr-lxc-app:~$ 
+```
 
 
 
