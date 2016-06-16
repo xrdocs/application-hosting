@@ -409,15 +409,16 @@ On the devbox, use your favorite editor (vi, nano, pico etc.) to create a new fi
 
 
 A couple of configuration knobs seem interesting in the above XML file:  
-*  The netns (network namespace) setting:
+---
+*  The netns (network namespace) setting:  
     ```html
     <sharenet type='netns' value='global-vrf'/>
     ``` 
    **In IOS-XR the 'global-vrf' network namespace houses all the XR Gig/Mgmt interfaces that are 
    in the global/default VRF. The sharenet setting above makes sure that the container on launch 
    will also have access to all of XR's interfaces natively **
-*  The rootfs mount volume:
-    ```html
+*  The rootfs mount volume:  
+   ```html
     <source dir='/misc/app_host/rootfs'/>
     ```
    ** /misc/app_host/ in IOS-XR is a special mount volume that is designed to provide nearly 3.9G 
