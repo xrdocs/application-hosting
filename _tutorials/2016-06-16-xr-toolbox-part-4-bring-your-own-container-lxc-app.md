@@ -158,7 +158,7 @@ This process will take some time as the ubuntu rootfs template is downloaded for
 {: .notice--info}  
 
 The technique presented here focuses on the creation of a container from scratch (using a base ubuntu template) followed by the installation of an application. A user can easily use their own pre-built rootfs tar ball.    
-The only point to remember is that if you expect to use SSH access into the container, then follow the steps in the [Change SSH port inside your container]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#change-ssh-port-inside-your-container) section and select a port other than 22/57722 and any port that you expect XR to use up based on your config.
+The only point to remember is that if you expect to use SSH access into the container after deployment to XR, then follow the steps in the [Change SSH port inside your container]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#change-ssh-port-inside-your-container) section below and select an SSH port other than 22/57722 (or any other port you expect XR to use based on your config).
 {: .notice--warning}
 
 
