@@ -238,7 +238,38 @@ Perfect! You've launched an ubuntu container on your devbox.
 In this example we'll install iperf as a sample application.  
 
 sudo password:  **ubuntu**
-{: .notice--info}
+{: .notice--info}   
+
+
+```shell
+
+ubuntu@xr-lxc-app:~$ sudo apt-get -y install iperf
+[sudo] password for ubuntu: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following NEW packages will be installed:
+  iperf
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 56.3 kB of archives.
+After this operation, 174 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu/ trusty/universe iperf amd64 2.0.5-3 [56.3 kB]
+Fetched 56.3 kB in 2s (23.5 kB/s)
+Selecting previously unselected package iperf.
+(Reading database ... 14629 files and directories currently installed.)
+Preparing to unpack .../iperf_2.0.5-3_amd64.deb ...
+Unpacking iperf (2.0.5-3) ...
+Setting up iperf (2.0.5-3) ...
+ubuntu@xr-lxc-app:~$ 
+ubuntu@xr-lxc-app:~$ 
+ubuntu@xr-lxc-app:~$ 
+ubuntu@xr-lxc-app:~$ iperf -v
+iperf version 2.0.5 (08 Jul 2010) pthreads
+ubuntu@xr-lxc-app:~$ 
+
+
+
+```
 
 
 
