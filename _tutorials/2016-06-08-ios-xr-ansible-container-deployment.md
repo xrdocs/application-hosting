@@ -164,7 +164,7 @@ cat /home/vagrant/cn.xml
   <devices>
     <emulator>/usr/lib64/libvirt/libvirt_lxc</emulator>
     <filesystem type='mount'>
-      <source dir='/misc/app_host/rootfs'/>
+      <source dir='/misc/app_host/scratch/rootfs'/>
       <target dir='/'/>
     </filesystem>
     <console type='pty'/>
@@ -239,4 +239,3 @@ Container is up and running. Now you can SSH to it from your laptop:
 ssh -p 58822 cisco@127.0.0.1
 ```
 Congratulations!
-
