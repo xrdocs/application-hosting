@@ -50,7 +50,7 @@ If you've reached the end of the above tutorial, you should be able to issue a `
 AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ pwd
 <mark>/Users/akshshar/vagrant-xr/lxc-app-topo-bootstrap </mark>
 AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ 
-AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant status
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$<mark> vagrant status </mark>
 Current machine states:
 
 rtr                       running (virtualbox)
