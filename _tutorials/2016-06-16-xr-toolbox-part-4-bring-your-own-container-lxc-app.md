@@ -638,32 +638,35 @@ Password: **ubuntu**
   To get out of the container console, issue  Ctrl+]
   {: .notice--info}
 
-*  Use SSH to get into the container:  
+* Use SSH to get into the container:  
    
-   We set the SSH port to 58822 earlier, we can use any of XR's interface addresses to log in:  
+  We set the SSH port to 58822 earlier, we can use any of XR's interface addresses to log in:  
    
-   ```shell
-   
-   xr-vm_node0_RP0_CPU0:~$ ssh -p 58822 ubuntu@11.1.1.10
-   Warning: Permanently added '[11.1.1.10]:58822' (ECDSA) to the list of known hosts.
-   ubuntu@11.1.1.10's password: 
-   Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.14.23-WR7.0.0.2_standard x86_64)
+  ```shell
+  
+  xr-vm_node0_RP0_CPU0:~$ ssh -p 58822 ubuntu@11.1.1.10
+  Warning: Permanently added '[11.1.1.10]:58822' (ECDSA) to the list of known hosts.
+  ubuntu@11.1.1.10's password: 
+  Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.14.23-WR7.0.0.2_standard x86_64)
 
-   * Documentation:  https://help.ubuntu.com/
-   Last login: Fri Jun 17 16:42:13 2016
-   ubuntu@xr-lxc-app:~$ 
+  * Documentation:  https://help.ubuntu.com/
+  Last login: Fri Jun 17 16:42:13 2016
+  ubuntu@xr-lxc-app:~$ 
    
-   ```  
+  ```  
  
-If you'd like to be able to access the container directly from your laptop, then make sure you forward the intended port (in this case 58822) to your laptop (any port of your choice), in the Vagrantfile:  
-```
-node.vm.network "forwarded_port", guest: 58822, host: 58822
-```  
-With the above setting in the Vagrantfile, you can ssh to the container directly from your laptop using:   
-```
-ssh -p 58822 vagrant@localhost
-```
-{: .notice--info}
+  If you'd like to be able to access the container directly from your laptop, then make sure you  
+  forward the intended port (in this case 58822) to your laptop (any port of your choice), in the
+  Vagrantfile:  
+  ```
+  node.vm.network "forwarded_port", guest: 58822, host: 58822
+  ```  
+  With the above setting in the Vagrantfile, you can ssh to the container directly from your   
+  laptop using:   
+  ```
+  ssh -p 58822 vagrant@localhost
+  ```
+  {: .notice--info}
  
 Perfect! Our container is up and running!
 {: .notice--success}
