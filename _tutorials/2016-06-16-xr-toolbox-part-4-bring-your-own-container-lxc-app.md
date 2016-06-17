@@ -488,8 +488,17 @@ AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$
 
 Now use port `2222` to transfer the files over the management port using the host IP = 10.0.2.2
 
-```
-scp -P 2222 /home/vagrant/* vagrant@10.0.2.2:/misc/app_host/scratch/
+```shell
+vagrant@vagrant-ubuntu-trusty-64:~$ scp -P 2222 /home/vagrant/* vagrant@10.0.2.2:/misc/app_host/scratch
+The authenticity of host '[10.0.2.2]:2222 ([10.0.2.2]:2222)' can't be established.
+ECDSA key fingerprint is db:25:e2:27:49:2a:7b:27:e1:76:a6:7a:e4:70:f5:f7.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '[10.0.2.2]:2222' (ECDSA) to the list of known hosts.
+vagrant@10.0.2.2's password: 
+xr-lxc-app-rootfs.tar.gz                                                                                                                                                100%  117MB  16.7MB/s   00:07    
+xr-lxc-app.xml                                                                                                                                                          100%  590     0.6KB/s   00:00    
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+
 ```
 
 
