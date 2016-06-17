@@ -472,7 +472,7 @@ But this process might be slow since Gig interfaces in the Vagrant IOS-XR image 
 **Transfer using the Mgmt interface**
 Vagrant forwards the port 57722 to some host port for IOS-XR over the management port. In Virtualbox, the IP address of the host (your laptop) is always 10.0.2.2 for the NAT'ed port.
 
-So determine the forwarded port for port 57722 for XR on your laptop shell:
+So determine the forwarded port for port 57722 for XR on your laptop shell (in a separate window):
 
 ```shell
 AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant port rtr
@@ -486,7 +486,8 @@ AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$
 
 ```
 
-Now use port `2222` to transfer the files over the management port using the host IP = 10.0.2.2
+Now use port `2222` to transfer the files over the management port using the host IP = 10.0.2.2 from your devbox
+
 
 ```shell
 vagrant@vagrant-ubuntu-trusty-64:~$ scp -P 2222 /home/vagrant/* vagrant@10.0.2.2:/misc/app_host/scratch
@@ -499,10 +500,26 @@ xr-lxc-app-rootfs.tar.gz                                                        
 xr-lxc-app.xml                                                                                                                                                          100%  590     0.6KB/s   00:00    
 vagrant@vagrant-ubuntu-trusty-64:~$ 
 
+```shell
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant ssh rtr
+Last login: Thu Jun 16 19:45:33 2016 from 10.0.2.2
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ 
 ```
 
 
 ## Untar rootfs under /misc/app_host/
+
+Let's hop onto the IOS-XR instance.  
+
+```shell
+
+
+```
+
+Become root and create a directory `xr-lxc-app/`(remember the XML file?) under `/misc/app_host`:  
+
+```shell
 
 
 ## Use virsh to launch container
