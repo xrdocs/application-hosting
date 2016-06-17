@@ -682,6 +682,53 @@ Perfect! Our container is up and running!
 
 ## Test your app!
 
+Now that we have our container up and running, let's see how we run our app (iperf in our case).
+
+>
+Think of the LXC container as your own linux server on the router. Because we share the network namespace between the LXC and XR, all of XR's interfaces (Gig, Mgmt etc.) are available to bind to and run your applications.  
+>
+We can see this by issuing an ifconfig inside the running container:
+>
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+xr-vm_node0_RP0_CPU0:~$<mark>ssh -p 58822 ubuntu@11.1.1.10 </mark>
+Warning: Permanently added '[11.1.1.10]:58822' (ECDSA) to the list of known hosts.
+ubuntu@11.1.1.10's password: 
+Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.14.23-WR7.0.0.2_standard x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+Last login: Fri Jun 17 16:42:13 2016
+ubuntu@xr-lxc-app:~$ 
+ubuntu@xr-lxc-app:~$ 
+ubuntu@xr-lxc-app:~$ 
+ubuntu@xr-lxc-app:~$<mark> ifconfig </mark>
+<mark>Gi0_0_0_0 Link encap:Ethernet  HWaddr 08:00:27:17:f9:a8 </mark> 
+          inet addr:11.1.1.10  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:fe17:f9a8/64 Scope:Link
+          UP RUNNING NOARP MULTICAST  MTU:1514  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1 errors:0 dropped:3 overruns:0 carrier:1
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:42 (42.0 B)
+
+<mark>Mg0_RP0_CPU0_0 Link encap:Ethernet  HWaddr 08:00:27:13:ad:eb </mark>
+          inet addr:10.0.2.15  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:fe13:adeb/64 Scope:Link
+          UP RUNNING NOARP MULTICAST  MTU:1514  Metric:1
+          RX packets:89658 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:34130 errors:0 dropped:0 overruns:0 carrier:1
+          collisions:0 txqueuelen:1000 
+          RX bytes:127933763 (127.9 MB)  TX bytes:2135907 (2.1 MB)
+
+------------------------------- snip output -----------------------------------
+
+</code>
+</pre>
+</div>
+{: .notice--info}
+
+
 
 
 
