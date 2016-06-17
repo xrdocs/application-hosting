@@ -635,8 +635,8 @@ Password: **ubuntu**
 
   ```  
   
-To get out of the container console, issue  Ctrl+]
-{: .notice--info}
+  To get out of the container console, issue  Ctrl+]
+  {: .notice--info}
 
 *  Use SSH to get into the container:  
    
