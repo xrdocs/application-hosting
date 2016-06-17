@@ -525,6 +525,24 @@ xr-vm_node0_RP0_CPU0:/misc/app_host# mkdir xr-lxc-app/
 xr-vm_node0_RP0_CPU0:/misc/app_host# 
 ```
 
+Now untar the rootfs tar-ball that we transferred to the /misc/app_host/scratch directory into the newly created /misc/app_host/xr-lxc-app/ directory.
+
+```shell
+xr-vm_node0_RP0_CPU0:/misc/app_host# cd /misc/app_host/xr-lxc-app/
+xr-vm_node0_RP0_CPU0:/misc/app_host/xr-lxc-app# tar -zxf ../scratch/xr-lxc-app-rootfs.tar.gz 
+tar: dev/mpu401data: Cannot mknod: Operation not permitted
+tar: dev/rmidi3: Cannot mknod: Operation not permitted
+tar: dev/rmidi2: Cannot mknod: Operation not permitted
+tar: dev/smpte1: Cannot mknod: Operation not permitted
+
+--------------------------- snip output --------------------------
+```
+
+Ignore the "Operation not permitted" messages when you untar. These are harmless.
+{: .notice--warning}  
+
+
+
 ## Use virsh to launch container
 
 
