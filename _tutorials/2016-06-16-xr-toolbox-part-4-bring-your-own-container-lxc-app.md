@@ -787,9 +787,33 @@ The advantage of this approach is that when you use larger topologies that may i
 
 ### See if things work!
 
-We're going to use an iperf-client inside our container on XR and an iperf-server running on devbox.
+We're going to use an iperf-server inside our container on XR and an iperf-client running on devbox. You could reverse the client-server setup if you want.
 
-Let's make sure XR's loopback0 is reachable from the devbox (since we're not running routing protocols right now, this isn't automatic):  
+
+Start the iperf server inside the Container on XR:
+
+```shell
+
+xr-vm_node0_RP0_CPU0:~$ ssh -p 58822 ubuntu@11.1.1.10
+ubuntu@11.1.1.10's password: 
+Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.14.23-WR7.0.0.2_standard x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+Last login: Fri Jun 17 18:09:50 2016 from 11.1.1.10
+ubuntu@xr-lxc-app:~$ 
+ubuntu@xr-lxc-app:~$ iperf -s -u
+------------------------------------------------------------
+Server listening on UDP port 5001
+Receiving 1470 byte datagrams
+UDP buffer size: 64.0 MByte (default)
+------------------------------------------------------------
+
+
+```
+
+
+
+Let's make sure XR's loopback0 is reachable from the devbox (since we're not running routing protocols in this topology, this isn't automatic):  
 
 ```shell
 
@@ -809,6 +833,49 @@ PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
 
 
 ```
+
+
+
+Install iperf on devbox and start the iperf client there (to point to XR loopback=1.1.1.1):
+
+```shell
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo apt-get install iperf
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following NEW packages will be installed:
+  iperf
+---------------------------- snip output -------------------------------
+
+
+```
+
+
+```shell
+
+vagrant@vagrant-ubuntu-trusty-64:~$ iperf -u -c 1.1.1.1
+------------------------------------------------------------
+Client connecting to 1.1.1.1, UDP port 5001
+Sending 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  3] local 11.1.1.20 port 54284 connected with 1.1.1.1 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec  1.25 MBytes  1.05 Mbits/sec
+[  3] Sent 893 datagrams
+[  3] Server Report:
+[  3]  0.0-10.0 sec  1.25 MBytes  1.05 Mbits/sec   0.275 ms    0/  893 (0%)
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+
+
+```
+
+There you have it! iperf running inside an Ubuntu Container on IOS-XR. Too many steps to look up? In our next tutorial, we look at automatic all of the  steps needed to bring up a container using an Ansible Playbook. Stay tuned!
+{: .notice--success}
+
+
+
+
 
 
 
