@@ -792,16 +792,17 @@ We're going to use an iperf-server inside our container on XR and an iperf-clien
 
 Start the iperf server inside the Container on XR:
 
-```shell
-
-xr-vm_node0_RP0_CPU0:~$ ssh -p 58822 ubuntu@11.1.1.10
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+xr-vm_node0_RP0_CPU0:~$<mark> ssh -p 58822 ubuntu@11.1.1.10 </mark>
 ubuntu@11.1.1.10's password: 
 Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.14.23-WR7.0.0.2_standard x86_64)
 
  * Documentation:  https://help.ubuntu.com/
 Last login: Fri Jun 17 18:09:50 2016 from 11.1.1.10
 ubuntu@xr-lxc-app:~$ 
-ubuntu@xr-lxc-app:~$ iperf -s -u
+ubuntu@xr-lxc-app:~$<mark> iperf -s -u </mark>
 ------------------------------------------------------------
 Server listening on UDP port 5001
 Receiving 1470 byte datagrams
@@ -809,13 +810,18 @@ UDP buffer size: 64.0 MByte (default)
 ------------------------------------------------------------
 
 
-```
+</code>
+</pre>
+</div>
 
 
 
 Let's make sure XR's loopback0 is reachable from the devbox (since we're not running routing protocols in this topology, this isn't automatic):  
 
-```shell
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
 
 AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant ssh devbox
 Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-87-generic x86_64)
@@ -831,8 +837,9 @@ PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
 64 bytes from 1.1.1.1: icmp_seq=1 ttl=255 time=6.53 ms
 64 bytes from 1.1.1.1: icmp_seq=2 ttl=255 time=1.77 ms
 
-
-```
+</code>
+</pre>
+</div>
 
 
 
