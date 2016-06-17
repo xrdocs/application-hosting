@@ -71,7 +71,7 @@ All good? Perfect. Let's start building our container application tar ball.
 {: .notice--success}  
 
 
-## Create a container App  
+## Create a container rootfs  
 
 {% capture notice-text %}
 #### Using a custom rootfs tar ball  
