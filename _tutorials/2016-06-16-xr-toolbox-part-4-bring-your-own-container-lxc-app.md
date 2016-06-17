@@ -684,11 +684,10 @@ Perfect! Our container is up and running!
 
 Now that we have our container up and running, let's see how we run our app (iperf in our case).
 
->
-Think of the LXC container as your own linux server on the router. Because we share the network namespace between the LXC and XR, all of XR's interfaces (Gig, Mgmt etc.) are available to bind to and run your applications.  
->
-We can see this by issuing an ifconfig inside the running container:
->
+<blockquote>
+<p>
+Think of the LXC container as your own linux server on the router. Because we share the network namespace between the LXC and XR, all of XR's interfaces (Gig, Mgmt etc.) are available to bind to and run your applications.</p> 
+<p>We can see this by issuing an ifconfig inside the running container:</p>
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
@@ -725,6 +724,7 @@ ubuntu@xr-lxc-app:~$<mark> ifconfig </mark>
 </code>
 </pre>
 </div>
+</blockquote>
 
 
 
