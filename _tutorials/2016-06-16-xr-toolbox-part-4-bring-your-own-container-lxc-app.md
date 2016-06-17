@@ -10,6 +10,7 @@ tags:
   - linux
   - lxc
   - containers
+  - xr toolbox
 position: top
 excerpt: Launch a Container app (LXC) on IOS-XR
 ---
@@ -884,33 +885,3 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 
 There you have it! iperf running inside an Ubuntu Container on IOS-XR. Too many steps to look up? In our next tutorial, we look at automating all of the  steps needed to bring up a container using an Ansible Playbook. Stay tuned!
 {: .notice--success}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
