@@ -466,10 +466,12 @@ Hence, to enable the transfer of custom files to IOS-XR, we provide a `/misc/app
 ```
 scp -P 57722 /home/vagrant/* vagrant@11.1.1.10:/misc/app_host/scratch/
 ```  
-Where 11.1.1.10 is the directly connected Gig0/0/0/0 interface of IOS-XR instance (this config was explained in the [XR Toolbox, Part 3: App Development Topology]({{ base_path }}/tutorials/2016-06-06-xr-toolbox-app-development-topology) tutorial).
+Where 11.1.1.10 is the directly connected Gig0/0/0/0 interface of IOS-XR instance (this config was explained in the [XR Toolbox, Part 3: App Development Topology]({{ base_path }}/tutorials/2016-06-06-xr-toolbox-app-development-topology) tutorial).  
+
 But this process might be slow since Gig interfaces in the Vagrant IOS-XR image are rate-limited.
   
-**Transfer using the Mgmt interface**
+**Transfer using the Mgmt interface**  
+
 Vagrant forwards the port 57722 to some host port for IOS-XR over the management port. In Virtualbox, the IP address of the host (your laptop) is always 10.0.2.2 for the NAT'ed port.
 
 So determine the forwarded port for port 57722 for XR on your laptop shell (in a separate window):
