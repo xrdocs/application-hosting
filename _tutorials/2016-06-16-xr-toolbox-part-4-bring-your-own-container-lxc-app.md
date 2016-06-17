@@ -73,7 +73,7 @@ All good? Perfect. Let's start building our container application tar ball.
 
 ## Create a container App  
 
-If you already have a rootfs tar ball ready to deploy, you can safely ignore this section. But if you need SSH access into the container, post deployment on XR, make sure your custom tar ball already has the SSH port set to something other than 22/57722 (or any other port your XR instance is supposed to use up).
+If you already have a rootfs tar ball ready to deploy, you can safely ignore this section. But if you need SSH access into the container, post deployment on XR, make sure your custom tar ball already has the SSH port set to something other than 22 or 57722 (or any other port your XR instance is supposed to use up).
 {: .notice--warning}
   
 To launch an LXC container we need two things:  
