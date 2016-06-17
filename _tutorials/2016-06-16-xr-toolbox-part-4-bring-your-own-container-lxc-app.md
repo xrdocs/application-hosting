@@ -724,7 +724,40 @@ ubuntu@xr-lxc-app:~$<mark> ifconfig </mark>
 </code>
 </pre>
 </div>
-</blockquote>
+</blockquote> 
+
+
+By default, your XR Vagrant box is set up to talk to the internet using a default route through your management port. 
+
+If you want the router to use XR's routing table and talk to other nodes in the topology, then you need to set the "tpa address" in XR's configuration. 
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$<mark> vagrant port rtr | grep 22 </mark>
+    22 (guest) => 2223 (host)
+ 57722 (guest) => 2222 (host)
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ 
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ 
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$<mark> ssh -p 2223 vagrant@localhost </mark>
+vagrant@localhost's password: 
+
+
+RP/0/RP0/CPU0:ios#
+RP/0/RP0/CPU0:ios#conf t
+Fri Jun 17 17:34:45.707 UTC
+RP/0/RP0/CPU0:ios(config)#<mark>int loopback 0</mark>
+RP/0/RP0/CPU0:ios(config-if)#<mark>ip address 1.1.1.1/32</mark>
+RP/0/RP0/CPU0:ios(config-if)#<mark>exit</mark>         
+RP/0/RP0/CPU0:ios(config)#<mark>tpa address-family ipv4 update-source loopback 0</mark>
+RP/0/RP0/CPU0:ios(config)#<mark>commit</mark>
+Fri Jun 17 17:35:19.815 UTC
+RP/0/RP0/CPU0:ios(config)#
+RP/0/RP0/CPU0:ios(config)#<mark>exit</mark>
+RP/0/RP0/CPU0:ios#
+</code>
+</pre>
+</div>
 
 
 
