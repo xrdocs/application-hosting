@@ -655,27 +655,24 @@ Password: **ubuntu**
    
   ```  
  
-  {% capture notice-text %}
+  >
   If you'd like to be able to access the container directly from your laptop, then make sure you  
   forward the intended port (in this case 58822) to your laptop (any port of your choice), in the
   Vagrantfile:   
-  
+  >
   ```
   node.vm.network "forwarded_port", guest: 58822, host: 58822
   ```    
-  
+  >
   With the above setting in the Vagrantfile, you can ssh to the container directly from your   
   laptop using:     
-  
+  >
   ```
   ssh -p 58822 vagrant@localhost
   ``` 
-  {% endcapture %}
+  {: .notice--info}
   
-  
-  <div class="notice--info">
-    {{ notice-text | markdownify }}
-  </div>
+ 
  
  
 Perfect! Our container is up and running!
