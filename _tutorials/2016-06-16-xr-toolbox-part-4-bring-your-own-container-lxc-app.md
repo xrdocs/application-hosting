@@ -516,29 +516,38 @@ xr-vm_node0_RP0_CPU0:~$
 xr-vm_node0_RP0_CPU0:~$ 
 ```
 
-Become root and create a directory `xr-lxc-app/`(remember the XML file?) under `/misc/app_host`:  
+Create a directory `xr-lxc-app/`(remember the source dir in the XML file?) under `/misc/app_host`:
 
-```
-xr-vm_node0_RP0_CPU0:~$ sudo -s
-xr-vm_node0_RP0_CPU0:/home/vagrant# whoami
-root
-xr-vm_node0_RP0_CPU0:/home/vagrant# cd /misc/app_host/
-xr-vm_node0_RP0_CPU0:/misc/app_host# mkdir xr-lxc-app/
-xr-vm_node0_RP0_CPU0:/misc/app_host# 
+You need to be sudo to perform the next set of tasks.
+{ : .notice--info}
+
+
+```shell
+sudo mkdir /misc/app_host/xr-lxc-app/
 ```
 
 Now untar the rootfs tar-ball that we transferred to the /misc/app_host/scratch directory into the newly created /misc/app_host/xr-lxc-app/ directory.
 
-```shell
-xr-vm_node0_RP0_CPU0:/misc/app_host# cd /misc/app_host/xr-lxc-app/
-xr-vm_node0_RP0_CPU0:/misc/app_host/xr-lxc-app# tar -zxf ../scratch/xr-lxc-app-rootfs.tar.gz 
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+xr-vm_node0_RP0_CPU0:~$<mark>cd /misc/app_host/xr-lxc-app/ </mark>
+xr-vm_node0_RP0_CPU0:/misc/app_host/xr-lxc-app$ 
+xr-vm_node0_RP0_CPU0:/misc/app_host/xr-lxc-app$<mark>sudo tar -zxf ../scratch/xr-lxc-app-rootfs.tar.gz</mark>
 tar: dev/mpu401data: Cannot mknod: Operation not permitted
 tar: dev/rmidi3: Cannot mknod: Operation not permitted
 tar: dev/rmidi2: Cannot mknod: Operation not permitted
 tar: dev/smpte1: Cannot mknod: Operation not permitted
+tar: dev/audio1: Cannot mknod: Operation not permitted
+tar: dev/smpte0: Cannot mknod: Operation not permitted
+tar: dev/midi0: Cannot mknod: Operation not permitted
+tar: dev/mixer1: Cannot mknod: Operation not permitted
+tar: dev/smpte3: Cannot mknod: Operation not permitted
 
 --------------------------- snip output --------------------------
-```
+</code>
+</pre>
+</div>
 
 Ignore the "Operation not permitted" messages when you untar. These are harmless.
 {: .notice--warning}  
