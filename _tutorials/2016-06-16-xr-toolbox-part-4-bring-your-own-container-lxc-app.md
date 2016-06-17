@@ -453,14 +453,40 @@ root@vagrant-ubuntu-trusty-64:~#
 We can either use the XR Gig or Mgmt interface to transfer the files.
 IOS-XR runs openssh in the linux environment on port 57722.
 
-**To transfer using the Gig interface:**  
+On IOS-XR, /misc/app_host is owned by root, but root access over SSH is not allowed, for security reasons.  
+Hence, to transfer custom files to IOS-XR, we provide a `/misc/app_host/scratch` directory which is owned by the app_host group. The user `vagrant` is already part of the app_host group.
+{: .notice--info}
+
+**Transfer using the Gig interface:**  
 
 ```
 scp -P 57722 /home/vagrant/* vagrant@11.1.1.10:/misc/app_host/scratch/
-
 ```  
 Where 11.1.1.10 is the directly connected Gig0/0/0/0 interface of IOS-XR instance (this config was explained in the [XR Toolbox, Part 3: App Development Topology]({{ base_path }}/tutorials/2016-06-06-xr-toolbox-app-development-topology) tutorial).
+But this process might be slow since Gig interfaces in the Vagrant image are rate-limited
   
+**Transfer using the Mgmt interface**
+Vagrant forwards the port 57722 to some host port for IOS-XR over the management port. In Virtualbox, the IP address of the host (your laptop) is always 10.0.2.2 for the NAT'ed port.
+
+So determine the forwarded port for port 57722 for XR on your laptop shell:
+
+```shell
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant port rtr
+The forwarded ports for the machine are listed below. Please note that
+these values may differ from values configured in the Vagrantfile if the
+provider supports automatic port collision detection and resolution.
+
+    22 (guest) => 2223 (host)
+ 57722 (guest) => 2222 (host)
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ 
+
+```
+
+Now use port `2222` to transfer the files over the management port using the host IP = 10.0.2.2
+
+```
+scp -P 2222 /home/vagrant/* vagrant@10.0.2.2:/misc/app_host/scratch/
+```
 
 
 ## Untar rootfs under /misc/app_host/
