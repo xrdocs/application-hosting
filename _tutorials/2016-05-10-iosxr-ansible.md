@@ -40,8 +40,8 @@ We explain the steps to in the section below:
 Clone the repo with Vagrantfile and assisting files:
 
 ```shell
-$ git clone https://github.com/Maikor/IOSXR-Ansible-tutorial
-$ cd IOSXR-Ansible-tutorial/
+$ git clone https://github.com/ios-xr/vagrant-xr.git
+$ cd vagrant-xr/ansible-tutorials/
 $ ls
 ubuntu.sh*  Vagrantfile  xr-config
 ```
