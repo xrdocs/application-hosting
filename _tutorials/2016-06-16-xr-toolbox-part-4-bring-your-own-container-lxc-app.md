@@ -727,6 +727,8 @@ ubuntu@xr-lxc-app:~$<mark> ifconfig </mark>
 </blockquote> 
 
 
+### Set the src-hint for Application traffic  
+
 By default, your XR Vagrant box is set up to talk to the internet using a default route through your management port. 
 
 
@@ -763,14 +765,27 @@ RP/0/RP0/CPU0:ios#
 
 Let's say we've set up the TPA address as shown above, you should see the following route in XR's linux shell:  
 
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
 RP/0/RP0/CPU0:ios#bash
 Fri Jun 17 17:39:37.771 UTC
 
 [xr-vm_node0_RP0_CPU0:~]$
 [xr-vm_node0_RP0_CPU0:~]$ip route
-default dev fwdintf  scope link  src 1.1.1.1 
+<mark>default dev fwdintf  scope link  src 1.1.1.1 </mark>
 10.0.2.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 10.0.2.15 
 [xr-vm_node0_RP0_CPU0:~]$
+</code>
+</pre>
+</div>
+
+So all you've really done using the `tpa address-family...`  config is to set src address for all application traffic to XR's loopback0 address.
+
+The advantage of this approach is that when you use larger topologies that may include routing protocols like OSPF,BGP or even static routes, all you have to do is make loopback0 reachable and the application will be able to communicate across the entire topology. Also, this significantly reduces the routing table size in the linux environment as you can see in the output above.
+{: .notice--warning}
+
+### 
 
 
 
