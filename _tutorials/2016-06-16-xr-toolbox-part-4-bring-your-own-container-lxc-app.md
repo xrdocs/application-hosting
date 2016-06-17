@@ -455,7 +455,7 @@ We can either use the XR Gig or Mgmt interface to transfer the files.
 IOS-XR runs openssh in the linux environment on port 57722.  
 
 >
-We need to transfer the files to the /misc/app_host volume on IOS-XR.
+We need to transfer the files to the **/misc/app_host** volume on IOS-XR.
 However, /misc/app_host is owned by root and root access over SSH is not allowed, for obvious security reasons.  
 >
 Hence, to enable the transfer of custom files to IOS-XR, we provide a `/misc/app_host/scratch` directory which is owned by the app_host group. Any user transferring files over SSH to this directory must be part of the app_host group to have access.The user `vagrant` is already part of the app_host group.
