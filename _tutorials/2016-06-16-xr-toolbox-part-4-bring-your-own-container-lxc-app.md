@@ -517,6 +517,12 @@ xr-vm_node0_RP0_CPU0:~$
 Become root and create a directory `xr-lxc-app/`(remember the XML file?) under `/misc/app_host`:  
 
 ```
+xr-vm_node0_RP0_CPU0:~$ sudo -s
+xr-vm_node0_RP0_CPU0:/home/vagrant# whoami
+root
+xr-vm_node0_RP0_CPU0:/home/vagrant# cd /misc/app_host/
+xr-vm_node0_RP0_CPU0:/misc/app_host# mkdir xr-lxc-app/
+xr-vm_node0_RP0_CPU0:/misc/app_host# 
 ```
 
 ## Use virsh to launch container
