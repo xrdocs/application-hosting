@@ -729,7 +729,9 @@ ubuntu@xr-lxc-app:~$<mark> ifconfig </mark>
 
 By default, your XR Vagrant box is set up to talk to the internet using a default route through your management port. 
 
-If you want the router to use XR's routing table and talk to other nodes in the topology, then you need to set the "tpa address" in XR's configuration. 
+
+If you want the router to use XR's routing table and talk to other nodes in the topology, then you need to set the "tpa address" in XR's configuration. This becomes the "src-hint" in the linux routes for all application traffic. The reason we use something like "loopback 0" is to make sure that the IP for any originating traffic for applications on the router is a reachable IP address across your topology.
+{: .notice--warning}
 
 <div class="highlighter-rouge">
 <pre class="highlight">
@@ -758,6 +760,18 @@ RP/0/RP0/CPU0:ios#
 </code>
 </pre>
 </div>
+
+Let's say we've set up the TPA address as shown above, you should see the following route in XR's linux shell:  
+
+RP/0/RP0/CPU0:ios#bash
+Fri Jun 17 17:39:37.771 UTC
+
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$ip route
+default dev fwdintf  scope link  src 1.1.1.1 
+10.0.2.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 10.0.2.15 
+[xr-vm_node0_RP0_CPU0:~]$
+
 
 
 
