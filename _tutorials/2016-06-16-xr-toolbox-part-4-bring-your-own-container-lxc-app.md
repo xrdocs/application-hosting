@@ -823,14 +823,14 @@ Let's make sure XR's loopback0 is reachable from the devbox (since we're not run
 <pre class="highlight">
 <code>
 
-AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant ssh devbox
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$<mark> vagrant ssh devbox</mark>
 Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-87-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com/
 
 ---------------------------- snip output -------------------------------
 vagrant@vagrant-ubuntu-trusty-64:~$ 
-vagrant@vagrant-ubuntu-trusty-64:~$ sudo ip route add 1.1.1.1/32 via 11.1.1.10
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo ip route add 1.1.1.1/32 via 11.1.1.10 </mark>
 vagrant@vagrant-ubuntu-trusty-64:~$ 
 vagrant@vagrant-ubuntu-trusty-64:~$ ping 1.1.1.1
 PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
@@ -858,9 +858,11 @@ The following NEW packages will be installed:
 ```
 
 
-```shell
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
 
-vagrant@vagrant-ubuntu-trusty-64:~$ iperf -u -c 1.1.1.1
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> iperf -u -c 1.1.1.1 </mark>
 ------------------------------------------------------------
 Client connecting to 1.1.1.1, UDP port 5001
 Sending 1470 byte datagrams
@@ -875,7 +877,10 @@ UDP buffer size:  208 KByte (default)
 vagrant@vagrant-ubuntu-trusty-64:~$ 
 
 
-```
+</code>
+</pre>
+</div>
+
 
 There you have it! iperf running inside an Ubuntu Container on IOS-XR. Too many steps to look up? In our next tutorial, we look at automatic all of the  steps needed to bring up a container using an Ansible Playbook. Stay tuned!
 {: .notice--success}
