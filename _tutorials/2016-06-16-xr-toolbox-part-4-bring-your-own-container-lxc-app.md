@@ -634,11 +634,29 @@ Password: **ubuntu**
   ubuntu@xr-lxc-app:~$ 
 
   ```
-
+To get out of the container console, issue  Ctrl+]
 Perfect! Our container is up and running!
 {: .notice--success}
 
+*  Use SSH to get into the container:  
+   
+   We set the SSH port to 58822 earlier, we can use any of XR's interface addresses to log in:  
+   
+   ```shell
+   
+   xr-vm_node0_RP0_CPU0:~$ ssh -p 58822 ubuntu@11.1.1.10
+   Warning: Permanently added '[11.1.1.10]:58822' (ECDSA) to the list of known hosts.
+   ubuntu@11.1.1.10's password: 
+   Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.14.23-WR7.0.0.2_standard x86_64)
 
+   * Documentation:  https://help.ubuntu.com/
+   Last login: Fri Jun 17 16:42:13 2016
+   ubuntu@xr-lxc-app:~$ 
+   
+   ```  
+   
+   
+   
 
 ## Test your app!
 
