@@ -633,7 +633,8 @@ Password: **ubuntu**
   ubuntu@xr-lxc-app:~$ 
   ubuntu@xr-lxc-app:~$ 
 
-  ```
+  ```  
+  
 To get out of the container console, issue  Ctrl+]
 Perfect! Our container is up and running!
 {: .notice--success}
