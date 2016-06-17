@@ -500,11 +500,6 @@ xr-lxc-app-rootfs.tar.gz                                                        
 xr-lxc-app.xml                                                                                                                                                          100%  590     0.6KB/s   00:00    
 vagrant@vagrant-ubuntu-trusty-64:~$ 
 
-```shell
-AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant ssh rtr
-Last login: Thu Jun 16 19:45:33 2016 from 10.0.2.2
-xr-vm_node0_RP0_CPU0:~$ 
-xr-vm_node0_RP0_CPU0:~$ 
 ```
 
 
@@ -513,14 +508,16 @@ xr-vm_node0_RP0_CPU0:~$
 Let's hop onto the IOS-XR instance.  
 
 ```shell
-
-
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant ssh rtr
+Last login: Thu Jun 16 19:45:33 2016 from 10.0.2.2
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ 
 ```
 
 Become root and create a directory `xr-lxc-app/`(remember the XML file?) under `/misc/app_host`:  
 
-```shell
-
+```
+```
 
 ## Use virsh to launch container
 
