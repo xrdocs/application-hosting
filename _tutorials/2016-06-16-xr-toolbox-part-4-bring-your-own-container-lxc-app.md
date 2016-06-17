@@ -73,7 +73,8 @@ All good? Perfect. Let's start building our container application tar ball.
 
 ## Create a container App  
 
-If you already have 
+If you already have a rootfs tar ball ready to deploy, you can safely ignore this section. But if you need SSH access into the container post deployment on XR, make sure your custom tar ball already has the SSH port set to something other than 22/57722 (or any other port your XR instance is supposed to use up).
+{: .notice--warning}
   
 To launch an LXC container we need two things:  
 
@@ -379,7 +380,7 @@ total 119984
 
 We need to create an XML file that will define different parameters (cpu, mem, rootfs location etc.) for the container launch on IOS-XR (which uses libvirt).
 On the devbox, use your favorite editor (vi, nano, pico etc.) to create a new file called   
-`xr-lxc-app.xml` under `/home/vagrant` with the following content:  
+`xr-lxc-app.xml` under `/home/vagrant` of the devbox with the following content:  
 
 ```html
 <domain type='lxc' xmlns:lxc='http://libvirt.org/schemas/domain/lxc/1.0' >
