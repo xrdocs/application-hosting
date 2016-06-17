@@ -636,8 +636,6 @@ Password: **ubuntu**
   ```  
   
 To get out of the container console, issue  Ctrl+]
-Perfect! Our container is up and running!
-{: .notice--success}
 
 *  Use SSH to get into the container:  
    
@@ -655,8 +653,10 @@ Perfect! Our container is up and running!
    ubuntu@xr-lxc-app:~$ 
    
    ```  
-   
-   
+ 
+Perfect! Our container is up and running!
+{: .notice--success}
+
    
 
 ## Test your app!
