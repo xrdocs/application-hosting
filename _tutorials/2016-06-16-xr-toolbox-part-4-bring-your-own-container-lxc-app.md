@@ -559,15 +559,45 @@ Ignore the "Operation not permitted" messages when you untar. These are harmless
 Now we use the XML file that we transferred to `/misc/app_host/scratch` to launch our container.
 
 libvirtd is the daemon running on IOS-XR to help launch LXC containers. The client for libvirtd (virsh) is made available in the XR linux shell to interact with the libvirtd daemon.
+{: .notice--info}
 
 To list the current running containers:  
 
 ```shell
 
+xr-vm_node0_RP0_CPU0:~$ virsh list
+ Id    Name                           State
+----------------------------------------------------
+ 4922  sysadmin                       running
+ 12010 default-sdr--1                 running
 
-
+xr-vm_node0_RP0_CPU0:~$ 
 
 ```
+
+Now launch the container using `virsh create` and the XML file we transferred earlier:  
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+
+xr-vm_node0_RP0_CPU0:~$<mark> virsh create /misc/app_host/scratch/xr-lxc-app.xml </mark>
+Domain xr-lxc-app created from /misc/app_host/scratch/xr-lxc-app.xml
+
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ virsh list 
+ Id    Name                           State
+----------------------------------------------------
+ 4922  sysadmin                       running
+ <mark>7315  xr-lxc-app                     running</mark>
+ 12010 default-sdr--1                 running
+
+xr-vm_node0_RP0_CPU0:~$ 
+</code>
+</pre>
+</div>   
+
 
 ## Test your app!
 
