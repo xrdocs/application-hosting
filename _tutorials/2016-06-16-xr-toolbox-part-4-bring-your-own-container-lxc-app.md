@@ -726,7 +726,6 @@ ubuntu@xr-lxc-app:~$<mark> ifconfig </mark>
 </code>
 </pre>
 </div>
-{: .notice--info}
 
 
 
