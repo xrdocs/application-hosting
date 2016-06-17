@@ -434,9 +434,9 @@ A couple of configuration knobs seem interesting in the above XML file:
    /misc/app_host/xr-lxc-app/ directory**
 {: .notice--info} 
 
->
+
 Your LXC app is now ready to be deployed! You should have the following two components in the home directory of the devbox:  
->
+
 ```shell
 root@vagrant-ubuntu-trusty-64:~# pwd
 /home/vagrant
@@ -446,7 +446,7 @@ total 119988
 -rw-r--r-- 1 root root       590 Jun 16 23:29 xr-lxc-app.xml
 root@vagrant-ubuntu-trusty-64:~# 
 ```
-{: .notice--success}  
+
 
 
 ## Transfer rootfs and XML file to XR
@@ -545,6 +545,18 @@ Ignore the "Operation not permitted" messages when you untar. These are harmless
 
 ## Use virsh to launch container
 
+Now we use the XML file that we transferred to `/misc/app_host/scratch` to launch our container.
+
+libvirtd is the daemon running on IOS-XR to help launch LXC containers. The client for libvirtd (virsh) is made available in the XR linux shell to interact with the libvirtd daemon.
+
+To list the current running containers:  
+
+```shell
+
+
+
+
+```
 
 ## Test your app!
 
