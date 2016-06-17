@@ -722,7 +722,6 @@ ubuntu@xr-lxc-app:~$<mark> ifconfig </mark>
           RX bytes:127933763 (127.9 MB)  TX bytes:2135907 (2.1 MB)
 
 ------------------------------- snip output -----------------------------------
-
 </code>
 </pre>
 </div>
