@@ -598,8 +598,47 @@ xr-vm_node0_RP0_CPU0:~$
 </pre>
 </div>   
 
+To get into the container, you have two options:  
+
+Our credentials for the container were:  
+
+Username: **ubuntu**
+Password: **ubuntu**
+{: .notice--info}  
+
+* Use `virsh console`:  
+
+  ```shell
+  
+  xr-vm_node0_RP0_CPU0:~$ virsh console xr-lxc-app
+  Connected to domain xr-lxc-app
+  Escape character is ^]
+  init: Unable to create device: /dev/kmsg
+  * Stopping Send an event to indicate plymouth is up                     [ OK ]
+  * Starting Mount filesystems on boot                                    [ OK ]
+  * Starting Signal sysvinit that the rootfs is mounted                   [ OK ]
+  * Starting Fix-up sensitive /proc filesystem entries                    [ OK ]
+
+  -------------------------------- snip output ---------------------------------
+  
+  Ubuntu 14.04.4 LTS xr-lxc-app tty1
+
+  xr-lxc-app login: ubuntu
+  Password: 
+  Last login: Thu Jun 16 19:23:10 UTC 2016 on lxc/console
+  Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.14.23-WR7.0.0.2_standard x86_64)
+
+  * Documentation:  https://help.ubuntu.com/
+  ubuntu@xr-lxc-app:~$   
+  ubuntu@xr-lxc-app:~$ 
+  ubuntu@xr-lxc-app:~$ 
+
+  ```
+
 Perfect! Our container is up and running!
 {: .notice--success}
+
+
 
 ## Test your app!
 
