@@ -785,7 +785,32 @@ So all you've really done using the `tpa address-family...`  config is to set sr
 The advantage of this approach is that when you use larger topologies that may include routing protocols like OSPF,BGP or even static routes, all you have to do is make loopback0 reachable and the application will be able to communicate across the entire topology. Also, this significantly reduces the routing table size in the linux environment as you can see in the output above.
 {: .notice--warning}
 
-### 
+### See if things work!
+
+We're going to use an iperf-client inside our container on XR and an iperf-server running on devbox.
+
+Let's make sure XR's loopback0 is reachable from the devbox (since we're not running routing protocols right now, this isn't automatic):  
+
+```shell
+
+AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant ssh devbox
+Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-87-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+---------------------------- snip output -------------------------------
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo ip route add 1.1.1.1/32 via 11.1.1.10
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ ping 1.1.1.1
+PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
+64 bytes from 1.1.1.1: icmp_seq=1 ttl=255 time=6.53 ms
+64 bytes from 1.1.1.1: icmp_seq=2 ttl=255 time=1.77 ms
+
+
+```
+
+
 
 
 
