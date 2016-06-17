@@ -598,6 +598,8 @@ xr-vm_node0_RP0_CPU0:~$
 </pre>
 </div>   
 
+Perfect! Our container is up and running!
+{: .notice--success}
 
 ## Test your app!
 
