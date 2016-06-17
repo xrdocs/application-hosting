@@ -77,7 +77,7 @@ All good? Perfect. Let's start building our container application tar ball.
 #### Using a custom rootfs tar ball  
 
 The technique presented here focuses on the creation of a container from scratch (using a base ubuntu template) followed by the installation of an application for first-time users.
-A user can easily use their own pre-built rootfs tar ball.  
+A user can easily use their own pre-built rootfs tar ball and ignore this section altogether.
     
 The only point to remember is that if you expect to use SSH access into the container after deployment to XR, then change the default SSH port in /etc/ssh/sshd_config in your rootfs to something other than 22/57722 (or any other port you expect XR to use based on your config).  
 
