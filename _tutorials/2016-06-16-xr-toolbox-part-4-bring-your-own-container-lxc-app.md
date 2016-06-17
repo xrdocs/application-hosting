@@ -72,6 +72,8 @@ All good? Perfect. Let's start building our container application tar ball.
 
 
 ## Create a container App  
+
+If you already have 
   
 To launch an LXC container we need two things:  
 
@@ -373,7 +375,7 @@ total 119984
 
 
 
-### Create LXC SPEC XML File
+## Create LXC SPEC XML File
 
 We need to create an XML file that will define different parameters (cpu, mem, rootfs location etc.) for the container launch on IOS-XR (which uses libvirt).
 On the devbox, use your favorite editor (vi, nano, pico etc.) to create a new file called   
