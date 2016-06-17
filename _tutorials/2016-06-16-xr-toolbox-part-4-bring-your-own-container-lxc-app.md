@@ -468,7 +468,7 @@ scp -P 57722 /home/vagrant/* vagrant@11.1.1.10:/misc/app_host/scratch/
 ```  
 Where 11.1.1.10 is the directly connected Gig0/0/0/0 interface of IOS-XR instance (this config was explained in the [XR Toolbox, Part 3: App Development Topology]({{ base_path }}/tutorials/2016-06-06-xr-toolbox-app-development-topology) tutorial).  
 
-But this process might be slow since Gig interfaces in the Vagrant IOS-XR image are rate-limited.
+**But this process might be slow since Gig interfaces in the Vagrant IOS-XR image are rate-limited.**
   
 **Transfer using the Mgmt interface**  
 
