@@ -815,6 +815,8 @@ UDP buffer size: 64.0 MByte (default)
 </pre>
 </div>
 
+Keep the iperf server (started above) running, as you proceed to initiate the iperf client on the devbox.
+{: .notice--warning}
 
 
 Let's make sure XR's loopback0 is reachable from the devbox (since we're not running routing protocols in this topology, this isn't automatic):  
