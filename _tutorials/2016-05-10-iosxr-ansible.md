@@ -19,7 +19,7 @@ tags:
 
 ## Introduction
 The goal of this tutorial is to set up an environment that is identical for Windows, Linux or Mac-OSX users.   
-So instead of setting up Ansible directly on the User's Desktop/Host, we simply spin up an Ubuntu vagrant instance to host our Ansible playbooks and environment. We'll do a separate tutorial on using Ansible directly on Mac-OSX/Windows.
+So instead of setting up Ansible directly on the User's Desktop/Host, we simply spin up an Ubuntu vagrant instance to host our Ansible playbooks and environment. Let's call it **devbox**. We'll do a separate tutorial on using Ansible directly on Mac-OSX/Windows.
 {: .notice--info}  
 
 
@@ -75,7 +75,7 @@ Of course, you should replace  your-cco-id with your actual Cisco.com ID and API
 {: .notice--danger}  
 
 
-Image for Ubuntu will be downloaded from official source:
+Image for devbox will be downloaded from official source:
 
 ```shell
 $ vagrant box add ubuntu/trusty64
@@ -93,10 +93,10 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision "shell", inline: "echo Hello User"
 
-  config.vm.define "ubuntu" do |ubuntu|
-    ubuntu.vm.box = "ubuntu/trusty64"
-    ubuntu.vm.network :private_network, virtualbox__intnet: "link1", ip: "10.1.1.10"
-    ubuntu.vm.provision :shell, path: "ubuntu.sh", privileged: false
+  config.vm.define "devbox" do |devbox|
+    devbox.vm.box = "ubuntu/trusty64"
+    devbox.vm.network :private_network, virtualbox__intnet: "link1", ip: "10.1.1.10"
+    devbox.vm.provision :shell, path: "ubuntu.sh", privileged: false
   end
 
   config.vm.define "xr" do |xr|
@@ -120,15 +120,15 @@ $ vagrant up
 ```
 
 
-### Ubuntu box pre-configuration  
+### devbox box pre-configuration  
 
-To access the Ubuntu box just issue the command (no password required):
+To access the devbox box just issue the command (no password required):
 
 ```shell
-$ vagrant ssh ubuntu
+vagrant ssh devbox
 ```
 
-The Ubuntu instance is already configured via file ["ubuntu.sh"](https://github.com/Maikor/IOSXR-Ansible-tutorial/blob/master/ubuntu.sh). This section is only for the user's information.
+The devbox instance is already configured via file ["ubuntu.sh"](https://github.com/Maikor/IOSXR-Ansible-tutorial/blob/master/ubuntu.sh). This section is only for the user's information.
 {: .notice--warning}
 
 >
@@ -170,14 +170,14 @@ cut -d" " -f2 ~/.ssh/id_rsa.pub | base64 -d > ~/.ssh/id_rsa_pub.b64
 To access XR Linux Shell:   
 
 ```shell
-$ vagrant ssh xr
+$ vagrant ssh rtr
 ```
 
 To access XR console it takes one additional step to figure out port (credentials for ssh: vagrant/vagrant):
 
 ```shell
 mkorshun@MKORSHUN-2JPYH MINGW64 ~/Documents/workCisco/tutorial
-$ vagrant port xr
+$ vagrant port rtr
 The forwarded ports for the machine are listed below. Please note that
 these values may differ from values configured in the Vagrantfile if the
 provider supports automatic port collision detection and resolution.
@@ -216,11 +216,11 @@ RP/0/RP0/CPU0:ios#
 ```
 
 ### Configure Passwordless Access into XR Linux shell
-Let's copy public part of key from **Ubuntu** box and allow access without password. 
-First,  connect to the Ubuntu instance and copy file to XR via SCP:
+Let's copy public part of key from **devbox** box and allow access without password. 
+First,  connect to the devbox instance and copy file to XR via SCP:
 
 ```shell
-vagrant ssh ubuntu  
+vagrant ssh devbox  
 
 scp -P 57722 /home/vagrant/.ssh/id_rsa.pub  vagrant@10.1.1.20:/home/vagrant/id_rsa_ubuntu.pub
 ```
@@ -228,13 +228,13 @@ scp -P 57722 /home/vagrant/.ssh/id_rsa.pub  vagrant@10.1.1.20:/home/vagrant/id_r
 Now add the copied keys to authorized_keys in XR linux
 
 ```shell
-vagrant ssh xr  
+vagrant ssh rtr  
 
 cat /home/vagrant/id_rsa_ubuntu.pub >> /home/vagrant/.ssh/authorized_keys
 ```
 
 ### Configure Passwordless Access into XR CLI
-If we want passwordless SSH from Ubuntu to XR CLI, issue the following commands in XR CLI:
+If we want passwordless SSH from devbox to XR CLI, issue the following commands in XR CLI:
 
 
 The first command uses scp to copy the public key (base 64 encoded) to XR.   
@@ -256,7 +256,7 @@ File "id_rsa_pub.b64" was created by provisioning script "Ubuntu.sh", during Vag
 
 ### Ansible Pre-requisites
 
-On the Ubuntu box let's configure Ansible prerequisites. 
+On the devbox box let's configure Ansible prerequisites. 
 We need to configure 2 files:
 
 1. File "ansible_hosts":  It contains the ip address of the XR instance.
