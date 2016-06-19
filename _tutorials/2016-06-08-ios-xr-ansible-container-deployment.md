@@ -33,7 +33,7 @@ The figure below illustrates the basic steps to undertake to launch an lxc conta
 
 ## Pre-requisite
 
-* Vagrant box added for **IOS-XRv**: If you don't have it, get it using the steps specified here: [XR Toolbox, Part 1: IOS XR Vagrant quick start]({{ base_path }}/tutorials/iosxr-vagrant-quick-start)
+* Vagrant box added for **IOS-XRv**: If you don't have it, get it using the steps specified here: [XR Toolbox, Part 1: IOS XR Vagrant quick start]({{ base_path }}/tutorials/iosxr-vagrant-quickstart)
 
 * Clone the following repository before we start:
 
