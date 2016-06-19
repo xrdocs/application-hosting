@@ -21,7 +21,7 @@ permalink: /tutorials/2016-06-06-xr-toolbox-app-development-topology
 
 ## Introduction
 
-The Techdoc: [Application Hosting on IOS-XR]({{ base_path}}/techdocs/app_hosting_on_iosxr/introduction) dives deep into the IOS-XR architecture, to help explain how a user can deploy an application:  
+Without diving too deep into the IOS-XR architecture, it might be useful to state that applications on IOS-XR may be deployed in two different ways:
 
 *  natively (inside the XR process space) OR
 *  as a container (LXC)
