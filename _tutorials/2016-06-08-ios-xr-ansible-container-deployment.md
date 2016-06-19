@@ -12,7 +12,7 @@ tags:
 
 ## Introduction
 
-The goal of this tutorial to deploy container on XR with Ansible playbook.
+The goal of this tutorial to deploy a container (LXC) on XR using an Ansible playbook.
 
 In this tutorial we will use techniques from 2 other tutorials:
 * [IOS-XR: Ansible and Vagrant]({{ base_path }}/tutorials/IOSXR-Ansible). enable connectivity between machines and have preinstalled Ansible on devbox instance.
