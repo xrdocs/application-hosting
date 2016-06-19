@@ -25,7 +25,7 @@ The figure below illustrates the basic steps to undertake to launch an lxc conta
 
 ## Pre-requisite
 
-* Vagrant box added for **IOS-XRv** and **devbox** (usual Ubuntu instance)
+* Vagrant box added for **IOS-XRv** and **devbox** (usual Ubuntu instance, that also acts as our Ansible Server)
 
 * Clone the following repository before we start:
 
@@ -60,35 +60,44 @@ cat /home/vagrant/id_rsa_ubuntu.pub >> /home/vagrant/.ssh/authorized_keys
 
 Ansible is ready to work without password.
 
-### Devbox container configuration steps
+### Devbox container creation
 
-At first, create new Ubuntu container inside our devbox instance:  
+>
+The user is free to bring their own lxc rootfs tar-ball for deployment on IOS-XR. This section is meant to help a user create a rootfs tar ball from scratch if needed.
+
+
 ![We need to go deeper](https://raw.githubusercontent.com/xrdocs/xrdocs-images/gh-pages/assets/tutorial-images/mkorshun/hosted_apps/02_we_need_to.png)
 
-All steps to create container covered in details in tutorial:
+All the steps required to create a container rootfs are already covered in detail in the tutorial:
 
 >
 [XR toolbox, Part 4: Bring your own Container (LXC) App]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app)  
+Specifically, head over to the following section of the tutorial:  
+[XR toolbox, Part 4.../create-a-container-rootfs]({{ base_path }}/tutorials/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#create-a-container-rootfs)
+At the end of the section, you should have your very own rootfs (xr-lxc-app-rootfs.tar.gz), ready for deploymenty
 
-Copy the container from devbox to XR Linux.
+Copy and keep the rootfs tar ball in the `/home/vagrant/` directory of your devbox. The Ansible playbook will expect the tar ball in this directory, so make sure an `ls -l` for the tar ball in `/home/vagrant` returns something like:
 
 ```shell
-sudo scp -P 2200 /var/lib/lxc/cn-01/rootfs/cn_rootfs.tar.gz vagrant@10.0.2.2:/misc/app_host/scratch/cn_rootfs.tar.gz
+ls -l /home/vagrant/xr-lxc-app-rootfs.tar.gz
 ```
 
-We will use the management network, since vagrant forward the ssh port for each VM and port 2200 is assigned to XR Linux. IP 10.0.2.2 network gateway. There are some speed limitations on traditional copy to XR, so to transfer large files, please use management network.  
+Great! Ansible will copy this tar ball to XR for you.
+{: .notice--success}
+
+We will use the management network, since vagrant forward the ssh port for each VM and port 2200 is assigned to XR Linux. IP 10.0.2.2 network gateway. Since the gig interfaces in the Vagrant XR image are rate-limited, to transfer large files, please use management network.  
 {: .notice--info}
 
 
-To create container, we should provide xml file with description:
+To create a container, we need an xml file with the specifications for the container. Create the following file in the /home/vagrant directory of your `devbox` :
 
 ```shell
-cat /home/vagrant/cn.xml
+cat /home/vagrant/xr-lxc-app.xml
 ```
 
 ```xml
 <domain type='lxc' xmlns:lxc='http://libvirt.org/schemas/domain/lxc/1.0' >
-  <name>cn</name>
+  <name>xr-lxc-app</name>
   <memory>327680</memory>
   <os>
     <type>exe</type>
@@ -105,7 +114,7 @@ cat /home/vagrant/cn.xml
   <devices>
     <emulator>/usr/lib64/libvirt/libvirt_lxc</emulator>
     <filesystem type='mount'>
-      <source dir='/misc/app_host/scratch/rootfs'/>
+      <source dir='/misc/app_host/scratch/xr-lxc-app/'/>
       <target dir='/'/>
     </filesystem>
     <console type='pty'/>
@@ -113,26 +122,29 @@ cat /home/vagrant/cn.xml
 </domain>
 ```
 
-Ansible playbook contain 5 tasks:
+Ansible playbook contains 5 tasks:  
+
 ```shell
 cat deploy_container.yml
 ---
 - hosts: ss-xr
 
   tasks:
-  - copy: src=/home/vagrant/cn.xml dest=/home/vagrant/cn.xml owner=vagrant
+  - copy: src=/home/vagrant/xr-lxc-app.xml dest=/home/vagrant/xr-lxc-app.xml owner=vagrant
+  
+  - copy: src=/home/vagrant/xr-lxc-app-rootfs.tar.gz dest=/misc/app_host/scratch/xr-lxc-app-rootfs.tar.gz owner=vagrant
 
   - name: Creates directory
-    file: path=/misc/app_host/scratch/rootfs state=directory
+    file: path=/misc/app_host/scratch/xr-lxc-app/ state=directory
     become: yes
 
-  - command: tar -zxf /misc/app_host/scratch/cn_rootfs.tar.gz -C /misc/app_host/scratch/rootfs
+  - command: tar -zxf /misc/app_host/scratch/xr-lxc-app-rootfs.tar.gz -C /misc/app_host/scratch/xr-lxc-app/
     become: yes
     register: output
     ignore_errors: yes
   - debug: var=output.stdout_lines
 
-  - shell: sudo -i virsh  create /home/vagrant/cn.xml
+  - shell: sudo -i virsh  create /home/vagrant/xr-lxc-app.xml
     args:
       warn: no
     register: output
@@ -148,11 +160,11 @@ cat deploy_container.yml
 
 Tasks overview:
 
-* Task 1 responsible for copy cn.xml to XR ;
+* Task 1 responsible for copy xr-lxc-app.xml to XR ;
 * Task 2 creates folder "rootfs" at XR, if it's not existed;
-* Task 3 unpack archive with container filesystem;
+* Task 3 unpack archive with container filesystem (Notice the ignore_errors?- we're simply avoiding the mknod warnings);
 * Task 4 create container itself; In XR Linux for virsh used alias (issue
-  command "type virsh" on XR Linux to check);
+  command "type virsh" on XR Linux to check. "sudo -i" is important, to load up Aliases for the root user);
 * Task 5 verifies, that container is up and running.
 
 
@@ -170,7 +182,7 @@ xr-vm_node0_RP0_CPU0:/misc/app_host/rootfs$ virsh list
  Id    Name                           State
 ----------------------------------------------------
  4907  sysadmin                       running
- 8087  cn                             running
+ 8087  xr-lxc-app                     running
  12057 default-sdr--1                 running
 
 ```
