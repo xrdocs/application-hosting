@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2016-06-08 19:11 +0300'
-title: 'IOS-XR: Ansible container deployment'
+title: 'IOS-XR: Ansible based LXC deployment'
 author: Mike Korshunov
 excerpt: Deploy container at IOS-XR with Ansible
 position: hidden
@@ -10,6 +10,9 @@ tags:
   - iosxr
   - cisco
 ---
+
+{% include base_path %}
+{% include toc title="Ansible LXC deployment" icon="table" %}
 
 ## Introduction
 
