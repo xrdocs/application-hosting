@@ -17,15 +17,19 @@ The goal of this tutorial to deploy a container (LXC) on XR using an Ansible pla
 In this tutorial we will use techniques from 2 other tutorials:
 * [IOS-XR: Ansible and Vagrant]({{ base_path }}/tutorials/IOSXR-Ansible). enable connectivity between machines and have preinstalled Ansible on devbox instance.
 
-* The [XR Toolbox: Bootstrap XR configuration with Vagrant]({{ base_path }}/tutorials/iosxr-vagrant-bootstrap-config)  using the new shell/bash based automation techniques.
+* [XR Toolbox, Part 2: Bootstrap XR configuration with Vagrant]({{ base_path }}/tutorials/iosxr-vagrant-bootstrap-config): using the new shell/bash based automation techniques.  
+
 
 The figure below illustrates the basic steps to undertake to launch an lxc container on IOS-XR 6.0+:
 
 ![Container workflow](https://raw.githubusercontent.com/xrdocs/xrdocs-images/gh-pages/assets/tutorial-images/mkorshun/hosted_apps/01_workflow_app_hosting.png)
 
+**If you've gone through the tutorial: [XR toolbox, Part 4: Bring your own Container (LXC) App]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app), you would have a fair idea about how to accomplish the manual steps illustrated above. In this tutorial, we want to automate all of these steps using an Ansible Playbook.**  
+{: .notice--info}
+
 ## Pre-requisite
 
-* Vagrant box added for **IOS-XRv** and **devbox** (usual Ubuntu instance, that also acts as our Ansible Server)
+* Vagrant box added for **IOS-XRv**: If you don't have it, get it using the steps specified here: [XR Toolbox, Part 1: IOS XR Vagrant quick start]({{ base_path }}/tutorials/iosxr-vagrant-quick-start)
 
 * Clone the following repository before we start:
 
@@ -36,13 +40,13 @@ cd  vagrant-xr/ansible-tutorials/app_hosting/
 ```
 
 
-We are ready to start, boot the boxes.
+**We are ready to start, boot the boxes by issuing the `vagrant up` command**
 {: .notice--info}
 
 ### Configure Passwordless Access into XR Linux shell
 Let's copy public part of key from **devbox** box and allow access without a
 password.
-First,  connect to the devbox instance and copy file to XR via SCP:
+First,  connect to the devbox instance and copy its public key to XR via SCP:
 
 ```
 vagrant ssh devbox  
@@ -74,7 +78,7 @@ All the steps required to create a container rootfs are already covered in detai
 [XR toolbox, Part 4: Bring your own Container (LXC) App]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app)  
 Specifically, head over to the following section of the tutorial:  
 [XR toolbox, Part 4.../create-a-container-rootfs]({{ base_path }}/tutorials/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#create-a-container-rootfs)
-At the end of the section, you should have your very own rootfs (xr-lxc-app-rootfs.tar.gz), ready for deploymenty
+At the end of the section, you should have your very own rootfs (xr-lxc-app-rootfs.tar.gz), ready for deployment.
 
 Copy and keep the rootfs tar ball in the `/home/vagrant/` directory of your devbox. The Ansible playbook will expect the tar ball in this directory, so make sure an `ls -l` for the tar ball in `/home/vagrant` returns something like:
 
@@ -84,9 +88,6 @@ ls -l /home/vagrant/xr-lxc-app-rootfs.tar.gz
 
 Great! Ansible will copy this tar ball to XR for you.
 {: .notice--success}
-
-We will use the management network, since vagrant forward the ssh port for each VM and port 2200 is assigned to XR Linux. IP 10.0.2.2 network gateway. Since the gig interfaces in the Vagrant XR image are rate-limited, to transfer large files, please use management network.  
-{: .notice--info}
 
 
 To create a container, we need an xml file with the specifications for the container. Create the following file in the /home/vagrant directory of your `devbox` :
@@ -121,7 +122,13 @@ cat /home/vagrant/xr-lxc-app.xml
   </devices>
 </domain>
 ```
+Now that we have the two things we need to launch the container, take a look at the ansible.cfg file under ``: 
 
+
+**You will notice that we intend to use the management network to connect and transfer this files to IOS-XR from the devbox. Since vagrant forwards the ssh port for each VM, we need to use the port used for IOS-XR's port 57722 (SSH into XR linux). IP 10.0.2.2 is the network gateway (i.e. your own laptop). The gig interfaces in the Vagrant XR image are rate-limited, hence to transfer large files and save time, we use the management network.**  
+{: .notice--info}  
+
+  
 Ansible playbook contains 5 tasks:  
 
 ```shell
