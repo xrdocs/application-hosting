@@ -83,7 +83,7 @@ Ansible is ready to work without password.
 The user is free to bring their own lxc rootfs tar-ball for deployment on IOS-XR. This section is meant to help a user create a rootfs tar ball from scratch.
 {: .notice--warning}  
 
-![We need to go deeper](https://raw.githubusercontent.com/xrdocs/xrdocs-images/gh-pages/assets/tutorial-images/mkorshun/hosted_apps/02_we_need_to.png) {: .align-center}
+![We need to go deeper](https://raw.githubusercontent.com/xrdocs/xrdocs-images/gh-pages/assets/tutorial-images/mkorshun/hosted_apps/02_we_need_to.png){: .align-center}
 
 >
 All the steps required to create a container rootfs are already covered in detail in the tutorial:
