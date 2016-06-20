@@ -44,22 +44,19 @@ git clone https://github.com/ios-xr/vagrant-xr.git
 cd  vagrant-xr/ansible-tutorials/app_hosting/
 ```
 
-{% capture insert-text %}
+## Boot up the environment  
+
 **We are ready to start, boot the boxes by issuing the `vagrant up` command**
 
 ```shell
-AKSHSHAR-M-K0DS:app_hosting akshshar$ vagrant up
+bash$ vagrant up
 Bringing machine 'devbox' up with 'virtualbox' provider...
 Bringing machine 'rtr' up with 'virtualbox' provider...
 ==> devbox: Importing base box 'ubuntu/trusty64'...
 
 ---------------------------snip output -----------------------
 ```
-{% endcapture %}
 
-<div class="notice--info">
-   {{ insert-text | markdownify }} 
-</div>
 
 ## Configure Passwordless Access into XR Linux shell
 Let's copy public part of key from **devbox** box and allow access without a
