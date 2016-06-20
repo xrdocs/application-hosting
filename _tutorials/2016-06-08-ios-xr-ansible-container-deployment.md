@@ -69,7 +69,7 @@ cat /home/vagrant/id_rsa_ubuntu.pub >> /home/vagrant/.ssh/authorized_keys
 
 Ansible is ready to work without password.
 
-### Create LXC Tar ball in devbox
+## Create LXC Tar ball in devbox
 
 >
 The user is free to bring their own lxc rootfs tar-ball for deployment on IOS-XR. This section is meant to help a user create a rootfs tar ball from scratch.
