@@ -202,7 +202,8 @@ Tasks overview:
 
 ## Run playbook to deploy LXC 
 
-Ansible playbook is ready to use. Issue command in devbox:
+Ansible playbook is ready to use. Issue command in devbox:  
+
 ```shell
 ansible-playbook deploy_container.yml
 ```  
