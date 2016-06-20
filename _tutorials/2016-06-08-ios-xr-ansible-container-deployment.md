@@ -255,6 +255,7 @@ Container is up and running. It might take some time to be fully up and running.
 >
 ```shell
 ssh -p 58822 ubuntu@127.0.0.1
-```
+```  
+>
 Congratulations!
 {: .notice--success}
