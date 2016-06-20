@@ -121,7 +121,7 @@ We want to configure the XR interface: `GigabitEthernet0/0/0/0` with the ip-addr
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-AKSHSHAR-M-K0DS:vagrant-xr akshshar$<mark> cat lxc-app-topo-bootstrap/configs/rtr_config </mark>
+AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$<mark> cat lxc-app-topo-bootstrap/configs/rtr_config </mark>
 !! XR configuration
 !
 interface GigabitEthernet0/0/0/0
@@ -129,7 +129,7 @@ interface GigabitEthernet0/0/0/0
   no shutdown
 !
 end
-AKSHSHAR-M-K0DS:vagrant-xr akshshar$ 
+AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$ 
 </code>
 </pre>
 </div>
@@ -190,7 +190,7 @@ Make sure you're in the `lxc-app-topo-bootstrap/` directory and issue a `vagrant
 <pre class="highlight">
 <code>
 AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$<mark>pwd</mark>
-<mark>/Users/akshshar/vagrant-xr/lxc-app-topo-bootstrap</mark>
+<mark>/Users/akshshar/vagrant-xrdocs/lxc-app-topo-bootstrap</mark>
 AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$<mark> vagrant up </mark>
 Bringing machine 'rtr' up with 'virtualbox' provider...
 Bringing machine 'devbox' up with 'virtualbox' provider...
