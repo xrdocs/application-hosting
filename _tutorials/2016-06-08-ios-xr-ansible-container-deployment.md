@@ -27,7 +27,7 @@ In this tutorial we will use techniques from 2 other tutorials:
 
 The figure below illustrates the basic steps to undertake to launch an lxc container on IOS-XR 6.0+:
 
-<img src="https://raw.githubusercontent.com/xrdocs/xrdocs-images/gh-pages/assets/tutorial-images/mkorshun/hosted_apps/01_workflow_app_hosting.png" width="500" height="500" />{: .align-center}
+<img src="https://raw.githubusercontent.com/xrdocs/xrdocs-images/gh-pages/assets/tutorial-images/mkorshun/hosted_apps/01_workflow_app_hosting.png" width="600" height="500" />{: .align-center}
 
 **If you've gone through the tutorial: [XR toolbox, Part 4: Bring your own Container (LXC) App]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app), you would have a fair idea about how to accomplish the manual steps illustrated above. In this tutorial, we want to automate all of these steps using an Ansible Playbook.**  
 {: .notice--info}
