@@ -191,12 +191,13 @@ cat deploy_container.yml
 
 Tasks overview:
 
-* Task 1 responsible for copy xr-lxc-app.xml to XR ;
-* Task 2 creates folder "rootfs" at XR, if it's not existed;
-* Task 3 unpack archive with container filesystem (Notice the ignore_errors?- we're simply avoiding the mknod warnings);
-* Task 4 create container itself; In XR Linux for virsh used alias (issue
+* Task 1 copies xr-lxc-app.xml to XR ;
+* Task 2 copies the xr-lxc-app-rootfs.tar.gz tar ball to XR;
+* Task 3 creates folder "rootfs" at XR, if it's not existed;
+* Task 4 unpack archive with container filesystem (Notice the ignore_errors?- we're simply avoiding the mknod warnings);
+* Task 5 create container itself; In XR Linux for virsh used alias (issue
   command "type virsh" on XR Linux to check. "sudo -i" is important, to load up Aliases for the root user);
-* Task 5 verifies, that container is up and running.
+* Task 6 verifies, that container is up and running.
 
 
 ## Run playbook to deploy LXC 
