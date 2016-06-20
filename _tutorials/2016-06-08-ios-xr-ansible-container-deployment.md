@@ -57,7 +57,7 @@ Bringing machine 'rtr' up with 'virtualbox' provider...
 {% endcapture %}
 
 <div class="notice--info">
-   { insert-text | markdownify } 
+   {{ insert-text | markdownify }} 
 </div>
 
 ## Configure Passwordless Access into XR Linux shell
