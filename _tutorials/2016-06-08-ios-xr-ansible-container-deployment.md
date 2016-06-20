@@ -44,7 +44,7 @@ git clone https://github.com/ios-xr/vagrant-xr.git
 cd  vagrant-xr/ansible-tutorials/app_hosting/
 ```
 
-{% capture "insert-text" %}
+{% capture insert-text %}
 **We are ready to start, boot the boxes by issuing the `vagrant up` command**
 ```shell
 AKSHSHAR-M-K0DS:app_hosting akshshar$ vagrant up
