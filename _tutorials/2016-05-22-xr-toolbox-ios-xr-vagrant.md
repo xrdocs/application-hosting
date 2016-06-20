@@ -216,7 +216,7 @@ Let's try to bring up a multi-node topology as shown below:
 
 ### Set up the Vagrantfile
 For this purpose, Let's use a Sample vagrantfile located here:  
-<https://github.com/vagrant-xrdocs/blob/master/simple-mixed-topo/Vagrantfile>
+<https://github.com/ios-xr/vagrant-xrdocs/blob/master/simple-mixed-topo/Vagrantfile>
 
 ```
 git clone https://github.com/akshshar/vagrant-xrdocs.git
