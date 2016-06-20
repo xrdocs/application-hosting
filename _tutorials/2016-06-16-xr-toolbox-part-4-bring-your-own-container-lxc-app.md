@@ -74,7 +74,7 @@ All good? Perfect. Let's start building our container application tar ball.
 >
 **The figure below illustrates the basic steps to undertake to launch an lxc container on IOS-XR 6.0+**:  
 >
-*  We will build the container rootfs tar ball on our devbox in the topology shown above
+*  We will build the container rootfs tar ball on our devbox (see topology above)
 *  The rootfs tar ball will then be transferred to IOS-XR
 *  The rootfs will then be launched using the virsh CLI  
 >
