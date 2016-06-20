@@ -40,8 +40,8 @@ The figure below illustrates the basic steps required to launch an lxc container
 
 ```shell
 cd ~/
-git clone https://github.com/ios-xr/vagrant-xr.git
-cd  vagrant-xr/ansible-tutorials/app_hosting/
+git clone https://github.com/ios-xr/vagrant-xrdocs.git
+cd  vagrant-xrdocs/ansible-tutorials/app_hosting/
 ```
 
 ## Boot up the environment  
