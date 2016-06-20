@@ -78,7 +78,7 @@ All good? Perfect. Let's start building our container application tar ball.
 >
 *  We will build the container rootfs tar ball on our devbox (see topology above)
 *  The rootfs tar ball will then be transferred to IOS-XR
-*  The rootfs will  be launched using the virsh command in XR shell.
+*  The rootfs will  be launched on the host OS using the virsh command in XR shell.
 {: .notice}  
 
 
