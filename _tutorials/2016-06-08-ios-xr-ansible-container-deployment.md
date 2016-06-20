@@ -135,7 +135,9 @@ Now that we have the two things we need to launch the container, take a look at 
 **You will notice that we intend to use the management network to connect and transfer this files to IOS-XR from the devbox. Since vagrant forwards the ssh port for each VM, we need to use the port used for IOS-XR's port 57722 (SSH into XR linux). IP 10.0.2.2 is the network gateway (i.e. your own laptop). The gig interfaces in the Vagrant XR image are rate-limited, hence to transfer large files and save time, we use the management network.**  
 {: .notice--info}  
 
-  
+
+## Ansible Playbook  
+
 Ansible playbook contains 5 tasks:  
 
 ```shell
@@ -182,6 +184,7 @@ Tasks overview:
 * Task 5 verifies, that container is up and running.
 
 
+## Run playbook to deploy LXC 
 
 Ansible playbook is ready to use. Issue command in devbox:
 ```shell
