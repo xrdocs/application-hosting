@@ -46,6 +46,7 @@ cd  vagrant-xr/ansible-tutorials/app_hosting/
 
 {% capture insert-text %}
 **We are ready to start, boot the boxes by issuing the `vagrant up` command**
+
 ```shell
 AKSHSHAR-M-K0DS:app_hosting akshshar$ vagrant up
 Bringing machine 'devbox' up with 'virtualbox' provider...
