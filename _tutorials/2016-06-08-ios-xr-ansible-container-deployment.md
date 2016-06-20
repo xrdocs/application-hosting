@@ -159,9 +159,11 @@ cat deploy_container.yml
 - hosts: ss-xr
 
   tasks:
-  - copy: src=/home/vagrant/xr-lxc-app.xml dest=/home/vagrant/xr-lxc-app.xml owner=vagrant
-  
-  - copy: src=/home/vagrant/xr-lxc-app-rootfs.tar.gz dest=/misc/app_host/scratch/xr-lxc-app-rootfs.tar.gz owner=vagrant
+  - name: Copy XML file
+    copy: src=/home/vagrant/xr-lxc-app.xml dest=/home/vagrant/xr-lxc-app.xml owner=vagrant
+
+  - name: Copy rootf tar ball
+    copy: src=/home/vagrant/xr-lxc-app-rootfs.tar.gz dest=/misc/app_host/scratch/xr-lxc-app-rootfs.tar.gz owner=vagrant
 
   - name: Creates directory
     file: path=/misc/app_host/xr-lxc-app/ state=directory
