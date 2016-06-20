@@ -376,7 +376,7 @@ root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs#
 root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs#<mark> tar -czf xr-lxc-app-rootfs.tar.gz * </mark>
 tar: dev/log: socket ignored
 root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs#
-root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs#<mark>mv xr-lxc-app-rootfs.tar.gz /home/vagrant</mark>
+root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs#<mark>mv *.tar.gz /home/vagrant</mark>
 root@vagrant-ubuntu-trusty-64:/var/lib/lxc/xr-lxc-app/rootfs#<mark>ls -l /home/vagrant</mark>
 total 119984
 -rw-r--r-- 1 root root 122863332 Jun 16 19:41 xr-lxc-app-rootfs.tar.gz
