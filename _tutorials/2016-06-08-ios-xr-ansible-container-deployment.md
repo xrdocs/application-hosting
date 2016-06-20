@@ -168,10 +168,10 @@ cat deploy_container.yml
   - copy: src=/home/vagrant/xr-lxc-app-rootfs.tar.gz dest=/misc/app_host/scratch/xr-lxc-app-rootfs.tar.gz owner=vagrant
 
   - name: Creates directory
-    file: path=/misc/app_host/scratch/xr-lxc-app/ state=directory
+    file: path=/misc/app_host/xr-lxc-app/ state=directory
     become: yes
 
-  - command: tar -zxf /misc/app_host/scratch/xr-lxc-app-rootfs.tar.gz -C /misc/app_host/scratch/xr-lxc-app/
+  - command: tar -zxf /misc/app_host/scratch/xr-lxc-app-rootfs.tar.gz -C /misc/app_host/xr-lxc-app/
     become: yes
     register: output
     ignore_errors: yes
