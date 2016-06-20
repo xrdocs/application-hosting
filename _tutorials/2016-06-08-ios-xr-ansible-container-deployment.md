@@ -4,7 +4,7 @@ date: '2016-06-08 19:11 +0300'
 title: 'IOS-XR: Ansible based LXC deployment'
 author: Mike Korshunov
 excerpt: Deploy container at IOS-XR with Ansible
-position: hidden
+position: top
 tags:
   - vagrant
   - iosxr
