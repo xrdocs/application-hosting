@@ -48,7 +48,7 @@ cd  vagrant-xr/ansible-tutorials/app_hosting/
 **We are ready to start, boot the boxes by issuing the `vagrant up` command**
 {: .notice--info}
 
-### Configure Passwordless Access into XR Linux shell
+## Configure Passwordless Access into XR Linux shell
 Let's copy public part of key from **devbox** box and allow access without a
 password.
 First,  connect to the devbox instance and copy its public key to XR via SCP:
@@ -69,10 +69,10 @@ cat /home/vagrant/id_rsa_ubuntu.pub >> /home/vagrant/.ssh/authorized_keys
 
 Ansible is ready to work without password.
 
-### Devbox container creation
+### Create LXC Tar ball in devbox
 
 >
-The user is free to bring their own lxc rootfs tar-ball for deployment on IOS-XR. This section is meant to help a user create a rootfs tar ball from scratch if needed.
+The user is free to bring their own lxc rootfs tar-ball for deployment on IOS-XR. This section is meant to help a user create a rootfs tar ball from scratch.
 
 
 ![We need to go deeper](https://raw.githubusercontent.com/xrdocs/xrdocs-images/gh-pages/assets/tutorial-images/mkorshun/hosted_apps/02_we_need_to.png)
@@ -87,6 +87,7 @@ At the end of the section, you should have your very own rootfs (xr-lxc-app-root
 
 Copy and keep the rootfs tar ball in the `/home/vagrant/` directory of your devbox. The Ansible playbook will expect the tar ball in this directory, so make sure an `ls -l` for the tar ball in `/home/vagrant` returns something like:
 
+
 ```shell
 ls -l /home/vagrant/xr-lxc-app-rootfs.tar.gz
 ```
@@ -95,6 +96,7 @@ Great! Ansible will copy this tar ball to XR for you.
 {: .notice--success}
 
 
+## Create XML file in devbox
 To create a container, we need an xml file with the specifications for the container. Create the following file in the /home/vagrant directory of your `devbox` :
 
 ```shell
