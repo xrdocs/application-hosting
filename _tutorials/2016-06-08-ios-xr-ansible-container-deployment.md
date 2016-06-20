@@ -97,7 +97,7 @@ All the steps required to create a container rootfs are already covered in detai
 [XR toolbox, Part 4: Bring your own Container (LXC) App]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app)  
 >
 Specifically, head over to the following section of the tutorial:  
-[XR toolbox, Part 4.../create-a-container-rootfs]({{ base_path }}/tutorials/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#create-a-container-rootfs)
+[XR toolbox, Part 4.../create-a-container-rootfs]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#create-a-container-rootfs)
 At the end of the section, you should have your very own rootfs (xr-lxc-app-rootfs.tar.gz), ready for deployment.
 
 Copy and keep the rootfs tar ball in the `/home/vagrant/` directory of your devbox. The Ansible playbook will expect the tar ball in this directory, so make sure an `ls -l` for the tar ball in `/home/vagrant` returns something like:
