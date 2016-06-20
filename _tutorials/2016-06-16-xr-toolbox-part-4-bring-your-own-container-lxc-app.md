@@ -78,8 +78,8 @@ All good? Perfect. Let's start building our container application tar ball.
 *  The rootfs tar ball will then be transferred to IOS-XR
 *  The rootfs will  be launched using the virsh command in XR shell.
 >
-![Container workflow](https://raw.githubusercontent.com/xrdocs/xrdocs-images/gh-pages/assets/tutorial-images/mkorshun/hosted_apps/01_workflow_app_hosting.png)
-{: .notice}{: .align-right}  
+![Container workflow](https://raw.githubusercontent.com/xrdocs/xrdocs-images/gh-pages/assets/tutorial-images/mkorshun/hosted_apps/01_workflow_app_hosting.png){: .align-right}
+{: .notice}  
 
 
 ## Create a container rootfs  
