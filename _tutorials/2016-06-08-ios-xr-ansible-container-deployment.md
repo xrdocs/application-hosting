@@ -250,8 +250,10 @@ xr-vm_node0_RP0_CPU0:/misc/app_host/rootfs$ virsh list
 
 ```
 
+>
 Container is up and running. It might take some time to be fully up and running. Give it about 20-30 seconds and you should be able to SSH to it from your **laptop**:
 ```shell
 ssh -p 58822 ubuntu@127.0.0.1
 ```
 Congratulations!
+{: .notice--success}
