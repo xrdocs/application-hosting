@@ -162,7 +162,7 @@ cat deploy_container.yml
   - name: Copy XML file
     copy: src=/home/vagrant/xr-lxc-app.xml dest=/home/vagrant/xr-lxc-app.xml owner=vagrant
 
-  - name: Copy rootf tar ball
+  - name: Copy rootfs tar ball
     copy: src=/home/vagrant/xr-lxc-app-rootfs.tar.gz dest=/misc/app_host/scratch/xr-lxc-app-rootfs.tar.gz owner=vagrant
 
   - name: Creates directory
