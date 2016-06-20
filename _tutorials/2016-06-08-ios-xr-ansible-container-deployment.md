@@ -210,9 +210,9 @@ ansible-playbook deploy_container.yml
 >
 ### Slow playbook run? XR Gig interfaces are rate limited!  
 >
-The default ansible setup uses the Gig0/0/0/0 (connected to eth1 of devbox) to transfer the files over port 57722 (ssh to XR linux). This playbook could be directly used for physical devices as well. 
+The default ansible setup uses the Gig0/0/0/0 XR interface (connected to eth1 of devbox) to transfer the files over port 57722 (ssh to XR linux). This playbook could be directly used for physical devices as well. 
 >
-But, bear in mind that the IOS-XR Vagrant instance is rate-limited on its Gig interfaces. So the copy process might be quite slow. To speed up the process we could use the Management interface instead. To do this, determine to which vagrant forwards port 57722 from XR:  
+But, bear in mind that the IOS-XR Vagrant instance is rate-limited on its Gig interfaces. So the copy process might be quite slow. To speed up the process we could use the Management interface instead. To do this, determine to which port vagrant forwards port 57722 from XR:  
 >
 <div class="highlighter-rouge">
 <pre class="highlight">
@@ -235,7 +235,7 @@ Based on the above output:
 * Change the ansible host IP address from 10.1.1.20 (Gig0/0/0/0) address to 10.0.2.2 (gateway/laptop address) in /home/vagrant/iosxr-ansible/remote/ansible_hosts on devbox.
 * Change the remote_port  from 57722 to 2200 (forwarded port determined above, in your case it may be different) in /home/vagrant/iosxr-ansible/remote/ansible_cfg on devbox  
 >
-Thus by using 10.0.2.2:2200 to run the playbook over the management port will significantly reduce the runtime of the playbook.  
+Thus by using 10.0.2.2:2200 to run the playbook over the management port we significantly reduce the runtime of the playbook.  
   
   
 Verify container is up from XR Linux shell:
