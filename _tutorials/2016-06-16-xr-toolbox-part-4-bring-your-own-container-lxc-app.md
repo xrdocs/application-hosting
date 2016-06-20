@@ -44,13 +44,13 @@ Follow the instructions to get your topology up and running as shown below:
 ![app dev topo](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/app_dev_topology.png)
 
 
-If you've reached the end of the above tutorial, you should be able to issue a `vagrant status` in the `vagrant-xr/lxc-app-topo-bootstrap` directory to see a rtr (IOS-XR) and a devbox (Ubuntu/trusty) instance running.  
+If you've reached the end of the above tutorial, you should be able to issue a `vagrant status` in the `vagrant-xrdocs/lxc-app-topo-bootstrap` directory to see a rtr (IOS-XR) and a devbox (Ubuntu/trusty) instance running.  
 
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
 AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ pwd
-<mark>/Users/akshshar/vagrant-xr/lxc-app-topo-bootstrap </mark>
+<mark>/Users/akshshar/vagrant-xrdocs/lxc-app-topo-bootstrap </mark>
 AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ 
 AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$<mark> vagrant status </mark>
 Current machine states:
