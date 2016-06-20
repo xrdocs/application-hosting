@@ -48,14 +48,18 @@ cd  vagrant-xr/ansible-tutorials/app_hosting/
 
 **We are ready to start, boot the boxes by issuing the `vagrant up` command**
 
-```shell
-bash$ vagrant up
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+bash$<mark> vagrant up </mark>
 Bringing machine 'devbox' up with 'virtualbox' provider...
 Bringing machine 'rtr' up with 'virtualbox' provider...
 ==> devbox: Importing base box 'ubuntu/trusty64'...
 
 ---------------------------snip output -----------------------
-```
+</code>
+</pre>
+</div>
 
 
 ## Configure Passwordless Access into XR Linux shell
