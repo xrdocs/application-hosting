@@ -146,11 +146,7 @@ cat /home/vagrant/xr-lxc-app.xml
   </devices>
 </domain>
 ```
-Now that we have the two things we need to launch the container, take a look at the ansible.cfg file under ``: 
-
-
-**You will notice that we intend to use the management network to connect and transfer this files to IOS-XR from the devbox. Since vagrant forwards the ssh port for each VM, we need to use the port used for IOS-XR's port 57722 (SSH into XR linux). IP 10.0.2.2 is the network gateway (i.e. your own laptop). The gig interfaces in the Vagrant XR image are rate-limited, hence to transfer large files and save time, we use the management network.**  
-{: .notice--info}  
+  
 
 
 ## Ansible Playbook  
