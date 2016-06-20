@@ -40,23 +40,23 @@ This tutorial invariably ends up using the new shell/bash based automation techn
 ## Pre-requisite
 * Meet the pre-requisites specified in the [IOS-XR Vagrant Quick Start guide: Pre-requisites]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#pre-requisites)
 
-* Clone the following repository: <https://github.com/ios-xr/vagrant-xr>, before we start.
+* Clone the following repository: <https://github.com/ios-xr/vagrant-xrdocs>, before we start.
 
 ```shell
 cd ~/
-git clone https://github.com/ios-xr/vagrant-xr.git
-cd vagrant-xr/
+git clone https://github.com/ios-xr/vagrant-xrdocs.git
+cd vagrant-xrdocs/
 ```
 
 You will notice a couple of  directories. We will utilize the `single_node_bootstrap` directory in this tutorial.
 {: .notice--info}
 
 ```shell
-AKSHSHAR-M-K0DS:vagrant-xr akshshar$ pwd
-/Users/akshshar/vagrant-xr
-AKSHSHAR-M-K0DS:vagrant-xr akshshar$ ls single_node_bootstrap/
+AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$ pwd
+/Users/akshshar/vagrant-xrdocs
+AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$ ls single_node_bootstrap/
 Vagrantfile	configs		scripts
-AKSHSHAR-M-K0DS:vagrant-xr akshshar$ 
+AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$ 
 
 ```
 
@@ -112,11 +112,11 @@ So, in short, Vagrant copies a config file to the router bash, and then runs a s
 
 ## Single node bootstrap
 
-To meet the above requirements, you will need a directory structure as laid out under ~/vagrant-xr/single_node_bootstrap:
+To meet the above requirements, you will need a directory structure as laid out under ~/vagrant-xrdocs/single_node_bootstrap:
 
 ```shell
 AKSHSHAR-M-K0DS:single_node_bootstrap akshshar$ pwd
-/Users/akshshar/vagrant-xr/single_node_bootstrap
+/Users/akshshar/vagrant-xrdocs/single_node_bootstrap
 AKSHSHAR-M-K0DS:single_node_bootstrap akshshar$ tree ./
 ./
 ├── Vagrantfile
