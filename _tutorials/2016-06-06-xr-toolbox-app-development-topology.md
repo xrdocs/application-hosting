@@ -37,23 +37,23 @@ This topology will be used to build and deploy container (LXC) as well as native
 
 * Meet the pre-requisites specified in the [IOS-XR Vagrant Quick Start guide: Pre-requisites]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#pre-requisites).   
 The topology here will require about 5G RAM and 2 cores on the user's laptop.
-* Clone the following repository: <https://github.com/ios-xr/vagrant-xr>, before we start.
+* Clone the following repository: <https://github.com/ios-xr/vagrant-xrdocs>, before we start.
 
 ```shell
 cd ~/
-git clone https://github.com/ios-xr/vagrant-xr.git
-cd vagrant-xr/
+git clone https://github.com/ios-xr/vagrant-xrdocs.git
+cd vagrant-xrdocs/
 ```
 
 You will notice a few directories. We will utilize the `lxc-app-topo-bootstrap` directory in this tutorial.
 {: .notice--info}
 
 ```shell
-AKSHSHAR-M-K0DS:vagrant-xr akshshar$ pwd
-/Users/akshshar/vagrant-xr
-AKSHSHAR-M-K0DS:vagrant-xr akshshar$ ls lxc-app-topo-bootstrap/
+AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$ pwd
+/Users/akshshar/vagrant-xrdocs
+AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$ ls lxc-app-topo-bootstrap/
 Vagrantfile	configs		scripts
-AKSHSHAR-M-K0DS:vagrant-xr akshshar$ 
+AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$ 
 ``` 
  
 
@@ -67,7 +67,7 @@ For this tutorial, we'll use a two-node topology: An XR vagrant instance connect
 
 The Vagrantfile to bring up this topology is already in your cloned directory:  
 
-`vagrant-xr/lxc-app-topo-bootstrap/Vagrantfile`
+`vagrant-xrdocs/lxc-app-topo-bootstrap/Vagrantfile`
 
 ```ruby
 
