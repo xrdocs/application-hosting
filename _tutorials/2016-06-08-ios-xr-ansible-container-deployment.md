@@ -104,7 +104,10 @@ Copy and keep the rootfs tar ball in the `/home/vagrant/` directory of your devb
 
 
 ```shell
-ls -l /home/vagrant/xr-lxc-app-rootfs.tar.gz
+vagrant@vagrant-ubuntu-trusty-64:~$ ls -l /home/vagrant/xr-lxc-app-rootfs.tar.gz
+-rw-r--r-- 1 root root 101246853 Jun 20 02:34 /home/vagrant/xr-lxc-app-rootfs.tar.gz
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+
 ```
 
 Great! Ansible will copy this tar ball to XR for you.
