@@ -205,7 +205,8 @@ Tasks overview:
 Ansible playbook is ready to use. Issue command in devbox:
 ```shell
 ansible-playbook deploy_container.yml
-```
+```  
+
 >
 ### Slow playbook run? XR Gig interfaces are rate limited!  
 >
