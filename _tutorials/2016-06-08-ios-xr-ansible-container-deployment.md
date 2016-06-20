@@ -25,7 +25,7 @@ In this tutorial we will use techniques from 2 other tutorials:
 * [XR Toolbox, Part 2: Bootstrap XR configuration with Vagrant]({{ base_path }}/tutorials/iosxr-vagrant-bootstrap-config): using the new shell/bash based automation techniques.  
 
 
-The figure below illustrates the basic steps to undertake to launch an lxc container on IOS-XR 6.0+:
+The figure below illustrates the basic steps required to launch an lxc container on IOS-XR 6.0+:
 
 <img src="https://raw.githubusercontent.com/xrdocs/xrdocs-images/gh-pages/assets/tutorial-images/mkorshun/hosted_apps/01_workflow_app_hosting.png" width="600" height="400" />{: .align-center}
 
