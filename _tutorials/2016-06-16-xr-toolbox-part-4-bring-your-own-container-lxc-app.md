@@ -71,10 +71,11 @@ AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$
 All good? Perfect. Let's start building our container application tar ball.
 {: .notice--success}  
 
->
+
 The figure below illustrates the basic steps to undertake to launch an lxc container on IOS-XR 6.0+:
->
 ![Container workflow](https://raw.githubusercontent.com/xrdocs/xrdocs-images/gh-pages/assets/tutorial-images/mkorshun/hosted_apps/01_workflow_app_hosting.png)
+{: .notice}  
+
 
 ## Create a container rootfs  
 
