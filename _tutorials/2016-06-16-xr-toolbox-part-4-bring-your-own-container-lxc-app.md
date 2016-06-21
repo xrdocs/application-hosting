@@ -531,7 +531,7 @@ xr-vm_node0_RP0_CPU0:~$
 Create a directory `xr-lxc-app/`(remember the source dir in the XML file?) under `/misc/app_host`:
 
 You need to be sudo to perform the next set of tasks.
-{ : .notice--info}
+{: .notice--info}
 
 
 ```shell
