@@ -7,7 +7,7 @@ excerpt: Introduction to IOS XR
 tags:
   - iosxr
   - Getting Started
-position: hidden
+position: top
 ---
 ## What you need to know to begin using IOS XR
 
