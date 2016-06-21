@@ -211,7 +211,7 @@ RP/0/RP0/CPU0:ios#
 ## Multi Node Bringup
 
 
-Bear in mind the RAM and CPU resource requirements per IOS-XR vagrant instance. A 3 node topology as shown below will require 8-9G RAM and can be shared on a 4-core CPU with your laptop's OS.  
+Bear in mind the RAM and CPU resource requirements per IOS-XR vagrant instance before you proceed with this section. A 3 node topology as shown below will require 8-9G RAM and can be shared on a 4-core CPU with your laptop's OS.  
 {: .notice--warning}
 
 Let's try to bring up a multi-node topology as shown below:
