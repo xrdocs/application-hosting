@@ -346,4 +346,6 @@ RP/0/RP0/CPU0:ios#
 
 
 That's it for the quick-start guide on XR vagrant. Launch your very own XR instance using vagrant and let us know your feedback in the comments below!
-{: .notice--success}
+{: .notice--success}  
+
+Head over to Part 2 of the XR Toolbox series where we look at bootstrapping a Vagrant XR instance with a user-defined configuration on boot ---> [Bootstrap XR configuration with Vagrant]({{ base_path }}/tutorials/iosxr-vagrant-bootstrap-config.
