@@ -139,7 +139,7 @@ cat /home/vagrant/xr-lxc-app.xml
   <devices>
     <emulator>/usr/lib64/libvirt/libvirt_lxc</emulator>
     <filesystem type='mount'>
-      <source dir='/misc/app_host/scratch/xr-lxc-app/'/>
+      <source dir='/misc/app_host/xr-lxc-app/'/>
       <target dir='/'/>
     </filesystem>
     <console type='pty'/>
