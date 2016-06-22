@@ -17,6 +17,8 @@ position: top
 {% include toc icon="table" title="IOS-XR Vagrant: Bootstrap Config" %}
 {% include base_path %}
 
+Check out Part 1 of the XR toolbox series: [IOS-XR Vagrant quick-start]({{ base_path }}/tutorials/iosxr-vagrant-quickstart).  
+
 ## Introduction
 
 The [IOS-XR Vagrant Quick Start guide]({{ base_path }}/tutorials/iosxr-vagrant-quickstart)
@@ -290,4 +292,6 @@ RP/0/RP0/CPU0:ios#
 
 
 It worked! The config was applied as part of the vagrant up process.  
-{: .notice--success}
+{: .notice--success}  
+
+Head over to Part 3 of the XR Toolbox series where we bring up a typical app-development topology  ---> [App Development Topology]({{ base_path }}/tutorials/2016-06-06-xr-toolbox-app-development-topology).
