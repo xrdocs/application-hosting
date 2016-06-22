@@ -38,6 +38,13 @@ Bruce McDougall:
   avatar      : "brucemc_bio.jpg"
   bio         : "Systems Engineer, Web Solutions, Cisco."
 
+Anne Sequeira:
+  name        : "Anne Sequeira"
+  github      : "annesequeira"
+  email       : "annseque@cisco.com"
+  avatar      : "anneseque_bio.jpg"
+  bio         : "Technical Writer, evangelist, Cisco."
+
 Cisco Web Team:
   name        : "Cisco Web Team"
   uri         : "https://developer.cisco.com/site/ios-xr"
