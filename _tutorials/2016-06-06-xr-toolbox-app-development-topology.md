@@ -18,6 +18,8 @@ permalink: /tutorials/2016-06-06-xr-toolbox-app-development-topology
 {% include base_path %}
 {% include toc icon="table" title="App Development Topology" %}
 
+Check out Part 2 of the XR toolbox series: [Bootstrap XR configuration with Vagrant]({{ base_path }}/tutorials/iosxr-vagrant-bootstrap-config).  
+
 
 ## Introduction
 
@@ -345,4 +347,7 @@ RP/0/RP0/CPU0:ios#
     
 
 You're all set! You can now use this topology to build applications (native-WRL7 or LXC containers) on the "devbox" and test them out on the IOS-XR vagrant node. We will explore these scenarios in the next set of tutorials in the [XR Toolbox]({{ base_path }}/tags/#xr-toolbox) series.
-{: .notice--success}
+{: .notice--success}  
+
+Head over to Part 4 of the XR Toolbox series where we create and bring up a container (LXC) app on IOS-XR ---> [Bring your own Container (LXC) App]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/).
+
