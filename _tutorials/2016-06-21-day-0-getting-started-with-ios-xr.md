@@ -2,10 +2,12 @@
 published: true
 date: '2016-06-21 10:07 +0530'
 title: 'Day 0: Getting Started with IOS XR 64-bit'
-author: Anne
-excerpt: Introduction to IOS XR
+author: Anne Sequeira
+excerpt: Introduction to IOS XR linux shell
 tags:
   - iosxr
+  - cisco
+  - linux
   - Getting Started
 position: hidden
 ---
@@ -24,4 +26,3 @@ When you start using XR, you are offered three distinct options for hosting appl
 
 
 
-Enter text in [Markdown](http://daringfireball.net/projects/markdown/). Use the toolbar above, or click the **?** button for formatting help.
