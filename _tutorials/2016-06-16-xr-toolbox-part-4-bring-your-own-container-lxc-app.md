@@ -898,6 +898,6 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 </div>
 
 
-There you have it! iperf running inside an Ubuntu Container on IOS-XR. Too many steps to look up? In our next tutorial, we look at automating all of the  steps needed to bring up a container using an Ansible Playbook. Stay tuned!
+There you have it! iperf running inside an Ubuntu Container on IOS-XR. Too many steps to look up? In our next tutorial, we look at automating all of the  steps needed to bring up a container using an Ansible Playbook: [IOS-XR: Ansible based LXC deployment]({{ base_path }}/tutorials/2016-06-08-ios-xr-ansible-container-deployment/)
 {: .notice--success}  
 
