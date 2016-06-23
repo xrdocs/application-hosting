@@ -160,25 +160,35 @@ cat deploy_container.yml
 
   tasks:
   - name: Copy XML file
-    copy: src=/home/vagrant/xr-lxc-app.xml dest=/home/vagrant/xr-lxc-app.xml owner=vagrant
+    copy: src=/home/vagrant/xr-lxc-app.xml dest=/home/vagrant/xr-lxc-app.xml owner=vagrant force=no
 
   - name: Copy rootfs tar ball
-    copy: src=/home/vagrant/xr-lxc-app-rootfs.tar.gz dest=/misc/app_host/scratch/xr-lxc-app-rootfs.tar.gz owner=vagrant
+    copy: src=/home/vagrant/xr-lxc-app-rootfs.tar.gz dest=/misc/app_host/scratch/xr-lxc-app-rootfs.tar.gz owner=vagrant force=no
 
-  - name: Creates directory
-    file: path=/misc/app_host/xr-lxc-app/ state=directory
+  - name: Create rootfs directory
+    file: path=/misc/app_host/xr-lxc-app/rootfs state=directory
     become: yes
 
-  - command: tar -zxf /misc/app_host/scratch/xr-lxc-app-rootfs.tar.gz -C /misc/app_host/xr-lxc-app/
+  - command: tar -zxf /misc/app_host/scratch/xr-lxc-app-rootfs.tar.gz -C /misc/app_host/xr-lxc-app/rootfs
     become: yes
     register: output
     ignore_errors: yes
   - debug: var=output.stdout_lines
 
-  - shell: sudo -i virsh  create /home/vagrant/xr-lxc-app.xml
+  - name: grep
+    shell: sudo -i virsh list | grep xr-lxc-app
+    args:
+      warn: no
+    register: container_exist
+    ignore_errors: yes
+  - debug: var=output.stdout_lines
+
+  - name: virsh create
+    shell: sudo -i virsh  create /home/vagrant/xr-lxc-app.xml
     args:
       warn: no
     register: output
+    when: " container_exist | failed "
   - debug: var=output.stdout_lines
 
   - shell: sudo -i virsh list
@@ -186,6 +196,7 @@ cat deploy_container.yml
       warn: no
     register: output
   - debug: var=output.stdout_lines
+
 
 ```
 
@@ -195,9 +206,10 @@ Tasks overview:
 * Task 2 copies the xr-lxc-app-rootfs.tar.gz tar ball to XR;
 * Task 3 creates folder "xr-lxc-app" at XR, if it does not exist;
 * Task 4 unpacks archive with container filesystem (Notice the ignore_errors?- we're simply avoiding the mknod warnings);
-* Task 5 creates the container itself using the virsh alias in the XR linux shell (issue
-  command "type virsh" on XR Linux to check. "sudo -i" is important, to load up Aliases for the root user);
-* Task 6 dumps the virsh list output to show that container is up and running.
+* Task 5 getting list of container and checking if 'xr-lxc-app' in grep output. In case of success variable would be changed and Task 6 would be skipped;
+* Task 6 creates the container itself using the virsh alias in the XR linux shell (issue
+  command "type virsh" on XR Linux to check. "sudo -i" is important, to load up Aliases for the root user). Triggered only if container not exist;
+* Task 7 dumps the virsh list output to show that container is up and running.
 
 
 ## Run playbook to deploy LXC 
