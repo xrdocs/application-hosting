@@ -151,7 +151,7 @@ cat /home/vagrant/xr-lxc-app.xml
 
 ## Ansible Playbook  
 
-Ansible playbook contains 5 tasks:  
+Ansible playbook contains 7 tasks:  
 
 ```shell
 cat deploy_container.yml
