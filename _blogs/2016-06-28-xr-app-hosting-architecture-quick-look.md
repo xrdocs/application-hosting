@@ -37,7 +37,10 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
   <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane.png" width="250" height="250" />{: .align-center}
 
   
-*  Inside the control plane LXC, you are presented with the XR linux shell. This is what you drop into when you issue a `vagrant ssh`.   
+*  Inside the control plane LXC, you are presented with the XR linux shell. **Any Linux application hosted in this environment shares the process space with XR, and we refer to it as a `native application`**.  
+   P.S. This is what you drop into when you issue a `vagrant ssh`.  
+   {: .notice--info}  
+   
 The XR linux shell that the user interacts with is really the `global-vrf` network namespace inside the control plane container. This corresponds to the global/default-vrf in IOS-XR.  
 
    **Only the interfaces in global-vrf appear in the XR linux shell today when you issue an 
