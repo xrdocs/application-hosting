@@ -26,12 +26,12 @@ This is what the internal software architecture and plumbing, replete with the c
   
 Alright, back up. The above figure seems pretty daunting to understand, so let's try to deconstruct it:  
   
-*  At the bottom of the figure, in gray, we have the host (hypervisor) linux environment. This is a 64-bit linux kernel running the Windriver linux 7 (WRL7) environment. The rest of the components run as containers (LXCs) on top of the host.    
+1.  At the bottom of the figure, in gray, we have the host (hypervisor) linux environment. This is a 64-bit linux kernel running the Windriver linux 7 (WRL7) environment. The rest of the components run as containers (LXCs) on top of the host.    
 
   ![host-linux-hypervisor](https://xrdocs.github.io/xrdocs-images/assets/images/host_linux_hypervisor.png){: .align-center}
 {: .notice}
 
-*  In green, we see the container (called the Control plane LXC or XR LXC) within which XR runs as a collection of processes (represented in sky blue, shown below). This is what presents the XR CLI to the user and this is what runs the routing protocols.  
+2.  In green, we see the container (called the Control plane LXC or XR LXC) within which XR runs as a collection of processes (represented in sky blue, shown below). This is what presents the XR CLI to the user and this is what runs the routing protocols.  
   
   
   <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane.png" width="250" height="250" />{: .align-center}
@@ -42,7 +42,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
   <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-ns.png" width="200" height="250" />{: .align-right}
 
   
-*  Inside the control plane LXC, you are presented with the XR linux shell. This is what you drop into when you issue a `vagrant ssh`.   
+3.  Inside the control plane LXC, you are presented with the XR linux shell. This is what you drop into when you issue a `vagrant ssh`.   
 The XR linux shell that the user interacts with is really the `global-vrf` network namespace inside the control plane container. This corresponds to the global/default-vrf in IOS-XR.  
 
    **Only the interfaces in global-vrf appear in the XR linux shell today when you issue an 
@@ -50,7 +50,7 @@ The XR linux shell that the user interacts with is really the `global-vrf` netwo
    in the future.**    
 
 
-*  The FIB is programmed by the XR control plane exclusively. The global-vrf network namespace only sees a couple of routes:  
+4.  The FIB is programmed by the XR control plane exclusively. The global-vrf network namespace only sees a couple of routes:  
     *  A default route pointing to XR FIB. This way any packet with an unknown destination is handed-over by a linux application to XR for routing. This is achieved through a special interface called `fwdintf` as shown in the figure above.  
        
       
