@@ -42,7 +42,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
   
 *  Inside the control plane LXC, you are presented with the XR linux shell. **Any Linux application hosted in this environment shares the process space with XR, and we refer to it as a** `native application`.  
 
-   **P.S. This is what you drop into when you issue a `vagrant ssh`[*]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/iosxr-vagrant-quickstart)**.  
+   **P.S. This is what you drop into when you issue a `vagrant ssh`[[*]]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/iosxr-vagrant-quickstart)**.  
    {: .notice--info}  
    
    The XR linux shell that the user interacts with is really the `global-vrf` network namespace 
