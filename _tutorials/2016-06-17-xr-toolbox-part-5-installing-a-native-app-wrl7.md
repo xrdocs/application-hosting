@@ -37,5 +37,7 @@ In this part, we explore how a user can build and deploy native WRL7 RPMs that t
 As you go through these tutorials, it would be pretty apparent that we've helped you bring up IOS-XR on your laptop, we've created development topologies and even orchestrated ubuntu LXCs on the router.   
 But we haven't actually delved into the internal architecture of IOS-XR. While there are several upcoming documents that will shed light on the deep internal workings of IOS-XR, before we jump into this tutorial, let's take a high-level view of the application-hosting environment:  
 
+![xr-app-hosting-infra](https://xrdocs.github.io/xrdocs-images/xr-app-hosting-infra-basic.png)
+
 
 
