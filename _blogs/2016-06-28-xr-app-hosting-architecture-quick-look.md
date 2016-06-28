@@ -107,7 +107,8 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
    selected as the src-hint.
    {: .notice--warning}  
   
-   We go into further detail here: https://xrdocs.github.io/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#set-the-src-hint-for-application-traffic
+   We go into further detail here: 
+   [Set the src-hint for Application traffic](https://xrdocs.github.io/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#set-the-src-hint-for-application-traffic)
 
 That pretty much wraps it up. Remember, XR handles the routing and applications use a only a subset of the routing table to piggy-back on XR for reachability!  
 {: .notice--success}
