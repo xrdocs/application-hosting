@@ -9,7 +9,7 @@ tags:
   - cisco
   - architecture
   - xr toolbox
-position: hidden
+position: top
 ---
 
 {% include base_path %}  
