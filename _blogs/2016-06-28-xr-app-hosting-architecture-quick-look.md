@@ -85,7 +85,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
    [Create LXC SPEC XML File]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-   
    own-container-lxc-app/#create-lxc-spec-xml-file) 
 
-   This makes the architecture work seamlessly between `native` and `container` applications. **An 
+   This makes the architecture work seamlessly for `native` and `container` applications. **An 
    LXC app has the same view of the world, the same routes and the same XR interfaces to take 
    advantage of, as any native application with the shared global-vrf namespace**.  
 
