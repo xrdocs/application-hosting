@@ -60,7 +60,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
     *  A default route pointing to XR FIB. This way any packet with an unknown destination is handed-over by a linux application to XR for routing. This is achieved through a special interface called `fwdintf` as shown in the figure above.  
        
       
-    *  Routes in the subnet of the Management Interface:  Mgmt0/RP0/CPU0. The management subnet is local to
+    *  Routes in the subnet of the Management Interface:  Mgmt0/RP0/CPU0. The management subnet is local to the global-vrf network namespace.
 
    To view these routes, simply issue an `ip route` in the XR linux shell:  
   
