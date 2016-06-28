@@ -40,10 +40,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
   <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-ns.png" width="200" height="250" />{: .align-right}  
   
 *  Inside the control plane LXC, you are presented with the XR linux shell. This is what you drop into when you issue a `vagrant ssh`.   
-  
-  
-  
-*  The XR linux shell that the user interacts with is really the `global-vrf` network namespace inside the control plane container. This corresponds to the global/default-vrf in IOS-XR.  
+The XR linux shell that the user interacts with is really the `global-vrf` network namespace inside the control plane container. This corresponds to the global/default-vrf in IOS-XR.  
 
    **Only the interfaces in global-vrf appear in the XR linux shell today when you issue an 
    ifconfig. But the infrastructure is in place to map each custom user VRF to a network namespace 
