@@ -35,7 +35,6 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
   
   
   <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane.png" width="250" height="250" />{: .align-center}
-  {: .notice}
 
   
 *  Inside the control plane LXC, you are presented with the XR linux shell. This is what you drop into when you issue a `vagrant ssh`.   
@@ -45,8 +44,8 @@ The XR linux shell that the user interacts with is really the `global-vrf` netwo
    ifconfig. But the infrastructure is in place to map each custom user VRF to a network namespace 
    in the future.**   
    
-   <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-ns.png" width="200" height="250" />{: .align-right}  
-   {: .notice}
+   <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-ns.png" width="200" height="250" />{: .align-center}  
+
 
 
 *  The FIB is programmed by the XR control plane exclusively. The global-vrf network namespace only sees a couple of routes:  
