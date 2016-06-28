@@ -31,7 +31,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
   ![host-linux-hypervisor](https://xrdocs.github.io/xrdocs-images/assets/images/host_linux_hypervisor.png){: .align-center}
 {: .notice}
 
-  <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane.png" width="250" height="250" />{: .align-right}  
+  <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane.png" width="250" height="250" />{: .align-left}  
   
 *  In green, we see the container (called the Control plane LXC or XR LXC) within which XR runs as a collection of processes (represented in sky blue, shown below). This is what presents the XR CLI to the user and this is what runs the routing protocols.  
   
