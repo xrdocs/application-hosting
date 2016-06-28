@@ -14,7 +14,7 @@ position: hidden
 
 {% include base_path %}  
 
-If you've been following along the set of tutorials in the XR toolbox series:  
+If you've been following the set of tutorials in the XR toolbox series:  
 
 >
 [XR Toolbox Series]({{ base_path }}/tags/#xr-toolbox)
