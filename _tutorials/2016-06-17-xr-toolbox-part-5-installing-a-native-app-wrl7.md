@@ -43,7 +43,9 @@ But we haven't actually delved into the internal architecture of IOS-XR. While t
   
 Alright, back up. The above figure seems pretty daunting to understand, so let's try to deconstruct it:  
   
-*  At the bottom of the figure, in gray, we have the app-hosting infra   
+*  At the bottom of the figure, in gray, we have the host (hypervisor) linux environment. This is a 64-bit linux kernel running the Windriver linux 7 (WRL7) environment.  
+*  In green, we see the container (called the Control plane LXC or XR LXC) within which XR runs as a collection of processes. This is what presents XR CLI and this is what runs the routing protocols.  
+*  Inside the control plane LXC 
 
 
 
