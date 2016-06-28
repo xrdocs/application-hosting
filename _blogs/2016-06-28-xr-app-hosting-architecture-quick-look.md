@@ -1,7 +1,15 @@
 ---
-published: false
+published: true
 date: '2016-06-28 01:54 -0700'
 title: 'XR App-hosting architecture: Quick Look!'
+author: Akshat Sharma
+excerpt: Quick Walkthrough of the XR app-hosting architecture
+tags:
+  - iosxr
+  - cisco
+  - architecture
+  - xr toolbox
+position: hidden
 ---
 If you've been following along the set of tutorials in the XR toolbox series:  
 
