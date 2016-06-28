@@ -60,12 +60,11 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
   
   ```shell
   AKSHSHAR-M-K0DS:native-app-bootstrap akshshar$ vagrant ssh rtr
-xr-vm_node0_RP0_CPU0:~$ 
-xr-vm_node0_RP0_CPU0:~$ 
-xr-vm_node0_RP0_CPU0:~$ ip route
-default dev fwdintf  scope link  src 10.0.2.15 
-10.0.2.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 10.0.2.15 
-xr-vm_node0_RP0_CPU0:~$ 
-xr-vm_node0_RP0_CPU0:~$ 
-  
+  xr-vm_node0_RP0_CPU0:~$ 
+  xr-vm_node0_RP0_CPU0:~$ 
+  xr-vm_node0_RP0_CPU0:~$ ip route
+  default dev fwdintf  scope link  src 10.0.2.15 
+  10.0.2.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 10.0.2.15 
+  xr-vm_node0_RP0_CPU0:~$ 
+  xr-vm_node0_RP0_CPU0:~$ 
   ```
