@@ -19,7 +19,7 @@ If you've been following along the set of tutorials in the XR toolbox series:
   
 You might have noticed that we haven't actually delved into the internal architecture of IOS-XR. While there are several upcoming documents that will shed light on the deep internal workings of IOS-XR, I thought I'll take a  quick stab at the internals for the uninitiated.
 
-This is what the internal software architecture and plumbing, replete with the containers, network namespaces and XR interfaces is shown below:  
+This is what the internal software architecture and plumbing, replete with the containers, network namespaces and XR interfaces, looks like:  
 
 ![xr-app-hosting-infra](https://xrdocs.github.io/xrdocs-images/assets/images/xr-app-hosting-infra-basic.png)  
 
