@@ -81,23 +81,33 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
    
 *  Finally, if you followed the [Bring your own Container (LXC) App]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/), you'll notice that in the XML file meant to launch the lxc, we share the `global-vrf` network namespace with the container; specifically, in this section:  
 
->
-[Create LXC SPEC XML File]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#create-lxc-spec-xml-file) 
+   >
+   [Create LXC SPEC XML File]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-   
+   own-container-lxc-app/#create-lxc-spec-xml-file) 
 
-This makes the architecture work seamlessly between `native` and `container` applications. **An LXC app has the same view of the world, the same routes and the same XR interfaces to take advantage of, as any native application with the shared global-vrf namespace**.  
+   This makes the architecture work seamlessly between `native` and `container` applications. **An 
+   LXC app has the same view of the world, the same routes and the same XR interfaces to take 
+   advantage of, as any native application with the shared global-vrf namespace**.  
 
-<img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-lxc.png" width="250" height="250" />{: .align-center}  
+   <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-lxc.png" width="250" height="250" />{: .align-center}  
 
-* You'll also notice my awkward rendering for a linux app:  
-<img src="https://xrdocs.github.io/xrdocs-images/assets/images/linux-app-tpa.png" width="250" height="250" />{: .align-center}  
+*  You'll also notice my awkward rendering for a linux app:  
 
-  Notice the `TPA IP` ? This stands for **T**hird **P**arty **A**pp IP address.  
+   <img src="https://xrdocs.github.io/xrdocs-images/assets/images/linux-app-tpa.png" width="250" height="250" />{: .align-center}  
+
+   Notice the `TPA IP` ? This stands for **T**hird **P**arty **A**pp IP address.  
   
-  The purpose of the TPA IP is simple. Set a src-hint for linux applications, so that originating traffic from the applications (native or LXC) could be tied to the loopback IP or any reachable IP of XR.   
+   The purpose of the TPA IP is simple. Set a src-hint for linux applications, so that originating 
+   traffic from the applications (native or LXC) could be tied to the loopback IP or any reachable 
+   IP of XR.   
   
-  This approach mimics how routing protocols like to identify routers in complex topologies: through router-IDs. With the TPA IP, application traffic can be consumed, for example, across an OSPF topology just by relying on XR's capability to distribute the loopback IP address selected as the src-hint.
+   This approach mimics how routing protocols like to identify routers in complex topologies: 
+   through router-IDs. With the TPA IP, application traffic can be consumed, for example, across 
+   an OSPF topology just by relying on XR's capability to distribute the loopback IP address 
+   selected as the src-hint.
   {: .notice--warning}  
   
-  We go into further detail here: https://xrdocs.github.io/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#set-the-src-hint-for-application-traffic
+   We go into further detail here: https://xrdocs.github.io/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#set-the-src-hint-for-application-traffic
 
-That pretty much wraps it up. Remember, XR handles the routing and only a subset of routes are installed in the linux environment 
+That pretty much wraps it up. Remember, XR handles the routing and applications use a only a subset of the routing table to piggy-back on XR for reachability!  
+{: .notice--success}
