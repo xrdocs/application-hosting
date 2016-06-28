@@ -51,6 +51,6 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
 
 
 *  The FIB is programmed by the XR control plane exclusively. The global-vrf network namespace only sees a couple of routes:  
-  *  A default route pointing to XR FIB. This way any packet with an unknown destination is handed by a linux application to XR for routing.  
-  *  Routes in the subnet of the Management Interface:  Mgmt0/RP0/CPU0
+    *  A default route pointing to XR FIB. This way any packet with an unknown destination is handed by a linux application to XR for routing.  
+    *  Routes in the subnet of the Management Interface:  Mgmt0/RP0/CPU0
 
