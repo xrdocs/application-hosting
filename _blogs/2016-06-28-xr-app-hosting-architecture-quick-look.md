@@ -51,6 +51,21 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
 
 
 *  The FIB is programmed by the XR control plane exclusively. The global-vrf network namespace only sees a couple of routes:  
-    *  A default route pointing to XR FIB. This way any packet with an unknown destination is handed-over by a linux application to XR for routing.  
-    *  Routes in the subnet of the Management Interface:  Mgmt0/RP0/CPU0
+    *  A default route pointing to XR FIB. This way any packet with an unknown destination is handed-over by a linux application to XR for routing. This is achieved through a special interface called `fwdintf` as shown in the figure above.  
+       
+      
+    *  Routes in the subnet of the Management Interface:  Mgmt0/RP0/CPU0. The management subnet is local to
 
+  To view these routes, simply issue an `ip route` in the XR linux shell:  
+  
+  ```shell
+  AKSHSHAR-M-K0DS:native-app-bootstrap akshshar$ vagrant ssh rtr
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ ip route
+default dev fwdintf  scope link  src 10.0.2.15 
+10.0.2.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 10.0.2.15 
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ 
+  
+  ```
