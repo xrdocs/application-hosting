@@ -82,7 +82,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
 *  Finally, if you followed the [Bring your own Container (LXC) App]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/), you'll notice that in the XML file meant to launch the lxc, we share the `global-vrf` network namespace with the container; specifically, in this section:  
 
 >
-{{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#create-lxc-spec-xml-file  
+[Create LXC SPEC XML File]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#create-lxc-spec-xml-file) 
 
 This makes the architecture work seamlessly between `native` and `container` applications. **An LXC app has the same view of the world, the same routes and the same XR interfaces to take advantage of, as any native application with the shared global-vrf namespace**.  
 
