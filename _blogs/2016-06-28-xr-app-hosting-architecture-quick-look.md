@@ -29,7 +29,7 @@ This is what the internal software architecture and plumbing, replete with the c
   
 Alright, back up. The above figure seems pretty daunting to understand, so let's try to deconstruct it:  
   
-*  At the bottom of the figure, in gray, we have the host (hypervisor) linux environment. This is a 64-bit linux kernel running the Windriver linux 7 (WRL7) environment. The rest of the components run as containers (LXCs) on top of the host.    
+*  At the bottom of the figure, in gray, we have the host (hypervisor) linux environment. This is a 64-bit linux kernel running the Windriver linux 7 (WRL7) distribution. The rest of the components run as containers (LXCs) on top of the host.    
 
   ![host-linux-hypervisor](https://xrdocs.github.io/xrdocs-images/assets/images/host_linux_hypervisor.png){: .align-center}
 {: .notice}
