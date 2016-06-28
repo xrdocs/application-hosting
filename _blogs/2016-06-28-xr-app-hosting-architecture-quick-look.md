@@ -39,10 +39,11 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
 
 *  Inside the control plane LXC, you are presented with the XR linux shell. This is what you drop into when you issue a `vagrant ssh`.   
   
-  <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-ns.png" width="250" height="350" />{: .align-right}  
+  <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-ns.png" width="200" height="250" />{: .align-right}  
   
 *  The XR linux shell that the user interacts with is really the `global-vrf` network namespace inside the control plane container. This corresponds to the global-vrf/default-vrf in IOS-XR.  
-**Only the interfaces in global-vrf appear in the XR linux shell today when you issue an ifconfig. But the infrastructre is in place to map each custom user VRF to a network namespace in the future.**  
+**Only the interfaces in global-vrf appear in the XR linux shell today when you issue an ifconfig. But the infrastructre is in place to map each custom user VRF to a network namespace in the future.**    
+
 
 *  The FIB is programmed by the XR control plane exclusively. The global-vrf network namespace only sees a couple of routes:  
   *  A default route pointing to XR FIB. This way any packet with an unknown destination is handed by a linux application to XR for routing.  
