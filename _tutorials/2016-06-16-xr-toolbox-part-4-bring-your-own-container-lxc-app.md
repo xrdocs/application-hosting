@@ -478,7 +478,8 @@ Hence, to enable the transfer of custom files to IOS-XR, we provide a `/misc/app
 **Transfer using the Gig interface:**  
 
 ```
-scp -P 57722 /home/vagrant/* vagrant@11.1.1.10:/misc/app_host/scratch/
+scp -P 57722 /home/vagrant/xr-lxc-app-rootfs.tar.gz vagrant@11.1.1.10:/misc/app_host/scratch/
+scp -P 57722 /home/vagrant/xr-lxc-app.xml vagrant@11.1.1.10:/misc/app_host/scratch/
 ```  
 Where 11.1.1.10 is the directly connected Gig0/0/0/0 interface of IOS-XR instance (this config was explained in the [XR Toolbox, Part 3: App Development Topology]({{ base_path }}/tutorials/2016-06-06-xr-toolbox-app-development-topology) tutorial).  
 
@@ -899,5 +900,4 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 
 
 There you have it! iperf running inside an Ubuntu Container on IOS-XR. Too many steps to look up? In our next tutorial, we look at automating all of the  steps needed to bring up a container using an Ansible Playbook: **[IOS-XR: Ansible based LXC deployment]({{ base_path }}/tutorials/2016-06-08-ios-xr-ansible-container-deployment/)**
-{: .notice--success}  
-
+{: .notice--success}
