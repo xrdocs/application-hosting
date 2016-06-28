@@ -11,6 +11,9 @@ tags:
   - xr toolbox
 position: hidden
 ---
+{% include toc icon="table" title="Launching a Container App" %}
+{% include base_path %}  
+
 If you've been following along the set of tutorials in the XR toolbox series:  
 
 >
