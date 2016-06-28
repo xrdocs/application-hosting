@@ -58,13 +58,17 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
 
   To view these routes, simply issue an `ip route` in the XR linux shell:  
   
-  ```shell
-  AKSHSHAR-M-K0DS:native-app-bootstrap akshshar$ vagrant ssh rtr
+  <div class="highlighter-rouge">
+  <pre class="highlight">
+  <code>
+  AKSHSHAR-M-K0DS:native-app-bootstrap akshshar$<mark> vagrant ssh rtr </mark>
   xr-vm_node0_RP0_CPU0:~$ 
   xr-vm_node0_RP0_CPU0:~$ 
-  xr-vm_node0_RP0_CPU0:~$ ip route
+  xr-vm_node0_RP0_CPU0:~$<mark> ip route </mark>
   default dev fwdintf  scope link  src 10.0.2.15 
   10.0.2.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 10.0.2.15 
   xr-vm_node0_RP0_CPU0:~$ 
   xr-vm_node0_RP0_CPU0:~$ 
-  ```
+  </code>
+  </pre>
+  </div>
