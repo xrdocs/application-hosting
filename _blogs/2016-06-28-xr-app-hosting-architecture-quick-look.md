@@ -38,6 +38,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
 
   
 *  Inside the control plane LXC, you are presented with the XR linux shell. **Any Linux application hosted in this environment shares the process space with XR, and we refer to it as a `native application`**.  
+
    P.S. This is what you drop into when you issue a `vagrant ssh`.  
    {: .notice--info}  
    
