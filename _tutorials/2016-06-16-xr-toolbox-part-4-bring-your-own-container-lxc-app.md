@@ -507,7 +507,7 @@ Now use port `2222` to transfer the files over the management port using the hos
 
 
 ```shell
-vagrant@vagrant-ubuntu-trusty-64:~$ scp -P 2222 /home/vagrant/* vagrant@10.0.2.2:/misc/app_host/scratch
+vagrant@vagrant-ubuntu-trusty-64:~$ scp -P 2222 /home/vagrant/*.tar.gz vagrant@10.0.2.2:/misc/app_host/scratch
 The authenticity of host '[10.0.2.2]:2222 ([10.0.2.2]:2222)' can't be established.
 ECDSA key fingerprint is db:25:e2:27:49:2a:7b:27:e1:76:a6:7a:e4:70:f5:f7.
 Are you sure you want to continue connecting (yes/no)? yes
