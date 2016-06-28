@@ -28,7 +28,8 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
   
 *  At the bottom of the figure, in gray, we have the host (hypervisor) linux environment. This is a 64-bit linux kernel running the Windriver linux 7 (WRL7) environment.  
   
-     ![host-linux-hypervisor](https://xrdocs.github.io/xrdocs-images/assets/images/host_linux_hypervisor.png){: .align-center}
+  
+  ![host-linux-hypervisor](https://xrdocs.github.io/xrdocs-images/assets/images/host_linux_hypervisor.png){: .align-center}
 {: .notice}
 
 *  In green, we see the container (called the Control plane LXC or XR LXC) within which XR runs as a collection of processes (represented in sky blue). This is what presents the XR CLI and this is what runs the routing protocols.  
