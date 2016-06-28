@@ -79,7 +79,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
    </pre>
    </div>  
    
-*  Finally, if you followed the [Bring your own Container (LXC) App]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/), you'll notice that in the XML file meant to launch the lxc, we share the `global-vrf` network namespace with the container, specifically, in this section:  
+*  Finally, if you followed the [Bring your own Container (LXC) App]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/), you'll notice that in the XML file meant to launch the lxc, we share the `global-vrf` network namespace with the container; specifically, in this section:  
 >
 {{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#create-lxc-spec-xml-file  
 
@@ -87,6 +87,7 @@ This makes the architecture work seamlessly between `native` and `container` app
 
 <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-lxc.png" width="250" height="250" />{: .align-center}  
 
-
+* You'll also notice my awkward rendering for a linux app:  
+<img src="https://xrdocs.github.io/xrdocs-images/assets/images/linux-app-tpa.png" width="250" height="250" />{: .align-center}  
 
 That pretty much wraps it up. Remember, XR handles the routing and only a subset of routes are installed in the linux environment 
