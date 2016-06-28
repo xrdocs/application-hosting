@@ -48,9 +48,9 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
    The XR linux shell that the user interacts with is really the `global-vrf` network namespace 
    inside the control plane container. This corresponds to the global/default-vrf in IOS-XR.  
 
-   **Only the interfaces in global-vrf appear in the XR linux shell today when you issue an 
-   ifconfig. But the infrastructure is in place to map each custom user VRF to a network namespace 
-   in the future.**   
+   **Only the interfaces in global/default vrf in XR appear in the XR linux shell today when you 
+   issue an ifconfig. But the infrastructure is in place to map each custom user VRF to a network 
+   namespace in the future.**   
    
    <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-ns.png" width="200" height="250" />{: .align-center}  
 
@@ -85,4 +85,8 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
 
 This makes the architecture work seamlessly between `native` and `container` applications. **An LXC app has the same view of the world, the same routes and the same XR interfaces to take advantage of, as any native application with the shared global-vrf namespace**.  
 
-<img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-lxc.png" width="250" height="250" />{: .align-center}
+<img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-lxc.png" width="250" height="250" />{: .align-center}  
+
+
+
+That pretty much wraps it up. Remember, XR handles the routing and only a subset of routes are installed in the linux environment 
