@@ -35,7 +35,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
 *  In green, we see the container (called the Control plane LXC or XR LXC) within which XR runs as a collection of processes (represented in sky blue). This is what presents the XR CLI and this is what runs the routing protocols.  
   
   
-  <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane.png" width= 200 height=200)>{: .align-center}
+  <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane.png" width= 200 height=200 />{: .align-center}
 
 
 *  Inside the control plane LXC, you are presented with the XR linux shell. This is what you drop into when you issue a `vagrant ssh`.  
