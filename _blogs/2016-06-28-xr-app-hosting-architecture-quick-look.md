@@ -93,6 +93,7 @@ This makes the architecture work seamlessly between `native` and `container` app
   Notice the `TPA IP` ? This stands for **T**hird **P**arty **A**pp IP address.  
   
   The purpose of the TPA IP is simple. Set a src-hint for linux applications, so that originating traffic from the applications (native or LXC) could be tied to the loopback IP or any reachable IP of XR.   
+  
   This approach mimics how routing protocols like to identify routers in complex topologies: through router-IDs. With the TPA IP, application traffic can be consumed, for example, across an OSPF topology just by relying on XR's capability to distribute the loopback IP address selected as the src-hint.
   {: .notice--warning}  
   
