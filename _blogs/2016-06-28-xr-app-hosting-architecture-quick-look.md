@@ -56,19 +56,19 @@ The XR linux shell that the user interacts with is really the `global-vrf` netwo
       
     *  Routes in the subnet of the Management Interface:  Mgmt0/RP0/CPU0. The management subnet is local to
 
-  To view these routes, simply issue an `ip route` in the XR linux shell:  
+   To view these routes, simply issue an `ip route` in the XR linux shell:  
   
-  <div class="highlighter-rouge">
-  <pre class="highlight">
-  <code>
-  AKSHSHAR-M-K0DS:native-app-bootstrap akshshar$<mark> vagrant ssh rtr </mark>
-  xr-vm_node0_RP0_CPU0:~$ 
-  xr-vm_node0_RP0_CPU0:~$ 
-  xr-vm_node0_RP0_CPU0:~$<mark> ip route </mark>
-  default dev fwdintf  scope link  src 10.0.2.15 
-  10.0.2.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 10.0.2.15 
-  xr-vm_node0_RP0_CPU0:~$ 
-  xr-vm_node0_RP0_CPU0:~$ 
-  </code>
-  </pre>
-  </div>
+   <div class="highlighter-rouge">
+   <pre class="highlight">
+   <code>
+   AKSHSHAR-M-K0DS:native-app-bootstrap akshshar$<mark> vagrant ssh rtr </mark>
+   xr-vm_node0_RP0_CPU0:~$ 
+   xr-vm_node0_RP0_CPU0:~$ 
+   xr-vm_node0_RP0_CPU0:~$<mark> ip route </mark>
+   default dev fwdintf  scope link  src 10.0.2.15 
+   10.0.2.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 10.0.2.15 
+   xr-vm_node0_RP0_CPU0:~$ 
+   xr-vm_node0_RP0_CPU0:~$ 
+   </code>
+   </pre>
+   </div>
