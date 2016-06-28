@@ -27,6 +27,9 @@ This is what the internal software architecture and plumbing, replete with the c
 Alright, back up. The above figure seems pretty daunting to understand, so let's try to deconstruct it:  
   
 *  At the bottom of the figure, in gray, we have the host (hypervisor) linux environment. This is a 64-bit linux kernel running the Windriver linux 7 (WRL7) environment.  
+![host-linux-hypervisor](https://xrdocs.github.io/xrdocs-images/assets/images/host-linux-hypervisor.png)
+{: .notice}{: .align-center}  
+
 *  In green, we see the container (called the Control plane LXC or XR LXC) within which XR runs as a collection of processes (represented in sky blue). This is what presents the XR CLI and this is what runs the routing protocols.  
 *  Inside the control plane LXC, you are presented with the XR linux shell. This is what you drop into when you issue a `vagrant ssh`.  
 *  The XR linux shell that the user interacts with is really the `global-vrf` network namespace inside the control plane container. This corresponds to the global-vrf/default-vrf in IOS-XR. **Only the interfaces in global-vrf appear in the XR linux shell today when you issue an ifconfig. But the infrastructre is in place to map each custom user VRF to a network namespace in the future.**  
