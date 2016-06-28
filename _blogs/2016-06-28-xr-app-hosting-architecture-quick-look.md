@@ -93,7 +93,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
 
 *  You'll also notice my awkward rendering for a linux app:  
 
-   <img src="https://xrdocs.github.io/xrdocs-images/assets/images/linux-app-tpa.png" width="250" height="250" />{: .align-center}  
+   <img src="https://xrdocs.github.io/xrdocs-images/assets/images/linux-app-tpa.png" width="150" height="150" />{: .align-center}  
 
    Notice the `TPA IP` ? This stands for **T**hird **P**arty **A**pp IP address.  
   
