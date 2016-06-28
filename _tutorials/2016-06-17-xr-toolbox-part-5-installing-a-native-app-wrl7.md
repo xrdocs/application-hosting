@@ -27,6 +27,11 @@ If you haven't checked out the earlier parts to the XR toolbox Series, then you 
   
 The purpose of this series is simple. Get users started with an IOS-XR setup on their laptop and incrementally enable them to try out the application-hosting infrastructure on IOS-XR.
 
-In this part, we explore how a user can build and deploy their own container (LXC) based applications on IOS-XR.
+In this part, we explore how a user can build and deploy native WRL7 RPMs that they may host in the same process space as XR.  
+
+
+## Sounds good, but why?  
+
+One point you'd notice immediately is the 
 
 
