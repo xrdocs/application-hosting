@@ -105,7 +105,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
    through router-IDs. With the TPA IP, application traffic can be consumed, for example, across 
    an OSPF topology just by relying on XR's capability to distribute the loopback IP address 
    selected as the src-hint.
-  {: .notice--warning}  
+   {: .notice--warning}  
   
    We go into further detail here: https://xrdocs.github.io/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#set-the-src-hint-for-application-traffic
 
