@@ -45,6 +45,13 @@ Anne Sequeira:
   avatar      : "anneseque_bio.png"
   bio         : "Technical Writer, evangelist, Cisco."
 
+Richard Wade:
+  name        : "Richard Wade"
+  github      : "rikwade"
+  email       : "ricwade@cisco.com"
+  avatar      : "ricwade_bio.png"
+  bio         : "Customer Solutions Architect, Cisco."
+  
 Cisco Web Team:
   name        : "Cisco Web Team"
   uri         : "https://developer.cisco.com/site/ios-xr"
