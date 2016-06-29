@@ -476,6 +476,9 @@ Hence, to enable the transfer of custom files to IOS-XR, we provide a `/misc/app
 {: .notice--info}
 
 **Transfer using the Gig interface:**  
+  
+**The password for the vagrant user is `vagrant`**
+{: .notice--info}  
 
 ```
 scp -P 57722 /home/vagrant/xr-lxc-app-rootfs.tar.gz vagrant@11.1.1.10:/misc/app_host/scratch/
