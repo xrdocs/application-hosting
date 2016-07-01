@@ -4,7 +4,7 @@ author: Mike Korshunov
 excerpt: Getting started with IOSXR and Ansible playbooks
 published: true
 title: 'IOS-XR: Ansible and Vagrant'
-date: '2016-05-31 08:18 +0530'
+date: '2016-05-31 22:18 +0530'
 tags:
   - vagrant
   - iosxr
