@@ -151,19 +151,13 @@ ubuntu@nc_iperf:~$
 </pre>
 </div> 
 
-Install pip and iperf inside the container  
+Install iperf and all the dependencies required to install ncclient inside the container  
 
-<div class="highlighter-rouge">
-<pre class="highlight">
-<code>
-ubuntu@nc_iperf:~$<mark> sudo apt-get -y install python-pip iperf</mark>
-[sudo] password for ubuntu: 
-Reading package lists... Done
-Building dependency tree      
------------------------------- snip output ------------------------------------
-</code>
-</pre>
-</div> 
-  
-  
+```shell
+sudo apt-get install python-pip python-lxml python-dev libffi-dev libssl-dev iperf
+```  
+
+Install the latest ncclient code using pip  
+
+
   
