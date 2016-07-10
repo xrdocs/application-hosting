@@ -160,6 +160,7 @@ ubuntu@nc_iperf:~$<mark> sudo apt-get -y install python-pip iperf</mark>
 [sudo] password for ubuntu: 
 Reading package lists... Done
 Building dependency tree      
+------------------------------ snip output ------------------------------------
 </code>
 </pre>
 </div> 
