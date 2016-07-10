@@ -34,9 +34,9 @@ This series is meant to help a beginner get started with application-hosting on 
   
 *  Set up a couple of paths between two routers. In this example we connect the routers back-to-back and set up ECMP (equal cost multipath) links between them. One interface is forcefully selected as the reference link based on OSPF cost configuration.  
 
-*  Use a monitoring technique to determine the bandwidth, jitter, latency etc. parameters along the traffic path. In this example we use iperf running inside a container.  
+*  Use a monitoring technique to determine the bandwidth, jitter, latency etc. parameters along the traffic path. In this example we use iperf inside a container.  
 
-*  Simulate network degradation (through link flaps) to test a python app that uses iperf's results to detect the flaps and causes failover by changing the OSPF path cost over a netconf session.  
+*  Simulate network degradation (through link flaps) to test a python app (inside the LXC) that uses iperf's results to detect the flaps and causes failover by changing the OSPF path cost over a netconf session.  
 
 This is illustrated below:  
 
