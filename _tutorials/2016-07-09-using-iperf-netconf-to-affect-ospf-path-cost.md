@@ -119,7 +119,12 @@ Start the container. You will be dropped into the console once boot is complete.
   
 Username:  **ubuntu**
 Password:  **ubuntu**  
-{: .notice--info}
+{: .notice--info}  
+
+```shell
+sudo lxc-start --name nc_iperf  
+
+```
 
 
   
