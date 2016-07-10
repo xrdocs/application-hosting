@@ -209,4 +209,21 @@ tar -czvf /vagrant/nc_iperf_rootfs.tar.gz /var/lib/lxc/nc_iperf/rootfs/*
 
 ```
 
-  
+See what we did there? We packaged up the container tar ball as nc_iperf_rootfs.tar.gz under **/vagrant** directory. Why is this important?  
+Well, Vagrant also automatically shares certain directories with your laptop (for most types of guest operating systems). So the **/vagrant** is automatically mapped to the directory in which you launched your vagrant instance. To check this, let's get out of our vagrant instance and issue an `ls` in your launch directory:  
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~$ exit
+logout
+Connection to 127.0.0.1 closed.
+AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$ 
+AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$<mark> pwd</mark>
+/Users/akshshar/iperf_nc_dev
+AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$ ls
+Vagrantfile		<mark>nc_iperf_rootfs.tar.gz</mark>
+AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$ 
+</code>
+</pre>
+</div> 
+{: .notice--warning}
