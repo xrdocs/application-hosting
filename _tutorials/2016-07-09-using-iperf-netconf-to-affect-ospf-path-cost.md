@@ -84,7 +84,15 @@ Bringing machine 'default' up with 'virtualbox' provider...
 </pre>
 </div> 
 
-  
+
+Once it's up, ssh into it and install lxc-tools:  
+
+```shell
+
+vagrant ssh
+
+sudo apt-get install lxc 
+```
   
   
   
