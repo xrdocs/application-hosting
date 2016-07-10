@@ -284,5 +284,8 @@ AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$ pwd
 AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$ cd ospf-iperf-topo/
 AKSHSHAR-M-K0DS:ospf-iperf-topo akshshar$ ls
 Vagrantfile	configs		scripts
-AKSHSHAR-M-K0DS:ospf-iperf-topo akshshar$ 
-```
+AKSHSHAR-M-K0DS:ospf-iperf-topo akshshar$   
+```  
+
+Assuming you already have an IOS-XRv vagrant box set up locally (if you don't follow along here: 
+[Download and Add the IOS-XRv vagrant box](https://xrdocs.github.io/application-hosting/tutorials/iosxr-vagrant-quickstart#download-and-add-the-ios-xrv-vagrant-box)
