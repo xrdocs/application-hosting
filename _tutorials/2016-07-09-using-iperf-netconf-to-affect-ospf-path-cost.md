@@ -259,4 +259,30 @@ Vagrantfile		<mark>nc_iperf_rootfs.tar.gz</mark>
 AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$ 
 </code>
 </pre>
-</div> 
+</div>   
+
+
+
+## Launch Router Topology
+
+We've created our app and are ready to launch the 2 router topology. You'll need 2 IOS-XR routers connected over 2 back-to-back links and running OSPF on both links.  
+
+  
+To set this up, simply clone the following repository to your laptop:    
+<https://github.com/ios-xr/vagrant-xrdocs>
+
+```shell
+git clone https://github.com/ios-xr/vagrant-xrdocs  
+
+```  
+
+We are interested in the `ospf-iperf-topo/` directory under the cloned `vagrant-xrdocs` directory.   
+
+```shell
+AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$ pwd
+/Users/akshshar/vagrant-xrdocs
+AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$ cd ospf-iperf-topo/
+AKSHSHAR-M-K0DS:ospf-iperf-topo akshshar$ ls
+Vagrantfile	configs		scripts
+AKSHSHAR-M-K0DS:ospf-iperf-topo akshshar$ 
+```
