@@ -95,7 +95,7 @@ sudo apt-get install lxc
 
 ```  
 
-Spin up an ubuntu LXC container inside your vagrant instance:  
+Create  an ubuntu LXC container inside your vagrant instance:  
 
 
 <div class="highlighter-rouge">
@@ -113,6 +113,13 @@ I: Checking Release signature
 </code>
 </pre>
 </div> 
+
+
+Start the container. You will be dropped into the console once boot is complete.  
+  
+Username:  **ubuntu**
+Password:  **ubuntu**  
+{: .notice--info}
 
 
   
