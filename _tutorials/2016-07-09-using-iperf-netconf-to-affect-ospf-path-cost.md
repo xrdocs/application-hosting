@@ -214,7 +214,9 @@ Become root and package up your container tar ball
 ```shell
 sudo -s
 
-tar -czvf /vagrant/nc_iperf_rootfs.tar.gz /var/lib/lxc/nc_iperf/rootfs/*
+cd /var/lib/lxc/nc_iperf/rootfs/
+
+tar -czvf /vagrant/nc_iperf_rootfs.tar.gz *
 
 ```
 
@@ -287,5 +289,15 @@ Vagrantfile	configs		scripts
 AKSHSHAR-M-K0DS:ospf-iperf-topo akshshar$   
 ```  
 
-Assuming you already have an IOS-XRv vagrant box set up locally (if you don't follow along here: 
-[Download and Add the IOS-XRv vagrant box](https://xrdocs.github.io/application-hosting/tutorials/iosxr-vagrant-quickstart#download-and-add-the-ios-xrv-vagrant-box)
+This section assumes you already have an IOS-XR vagrant box set up locally. If you don't, follow along here: 
+[Download and Add the IOS-XRv vagrant box](https://xrdocs.github.io/application-hosting/tutorials/iosxr-vagrant-quickstart#download-and-add-the-ios-xrv-vagrant-box)).  
+  
+Once you have an IOS-XR vagrant box, bring up the topology:  
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+  
+</code>
+</pre>
+</div>     
