@@ -154,7 +154,7 @@ ubuntu@nc_iperf:~$
 Install iperf and all the dependencies required to install ncclient inside the container  
 
 ```shell
-sudo apt-get install python-pip python-lxml python-dev libffi-dev libssl-dev iperf
+sudo apt-get install python-pip python-lxml python-dev libffi-dev libssl-dev iperf git
 ```  
 
 Install the latest ncclient code using pip  
@@ -165,7 +165,9 @@ sudo pip install ncclient
 ```
 
 **Perfect, all the dependencies for our app to work are now installed.**
-{: .notice--info}
+{: .notice--info}  
+
+Fetch our app from
 
 
   
