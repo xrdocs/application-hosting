@@ -151,23 +151,35 @@ ubuntu@nc_iperf:~$
 </pre>
 </div> 
 
-Install iperf and all the dependencies required to install ncclient inside the container  
+Install iperf and all the dependencies required to install ncclient inside the container. We'll also install git, wil need it to fetch our app.  
 
 ```shell
 sudo apt-get install python-pip python-lxml python-dev libffi-dev libssl-dev iperf git
 ```  
 
-Install the latest ncclient code using pip  
+Install the latest ncclient code and jinja2 code using pip (required for our app):
 
 ```shell
-sudo pip install ncclient
+sudo pip install ncclient jinja2
 
 ```
 
 **Perfect, all the dependencies for our app to work are now installed.**
 {: .notice--info}  
 
-Fetch our app from
+Fetch our app from Github:  
+
+```shell
+ubuntu@nc_iperf:~$ git clone https://github.com/ios-xr/ospf-iperf-ncclient
+Cloning into 'ospf-iperf-ncclient'...
+remote: Counting objects: 15, done.
+remote: Total 15 (delta 0), reused 0 (delta 0), pack-reused 14
+Unpacking objects: 100% (15/15), done.
+Checking connectivity... done.
+```
+
+
+
 
 
   
