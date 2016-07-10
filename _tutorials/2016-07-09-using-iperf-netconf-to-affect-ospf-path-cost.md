@@ -133,8 +133,8 @@ vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo lxc-start --name nc_iperf </mark>
 
 Ubuntu 14.04.4 LTS nc_iperf console
 
-nc_iperf login: ubuntu
-Password: 
+<mark>nc_iperf login: ubuntu</mark>
+<mark>Password:      </mark>
 Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-87-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com/
