@@ -117,7 +117,7 @@ I: Checking Release signature
 
 Start the container. You will be dropped into the console once boot is complete.  
   
-Username:  **ubuntu**
+Username:  **ubuntu**  
 Password:  **ubuntu**  
 {: .notice--info}  
 
