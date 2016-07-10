@@ -47,7 +47,8 @@ This is illustrated below:
 
 As shown in the above figure, we intend to create an application running inside a container on IOS-XR.  
 
-We're fully aware that most users would like to run things on their own laptop and develop the applications. Owing to the slightly beefy requirements of IOS-XRv vagrant instances, running more than two vagrant instances may be a problem for most users. So we wouldn't want to aggravate that by requesting a development instance in the topology as well.  Instead we'll create our container app in a development vagrant instance first, save the app and then destroy the development instance before proceeding with the router topology.
+We're fully aware that most users would like to run things on their own laptop as they develop applications and test them.   
+Owing to the slightly beefy requirements of IOS-XRv vagrant instances, running more than two vagrant instances may be a problem for most users. So we wouldn't want to aggravate that by requesting a development instance in the topology as well.  Instead we'll create our container app in a development vagrant instance first, save the app and then destroy the development instance before proceeding with the router topology.
 {: .notice--info}
 
 
