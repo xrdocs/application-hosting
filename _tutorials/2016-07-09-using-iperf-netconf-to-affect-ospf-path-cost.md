@@ -93,7 +93,26 @@ vagrant ssh
 
 sudo apt-get install lxc 
 
-```
+```  
+
+Spin up an ubuntu LXC container inside your vagrant instance:  
+
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+
+vagrant@vagrant-ubuntu-trusty-64:~$ <mark> sudo lxc-create -t ubuntu --name nc_iperf </mark>
+Checking cache download in /var/cache/lxc/trusty/rootfs-amd64 ... 
+Installing packages in template: ssh,vim,language-pack-en
+Downloading ubuntu trusty minimal ...
+I: Retrieving Release 
+I: Retrieving Release.gpg 
+I: Checking Release signature
+------------------------------ snip output ------------------------------------
+</code>
+</pre>
+</div> 
   
   
   
