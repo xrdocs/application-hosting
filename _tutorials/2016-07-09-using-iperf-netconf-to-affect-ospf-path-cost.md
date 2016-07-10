@@ -178,6 +178,22 @@ Unpacking objects: 100% (15/15), done.
 Checking connectivity... done.
 ```
 
+Now, shutdown the container:  
+
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+ubuntu@nc_iperf:~$<mark> sudo shutdown -h now </mark>
+ubuntu@nc_iperf:~$ 
+Broadcast message from ubuntu@nc_iperf
+	(/dev/lxc/console) at 10:24 ...
+
+The system is going down for halt NOW!
+------------------------------ snip output ------------------------------------
+</code>
+</pre>
+</div> 
 
 
 
