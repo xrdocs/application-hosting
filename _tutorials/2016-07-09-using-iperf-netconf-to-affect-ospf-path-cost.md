@@ -231,4 +231,21 @@ AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$
 
 <div class="notice--warning">
   {{ dir-share-text | markdownify }}
-</div>
+</div> 
+
+
+Now we can safely destroy our development Vagrant instance and get ready to launch the router topology.  
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$<mark> vagrant destroy </mark>
+    default: Are you sure you want to destroy the 'default' VM? [y/N] y
+==> default: Forcing shutdown of VM...
+==> default: Destroying VM and associated drives...
+AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$<mark> ls </mark>
+Vagrantfile		<mark>nc_iperf_rootfs.tar.gz</mark>
+AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$ 
+</code>
+</pre>
+</div> 
