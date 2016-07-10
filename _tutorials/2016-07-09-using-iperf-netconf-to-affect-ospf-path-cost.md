@@ -62,6 +62,7 @@ AKSHSHAR-M-K0DS:~ akshshar$ cd iperf_nc_dev/
 AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$ 
 ```  
 
+### Launch the development Vagrant instance (devbox)
 Spin up a vagrant ubuntu instance:  
 
 <div class="highlighter-rouge">
@@ -84,6 +85,8 @@ Bringing machine 'default' up with 'virtualbox' provider...
 </pre>
 </div> 
 
+
+### Launch an Ubuntu LXC inside devbox
 
 Once it's up, ssh into it and install lxc-tools:  
 
@@ -151,6 +154,9 @@ ubuntu@nc_iperf:~$
 </pre>
 </div> 
 
+
+### Install Application dependencies inside LXC
+
 Install iperf and all the dependencies required to install ncclient inside the container. We'll also install git, wil need it to fetch our app.  
 
 ```shell
@@ -167,6 +173,7 @@ sudo pip install ncclient jinja2
 **Perfect, all the dependencies for our app are now installed.**
 {: .notice--info}  
 
+### Fetch the application code from Github
 Fetch our app from Github:  
 
 ```shell
@@ -177,6 +184,8 @@ remote: Total 15 (delta 0), reused 0 (delta 0), pack-reused 14
 Unpacking objects: 100% (15/15), done.
 Checking connectivity... done.
 ```
+
+### Package up the LXC   
 
 Now, shutdown the container:  
 
@@ -233,6 +242,8 @@ AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$
   {{ dir-share-text | markdownify }}
 </div> 
 
+
+### Destroy devbox
 
 Now we can safely destroy our development Vagrant instance and get ready to launch the router topology.  
 
