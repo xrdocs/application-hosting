@@ -92,6 +92,7 @@ Once it's up, ssh into it and install lxc-tools:
 vagrant ssh
 
 sudo apt-get install lxc 
+
 ```
   
   
