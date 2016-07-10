@@ -164,7 +164,7 @@ sudo pip install ncclient jinja2
 
 ```
 
-**Perfect, all the dependencies for our app to work are now installed.**
+**Perfect, all the dependencies for our app are now installed.**
 {: .notice--info}  
 
 Fetch our app from Github:  
