@@ -49,8 +49,8 @@ As shown in the above figure, we intend to create an application running inside 
 
 We're fully aware that most users would like to run things on their own laptop as they develop applications and test them.   
 &nbsp;  
-Owing to the slightly beefy requirements of IOS-XRv vagrant instances, running more than two vagrant instances may be a problem for most users.   
-So, we'll create our container app in a development vagrant instance first, save the app and then destroy the development instance before proceeding with the router topology.
+Owing to the slightly beefy requirements of IOS-XRv vagrant instances, running more than two vagrant instances at a time may be a problem for most users.   
+So, we'll create our container app in a development vagrant instance first, save the app and then destroy the development instance before proceeding with the 2 router topology.
 {: .notice--info}
 
 
