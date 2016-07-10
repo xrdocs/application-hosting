@@ -159,5 +159,12 @@ sudo apt-get install python-pip python-lxml python-dev libffi-dev libssl-dev ipe
 
 Install the latest ncclient code using pip  
 
+```shell
+sudo pip install ncclient
+
+```
+
+
+
 
   
