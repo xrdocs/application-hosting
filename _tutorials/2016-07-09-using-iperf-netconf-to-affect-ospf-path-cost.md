@@ -164,7 +164,8 @@ sudo pip install ncclient
 
 ```
 
-
+**Perfect, all the dependencies for our app to work are now installed.**
+{: .notice--info}
 
 
   
