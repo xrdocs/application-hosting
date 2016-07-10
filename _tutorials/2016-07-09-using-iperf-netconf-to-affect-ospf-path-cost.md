@@ -196,6 +196,17 @@ The system is going down for halt NOW!
 </div> 
 
 
+You're back on your development Vagrant instance. 
+{: .notice--info}  
 
+
+Become root and package up your container tar ball
+
+```shell
+sudo -s
+
+tar -czvf /vagrant/nc_iperf_rootfs.tar.gz /var/lib/lxc/nc_iperf/rootfs/*
+
+```
 
   
