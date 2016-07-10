@@ -121,14 +121,16 @@ Username:  **ubuntu**
 Password:  **ubuntu**  
 {: .notice--info}  
 
-```shell
-sudo lxc-start --name nc_iperf  
-
-```
 
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo lxc-start --name nc_iperf </mark>
+&lt;4&gt;init: hostname main process (3) terminated with status 1
+&lt;4&gt;init: plymouth-upstart-bridge main process (5) terminated with status 1
+&lt;4&gt;init: plymouth-upstart-bridge main process ended, respawning
+
+
 Ubuntu 14.04.4 LTS nc_iperf console
 
 nc_iperf login: ubuntu
