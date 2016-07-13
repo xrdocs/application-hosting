@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 date: '2016-07-12 08:30 -0400'
 title: Building an IOS XRv Linux Kernel Vagrant VirtualBox
 author: Richard Wellum
