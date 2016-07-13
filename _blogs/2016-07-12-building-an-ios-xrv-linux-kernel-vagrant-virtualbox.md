@@ -1,7 +1,15 @@
 ---
-published: false
+published: true
 date: '2016-07-12 08:30 -0400'
 title: Building an IOS XRv Linux Kernel Vagrant VirtualBox
+author: Richard Wellum
+excerpt: 'Tools to build your own XR vagrant box  '
+tags:
+  - vagrant
+  - iosxr
+  - cisco
+  - linux
+position: null
 ---
 ## A new platform..
 A new platform called 'IOS XRv (64-bit)' will appear from IOS XR 6.1.1 onwards. This is the successor to the previous IOS XRv (32-bit) QNX based virtual platform. The new platform is based on the latest IOS XR OS which is built on 64-bit Wind River Linux, and has amongst many other changes, a separate Adminplane and Dataplane.
@@ -25,7 +33,7 @@ A new platform called 'IOS XRv (64-bit)' will appear from IOS XR 6.1.1 onwards. 
 ### Vagrant VirtualBox
 Cisco is providing customers with a Vagrant VirtualBox offering. Vagrant is a superb tool for application development. Amongst others you can use this box to:
 
--Test native and container applications on IOS-XR
+-Test native and GB applications on IOS-XR
 
 -Use configuration management tools like Chef/Puppet/Ansible/Shell as Vagrant provisioners
 
