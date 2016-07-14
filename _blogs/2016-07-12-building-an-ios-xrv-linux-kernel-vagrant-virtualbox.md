@@ -11,8 +11,8 @@ tags:
   - linux
 position: hidden
 ---
-## A new virtual..
-A new platform called 'IOS XRv (64-bit)' will appear from IOS XR 6.1.1 onwards. This is the successor to the previous IOS XRv (32-bit) QNX based virtual platform. The new platform is based on the latest IOS XR OS which is built on 64-bit Wind River Linux, and has amongst many other changes, a separate Adminplane and complete access to the underlying linux environment. 
+## A new way to try out IOS-XR..
+An 'IOS XRv (64-bit)' image will appear from IOS XR 6.1.1 onwards. This is the successor to the previous IOS XRv (32-bit) QNX based virtual platform. It is based on the latest IOS XR OS which is built on 64-bit Wind River Linux, and has amongst many other changes, a separate Adminplane and complete access to the underlying linux environment. 
 
 
 ## Linux and XR 6.0.0+
@@ -21,7 +21,7 @@ A new platform called 'IOS XRv (64-bit)' will appear from IOS XR 6.1.1 onwards. 
 
 *  Network and System Automation can be accomplished using shell scripts, puppet,chef, Ansible etc.
 
-*  Customers can tap into telemetry that provides improved visibility into a network at a far granular level and less invasive process than SNMP.  
+*  Customers can tap into telemetry that provides improved visibility into a network at a far granular level and through a less invasive process than SNMP.  
 
 *  XR configuration itself can be automated using Model Driven APIs with native, common and OpenConfig  YANG models supported.  
 
