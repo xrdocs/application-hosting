@@ -68,14 +68,6 @@ You will need an active Cisco CCO id.
 
 For tutorials on some of the cool things you can do with this box see: [https://xrdocs.github.io/application-hosting/tutorials/](https://xrdocs.github.io/application-hosting/tutorials/)
 
-## Cisco has open-sourced the tooling
-Finally as was the purpose of this blog, we have open-sourced the code to build the Vagrant VirtualBox from an IOS XR ISO.
-
-[https://github.com/ios-xr/iosxrv-x64-vbox](https://github.com/ios-xr/iosxrv-x64-vbox)
-
-I hope you enjoyed this quick blog. The links above provide far more information. As one of the technical leads behind the new platform, and author of the vagrant tooling I'm very motivated to make this a great platform for Cisco customers. Please contact me at rwellum@cisco.com for any questions or concerns.  
-
-
 ## Getting your hands on the ISO  
 
 >
@@ -86,6 +78,7 @@ To get the API-KEY and a CCO-ID, browse to the following link and follow the ste
 [Steps to Generate API-KEY]({{ site.url }}/getting-started/steps-download-iosxr-vagrant)
 {: .notice--danger}
 
+N
 
 <div class="highlighter-rouge">
 <pre class="highlight">
@@ -96,7 +89,17 @@ $ curl <b><mark>-u your-cco-id:API-KEY</mark></b> $ISOURL --output ~/iosxrv-full
 
 </code>
 </pre>
-</div>.    
+</div>
+
+## Cisco has open-sourced the tooling
+Finally as was the purpose of this blog, we have open-sourced the code to build the Vagrant VirtualBox from an IOS XR ISO.
+
+[https://github.com/ios-xr/iosxrv-x64-vbox](https://github.com/ios-xr/iosxrv-x64-vbox)
+
+I hope you enjoyed this quick blog. The links above provide far more information. As one of the technical leads behind the new platform, and author of the vagrant tooling I'm very motivated to make this a great platform for Cisco customers. Please contact me at rwellum@cisco.com for any questions or concerns.  
+
+
+
 
 
 
