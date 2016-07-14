@@ -26,11 +26,11 @@ A new platform called 'IOS XRv (64-bit)' will appear from IOS XR 6.1.1 onwards. 
 ## IOS XRv (64-bit)
 
 ### Naming and release
--The image itself is named: name-features-architecture.format, e.g: iosxrv-fullk9-x64.iso
+*  The image itself is named: name-features-architecture.format, e.g: iosxrv-fullk9-x64.iso
 
--Producing a box and releasing it through devhub.cisco.com allows us to get code to the developer far quicker than the standard process.
+*  Producing a box and releasing it through devhub.cisco.com allows us to get code to the developer far quicker than the standard process.
 
--This platform is provided free but as free software has no support - please read the licenses very carefully.
+*  This platform is provided free but as free software has no support - please read the licenses very carefully.
 
 ### Vagrant VirtualBox
 Cisco is providing customers with a Vagrant VirtualBox offering. Vagrant is a superb tool for application development. Amongst others you can use this box to:
