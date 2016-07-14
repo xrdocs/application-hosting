@@ -41,7 +41,7 @@ Cisco is providing customers with a Vagrant VirtualBox offering. Vagrant is a su
 
 *  Create complicated topologies and a variety of other use cases
 
-This box is designed to come up fully operational with an embedded Vagrantfile that does all of the work to provide a user and access to the box. With a simple 'vagrant add' and 'vagrant up' you will have a IOS XR virtual router to play with. 'vagrant ssh' drops the user directly into the XR Linux namespace as user 'vagrant'. Using vagrant port, you can see which port (usually 3222 with a single node) to ssh to get access to the IOS XR Console.
+This box is designed to come up fully operational with an embedded Vagrantfile that does all of the work to provide a user and tools access to the box. With a simple 'vagrant add' and 'vagrant up' you will have a IOS XR virtual router to play with. 'vagrant ssh' drops the user directly into the XR Linux namespace as user 'vagrant'. Using vagrant port, you can see which port (usually 2222 with a single node) to ssh to get access to the IOS XR Console/CLI.
 
 The user can design their own Vagrantfiles to do more complex bringups including multiple nodes, and bootstrap configuration. There are examples below.
 
@@ -52,7 +52,7 @@ You will need an active Cisco CCO id.
 For tutorials on some of the cool things you can do with this box see: [https://xrdocs.github.io/application-hosting/tutorials/](https://xrdocs.github.io/application-hosting/tutorials/)
 
 ## Cisco has open-sourced the tooling
-Finally for this blog anyway, we have open-sourced the code to build the Vagrant VirtualBox from an IOS XR ISO.
+Finally as was the purpose of this blog, we have open-sourced the code to build the Vagrant VirtualBox from an IOS XR ISO.
 
 [https://github.com/ios-xr/iosxrv-x64-vbox](https://github.com/ios-xr/iosxrv-x64-vbox)
 
