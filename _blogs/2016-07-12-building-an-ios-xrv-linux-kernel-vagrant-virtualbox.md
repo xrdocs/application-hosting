@@ -9,7 +9,7 @@ tags:
   - iosxr
   - cisco
   - linux
-position: hidden
+position: top
 ---
 ## A new way to try out IOS-XR..
 An 'IOS XRv (64-bit)' image will be available for users from IOS XR 6.1.1 onwards. This is the successor to the previous IOS XRv (32-bit) QNX based virtual platform. It is based on the latest IOS XR OS which is built on 64-bit Wind River Linux, and has amongst many other changes, a separate Adminplane and complete access to the underlying linux environment. 
