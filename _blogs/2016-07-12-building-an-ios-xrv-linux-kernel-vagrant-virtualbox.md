@@ -22,6 +22,7 @@ Our primary focus will continue to be on consistent tooling and workflows such a
 
 >
 Check us out on Github:
+>
 Sample Applications and Build tools : <https://github.com/ios-xr>   
 Open Source Documentation:  <https://github.com/xrdocs> hosted here:  <https://xrdocs.github.io>
 
