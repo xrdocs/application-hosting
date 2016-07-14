@@ -35,11 +35,11 @@ A new platform called 'IOS XRv (64-bit)' will appear from IOS XR 6.1.1 onwards. 
 ### Vagrant VirtualBox
 Cisco is providing customers with a Vagrant VirtualBox offering. Vagrant is a superb tool for application development. Amongst others you can use this box to:
 
--Test native and GB applications on IOS-XR
+*  Test native and GB applications on IOS-XR
 
--Use configuration management tools like Chef/Puppet/Ansible/Shell as Vagrant provisioners
+*  Use configuration management tools like Chef/Puppet/Ansible/Shell as Vagrant provisioners
 
--Create complicated topologies and a variety of other use cases
+*  Create complicated topologies and a variety of other use cases
 
 This box is designed to come up fully operational with an embedded Vagrantfile that does all of the work to provide a user and access to the box. With a simple 'vagrant add' and 'vagrant up' you will have a IOS XR virtual router to play with. 'vagrant ssh' drops the user directly into the XR Linux namespace as user 'vagrant'. Using vagrant port, you can see which port (usually 3222 with a single node) to ssh to get access to the IOS XR Console.
 
