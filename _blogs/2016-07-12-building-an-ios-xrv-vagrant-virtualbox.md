@@ -85,6 +85,7 @@ To get the API-KEY and a CCO-ID, browse to the following link and follow the ste
 [Steps to Generate API-KEY]({{ site.url }}/getting-started/steps-download-iosxr-vagrant)
 {: .notice--danger}
 
+Once done, download the ISO as shown:  
 
 <div class="highlighter-rouge">
 <pre class="highlight">
