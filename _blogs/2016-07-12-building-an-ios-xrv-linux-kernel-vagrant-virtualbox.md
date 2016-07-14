@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2016-07-12 08:30 -0400'
-title: Building an IOS XRv Vagrant VirtualBox image
+title: Building an IOS XRv Vagrant box for Virtualbox
 author: Richard Wellum
 excerpt: 'Tools to build your own XR vagrant box  '
 tags:
