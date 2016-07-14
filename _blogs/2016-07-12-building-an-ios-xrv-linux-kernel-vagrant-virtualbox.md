@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2016-07-12 08:30 -0400'
-title: Building an IOS XRv Linux Kernel Vagrant VirtualBox
+title: Building an IOS XRv Vagrant VirtualBox image
 author: Richard Wellum
 excerpt: 'Tools to build your own XR vagrant box  '
 tags:
