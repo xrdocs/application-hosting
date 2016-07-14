@@ -9,17 +9,19 @@ tags:
   - iosxr
   - cisco
   - linux
-position: null
+position: hidden
 ---
 ## A new platform..
-A new platform called 'IOS XRv (64-bit)' will appear from IOS XR 6.1.1 onwards. This is the successor to the previous IOS XRv (32-bit) QNX based virtual platform. The new platform is based on the latest IOS XR OS which is built on 64-bit Wind River Linux, and has amongst many other changes, a separate Adminplane and Dataplane.
+A new platform called 'IOS XRv (64-bit)' will appear from IOS XR 6.1.1 onwards. This is the successor to the previous IOS XRv (32-bit) QNX based virtual platform. The new platform is based on the latest IOS XR OS which is built on 64-bit Wind River Linux, and has amongst many other changes, a separate Adminplane and complete access to the underlying linux environment. 
 
-## Linux and eXR (enhanced XR)
--This version of IOS XR has an infrastructure that allows people to develop and run their own applications in Linux containers on the router itself.
 
--Network Automation can be applied via puppet and chef.
+## Linux and eXR (enhanced XR)  
 
--Customers can tap into telemetry that provides improved visibility into a network at a far granular level and less invasive process than SNMP.
+*  This version of IOS XR has an infrastructure that allows people to develop and run their own applications in Linux containers on the router itself.
+
+*  Network and System Automation can be accomplished using shell scripts, puppet,chef, Ansible etc.
+
+*  Customers can tap into telemetry that provides improved visibility into a network at a far granular level and less invasive process than SNMP.
 
 ## IOS XRv (64-bit)
 
