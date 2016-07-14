@@ -11,7 +11,7 @@ tags:
   - linux
 position: hidden
 ---
-## A new platform..
+## A new virtual..
 A new platform called 'IOS XRv (64-bit)' will appear from IOS XR 6.1.1 onwards. This is the successor to the previous IOS XRv (32-bit) QNX based virtual platform. The new platform is based on the latest IOS XR OS which is built on 64-bit Wind River Linux, and has amongst many other changes, a separate Adminplane and complete access to the underlying linux environment. 
 
 
@@ -21,7 +21,10 @@ A new platform called 'IOS XRv (64-bit)' will appear from IOS XR 6.1.1 onwards. 
 
 *  Network and System Automation can be accomplished using shell scripts, puppet,chef, Ansible etc.
 
-*  Customers can tap into telemetry that provides improved visibility into a network at a far granular level and less invasive process than SNMP.
+*  Customers can tap into telemetry that provides improved visibility into a network at a far granular level and less invasive process than SNMP.  
+
+*  XR configuration itself can be automated using Model Driven APIs with native, common and OpenConfig  YANG models supported.  
+
 
 ## IOS XRv (64-bit)
 
@@ -30,7 +33,8 @@ A new platform called 'IOS XRv (64-bit)' will appear from IOS XR 6.1.1 onwards. 
 
 *  Producing a box and releasing it through devhub.cisco.com allows us to get code to the developer far quicker than the standard process.
 
-*  This platform is provided free but as free software has no support - please read the licenses very carefully.
+*  This platform is provided free but as free software has no support - please read the licenses very carefully.  
+
 
 ### Vagrant VirtualBox
 Cisco is providing customers with a Vagrant VirtualBox offering. Vagrant is a superb tool for application development. Amongst others you can use this box to:
