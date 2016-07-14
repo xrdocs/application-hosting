@@ -15,7 +15,7 @@ position: hidden
 A new platform called 'IOS XRv (64-bit)' will appear from IOS XR 6.1.1 onwards. This is the successor to the previous IOS XRv (32-bit) QNX based virtual platform. The new platform is based on the latest IOS XR OS which is built on 64-bit Wind River Linux, and has amongst many other changes, a separate Adminplane and complete access to the underlying linux environment. 
 
 
-## Linux and eXR (enhanced XR)  
+## Linux and XR 6.0.0+
 
 *  This version of IOS XR has an infrastructure that allows people to develop and run their own applications in Linux containers on the router itself.
 
