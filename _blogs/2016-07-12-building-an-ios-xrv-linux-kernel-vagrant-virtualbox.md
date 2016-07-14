@@ -21,7 +21,7 @@ An 'IOS XRv (64-bit)' image will appear from IOS XR 6.1.1 onwards. This is the s
 
 *  Network and System Automation can be accomplished using shell scripts, puppet,chef, Ansible etc.
 
-*  Customers can tap into telemetry that provides improved visibility into a network at a far granular level and through a less invasive process than SNMP.  
+*  Customers can tap into telemetry that provides improved visibility into a network at a far granular level and through a much more scalable approach than SNMP.  
 
 *  XR configuration itself can be automated using Model Driven APIs with native, common and OpenConfig  YANG models supported.  
 
