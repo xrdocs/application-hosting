@@ -12,7 +12,13 @@ tags:
 position: hidden
 ---
 ## A new way to try out IOS-XR..
-An 'IOS XRv (64-bit)' image will appear from IOS XR 6.1.1 onwards. This is the successor to the previous IOS XRv (32-bit) QNX based virtual platform. It is based on the latest IOS XR OS which is built on 64-bit Wind River Linux, and has amongst many other changes, a separate Adminplane and complete access to the underlying linux environment. 
+An 'IOS XRv (64-bit)' image will be available for users from IOS XR 6.1.1 onwards. This is the successor to the previous IOS XRv (32-bit) QNX based virtual platform. It is based on the latest IOS XR OS which is built on 64-bit Wind River Linux, and has amongst many other changes, a separate Adminplane and complete access to the underlying linux environment. 
+
+You will likely see newer and better variants of this image as we continue to work on tools for developers.  
+Our primary focus will be on consistent tooling and workflows such as Vagrant boxes, open source sample applications and build tools to give full flexibility to an end user. We hope that these tools help enable developers to consume and learn IOS-XR, build applications for it and participate in our community on Github:  
+Sample Applications and Build tools : <https://github.com/ios-xr>   
+Open Source Documentation:  <https://github.com/xrdocs> hosted here:  <https://xrdocs.github.io>
+
 
 
 ## Linux and XR 6.0.0+
