@@ -59,6 +59,14 @@ Marco Umer:
   avatar      : "marumer_bio.png"
   bio         : "Technology, martial arts and nature are my passions"
   
+Richard Wellum:
+  name        : "Richard Wellum"
+  github      : "RichWellum"
+  email       : "rwellum@cisco.com"
+  avatar      : "richwellum_bio.jpg"
+  bio         : "Technical Leader, Cisco."
+  twitter     : "XRvCiscoRich"
+
 Cisco Web Team:
   name        : "Cisco Web Team"
   uri         : "https://developer.cisco.com/site/ios-xr"
