@@ -18,7 +18,10 @@ An 'IOS XRv (64-bit)' image will be available for users from IOS XR 6.1.1 onward
 Our primary focus will continue to be on consistent tooling and workflows such as Vagrant boxes, open source sample applications and build tools to give complete flexibility to an end user.**
 {: .notice--info}
   
-  We hope that these tools help enable developers to consume and learn IOS-XR, build applications for it and participate in our community on Github:  
+  We hope that these tools help enable developers consume and learn IOS-XR, build applications for it and participate in our community on Github.   
+
+>
+Check us out on Github:
 Sample Applications and Build tools : <https://github.com/ios-xr>   
 Open Source Documentation:  <https://github.com/xrdocs> hosted here:  <https://xrdocs.github.io>
 
