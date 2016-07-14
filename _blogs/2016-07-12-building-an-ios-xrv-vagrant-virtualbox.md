@@ -26,7 +26,7 @@ Check us out on Github:
 **Sample Applications and Build tools** : <https://github.com/ios-xr>   
 **Open Source Documentation:**  <https://github.com/xrdocs>  hosted here: <https://xrdocs.github.io>
 
-Can't wait to get the ISO? Jump here: [Getting your hands on the ISO] https://xrdocs.github.io/application-hosting/blogs/2016-07-12-building-an-ios-xrv-vagrant-virtualbox/#getting-your-hands-on-the-iso
+Can't wait to get the ISO? Jump here: [Getting your hands on the ISO](https://xrdocs.github.io/application-hosting/blogs/2016-07-12-building-an-ios-xrv-vagrant-virtualbox/#getting-your-hands-on-the-iso)  
 
 ## Linux and XR 6.0.0+
 
