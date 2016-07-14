@@ -35,7 +35,7 @@ A new platform called 'IOS XRv (64-bit)' will appear from IOS XR 6.1.1 onwards. 
 ### Vagrant VirtualBox
 Cisco is providing customers with a Vagrant VirtualBox offering. Vagrant is a superb tool for application development. Amongst others you can use this box to:
 
-*  Test native and GB applications on IOS-XR
+*  Test native and container applications on IOS-XR
 
 *  Use configuration management tools like Chef/Puppet/Ansible/Shell as Vagrant provisioners
 
