@@ -26,7 +26,7 @@ Check us out on Github:
 **Sample Applications and Build tools** : <https://github.com/ios-xr>   
 **Open Source Documentation:**  <https://github.com/xrdocs>  hosted here: <https://xrdocs.github.io>
 
-
+Can't wait to get the ISO? Jump here: [Getting your hands on the ISO] https://xrdocs.github.io/application-hosting/blogs/2016-07-12-building-an-ios-xrv-vagrant-virtualbox/#getting-your-hands-on-the-iso
 
 ## Linux and XR 6.0.0+
 
@@ -73,4 +73,30 @@ Finally as was the purpose of this blog, we have open-sourced the code to build 
 
 [https://github.com/ios-xr/iosxrv-x64-vbox](https://github.com/ios-xr/iosxrv-x64-vbox)
 
-I hope you enjoyed this quick blog. The links above provide far more information. As one of the technical leads behind the new platform, and author of the vagrant tooling I'm very motivated to make this a great platform for Cisco customers. Please contact me at rwellum@cisco.com for any questions or concerns.
+I hope you enjoyed this quick blog. The links above provide far more information. As one of the technical leads behind the new platform, and author of the vagrant tooling I'm very motivated to make this a great platform for Cisco customers. Please contact me at rwellum@cisco.com for any questions or concerns.  
+
+
+## Getting your hands on the ISO  
+
+To download the ISO, you will need an **API-KEY** and a **CCO-ID**
+>
+To get the API-KEY and a CCO-ID, browse to the following link and follow the steps:  
+>
+[Steps to Generate API-KEY]({{ site.url }}/getting-started/steps-download-iosxr-vagrant)
+{: .notice--danger}
+
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+$ ISOURL="https://devhub.cisco.com/artifactory/appdevci-release/XRv64/latest/iosxrv-fullk9-x64.iso"
+
+$ curl <b><mark>-u your-cco-id:API-KEY</mark></b> $ISOURL --output ~/iosxrv-fullk9-x64.iso
+
+</code>
+</pre>
+</div>.    
+
+
+
+
