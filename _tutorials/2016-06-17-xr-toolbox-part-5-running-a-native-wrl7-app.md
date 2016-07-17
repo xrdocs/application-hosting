@@ -439,9 +439,6 @@ Installed:
 
 Complete!
 xr-vm_node0_RP0_CPU0:~$ 
-
-
-
 </code>
 </pre>
 </div>  
