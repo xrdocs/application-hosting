@@ -110,7 +110,11 @@ To get into the XR linux shell (global-vrf network namespace), we have two possi
    
   
 **Any Linux application hosted in this environment shares the process space with XR, and we refer to it as a `native application`.**  
-{: .notice--warning}  
+{: .notice--warning} 
+
+## Spin up the App-development Topology  
+
+![native app dev topo](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/native-app-topo.png)
 
 
 
