@@ -53,7 +53,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
    The XR linux shell that the user interacts with is really the `global-vrf` network namespace 
    inside the control plane container. This corresponds to the global/default-vrf in IOS-XR.  
   
-   <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-ns.png" width="200" height="250" />{: .align-center}  
+   <a href="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-ns.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-ns.png" width="200" height="250" class="align-center" /></a>  
    
    **Only the interfaces in global/default vrf in XR appear in the XR linux shell today when you 
    issue an ifconfig:**  
