@@ -379,7 +379,7 @@ The password for user vagrant on the router is **"vagrant"**.
 <pre class="highlight">
 <code>
 localhost:~$ 
-localhost:~$<mark> scp -P 2222 /usr/src/rpm/RPMS/x86_64/iperf-2.0.9-XR_6.1.1.x86_64.rpm vagrant@10.0.2.2:/home/vagrant/ </mark>
+localhost:~$<mark> scp -P 2222 /usr/src/rpm/RPMS/x86_64/iperf-2.0.9-XR_6.1.1.x86_64.rpm   vagrant@10.0.2.2:/home/vagrant/ </mark>
 vagrant@10.0.2.2's password: 
 iperf-2.0.9-XR_6.1.1.x86_64.rpm                                                                100%   47KB  47.0KB/s   00:00    
 localhost:~$ 
