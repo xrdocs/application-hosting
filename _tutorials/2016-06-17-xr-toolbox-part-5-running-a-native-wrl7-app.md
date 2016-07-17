@@ -242,8 +242,9 @@ localhost:~$
 
 
 We will need a spec file to build the RPM. The spec file we intend to use is shown below. The highlighted sections are important.   
-**This file is  already available in /home/vagrant of wrl7_build server, thanks to the file provisioner that run as part of "vagrant up"**.  
 
+**This file is  already available in /home/vagrant of wrl7_build server, thanks to the file provisioner that run as part of "vagrant up"**.  
+{:  .notice--warning}
 
 <div class="highlighter-rouge">
 <pre class="highlight">
