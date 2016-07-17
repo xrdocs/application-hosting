@@ -175,9 +175,16 @@ Once you're in the right directory, simply issue a `vagrant up`:
 AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$<mark> vagrant up </mark>
 Bringing machine 'rtr' up with 'virtualbox' provider...
 Bringing machine 'devbox' up with 'virtualbox' provider...
+
+--------------------------- snip output ----------------------------
 </code>
 </pre>
 </div> 
+
+
+## Build iperf from source on devbox
+
+Assuming e
 
  
    
