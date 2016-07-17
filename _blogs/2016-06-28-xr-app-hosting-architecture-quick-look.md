@@ -34,9 +34,13 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
   ![host-linux-hypervisor](https://xrdocs.github.io/xrdocs-images/assets/images/host_linux_hypervisor.png){: .align-center}
 {: .notice}
 
-*  In green, we see the container (called the Control plane LXC or XR LXC) within which XR runs as a collection of processes (represented in sky blue, shown below). This is what presents the XR CLI to the user and this is what runs the routing protocols.  
+*  In green, we see the container called the XR Control plane LXC (or XR LXC). This runs a Windriver Linux 7 (WRL7) environment as well and contains the XR control plane and the XR linux environment:  
+
+
+  <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane-lxc.png" width="250" height="250" />{: .align-center}
   
-  
+*  Inside the XR control plane LXC, if we zoom in further, the XR control plane processes are represented distinctly in blue as shown below:  
+
   <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane.png" width="250" height="250" />{: .align-center}
 
   
