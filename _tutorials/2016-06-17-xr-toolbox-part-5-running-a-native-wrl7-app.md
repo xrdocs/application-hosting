@@ -139,9 +139,9 @@ We're going to spin up a topology with two vagrant instances as shown below:
 
    ```
    
- ### Clone the git repo
+### Clone the git repo
  
- I have set up the git repo with the Vagrantfile and other directories needed to configure the IOS-XR vagrant instance and spin up the app-dev topology. To know more about how to configure the IOS-XR instance, you can check out:  [IOS-XR vagrant bootstrap config]({{ base_path }}/tutorials/iosxr-vagrant-bootstrap-config) 
+I have set up the git repo with the Vagrantfile and other directories needed to configure the IOS-XR vagrant instance and spin up the app-dev topology. To know more about how to configure the IOS-XR instance, you can check out:  [IOS-XR vagrant bootstrap config]({{ base_path }}/tutorials/iosxr-vagrant-bootstrap-config) 
    
  
 <div class="highlighter-rouge">
