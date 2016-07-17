@@ -30,13 +30,13 @@ If you haven't checked out the XR toolbox Series, then you can do so here:
 This series is meant to help a beginner get started with application-hosting on IOS-XR.  
   
   
-**In this tutorial** we intend to utilize techniques learnt in the above series to solve a path remediation problem:  
+**In this tutorial** we intend to utilize almost all the techniques learnt in the above series to solve a path remediation problem:  
   
-*  Set up a couple of paths between two routers. In this example we connect the routers back-to-back and set up ECMP (equal cost multipath) links between them. One interface is forcefully selected as the reference link based on OSPF cost configuration.  
+*  Set up a couple of paths between two routers. Bring up OSPF neighborship on both links. One link is forced to be the reference link by increasing the ospf cost of the other link.
 
-*  Use a monitoring technique to determine the bandwidth, jitter, latency etc. parameters along the traffic path. In this example we use iperf inside a container.  
+*  Use a monitoring technique to determine the bandwidth, jitter, latency etc. parameters along the traffic path. In this example we use iperf running inside a container.  
 
-*  Simulate network degradation (through link flaps) to test a python app (inside the LXC) that uses iperf's results to detect the flaps and causes failover by changing the OSPF path cost over a netconf session.  
+*  Simulate network degradation to test a python app (inside the LXC) that uses iperf's results to detect  and causes failover by changing the OSPF path cost over a netconf session.  
 
 This is illustrated below:  
 
