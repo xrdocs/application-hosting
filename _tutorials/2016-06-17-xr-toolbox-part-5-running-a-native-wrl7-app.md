@@ -330,6 +330,7 @@ localhost:~$
 </div>
 
 **The final RPM should be available in `/usr/src/rpm/RPMS/x86_64`**:  
+
   
 ```shell
 localhost:~$ ls -l /usr/src/rpm/RPMS/x86_64/
