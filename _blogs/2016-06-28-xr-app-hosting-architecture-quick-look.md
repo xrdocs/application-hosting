@@ -137,7 +137,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
    </pre>
    </div>  
    
-   However if we configure loopback 1 in XR, a new route appears in the XR linux environment:  
+   However if we configure `loopback 1` in XR, a new route appears in the XR linux environment:  
    
    <div class="highlighter-rouge">
    <pre class="highlight">
