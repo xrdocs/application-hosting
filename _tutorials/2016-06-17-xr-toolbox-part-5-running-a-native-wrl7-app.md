@@ -209,6 +209,8 @@ localhost:~$
 
 ```
 
+### Fetch iperf source code  
+
 Great! Let's fetch the source code of iperf (iperf2) from its official location:  
 
 Current latest version is:  [**iperf-2.0.9**](https://iperf.fr/download/source/iperf-2.0.9-source.tar.gz)
@@ -247,9 +249,12 @@ localhost:~$ sudo cp /home/vagrant/iperf-2.0.9-source.tar.gz /usr/src/rpm/SOURCE
 localhost:~$ 
 ```  
 
+
+### Set up the SPEC file for rpmbuild  
+
 We will need a spec file to build the RPM. The spec file we intend to use is shown below. The highlighted sections are important.   
 
-**This file is  already available in /home/vagrant of wrl7_build server, thanks to the file provisioner that run as part of "vagrant up"**.  
+**This file is  already available in `/home/vagrant` of wrl7_build server, thanks to the file provisioner that run as part of "vagrant up"**.  
 {:  .notice--warning}
 
 <div class="highlighter-rouge">
