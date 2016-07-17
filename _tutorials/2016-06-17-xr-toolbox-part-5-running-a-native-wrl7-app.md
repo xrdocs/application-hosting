@@ -242,7 +242,9 @@ localhost:~$
 </pre>
 </div> 
 
-Copy the source code tar ball into the expected location for rpmbuild: `/usr/src/rpm/SOURCES/`  
+**Copy the source code tar ball into the expected location for rpmbuild: `/usr/src/rpm/SOURCES/`**
+{: .notice--warning}
+
 
 ```shell
 localhost:~$ sudo cp /home/vagrant/iperf-2.0.9-source.tar.gz /usr/src/rpm/SOURCES/
