@@ -583,7 +583,6 @@ Let's make sure XR's loopback0 (used as TPA IP) is reachable from the devbox (si
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-
 vagrant@vagrant-ubuntu-trusty-64:~$ <mark>sudo ip route add 1.1.1.1/32 via 11.1.1.10 </mark>
 vagrant@vagrant-ubuntu-trusty-64:~$ 
 vagrant@vagrant-ubuntu-trusty-64:~$<mark> ping 1.1.1.1 </mark>
