@@ -46,8 +46,9 @@ For reference, a part of the architecture is shown below. We focus on the green 
   
 This is the XR control plane LXC. XR processes (routing protocols, XR CLI etc.) are all housed in the blue region. We represent XR FIB within the same region to indicate that the XR control plane exclusively handles the data-plane programming and access to the real XR interfaces (Gig, Mgmt etc.)   
 
->
+
 **The gray region inside the control plane LXC represents the global-vrf network namespace in the XR linux environment. Today, IOS-XR only supports the mapping of global/default VRF in IOS-XR with the network namespace in XR linux.**
+{: .notice--info}  
 
 To get into the XR linux shell (global-vrf network namespace), we have two possible techniques:  
 
