@@ -241,7 +241,9 @@ localhost:~$
 </div> 
 
 
-We will need a spec file to build the RPM. The spec file we intend to use is shown below. The highlighted sections are important.
+We will need a spec file to build the RPM. The spec file we intend to use is shown below. The highlighted sections are important.   
+**This file is  already available in /home/vagrant of wrl7_build server, thanks to the file provisioner that run as part of "vagrant up"**.  
+
 
 <div class="highlighter-rouge">
 <pre class="highlight">
@@ -287,6 +289,7 @@ install -m755 src/iperf %{buildroot}%{_sbindir}</mark>
 </code>
 </pre>
 </div> 
+
 
 
 
