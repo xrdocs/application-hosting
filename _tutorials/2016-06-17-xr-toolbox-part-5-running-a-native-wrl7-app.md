@@ -188,13 +188,14 @@ Bringing machine 'wrl7_build' up with 'virtualbox' provider...
 </div> 
 
 
-## Build iperf from source on devbox
 
-Assuming everything came up fine, let's ssh into the devbox:  
+## Build iperf from source on WRL7 Build Server
+
+Assuming everything came up fine, let's ssh into the wrl7_build instance:  
 
 ```shell
 
-AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$ vagrant ssh devbox
+AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$ vagrant ssh wrl7_build
 localhost:~$ 
 localhost:~$ 
 localhost:~$ 
@@ -208,7 +209,83 @@ localhost:~$
 
 ```
 
-Let's fetch the source code of iperf from its official location:  
+Great! Let's fetch the source code of iperf (iperf2) from its official location:  
+
+Current latest version is:  [**iperf-2.0.9**](https://iperf.fr/download/source/iperf-2.0.9-source.tar.gz)
+
+Download this tar ball into the wrl7_build vagrant instance:  
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code> 
+localhost:~$ 
+localhost:~$<mark> wget https://iperf.fr/download/source/iperf-2.0.9-source.tar.gz </mark>
+--2016-07-17 14:57:13--  https://iperf.fr/download/source/iperf-2.0.9-source.tar.gz
+Resolving iperf.fr... 194.158.119.186, 2001:860:f70a::2
+Connecting to iperf.fr|194.158.119.186|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 277702 (271K) [application/x-gzip]
+Saving to: 'iperf-2.0.9-source.tar.gz'
+
+100%[===================================================================================>] 277,702      345KB/s   in 0.8s   
+
+2016-07-17 14:57:14 (345 KB/s) - 'iperf-2.0.9-source.tar.gz' saved [277702/277702]
+
+localhost:~$ 
+localhost:~$ 
+localhost:~$ ls
+<mark>iperf-2.0.9-source.tar.gz </mark>
+localhost:~$
+</code>
+</pre>
+</div> 
+
+
+We will need a spec file to build the RPM. The spec file we intend to use is shown below: 
+
+```shell
+
+%define _sbindir /usr/sbin
+Name: iperf 
+Version: 2.0.9
+Release: XR-6.1.1
+License: Copyright (c) 2015 Cisco Systems Inc. All rights reserved.
+Packager: cisco
+SOURCE0 : %{name}-%{version}-source.tar.gz
+Group: 3rd party application
+Summary: iperf compiled for WRL7 (XR 6.1.1)
+
+%description
+This is a compiled version of iperf-2.0.9 for WRL7 (XR 6.1.1)
+
+%prep
+
+%setup -q -n %{name}-%{version}
+
+%build
+./configure
+make
+
+%install
+rm -rf %{buildroot}
+mkdir -p %{buildroot}%{_sbindir}
+install -m755 src/iperf %{buildroot}%{_sbindir}
+
+%files
+
+%defattr(-,root,root)
+
+%{_sbindir}/iperf
+
+%pre
+%post
+%prerun
+%postrun
+%clean
+
+```
+
+
 
 
  
