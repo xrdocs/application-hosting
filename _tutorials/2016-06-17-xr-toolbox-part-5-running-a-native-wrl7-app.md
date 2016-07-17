@@ -364,7 +364,7 @@ these values may differ from values configured in the Vagrantfile if the
 provider supports automatic port collision detection and resolution.
 
     22 (guest) => 2223 (host)
-<mark> 57722 (guest) => 2222 (host) </mark>
+<mark>57722 (guest) => 2222 (host) </mark>
 AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$ 
 
 </code>
