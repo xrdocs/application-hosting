@@ -37,7 +37,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
 *  In green, we see the container called the XR Control plane LXC (or XR LXC). This runs a Windriver Linux 7 (WRL7) environment as well and contains the XR control plane and the XR linux environment:  
 
 
-<a href="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane-lxc.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane-lxc.png" width="350" height="350" class="align-center" /></a>
+<a href="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane-lxc.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane-lxc.png" width="450" height="450" class="align-center" /></a>
   
 *  Inside the XR control plane LXC, if we zoom in further, the XR control plane processes are represented distinctly in blue as shown below. This is where the XR routing protocols like BGP, OSPF etc. run. The XR CLI presented to the user is also one of the processes.
 
