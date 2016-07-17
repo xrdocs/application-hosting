@@ -14,7 +14,7 @@ tags:
   - rpm
 ---
 
-{% include toc icon="table" title="Launching a Native (WRL7) App" %}
+{% include toc icon="table" title="Running a Native (WRL7) App" %}
 {% include base_path %}
   
 Check out Part 4 of the XR toolbox series: [Bring your own Container (LXC) App]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/).
