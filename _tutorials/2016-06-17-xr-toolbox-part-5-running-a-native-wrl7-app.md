@@ -166,6 +166,9 @@ AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$
 </code>
 </pre>
 </div> 
+
+Once you're in the right directory, simply issue a `vagrant up`:  
+
  
    
 
