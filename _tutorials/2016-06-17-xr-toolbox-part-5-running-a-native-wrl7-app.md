@@ -302,9 +302,35 @@ install -m755 src/iperf %{buildroot}%{_sbindir}</mark>
 </div> 
 
 
+### Build RPM
+
+Issue the rpmbuild command:  
 
 
 
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code> 
+
+localhost:~$<mark> sudo rpmbuild -ba iperf.spec </mark>
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.59743
++ umask 022
++ cd /usr/lib64/rpm/../../src/rpm/BUILD
++ cd /usr/src/rpm/BUILD
++ rm -rf iperf-2.0.9
++ /bin/tar -xf -
+
+----------------------------- snip output -------------------------------
+
+Requires: libc.so.6()(64bit) libc.so.6(GLIBC_2.14)(64bit) libc.so.6(GLIBC_2.2.5)(64bit) libc.so.6(GLIBC_2.3)(64bit) libc.so.6(GLIBC_2.7)(64bit) libgcc_s.so.1()(64bit) libgcc_s.so.1(GCC_3.0)(64bit) libm.so.6()(64bit) libm.so.6(GLIBC_2.2.5)(64bit) libpthread.so.0()(64bit) libpthread.so.0(GLIBC_2.2.5)(64bit) libpthread.so.0(GLIBC_2.3.2)(64bit) librt.so.1()(64bit) librt.so.1(GLIBC_2.2.5)(64bit) libstdc++.so.6()(64bit) libstdc++.so.6(CXXABI_1.3)(64bit) libstdc++.so.6(GLIBCXX_3.4)(64bit) rtld(GNU_HASH)
+Checking for unpackaged file(s): /usr/lib64/rpm/check-files /usr/lib64/rpm/../../../var/tmp/iperf-root
+Wrote: /usr/src/rpm/SRPMS/iperf-2.0.9-XR_6.1.1.src.rpm
+Wrote: /usr/src/rpm/RPMS/x86_64/iperf-2.0.9-XR_6.1.1.x86_64.rpm
+localhost:~$ 
+
+</code>
+</pre>
+</div>
 
 
  
