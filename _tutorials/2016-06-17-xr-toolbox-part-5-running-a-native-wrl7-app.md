@@ -605,3 +605,27 @@ rtt min/avg/max/mdev = 1.526/1.734/1.943/0.212 ms
 ### Run iperf!  
 
 
+Initiate the iperf client on the devbox pointing to the router's loopback0 (TPA IP):  
+
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> iperf -c 1.1.1.1 -u </mark>
+------------------------------------------------------------
+Client connecting to 1.1.1.1, UDP port 5001
+Sending 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  3] local 11.1.1.20 port 34348 connected with 1.1.1.1 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-10.0 sec  1.25 MBytes  1.05 Mbits/sec
+[  3] Sent 893 datagrams
+[  3] Server Report:
+[  3]  0.0-10.0 sec  1.25 MBytes  1.05 Mbits/sec   0.256 ms    0/  893 (0%)
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+</code>
+</pre>
+</div>  
