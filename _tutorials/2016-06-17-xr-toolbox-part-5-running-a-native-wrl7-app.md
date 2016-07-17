@@ -184,7 +184,23 @@ Bringing machine 'devbox' up with 'virtualbox' provider...
 
 ## Build iperf from source on devbox
 
-Assuming e
+Assuming everything came up fine, let's ssh into the devbox:  
+
+```shell
+
+AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$ vagrant ssh devbox
+localhost:~$ 
+localhost:~$ 
+localhost:~$ 
+localhost:~$ lsb_release -a
+LSB Version:	core-4.1-noarch:core-4.1-x86_64
+Distributor ID:	wrlinux
+Description:	Wind River Linux 7.0.0.2
+Release:	7.0.0.2
+Codename:	n/a
+localhost:~$ 
+
+```
 
  
    
