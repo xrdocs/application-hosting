@@ -555,7 +555,7 @@ Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-87-generic x86_64)
 
 Last login: Sun Jul 17 20:19:54 2016 from 10.0.2.2
 vagrant@vagrant-ubuntu-trusty-64:~$ 
-vagrant@vagrant-ubuntu-trusty-64:~$ sudo apt-get -y install iperf
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo apt-get -y install iperf</mark>
 Reading package lists... Done
 Building dependency tree       
 Reading state information... Done
