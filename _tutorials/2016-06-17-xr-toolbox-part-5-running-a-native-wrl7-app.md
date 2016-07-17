@@ -69,6 +69,7 @@ To get into the XR linux shell (global-vrf network namespace), we have two possi
    Loopback0                      1.1.1.1         Up              Up       default 
    GigabitEthernet0/0/0/0         10.1.1.10       Up              Up       default 
    GigabitEthernet0/0/0/1         11.1.1.10       Up              Up       default 
+   GigabitEthernet0/0/0/2         unassigned      Shutdown        Down     default
    MgmtEth0/RP0/CPU0/0            10.0.2.15       Up              Up       default 
    RP/0/RP0/CPU0:rtr1#
    RP/0/RP0/CPU0:rtr1#
