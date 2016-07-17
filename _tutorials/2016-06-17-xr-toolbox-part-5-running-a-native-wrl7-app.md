@@ -12,6 +12,7 @@ tags:
   - linux
   - wrl7
   - rpm
+  - xr toolbox
 ---
 
 {% include toc icon="table" title="Running a Native (WRL7) App" %}
