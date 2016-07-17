@@ -66,10 +66,8 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
    
    Interface                      IP-Address      Status          Protocol Vrf-Name
    Loopback0                      1.1.1.1         Up              Up       default 
-   Loopback1                      6.6.6.6         Up              Up       default 
    GigabitEthernet0/0/0/0         10.1.1.10       Up              Up       default 
    GigabitEthernet0/0/0/1         11.1.1.10       Up              Up       default 
-   GigabitEthernet0/0/0/2         unassigned      Shutdown        Down     default 
    MgmtEth0/RP0/CPU0/0            10.0.2.15       Up              Up       default 
    RP/0/RP0/CPU0:rtr1#
    RP/0/RP0/CPU0:rtr1#
