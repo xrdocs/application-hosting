@@ -502,4 +502,99 @@ RP/0/RP0/CPU0:ios#
 </div>
 
 
+### Start iperf server on router
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$<mark>vagrant ssh rtr</mark>
+Last login: Sun Jul 17 21:11:44 2016 from 10.0.2.2
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ iperf -s -u
+------------------------------------------------------------
+Server listening on UDP port 5001
+Receiving 1470 byte datagrams
+UDP buffer size: 64.0 MByte (default)
+------------------------------------------------------------
+
+
+</code>
+</pre>
+</div>
+
+
+### Install iperf in devbox (ubuntu server)
+
+We will use devbox (ubuntu server) in the topology as an iperf client
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$ vagrant ssh devbox
+Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-87-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+  System information as of Sun Jul 17 20:19:54 UTC 2016
+
+  System load:  0.0               Processes:           74
+  Usage of /:   3.5% of 39.34GB   Users logged in:     0
+  Memory usage: 25%               IP address for eth0: 10.0.2.15
+  Swap usage:   0%                IP address for eth1: 11.1.1.20
+
+  Graph this data and manage this system at:
+    https://landscape.canonical.com/
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+0 packages can be updated.
+0 updates are security updates.
+
+
+Last login: Sun Jul 17 20:19:54 2016 from 10.0.2.2
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo apt-get remove ipef
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+E: Unable to locate package ipef
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo apt-get remove iperf
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following packages will be REMOVED:
+  iperf
+0 upgraded, 0 newly installed, 1 to remove and 0 not upgraded.
+After this operation, 174 kB disk space will be freed.
+Do you want to continue? [Y/n] y
+(Reading database ... 63001 files and directories currently installed.)
+Removing iperf (2.0.5-3) ...
+Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo apt-get -y install iperf
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following NEW packages will be installed:
+  iperf
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 0 B/56.3 kB of archives.
+After this operation, 174 kB of additional disk space will be used.
+Selecting previously unselected package iperf.
+(Reading database ... 62989 files and directories currently installed.)
+Preparing to unpack .../iperf_2.0.5-3_amd64.deb ...
+Unpacking iperf (2.0.5-3) ...
+Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+Setting up iperf (2.0.5-3) ...
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+
+
 
