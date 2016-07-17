@@ -44,7 +44,8 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
   <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane.png" width="250" height="250" />{: .align-center}
 
   
-*  See the gray box inside the XR control plane LXC ? This is the XR linux shell .  
+*  See the gray box inside the XR control plane LXC ? This is the XR linux shell.  
+  
    **P.S. This is what you drop into when you issue a  `vagrant ssh` [[*]]({{ base_path }}/tutorials/iosxr-vagrant-quickstart)**.  
    {: .notice--info}  
    
