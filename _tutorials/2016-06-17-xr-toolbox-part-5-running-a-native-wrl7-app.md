@@ -292,11 +292,8 @@ install -m755 src/iperf %{buildroot}%{_sbindir}</mark>
 %defattr(-,root,root)
 %{_sbindir}/iperf
 
-%pre
-%post
-%prerun
-%postrun
 %clean
+rm -rf %{buildroot}
 </code>
 </pre>
 </div> 
@@ -387,4 +384,20 @@ iperf-2.0.9-XR_6.1.1.x86_64.rpm                                                 
 localhost:~$ 
 </code>
 </pre>
-</div>
+</div>  
+
+
+
+## Install iperf as native WRL7 app  
+
+Login to the router and install the iperf RPM transferred in the previous step using yum:  
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+
+
+</code>
+</pre>
+</div>  
+
