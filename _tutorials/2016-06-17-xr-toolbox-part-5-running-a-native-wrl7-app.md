@@ -629,3 +629,7 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 </code>
 </pre>
 </div>  
+
+
+**We've successfully built iperf as a WRL7 RPM, installed it natively inside XR and tested iperf operation over XR's data port (Gig0/0/0/0 connected to devbox eth1).**
+{: .notice--success}
