@@ -59,10 +59,12 @@ To get into the XR linux shell (global-vrf network namespace), we have two possi
 
 **Once in the XR linux shell, if we issue an ifconfig we should see all the interfaces (that are up/unshut) in the global/default VRF:**  
    
-```shell
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
    RP/0/RP0/CPU0:rtr1#
    RP/0/RP0/CPU0:rtr1#
-   RP/0/RP0/CPU0:rtr1#show  ip int br
+   RP/0/RP0/CPU0:rtr1#<mark>show  ip int br</mark>
    Sun Jul 17 11:52:15.049 UTC
    
    Interface                      IP-Address      Status          Protocol Vrf-Name
@@ -73,11 +75,11 @@ To get into the XR linux shell (global-vrf network namespace), we have two possi
    MgmtEth0/RP0/CPU0/0            10.0.2.15       Up              Up       default 
    RP/0/RP0/CPU0:rtr1#
    RP/0/RP0/CPU0:rtr1#
-   RP/0/RP0/CPU0:rtr1#bash    
+   RP/0/RP0/CPU0:rtr1#<mark>bash</mark>    
    Sun Jul 17 11:52:22.904 UTC
 
    [xr-vm_node0_RP0_CPU0:~]$
-   [xr-vm_node0_RP0_CPU0:~]$ifconfig
+   [xr-vm_node0_RP0_CPU0:~]$<mark>ifconfig</mark>
    Gi0_0_0_0 Link encap:Ethernet  HWaddr 08:00:27:e0:7f:bb  
              inet addr:10.1.1.10  Mask:255.255.255.0
              inet6 addr: fe80::a00:27ff:fee0:7fbb/64 Scope:Link
@@ -106,15 +108,15 @@ To get into the XR linux shell (global-vrf network namespace), we have two possi
              RX bytes:313575212 (299.0 MiB)  TX bytes:4784245 (4.5 MiB)
 
    ---------------------------------- snip output -----------------------------------------
-```
+</code>
+</pre>
+</div> 
    
   
 **Any Linux application hosted in this environment shares the process space with XR, and we refer to it as a `native application`.**  
 {: .notice--warning} 
 
-## Spin up the App-development Topology  
-
-![native app dev topo](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/native-app-topo.png)
+## Spin up the build environment
 
 
 
