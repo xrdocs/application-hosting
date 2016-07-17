@@ -120,5 +120,11 @@ To get into the XR linux shell (global-vrf network namespace), we have two possi
 
 We're going to spin up a topology with two vagrant instances as shown below:  
 
-![native-app-topo](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/native-app-topo.png)
+![native-app-topo](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/native-app-topo.png)  
+
+*  **devbox**: This is the build environment. Since IOS-XR uses a streamlined custom WRL7 distribution, we need to make sure we have the latest WRL7 environment available to build "native" apps. For this reason we have released the https://atlas.hashicorp.com/ciscoxr/boxes/appdev-xr6.1.1 vagrant box to match IOS-XR release 6.1.1.  You will simply need to reference "ciscoxr/appdev-xr6.1.1" in your Vagrantfile to spin it up.  
+  
+*  **IOS-XR**: This is the 6.1.1 IOS-XR vagrant instance you would have already downloaded and installed as explained in the vagrant quick-start tutorial:    
+>
+[IOS-XR vagrant box download]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#download-and-add-the-ios-xrv-vagrant-box)
 
