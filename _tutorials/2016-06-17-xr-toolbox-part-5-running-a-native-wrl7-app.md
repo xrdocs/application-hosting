@@ -403,10 +403,9 @@ xr-vm_node0_RP0_CPU0:~$<mark> ls -l iperf-2.0.9-XR_6.1.1.x86_64.rpm
 -rw-r--r-- 1 vagrant vagrant 48011 Jul 17 21:11 iperf-2.0.9-XR_6.1.1.x86_64.rpm </mark>
 xr-vm_node0_RP0_CPU0:~$ 
 xr-vm_node0_RP0_CPU0:~$ 
-xr-vm_node0_RP0_CPU0:~$<mark> sudo yum install localonly iperf-2.0.9-XR_6.1.1.x86_64.rpm </mark> 
+xr-vm_node0_RP0_CPU0:~$ <mark> sudo yum install -y  iperf-2.0.9-XR_6.1.1.x86_64.rpm </mark>
 Loaded plugins: downloadonly, protect-packages, rpm-persistence
 Setting up Install Process
-No package localonly available.
 Examining iperf-2.0.9-XR_6.1.1.x86_64.rpm: iperf-2.0.9-XR_6.1.1.x86_64
 Marking iperf-2.0.9-XR_6.1.1.x86_64.rpm to be installed
 Resolving Dependencies
@@ -428,7 +427,6 @@ Install       1 Package
 
 Total size: 103 k
 Installed size: 103 k
-<mark>Is this ok [y/N]: y </mark>
 Downloading Packages:
 Running Transaction Check
 Running Transaction Test
@@ -441,6 +439,7 @@ Installed:
 
 Complete!
 xr-vm_node0_RP0_CPU0:~$ 
+
 
 
 </code>
