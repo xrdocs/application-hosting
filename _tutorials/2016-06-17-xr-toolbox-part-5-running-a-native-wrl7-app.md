@@ -295,8 +295,6 @@ install -m755 src/iperf %{buildroot}%{_sbindir}</mark>
 %prerun
 %postrun
 %clean
-
-
 </code>
 </pre>
 </div> 
