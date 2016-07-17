@@ -182,8 +182,8 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
 
 *  You'll also notice my awkward rendering for a linux app:  
 
-   <img src="https://xrdocs.github.io/xrdocs-images/assets/images/linux-app-tpa.png" width="150" height="150" />{: .align-center}  
-
+   <a href="https://xrdocs.github.io/xrdocs-images/assets/images/linux-app-tpa.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/linux-app-tpa.png" width="150" height="150" class="align-center" /></a>   
+   
    Notice the `TPA IP` ? This stands for **T**hird **P**arty **A**pp IP address.  
   
    The purpose of the TPA IP is simple. Set a src-hint for linux applications, so that originating 
