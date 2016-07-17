@@ -145,7 +145,7 @@ IOS-XR and devbox instances talk to each other over Gig0/0/0/0 and eth1 interfac
    
 ### Clone the git repo
  
-I have set up the git repo with the Vagrantfile and other directories needed to configure the IOS-XR vagrant instance and spin up the app-dev topology. To know more about how to configure the IOS-XR instance, you can check out:  [IOS-XR vagrant bootstrap config]({{ base_path }}/tutorials/iosxr-vagrant-bootstrap-config) 
+Clone the following git repo: <https://github.com/ios-xr/vagrant-xrdocs.git>
    
  
 <div class="highlighter-rouge">
@@ -179,6 +179,8 @@ Once you're in the right directory, simply issue a `vagrant up`:
 AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$<mark> vagrant up </mark>
 Bringing machine 'rtr' up with 'virtualbox' provider...
 Bringing machine 'devbox' up with 'virtualbox' provider...
+Bringing machine 'wrl7_build' up with 'virtualbox' provider...
+
 
 --------------------------- snip output ----------------------------
 </code>
