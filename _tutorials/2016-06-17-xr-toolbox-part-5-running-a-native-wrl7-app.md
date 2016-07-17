@@ -34,9 +34,13 @@ In this part, we explore how a user can build and deploy native WRL7 RPMs that t
 
 ## What's a native app?  
 
-Before we delve into the build and installation process for a native app, let's consider the XR app-hosting infrastructure that I explain a bit more in the blog:  
+I go into some detail with respect to the IOS-XR application hosting architecture in the following blog:
   
 >
 [XR app-hosting infrastructure: Quick Look]({{ base_path }}/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/)  
- 
- 
+  
+  
+For reference, a part of the architecture is shown below. We focus on the green container in the figure from the original blog:  
+
+<a href="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane-lxc.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane-lxc.png" width="550" height="550" class="align-center" /></a>
+
