@@ -137,7 +137,36 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
    </pre>
    </div>  
    
+   However if we configure loopback 1 in XR, a new route appears in the XR linux environment:  
    
+   <div class="highlighter-rouge">
+   <pre class="highlight">
+   <code>
+   RP/0/RP0/CPU0:rtr1#
+   RP/0/RP0/CPU0:rtr1#conf t
+   Sun Jul 17 11:59:33.014 UTC
+   RP/0/RP0/CPU0:rtr1(config)#
+   RP/0/RP0/CPU0:rtr1(config)#int loopback 1
+   RP/0/RP0/CPU0:rtr1(config-if)#ip addr 6.6.6.6/32
+   RP/0/RP0/CPU0:rtr1(config-if)#commit
+   Sun Jul 17 11:59:49.970 UTC
+   RP/0/RP0/CPU0:rtr1(config-if)#
+   RP/0/RP0/CPU0:rtr1#
+   RP/0/RP0/CPU0:rtr1#bash                               
+   Sun Jul 17 11:59:58.941 UTC
+
+   [xr-vm_node0_RP0_CPU0:~]$
+   [xr-vm_node0_RP0_CPU0:~]$ip route
+   default dev fwdintf  scope link  src 10.0.2.15 
+   <mark>6.6.6.6 dev fwd_ew  scope link  src 10.0.2.15</mark>
+   10.0.2.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 10.0.2.15 
+   [xr-vm_node0_RP0_CPU0:~]$
+   </code>
+   </pre>
+   </div>  
+   
+   **This is what we call the east-west route. Loopback1 is treated as a special remote interface from the perspective of the XR linux shell. It does not appear in ifconfig like the other interfaces. This way an application sitting inside the global-vrf network namespace can talk to XR on the same box by simply pointing to loopback1.**  
+   {: .notice--warning}  
    
 *  Finally, if you followed the [Bring your own Container (LXC) App]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/), you'll notice that in the XML file meant to launch the lxc, we share the `global-vrf` network namespace with the container; specifically, in this section:  
 
