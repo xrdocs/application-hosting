@@ -45,14 +45,14 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
 
   
 *  See the gray box inside the XR control plane LXC ? This is the XR linux shell .  
-  
-   <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-ns.png" width="200" height="250" />{: .align-center}  
-
    **P.S. This is what you drop into when you issue a  `vagrant ssh` [[*]]({{ base_path }}/tutorials/iosxr-vagrant-quickstart)**.  
    {: .notice--info}  
    
    The XR linux shell that the user interacts with is really the `global-vrf` network namespace 
    inside the control plane container. This corresponds to the global/default-vrf in IOS-XR.  
+  
+   <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-ns.png" width="200" height="250" />{: .align-center}  
+
    
    **Any Linux application hosted in this environment shares the process space with XR, and we refer to it as 
    a** `native application`.
@@ -64,8 +64,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
 
 
 
-
-*  The FIB is programmed by the XR control plane exclusively. The global-vrf network namespace only sees a couple of routes:  
+*  The FIB is programmed by the XR control plane exclusively. The global-vrf network namespace only sees a couple of routes by default:  
     *  A default route pointing to XR FIB. This way any packet with an unknown destination is handed-over by a linux application to XR for routing. This is achieved through a special interface called `fwdintf` as shown in the figure above.  
        
       
@@ -87,6 +86,8 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
    </code>
    </pre>
    </div>  
+   
+   
    
 *  Finally, if you followed the [Bring your own Container (LXC) App]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/), you'll notice that in the XML file meant to launch the lxc, we share the `global-vrf` network namespace with the container; specifically, in this section:  
 
