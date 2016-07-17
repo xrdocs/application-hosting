@@ -458,7 +458,7 @@ xr-vm_node0_RP0_CPU0:~$
 ```  
 
 
-We're all set!
+**We're all set!**
 {: .notice--success}  
 
 
@@ -524,6 +524,8 @@ UDP buffer size: 64.0 MByte (default)
 </pre>
 </div>
 
+**Yay! iperf server is running natively in IOS-XR.**
+{: .notice--success}
 
 ### Install iperf in devbox (ubuntu server)
 
@@ -579,5 +581,27 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 
 ### Set a route to TPA IP on devbox
 
+Let's make sure XR's loopback0 (used as TPA IP) is reachable from the devbox (since we're not running routing protocols in this topology, this isn't automatic): 
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+
+vagrant@vagrant-ubuntu-trusty-64:~$ <mark>sudo ip route add 1.1.1.1/32 via 11.1.1.10 </mark>
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> ping 1.1.1.1 </mark>
+PING 1.1.1.1 (1.1.1.1) 56(84) bytes of data.
+64 bytes from 1.1.1.1: icmp_seq=1 ttl=255 time=1.52 ms
+64 bytes from 1.1.1.1: icmp_seq=2 ttl=255 time=1.94 ms
+^C
+--- 1.1.1.1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 1.526/1.734/1.943/0.212 ms
+</code>
+</pre>
+</div>  
+
+
+### Run iperf!  
 
 
