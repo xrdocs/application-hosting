@@ -118,11 +118,11 @@ To get into the XR linux shell (global-vrf network namespace), we have two possi
 
 ## Spin up the build environment
 
-We're going to spin up a topology with two vagrant instances as shown below:  
+We're going to spin up a topology with 3 vagrant instances as shown below:  
 
 ![native-app-topo](https://xrdocs.github.io/xrdocs-images/assets/images/native-app-topo.png)  
 
-*  **devbox**: This is the build environment. Since IOS-XR uses a streamlined custom WRL7 distribution, we need to make sure we have the latest WRL7 environment available to build "native" apps. For this reason we have released the <https://atlas.hashicorp.com/ciscoxr/boxes/appdev-xr6.1.1> vagrant box to match IOS-XR release 6.1.1.  You will simply need to reference "ciscoxr/appdev-xr6.1.1" in your Vagrantfile to spin it up.  
+*  **WRL7 Build**: Since IOS-XR uses a streamlined custom WRL7 distribution, we need to make sure we have the latest WRL7 environment available to build "native" apps. For this reason we have released the <https://atlas.hashicorp.com/ciscoxr/boxes/appdev-xr6.1.1> vagrant box to match IOS-XR release 6.1.1.  You will simply need to reference "ciscoxr/appdev-xr6.1.1" in your Vagrantfile to spin it up.  
   
 *  **IOS-XR**: This is the 6.1.1 IOS-XR vagrant instance you would have already downloaded and installed as explained in the vagrant quick-start tutorial:    
 
@@ -138,6 +138,10 @@ We're going to spin up a topology with two vagrant instances as shown below:
    AKSHSHAR-M-K0DS:~ akshshar$ 
 
    ```
+*  **devbox**: This is the ubuntu/trusty64 image we have been using in the other tutorials for LXC creation and generic application testing. 
+
+IOS-XR and devbox instances talk to each other over Gig0/0/0/0 and eth1 interfaces respectively.
+
    
 ### Clone the git repo
  
@@ -201,6 +205,9 @@ Codename:	n/a
 localhost:~$ 
 
 ```
+
+Let's fetch the source code of iperf from its official location:  
+
 
  
    
