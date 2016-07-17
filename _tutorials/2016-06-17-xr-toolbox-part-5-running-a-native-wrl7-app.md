@@ -108,9 +108,8 @@ To get into the XR linux shell (global-vrf network namespace), we have two possi
 ```
    
   
-   **Any Linux application hosted in this environment shares the process space with XR, and we refer to it as 
-   a `native application`.**  
-   {: .notice--warning}  
+**Any Linux application hosted in this environment shares the process space with XR, and we refer to it as a `native application`.**  
+{: .notice--warning}  
 
 
 
