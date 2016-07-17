@@ -178,7 +178,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
    LXC app has the same view of the world, the same routes and the same XR interfaces to take 
    advantage of, as any native application with the shared global-vrf namespace**.  
 
-   <a href="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-lxc.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-lxc.png" width="350" height="350" class="align-center" /></a>{: .align-center}  
+   <a href="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-lxc.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-lxc.png" width="350" height="350" class="align-center" /></a>  
 
 *  You'll also notice my awkward rendering for a linux app:  
 
