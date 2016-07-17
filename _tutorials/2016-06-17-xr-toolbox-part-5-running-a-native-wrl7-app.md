@@ -56,9 +56,10 @@ To get into the XR linux shell (global-vrf network namespace), we have two possi
 *  **From XR CLI**:  Issue the `bash` command to drop into the XR linux shell from the CLI.
 *  **Over SSH using port 57722**:  Port 22 is used by XR SSH. To enable a user/tool to drop directly into the XR linux shell, we enable SSH over port 57722. Any reachable IP address of XR could be used for this purpose.
 
+
 ** Once in the XR linux shell, if we issue an ifconfig we should see all the interfaces in the global/default VRF:**  
    
-   ```shell
+```shell
    RP/0/RP0/CPU0:rtr1#
    RP/0/RP0/CPU0:rtr1#
    RP/0/RP0/CPU0:rtr1#show  ip int br
@@ -104,7 +105,7 @@ To get into the XR linux shell (global-vrf network namespace), we have two possi
              RX bytes:313575212 (299.0 MiB)  TX bytes:4784245 (4.5 MiB)
 
    ---------------------------------- snip output -----------------------------------------
-   ```
+```
    
   
    **Any Linux application hosted in this environment shares the process space with XR, and we refer to it as 
