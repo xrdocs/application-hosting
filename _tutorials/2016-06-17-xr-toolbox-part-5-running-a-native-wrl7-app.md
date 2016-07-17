@@ -169,6 +169,16 @@ AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$
 
 Once you're in the right directory, simply issue a `vagrant up`:  
 
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code> 
+AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$<mark> vagrant up </mark>
+Bringing machine 'rtr' up with 'virtualbox' provider...
+Bringing machine 'devbox' up with 'virtualbox' provider...
+</code>
+</pre>
+</div> 
+
  
    
 
