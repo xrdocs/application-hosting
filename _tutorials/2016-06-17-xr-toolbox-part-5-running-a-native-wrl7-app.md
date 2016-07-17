@@ -466,6 +466,8 @@ We're all set!
 
 As we have seen in greater detail in the LXC container app tutorial, we need to set the src-hint for applications to ensure reachability in routed networks.  
 
+### Set TPA IP (Src-hint) for App Traffic 
+
 [Setting the src-hint for application traffic]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#set-the-src-hint-for-application-traffic)  
 
 
@@ -530,7 +532,7 @@ We will use devbox (ubuntu server) in the topology as an iperf client
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$ vagrant ssh devbox
+AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$<mark> vagrant ssh devbox </mark>
 Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-87-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com/
@@ -554,31 +556,6 @@ Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-87-generic x86_64)
 
 Last login: Sun Jul 17 20:19:54 2016 from 10.0.2.2
 vagrant@vagrant-ubuntu-trusty-64:~$ 
-vagrant@vagrant-ubuntu-trusty-64:~$ sudo apt-get remove ipef
-Reading package lists... Done
-Building dependency tree       
-Reading state information... Done
-E: Unable to locate package ipef
-vagrant@vagrant-ubuntu-trusty-64:~$ 
-vagrant@vagrant-ubuntu-trusty-64:~$ sudo apt-get remove iperf
-Reading package lists... Done
-Building dependency tree       
-Reading state information... Done
-The following packages will be REMOVED:
-  iperf
-0 upgraded, 0 newly installed, 1 to remove and 0 not upgraded.
-After this operation, 174 kB disk space will be freed.
-Do you want to continue? [Y/n] y
-(Reading database ... 63001 files and directories currently installed.)
-Removing iperf (2.0.5-3) ...
-Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
-vagrant@vagrant-ubuntu-trusty-64:~$ 
-vagrant@vagrant-ubuntu-trusty-64:~$ 
-vagrant@vagrant-ubuntu-trusty-64:~$ 
-vagrant@vagrant-ubuntu-trusty-64:~$ 
-vagrant@vagrant-ubuntu-trusty-64:~$ 
-vagrant@vagrant-ubuntu-trusty-64:~$ 
-vagrant@vagrant-ubuntu-trusty-64:~$ 
 vagrant@vagrant-ubuntu-trusty-64:~$ sudo apt-get -y install iperf
 Reading package lists... Done
 Building dependency tree       
@@ -595,6 +572,12 @@ Unpacking iperf (2.0.5-3) ...
 Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
 Setting up iperf (2.0.5-3) ...
 vagrant@vagrant-ubuntu-trusty-64:~$ 
+</code>
+</pre>
+</div>
+
+
+### Set a route to TPA IP on devbox
 
 
 
