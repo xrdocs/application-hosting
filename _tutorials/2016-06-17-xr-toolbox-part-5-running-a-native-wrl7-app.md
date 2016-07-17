@@ -260,18 +260,18 @@ We will need a spec file to build the RPM. The spec file we intend to use is sho
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code> 
-<mark>%define _sbindir /usr/sbin</mark>
+ 
 Name: iperf 
 Version: 2.0.9
-Release: XR-6.1.1
+Release: XR_6.1.1
 License: Copyright (c) 2015 Cisco Systems Inc. All rights reserved.
 Packager: cisco
 SOURCE0 : %{name}-%{version}-source.tar.gz
 Group: 3rd party application
-Summary: iperf compiled for WRL7 (XR 6.1.1)
+Summary: iperf compiled for WRL7: XR 6.1.1
 
 %description
-This is a compiled version of iperf-2.0.9 for WRL7 (XR 6.1.1)
+This is a compiled version of iperf-2.0.9 for WRL7: XR 6.1.1
 
 %prep
 
@@ -282,8 +282,7 @@ This is a compiled version of iperf-2.0.9 for WRL7 (XR 6.1.1)
 make</mark>
 
 %install
-<mark>rm -rf %{buildroot}
-mkdir -p %{buildroot}%{_sbindir}
+<mark>mkdir -p %{buildroot}%{_sbindir}
 install -m755 src/iperf %{buildroot}%{_sbindir}</mark>
 
 %files
@@ -297,6 +296,8 @@ install -m755 src/iperf %{buildroot}%{_sbindir}</mark>
 %prerun
 %postrun
 %clean
+
+
 
 </code>
 </pre>
