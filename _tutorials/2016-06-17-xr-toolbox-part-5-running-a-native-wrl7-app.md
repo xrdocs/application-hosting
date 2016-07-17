@@ -129,7 +129,7 @@ We're going to spin up a topology with 3 vagrant instances as shown below:
    >
    [IOS-XR vagrant box download]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#download-and-add-the-ios-xrv-vagrant-box)  
  
-   In the end, the `vagrant box list` must list your IOS-XRv vagrant box:  
+   In the end, `vagrant box list` must list your IOS-XRv vagrant box:  
    
    ```shell
 
