@@ -125,6 +125,17 @@ We're going to spin up a topology with two vagrant instances as shown below:
 *  **devbox**: This is the build environment. Since IOS-XR uses a streamlined custom WRL7 distribution, we need to make sure we have the latest WRL7 environment available to build "native" apps. For this reason we have released the https://atlas.hashicorp.com/ciscoxr/boxes/appdev-xr6.1.1 vagrant box to match IOS-XR release 6.1.1.  You will simply need to reference "ciscoxr/appdev-xr6.1.1" in your Vagrantfile to spin it up.  
   
 *  **IOS-XR**: This is the 6.1.1 IOS-XR vagrant instance you would have already downloaded and installed as explained in the vagrant quick-start tutorial:    
->
-[IOS-XR vagrant box download]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#download-and-add-the-ios-xrv-vagrant-box)
+
+   >
+   [IOS-XR vagrant box download]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#download-and-add-the-ios-xrv-vagrant-box)  
+ 
+   In the end, the `vagrant box list` must list your IOS-XRv vagrant box:  
+   
+   ```shell
+
+   AKSHSHAR-M-K0DS:~ akshshar$ vagrant box list
+   IOS-XRv (virtualbox, 0)
+   AKSHSHAR-M-K0DS:~ akshshar$ 
+
+   ```
 
