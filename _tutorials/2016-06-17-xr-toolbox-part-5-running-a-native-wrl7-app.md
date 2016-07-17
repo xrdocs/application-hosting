@@ -332,7 +332,44 @@ localhost:~$
 </pre>
 </div>
 
+**The final RPM should be available in `/usr/src/rpm/RPMS/x86_64`**:  
+  
+```shell
+localhost:~$ ls -l /usr/src/rpm/RPMS/x86_64/
+total 48
+-rw-r--r-- 1 root root 48119 Jul 17 16:46 iperf-2.0.9-XR_6.1.1.x86_64.rpm
+localhost:~$ 
 
+```
+
+
+### Transfer the iperf RPM to router  
+
+
+We can transfer the iperf RPM to the router directly over the management network.  
+
+First determine the forwarded port for XR linux shell (port 57722) for the running router:  
+
+**This command must of course be issued from your laptop running the vagrant environment**
+{: .notice--warning}  
+
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code> 
+
+AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$<mark> vagrant port rtr </mark>
+The forwarded ports for the machine are listed below. Please note that
+these values may differ from values configured in the Vagrantfile if the
+provider supports automatic port collision detection and resolution.
+
+    22 (guest) => 2223 (host)
+<mark> 57722 (guest) => 2222 (host) </mark>
+AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$ 
+
+</code>
+</pre>
+</div>
  
    
 
