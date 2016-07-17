@@ -463,7 +463,6 @@ xr-vm_node0_RP0_CPU0:~$
 
 As we have seen in greater detail in the LXC container app tutorial:  
 [Setting the src-hint for application traffic]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#set-the-src-hint-for-application-traffic)  
-
 we need to set the src-hint for applications to ensure reachability in routed networks.  
 
 ### Set TPA IP (Src-hint) for App Traffic 
