@@ -118,5 +118,7 @@ To get into the XR linux shell (global-vrf network namespace), we have two possi
 
 ## Spin up the build environment
 
+We're going to spin up a topology with two vagrant instances as shown below:  
 
+![native-app-topo](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/native-app-topo.png)
 
