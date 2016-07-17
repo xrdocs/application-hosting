@@ -372,4 +372,19 @@ AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$
 </div>
  
    
+Get back into wrl7_build and use HOST ip address = `10.0.2.2` with port 2222 to transfer the RPM to the router over the management network:  
 
+The password for user vagrant on the router is **"vagrant"**.
+{: .notice--info}  
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+localhost:~$ 
+localhost:~$ scp -P 2222 /usr/src/rpm/RPMS/x86_64/iperf-2.0.9-XR_6.1.1.x86_64.rpm vagrant@10.0.2.2:/home/vagrant/
+vagrant@10.0.2.2's password: 
+iperf-2.0.9-XR_6.1.1.x86_64.rpm                                                                100%   47KB  47.0KB/s   00:00    
+localhost:~$ 
+</code>
+</pre>
+</div>
