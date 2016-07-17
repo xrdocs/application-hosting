@@ -48,10 +48,12 @@ This is the XR control plane LXC. XR processes (routing protocols, XR CLI etc.) 
 
 **The gray region inside the control plane LXC represents the global-vrf network namespace in the XR linux environment. Today, IOS-XR only supports the mapping of global/default VRF in IOS-XR with the network namespace in XR linux.**
 
+To get into the XR linux shell (global-vrf network namespace), we two techniques:  
 
+*  **From XR CLI**:  Issue the `bash` command to drop into the XR linux shell from the CLI.
+*  **Over SSH using port 57722**:  Port 22 is used by XR SSH. To enable a user/tool to drop directly into the XR linux shell, we enable SSH over port 57722. Any reachable IP address of XR could be used for this purpose.
 
-**Only the interfaces in global/default vrf in XR appear in the XR linux shell today when you 
-   issue an ifconfig:**  
+** Once in the XR linux shell, if we issue an ifconfig we should see all the interfaces in the global/default VRF:**  
    
    ```shell
    RP/0/RP0/CPU0:rtr1#
