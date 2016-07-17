@@ -241,11 +241,12 @@ localhost:~$
 </div> 
 
 
-We will need a spec file to build the RPM. The spec file we intend to use is shown below: 
+We will need a spec file to build the RPM. The spec file we intend to use is shown below. The highlighted sections are important.
 
-```shell
-
-%define _sbindir /usr/sbin
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code> 
+<mark>%define _sbindir /usr/sbin</mark>
 Name: iperf 
 Version: 2.0.9
 Release: XR-6.1.1
@@ -263,13 +264,13 @@ This is a compiled version of iperf-2.0.9 for WRL7 (XR 6.1.1)
 %setup -q -n %{name}-%{version}
 
 %build
-./configure
-make
+<mark>./configure
+make</mark>
 
 %install
-rm -rf %{buildroot}
+<mark>rm -rf %{buildroot}
 mkdir -p %{buildroot}%{_sbindir}
-install -m755 src/iperf %{buildroot}%{_sbindir}
+install -m755 src/iperf %{buildroot}%{_sbindir}</mark>
 
 %files
 
@@ -283,7 +284,10 @@ install -m755 src/iperf %{buildroot}%{_sbindir}
 %postrun
 %clean
 
-```
+</code>
+</pre>
+</div> 
+
 
 
 
