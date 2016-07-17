@@ -462,5 +462,44 @@ We're all set!
 {: .notice--success}  
 
 
+## Test the Native app  
+
+As we have seen in greater detail in the LXC container app tutorial, we need to set the src-hint for applications to ensure reachability in routed networks.  
+
+[Setting the src-hint for application traffic]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#set-the-src-hint-for-application-traffic)  
+
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$<mark> vagrant port rtr </mark>
+The forwarded ports for the machine are listed below. Please note that
+these values may differ from values configured in the Vagrantfile if the
+provider supports automatic port collision detection and resolution.
+
+    22 (guest) => 2223 (host)
+<mark>57722 (guest) => 2222 (host) </mark>
+AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$<mark> ssh -p 2223 vagrant@localhost </mark>
+vagrant@localhost's password: 
+
+
+RP/0/RP0/CPU0:ios#
+RP/0/RP0/CPU0:ios#conf t
+Sun Jul 17 21:23:04.140 UTC
+RP/0/RP0/CPU0:ios(config)#<mark>tpa address-family ipv4 update-source loopback 0</mark>
+RP/0/RP0/CPU0:ios(config)#<mark>commit</mark>
+Sun Jul 17 21:23:23.464 UTC
+RP/0/RP0/CPU0:ios(config)#end
+RP/0/RP0/CPU0:ios#
+RP/0/RP0/CPU0:ios#<mark>bash -c ip route</mark>
+Sun Jul 17 21:23:35.008 UTC
+<mark>default dev fwdintf  scope link  src 1.1.1.1</mark> 
+10.0.2.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 10.0.2.15 
+RP/0/RP0/CPU0:ios#
+
+</code>
+</pre>
+</div>
+
 
 
