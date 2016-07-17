@@ -39,7 +39,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
 
 <a href="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane-lxc.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane-lxc.png" width="350" height="350" class="align-center" /></a>
   
-*  Inside the XR control plane LXC, if we zoom in further, the XR control plane processes are represented distinctly in blue as shown below. This where the XR routing protocols like BGP, OSPF etc. run. The XR CLI presented to the user is also one of the processes.
+*  Inside the XR control plane LXC, if we zoom in further, the XR control plane processes are represented distinctly in blue as shown below. This is where the XR routing protocols like BGP, OSPF etc. run. The XR CLI presented to the user is also one of the processes.
 
  <a href="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane.png" width="250" height="250" class="align-center" /></a>
 
