@@ -56,7 +56,8 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
    <img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-ns.png" width="200" height="250" />{: .align-center}  
    
    **Only the interfaces in global/default vrf in XR appear in the XR linux shell today when you 
-   issue an ifconfig:  
+   issue an ifconfig:**  
+   
    ```shell
    RP/0/RP0/CPU0:rtr1#
    RP/0/RP0/CPU0:rtr1#
