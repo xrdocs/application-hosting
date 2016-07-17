@@ -41,7 +41,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
   
 *  Inside the XR control plane LXC, if we zoom in further, the XR control plane processes are represented distinctly in blue as shown below. This is where the XR routing protocols like BGP, OSPF etc. run. The XR CLI presented to the user is also one of the processes.
 
- <a href="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane.png" width="250" height="250" class="align-center" /></a>
+ <a href="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-control-plane.png" width="350" height="350" class="align-center" /></a>
 
   
 *  See the gray box inside the XR control plane LXC ? This is the XR linux shell.  
@@ -53,7 +53,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
    The XR linux shell that the user interacts with is really the `global-vrf` network namespace 
    inside the control plane container. This corresponds to the global/default-vrf in IOS-XR.  
   
-   <a href="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-ns.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-ns.png" width="200" height="250" class="align-center" /></a>  
+   <a href="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-ns.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr-global-vrf-ns.png" width="300" height="350" class="align-center" /></a>  
    
    **Only the interfaces in global/default vrf in XR appear in the XR linux shell today when you 
    issue an ifconfig:**  
