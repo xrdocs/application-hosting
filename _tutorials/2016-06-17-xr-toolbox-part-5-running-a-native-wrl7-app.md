@@ -147,7 +147,7 @@ I have set up the git repo with the Vagrantfile and other directories needed to 
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code> 
-AKSHSHAR-M-K0DS:~ akshshar$ git clone https://github.com/ios-xr/vagrant-xrdocs.git
+AKSHSHAR-M-K0DS:~ akshshar$<mark> git clone https://github.com/ios-xr/vagrant-xrdocs.git </mark>
 Cloning into 'vagrant-xrdocs'...
 remote: Counting objects: 204, done.
 remote: Compressing objects: 100% (17/17), done.
@@ -157,9 +157,9 @@ Resolving deltas: 100% (74/74), done.
 Checking connectivity... done.
 AKSHSHAR-M-K0DS:~ akshshar$ 
 AKSHSHAR-M-K0DS:~ akshshar$ 
-AKSHSHAR-M-K0DS:~ akshshar$ cd vagrant-xrdocs/native-app-topo-bootstrap/
+AKSHSHAR-M-K0DS:~ akshshar$<mark> cd vagrant-xrdocs/native-app-topo-bootstrap/</mark>
 AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$ pwd
-/Users/akshshar/vagrant-xrdocs/native-app-topo-bootstrap
+<mark>/Users/akshshar/vagrant-xrdocs/native-app-topo-bootstrap</mark>
 AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$ ls
 Vagrantfile	configs		scripts
 AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$ 
