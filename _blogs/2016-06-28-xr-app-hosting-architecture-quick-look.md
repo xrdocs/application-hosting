@@ -57,7 +57,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
 
    
    **Any Linux application hosted in this environment shares the process space with XR, and we refer to it as 
-   a** `native application`.  
+   a `native application`.**  
    **Only the interfaces in global/default vrf in XR appear in the XR linux shell today when you 
    issue an ifconfig. But the infrastructure is in place to map each custom user VRF to a network 
    namespace in the future.**   
