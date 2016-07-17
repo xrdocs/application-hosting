@@ -138,4 +138,34 @@ We're going to spin up a topology with two vagrant instances as shown below:
    AKSHSHAR-M-K0DS:~ akshshar$ 
 
    ```
+   
+ ### Clone the git repo
+ 
+ I have set up the git repo with the Vagrantfile and other directories needed to configure the IOS-XR vagrant instance and spin up the app-dev topology. To know more about how to configure the IOS-XR instance, you can check out:  [IOS-XR vagrant bootstrap config]({{ base_path }}/tutorials/iosxr-vagrant-bootstrap-config) 
+   
+ 
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code> 
+AKSHSHAR-M-K0DS:~ akshshar$ git clone https://github.com/ios-xr/vagrant-xrdocs.git
+Cloning into 'vagrant-xrdocs'...
+remote: Counting objects: 204, done.
+remote: Compressing objects: 100% (17/17), done.
+remote: Total 204 (delta 4), reused 0 (delta 0), pack-reused 187
+Receiving objects: 100% (204/204), 27.84 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (74/74), done.
+Checking connectivity... done.
+AKSHSHAR-M-K0DS:~ akshshar$ 
+AKSHSHAR-M-K0DS:~ akshshar$ 
+AKSHSHAR-M-K0DS:~ akshshar$ cd vagrant-xrdocs/native-app-topo-bootstrap/
+AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$ pwd
+/Users/akshshar/vagrant-xrdocs/native-app-topo-bootstrap
+AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$ ls
+Vagrantfile	configs		scripts
+AKSHSHAR-M-K0DS:native-app-topo-bootstrap akshshar$ 
+</code>
+</pre>
+</div> 
+ 
+   
 
