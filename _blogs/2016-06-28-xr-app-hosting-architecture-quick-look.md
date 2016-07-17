@@ -47,6 +47,7 @@ Alright, back up. The above figure seems pretty daunting to understand, so let's
 *  See the gray box inside the XR control plane LXC ? This is the XR linux shell.  
   
    **P.S. This is what you drop into when you issue a  `vagrant ssh` [[*]]({{ base_path }}/tutorials/iosxr-vagrant-quickstart)**.  
+   Another way to get into the XR linux shell is by issuing a `bash` command in XR CLI.
    {: .notice--info}  
    
    The XR linux shell that the user interacts with is really the `global-vrf` network namespace 
