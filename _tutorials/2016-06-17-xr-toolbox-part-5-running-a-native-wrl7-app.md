@@ -240,6 +240,12 @@ localhost:~$
 </pre>
 </div> 
 
+Copy the source code tar ball into the expected location for rpmbuild: `/usr/src/rpm/SOURCES/`  
+
+```shell
+localhost:~$ sudo cp /home/vagrant/iperf-2.0.9-source.tar.gz /usr/src/rpm/SOURCES/
+localhost:~$ 
+```  
 
 We will need a spec file to build the RPM. The spec file we intend to use is shown below. The highlighted sections are important.   
 
