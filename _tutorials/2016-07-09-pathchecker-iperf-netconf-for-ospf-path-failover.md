@@ -492,8 +492,22 @@ ubuntu@pathchecker:~$
 </pre>
 </div> 
 
-Start the pathchecker app by running the sample `pc_run.sh` file in the `pathchecker` repository:  
+The pc_run.sh script simply runs the pathchecker.py application with a few sample parameters:  
 
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+ubuntu@pathchecker:~$ 
+ubuntu@pathchecker:~$<mark> cat ./pathchecker/pc_run.sh </mark>
+#!/bin/bash
+
+./pathchecker.py --host 6.6.6.6 -u vagrant -p vagrant --port 830 -c 10 -o apphost -a 0 -i GigabitEthernet0/0/0/0 -s 2.2.2.2  -j 4 -l 5 -f -t 10
+ubuntu@pathchecker:~$ 
+</code>
+</pre>
+</div> 
+
+Start the pathchecker app by running the `pc_run.sh` script in the `pathchecker` repository:
 
 <div class="highlighter-rouge">
 <pre class="highlight">
@@ -575,3 +589,8 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 </code>
 </pre>
 </div> 
+
+
+**As we can see, the reference impairment script creates a packet loss of 7% on the reference link**
+
+Now look at the running pathchecker application on rtr1. It should switch to the backup link once it detects a 
