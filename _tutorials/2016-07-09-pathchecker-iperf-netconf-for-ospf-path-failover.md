@@ -465,4 +465,32 @@ UDP buffer size: 64.0 MByte (default)
 ### Start pathchecker on rtr1 (LXC)
 
 
+SSH into the pathchecker ubuntu container (already brought up as part of vagrant up process) by using port 58822 on your laptop:  
+
+Password for user "ubuntu" : **ubuntu** 
+{: .notice--info}
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:vagrant akshshar$ 
+AKSHSHAR-M-K0DS:vagrant akshshar$ ssh -p 58822 ubuntu@localhost
+The authenticity of host '[localhost]:58822 ([127.0.0.1]:58822)' can't be established.
+RSA key fingerprint is 19:54:83:a9:7a:9f:0a:18:62:d1:f3:91:87:3c:e9:0b.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '[localhost]:58822' (RSA) to the list of known hosts.
+ubuntu@localhost's password: 
+Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.14.23-WR7.0.0.2_standard x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+Last login: Mon Jul 18 15:19:45 2016 from 10.0.2.2
+ubuntu@pathchecker:~$ 
+ubuntu@pathchecker:~$ 
+ubuntu@pathchecker:~$ 
+</code>
+</pre>
+</div> 
+
+Start the pathchecker app by running the sample `pc_run.sh` file in the `pathchecker` repository
+
 
