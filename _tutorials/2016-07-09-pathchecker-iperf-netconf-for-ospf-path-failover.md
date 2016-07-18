@@ -377,7 +377,7 @@ We're all set! Let's test out our application.
 
 ## Test out pathchecker!  
 
-Before we begin, let's dump the current OSPF configuration on rtr1:  
+Before we begin, let's dump some configuration outputs on rtr1:  
 
 
 <div class="highlighter-rouge">
@@ -427,5 +427,11 @@ Routing entry for 2.2.2.2/32
 RP/0/RP0/CPU0:rtr1#
 </code>
 </pre>
-</div> 
+</div>   
+
+
+**We can see that the current OSPF cost on Gig0/0/0/1 is 20, higher than Gig0/0/0/0. Hence as the route to 2.2.2.2 (loopback 0 of rtr2) shows, the current path selected is through Gig0/0/0/0**
+{: .notice--warning}
+
+
 
