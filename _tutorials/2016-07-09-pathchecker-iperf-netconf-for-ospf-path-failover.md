@@ -640,8 +640,10 @@ Starting an iperf run.....
 </div> 
 
 
-The app initiated the failover! Let's see how the router responded:  
+The app initiated the failover! Let's see how the router responded.
 
+
+### Verify the Failover was successful
 
 <div class="highlighter-rouge">
 <pre class="highlight">
