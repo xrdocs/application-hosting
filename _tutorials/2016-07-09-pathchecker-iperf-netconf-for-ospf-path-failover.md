@@ -217,10 +217,11 @@ Install iperf and all the dependencies required to install ncclient inside the c
 sudo apt-get -y install python-pip python-lxml python-dev libffi-dev libssl-dev iperf git
 ```  
 
-Install the latest ncclient code and jinja2 code using pip (required for our app):
+Install the latest ncclient code and jinja2 code using pip (required for our app). We also downgrade the cryptography package to 1.2.1 to circumvent a current bug in the package.  
+
 
 ```shell
-sudo pip install ncclient jinja2
+sudo pip install ncclient jinja2 cryptography==1.2.1
 
 ```
 
@@ -491,6 +492,7 @@ ubuntu@pathchecker:~$
 </pre>
 </div> 
 
-Start the pathchecker app by running the sample `pc_run.sh` file in the `pathchecker` repository
+Start the pathchecker app by running the sample `pc_run.sh` file in the `pathchecker` repository:
+
 
 
