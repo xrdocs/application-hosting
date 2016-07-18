@@ -14,6 +14,7 @@ tags:
   - ospf
   - netconf
   - pathchecker
+teaser: ospf-iperf-ncclient.png
 ---
 
 {% include toc icon="table" title="Launching a Container App" %}
@@ -35,7 +36,8 @@ This series is meant to help a beginner get started with application-hosting on 
   
 *  Set up a couple of paths between two routers. Bring up OSPF neighborship on both links. One link is forced to be the reference link by increasing the ospf cost of the other link.
 
-*  Use a monitoring technique to determine the bandwidth, jitter, packet loss etc. parameters along the active traffic path. In this example, we utilize a python app called [pathchecker](https://github.com/ios-xr/pathchecker) that in turn uses iperf to measure link health.  
+*  Use a monitoring technique to determine the bandwidth, jitter, packet loss etc. parameters along the active traffic path. In this exam![ospf-iperf-ncclient.png]({{site.baseurl}}/images/ospf-iperf-ncclient.png)
+ple, we utilize a python app called [pathchecker](https://github.com/ios-xr/pathchecker) that in turn uses iperf to measure link health.  
 
 *  Simulate network degradation to force pathchecker (running inside an LXC) to initiate failover by changing the OSPF path cost over a netconf session.  
 
