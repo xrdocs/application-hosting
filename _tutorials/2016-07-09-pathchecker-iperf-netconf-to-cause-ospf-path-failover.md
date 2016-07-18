@@ -53,7 +53,7 @@ Clone the pathchecker code from here:  <https://github.com/ios-xr/pathchecker>
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-AKSHSHAR-M-K0DS:~ akshshar$ git clone https://github.com/ios-xr/pathchecker.git
+AKSHSHAR-M-K0DS:~ akshshar$<mark> git clone https://github.com/ios-xr/pathchecker.git </mark>
 Cloning into 'pathchecker'...
 remote: Counting objects: 46, done.
 remote: Compressing objects: 100% (28/28), done.
