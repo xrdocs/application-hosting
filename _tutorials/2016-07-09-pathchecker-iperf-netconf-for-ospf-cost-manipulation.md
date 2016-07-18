@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2016-07-09 23:47 -0700'
-title: 'Pathchecker:  iperf and netconf for OSPF cost manipulation'
+title: 'Pathchecker:  iperf + netconf for OSPF cost manipulation'
 position: hidden
 author: Akshat Sharma
 excerpt: OSPF path remediation using container based iperf and netconf
