@@ -507,6 +507,7 @@ ubuntu@pathchecker:~$
 </pre>
 </div> 
 
+Based on above output, the "-l" option represents the threshold for packet loss and has been set to 5% for this run. Similarly jitter
 Start the pathchecker app by running the `pc_run.sh` script in the `pathchecker` repository:
 
 <div class="highlighter-rouge">
@@ -593,4 +594,112 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 
 **As we can see, the reference impairment script creates a packet loss of 7% on the reference link**
 
-Now look at the running pathchecker application on rtr1. It should switch to the backup link once it detects a 
+Take a look at the running pathchecker application on rtr1. It should switch to the backup link once it detects an increase in packet loss beyond 5% (as specified in the pc_run.sh file):  
+
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+<mark>Currently, on reference link GigabitEthernet0/0/0/0</mark>
+Starting an iperf run.....
+20160718164745,1.1.1.1,60318,2.2.2.2,5001,6,0.0-10.0,1311240,1048992
+20160718164745,1.1.1.1,60318,2.2.2.2,5001,6,0.0-10.0,1312710,1048516
+20160718164745,2.2.2.2,5001,1.1.1.1,60318,6,0.0-573.0,1312710,18328,5.215,0,892,0.000,1
+
+bw is
+1025.5546875
+<mark>jitter is
+5.215</mark>
+pkt_loss is
+0.000
+verdict is
+True
+<mark>Woah! iperf run reported discrepancy, increase cost of reference link !
+Increasing cost of the reference link GigabitEthernet0/0/0/0</mark>
+Currently, on backup link 
+Starting an iperf run.....
+20160718164755,1.1.1.1,61649,2.2.2.2,5001,6,0.0-10.0,1311240,1048992
+20160718164755,1.1.1.1,61649,2.2.2.2,5001,6,0.0-10.0,1312710,1048577
+20160718164755,2.2.2.2,5001,1.1.1.1,61649,6,0.0-583.3,1312710,18002,1.627,0,893,0.000,0
+
+bw is
+1025.5546875
+jitter is
+1.627
+pkt_loss is
+0.000
+verdict is
+False
+<mark>Currently, on backup link</mark>
+Starting an iperf run.....
+20160718164805,1.1.1.1,59343,2.2.2.2,5001,6,0.0-10.0,1311240,1048992
+20160718164805,1.1.1.1,59343,2.2.2.2,5001,6,0.0-10.0,1312710,1048520
+20160718164805,2.2.2.2,5001,1.1.1.1,59343,6,0.0-593.4,1312710,17697,2.038,0,893,0.000,0
+</code>
+</pre>
+</div> 
+
+
+The app initiated the failover! Let's see how the router responded:  
+
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:vagrant akshshar$ ssh -p 2223 vagrant@localhost
+vagrant@localhost's password: 
+
+
+RP/0/RP0/CPU0:rtr1#
+RP/0/RP0/CPU0:rtr1#
+RP/0/RP0/CPU0:rtr1#show  running-config  router ospf
+Mon Jul 18 17:50:47.851 UTC
+router ospf apphost
+ area 0
+  interface Loopback0
+  !
+  <mark>interface GigabitEthernet0/0/0/0
+   cost 30</mark>
+  !
+  interface GigabitEthernet0/0/0/1
+   cost 20
+  !
+ !
+!
+
+RP/0/RP0/CPU0:rtr1#
+</code>
+</pre>
+</div> 
+
+**Great! The Cost of the Gig0/0/0/0 (reference) interface has been increased to 30, greater than the cost of Gig0/0/0/1. This forces the failover to happen to the Gig0/0/0/1 for the iperf traffic (or any traffic destined to rtr2).** 
+{: .notice--info}  
+
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+RP/0/RP0/CPU0:rtr1#show route 2.2.2.2
+Mon Jul 18 18:01:49.297 UTC
+
+Routing entry for 2.2.2.2/32
+  Known via "ospf apphost", distance 110, metric 21, type intra area
+  Installed Jul 18 16:47:45.705 for 01:14:03
+  Routing Descriptor Blocks
+  <mark>11.1.1.20, from 2.2.2.2, via GigabitEthernet0/0/0/1</mark>
+      Route metric is 21
+  No advertising protos. 
+RP/0/RP0/CPU0:rtr1#
+</code>
+</pre>
+</div> 
+
+**It works! The failover happened and the next hop for 2.2.2.2 (loopback0 of rtr2) is now 11.1.1.20 through Gig0/0/0/1 (the backup link).** 
+{: .notice--success}  
+
+We leave upto the reader to try impairing the backup link now and see the App switch the path back to the reference interface.
+
+
+
+
+
