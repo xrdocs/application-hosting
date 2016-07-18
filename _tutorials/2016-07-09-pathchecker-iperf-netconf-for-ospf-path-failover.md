@@ -375,5 +375,57 @@ We're all set! Let's test out our application.
 {: .notice--success}
 
 
+## Test out pathchecker!  
 
+Before we begin, let's dump the current OSPF configuration on rtr1:  
+
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:vagrant akshshar$ vagrant port rtr1
+The forwarded ports for the machine are listed below. Please note that
+these values may differ from values configured in the Vagrantfile if the
+provider supports automatic port collision detection and resolution.
+
+<mark>22 (guest) => 2223 (host)</mark>
+ 57722 (guest) => 2200 (host)
+ 58822 (guest) => 58822 (host)
+AKSHSHAR-M-K0DS:vagrant akshshar$<mark> ssh -p 2223 vagrant@localhost </mark>
+The authenticity of host '[localhost]:2223 ([127.0.0.1]:2223)' can't be established.
+RSA key fingerprint is b1:c1:5e:a5:7e:e7:c0:4f:32:ef:85:f9:3d:27:36:0f.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '[localhost]:2223' (RSA) to the list of known hosts.
+vagrant@localhost's password: 
+
+
+RP/0/RP0/CPU0:rtr1#
+RP/0/RP0/CPU0:rtr1#<mark>show  running-config  router ospf </mark>
+Mon Jul 18 15:25:53.875 UTC
+router ospf apphost
+ area 0
+  interface Loopback0
+  !
+  interface GigabitEthernet0/0/0/0
+  !
+  <mark>interface GigabitEthernet0/0/0/1
+    cost 20</mark>
+  !
+ !
+!
+
+RP/0/RP0/CPU0:rtr1#show route 2.2.2.2 
+Mon Jul 18 15:26:03.576 UTC
+
+Routing entry for 2.2.2.2/32
+  Known via "ospf apphost", distance 110, metric 2, type intra area
+  Installed Jul 18 15:18:28.218 for 00:07:35
+  Routing Descriptor Blocks
+    10.1.1.20, from 2.2.2.2, via GigabitEthernet0/0/0/0
+      Route metric is 2
+  No advertising protos. 
+RP/0/RP0/CPU0:rtr1#
+</code>
+</pre>
+</div> 
 
