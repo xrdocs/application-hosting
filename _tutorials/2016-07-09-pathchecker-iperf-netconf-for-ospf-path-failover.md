@@ -1,6 +1,6 @@
 ---
 published: true
-date: '2016-07-09 23:47 -0700'
+date: '2016-07-18 23:47 -0700'
 title: 'Pathchecker:  iperf + netconf for OSPF path failover'
 position: top
 author: Akshat Sharma
