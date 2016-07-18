@@ -351,5 +351,22 @@ Bringing machine 'rtr2' up with 'virtualbox' provider...
 
 ```  
 
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+Once everything is up, you should see the three nodes running:  
 
+AKSHSHAR-M-K0DS:vagrant akshshar$ vagrant status
+Current machine states:
+
+<mark>rtr1                      running (virtualbox)
+devbox                    running (virtualbox)
+rtr2                      running (virtualbox)</mark>
+
+This environment represents multiple VMs. The VMs are all listed
+above with their current state. For more information about a specific
+VM, run `vagrant status NAME`.
+</code>
+</pre>
+</div> 
 
