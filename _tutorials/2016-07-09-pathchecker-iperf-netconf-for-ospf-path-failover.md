@@ -439,8 +439,28 @@ RP/0/RP0/CPU0:rtr1#
 
 ### Start iperf server on rtr2  
 
-iperf was already installed on rtr2 as a native application (more on native apps here: [XR toolbox part 5: Running a native WRL7 App](https://xrdocs.github.io/application-hosting/tutorials/2016-06-17-xr-toolbox-part-5-running-a-native-wrl7-app/)
+iperf was already installed on rtr2 as a native application (more on native apps here: [XR toolbox part 5: Running a native WRL7 App](https://xrdocs.github.io/application-hosting/tutorials/2016-06-17-xr-toolbox-part-5-running-a-native-wrl7-app/)) during the `vagrant up` process. 
 
+Start iperf server on rtr2 and set it up to accept UDP packets:  
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:vagrant akshshar$<mark> vagrant ssh rtr2 </mark>
+Last login: Mon Jul 18 15:57:05 2016 from 10.0.2.2
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$<mark> iperf -s -u </mark>
+------------------------------------------------------------
+Server listening on UDP port 5001
+Receiving 1470 byte datagrams
+UDP buffer size: 64.0 MByte (default)
+------------------------------------------------------------
+
+
+
+</code>
+</pre>
+</div> 
 
 ### Start pathchecker on rtr1 (LXC)
 
