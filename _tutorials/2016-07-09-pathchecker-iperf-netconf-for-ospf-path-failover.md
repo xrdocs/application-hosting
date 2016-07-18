@@ -84,7 +84,7 @@ AKSHSHAR-M-K0DS:~ akshshar$
 
 *  Go through the Vagrant quick-start tutorial if you haven't already to learn how to use Vagrant with IOS-XR:   [IOS-XR vagrant quick-start]({{ base_path }}/tutorials/iosxr-vagrant-quickstart)  
 
-*  It would be beneficial for the user to go through the [XR Toolbox Series]({{ base_path }}/tags/#xr-toolbox). But it is not a hard requirement. Following the steps in this tutorial should work out just fine.
+*  It would be beneficial for the user to go through the [XR Toolbox Series]({{ base_path }}/tags/#xr-toolbox). But it is not a hard requirement. Following the steps in this tutorial should work out just fine for this demo.
 
 
 
