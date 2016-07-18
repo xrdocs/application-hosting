@@ -334,4 +334,22 @@ AKSHSHAR-M-K0DS:vagrant akshshar$
 
 ## Launch Router Topology
 
+To launch the two routers in the topology, make sure you are in the vagrant directory under pathchecker and issue a `vagrant up`  
+
+
+```shell
+
+AKSHSHAR-M-K0DS:vagrant akshshar$ pwd
+/Users/akshshar/pathchecker/vagrant
+AKSHSHAR-M-K0DS:vagrant akshshar$ 
+AKSHSHAR-M-K0DS:vagrant akshshar$ vagrant up
+Bringing machine 'rtr1' up with 'virtualbox' provider...
+Bringing machine 'devbox' up with 'virtualbox' provider...
+Bringing machine 'rtr2' up with 'virtualbox' provider...
+
+-------------------------------- snip output --------------------------------------
+
+```  
+
+
 
