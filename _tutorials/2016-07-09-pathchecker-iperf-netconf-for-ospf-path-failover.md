@@ -47,8 +47,11 @@ This is illustrated below:
 
 As illustrated above, there are 3 nodes in the topology:  
 
-*  **rtr1** : The router on the left. This is the origin of the traffic. We also 
-*  
+*  **rtr1** : The router on the left. This is the origin of the traffic. We run the `pathchecker` code inside an ubuntu container on this router. The path failover happens rtr1 interfaces as needed.  
+
+*  **devbox** : This node serves two purposes. We use it to create our ubuntu LXC tar ball with the `pathchecker` code before deploying it to the router. It also houses two bridge networks (one for each path) so that we can create very granular impairment on each path to test our app.  
+
+*  **rtr2** : This is the destination router. `pathchecker` uses an iperf client on rtr1 to get a health estimate of the active path. You need an iperf server running on `rtr2` for the pathchecker app to talk to.
 
 
 ## Clone the git repo  
