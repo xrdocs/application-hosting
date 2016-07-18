@@ -211,7 +211,7 @@ ubuntu@pathchecker:~$
 
 ### Install Application dependencies inside LXC
 
-Install iperf and all the dependencies required to install ncclient inside the container. We'll also install git, wil need it to fetch our app.  
+Install iperf and all the dependencies required to install ncclient inside the container. We'll also install git, will need it to fetch our app.  
 
 ```shell
 sudo apt-get -y install python-pip python-lxml python-dev libffi-dev libssl-dev iperf git
@@ -306,20 +306,21 @@ tar -czvf /vagrant/pathchecker_rootfs.tar.gz *
 ```
 
 {% capture "dir-share-text" %}
-See what we did there? We packaged up the container tar ball as nc_iperf_rootfs.tar.gz under **/vagrant** directory. Why is this important?  
-Well, Vagrant also automatically shares certain directories with your laptop (for most types of guest operating systems). So the **/vagrant** is automatically mapped to the directory in which you launched your vagrant instance. To check this, let's get out of our vagrant instance and issue an `ls` in your launch directory:  
+See what we did there? We packaged up the container tar ball as pathchecker_rootfs.tar.gz under **/vagrant** directory. Why is this important?  
+Well, Vagrant also automatically shares a certain directory with your laptop (for most types of guest operating systems). So the **/vagrant** is automatically mapped to the directory in which you launched your vagrant instance. To check this, let's get out of our vagrant instance and issue an `ls` in your launch directory:  
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
+vagrant@vagrant-ubuntu-trusty-64:~$ 
 vagrant@vagrant-ubuntu-trusty-64:~$ exit
 logout
 Connection to 127.0.0.1 closed.
-AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$ 
-AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$<mark> pwd</mark>
-/Users/akshshar/iperf_nc_dev
-AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$ ls
-Vagrantfile		<mark>nc_iperf_rootfs.tar.gz</mark>
-AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$ 
+AKSHSHAR-M-K0DS:vagrant akshshar$ 
+AKSHSHAR-M-K0DS:vagrant akshshar$<mark> pwd </mark>
+/Users/akshshar/pathchecker/vagrant
+AKSHSHAR-M-K0DS:vagrant akshshar$<mark> ls -l pathchecker_rootfs.tar.gz  </mark>
+-rw-r--r--  1 akshshar  staff  301262995 Jul 18 07:57 pathchecker_rootfs.tar.gz
+AKSHSHAR-M-K0DS:vagrant akshshar$ 
 </code>
 </pre>
 </div> 
@@ -333,37 +334,4 @@ AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$
 
 ## Launch Router Topology
 
-We've created our app and are ready to launch the 2 router topology. You'll need 2 IOS-XR routers connected over 2 back-to-back links and running OSPF on both links.  
 
-  
-To set this up, simply clone the following repository to your laptop:    
-<https://github.com/ios-xr/vagrant-xrdocs>
-
-```shell
-git clone https://github.com/ios-xr/vagrant-xrdocs  
-
-```  
-
-We are interested in the `ospf-iperf-topo/` directory under the cloned `vagrant-xrdocs` directory.   
-
-```shell
-AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$ pwd
-/Users/akshshar/vagrant-xrdocs
-AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$ cd ospf-iperf-topo/
-AKSHSHAR-M-K0DS:ospf-iperf-topo akshshar$ ls
-Vagrantfile	configs		scripts
-AKSHSHAR-M-K0DS:ospf-iperf-topo akshshar$   
-```  
-
-This section assumes you already have an IOS-XR vagrant box set up locally. If you don't, follow along here: 
-[Download and Add the IOS-XRv vagrant box](https://xrdocs.github.io/application-hosting/tutorials/iosxr-vagrant-quickstart#download-and-add-the-ios-xrv-vagrant-box)).  
-  
-Once you have an IOS-XR vagrant box, bring up the topology:  
-
-<div class="highlighter-rouge">
-<pre class="highlight">
-<code>
-  
-</code>
-</pre>
-</div>
