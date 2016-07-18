@@ -700,7 +700,7 @@ RP/0/RP0/CPU0:rtr1#
 **It works! The failover happened and the next hop for 2.2.2.2 (loopback0 of rtr2) is now 11.1.1.20 through Gig0/0/0/1 (the backup link).** 
 {: .notice--success}  
 
-We leave upto the reader to try impairing the backup link now and see the App switch the path back to the reference interface.
+We leave it upto the reader to try impairing the backup link now and see the App switch the path back to the reference interface.
 
 
 
