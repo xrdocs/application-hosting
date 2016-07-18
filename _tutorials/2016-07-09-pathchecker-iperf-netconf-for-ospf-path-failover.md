@@ -290,7 +290,7 @@ The system is going down for halt NOW!
 </div> 
 
 
-You're back on your development Vagrant instance. 
+You're back on devbox.
 {: .notice--info}  
 
 
