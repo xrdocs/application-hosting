@@ -66,6 +66,23 @@ AKSHSHAR-M-K0DS:~ akshshar$
 </div> 
 
 
+## Launch the environment  
+
+Hop into the vagrant directory and issue a `vagrant up` to bring up the entire environment:  
+
+>
+**Assumptions**:  I assume the user already has downloaded and installed the IOS-XRv vagrant box as explained in the vagrant quick-start tutorial:    
+>
+[IOS-XR vagrant box download]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#download-and-add-the-ios-xrv-vagrant-box)  
+> 
+In the end, `vagrant box list` must list your IOS-XRv vagrant box:  
+>   
+```shell
+AKSHSHAR-M-K0DS:~ akshshar$ vagrant box list
+IOS-XRv (virtualbox, 0)
+AKSHSHAR-M-K0DS:~ akshshar$ 
+ ```
+
 ## Create the Pathchecker LXC tar ball  
 
 **Warning**: B
