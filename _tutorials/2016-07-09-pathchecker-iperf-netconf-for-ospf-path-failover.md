@@ -81,7 +81,7 @@ AKSHSHAR-M-K0DS:~ akshshar$
 Hop into the vagrant directory and issue a `vagrant up` to bring up the entire environment:  
 
 {% capture assume-text %}
-**Assumptions**:  I assume the user already has downloaded and installed the IOS-XRv vagrant box as explained in the vagrant quick-start tutorial:    
+**Assumptions**:  I assume the user has already downloaded and installed the IOS-XRv vagrant box as explained in the vagrant quick-start tutorial:    
 
 [IOS-XR vagrant box download]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#download-and-add-the-ios-xrv-vagrant-box)  
 
