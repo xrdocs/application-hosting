@@ -142,28 +142,24 @@ AKSHSHAR-M-K0DS:vagrant akshshar$
 
 ## Create the Pathchecker LXC tar ball  
 
-**Warning**: B
 
 ### Launch an Ubuntu LXC inside devbox
 
-Once it's up, ssh into it and install lxc-tools:  
+SSH into "devbox":  
 
 ```shell
 
-vagrant ssh
+vagrant ssh devbox
 
-sudo apt-get install lxc 
+```
 
-```  
-
-Create  an ubuntu LXC container inside your vagrant instance:  
-
+Create the pathchecker lxc template:  
 
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
 
-vagrant@vagrant-ubuntu-trusty-64:~$ <mark> sudo lxc-create -t ubuntu --name nc_iperf </mark>
+vagrant@vagrant-ubuntu-trusty-64:~$ <mark> sudo lxc-create -t ubuntu --name pathchecker </mark>
 Checking cache download in /var/cache/lxc/trusty/rootfs-amd64 ... 
 Installing packages in template: ssh,vim,language-pack-en
 Downloading ubuntu trusty minimal ...
@@ -186,7 +182,7 @@ Password:  **ubuntu**
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo lxc-start --name nc_iperf </mark>
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo lxc-start --name pathchecker </mark>
 &lt;4&gt;init: hostname main process (3) terminated with status 1
 &lt;4&gt;init: plymouth-upstart-bridge main process (5) terminated with status 1
 &lt;4&gt;init: plymouth-upstart-bridge main process ended, respawning
@@ -194,7 +190,7 @@ vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo lxc-start --name nc_iperf </mark>
 
 Ubuntu 14.04.4 LTS nc_iperf console
 
-<mark>nc_iperf login: ubuntu</mark>
+<mark>pathchecker login: ubuntu</mark>
 <mark>Password:      </mark>
 Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-87-generic x86_64)
 
@@ -207,7 +203,7 @@ individual files in /usr/share/doc/*/copyright.
 Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
 applicable law.
 
-ubuntu@nc_iperf:~$ 
+ubuntu@pathchecker:~$ 
 </code>
 </pre>
 </div> 
@@ -218,7 +214,7 @@ ubuntu@nc_iperf:~$
 Install iperf and all the dependencies required to install ncclient inside the container. We'll also install git, wil need it to fetch our app.  
 
 ```shell
-sudo apt-get install python-pip python-lxml python-dev libffi-dev libssl-dev iperf git
+sudo apt-get -y install python-pip python-lxml python-dev libffi-dev libssl-dev iperf git
 ```  
 
 Install the latest ncclient code and jinja2 code using pip (required for our app):
@@ -229,19 +225,50 @@ sudo pip install ncclient jinja2
 ```
 
 **Perfect, all the dependencies for our app are now installed.**
-{: .notice--info}  
+{: .notice--success}  
 
 ### Fetch the application code from Github
 Fetch our app from Github:  
 
 ```shell
-ubuntu@nc_iperf:~$ git clone https://github.com/ios-xr/ospf-iperf-ncclient
-Cloning into 'ospf-iperf-ncclient'...
-remote: Counting objects: 15, done.
-remote: Total 15 (delta 0), reused 0 (delta 0), pack-reused 14
-Unpacking objects: 100% (15/15), done.
+ubuntu@pathchecker:~$ git clone https://github.com/ios-xr/pathchecker.git
+Cloning into 'pathchecker'...
+remote: Counting objects: 46, done.
+remote: Compressing objects: 100% (28/28), done.
+remote: Total 46 (delta 8), reused 0 (delta 0), pack-reused 18
+Unpacking objects: 100% (46/46), done.
 Checking connectivity... done.
+ubuntu@pathchecker:~$ 
 ```
+
+### Change SSH port inside the container
+
+When we deploy the container to IOS-XR, we will share XR's network namespace. Since IOS-XR already uses up port 22 and port 57722 for its own purposes, we need to pick some other port for our container.  
+
+**P.S. If you check the Vagrantfile, we intend to expose port 58822 to the user's laptop directly, on rtr1.**
+
+Let's change the SSH port to 58822:
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+ubuntu@pathchecker:~$<mark> sudo sed -i s/Port\ 22/Port\ 58822/ /etc/ssh/sshd_config </mark>
+ubuntu@pathchecker:~$ 
+</code>
+</pre>
+</div>  
+
+Check that your port was updated successfully:
+
+```shell
+ubuntu@pathchecker:~$ cat /etc/ssh/sshd_config | grep Port
+Port 58822
+ubuntu@pathchecker:~$ 
+```
+
+We're good!
+{: .notice--success}
+
 
 ### Package up the LXC   
 
@@ -272,9 +299,9 @@ Become root and package up your container tar ball
 ```shell
 sudo -s
 
-cd /var/lib/lxc/nc_iperf/rootfs/
+cd /var/lib/lxc/pathchecker/rootfs/
 
-tar -czvf /vagrant/nc_iperf_rootfs.tar.gz *
+tar -czvf /vagrant/pathchecker_rootfs.tar.gz *
 
 ```
 
@@ -301,25 +328,6 @@ AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$
 <div class="notice--warning">
   {{ dir-share-text | markdownify }}
 </div> 
-
-
-### Destroy devbox
-
-Now we can safely destroy our development Vagrant instance and get ready to launch the router topology.  
-
-<div class="highlighter-rouge">
-<pre class="highlight">
-<code>
-AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$<mark> vagrant destroy </mark>
-    default: Are you sure you want to destroy the 'default' VM? [y/N] y
-==> default: Forcing shutdown of VM...
-==> default: Destroying VM and associated drives...
-AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$<mark> ls </mark>
-Vagrantfile		<mark>nc_iperf_rootfs.tar.gz</mark>
-AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$ 
-</code>
-</pre>
-</div>   
 
 
 
