@@ -524,7 +524,54 @@ Starting an iperf run.....
 </div> 
 
 Perfect! The App seems to be running fine on the reference link Gig0/0/0/0.
-{: .notice--success}
+{: .notice--success}  
 
 
+### Create impairment on Active path  
 
+
+With the app running, let's scoot over to "devbox" which will also act as our impairment node.  
+
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:vagrant akshshar$<mark> vagrant ssh devbox </mark>
+Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-87-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+  System information as of Mon Jul 18 16:38:49 UTC 2016
+
+  System load:  0.0               Processes:             76
+  Usage of /:   6.3% of 39.34GB   Users logged in:       0
+  Memory usage: 32%               IP address for eth0:   10.0.2.15
+  Swap usage:   0%                IP address for lxcbr0: 10.0.3.1
+
+  Graph this data and manage this system at:
+    https://landscape.canonical.com/
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+
+Last login: Mon Jul 18 16:38:50 2016 from 10.0.2.2
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ ls
+<mark>impair_backup.sh  impair_reference.sh  stop_impair.sh</mark>
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> cat impair_reference.sh </mark>
+#!/bin/bash
+echo "Stopping all current impairments"
+sudo tc qdisc del dev eth3 root &> /dev/null
+sudo tc qdisc del dev eth4 root &> /dev/null
+echo "Starting packet loss on reference link"
+<mark>sudo tc qdisc add dev eth3 root netem loss 7% </mark>
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ <mark>./impair_reference.sh</mark>
+Stopping all current impairments
+Starting packet loss on reference link
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+</code>
+</pre>
+</div> 
