@@ -278,9 +278,9 @@ Now, shutdown the container:
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-ubuntu@nc_iperf:~$<mark> sudo shutdown -h now </mark>
-ubuntu@nc_iperf:~$ 
-Broadcast message from ubuntu@nc_iperf
+ubuntu@pathchecker:~$<mark> sudo shutdown -h now </mark>
+ubuntu@pathchecker:~$ 
+Broadcast message from ubuntu@pathchecker
 	(/dev/lxc/console) at 10:24 ...
 
 The system is going down for halt NOW!
