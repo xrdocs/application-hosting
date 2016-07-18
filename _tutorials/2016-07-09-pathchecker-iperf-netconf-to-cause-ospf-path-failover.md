@@ -76,7 +76,6 @@ Hop into the vagrant directory and issue a `vagrant up` to bring up the entire e
 [IOS-XR vagrant box download]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#download-and-add-the-ios-xrv-vagrant-box)  
 > 
 In the end, `vagrant box list` must list your IOS-XRv vagrant box:  
->   
 ```shell
 AKSHSHAR-M-K0DS:~ akshshar$ vagrant box list
 IOS-XRv (virtualbox, 0)
