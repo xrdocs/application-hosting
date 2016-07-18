@@ -370,3 +370,10 @@ VM, run `vagrant status NAME`.
 </pre>
 </div> 
 
+
+We're all set! Let's test out our application.
+{: .notice--success}
+
+
+
+
