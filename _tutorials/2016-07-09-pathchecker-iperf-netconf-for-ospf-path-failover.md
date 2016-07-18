@@ -414,14 +414,14 @@ router ospf apphost
  !
 !
 
-RP/0/RP0/CPU0:rtr1#show route 2.2.2.2 
+RP/0/RP0/CPU0:rtr1#<mark>show route 2.2.2.2 </mark>
 Mon Jul 18 15:26:03.576 UTC
 
 Routing entry for 2.2.2.2/32
   Known via "ospf apphost", distance 110, metric 2, type intra area
   Installed Jul 18 15:18:28.218 for 00:07:35
   Routing Descriptor Blocks
-    10.1.1.20, from 2.2.2.2, via GigabitEthernet0/0/0/0
+   <mark>10.1.1.20, from 2.2.2.2, via GigabitEthernet0/0/0/0</mark>
       Route metric is 2
   No advertising protos. 
 RP/0/RP0/CPU0:rtr1#
