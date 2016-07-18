@@ -41,7 +41,7 @@ This series is meant to help a beginner get started with application-hosting on 
 
 This is illustrated below:  
 
-![iperf-ospf-ncclient-topo](https://xrdocs.github.io/xrdocs-images/assets/images/ospf-iperf-ncclient.png)
+![pathchecker-topo](https://xrdocs.github.io/xrdocs-images/assets/images/ospf-iperf-ncclient.png)
 
 
 ## Create the container App (tar ball)  
