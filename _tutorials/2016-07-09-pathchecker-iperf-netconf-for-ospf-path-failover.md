@@ -54,27 +54,6 @@ As illustrated above, there are 3 nodes in the topology:
 *  **rtr2** : This is the destination router. `pathchecker` uses an iperf client on rtr1 to get a health estimate of the active path. You need an iperf server running on `rtr2` for the pathchecker app to talk to.
 
 
-## Clone the git repo  
-
-The entire environment can be replicated on any environment running vagrant provided around 9-10G RAM is available. The topology will include 2 IOS-XR routers (8G RAM) and an ubuntu instance (around 512 MB RAM).
-
-Clone the pathchecker code from here:  <https://github.com/ios-xr/pathchecker>
-
-<div class="highlighter-rouge">
-<pre class="highlight">
-<code>
-AKSHSHAR-M-K0DS:~ akshshar$<mark> git clone https://github.com/ios-xr/pathchecker.git </mark>
-Cloning into 'pathchecker'...
-remote: Counting objects: 46, done.
-remote: Compressing objects: 100% (28/28), done.
-remote: Total 46 (delta 8), reused 0 (delta 0), pack-reused 18
-Unpacking objects: 100% (46/46), done.
-Checking connectivity... done.
-AKSHSHAR-M-K0DS:~ akshshar$ 
-</code>
-</pre>
-</div> 
-
 
 ## Pre-requisites 
 
@@ -99,6 +78,66 @@ Once you have everything set up, you should be able to see the IOS-XRv vagrant b
 
 
 
+
+## Clone the git repo  
+
+The entire environment can be replicated on any environment running vagrant provided around 9-10G RAM is available. The topology will include 2 IOS-XR routers (8G RAM) and an ubuntu instance (around 512 MB RAM).
+
+Clone the pathchecker code from here:  <https://github.com/ios-xr/pathchecker>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:~ akshshar$<mark> git clone https://github.com/ios-xr/pathchecker.git </mark>
+Cloning into 'pathchecker'...
+remote: Counting objects: 46, done.
+remote: Compressing objects: 100% (28/28), done.
+remote: Total 46 (delta 8), reused 0 (delta 0), pack-reused 18
+Unpacking objects: 100% (46/46), done.
+Checking connectivity... done.
+AKSHSHAR-M-K0DS:~ akshshar$ 
+</code>
+</pre>
+</div> 
+
+
+## Spin up the devbox
+
+Before we spin up the routers, we need to create the container tar ball for the `pathchecker` code. The way I've set up the launch scripts for `rtr1`, the bringup will fail without the container tar ball in the directory.  
+
+Move to the Vagrant directory and launch only the devbox node:  
+
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:~ akshshar$ cd pathchecker/
+AKSHSHAR-M-K0DS:pathchecker akshshar$ cd vagrant/
+AKSHSHAR-M-K0DS:vagrant akshshar$ pwd
+<mark>/Users/akshshar/pathchecker/vagrant</mark>
+AKSHSHAR-M-K0DS:vagrant akshshar$<mark> vagrant up devbox </mark>
+Bringing machine 'devbox' up with 'virtualbox' provider...
+==> devbox: Importing base box 'ubuntu/trusty64'...
+
+---------------------------- snip output ---------------------------------
+
+==> devbox: Running provisioner: file...
+AKSHSHAR-M-K0DS:vagrant akshshar$ 
+AKSHSHAR-M-K0DS:vagrant akshshar$ 
+AKSHSHAR-M-K0DS:vagrant akshshar$<mark> vagrant status </mark>
+Current machine states:
+
+rtr1                      not created (virtualbox)
+<mark>devbox                    running (virtualbox)</mark>
+rtr2                      not created (virtualbox)
+
+This environment represents multiple VMs. The VMs are all listed
+above with their current state. For more information about a specific
+VM, run `vagrant status NAME`.
+AKSHSHAR-M-K0DS:vagrant akshshar$ 
+</code>
+</pre>
+</div> 
 
 
 ## Create the Pathchecker LXC tar ball  
