@@ -88,23 +88,16 @@ AKSHSHAR-M-K0DS:~ akshshar$
 
 
 
-{% capture assume-text %}
-**Assumption**:  I assume the user has already downloaded and installed the IOS-XRv vagrant box as explained in the vagrant quick-start tutorial:    
+Once you have everything set up, you should be able to see the IOS-XRv vagrant box in the `vagrant box list` command:  
 
-[IOS-XR vagrant box download]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#download-and-add-the-ios-xrv-vagrant-box)  
-
-In the end, `vagrant box list` must list your IOS-XRv vagrant box:  
 
 ```shell
   AKSHSHAR-M-K0DS:~ akshshar$ vagrant box list
   IOS-XRv (virtualbox, 0)
   AKSHSHAR-M-K0DS:~ akshshar$ 
 ```
-{% endcapture %}  
 
-<div class="notice--warning">
-{{ assume-text | markdownify }}
-</div>  
+
 
 
 
