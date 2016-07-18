@@ -80,7 +80,7 @@ In the end, `vagrant box list` must list your IOS-XRv vagrant box:
 AKSHSHAR-M-K0DS:~ akshshar$ vagrant box list
 IOS-XRv (virtualbox, 0)
 AKSHSHAR-M-K0DS:~ akshshar$ 
- ```
+```
 
 ## Create the Pathchecker LXC tar ball  
 
