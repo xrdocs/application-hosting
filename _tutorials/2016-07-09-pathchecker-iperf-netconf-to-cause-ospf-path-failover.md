@@ -44,8 +44,26 @@ This is illustrated below:
 ![pathchecker-topo](https://xrdocs.github.io/xrdocs-images/assets/images/ospf-iperf-ncclient.png)
 
 
-## Clone demo git repo  
+## Clone the git repo  
 
+The entire environment can be replicated on any environment running vagrant provided around 9-10G RAM is available. The topology will include 2 IOS-XR routers (8G RAM) and an ubuntu instance (around 512 MB RAM).
+
+Clone the pathchecker code from here:  <https://github.com/ios-xr/pathchecker>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:~ akshshar$ git clone https://github.com/ios-xr/pathchecker.git
+Cloning into 'pathchecker'...
+remote: Counting objects: 46, done.
+remote: Compressing objects: 100% (28/28), done.
+remote: Total 46 (delta 8), reused 0 (delta 0), pack-reused 18
+Unpacking objects: 100% (46/46), done.
+Checking connectivity... done.
+AKSHSHAR-M-K0DS:~ akshshar$ 
+</code>
+</pre>
+</div> 
 
 
 ## Create the Pathchecker LXC tar ball  
