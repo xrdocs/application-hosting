@@ -492,7 +492,36 @@ ubuntu@pathchecker:~$
 </pre>
 </div> 
 
-Start the pathchecker app by running the sample `pc_run.sh` file in the `pathchecker` repository:
+Start the pathchecker app by running the sample `pc_run.sh` file in the `pathchecker` repository:  
+
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+ubuntu@pathchecker:~$<mark> cd pathchecker/ </mark>
+ubuntu@pathchecker:~/pathchecker$<mark> ./pc_run.sh </mark>
+Error while opening state file, let's assume low cost state
+Currently, on reference link GigabitEthernet0/0/0/0
+Starting an iperf run.....
+20160718162513,1.1.1.1,62786,2.2.2.2,5001,6,0.0-10.0,1311240,1048992
+20160718162513,1.1.1.1,62786,2.2.2.2,5001,6,0.0-10.0,1312710,1048474
+20160718162513,2.2.2.2,5001,1.1.1.1,62786,6,0.0-10.0,1312710,1048679,2.453,0,892,0.000,1
+
+bw is
+1025.5546875
+jitter is
+2.453
+pkt_loss is
+0.000
+verdict is
+False
+Currently, on reference link GigabitEthernet0/0/0/0
+Starting an iperf run.....
+
+
+</code>
+</pre>
+</div> 
 
 
 
