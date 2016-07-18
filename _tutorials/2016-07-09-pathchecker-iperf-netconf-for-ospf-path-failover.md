@@ -76,9 +76,17 @@ AKSHSHAR-M-K0DS:~ akshshar$
 </div> 
 
 
-## Launch the environment  
+## Pre-requisites 
 
-Hop into the vagrant directory and issue a `vagrant up` to bring up the entire environment:  
+*  Make sure you have [Vagrant](https://www.vagrantup.com/downloads.html) and [Virtualbox](https://www.virtualbox.org/wiki/Downloads) installed on your system.  
+
+*  The system must have 9-10G RAM available.  
+
+*  Go through the Vagrant quick-start tutorial if you haven't already to learn how to use Vagrant with IOS-XR:   [IOS-XR vagrant quick-start]({{ base_path }}/tutorials/iosxr-vagrant-quickstart)  
+
+*  It would be beneficial for the user to go through the [XR Toolbox Series]({{ base_path }}/tags/#xr-toolbox). But it is not a hard requirement. Following the steps in this tutorial should work out just fine.
+
+
 
 {% capture assume-text %}
 **Assumption**:  I assume the user has already downloaded and installed the IOS-XRv vagrant box as explained in the vagrant quick-start tutorial:    
@@ -96,7 +104,9 @@ In the end, `vagrant box list` must list your IOS-XRv vagrant box:
 
 <div class="notice--warning">
 {{ assume-text | markdownify }}
-</div>
+</div>  
+
+
 
 ## Create the Pathchecker LXC tar ball  
 
