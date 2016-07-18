@@ -501,7 +501,7 @@ Start the pathchecker app by running the sample `pc_run.sh` file in the `pathche
 ubuntu@pathchecker:~$<mark> cd pathchecker/ </mark>
 ubuntu@pathchecker:~/pathchecker$<mark> ./pc_run.sh </mark>
 Error while opening state file, let's assume low cost state
-Currently, on reference link GigabitEthernet0/0/0/0
+<mark>Currently, on reference link GigabitEthernet0/0/0/0 </mark>
 Starting an iperf run.....
 20160718162513,1.1.1.1,62786,2.2.2.2,5001,6,0.0-10.0,1311240,1048992
 20160718162513,1.1.1.1,62786,2.2.2.2,5001,6,0.0-10.0,1312710,1048474
