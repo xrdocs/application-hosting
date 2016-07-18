@@ -35,57 +35,22 @@ This series is meant to help a beginner get started with application-hosting on 
   
 *  Set up a couple of paths between two routers. Bring up OSPF neighborship on both links. One link is forced to be the reference link by increasing the ospf cost of the other link.
 
-*  Use a monitoring technique to determine the bandwidth, jitter, latency etc. parameters along the traffic path. In this example we utilize a python app called pathchecker that in turn uses iperf to measure link health.  
+*  Use a monitoring technique to determine the bandwidth, jitter, packet loss etc. parameters along the active traffic path. In this example, we utilize a python app called `pathchecker` that in turn uses iperf to measure link health.  
 
-*  Simulate network degradation to force patchchecker (running inside an LXC) to initiate failover by changing the OSPF path cost over a netconf session.  
+*  Simulate network degradation to force pathchecker (running inside an LXC) to initiate failover by changing the OSPF path cost over a netconf session.  
 
 This is illustrated below:  
 
 ![pathchecker-topo](https://xrdocs.github.io/xrdocs-images/assets/images/ospf-iperf-ncclient.png)
 
 
-## Create the container App (tar ball)  
-
-As shown in the above figure, we intend to create an application running inside a container on IOS-XR.  
-
-We're fully aware that most users would like to run things on their own laptop as they develop applications and test them.   
-&nbsp;  
-Owing to the slightly beefy requirements of IOS-XRv vagrant instances, running more than two vagrant instances at a time may be a problem for most users.   
-So, we'll create our container app in a development vagrant instance first, save the app and then destroy the development instance before proceeding with the 2 router topology.
-{: .notice--info}  
+## Clone demo git repo  
 
 
-To start off, create a development directory of your choice where we'll spin up an Ubuntu instance for the creation of our container tar ball:  
 
-```shell
-AKSHSHAR-M-K0DS:~ akshshar$ mkdir iperf_nc_dev
-AKSHSHAR-M-K0DS:~ akshshar$ cd iperf_nc_dev/
-AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$ 
-```  
+## Create the Pathchecker LXC tar ball  
 
-### Launch the development Vagrant instance (devbox)
-Spin up a vagrant ubuntu instance:  
-
-<div class="highlighter-rouge">
-<pre class="highlight">
-<code>
-
-AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$<mark> vagrant init ubuntu/trusty64 </mark>
-A `Vagrantfile` has been placed in this directory. You are now
-ready to `vagrant up` your first virtual environment! Please read
-the comments in the Vagrantfile as well as documentation on
-`vagrantup.com` for more information on using Vagrant.
-AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$ 
-AKSHSHAR-M-K0DS:iperf_nc_dev akshshar$<mark> vagrant up </mark>
-Bringing machine 'default' up with 'virtualbox' provider...
-==> default: Importing base box 'ubuntu/trusty64'...
-==> default: Matching MAC address for NAT networking...
-==> default: Checking if box 'ubuntu/trusty64' is up to date...
------------------------------- snip output ------------------------------------
-</code>
-</pre>
-</div> 
-
+**Warning**: B
 
 ### Launch an Ubuntu LXC inside devbox
 
