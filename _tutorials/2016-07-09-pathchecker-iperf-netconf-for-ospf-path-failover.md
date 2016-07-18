@@ -375,11 +375,14 @@ We're all set! Let's test out our application.
 {: .notice--success}
 
 
+
+
+
 ## Test out pathchecker!  
 
 Before we begin, let's dump some configuration outputs on rtr1:  
 
-
+### Check current OSPF cost/path state
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
@@ -431,7 +434,15 @@ RP/0/RP0/CPU0:rtr1#
 
 
 **We can see that the current OSPF cost on Gig0/0/0/1 is 20, higher than Gig0/0/0/0. Hence as the route to 2.2.2.2 (loopback 0 of rtr2) shows, the current path selected is through Gig0/0/0/0**
-{: .notice--warning}
+{: .notice--warning}  
+
+
+### Start iperf server on rtr2  
+
+iperf was already installed on rtr2 as a native application (more on native apps here: [XR toolbox part 5: Running a native WRL7 App](https://xrdocs.github.io/application-hosting/tutorials/2016-06-17-xr-toolbox-part-5-running-a-native-wrl7-app/)
+
+
+### Start pathchecker on rtr1 (LXC)
 
 
 
