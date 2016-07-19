@@ -508,7 +508,7 @@ ubuntu@pathchecker:~$
 </pre>
 </div> 
 
-Based on above output, the "-l" option represents the threshold for packet loss and has been set to 5% for this run. Similarly jitter
+Based on above output, the "-l" option represents the threshold for packet loss and has been set to 5% for this run. Similarly,  jitter has a threshold value of 4.
 Start the pathchecker app by running the `pc_run.sh` script in the `pathchecker` repository:
 
 <div class="highlighter-rouge">
@@ -700,9 +700,4 @@ RP/0/RP0/CPU0:rtr1#
 **It works! The failover happened and the next hop for 2.2.2.2 (loopback0 of rtr2) is now 11.1.1.20 through Gig0/0/0/1 (the backup link).** 
 {: .notice--success}  
 
-We leave it upto the reader to try impairing the backup link now and see the App switch the path back to the reference interface.
-
-
-
-
-
+We leave it upto the reader to try and impair the backup link now and see the App switch the path back to the reference interface.
