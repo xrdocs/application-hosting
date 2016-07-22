@@ -35,8 +35,8 @@ take a look at the rest of the ["XR toolbox" series]({{ base_path }}/tags/#xr-to
 {: .notice--info}
 
 ## Pre-requisites:
-* [Vagrant](https://www.vagrantup.com/downloads.html) for your Operating System.
-* [Virtualbox](https://www.virtualbox.org/wiki/Downloads) for your Operating System.
+* [Vagrant](https://www.vagrantup.com/downloads.html) for your Operating System. 1.8+
+* [Virtualbox](https://www.virtualbox.org/wiki/Downloads) for your Operating System. 5.1+
 * A laptop with atleast 4-5G free RAM. (Each XR vagrant instance uses upto 4G RAM, so plan ahead based on the number of XR nodes you want to run)
 
 
