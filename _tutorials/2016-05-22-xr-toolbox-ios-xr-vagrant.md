@@ -65,7 +65,7 @@ To get the API-KEY and a CCO-ID, browse to the following link and follow the ste
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-$ BOXURL="http://devhub.cisco.com/artifactory/appdevci-release/XRv64/latest/iosxrv-fullk9-x64.box"
+$ BOXURL="https://devhub.cisco.com/artifactory/appdevci-release/XRv64/latest/iosxrv-fullk9-x64.box"
 
 $ curl <b><mark>-u your-cco-id:API-KEY</mark></b> $BOXURL --output ~/iosxrv-fullk9-x64.box
 
