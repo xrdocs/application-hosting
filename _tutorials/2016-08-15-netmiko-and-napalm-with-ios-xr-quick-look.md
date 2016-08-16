@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 date: '2016-08-15 10:25 +0300'
 title: 'Netmiko and Napalm with IOS-XR: Quick Look'
 author: Mike Korshunov
