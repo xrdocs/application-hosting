@@ -77,7 +77,7 @@ $ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
 Of course, you should replace  your-cco-id with your actual Cisco.com ID and API-KEY with the key you generated and copied using the above [link]({{ site.url }}/getting-started/steps-download-iosxr-vagrant).
 {: .notice--danger}
 
-The `vagrant box add` command will take around 10-15 mins as it downloads the box for you.
+The `curl` command will take around 10-15 mins as it downloads the box for you. If it happens pretty quickly then it probably means you still don't have access and you can check the downloaded box file to see if it is a vagrant box (about 1.8G) or a simple "unauthorized" html document. 
 {: .notice--info}
 
 Once it completes, you should be able to see the box added as "IOS-XRv" in your local vagrant box list:
