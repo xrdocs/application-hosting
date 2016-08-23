@@ -62,7 +62,7 @@ To get the API-KEY and a CCO-ID, browse to the following link and follow the ste
 [Steps to Generate API-KEY]({{ site.url }}/getting-started/steps-download-iosxr-vagrant)
 {: .notice--danger}
 
-#### Pick the latest (run with scissors)
+### Pick the latest (run with scissors)
 
 If you're feeling adventurous, pick the latest version of the XR vagrant box as shown below.
 Bear in mind, there maybe bugs and you are free to ask us questions and/or raise issues on our github repo:
@@ -81,7 +81,7 @@ $ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
 </pre>
 </div>
 
-#### Pick the last stable version
+### Pick the last stable version
 
 The last stable version of XR vagrant was 6.1.1.These images have been out for a while, and should work well. Pick this if you'd rather play it safe.
 
