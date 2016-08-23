@@ -67,7 +67,7 @@ To get the API-KEY and a CCO-ID, browse to the following link and follow the ste
 If you're feeling adventurous, pick the latest version of the XR vagrant box as shown below.
 Bear in mind, there maybe bugs and you are free to ask us questions and/or raise issues on our github repo:
 
-https://github.com/xrdocs/application-hosting/issues
+><https://github.com/xrdocs/application-hosting/issues>
 
 <div class="highlighter-rouge">
 <pre class="highlight">
