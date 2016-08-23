@@ -81,7 +81,7 @@ $ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
 </pre>
 </div>
 
-#### Pick the Last stable version
+#### Pick the last stable version
 
 The last stable version of XR vagrant was 6.1.1.These images have been out for a while, and should work well. Pick this if you'd rather play it safe.
 
