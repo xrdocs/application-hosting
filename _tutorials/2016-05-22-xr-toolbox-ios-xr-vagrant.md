@@ -62,6 +62,12 @@ To get the API-KEY and a CCO-ID, browse to the following link and follow the ste
 [Steps to Generate API-KEY]({{ site.url }}/getting-started/steps-download-iosxr-vagrant)
 {: .notice--danger}
 
+#### Pick the latest (run with scissors)
+
+If you're feeling adventurous, pick the latest version of the XR vagrant box as shown below.
+Bear in mind, there maybe bugs and you are free to ask us questions and/or raise issues on our github repo:
+
+https://github.com/xrdocs/application-hosting/issues
 
 <div class="highlighter-rouge">
 <pre class="highlight">
@@ -75,8 +81,26 @@ $ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
 </pre>
 </div>
 
+#### Pick the Last stable version
+
+The last stable version of XR vagrant was 6.1.1.These images have been out for a while, and should work well. Pick this if you'd rather play it safe.
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+$ BOXURL="https://devhub.cisco.com/artifactory/appdevci-release/XRv64/6.1.1/iosxrv-fullk9-x64.box"
+
+$ curl <b><mark>-u your-cco-id:API-KEY</mark></b> $BOXURL --output ~/iosxrv-fullk9-x64.box
+
+$ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
+</code>
+</pre>
+</div>
+
+
 Of course, you should replace  your-cco-id with your actual Cisco.com ID and API-KEY with the key you generated and copied using the above [link]({{ site.url }}/getting-started/steps-download-iosxr-vagrant).
 {: .notice--danger}
+
 
 The `curl` command will take around 10-15 mins as it downloads the box for you. If it happens pretty quickly then it probably means you still don't have access and you can check the downloaded box file to see if it is a vagrant box (about 1.8G) or a simple "unauthorized" html document. 
 {: .notice--info}
