@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 date: '2016-08-22 18:29 -0400'
 title: Using Puppet with IOS-XR 6.1.1
 author: Sushrut Shirole
@@ -10,7 +10,7 @@ tags:
   - cisco
   - linux
   - Puppet
-permalink: /tutorials/IOSXR-Puppet/
+permalink: /tutorials/2016-08-22-using-puppet-with-iosxr-6-1-1
 ---
 {% include toc icon="table" title="IOS-XR: Puppet" %}
 
