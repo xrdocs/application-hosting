@@ -3,7 +3,7 @@ permalink: /tutorials/IOSXR-Ansible
 author: Mike Korshunov
 excerpt: Getting started with IOSXR and Ansible playbooks
 published: true
-title: 'IOS-XR: Ansible and Vagrant'
+title: Using Ansible with IOS-XR 6.1.1
 date: '2016-05-31 22:18 +0530'
 tags:
   - vagrant
@@ -11,6 +11,7 @@ tags:
   - cisco
   - linux
   - Ansible
+  - xr toolbox
 ---
 
 {% include toc icon="table" title="IOS-XR: Ansible and Vagrant" %}
