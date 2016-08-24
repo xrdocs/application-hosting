@@ -67,6 +67,13 @@ Richard Wellum:
   bio         : "Technical Leader, Cisco."
   twitter     : "XRvCiscoRich"
 
+Sushrut Shirole:
+  name        : "Sushrut Shirole"
+  github      : "sushirol"
+  email       : "sushirol@cisco.com"
+  avatar      : "sushirol_bio.jpeg"
+  bio         : "Software Engineer, Cisco."
+  
 Cisco Web Team:
   name        : "Cisco Web Team"
   uri         : "https://developer.cisco.com/site/ios-xr"
