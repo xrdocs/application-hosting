@@ -10,6 +10,7 @@ tags:
   - cisco
   - linux
   - Puppet
+  - xr toolbox
 permalink: /tutorials/2016-08-22-using-puppet-with-iosxr-6-1-1
 ---
 {% include toc icon="table" title="IOS-XR: Puppet" %}
