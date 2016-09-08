@@ -18,7 +18,7 @@ tags:
 
 
 
-## Introduction
+# Introduction
 The goal of this tutorial is to set up an environment that is identical for Windows, Linux or Mac-OSX users.   
 So instead of setting up Ansible directly on the User's Desktop/Host, we simply spin up an Ubuntu vagrant instance to host our Ansible playbooks and environment. Let's call it **devbox**. We'll do a separate tutorial on using Ansible directly on Mac-OSX/Windows.
 {: .notice--info}  
