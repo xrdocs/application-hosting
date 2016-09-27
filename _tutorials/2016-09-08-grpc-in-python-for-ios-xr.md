@@ -13,7 +13,7 @@ The goal of this tutorial is to set up gRPC in Python to send gRPC commands to a
 >
 [XR Toolbox Series]({{ base_path }}/tags/#xr-toolbox)
 
-## Pre-requisites
+## Prerequisites
 
 Before we begin, let's make sure you've set up your development environment.
 If you haven't checked it out, go through the "App-Development Topology" tutorial here:  
@@ -33,7 +33,7 @@ If you've reached the end of the above tutorial, you should be able to issue `va
 
 ## Installing gRPC on the devbox 
 
-First log into the devbox
+First login to the devbox
 
 ```shell
 vagrant ssh devbox
@@ -46,7 +46,7 @@ sudo apt-get update
 sudo apt-get -y install python-dev python-pip git
 ```
 
-Now that we have installed the developer tools, lets install gRPC for Python on the box.
+Now that we have installed the developer tools, let's install gRPC for Python on the box.
 
 ```shell
 sudo pip install grpcio
@@ -141,11 +141,11 @@ There is an example call already created. We can find it in the examples folder.
 ```shell
 cd examples
 ```
-Lets first understand the json file we are going to use. The json below is based off the yang model provided by Cisco: <https://github.com/YangModels/yang/blob/master/vendor/cisco/xr/611/Cisco-IOS-XR-ipv4-bgp-cfg.yang>. 
+Let's first understand the json file we are going to use. The JSON below is based off the YANG model provided by Cisco: <https://github.com/YangModels/yang/blob/master/vendor/cisco/xr/611/Cisco-IOS-XR-ipv4-bgp-cfg.yang>. 
 
-You can walk through the heirachy using pyang, and create a json model similar to the example below. <https://github.com/mbj4668/pyang/wiki/TreeOutput>
+You can walk through the hierachy using [pyang](https://github.com/mbj4668/pyang), and create a JSON model similar to the example below. <https://github.com/mbj4668/pyang/wiki/TreeOutput>
 
-This json model is for a bgp cfg. We can see that it is defining a bgp instance and a single neighbor.
+This JSON model is for a BGP configuration. We can see that it is defining a BGP instance and a single neighbor.
 
 ```shell
 vagrant@vagrant-ubuntu-trusty-64:/vagrant/ios-xr-grpc-python/examples$ cat snips/bgp_start.json
@@ -220,7 +220,7 @@ vagrant@vagrant-ubuntu-trusty-64:/vagrant/ios-xr-grpc-python/examples$ cat snips
 }
 ```
 
-Now let's use the client, there is a python example that uses the client called grpc_cfg.py. There are 5 helper functions. The init creates a gRPC client object, then there are 4 other functions, each using a different method in gRPC for IOS-XR. They read in a json file and pass it to the gRPC server for configs.
+Now let's use the client. There is a Python example that uses the client called grpc_cfg.py. There are 5 helper functions. The init creates a gRPC client object, then there are 4 other functions, each using a different method in gRPC for IOS-XR. They read in a JSON file and pass it to the gRPC server for configs.
 
 ```python
 '''
@@ -260,7 +260,7 @@ class Example:
 
 ```
 
-**Note the fields in the client are the ip address of the router, the port, a timeout, the username, and password**
+**Note the fields in the client are the IP address of the router, the port, a timeout, the username, and password.**
 
 Let's start with using the python interpreter to import the Example class and initialize it.
 
@@ -273,7 +273,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>> example = Example()
 ```
 
-We are going to start with a replace config, to add a base BGP config using the json file we looked at earlier.
+We are going to start with a replace config, to add a base BGP config using the JSON file we looked at earlier.
 
 ```shell
 >>> example.replace()
@@ -286,8 +286,8 @@ Now let's use a get request to see what is on the router.
 >>> example.get()
 ```
 
-If this worked correctly you should see the json file we looked at, and the resopnse from the get should be identical 
-Now let's use a merge request to add another neighbor with the second json file.
+If this worked correctly you should see the JSON file we looked at, and the response from the get should be identical 
+Now let's use a merge request to add another neighbor with the second JSON file.
 
 ```shell
 >>> example.merge()
@@ -301,6 +301,6 @@ At this point you can see how gRPC is easy to use to get, replace, and merge con
 
 We are done with this tutorial, feel free to change the path variable and experiment to see what you can do. Some useful links below:
 
-[gRPC getting started](https://github.com/CiscoDevNet/grpc-getting-started)
+[gRPC Getting Started](https://github.com/CiscoDevNet/grpc-getting-started)
 
 [Getting Started With OpenConfig](https://github.com/CiscoDevNet/openconfig-getting-started)
