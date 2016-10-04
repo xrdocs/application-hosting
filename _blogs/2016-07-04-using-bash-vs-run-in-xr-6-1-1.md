@@ -1,5 +1,5 @@
 ---
-published: true
+published: false
 date: '2016-07-04 01:39 -0700'
 title: Using "bash" over "run" in IOS-XR 6.1.1
 author: Akshat Sharma
@@ -20,5 +20,3 @@ This cannot be an isolated architectural process. We need to listen to our custo
 With IOS-XR 6.1.1, we bring about a number of usability enhancements that I'd like to be able to discuss over several blog posts.  
 
 In this blog, we'd like to cover
-
-
