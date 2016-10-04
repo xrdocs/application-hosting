@@ -540,7 +540,7 @@ RP/0/RP0/CPU0:ios#
 
 We can see here there are currently no static routes except for 0.0.0.0/0. You may see some routes other than this, as Solenoid is running and adding routes constantly to the RIB. 
 
-Now leave this screen up, open a new tab in your terminal and jump into the Solenoid container. Remember when we [changed the ssh port of the container](#change-the-SSH-port-inside-the-container)? Now we will use that port to SSH directly from our CLI into the Solenoid container. 
+Now leave this screen up, open a new tab in your terminal and jump into the Solenoid container. Remember when we [changed the ssh port of the container](#change-the-ssh-port-inside-the-container)? Now we will use that port to SSH directly from our CLI into the Solenoid container. 
 
 Password : ubuntu 
 {: .notice--info}
