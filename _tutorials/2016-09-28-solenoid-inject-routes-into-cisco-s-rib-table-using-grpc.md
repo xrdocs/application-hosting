@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 date: '2016-09-28 16:17 -0700'
 title: 'Solenoid: inject routes into Cisco''s RIB table using gRPC'
 author: Lisa Roach
@@ -56,7 +56,7 @@ IOS XRv         (virtualbox, 0)
 
 ## Understand the Topology
 
-![image-center](https://xrdocs.github.io/xrdocs-images/assets/images/SolenoidDiagram.png){: .align-center}
+![image-center](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/SolenoidDiagram.png){: .align-center}
 
 - **devbox**: The Ubuntu Vagrant box on the right. This is running exaBGP and is peered with the xrv router to its left. exaBGP is sending out 3 BGP neighbor announcements and withdrawals about every 2 seconds.
 
@@ -474,18 +474,18 @@ After completing the initial `vagrant up`, the application is already up and run
 
 `localhost:57780`
 
-![image-center](https://xrdocs.github.io/xrdocs-images/assets/images/solenoid-browser.png){: .align-center}
+![image-center](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/solenoid-browser.png){: .align-center}
 
 Here you will see the routes being added and withdrawn from the IOS-XRv's RIB table. 
 
 These routes are the routes that are being automatically sent and withdrawn from the exaBGP instance running in your devbox. 
 
 Currently there is no filtering enabled, but feel free to add prefixes or prefix ranges to the filtering file. This file acts as a **whitelist**, so by adding a prefix or prefix range, all other prefixes will be dropped. 
-![image-center](https://xrdocs.github.io/xrdocs-images/assets/images/solenoid-filtering1.png){: .align-center}
+![image-center](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/solenoid-filtering1.png){: .align-center}
 
 For example, add the prefix range `1.1.1.0/24-2.2.2.0/24` to the filtering. Now watch as the `3.3.3.0/24` network never gets added to the RIB table, because it has been filtered out. 
 
-![image-center](https://xrdocs.github.io/xrdocs-images/assets/images/solenoid-filtering2.png){: .align-center}
+![image-center](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/solenoid-filtering2.png){: .align-center}
 
 To view the application running on the box, reference the instructions below on how to navigate the vagrant environment.
 
