@@ -12,7 +12,7 @@ tags:
   - containers
   - xr toolbox
 position: top
-excerpt: Launch a Container app (LXC) on IOS-XR
+excerpt: Launch a Container app (LXC) on IOS XR
 ---
 
 {% include toc icon="table" title="Launching a Container App" %}
@@ -28,9 +28,9 @@ If you haven't checked out the earlier parts to the XR toolbox Series, then you 
 [XR Toolbox Series]({{ base_path }}/tags/#xr-toolbox)
 
   
-The purpose of this series is simple. Get users started with an IOS-XR setup on their laptop and incrementally enable them to try out the application-hosting infrastructure on IOS-XR.
+The purpose of this series is simple. Get users started with an IOS XR setup on their laptop and incrementally enable them to try out the application-hosting infrastructure on IOS XR.
 
-In this part, we explore how a user can build and deploy their own container (LXC) based applications on IOS-XR.
+In this part, we explore how a user can build and deploy their own container (LXC) based applications on IOS XR.
 
 
 ## Pre-requisites
@@ -46,7 +46,7 @@ Follow the instructions to get your topology up and running as shown below:
 ![app dev topo](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/app_dev_topology.png)
 
 
-If you've reached the end of the above tutorial, you should be able to issue a `vagrant status` in the `vagrant-xrdocs/lxc-app-topo-bootstrap` directory to see a rtr (IOS-XR) and a devbox (Ubuntu/trusty) instance running.  
+If you've reached the end of the above tutorial, you should be able to issue a `vagrant status` in the `vagrant-xrdocs/lxc-app-topo-bootstrap` directory to see a rtr (IOS XR) and a devbox (Ubuntu/trusty) instance running.  
 
 <div class="highlighter-rouge">
 <pre class="highlight">
@@ -76,10 +76,10 @@ All good? Perfect. Let's start building our container application tar ball.
 >
 <img src="https://raw.githubusercontent.com/xrdocs/xrdocs-images/gh-pages/assets/tutorial-images/mkorshun/hosted_apps/01_workflow_app_hosting.png" width="400" height="400" />{:.align-right}
 >
-**The figure on the right illustrates the basic steps to undertake to launch an lxc container on IOS-XR 6.0+**:  
+**The figure on the right illustrates the basic steps to undertake to launch an lxc container on IOS XR 6.0+**:  
 >
 *  We will build the container rootfs tar ball on our devbox (see topology above)
-*  The rootfs tar ball will then be transferred to IOS-XR
+*  The rootfs tar ball will then be transferred to IOS XR
 *  The rootfs will  be launched on the underlying hypervisor using the virsh command in XR shell.
 {: .notice}  
 
@@ -305,7 +305,7 @@ ubuntu@xr-lxc-app:~$
 
 ### Change SSH port inside your container
 
-When we deploy the container to IOS-XR, we will share XR's network namespace. Since IOS-XR already uses up port 22 and port 57722 for its own purposes, we need to pick some other port for our container.  
+When we deploy the container to IOS XR, we will share XR's network namespace. Since IOS XR already uses up port 22 and port 57722 for its own purposes, we need to pick some other port for our container.  
 
 **Our recommendation? - Pick some port in the 58xxx range.**
 {: .notice--info}  
@@ -390,13 +390,14 @@ total 119984
 
 ## Create LXC SPEC XML File
 
-We need to create an XML file that will define different parameters (cpu, mem, rootfs location etc.) for the container launch on IOS-XR (which uses libvirt).
+We need to create an XML file that will define different parameters (cpu, mem, rootfs location etc.) for the container launch on IOS XR (which uses libvirt).
 On the devbox, use your favorite editor (vi, nano, pico etc.) to create a new file called   
 `xr-lxc-app.xml` under `/home/vagrant` of the devbox with the following content:  
 
-```html
+```xml
 <domain type='lxc' xmlns:lxc='http://libvirt.org/schemas/domain/lxc/1.0' >
 <name>xr-lxc-app</name>
+<resource><partition>/machine/tp_app/lxc</partition></resource>
 <memory>327680</memory>
 <os>
 <type>exe</type>
@@ -425,24 +426,35 @@ On the devbox, use your favorite editor (vi, nano, pico etc.) to create a new fi
 >
 A couple of configuration knobs seem interesting in the above XML file:  
 >
-*  The netns (network namespace) setting:  
+*  The resource setting:
 >
-   ```html
-   `<sharenet type='netns' value='global-vrf'/>`;
+   ```xml
+   <resource><partition>/machine/tp_app/lxc</partition></resource>
    ```
 >
-   In IOS-XR the **'global-vrf' network namespace houses all the XR Gig/Mgmt interfaces that are 
+   Each IOS XR platform defines control groups (cgroups) that specify the total resources (CPUs,
+   disk space, etc.) that can safely be consumed in total by all apps running on this platform.
+   This entry enrolls your app into the appropriate cgroup to ensure that it runs as a 
+   well-behaved application on the target IOS XR platform.
+>
+*  The netns (network namespace) setting:  
+>
+   ```xml
+   <sharenet type='netns' value='global-vrf'/>;
+   ```
+>
+   In IOS XR, the **'global-vrf' network namespace houses all the XR Gig/Mgmt interfaces that are 
    in the global/default VRF.** The sharenet setting above makes sure that the container on launch 
    will also have access to all of XR's interfaces natively 
 >
 *  The rootfs mount volume:  
 >
-   ```html
-   `<source dir='/misc/app_host/xr-lxc-app/'/>`;
+   ```xml
+   <source dir='/misc/app_host/xr-lxc-app/'/>;
    ```
 >
-   **/misc/app_host/ in IOS-XR is a special mount volume** that is designed to provide nearly 3.9G 
-   of Disk space on IOS-XRv and varying amounts on other platforms (NCS5508, ASR9k) etc. This 
+   **/misc/app_host/ in IOS XR is a special mount volume** that is designed to provide nearly 3.9G 
+   of Disk space on IOS XRv and varying amounts on other platforms (NCS5508, ASR9k) etc. This 
    mount volume may be used to host custom container rootfs and other large files without using up 
    XR's disk space. **In this case we expect the rootfs to be untarred in the 
    /misc/app_host/xr-lxc-app/ directory**
@@ -466,13 +478,13 @@ root@vagrant-ubuntu-trusty-64:~#
 ## Transfer rootfs and XML file to XR
 
 We can either use the XR Gig or Mgmt interface to transfer the files.
-IOS-XR runs openssh in the linux environment on port 57722.  
+IOS XR runs openssh in the linux environment on port 57722.  
 
 >
-We need to transfer the files to the **/misc/app_host** volume on IOS-XR.
+We need to transfer the files to the **/misc/app_host** volume on IOS XR.
 However, /misc/app_host is owned by root and root access over SSH is not allowed, for obvious security reasons.  
 >
-Hence, to enable the transfer of custom files to IOS-XR, we provide a `/misc/app_host/scratch` directory which is owned by the app_host group. Any user transferring files over SSH to this directory must be part of the app_host group to have access.The user `vagrant` is already part of the app_host group.
+Hence, to enable the transfer of custom files to IOS XR, we provide a `/misc/app_host/scratch` directory which is owned by the app_host group. Any user transferring files over SSH to this directory must be part of the app_host group to have access.The user `vagrant` is already part of the app_host group.
 {: .notice--info}
 
 **Transfer using the Gig interface:**  
@@ -484,13 +496,13 @@ Hence, to enable the transfer of custom files to IOS-XR, we provide a `/misc/app
 scp -P 57722 /home/vagrant/xr-lxc-app-rootfs.tar.gz vagrant@11.1.1.10:/misc/app_host/scratch/
 scp -P 57722 /home/vagrant/xr-lxc-app.xml vagrant@11.1.1.10:/misc/app_host/scratch/
 ```  
-Where 11.1.1.10 is the directly connected Gig0/0/0/0 interface of IOS-XR instance (this config was explained in the [XR Toolbox, Part 3: App Development Topology]({{ base_path }}/tutorials/2016-06-06-xr-toolbox-app-development-topology) tutorial).  
+Where 11.1.1.10 is the directly connected Gig0/0/0/0 interface of IOS XR instance (this config was explained in the [XR Toolbox, Part 3: App Development Topology]({{ base_path }}/tutorials/2016-06-06-xr-toolbox-app-development-topology) tutorial).  
 
-**But this process might be slow since Gig interfaces in the Vagrant IOS-XR image are rate-limited.**
+**But this process might be slow since Gig interfaces in the Vagrant IOS XR image are rate-limited.**
   
 **Transfer using the Mgmt interface**  
 
-Vagrant forwards the port 57722 to some host port for IOS-XR over the management port. In Virtualbox, the IP address of the host (your laptop) is always 10.0.2.2 for the NAT'ed port.
+Vagrant forwards the port 57722 to some host port for IOS XR over the management port. In Virtualbox, the IP address of the host (your laptop) is always 10.0.2.2 for the NAT'ed port.
 
 So determine the forwarded port for port 57722 for XR on your laptop shell (in a separate window):
 
@@ -525,7 +537,7 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 
 ## Untar rootfs under /misc/app_host/
 
-Let's hop onto the IOS-XR instance.  
+Let's hop onto the IOS XR instance.  
 
 ```shell
 AKSHSHAR-M-K0DS:lxc-app-topo-bootstrap akshshar$ vagrant ssh rtr
@@ -576,7 +588,7 @@ Ignore the "Operation not permitted" messages when you untar. These are harmless
 
 Now we use the XML file that we transferred to `/misc/app_host/scratch` to launch our container.
 
-libvirtd is the daemon running on IOS-XR to help launch LXC containers. The client for libvirtd (virsh) is made available in the XR linux shell to interact with the libvirtd daemon.
+libvirtd is the daemon running on IOS XR to help launch LXC containers. The client for libvirtd (virsh) is made available in the XR linux shell to interact with the libvirtd daemon.
 {: .notice--info}
 
 To list the current running containers:  
@@ -902,5 +914,5 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 </div>
 
 
-There you have it! iperf running inside an Ubuntu Container on IOS-XR. Too many steps to look up? In our next tutorial, we look at automating all of the  steps needed to bring up a container using an Ansible Playbook: **[IOS-XR: Ansible based LXC deployment]({{ base_path }}/tutorials/2016-06-08-ios-xr-ansible-container-deployment/)**
+There you have it! iperf running inside an Ubuntu Container on IOS XR. Too many steps to look up? In our next tutorial, we look at automating all of the  steps needed to bring up a container using an Ansible Playbook: **[IOS-XR: Ansible based LXC deployment]({{ base_path }}/tutorials/2016-06-08-ios-xr-ansible-container-deployment/)**
 {: .notice--success}
