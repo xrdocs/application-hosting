@@ -432,10 +432,13 @@ A couple of configuration knobs seem interesting in the above XML file:
    <resource><partition>/machine/tp_app/lxc</partition></resource>
    ```
 >
-   Each IOS XR platform defines control groups (cgroups) that specify the total resources (CPUs,
-   disk space, etc.) that can safely be consumed in total by all apps running on this platform.
-   This entry enrolls your app into the appropriate cgroup to ensure that it runs as a 
-   well-behaved application on the target IOS XR platform.
+   In IOS XR 6.1.1+, each IOS XR platform defines control groups (cgroups) that specify the
+   total resources (CPUs, disk space, etc.) that can safely be consumed in total by all apps
+   running on this platform. This entry enrolls your app into the appropriate cgroup to ensure
+   that it runs as a well-behaved application on the target IOS XR platform.
+>
+   These cgroups are not defined in IOS XR 6.0.x; in this case you should omit this line of XML
+   and it is up to you as a user to avoid oversubscribing your system. {: .notice--warning} 
 >
 *  The netns (network namespace) setting:  
 >
@@ -445,7 +448,10 @@ A couple of configuration knobs seem interesting in the above XML file:
 >
    In IOS XR, the **'global-vrf' network namespace houses all the XR Gig/Mgmt interfaces that are 
    in the global/default VRF.** The sharenet setting above makes sure that the container on launch 
-   will also have access to all of XR's interfaces natively 
+   will also have access to all of XR's interfaces natively.
+>
+   The `'global-vrf'` network namespace is present in IOS XR 6.0.2+ and 6.1.1+. In IOS XR 6.0.1 and
+   earlier, you must use the namespace `'tpnns'` instead.{: .notice--warning} 
 >
 *  The rootfs mount volume:  
 >
