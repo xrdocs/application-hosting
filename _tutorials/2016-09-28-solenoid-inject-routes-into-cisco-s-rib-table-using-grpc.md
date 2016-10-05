@@ -3,9 +3,7 @@ published: true
 date: '2016-09-28 16:17 -0700'
 title: 'Solenoid: inject routes into Cisco''s RIB table using gRPC'
 author: Lisa Roach
-excerpt: >-
-  This tutorial shows how to build the Solenoid application for injecting
-  third-party BGP routes in Cisco's RIB table.
+excerpt: This tutorial shows how to build the Solenoid application for injecting third-party BGP routes in Cisco's RIB table.
 tags:
   - vagrant
   - iosxr
