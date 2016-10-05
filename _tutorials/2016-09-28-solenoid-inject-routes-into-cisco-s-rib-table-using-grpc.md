@@ -19,11 +19,11 @@ If you haven’t checked out the XR toolbox Series, then you can do so here:
 
 This series is meant to help a beginner get started with application-hosting on IOS-XR.
 
-In this tutorial we intend to utilize almost all the techniques learnt in the above series to inject third-party BGP routes into Cisco's RIB table.
+In this tutorial we intend to utilize almost all the techniques learned in the above series to inject third-party BGP routes into Cisco's RIB table.
 
 ### How Solenoid Works
 
-This tutorial focuses on hosting the Solenoid application on IOS-XR, but following is a brief desccription of how Solenoid works. 
+This tutorial focuses on hosting the Solenoid application on IOS-XR, but following is a brief description of how Solenoid works. 
 
 For the demos Solenoid uses [exaBGP](https://github.com/Exa-Networks/exabgp) as a third-party BGP software. exaBGP will be running on an Ubuntu vagrant box as well as in a third-party container on the IOS-XR (see [Understand the Topology](#understand-the-topology) for more information). The two boxes form a BGP neighbor relationship.
 
@@ -34,7 +34,7 @@ When exaBGP in the IOS-XR container hears a neighborhood update (either an annou
 
 Make sure you have [Vagrant](https://www.vagrantup.com/downloads.html) and [Virtualbox](https://www.virtualbox.org/wiki/Downloads) installed on your system.
 
-The system must have  4.5GB of space available. The topology includes on IOS-XRv router (3.5G RAM) and an Ubuntu instance (501MB RAM).
+The system must have  4.5GB of space available. The topology includes an IOS-XRv router (3.5G RAM) and an Ubuntu instance (501MB RAM).
 
 Go through the Vagrant quick-start tutorial, if you haven’t already, to learn how to use Vagrant with IOS-XR: [IOS-XR vagrant quick-start]({{ base_path }}/application-hosting/tutorials/iosxr-vagrant-quickstart)
 
@@ -86,7 +86,7 @@ lisroach@LISROACH-M-J0AY ~/Workspace>
 
 ## Spin up the Ubuntu devbox
 
-Before we spin up the routers, we can create the container tar ball for the Solenoid code. The way the launch scripts are setup for xrv, you can launch the vagrant boxes without creating a new Solenoid tar ball (since one with the latest release will be downloaded for you automatically). But if you interested in the absolute latest code, or are interested in the process for your own education, follow the steps below to create your own Solenoid tar ball. If you are not interested, skip to [Launch router topology](#launch-router-topology).
+Before we spin up the routers, we can create the container tarball for the Solenoid code. The way the launch scripts are setup for xrv, you can launch the vagrant boxes without creating a new Solenoid tarball (since one with the latest release will be downloaded for you automatically). But if you interested in the absolute latest code, or are interested in the process for your own education, follow the steps below to create your own Solenoid tarball. If you are not interested, skip to [Launch router topology](#launch-router-topology).
 
 Move into the vagrant directory and launch only the devbox node:
 <div class="highlighter-rouge">
@@ -130,7 +130,7 @@ vagrant@vagrant-ubuntu-trusty-64:~$ sudo screen -r exabgp
 </pre>
 </div>
 
-## Create Solenoid LXC tar ball
+## Create Solenoid LXC tarball
 
 Enter the devbox:
 <div class="highlighter-rouge">
@@ -313,7 +313,7 @@ For more information about the router.ini file, please consult [Solenoid's Wiki]
 
 When we deploy the container to IOS-XR, we will share XR’s network namespace. Since IOS-XR already uses up port 22 and port 57722 for its own purposes, we need to pick some other port for our container.
 
-**P.S. If you check the Vagrantfile, we intend to expose port 58822 to the user’s laptop directly, on xrv.**
+**P.S. If you check the Vagrantfile, we intend to expose port 58822 to the user’s laptop directly, on IOS-XRv.**
 
 Let’s change the SSH port to 58822:	
 
@@ -363,7 +363,7 @@ init: cron main process (383) killed by TERM signal
 You’re back on the devbox.  
 {: .notice--success}
 
-Become root and package up your tar ball:
+Become root and package up your tarball:
 
 <div class="highlighter-rouge">
 <pre class="highlight">
@@ -375,7 +375,7 @@ root@vagrant-ubuntu-trusty-64:~# tar -czvf /vagrant/solenoid.tgz *
 </pre>
 </div>
 
-See what we did there? We packaged up the container tar ball as `solenoid.tgz` under `/vagrant` directory. Why is this important?  
+See what we did there? We packaged up the container tarball as `solenoid.tgz` under `/vagrant` directory. Why is this important?  
 Well, Vagrant also automatically shares a certain directory with your laptop (for most types of guest operating systems). So the `/vagrant` is automatically mapped to the directory in which you launched your vagrant instance. To check this, let’s get out of our vagrant instance and issue an ls in your launch directory:
 <div class="highlighter-rouge">
 <pre class="highlight">
@@ -395,7 +395,7 @@ lisroach@LISROACH-M-J0AY ~/W/S/vagrant> ls -la solenoid.tgz
 </div>
 {: .notice--info}
 
-Now you have your solenoid tar ball! This will be used to launch the container on your xrv. If you did not create this tarball, the Vagrantfile is smart enough to grab the container from the internet.  
+Now you have your solenoid tarball! This will be used to launch the container on your IOS-XRv. If you did not create this tarball, the Vagrantfile is smart enough to grab the container from the internet.  
 {: .notice--success}
 
 ## Launch router topology
