@@ -83,12 +83,12 @@ $ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
 
 ### Pick the last stable version
 
-The last stable version of XR vagrant was 6.1.1.These images have been out for a while, and should work well. Pick this if you'd rather play it safe.
+The last stable version of XR vagrant was 6.1.2.These images have been out for a while, and should work well. Pick this if you'd rather play it safe.
 
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-$ BOXURL="https://devhub.cisco.com/artifactory/appdevci-release/XRv64/6.1.1/iosxrv-fullk9-x64.box"
+$ BOXURL="https://devhub.cisco.com/artifactory/appdevci-release/XRv64/6.1.2/iosxrv-fullk9-x64.box"
 
 $ curl <b><mark>-u your-cco-id:API-KEY</mark></b> $BOXURL --output ~/iosxrv-fullk9-x64.box
 
