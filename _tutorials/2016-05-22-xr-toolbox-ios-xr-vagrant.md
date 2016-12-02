@@ -36,7 +36,13 @@ take a look at the rest of the ["XR toolbox" series]({{ base_path }}/tags/#xr-to
 {: .notice--info}
 
 ## Pre-requisites:
-* [Vagrant](https://www.vagrantup.com/downloads.html) for your Operating System. 1.8+
+* [Vagrant](https://www.vagrantup.com/downloads.html) for your Operating System. 1.8+  
+   
+      
+        
+**There is currently a bug in vagrant version 1.8.7 causing a failure in `vagrant box add` on Mac OSX. Either follow the workaround as specified here: <https://github.com/mitchellh/vagrant/issues/7997> or downgrade to Vagrant version 1.8.6**
+{: .notice--danger}    
+
 * [Virtualbox](https://www.virtualbox.org/wiki/Downloads) for your Operating System. 5.1+
 * A laptop with atleast 4-5G free RAM. (Each XR vagrant instance uses upto 4G RAM, so plan ahead based on the number of XR nodes you want to run)
 
