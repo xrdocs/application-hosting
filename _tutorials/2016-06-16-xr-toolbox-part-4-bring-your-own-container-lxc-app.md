@@ -579,6 +579,23 @@ Now we use the XML file that we transferred to `/misc/app_host/scratch` to launc
 libvirtd is the daemon running on IOS-XR to help launch LXC containers. The client for libvirtd (virsh) is made available in the XR linux shell to interact with the libvirtd daemon.
 {: .notice--info}
 
+
+To perform the virsh client commands, you will need to be root. In order to properly source the right environment variables for the virsh commands to connect to the libvirtd daemon, use the "-i" flag with "sudo" when becoming root.    
+
+
+
+Become root:
+
+```shell
+xr-vm_node0_RP0_CPU0:~$ sudo -i
+xr-vm_node0_RP0_CPU0:~$
+
+```
+
+The "vagrant" user is already a part of the sudoers group, so you won't be asked for the sudo password. But when you create your own users, expect the password prompt to show up.
+{: .notice--info}
+
+
 To list the current running containers:  
 
 ```shell
