@@ -91,11 +91,13 @@ The two topologies in use are shown below:
 
 
 ![vagrant docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/vagrant_docker_topo.png)  
-{: .notice--warning}
+{: .notice}
   
     
 ![NCS5500 docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/ncs5500_docker_topo.png)    
-{: .notice--warning}
+{: .notice}  
+  
+  
 
 
 
