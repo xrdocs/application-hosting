@@ -350,4 +350,3 @@ You're all set! You can now use this topology to build applications (native-WRL7
 {: .notice--success}  
 
 Head over to Part 4 of the XR Toolbox series where we create and bring up a container (LXC) app on IOS-XR ---> [Bring your own Container (LXC) App]({{ base_path }}/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/).
-
