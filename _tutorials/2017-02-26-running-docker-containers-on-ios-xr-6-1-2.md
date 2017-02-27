@@ -33,7 +33,10 @@ In this part, we explore how a user can spin up Docker containers on IOS-XR. The
 
 *  **Pull docker images from dockerhub**: Set up reachability from your router (Virtual or physical) to the internet (or specifically to dockerhub: <https://hub.docker.com>).  
 
-*  **Pull docker images from a local registry**:  
+*  **Pull docker images from a private "secure" registry**: Just set up reachability to your private registry set up with a certificate obtained from a CA. We won't really tackle this scenario separately in this tutorial - once you know how to gain access to dockerhub, the workflow will be similar.  
+  
+*  **Pull docker images from a private "insecure" registry**: Some users may choose to do this, specially if they're running a local docker registry on 
+Assuming you're running a local insecure registry, modify `/etc/syconfig/docker` on the router (inside the XR container) to set up access to it. Else "secure" it by creating 
 
 *  **Spin up a docker image from a tarball image**:  
 
