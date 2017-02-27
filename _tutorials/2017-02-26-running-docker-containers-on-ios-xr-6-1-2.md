@@ -78,7 +78,24 @@ AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$
 
 On the other hand, if you have an NCS5500 lying around (don't we all?), then load up a 6.1.2+ image on the router and connect an Ubuntu server (for the purpose of this tutorial), to the Management network of the router.
 
-The server needs to be reachable.
+The server needs to be reachable from the router over the Management network.
+
+
+
+## Understand the topology
+
+The topology I'm using differs slightly between the vagrant setup and the NCS5508 setup I have.
+This is owing to the fact that the Management port of the vagrant IOS-XR box is used up in the NAT network. So to show equivalence between the two setups, I directly connect the Gig0/0/0/0 interface of Vagrant ios-xrv64 with eth1 of the devbox as shown in the Vagrantfile.  
+
+The two topologies in use are shown below:  
+
+
+![vagrant docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/vagrant_docker_topo.png)  
+  
+    
+![NCS5500 docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/ncs5500_docker_topo.png)    
+
+
 
 
 
