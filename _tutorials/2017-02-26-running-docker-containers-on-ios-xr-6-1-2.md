@@ -31,14 +31,24 @@ The purpose of this series is simple. Get users started with an IOS-XR setup on 
 
 In this part, we explore how a user can spin up Docker containers on IOS-XR. There are multiple ways to do this and we'll explore each one:  
 
-*  **Pull docker images from dockerhub**: Set up reachability from your router (Virtual or physical) to the internet (or specifically to dockerhub: <https://hub.docker.com>).  
+*  **Dockerhub**: Set up reachability from your router (Virtual or physical) to the internet (or specifically to dockerhub: <https://hub.docker.com>).  
 
-*  **Pull docker images from a private "secure" registry**: Just set up reachability to your private registry set up with a certificate obtained from a CA. We won't really tackle this scenario separately in this tutorial - once you know how to gain access to dockerhub, the workflow will be similar.  
+*  **Private "secure" registry**: Just set up reachability to your private registry set up with a certificate obtained from a CA. We won't really tackle this scenario separately in this tutorial - once you know how to gain access to dockerhub, the workflow will be similar.  
   
-*  **Pull docker images from a private "insecure" registry**: Some users may choose to do this, specially if they're running a local docker registry on 
-Assuming you're running a local insecure registry, modify `/etc/syconfig/docker` on the router (inside the XR container) to set up access to it. Else "secure" it by creating 
+*  **Private "insecure" registry**: Some users may choose to do this, specially if they're running a local docker registry inside a secured part of their network.  
+   
+*  **Private "self-signed" registry**: This is more secure than the "insecure" setup, and allows a user to enable TLS.
+    
+*  **Tarball image/container**:  This is the simplest setup - very similar to LXC deployments. In this case, a user may create and set up a container completely off-box, package it up as an image or a container tar ball, transfer it to the router and then load/import it, before running.  
 
-*  **Spin up a docker image from a tarball image**:  
+
+For each case, we will compare IOS-XR running as a Vagrant box with IOS-XR running on a physical box (NCS5500). They should be identical, except for reachability through their Management ports.
 
 
 
+
+
+
+   
+   
+   
