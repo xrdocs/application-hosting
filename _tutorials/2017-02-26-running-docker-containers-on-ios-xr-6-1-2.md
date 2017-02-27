@@ -84,7 +84,7 @@ The server needs to be reachable from the router over the Management network.
 
 ## Understand the topology
 
-The topology I'm using differs slightly between the vagrant setup and the NCS5508 setup I have.
+The topology I'm using differs slightly between the vagrant setup and the NCS5508 setup.
 This is owing to the fact that the Management port of the vagrant IOS-XR box is used up in the NAT network. So to show equivalence between the two setups, I directly connect the Gig0/0/0/0 interface of Vagrant ios-xrv64 with eth1 of the devbox as shown in the Vagrantfile.  
 
 The two topologies in use are shown below:  
@@ -97,6 +97,8 @@ The two topologies in use are shown below:
 ![NCS5500 docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/ncs5500_docker_topo.png)    
 {: .notice}  
   
+  
+
   
 
 
