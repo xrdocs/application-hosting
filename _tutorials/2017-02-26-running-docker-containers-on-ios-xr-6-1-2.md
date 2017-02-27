@@ -126,11 +126,11 @@ In this case, the devbox must be provisioned by the user. On an ubuntu devbox, d
   
     
     
-Perfect! Now we're all set. Let's begin by setting up an ubuntu docker container through a dockerhub pull!
+Perfect! Now we're all set. Before we begin, let's understand the docker daemon/client setup inside IOS-XR.
 {: .notice--success}  
   
   
-  
+##   
   
 
   
