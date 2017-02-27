@@ -101,7 +101,7 @@ The two topologies in use are:
   
 ## Install docker-engine on the devbox
 
-## Vagrant setup
+### Vagrant setup
 For the Vagrant setup, you will see a script called `docker_install.sh` under the scripts folder:  
 
 ```shell
@@ -118,13 +118,19 @@ AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$
 This is the vagrant provisioner for the devbox and will install docker-engine on boot (vagrant up).  
 
 
-## NCS5508 setup
+### NCS5508 setup
 
 In this case, the devbox must be provisioned by the user. On an ubuntu devbox, docker-engine can be installed by following the instructions at:  
   
 ><https://docs.docker.com/engine/installation/linux/ubuntu/>  
-
-
+  
+    
+    
+Perfect! Now we're all set. Let's begin by setting up an ubuntu docker container through a dockerhub pull!
+{: .notice--success}  
+  
+  
+  
   
 
   
