@@ -42,8 +42,43 @@ In this part, we explore how a user can spin up Docker containers on IOS-XR. The
 *  **Tarball image/container**:  This is the simplest setup - very similar to LXC deployments. In this case, a user may create and set up a container completely off-box, package it up as an image or a container tar ball, transfer it to the router and then load/import it, before running.  
 
 
-For each case, we will compare IOS-XR running as a Vagrant box with IOS-XR running on a physical box (NCS5500). They should be identical, except for reachability through the Management ports.
+For each case, we will compare IOS-XR running as a Vagrant box with IOS-XR running on a physical box (NCS5500). They should be identical, except for reachability through the Management ports.  
+  
+  
+## Pre-requisite  
 
+### Vagrant IOS-XR box
+
+If you're bringing up the topology on your laptop using the IOS-XR vagrant box, then:
+
+* Meet the pre-requisites specified in the [IOS-XR Vagrant Quick Start guide: Pre-requisites]({{ base_path }}/tutorials/iosxr-vagrant-quickstart#pre-requisites).   
+The topology here will require about 5G RAM and 2 cores on the user's laptop.
+* Clone the following repository: <https://github.com/ios-xr/vagrant-xrdocs>, before we start.
+
+```shell
+cd ~/
+git clone https://github.com/ios-xr/vagrant-xrdocs.git
+cd vagrant-xrdocs/
+```  
+
+You will notice a few directories. We will utilize the `docker-app-topo-bootstrap` directory in this tutorial.
+{: .notice--info}
+
+```shell
+AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$ pwd
+/Users/akshshar/vagrant-xrdocs
+AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$ ls docker-app-topo-bootstrap/
+Vagrantfile	configs		scripts
+AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$ 
+
+```
+
+
+### Physical (NCS5500 router)  
+
+On the other hand, if you have an NCS5500 lying around (don't we all?), then load up a 6.1.2+ image on the router and connect an Ubuntu server (for the purpose of this tutorial), to the Management network of the router.
+
+The server needs to be reachable.
 
 
 
