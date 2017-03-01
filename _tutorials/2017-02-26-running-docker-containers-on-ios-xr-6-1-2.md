@@ -126,20 +126,28 @@ In this case, the devbox must be provisioned by the user. On an ubuntu devbox, d
   
     
     
-Perfect! Now we're all set. Before we begin, let's understand the docker daemon/client setup inside IOS-XR.
+Perfect! Now we're all set with the topology. Before we begin, let's understand the docker daemon/client setup inside IOS-XR.
 {: .notice--success}  
   
   
-##   
+## Docker Daemon support on IOS-XR
+
+If you haven't already gone through the basic overview on the application hosting infrastructure on XR, I would urge you to have a quick read:  
+  
+><{{ base_path }}/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/>  
   
 
+From the above article it becomes fairly clear that internally the IOS-XR architecture involves a Host layer running the libvirtd daemon and IOS-XR runs as an LXC spawned using the daemon.  
+
+Further, the "virsh" client is provided within the XR LXC, so that a user may have client level access to the daemon while sitting inside the XR LXC itself.  
   
+  
+The Docker client/daemon setup follows the exact same principle as shown below:  
 
 
 
 
 
 
-   
-   
-   
+
+
