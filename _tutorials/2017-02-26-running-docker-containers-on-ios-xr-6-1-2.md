@@ -161,11 +161,63 @@ This is openssh running in the XR linux environment. Users may choose to keep th
 In 6.1.2, only global-vrf (default vrf) is supported in the linux environment for SSH and apps. Post 6.2.11, support for Mgmt vrfs in the linux shell will be brought in.
 {: .notice-warning} 
 
-To enable SSH access in the XR linux shell, we'll take two steps:
+To enable SSH access in the XR linux shell for a sudo user, we'll take 3 steps:
 
-*  Create a non-root user. This is important. For security reasons, root user access over SSH (SSH in the linux shell) is disabled.
+*  Create a non-root user. This is important. For security reasons, root user access over SSH (SSH in the linux shell) is disabled. Only the root XR user can create new (sudo or non-sudo) users, so use the "bash" cli to get into the shell:
 
 ```
+RP/0/RP0/CPU0:ncs5508#
+RP/0/RP0/CPU0:ncs5508#bash
+Mon Mar  6 06:16:01.391 UTC
+
+[ncs5508:~]$
+[ncs5508:~]$adduser cisco
+Login name for new user []:cisco
+
+User id for cisco [ defaults to next available]:
+
+Initial group for cisco [users]:
+
+Additional groups for cisco []:sudo
+
+cisco's home directory [/home/cisco]:
+
+cisco's shell [/bin/bash]:
+
+cisco's account expiry date (MM/DD/YY) []:
+
+OK, Im about to make a new account. Heres what you entered so far:
+New login name: cisco
+New UID: [Next available]
+Initial group: users
+/usr/sbin/adduser: line 68: [: -G: binary operator expected
+Additional groups: sudo
+Home directory: /home/cisco
+Shell: /bin/bash
+Expiry date: [no expiration]
+This is it... if you want to bail out, you'd better do it now.
+
+Making new account...
+useradd: user 'cisco' already exists
+Changing the user information for cisco
+Enter the new value, or press ENTER for the default
+	Full Name []: 
+	Room Number []: 
+	Work Phone []: 
+	Home Phone []: 
+	Other []: 
+Enter new UNIX password: 
+Retype new UNIX password: 
+passwd: password updated successfully
+Done...
+[ncs5508:~]$
+
+```
+
+*  Enable the "sudo" group permissions in /etc/sudoers
+
+```
+
 
 
 ```
