@@ -414,7 +414,8 @@ On your vagrant box, there are two ways to get access to the docker client:
    
    Use either `vagrant ssh rtr` or `ssh -p 2222 vagrant@localhost` to drop into the XR linux shell
    
-   **Username: vagrant
+   **Username: vagrant  
+   
    Password: vagrant** 
    {: .notice--warning}  
     
