@@ -242,5 +242,7 @@ On your vagrant box, there are two ways to get access to the docker client:
     </pre>
     </div> 
     
+    
+    
 
 ### NCS5508 setup
