@@ -80,51 +80,6 @@ On the other hand, if you have an NCS5500 lying around (don't we all?), then loa
 
 The server needs to be reachable from the router over the Management network.
 
-
-
-## Understand the topology
-
-The topology I'm using differs slightly between the vagrant setup and the NCS5508 setup.
-This is owing to the fact that the Management port of the vagrant IOS-XR box is used up in the NAT network. So to show equivalence between the two setups, I directly connect the Gig0/0/0/0 interface of Vagrant ios-xrv64 with eth1 of the devbox as shown in the figure below.  
-
-The two topologies in use are:  
-
-
-![vagrant docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/vagrant_docker_topo.png)  
-{: .notice}
-  
-    
-![NCS5500 docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/ncs5500_docker_topo.png)    
-{: .notice}  
-  
-  
-  
-## Install docker-engine on the devbox
-
-### Vagrant setup
-For the Vagrant setup, you will see a script called `docker_install.sh` under the scripts folder:  
-
-```shell
-AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ pwd
-/Users/akshshar/vagrant-xrdocs/docker-app-topo-bootstrap
-AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ ls
-Vagrantfile	configs		scripts
-AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ ls scripts/
-apply_config.sh		docker_install.sh
-AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ 
-
-```
-
-This is the vagrant provisioner for the devbox and will install docker-engine on boot (vagrant up).  
-
-
-### NCS5508 setup
-
-In this case, the devbox must be provisioned by the user. On an ubuntu devbox, docker-engine can be installed by following the instructions at:  
-  
-><https://docs.docker.com/engine/installation/linux/ubuntu/>  
-  
-    
 Further, we're going to enable SSH access in XR CLI and in  XR linux shell to achieve an equivalence between the NCS5508 and Vagrant setup.  
 
 #### Enable SSH access in the XR CLI
@@ -324,6 +279,49 @@ root
 ```
 
 
+## Understand the topology
+
+The topology I'm using differs slightly between the vagrant setup and the NCS5508 setup.
+This is owing to the fact that the Management port of the vagrant IOS-XR box is used up in the NAT network. So to show equivalence between the two setups, I directly connect the Gig0/0/0/0 interface of Vagrant ios-xrv64 with eth1 of the devbox as shown in the figure below.  
+
+The two topologies in use are:  
+
+
+![vagrant docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/vagrant_docker_topo.png)  
+{: .notice}
+  
+    
+![NCS5500 docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/ncs5500_docker_topo.png)    
+{: .notice}  
+  
+  
+  
+## Install docker-engine on the devbox
+
+### Vagrant setup
+For the Vagrant setup, you will see a script called `docker_install.sh` under the scripts folder:  
+
+```shell
+AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ pwd
+/Users/akshshar/vagrant-xrdocs/docker-app-topo-bootstrap
+AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ ls
+Vagrantfile	configs		scripts
+AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ ls scripts/
+apply_config.sh		docker_install.sh
+AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ 
+
+```
+
+This is the vagrant provisioner for the devbox and will install docker-engine on boot (vagrant up).  
+
+
+### NCS5508 setup
+
+In this case, the devbox must be provisioned by the user. On an ubuntu devbox, docker-engine can be installed by following the instructions at:  
+  
+><https://docs.docker.com/engine/installation/linux/ubuntu/>  
+  
+    
 
 Perfect! Now we're all set with the topology and SSH access. Before we begin, let's understand the docker daemon/client setup inside IOS-XR.
 {: .notice--success}  
