@@ -155,6 +155,7 @@ Can we verify this?
 
 ### Vagrant setup 
 
+#### Docker Client Access: 
 On your vagrant box, there are two ways to get access to the docker client:
 
 *  Drop into the "bash" shell from XR CLI. Using "bash" ensures that the correct environment 
@@ -172,7 +173,7 @@ On your vagrant box, there are two ways to get access to the docker client:
     these values may differ from values configured in the Vagrantfile if the
     provider supports automatic port collision detection and resolution.
 
-        22 (guest) => 2223 (host)
+  <mark>22 (guest) => 2223 (host)</mark>
      57722 (guest) => 2222 (host)
     AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ 
     AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ 
@@ -199,6 +200,6 @@ On your vagrant box, there are two ways to get access to the docker client:
     </pre>
     </div> 
 
-*  
+*  Drop directly into the Linux shell over SSH (port 57722)
 
 ### NCS5508 setup
