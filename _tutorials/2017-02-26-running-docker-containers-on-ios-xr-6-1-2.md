@@ -449,4 +449,4 @@ On your vagrant box, there are two ways to get access to the docker client:
 
 ### NCS5508 Setup Docker Client Access.
 
-If you
+If you followed the steps in the pre-requisite section above : [Pre-requisites](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#physical-ncs5500-router)
