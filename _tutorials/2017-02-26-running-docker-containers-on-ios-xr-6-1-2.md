@@ -158,7 +158,7 @@ Can we verify this?
 #### Docker Client Access: 
 On your vagrant box, there are two ways to get access to the docker client:
 
-*  Drop into the "bash" shell from XR CLI. Using "bash" ensures that the correct environment 
+*  **Drop into the "bash" shell from XR CLI:** Using "bash" ensures that the correct environment 
    variables are sourced to gain access to the Docker Daemon on the host:   
 
    **Password for the XR CLI:   vagrant**
@@ -209,14 +209,14 @@ On your vagrant box, there are two ways to get access to the docker client:
     {: .notice--warning}  
       
       
-*  Drop directly into the Linux shell over SSH (port 57722):  
+*  **Drop directly into the Linux shell over SSH (port 57722):**  
 
    From the above output for `vagrant port rtr`, the port 57722 on XR (running openssh in the XR linux shell) is accessible via port 2222 on the host machine (laptop):  
    
    Use either `vagrant ssh rtr` or `ssh -p 2222 vagrant@localhost` to drop into the XR linux shell
    
-   Username: vagrant
-   Password: vagrant  
+   **Username: vagrant
+   Password: vagrant** 
    {: .notice--warning}  
     
     
