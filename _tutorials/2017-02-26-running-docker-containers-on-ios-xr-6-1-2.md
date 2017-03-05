@@ -352,9 +352,7 @@ The Docker client/daemon setup follows the exact same principle as shown below. 
 
 Can we verify this?
 
-### Vagrant setup 
-
-#### Docker Client Access: 
+### Vagrant setup Docker Client Access: 
 On your vagrant box, there are two ways to get access to the docker client:
 
 *  **Drop into the "bash" shell from XR CLI:** Using "bash" ensures that the correct environment 
@@ -446,7 +444,7 @@ On your vagrant box, there are two ways to get access to the docker client:
     
     
 
-### NCS5508 setup
+### NCS5508 Setup Docker Client Access.
 
 The physical setup works in much the same way. Let us first set up SSH access in the same way as our Vagrant box.
 
