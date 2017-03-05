@@ -165,145 +165,144 @@ To enable SSH access in the XR linux shell for a sudo user, we'll take 3 steps:
 
 *  Enable the "sudo" group permissions in /etc/sudoers
 
-Open up /etc/sudoers using vi in the XR bash shell and uncomment the following line:
+   Open up /etc/sudoers using vi in the XR bash shell and uncomment the following line:
 
-```
-# %sudo ALL=(ALL) ALL
-```
+   ```
+   # %sudo ALL=(ALL) ALL
+   ```
 
-Save and exit (:wq in vi).  
+   Save and exit (:wq in vi).  
 
-*  Create a non-root user. This is important. For security reasons, root user access over SSH (SSH in the linux shell) is disabled. Only the root XR user can create new (sudo or non-sudo) users, so use the "bash" cli to get into the shell:
+*  Create a non-root user. This is important. For security reasons, root user access over SSH (SSH    in the linux shell) is disabled. Only the root XR user can create new (sudo or non-sudo) users,    so use the "bash" cli to get into the shell:
 
-```
-RP/0/RP0/CPU0:ncs5508#
-RP/0/RP0/CPU0:ncs5508#bash
-Mon Mar  6 06:16:01.391 UTC
+   ```
+   RP/0/RP0/CPU0:ncs5508#
+   RP/0/RP0/CPU0:ncs5508#bash
+   Mon Mar  6 06:16:01.391 UTC
+  
+   [ncs5508:~]$
+   [ncs5508:~]$adduser cisco
+   Login name for new user []:cisco
 
-[ncs5508:~]$
-[ncs5508:~]$adduser cisco
-Login name for new user []:cisco
+   User id for cisco [ defaults to next available]:
 
-User id for cisco [ defaults to next available]:
+   Initial group for cisco [users]:
 
-Initial group for cisco [users]:
+   Additional groups for cisco []:sudo
 
-Additional groups for cisco []:sudo
+   cisco's home directory [/home/cisco]:
 
-cisco's home directory [/home/cisco]:
+   cisco's shell [/bin/bash]:
 
-cisco's shell [/bin/bash]:
+   cisco's account expiry date (MM/DD/YY) []:
 
-cisco's account expiry date (MM/DD/YY) []:
+   OK, Im about to make a new account. Heres what you entered so far:
+   New login name: cisco
+   New UID: [Next available]
+   Initial group: users
+   /usr/sbin/adduser: line 68: [: -G: binary operator expected
+   Additional groups: sudo
+   Home directory: /home/cisco
+   Shell: /bin/bash
+   Expiry date: [no expiration]
+   This is it... if you want to bail out, you'd better do it now.
 
-OK, Im about to make a new account. Heres what you entered so far:
-New login name: cisco
-New UID: [Next available]
-Initial group: users
-/usr/sbin/adduser: line 68: [: -G: binary operator expected
-Additional groups: sudo
-Home directory: /home/cisco
-Shell: /bin/bash
-Expiry date: [no expiration]
-This is it... if you want to bail out, you'd better do it now.
+   Making new account...
+   useradd: user 'cisco' already exists
+   Changing the user information for cisco
+   Enter the new value, or press ENTER for the default
+	   Full Name []: 
+	   Room Number []: 
+	   Work Phone []: 
+	   Home Phone []: 
+	   Other []: 
+   Enter new UNIX password: 
+   Retype new UNIX password: 
+   passwd: password updated successfully
+   Done...
+   [ncs5508:~]$
 
-Making new account...
-useradd: user 'cisco' already exists
-Changing the user information for cisco
-Enter the new value, or press ENTER for the default
-	Full Name []: 
-	Room Number []: 
-	Work Phone []: 
-	Home Phone []: 
-	Other []: 
-Enter new UNIX password: 
-Retype new UNIX password: 
-passwd: password updated successfully
-Done...
-[ncs5508:~]$
-
-```
+   ```
 
 
 
 *  Finally enable SSH access by starting the sshd_operns service:  
 
-```
-[ncs5508:~]$service sshd_operns start
-Mon Mar 6 06:21:53 UTC 2017 /etc/init.d/sshd_operns: Waiting for OPERNS interface creation...
-Mon Mar 6 06:21:53 UTC 2017 /etc/init.d/sshd_operns: Press ^C to stop if needed.
-Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: Found nic, Mg0_RP0_CPU0_0
-Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: Waiting for OPERNS management interface creation...
-Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: Found nic, Mg0_RP0_CPU0_0
-Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: OPERNS is ready
-Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: Start sshd_operns
-Starting OpenBSD Secure Shell server: sshd
-  generating ssh RSA key...
-  generating ssh ECDSA key...
-  generating ssh DSA key...
-  generating ssh ED25519 key...
-[ncs5508:~]$
-```
+   ```
+   [ncs5508:~]$service sshd_operns start
+   Mon Mar 6 06:21:53 UTC 2017 /etc/init.d/sshd_operns: Waiting for OPERNS interface creation...
+   Mon Mar 6 06:21:53 UTC 2017 /etc/init.d/sshd_operns: Press ^C to stop if needed.
+   Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: Found nic, Mg0_RP0_CPU0_0
+   Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: Waiting for OPERNS management interface      creation...
+   Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: Found nic, Mg0_RP0_CPU0_0
+   Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: OPERNS is ready
+   Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: Start sshd_operns
+   Starting OpenBSD Secure Shell server: sshd
+     generating ssh RSA key...
+     generating ssh ECDSA key...
+     generating ssh DSA key...
+     generating ssh ED25519 key...
+   [ncs5508:~]$
+   ```
 
-Check that the sshd_operns service is now listening on port 57722 in the global-vrf network namespace:  
+   Check that the sshd_operns service is now listening on port 57722 in the global-vrf network        namespace:  
 
-netns_identify utility is to check which network namespace a process is in. `$$` gets the pid of the current shell. In the output below, tpnns is a symbolic link of  global-vrf. So they both mean the same thing - XR default VRF mapped to a network namespace in linux. All XR interfaces in the default(global) vrf will appear in the linux shell in this network namespace. Issuing an `ifconfig` will show up these interfaces.
-{: .notice--info}
-
-
-```shell
-
-[ncs5508:~]$netns_identify $$
-tpnns
-global-vrf
-[ncs5508:~]$netstat -nlp | grep 57722
-tcp        0      0 0.0.0.0:57722           0.0.0.0:*               LISTEN      622/sshd        
-tcp6       0      0 :::57722                :::*                    LISTEN      622/sshd        
-[ncs5508:~]$
-[ncs5508:~]$ifconfig
-Mg0_RP0_CPU0_0 Link encap:Ethernet  HWaddr 80:e0:1d:00:fc:ea  
-          inet addr:11.11.11.59  Mask:255.255.255.0
-          inet6 addr: fe80::82e0:1dff:fe00:fcea/64 Scope:Link
-          UP RUNNING NOARP MULTICAST  MTU:1514  Metric:1
-          RX packets:3830 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:4 errors:0 dropped:0 overruns:0 carrier:3
-          collisions:0 txqueuelen:1000 
-          RX bytes:1288428 (1.2 MiB)  TX bytes:280 (280.0 B)
-
-fwd_ew    Link encap:Ethernet  HWaddr 00:00:00:00:00:0b  
-          inet6 addr: fe80::200:ff:fe00:b/64 Scope:Link
-          UP RUNNING NOARP MULTICAST  MTU:1500  Metric:1
-          RX packets:18 errors:0 dropped:10 overruns:0 frame:0
-          TX packets:2 errors:0 dropped:1 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000 
-          RX bytes:486 (486.0 B)  TX bytes:140 (140.0 B)
-
-fwdintf   Link encap:Ethernet  HWaddr 00:00:00:00:00:0a  
-          inet6 addr: fe80::200:ff:fe00:a/64 Scope:Link
-          UP RUNNING NOARP MULTICAST  MTU:1500  Metric:1
-          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:2 errors:0 dropped:1 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000 
-          RX bytes:0 (0.0 B)  TX bytes:140 (140.0 B)
-
-lo        Link encap:Local Loopback  
-          inet addr:127.0.0.1  Mask:255.0.0.0
-          inet6 addr: ::1/128 Scope:Host
-          UP LOOPBACK RUNNING NOARP MULTICAST  MTU:65536  Metric:1
-          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:0 
-          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
-
-lo:0      Link encap:Local Loopback  
-          inet addr:1.1.1.1  Mask:255.255.255.255
-          UP LOOPBACK RUNNING NOARP MULTICAST  MTU:65536  Metric:1
-
-[ncs5508:~]$
+   netns_identify utility is to check which network namespace a process is in. `$$` gets the pid      of the current shell. In the output below, tpnns is a symbolic link of  global-vrf. So they        both mean the same thing - XR default VRF mapped to a network namespace in linux. All XR          interfaces in the default(global) vrf will appear in the linux shell in this network namespace.    Issuing an `ifconfig` will show up these interfaces.
+   {: .notice--info}
 
 
+   ```shell
 
-```
+   [ncs5508:~]$netns_identify $$
+   tpnns
+   global-vrf
+   [ncs5508:~]$netstat -nlp | grep 57722
+   tcp        0      0 0.0.0.0:57722           0.0.0.0:*               LISTEN      622/sshd        
+   tcp6       0      0 :::57722                :::*                    LISTEN      622/sshd        
+   [ncs5508:~]$
+   [ncs5508:~]$ifconfig
+   Mg0_RP0_CPU0_0 Link encap:Ethernet  HWaddr 80:e0:1d:00:fc:ea  
+             inet addr:11.11.11.59  Mask:255.255.255.0
+             inet6 addr: fe80::82e0:1dff:fe00:fcea/64 Scope:Link
+             UP RUNNING NOARP MULTICAST  MTU:1514  Metric:1
+             RX packets:3830 errors:0 dropped:0 overruns:0 frame:0
+             TX packets:4 errors:0 dropped:0 overruns:0 carrier:3
+             collisions:0 txqueuelen:1000 
+             RX bytes:1288428 (1.2 MiB)  TX bytes:280 (280.0 B)
+
+   fwd_ew    Link encap:Ethernet  HWaddr 00:00:00:00:00:0b  
+             inet6 addr: fe80::200:ff:fe00:b/64 Scope:Link
+             UP RUNNING NOARP MULTICAST  MTU:1500  Metric:1
+             RX packets:18 errors:0 dropped:10 overruns:0 frame:0
+             TX packets:2 errors:0 dropped:1 overruns:0 carrier:0
+             collisions:0 txqueuelen:1000 
+             RX bytes:486 (486.0 B)  TX bytes:140 (140.0 B)
+  
+   fwdintf   Link encap:Ethernet  HWaddr 00:00:00:00:00:0a  
+             inet6 addr: fe80::200:ff:fe00:a/64 Scope:Link
+             UP RUNNING NOARP MULTICAST  MTU:1500  Metric:1
+             RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+             TX packets:2 errors:0 dropped:1 overruns:0 carrier:0
+             collisions:0 txqueuelen:1000 
+             RX bytes:0 (0.0 B)  TX bytes:140 (140.0 B)
+
+   lo        Link encap:Local Loopback  
+             inet addr:127.0.0.1  Mask:255.0.0.0
+             inet6 addr: ::1/128 Scope:Host
+             UP LOOPBACK RUNNING NOARP MULTICAST  MTU:65536  Metric:1
+             RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+             TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+             collisions:0 txqueuelen:0 
+             RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+   lo:0      Link encap:Local Loopback  
+             inet addr:1.1.1.1  Mask:255.255.255.255
+             UP LOOPBACK RUNNING NOARP MULTICAST  MTU:65536  Metric:1
+
+   [ncs5508:~]$
+
+ 
+   ```
 
 Awesome! Now let's test SSH access directly into the linux shell:
 
@@ -326,9 +325,7 @@ root
 
 
 
-
-
-Perfect! Now we're all set with the topology. Before we begin, let's understand the docker daemon/client setup inside IOS-XR.
+Perfect! Now we're all set with the topology and SSH access. Before we begin, let's understand the docker daemon/client setup inside IOS-XR.
 {: .notice--success}  
   
   
