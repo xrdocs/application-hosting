@@ -133,7 +133,7 @@ On my NCS5508 setup, I can enable SSH in XR in the default (global) vrf with the
 
 ```shell
 
-RP/0/RP0/CPU0:apple#crypto key generate rsa
+RP/0/RP0/CPU0:ncs5508#crypto key generate rsa
 Mon Mar  6 05:28:57.184 UTC
 The name for the keys will be: the_default
   Choose the size of the key modulus in the range of 512 to 4096 for your General Purpose Keypair. Choosing a key modulus greater than 512 may take a few minutes.
@@ -143,13 +143,13 @@ Generating RSA keys ...
 Done w/ crypto generate keypair
 [OK]
 
-RP/0/RP0/CPU0:apple#
-RP/0/RP0/CPU0:apple#show  running-config ssh
+RP/0/RP0/CPU0:ncs5508#
+RP/0/RP0/CPU0:ncs5508#show  running-config ssh
 Mon Mar  6 05:29:51.819 UTC
 ssh server v2
 ssh server vrf default
 
-RP/0/RP0/CPU0:apple#
+RP/0/RP0/CPU0:ncs5508#
 
 
 ```
@@ -161,8 +161,14 @@ This is openssh running in the XR linux environment. Users may choose to keep th
 In 6.1.2, only global-vrf (default vrf) is supported in the linux environment for SSH and apps. Post 6.2.11, support for Mgmt vrfs in the linux shell will be brought in.
 {: .notice-warning} 
 
+To enable SSH access in the XR linux shell, we'll take two steps:
+
+*  Create a non-root user. This is important. For security reasons, root user access over SSH (SSH in the linux shell) is disabled.
+
+```
 
 
+```
 
 
 Perfect! Now we're all set with the topology. Before we begin, let's understand the docker daemon/client setup inside IOS-XR.
