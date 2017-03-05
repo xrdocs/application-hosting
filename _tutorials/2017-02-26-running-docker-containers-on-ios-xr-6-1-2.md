@@ -140,14 +140,11 @@ If you haven't already gone through the basic overview on the application hostin
 From the above article it becomes fairly clear that internally the IOS-XR architecture involves a Host layer running the libvirtd daemon and IOS-XR runs as an LXC spawned using the daemon.  
 
 Further, the "virsh" client is provided within the XR LXC, so that a user may have client level access to the daemon while sitting inside the XR LXC itself.  
+
+The setup for launching LXCs in IOS-XR is shown below:  
+
+[![xr-lxc-launch](https://xrdocs.github.io/xrdocs-images/assets/images/xr_lxc.png)](https://xrdocs.github.io/xrdocs-images/assets/images/xr_lxc.png)  
   
   
-The Docker client/daemon setup follows the exact same principle as shown below:  
-
-
-
-
-
-
-
-
+  
+The Docker client/daemon setup follows the exact same principle as shown below:
