@@ -125,7 +125,46 @@ In this case, the devbox must be provisioned by the user. On an ubuntu devbox, d
 ><https://docs.docker.com/engine/installation/linux/ubuntu/>  
   
     
-    
+Further, we're going to enable SSH access in XR CLI and in  XR linux shell to achieve an equivalence between the NCS5508 and Vagrant setup.  
+
+#### Enable SSH access in the XR CLI
+
+On my NCS5508 setup, I can enable SSH in XR in the default (global) vrf with the following steps and CLI:  
+
+```shell
+
+RP/0/RP0/CPU0:apple#crypto key generate rsa
+Mon Mar  6 05:28:57.184 UTC
+The name for the keys will be: the_default
+  Choose the size of the key modulus in the range of 512 to 4096 for your General Purpose Keypair. Choosing a key modulus greater than 512 may take a few minutes.
+
+How many bits in the modulus [2048]: 
+Generating RSA keys ...
+Done w/ crypto generate keypair
+[OK]
+
+RP/0/RP0/CPU0:apple#
+RP/0/RP0/CPU0:apple#show  running-config ssh
+Mon Mar  6 05:29:51.819 UTC
+ssh server v2
+ssh server vrf default
+
+RP/0/RP0/CPU0:apple#
+
+
+```
+
+#### Enable SSH access to XR linux shell
+
+This is openssh running in the XR linux environment. Users may choose to keep this disabled based on the kind of operations they intend to have. Enabling it in a given network namespace (equivalent to XR vrf) opens up port 57722 on all the IP addresses reachable in that VRF.
+
+In 6.1.2, only global-vrf (default vrf) is supported in the linux environment for SSH and apps. Post 6.2.11, support for Mgmt vrfs in the linux shell will be brought in.
+{: .notice-warning} 
+
+
+
+
+
 Perfect! Now we're all set with the topology. Before we begin, let's understand the docker daemon/client setup inside IOS-XR.
 {: .notice--success}  
   
@@ -250,28 +289,7 @@ On your vagrant box, there are two ways to get access to the docker client:
 ### NCS5508 setup
 
 The physical setup works in much the same way. Let us first set up SSH access in the same way as our Vagrant box.
-On my NCS5508 setup, I can enable SSH in XR in the default (global) vrf with the following steps and CLI:  
-
-```shell
-
-RP/0/RP0/CPU0:apple#crypto key generate rsa
-Mon Mar  6 05:28:57.184 UTC
-The name for the keys will be: the_default
-  Choose the size of the key modulus in the range of 512 to 4096 for your General Purpose Keypair. Choosing a key modulus greater than 512 may take a few minutes.
-
-How many bits in the modulus [2048]: 
-Generating RSA keys ...
-Done w/ crypto generate keypair
-[OK]
-
-RP/0/RP0/CPU0:apple#
-RP/0/RP0/CPU0:apple#show  running-config ssh
-Mon Mar  6 05:29:51.819 UTC
-ssh server v2
-ssh server vrf default
-
-RP/0/RP0/CPU0:apple#
 
 
-```
 
+This will open
