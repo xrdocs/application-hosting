@@ -242,7 +242,8 @@ On your vagrant box, there are two ways to get access to the docker client:
     </pre>
     </div> 
     
-    
+    As shown above, we become root by using `-i` flag for `sudo` to make sure the correct environment variables are sourced.
+    {: .notice--info}
     
 
 ### NCS5508 setup
