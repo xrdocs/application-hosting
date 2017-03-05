@@ -173,7 +173,7 @@ On your vagrant box, there are two ways to get access to the docker client:
     these values may differ from values configured in the Vagrantfile if the
     provider supports automatic port collision detection and resolution.
 
-         <mark>22 (guest) => 2223 (host)</mark>
+        <mark>22 (guest) => 2223 (host)</mark>
      57722 (guest) => 2222 (host)
     AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ 
     AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ 
