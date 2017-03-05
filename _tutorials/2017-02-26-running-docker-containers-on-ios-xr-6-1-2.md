@@ -213,6 +213,8 @@ On your vagrant box, there are two ways to get access to the docker client:
 
    From the above output for `vagrant port rtr`, the port 57722 on XR (running openssh in the XR linux shell) is accessible via port 2222 on the host machine (laptop):  
    
+   Use either `vagrant ssh rtr` or `ssh -p 2222 vagrant@localhost` to drop into the XR linux shell
+   
    Username: vagrant
    Password: vagrant  
    {: .notice--warning}  
