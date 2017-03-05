@@ -194,7 +194,7 @@ On your vagrant box, there are two ways to get access to the docker client:
     [xr-vm_node0_RP0_CPU0:~]$
     [xr-vm_node0_RP0_CPU0:~]$
     [xr-vm_node0_RP0_CPU0:~]$whoami
-    root
+    <mark>root</mark>
     [xr-vm_node0_RP0_CPU0:~]$
     [xr-vm_node0_RP0_CPU0:~]$<mark>docker ps</mark>
     CONTAINER ID    IMAGE      COMMAND      CREATED       STATUS        PORTS         NAMES
