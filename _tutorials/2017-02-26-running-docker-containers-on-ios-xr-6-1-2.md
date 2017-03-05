@@ -168,12 +168,12 @@ On your vagrant box, there are two ways to get access to the docker client:
     <div class="highlighter-rouge">
     <pre class="highlight">
     <code>
-   AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$<mark> vagrant port rtr </mark>
+    AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$<mark> vagrant port rtr </mark>
     The forwarded ports for the machine are listed below. Please note that
     these values may differ from values configured in the Vagrantfile if the
     provider supports automatic port collision detection and resolution.
 
-    <mark>22 (guest) => 2223 (host)</mark>
+         <mark>22 (guest) => 2223 (host)</mark>
      57722 (guest) => 2222 (host)
     AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ 
     AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ 
