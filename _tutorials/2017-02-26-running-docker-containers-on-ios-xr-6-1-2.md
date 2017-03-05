@@ -143,8 +143,10 @@ Further, the "virsh" client is provided within the XR LXC, so that a user may ha
 
 The setup for launching LXCs in IOS-XR is shown below:  
 
-[![xr-lxc-launch](https://xrdocs.github.io/xrdocs-images/assets/images/xr_lxc.png)](https://xrdocs.github.io/xrdocs-images/assets/images/xr_lxc.png)  
+[![xr-lxc](https://xrdocs.github.io/xrdocs-images/assets/images/xr_lxc.png)](https://xrdocs.github.io/xrdocs-images/assets/images/xr_lxc.png)  
   
   
   
-The Docker client/daemon setup follows the exact same principle as shown below:
+The Docker client/daemon setup follows the exact same principle as shown below. Docker Daemon runs on the host and Docker client is made available inside the XR LXC for easy operationalization:  
+  
+[![xr-docker](https://xrdocs.github.io/xrdocs-images/assets/images/xr_docker.png)](https://xrdocs.github.io/xrdocs-images/assets/images/xr_docker.png)  
