@@ -163,9 +163,11 @@ On your vagrant box, there are two ways to get access to the docker client:
    {: .notice--info}  
    
   
-    ```  
+    <div class="highlighter-rouge">
+    <pre class="highlight">
+    <code>
    
-    AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ vagrant port rtr
+   AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$<mark> vagrant port rtr </mark>
     The forwarded ports for the machine are listed below. Please note that
     these values may differ from values configured in the Vagrantfile if the
     provider supports automatic port collision detection and resolution.
@@ -175,7 +177,7 @@ On your vagrant box, there are two ways to get access to the docker client:
     AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ 
     AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ 
     AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ 
-    AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ ssh -p 2223 vagrant@localhost
+    AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$<mark> ssh -p 2223 vagrant@localhost</mark>
     The authenticity of host '[localhost]:2223 ([127.0.0.1]:2223)' can't be established.
     RSA key fingerprint is SHA256:uHev9uiAa0LM36RnnxDYuRyKywra8Oe/G5Gt34OiBqk.
     Are you sure you want to continue connecting (yes/no)? yes
@@ -185,7 +187,7 @@ On your vagrant box, there are two ways to get access to the docker client:
 
     RP/0/RP0/CPU0:ios#
     RP/0/RP0/CPU0:ios#
-    RP/0/RP0/CPU0:ios#bash
+    RP/0/RP0/CPU0:ios#<mark>bash</mark>
     Sun Mar  5 18:17:18.380 UTC
 
     [xr-vm_node0_RP0_CPU0:~]$
@@ -195,7 +197,9 @@ On your vagrant box, there are two ways to get access to the docker client:
     [xr-vm_node0_RP0_CPU0:~]$
       
        
-    ```
+    <div class="highlighter-rouge">
+    <pre class="highlight">
+    <code>
 
 
 ### NCS5508 setup
