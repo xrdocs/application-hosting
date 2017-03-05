@@ -243,7 +243,35 @@ On your vagrant box, there are two ways to get access to the docker client:
     </div> 
     
     As shown above, we become root by using `-i` flag for `sudo` to make sure the correct environment variables are sourced.
-    {: .notice--info}
+    {: .notice--info}  
+    
     
 
 ### NCS5508 setup
+
+The physical setup works in much the same way. Let us first set up SSH access in the same way as our Vagrant box.
+On my NCS5508 setup, I can enable SSH in XR in the default (global) vrf with the following steps and CLI:  
+
+```shell
+
+RP/0/RP0/CPU0:apple#crypto key generate rsa
+Mon Mar  6 05:28:57.184 UTC
+The name for the keys will be: the_default
+  Choose the size of the key modulus in the range of 512 to 4096 for your General Purpose Keypair. Choosing a key modulus greater than 512 may take a few minutes.
+
+How many bits in the modulus [2048]: 
+Generating RSA keys ...
+Done w/ crypto generate keypair
+[OK]
+
+RP/0/RP0/CPU0:apple#
+RP/0/RP0/CPU0:apple#show  running-config ssh
+Mon Mar  6 05:29:51.819 UTC
+ssh server v2
+ssh server vrf default
+
+RP/0/RP0/CPU0:apple#
+
+
+```
+
