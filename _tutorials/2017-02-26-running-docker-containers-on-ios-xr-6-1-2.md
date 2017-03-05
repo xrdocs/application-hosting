@@ -280,6 +280,9 @@ root
 [ncs5508:~]$ 
 ```
 
+Works like a charm!
+{: .notice--success}
+
 
 ## Understand the topology
 
