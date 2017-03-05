@@ -157,7 +157,8 @@ Can we verify this?
 
 On your vagrant box, there are two ways to get access to the docker client:
 
-*  Drop into the "bash" shell from XR CLI:   
+*  Drop into the "bash" shell from XR CLI. Using "bash" ensures that the correct environment 
+   variables are sourced to gain access to the Docker Daemon on the host:   
 
    **Password for the XR CLI: vagrant**
    {: .notice--info}  
@@ -198,5 +199,6 @@ On your vagrant box, there are two ways to get access to the docker client:
     </pre>
     </div> 
 
+*  
 
 ### NCS5508 setup
