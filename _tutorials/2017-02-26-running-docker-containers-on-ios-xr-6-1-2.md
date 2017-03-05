@@ -216,11 +216,56 @@ Done...
 
 *  Enable the "sudo" group permissions in /etc/sudoers
 
-```
-
-
+Open up /etc/sudoers using vi in the XR bash shell and uncomment the following line:
 
 ```
+# %sudo ALL=(ALL) ALL
+```
+
+Save and exit (:wq in vi).
+
+
+*  Finally enable SSH access by starting the sshd_operns service:  
+
+```
+[ncs5508:~]$service sshd_operns start
+Mon Mar 6 06:21:53 UTC 2017 /etc/init.d/sshd_operns: Waiting for OPERNS interface creation...
+Mon Mar 6 06:21:53 UTC 2017 /etc/init.d/sshd_operns: Press ^C to stop if needed.
+Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: Found nic, Mg0_RP0_CPU0_0
+Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: Waiting for OPERNS management interface creation...
+Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: Found nic, Mg0_RP0_CPU0_0
+Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: OPERNS is ready
+Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: Start sshd_operns
+Starting OpenBSD Secure Shell server: sshd
+  generating ssh RSA key...
+  generating ssh ECDSA key...
+  generating ssh DSA key...
+  generating ssh ED25519 key...
+[ncs5508:~]$
+```
+
+Check that the sshd_operns service is now listening on port 57722 in the global-vrf network namespace:  
+
+netns_identify utility is to check which network namespace a process is in. `$$` gets the pid of the current shell. In the output below, tpnns is a symbolic link of  global-vrf. So they both mean the same thing - XR default VRF mapped to a network namespace in linux. All XR interfaces in the default(global) vrf will appear in the linux shell in this network namespace.
+{: .notice--info}
+
+
+```shell
+
+[ncs5508:~]$netns_identify $$
+tpnns
+global-vrf
+[ncs5508:~]$netstat -nlp | grep 57722
+tcp        0      0 0.0.0.0:57722           0.0.0.0:*               LISTEN      622/sshd        
+tcp6       0      0 :::57722                :::*                    LISTEN      622/sshd        
+[ncs5508:~]$
+
+
+```
+
+Awesome! Now let's test SSH access directly into the linux shell of the NCS5508 box:
+
+
 
 
 Perfect! Now we're all set with the topology. Before we begin, let's understand the docker daemon/client setup inside IOS-XR.
