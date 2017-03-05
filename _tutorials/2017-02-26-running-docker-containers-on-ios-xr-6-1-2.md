@@ -193,13 +193,20 @@ On your vagrant box, there are two ways to get access to the docker client:
 
     [xr-vm_node0_RP0_CPU0:~]$
     [xr-vm_node0_RP0_CPU0:~]$
+    [xr-vm_node0_RP0_CPU0:~]$whoami
+    root
+    [xr-vm_node0_RP0_CPU0:~]$
     [xr-vm_node0_RP0_CPU0:~]$<mark>docker ps</mark>
     CONTAINER ID    IMAGE      COMMAND      CREATED       STATUS        PORTS         NAMES
     [xr-vm_node0_RP0_CPU0:~]$
     </code>
     </pre>
     </div> 
+    
+    Bear in mind that when you drop into the XR linux shell using the "bash" CLI, you are droppped
+    in as `root`.  
+*  Drop directly into the Linux shell over SSH (port 57722):  
 
-*  Drop directly into the Linux shell over SSH (port 57722)
+   Wit
 
 ### NCS5508 setup
