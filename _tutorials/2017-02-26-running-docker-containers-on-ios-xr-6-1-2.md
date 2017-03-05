@@ -404,7 +404,7 @@ On your vagrant box, there are two ways to get access to the docker client:
     </div> 
     
     Bear in mind that when you drop into the XR linux shell using the "bash" CLI, you are droppped
-    in as `root`. This is why you can access the docker client without an hassle. 
+    in as `root`. This is why you can access the docker client without any hassle. 
     For any other  user, you will need to first become root (using sudo).  
     {: .notice--warning}  
       
