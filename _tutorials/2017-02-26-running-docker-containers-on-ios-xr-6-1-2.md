@@ -446,8 +446,4 @@ On your vagrant box, there are two ways to get access to the docker client:
 
 ### NCS5508 Setup Docker Client Access.
 
-The physical setup works in much the same way. Let us first set up SSH access in the same way as our Vagrant box.
-
-
-
-This will open
+If you
