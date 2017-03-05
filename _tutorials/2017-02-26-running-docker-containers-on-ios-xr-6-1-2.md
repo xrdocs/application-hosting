@@ -219,6 +219,28 @@ On your vagrant box, there are two ways to get access to the docker client:
    Password: vagrant** 
    {: .notice--warning}  
     
+
+    <div class="highlighter-rouge">
+    <pre class="highlight">
+    <code>
+   
+    AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ vagrant ssh rtr
+    Last login: Sun Mar  5 18:55:20 2017 from 10.0.2.2
+    xr-vm_node0_RP0_CPU0:~$ 
+    xr-vm_node0_RP0_CPU0:~$ whoami
+    vagrant
+    xr-vm_node0_RP0_CPU0:~$ 
+    xr-vm_node0_RP0_CPU0:~$ sudo -i
+    [xr-vm_node0_RP0_CPU0:~]$ 
+    [xr-vm_node0_RP0_CPU0:~]$ whoami
+    root
+    [xr-vm_node0_RP0_CPU0:~]$ 
+    [xr-vm_node0_RP0_CPU0:~]$ docker ps
+    CONTAINER ID      IMAGE       COMMAND       CREATED       STATUS       PORTS        NAMES
+    [xr-vm_node0_RP0_CPU0:~]$ 
+    </code>
+    </pre>
+    </div> 
     
 
 ### NCS5508 setup
