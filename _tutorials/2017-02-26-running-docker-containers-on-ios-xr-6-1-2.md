@@ -163,6 +163,16 @@ In 6.1.2, only global-vrf (default vrf) is supported in the linux environment fo
 
 To enable SSH access in the XR linux shell for a sudo user, we'll take 3 steps:
 
+*  Enable the "sudo" group permissions in /etc/sudoers
+
+Open up /etc/sudoers using vi in the XR bash shell and uncomment the following line:
+
+```
+# %sudo ALL=(ALL) ALL
+```
+
+Save and exit (:wq in vi).  
+
 *  Create a non-root user. This is important. For security reasons, root user access over SSH (SSH in the linux shell) is disabled. Only the root XR user can create new (sudo or non-sudo) users, so use the "bash" cli to get into the shell:
 
 ```
@@ -214,15 +224,6 @@ Done...
 
 ```
 
-*  Enable the "sudo" group permissions in /etc/sudoers
-
-Open up /etc/sudoers using vi in the XR bash shell and uncomment the following line:
-
-```
-# %sudo ALL=(ALL) ALL
-```
-
-Save and exit (:wq in vi).
 
 
 *  Finally enable SSH access by starting the sshd_operns service:  
@@ -246,7 +247,7 @@ Starting OpenBSD Secure Shell server: sshd
 
 Check that the sshd_operns service is now listening on port 57722 in the global-vrf network namespace:  
 
-netns_identify utility is to check which network namespace a process is in. `$$` gets the pid of the current shell. In the output below, tpnns is a symbolic link of  global-vrf. So they both mean the same thing - XR default VRF mapped to a network namespace in linux. All XR interfaces in the default(global) vrf will appear in the linux shell in this network namespace.
+netns_identify utility is to check which network namespace a process is in. `$$` gets the pid of the current shell. In the output below, tpnns is a symbolic link of  global-vrf. So they both mean the same thing - XR default VRF mapped to a network namespace in linux. All XR interfaces in the default(global) vrf will appear in the linux shell in this network namespace. Issuing an `ifconfig` will show up these interfaces.
 {: .notice--info}
 
 
@@ -259,11 +260,70 @@ global-vrf
 tcp        0      0 0.0.0.0:57722           0.0.0.0:*               LISTEN      622/sshd        
 tcp6       0      0 :::57722                :::*                    LISTEN      622/sshd        
 [ncs5508:~]$
+[ncs5508:~]$ifconfig
+Mg0_RP0_CPU0_0 Link encap:Ethernet  HWaddr 80:e0:1d:00:fc:ea  
+          inet addr:11.11.11.59  Mask:255.255.255.0
+          inet6 addr: fe80::82e0:1dff:fe00:fcea/64 Scope:Link
+          UP RUNNING NOARP MULTICAST  MTU:1514  Metric:1
+          RX packets:3830 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:4 errors:0 dropped:0 overruns:0 carrier:3
+          collisions:0 txqueuelen:1000 
+          RX bytes:1288428 (1.2 MiB)  TX bytes:280 (280.0 B)
+
+fwd_ew    Link encap:Ethernet  HWaddr 00:00:00:00:00:0b  
+          inet6 addr: fe80::200:ff:fe00:b/64 Scope:Link
+          UP RUNNING NOARP MULTICAST  MTU:1500  Metric:1
+          RX packets:18 errors:0 dropped:10 overruns:0 frame:0
+          TX packets:2 errors:0 dropped:1 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:486 (486.0 B)  TX bytes:140 (140.0 B)
+
+fwdintf   Link encap:Ethernet  HWaddr 00:00:00:00:00:0a  
+          inet6 addr: fe80::200:ff:fe00:a/64 Scope:Link
+          UP RUNNING NOARP MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:2 errors:0 dropped:1 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:140 (140.0 B)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING NOARP MULTICAST  MTU:65536  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+lo:0      Link encap:Local Loopback  
+          inet addr:1.1.1.1  Mask:255.255.255.255
+          UP LOOPBACK RUNNING NOARP MULTICAST  MTU:65536  Metric:1
+
+[ncs5508:~]$
+
 
 
 ```
 
-Awesome! Now let's test SSH access directly into the linux shell of the NCS5508 box:
+Awesome! Now let's test SSH access directly into the linux shell:
+
+As seen from the above output, the Mgmt port (Mg0_RP0_CPU0_0) has an IP 11.11.11.59 and the port 57722 is open all the IP addresses in the corresponding network namespace. 
+
+From the directly connected "devbox" or jumpserver I can then issue an ssh as follows:
+
+```
+cisco@dhcpserver:~$ ssh cisco@11.11.11.59 -p 57722
+cisco@11.11.11.59's password: 
+-sh: /var/log/boot.log: Permission denied
+ncs5508:~$ 
+ncs5508:~$ sudo -i
+Password: 
+[ncs5508:~]$ 
+[ncs5508:~]$ whoami
+root
+[ncs5508:~]$ 
+```
+
 
 
 
