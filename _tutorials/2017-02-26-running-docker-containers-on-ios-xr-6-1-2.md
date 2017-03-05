@@ -82,7 +82,8 @@ The server needs to be reachable from the router over the Management network.
 
 Further, we're going to enable SSH access in XR CLI and in  XR linux shell to achieve an equivalence between the NCS5508 and Vagrant setup.  
 
-#### Enable SSH access in the XR CLI
+**Enable SSH access in the XR CLI**
+{: .notice}
 
 On my NCS5508 setup, I can enable SSH in XR in the default (global) vrf with the following steps and CLI:  
 
@@ -109,7 +110,8 @@ RP/0/RP0/CPU0:ncs5508#
 
 ```
 
-#### Enable SSH access to XR linux shell
+**Enable SSH access to XR linux shell**
+{: .notice}
 
 This is openssh running in the XR linux environment. Users may choose to keep this disabled based on the kind of operations they intend to have. Enabling it in a given network namespace (equivalent to XR vrf) opens up port 57722 on all the IP addresses reachable in that VRF.
 
