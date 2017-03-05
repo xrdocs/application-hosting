@@ -163,7 +163,7 @@ On your vagrant box, there are two ways to get access to the docker client:
    {: .notice--info}  
    
   
-   ```  
+```  
    
    AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ vagrant port rtr
 The forwarded ports for the machine are listed below. Please note that
@@ -195,7 +195,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 [xr-vm_node0_RP0_CPU0:~]$
 
    
-   ```
+```
 
 
 ### NCS5508 setup
