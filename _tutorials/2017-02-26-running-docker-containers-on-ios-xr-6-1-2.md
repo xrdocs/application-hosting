@@ -166,7 +166,6 @@ On your vagrant box, there are two ways to get access to the docker client:
     <div class="highlighter-rouge">
     <pre class="highlight">
     <code>
-   
    AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$<mark> vagrant port rtr </mark>
     The forwarded ports for the machine are listed below. Please note that
     these values may differ from values configured in the Vagrantfile if the
@@ -195,8 +194,6 @@ On your vagrant box, there are two ways to get access to the docker client:
     [xr-vm_node0_RP0_CPU0:~]$<mark>docker ps</mark>
     CONTAINER ID    IMAGE      COMMAND      CREATED       STATUS        PORTS         NAMES
     [xr-vm_node0_RP0_CPU0:~]$
-      
-       
     </code>
     </pre>
     </div> 
