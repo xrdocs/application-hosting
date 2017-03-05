@@ -45,7 +45,7 @@ In this part, we explore how a user can spin up Docker containers on IOS-XR. The
 For each case, we will compare IOS-XR running as a Vagrant box with IOS-XR running on a physical box (NCS5500). They should be identical, except for reachability through the Management ports.  
   
   
-## Pre-requisite  
+## Pre-requisites
 
 ### Vagrant IOS-XR box
 
