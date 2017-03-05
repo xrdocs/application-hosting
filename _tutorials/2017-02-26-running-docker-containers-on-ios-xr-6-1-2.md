@@ -224,18 +224,18 @@ On your vagrant box, there are two ways to get access to the docker client:
     <pre class="highlight">
     <code>
    
-    AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ vagrant ssh rtr
+   AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$<mark> vagrant ssh rtr</mark>
     Last login: Sun Mar  5 18:55:20 2017 from 10.0.2.2
     xr-vm_node0_RP0_CPU0:~$ 
-    xr-vm_node0_RP0_CPU0:~$ whoami
-    vagrant
+    xr-vm_node0_RP0_CPU0:~$whoami
+    <mark>vagrant</mark>
     xr-vm_node0_RP0_CPU0:~$ 
-    xr-vm_node0_RP0_CPU0:~$ sudo -i
+    xr-vm_node0_RP0_CPU0:~$<mark> sudo -i </mark>
     [xr-vm_node0_RP0_CPU0:~]$ 
     [xr-vm_node0_RP0_CPU0:~]$ whoami
-    root
+    <mark>root</mark>
     [xr-vm_node0_RP0_CPU0:~]$ 
-    [xr-vm_node0_RP0_CPU0:~]$ docker ps
+    [xr-vm_node0_RP0_CPU0:~]$<mark> docker ps</mark>
     CONTAINER ID      IMAGE       COMMAND       CREATED       STATUS       PORTS        NAMES
     [xr-vm_node0_RP0_CPU0:~]$ 
     </code>
