@@ -24,7 +24,7 @@ You might have noticed that we haven't actually delved into the internal archite
 
 This is what the internal software architecture and plumbing, replete with the containers, network namespaces and XR interfaces, looks like:  
 
-[![xr-app-hosting-infra](https://xrdocs.github.io/xrdocs-images/assets/images/xr-app-hosting-infra-basic.png)](https://xrdocs.github.io/xrdocs-images/assets/images/xr-app-hosting-infra-basic.png)
+[![xr-app-hosting-infra](https://xrdocs.github.io/xrdocs-images/assets/images/app_hosting_architecture_pic.png)](https://xrdocs.github.io/xrdocs-images/assets/images/app_hosting_architecture_pic.png)
 
   
 Alright, back up. The above figure seems pretty daunting to understand, so let's try to deconstruct it:  
