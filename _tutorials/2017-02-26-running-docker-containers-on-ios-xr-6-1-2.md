@@ -197,9 +197,9 @@ On your vagrant box, there are two ways to get access to the docker client:
     [xr-vm_node0_RP0_CPU0:~]$
       
        
-    <div class="highlighter-rouge">
-    <pre class="highlight">
-    <code>
+    </code>
+    </pre>
+    </div> 
 
 
 ### NCS5508 setup
