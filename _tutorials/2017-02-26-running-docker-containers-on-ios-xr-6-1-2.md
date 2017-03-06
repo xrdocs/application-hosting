@@ -773,6 +773,41 @@ Tue Mar  7 00:29:56.416 UTC
 We won't be leveraging the tpa setup for the fwdintf interface (meant for reachability over front panel ports) and instead just use the local management network subnet (11.11.11.0/24) for reachability to the docker registry.
 
 
+Further, much like before, set up `/etc/sysconfig/docker` to disregard security for our registry.
+
+```
+[ncs5508:~]$cat /etc/sysconfig/docker
+# DOCKER_OPTS can be used to add insecure private registries to be supported 
+# by the docker daemon
+# eg : DOCKER_OPTS="--insecure-registry foo --insecure-registry bar"
+
+# Following are the valid configs
+# DOCKER_OPTS="<space>--insecure-registry<space>foo"
+# DOCKER_OPTS+="<space>--insecure-registry<space>bar"
+
+DOCKER_OPTS=" --insecure-registry 11.11.11.2:5000"
+[ncs5508:~]$
+```
+
+
+```
+[ncs5508:~]$docker run -itd --name ubuntu -v /var/run/netns --privileged 11.11.11.2:5000/ubuntu
+Unable to find image '11.11.11.2:5000/ubuntu:latest' locally
+latest: Pulling from ubuntu
+d54efb8db41d: Pull complete 
+f8b845f45a87: Pull complete 
+e8db7bf7c39f: Pull complete 
+9654c40e9079: Pull complete 
+6d9ef359eaaa: Pull complete 
+Digest: sha256:dd7808d8792c9841d0b460122f1acf0a2dd1f56404f8d1e56298048885e45535
+Status: Downloaded newer image for 11.11.11.2:5000/ubuntu:latest
+aa73f6a81b9346131118b84f30ddfc2d3bd981a4a54ea21ba2e2bc5c3d18d348
+[ncs5508:~]$
+
+
+```
+
+
 
 
 
