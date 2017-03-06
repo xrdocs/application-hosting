@@ -761,7 +761,7 @@ Tue Mar  7 00:29:56.416 UTC
 [ncs5508:~]$ip route
 <mark>default dev fwdintf  scope link  src 1.1.1.1</mark>
 10.10.10.10 dev fwd_ew  scope link  src 1.1.1.1 
-11.11.11.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 11.11.11.59 
+<mark>11.11.11.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 11.11.11.59</mark>
 [ncs5508:~]$
 [ncs5508:~]$
 [ncs5508:~]$
@@ -770,7 +770,7 @@ Tue Mar  7 00:29:56.416 UTC
 </pre>
 </div> 
 
-
+We won't be leveraging the tpa setup for the fwdintf interface (meant for reachability over front panel ports) and instead just use the local management network subnet (11.11.11.0/24) for reachability to the docker registry.
 
 
 
