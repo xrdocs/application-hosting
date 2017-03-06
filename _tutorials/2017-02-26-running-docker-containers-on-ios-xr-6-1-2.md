@@ -635,6 +635,7 @@ Deleted: sha256:745f5be9952c1a22dd4225ed6c8d7b760fe0d3583efd52f91992463b53f7aea3
 [xr-vm_node0_RP0_CPU0:~]$ 
 ```
 
+
 Let's begin by spinning up a registry on the devbox in our Vagrant setup.
 We follow the steps described here: <https://docs.docker.com/registry/deploying/>
 
@@ -798,7 +799,8 @@ bf408eb70f88        11.1.1.20:5000/ubuntu   "bash"              8 seconds ago   
 
 ```  
 
-
+There, you've launched a docker container on XR using a private "insecure" registry.
+{: .notice--success}
 
 **NCS5500 setup**
 
