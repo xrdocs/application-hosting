@@ -509,7 +509,10 @@ As discussed earlier, we'll showcase a few different techniques through which a 
 
 ### Public Dockerhub registry:
 
-This is 
+This is the simplest setup that most docker users would know already. The obvious configuration necessary would be to make sure connectivity to the internet is available from the router.
+
+This may not be the preferred setup for production deployments, understandably, since direct connectivity to the internet from a production router is not typical. The next few techniques with private registries or tarball based docker container bringup might be more your cup of tea, in that case.
+{: .notice--info}
 
 ### Private "insecure" registry
 
