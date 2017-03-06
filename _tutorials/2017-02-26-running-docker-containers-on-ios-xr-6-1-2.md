@@ -522,7 +522,7 @@ This is the simplest technique:
 
 
 
-** Spin up the insecure Docker registry on Devbox **
+**Spin up the insecure Docker registry on Devbox**
 
 We follow the steps described here: <https://docs.docker.com/registry/deploying/>
 
