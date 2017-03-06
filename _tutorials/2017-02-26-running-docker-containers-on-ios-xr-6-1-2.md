@@ -506,9 +506,14 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 As discussed earlier, we'll showcase a few different techniques through which a user may spin up a docker container on IOS-XR.
 
+
+### Public Dockerhub registry:
+
+This is 
+
 ### Private "insecure" registry
 
-This is the simplest technique:
+This is a straightforward technique when a user expects to bring up private registries for their docker images in a secure part of the network (so that connection between the registry and the router doesn't necessarily need to be secured) :
 
 *  We spin up an insecure docker registry(which is itself a docker container pulled down from dockerhub) on our devbox.
 
