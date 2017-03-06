@@ -508,6 +508,9 @@ As discussed earlier, we'll showcase a few different techniques through which a 
 
 ### Dockerhub
 
-This is the simplest technique and follows a workflow that most docker users would be well aware of. Essentially, routing in the IOS-XR linux shell needs to be set up to dockerhub: <https://hub.docker.com>
+This is the simplest technique and follows a workflow that most docker users would be well aware of. To make it work, routing in the IOS-XR linux shell needs to be set up to reach dockerhub: <https://hub.docker.com>  
+
+
+Vagrant Setup
 
 
