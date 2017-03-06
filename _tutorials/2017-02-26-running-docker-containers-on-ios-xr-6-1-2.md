@@ -643,14 +643,14 @@ Before we launch the container, we need to configure the XR docker daemon to dis
 # eg : DOCKER_OPTS="--insecure-registry foo --insecure-registry bar"
 
 # Following are the valid configs
-# DOCKER_OPTS="<space>--insecure-registry<space>foo"
-# DOCKER_OPTS+="<space>--insecure-registry<space>bar"
+# DOCKER_OPTS="lt&;spacegt&;--insecure-registrylt&;spacegt&;foo"
+# DOCKER_OPTS+="lt&;spacegt&;--insecure-registrylt&;spacegt&;bar"
 
 DOCKER_OPTS=" --insecure-registry 11.1.1.20:5000"
 [xr-vm_node0_RP0_CPU0:~]$
- </code>
- </pre>
- </div> 
+</code>
+</pre>
+</div> 
 
 
 
