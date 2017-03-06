@@ -30,14 +30,15 @@ If you haven't checked out the earlier parts to the XR toolbox Series, then you 
 The purpose of this series is simple. Get users started with an IOS-XR setup on their laptop and incrementally enable them to try out the application-hosting infrastructure on IOS-XR.
 
 In this part, we explore how a user can spin up Docker containers on IOS-XR. There are multiple ways to do this and we'll explore each one:  
+  
 
-*  **Dockerhub**: Set up reachability from your router (Virtual or physical) to the internet (or specifically to dockerhub: <https://hub.docker.com>).  
-
-*  **Private "secure" registry**: Set up reachability to your private registry, created using a certificate obtained from a CA. We won't really tackle this scenario separately in this tutorial - once you know how to gain access to dockerhub, the workflow will be similar.  
   
 *  **Private "insecure" registry**: Some users may choose to do this, specially if they're running a local docker registry inside a secured part of their network.  
    
 *  **Private "self-signed" registry**: This is more secure than the "insecure" setup, and allows a user to enable TLS.
+
+
+*  **Private "secure" registry**: Set up reachability to your private registry, created using a certificate obtained from a CA. We won't really tackle this scenario separately in this tutorial due to the absence of said certificate :).
     
 *  **Tarball image/container**:  This is the simplest setup - very similar to LXC deployments. In this case, a user may create and set up a container completely off-box, package it up as an image or a container tar ball, transfer it to the router and then load/import it, before running.  
 
@@ -511,6 +512,33 @@ As discussed earlier, we'll showcase a few different techniques through which a 
 This is the simplest technique and follows a workflow that most docker users would be well aware of. To make it work, routing in the IOS-XR linux shell needs to be set up to reach dockerhub: <https://hub.docker.com>  
 
 
-Vagrant Setup
+**Vagrant Setup**
+
+
+The vagrant IOS-XR box we provide you with is all ready with access to the internet when you boot it up.
+
+You can check this quickly for <https://hub.docker.com>
+
+```
+AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ vagrant ssh rtr
+Last login: Mon Mar  6 02:22:52 2017 from 10.0.2.2
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ wget  https://hub.docker.com
+--2017-03-06 02:26:14--  https://hub.docker.com/
+Resolving hub.docker.com... 54.87.79.188, 52.205.45.139, 52.7.102.70
+Connecting to hub.docker.com|54.87.79.188|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 52744 (52K) [text/html]
+Saving to: 'index.html.1'
+
+100%[================================================================================================================================================================>] 52,744       272KB/s   in 0.2s   
+
+2017-03-06 02:26:15 (272 KB/s) - 'index.html.1' saved [52744/52744]
+
+xr-vm_node0_RP0_CPU0:~$ 
+
+```
+
+Since dockerhub is the default docker registry for a docker daemon, just go ahead and launch a docker container using the client
 
 
