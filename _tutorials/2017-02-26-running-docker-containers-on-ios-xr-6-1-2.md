@@ -618,6 +618,23 @@ This is a straightforward technique when a user expects to bring up private regi
 
 **Vagrant Setup**
 
+Before we start let's come back to square-one on our Vagrant setup. Delete the previously running container and downloaded image:
+
+```
+[xr-vm_node0_RP0_CPU0:~]$ docker stop ubuntu && docker rm ubuntu
+ubuntu
+ubuntu
+[xr-vm_node0_RP0_CPU0:~]$ docker rmi ubuntu
+Untagged: ubuntu:latest
+Deleted: sha256:0ef2e08ed3fabfc44002ccb846c4f2416a2135affc3ce39538834059606f32dd
+Deleted: sha256:0d58a35162057295d273c5fb8b7e26124a31588cdadad125f4bce63b638dddb5
+Deleted: sha256:cb7f997e049c07cdd872b8354052c808499937645f6164912c4126015df036cc
+Deleted: sha256:fcb4581c4f016b2e9761f8f69239433e1e123d6f5234ca9c30c33eba698487cc
+Deleted: sha256:b53cd3273b78f7f9e7059231fe0a7ed52e0f8e3657363eb015c61b2a6942af87
+Deleted: sha256:745f5be9952c1a22dd4225ed6c8d7b760fe0d3583efd52f91992463b53f7aea3
+[xr-vm_node0_RP0_CPU0:~]$ 
+```
+
 Let's begin by spinning up a registry on the devbox in our Vagrant setup.
 We follow the steps described here: <https://docs.docker.com/registry/deploying/>
 
