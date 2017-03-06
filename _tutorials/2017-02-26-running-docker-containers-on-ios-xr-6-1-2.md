@@ -631,7 +631,7 @@ default dev fwdintf  scope link  src 11.1.1.10
 
 ```
 
-Before we launch the container, we need to configure the XR docker daemon to disregard security for our registry. This is done by modifying `/etc/sysconfig/docker` inside the XR LXC. This is what my eventual configuration looks like:
+Before we launch the container, we need to configure the XR docker daemon to disregard security for our registry. This is done by modifying `/etc/sysconfig/docker` inside the XR LXC. My eventual configuration looks something like:
 
 
 <div class="highlighter-rouge">
@@ -652,7 +652,7 @@ Before we launch the container, we need to configure the XR docker daemon to dis
 </pre>
 </div> 
 
-
+As the instructions/comments inside the file indicate, make sure there is a space before --insecure-registry flag. Further, in a normal docker daemon setup, a user is supposed to restart the docker daemon when changes to /etc/sysconfig/docker are made. In case of XR, this is not needed. We handle automatic restarts of the docker daemon when a user makes changes to /etc/sysconfig/docker and saves it.
 
 
 Now issue the docker run command to launch the container on XR.
