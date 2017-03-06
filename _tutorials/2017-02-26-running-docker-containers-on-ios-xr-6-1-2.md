@@ -692,7 +692,8 @@ You will notice two peculiar things in the command we run:
 Yay! The container's running. We can get into the container by starting bash through a docker exec. If you're running container images that do not support a shell, try docker attach instead.
 
 ```shell
-
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$
 [xr-vm_node0_RP0_CPU0:~]$docker exec -it ubuntu bash
 root@bf408eb70f88:/# 
 root@bf408eb70f88:/# cat /etc/*-release 
