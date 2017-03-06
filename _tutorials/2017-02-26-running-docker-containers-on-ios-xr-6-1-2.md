@@ -522,8 +522,9 @@ This is the simplest technique:
 
 
 
-**Spin up the insecure Docker registry on Devbox**
+**Vagrant Setup**
 
+Let's begin by spinning up a registry on the devbox in our Vagrant setup.
 We follow the steps described here: <https://docs.docker.com/registry/deploying/>
 
 
@@ -594,6 +595,8 @@ root@vagrant-ubuntu-trusty-64:~#
 
 In the above steps, we've simply set up the registry on the devbox, pulled down an ubuntu docker image from dockerhub and pushed the image to the local registry.
 
+
+** Vagrant XR
 Now let's setup XR's docker daemon to accept the insecure registry located on the directly connected network on Gig0/0/0/0.   
 
 
@@ -714,8 +717,8 @@ VERSION_CODENAME=xenial
 UBUNTU_CODENAME=xenial
 root@bf408eb70f88:/# 
 
-
 ```
+
 
 
 
