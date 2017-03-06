@@ -520,7 +520,80 @@ This may not be the preferred setup for production deployments, understandably, 
 
 The vagrant IOS-XR box comes with connectivity to the internet already. All you need to do is set up the domain name-server in the global-vrf (before 6.2.11, we only support the global/default vrf for the docker daemon image downloads).  
 
+Remember that we're setting up this domain name on per vrf basis. In the future, we intend to sync this through XR CLI for all vrfs to the corresponding network namespaces. Before 6.2.11, of course only global-vrf may be used.
 
+Update `/etc/netns/global-vrf/resolv.conf` to point to a reachable nameserver, in this case 8.8.8.8:
+
+```
+[xr-vm_node0_RP0_CPU0:~]$cat /etc/netns/global-vrf/resolv.conf
+nameserver 8.8.8.8
+[xr-vm_node0_RP0_CPU0:~]$
+```
+
+Again, become root with the correct environment (sudo -i)  to execute the relevant docker commands to spin up the container.
+
+```
+[xr-vm_node0_RP0_CPU0:~]$sudo -i
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ whoami    
+root
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+[xr-vm_node0_RP0_CPU0:~]$docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$ docker run -itd --name ubuntu -v /var/run/netns:/var/run/netns --privileged ubuntu bash
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+d54efb8db41d: Pull complete 
+f8b845f45a87: Pull complete 
+e8db7bf7c39f: Pull complete 
+9654c40e9079: Pull complete 
+6d9ef359eaaa: Pull complete 
+Digest: sha256:dd7808d8792c9841d0b460122f1acf0a2dd1f56404f8d1e56298048885e45535
+Status: Downloaded newer image for ubuntu:latest
+495ec2ab0b201418999e159b81a934072be504b05cc278192d8152efd4965635
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+```
+>
+You will notice two peculiar things in the command we run:
+>
+*  **Mounting of /var/run/netns**: We mount /var/run/netns into the docker container. This is an option we use to mount all the potential network namespaces that may be created to match the XR vrfs. These network namespaces (XR release 6.2.11+) are created on the host and then bind-mounted into the XR LXC for user convenience. The docker container, running on the host, will simply inherit these network namespaces through the /var/run/netns mount. **Bear in mind that before 6.2.11 release only the `global-vrf` is supported in the XR linux shell**.  
+>
+*  **--privileged flag**: We're using the `--privileged` flag because even when network namespaces are mounted from the "host" into the docker container, a user can change into a particular network namespace or execute commands in a particular namespace, only if the container is launched with privileged capabilties.
+{: .notice--info}
+
+Yay! The container's running. We can get into the container by starting bash through a docker exec. If you're running container images that do not support a shell, try docker attach instead.
+
+```shell
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$docker exec -it ubuntu bash
+root@bf408eb70f88:/# 
+root@bf408eb70f88:/# cat /etc/*-release 
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=16.04
+DISTRIB_CODENAME=xenial
+DISTRIB_DESCRIPTION="Ubuntu 16.04.2 LTS"
+NAME="Ubuntu"
+VERSION="16.04.2 LTS (Xenial Xerus)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 16.04.2 LTS"
+VERSION_ID="16.04"
+HOME_URL="http://www.ubuntu.com/"
+SUPPORT_URL="http://help.ubuntu.com/"
+BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"
+VERSION_CODENAME=xenial
+UBUNTU_CODENAME=xenial
+root@bf408eb70f88:/# 
+
+```
 
 ### Private "insecure" registry
 
@@ -702,41 +775,7 @@ bf408eb70f88        11.1.1.20:5000/ubuntu   "bash"              8 seconds ago   
 [xr-vm_node0_RP0_CPU0:~]$
 
 ```  
->
-You will notice two peculiar things in the command we run:
->
-*  **Mounting of /var/run/netns**: We mount /var/run/netns into the docker container. This is an option we use to mount all the potential network namespaces that may be created to match the XR vrfs. These network namespaces (XR release 6.2.11+) are created on the host and then bind-mounted into the XR LXC for user convenience. The docker container, running on the host, will simply inherit these network namespaces through the /var/run/netns mount. **Bear in mind that before 6.2.11 release only the `global-vrf` is supported in the XR linux shell**.  
 
->
-*  **--privileged flag**: We're using the `--privileged` flag because even when network namespaces are mounted from the "host" into the docker container, a user can change into a particular network namespace or execute commands in a particular namespace, only if the container is launched with privileged capabilties.
-{: .notice--info}
-
-Yay! The container's running. We can get into the container by starting bash through a docker exec. If you're running container images that do not support a shell, try docker attach instead.
-
-```shell
-[xr-vm_node0_RP0_CPU0:~]$
-[xr-vm_node0_RP0_CPU0:~]$
-[xr-vm_node0_RP0_CPU0:~]$docker exec -it ubuntu bash
-root@bf408eb70f88:/# 
-root@bf408eb70f88:/# cat /etc/*-release 
-DISTRIB_ID=Ubuntu
-DISTRIB_RELEASE=16.04
-DISTRIB_CODENAME=xenial
-DISTRIB_DESCRIPTION="Ubuntu 16.04.2 LTS"
-NAME="Ubuntu"
-VERSION="16.04.2 LTS (Xenial Xerus)"
-ID=ubuntu
-ID_LIKE=debian
-PRETTY_NAME="Ubuntu 16.04.2 LTS"
-VERSION_ID="16.04"
-HOME_URL="http://www.ubuntu.com/"
-SUPPORT_URL="http://help.ubuntu.com/"
-BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"
-VERSION_CODENAME=xenial
-UBUNTU_CODENAME=xenial
-root@bf408eb70f88:/# 
-
-```
 
 
 **NCS5500 setup**
