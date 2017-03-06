@@ -559,6 +559,10 @@ Status: Downloaded newer image for ubuntu:latest
 495ec2ab0b201418999e159b81a934072be504b05cc278192d8152efd4965635
 [xr-vm_node0_RP0_CPU0:~]$ 
 [xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+495ec2ab0b20        ubuntu              "bash"              7 minutes ago       Up 7 minutes                            ubuntu
+[xr-vm_node0_RP0_CPU0:~]$ 
 ```
 >
 You will notice two peculiar things in the command we run:
