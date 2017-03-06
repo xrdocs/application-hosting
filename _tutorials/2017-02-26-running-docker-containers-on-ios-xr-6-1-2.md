@@ -502,4 +502,10 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 
 
+## Launch a Docker Container
+
+As discussed earlier, we'll showcase a few different techniques through which a user may spin up a docker container on IOS-XR.
+
+
+
 
