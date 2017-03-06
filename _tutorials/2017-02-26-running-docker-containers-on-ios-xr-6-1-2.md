@@ -813,6 +813,7 @@ aa73f6a81b9346131118b84f30ddfc2d3bd981a4a54ea21ba2e2bc5c3d18d348
 ```
 
 
+### Private Self-Signed Registry
 
 ### Importing/Loading a downloaded docker container/image tar ball
 
