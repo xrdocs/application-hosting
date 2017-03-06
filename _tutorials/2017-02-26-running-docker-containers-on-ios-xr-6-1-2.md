@@ -31,11 +31,11 @@ The purpose of this series is simple. Get users started with an IOS-XR setup on 
 
 In this part, we explore how a user can spin up Docker containers on IOS-XR. There are multiple ways to do this and we'll explore each one:  
   
- 
+*  **Public  Dockerhub Registry**: This is the simplest setup that most docker users would be well aware of. All you need to do is set up reachability to dockerhub with the correct dns resolution.
+
 *  **Private "insecure" registry**: Some users may choose to do this, specially if they're running a local docker registry inside a secured part of their network.  
    
 *  **Private "self-signed" registry**: This is more secure than the "insecure" setup, and allows a user to enable TLS.
-
 
 *  **Private "secure" registry**: Set up reachability to your private registry, created using a certificate obtained from a CA. We won't really tackle this scenario separately in this tutorial due to the absence of said certificate :).
     
@@ -814,6 +814,9 @@ aa73f6a81b9346131118b84f30ddfc2d3bd981a4a54ea21ba2e2bc5c3d18d348
 
 
 ### Private Self-Signed Registry
+
+
+
 
 ### Importing/Loading a downloaded docker container/image tar ball
 
