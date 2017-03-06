@@ -506,6 +506,8 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 As discussed earlier, we'll showcase a few different techniques through which a user may spin up a docker container on IOS-XR.
 
+### Dockerhub
 
+This is the simplest technique and follows a workflow that most docker users would be well aware of. Essentially, routing in the IOS-XR linux shell needs to be set up to dockerhub: <https://hub.docker.com>
 
 
