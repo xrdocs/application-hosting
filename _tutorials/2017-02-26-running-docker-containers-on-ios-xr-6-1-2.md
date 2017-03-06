@@ -633,7 +633,30 @@ default dev fwdintf  scope link  src 11.1.1.10
 
 Now issue the docker run command to launch the container on XR.
 
+```shell
+RP/0/RP0/CPU0:ios#
+RP/0/RP0/CPU0:ios#bash
+Mon Mar  6 05:51:14.341 UTC
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$docker run -itd --name ubuntu -v /var/run/netns --privileged 11.1.1.20:5000/ubuntu bash
+Unable to find image '11.1.1.20:5000/ubuntu:latest' locally
+latest: Pulling from ubuntu
+fec6b243e075: Pull complete 
+190e0e9a3e79: Pull complete 
+0d79cf192e4c: Pull complete 
+38398c307b51: Pull complete 
+356665655a72: Pull complete 
+Digest: sha256:6b079ae764a6affcb632231349d4a5e1b084bece8c46883c099863ee2aeb5cf8
+Status: Downloaded newer image for 11.1.1.20:5000/ubuntu:latest
+bf408eb70f88c8050c29fb46610d354a113a46edbece105acc68507e71442d38
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$docker ps
+CONTAINER ID        IMAGE                   COMMAND             CREATED             STATUS              PORTS               NAMES
+bf408eb70f88        11.1.1.20:5000/ubuntu   "bash"              8 seconds ago       Up 8 seconds                            ubuntu
+[xr-vm_node0_RP0_CPU0:~]$
 
+```
 You will notice two peculiar things in the command we run:
 
 *  **Mount /var/run/netns**: We mount /var/run/netns into the docker container. This is an option we use to mount all the potential network namespaces that may be created to match the XR vrfs. These network namespaces are created on the host and then bind-mounted into the XR LXC for user convenience. The docker container, running on the host, will simply inherit these network namespaces through the /var/run/netns mount. **Bear in mind that in before 6.2.11 release only the `global-vrf` is supported in the XR linux shell**.
