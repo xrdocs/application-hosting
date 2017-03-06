@@ -454,7 +454,7 @@ If you followed the steps in the pre-requisites section above : [Pre-requisites]
 
 Following the Vagrant model, over XR SSH, we use the "bash" CLI to access the docker client on the NCS5500:
 
-```shell
+```
 cisco@dhcpserver:~$ 
 cisco@dhcpserver:~$ ssh root@11.11.11.59
 The authenticity of host '11.11.11.59 (11.11.11.59)' can't be established.
@@ -483,7 +483,7 @@ Similarly, for direct access to the linux shell, we ssh over 57722, become sudo 
 SSH password and sudo password for user cisco will be whatever you've set up during the Pre-requisites stage.
 {: .notice-info} 
 
-```shell
+```
 cisco@dhcpserver:~$ ssh cisco@11.11.11.59 -p 57722
 cisco@11.11.11.59's password: 
 Permission denied, please try again.
