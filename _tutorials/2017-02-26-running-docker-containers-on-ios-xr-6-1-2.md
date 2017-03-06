@@ -592,6 +592,14 @@ root@vagrant-ubuntu-trusty-64:~#
  </div> 
 
 
+In the above steps, we've simply set up the registry on the devbox, pulled down an ubuntu docker image from dockerhub and pushed the image to the local registry.
+
+Now let's setup XR's docker daemon to accept the insecure registry located on the directly connected network on Gig0/0/0/0.   
+
+
+Based off the config applied via the Vagrantfile, the reachable IP address of the registry running on devbox = 11.1.1.20, port 5000.
+{: .notice--info}
+
 
 
 
