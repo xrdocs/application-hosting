@@ -789,6 +789,9 @@ DOCKER_OPTS=" --insecure-registry 11.11.11.2:5000"
 [ncs5508:~]$
 ```
 
+When you make the above change,the docker daemon will be automatically restarted. Wait for about 10-15 seconds before issuing any docker commands.
+{: .notice--info}
+
 
 ```
 [ncs5508:~]$docker run -itd --name ubuntu -v /var/run/netns --privileged 11.11.11.2:5000/ubuntu
