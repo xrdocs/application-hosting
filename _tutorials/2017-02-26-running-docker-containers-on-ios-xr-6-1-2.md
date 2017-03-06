@@ -708,7 +708,7 @@ You will notice two peculiar things in the command we run:
 *  **Mounting of /var/run/netns**: We mount /var/run/netns into the docker container. This is an option we use to mount all the potential network namespaces that may be created to match the XR vrfs. These network namespaces (XR release 6.2.11+) are created on the host and then bind-mounted into the XR LXC for user convenience. The docker container, running on the host, will simply inherit these network namespaces through the /var/run/netns mount. **Bear in mind that before 6.2.11 release only the `global-vrf` is supported in the XR linux shell**.
 >
 *  **--privileged flag**: We're using the `--privileged` flag because even when network namespaces are mounted from the "host" into the docker container, a user can change into a particular network namespace or execute commands in a particular namespace, only if the container is launched with privileged capabilties.
-
+{: .notice--info}
 
 Yay! The container's running. We can get into the container by starting bash through a docker exec. If you're running container images that do not support a shell, try docker attach instead.
 
