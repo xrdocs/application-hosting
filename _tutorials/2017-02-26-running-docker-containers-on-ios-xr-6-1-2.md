@@ -672,7 +672,7 @@ Before we launch the container, we need to configure the XR docker daemon to dis
 </div> 
 
 As the instructions/comments inside the file indicate, make sure there is a space before --insecure-registry flag. Further, in a normal docker daemon setup, a user is supposed to restart the docker daemon when changes to /etc/sysconfig/docker are made. In case of XR, this is not needed. We handle automatic restarts of the docker daemon when a user makes changes to /etc/sysconfig/docker and saves it.   
-Further, when you make the above change,the docker daemon will be automatically restarted. Wait for about 10-15 seconds before issuing any docker commands.
+Further, since the docker daemon will be automatically restarted, wait for about 10-15 seconds before issuing any docker commands.
 {: .notice--info}
 
 
