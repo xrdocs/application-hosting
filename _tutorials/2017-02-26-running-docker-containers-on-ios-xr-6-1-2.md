@@ -793,7 +793,7 @@ DOCKER_OPTS=" --insecure-registry 11.11.11.2:5000"
 When you make the above change,the docker daemon will be automatically restarted. Wait for about 10-15 seconds before issuing any docker commands.
 {: .notice--info}
 
-Now we can issue a docker run (or docker pull followed by a docker run) to download and launch the docker ubuntu image.
+Now we can issue a docker run (or docker pull followed by a docker run) to download and launch the docker ubuntu image from the registry.
 
 ```
 [ncs5508:~]$docker run -itd --name ubuntu -v /var/run/netns --privileged 11.11.11.2:5000/ubuntu
