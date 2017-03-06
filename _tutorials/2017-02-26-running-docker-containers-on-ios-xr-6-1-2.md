@@ -601,7 +601,7 @@ Based off the config applied via the Vagrantfile, the reachable IP address of th
 {: .notice--info}
 
 
-Log into XR CLI. We will first make sure that the request from XR's docker daemon originates with a source IP that is reachable from the docker registry. So set the TPA ip address = Gig0/0/0/0 ip address:  
+Log into XR CLI. We will first make sure that the request from XR's docker daemon originates with a source IP that is reachable from the docker registry. So set the TPA ip address = Gig0/0/0/0 ip address (directly connected subnet):  
 
 
 ```
@@ -615,7 +615,34 @@ RP/0/RP0/CPU0:ios(config-tpa-afi)#commit
 Mon Mar  6 05:08:32.436 UTC
 RP/0/RP0/CPU0:ios(config-tpa-afi)#
 
+```
 
+This should lead to the following routes in the linux kernel:
 
 ```
+RP/0/RP0/CPU0:ios#
+RP/0/RP0/CPU0:ios#bash
+Mon Mar  6 05:35:49.459 UTC
+
+[xr-vm_node0_RP0_CPU0:~]$ip route
+default dev fwdintf  scope link  src 11.1.1.10 
+10.0.2.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 10.0.2.15 
+[xr-vm_node0_RP0_CPU0:~]$
+
+```
+
+Now issue the docker run command to launch the container on XR.
+
+
+You will notice two peculiar things in the command we run:
+
+*  **Mount /var/run/netns**: We mount /var/run/netns into the docker container. This is an option we use to mount all the potential network namespaces that may be created to match the XR vrfs. These network namespaces are created on the host and then bind-mounted into the XR LXC for user convenience. The docker container, running on the host, will simply inherit these network namespaces through the /var/run/netns mount. **Bear in mind that in before 6.2.11 release only the `global-vrf` is supported in the XR linux shell**.
+
+*  **--privileged flag**: We're using the `--privileged` flag because even when network namespaces are mounted from the "host" into the docker container, a user can change into a particular network namespace or execute commands in a particular namespace, only if the container is launched with privileged capabilties.
+
+
+
+
+
+
 
