@@ -722,6 +722,33 @@ root@bf408eb70f88:/#
 
 **NCS5500 setup**
 
+The workflow is more or less identical to the Vagrant setup.
+In this case we're setting up the registry to be reachable over the Management network (and over the same subnet). For this, you don't need to set the TPA IP.  
+
+
+Again, set up the connected devbox to host the registry. The steps are again garnered from here: <https://docs.docker.com/registry/deploying/>
+
+In the end, you'll have a registry running on port 5000:
+
+```
+root@dhcpserver:~# docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+46550ef7e5f3        registry:2          "/entrypoint.sh /etc/"   3 minutes ago       Up 3 minutes        0.0.0.0:5000->5000/tcp   registry
+root@dhcpserver:~# 
+```
+
+and a sample image (ubuntu) pushed and tagged with localhost:5000:
+
+```
+root@dhcpserver:~# docker images localhost:5000/ubuntu
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+localhost:5000/ubuntu   latest              0ef2e08ed3fa        1 day ago          130 MB
+root@dhcpserver:~# 
+
+```
+
+
+
 
 
 
