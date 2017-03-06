@@ -80,12 +80,12 @@ On the other hand, if you have an NCS5500 lying around (don't we all?), then loa
 
 The server needs to be reachable from the router over the Management network.
 
-Further, we're going to enable SSH access in XR CLI and in  XR linux shell to achieve an equivalence between the NCS5508 and Vagrant setup.  
+Further, we're going to enable SSH access in XR CLI and in  XR linux shell to achieve an equivalence between the NCS5500 and Vagrant setup.  
 
 **Enable SSH access in the XR CLI**
 {: .notice}
 
-On my NCS5508 setup, I can enable SSH in XR in the default (global) vrf with the following steps and CLI:  
+On my NCS5500 setup, I can enable SSH in XR in the default (global) vrf with the following steps and CLI:  
 
 ```shell
 
@@ -286,7 +286,7 @@ Works like a charm!
 
 ## Understand the topology
 
-The topology I'm using differs slightly between the vagrant setup and the NCS5508 setup.
+The topology I'm using differs slightly between the vagrant setup and the NCS5500 setup.
 This is owing to the fact that the Management port of the vagrant IOS-XR box is used up in the NAT network. So to show equivalence between the two setups, I directly connect the Gig0/0/0/0 interface of Vagrant ios-xrv64 with eth1 of the devbox as shown in the figure below.  
 
 The two topologies in use are:  
@@ -320,7 +320,7 @@ AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$
 This is the vagrant provisioner for the devbox and will install docker-engine on boot (vagrant up).  
 
 
-### NCS5508 setup
+### NCS5500 setup
 
 In this case, the devbox must be provisioned by the user. On an ubuntu devbox, docker-engine can be installed by following the instructions at:  
   
@@ -447,7 +447,7 @@ On your vagrant box, there are two ways to get access to the docker client:
     
     
 
-### NCS5508 Setup Docker Client Access.
+### NCS5500 Setup Docker Client Access.
 
 If you followed the steps in the pre-requisites section above : [Pre-requisites](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#physical-ncs5500-router), you would already have access to your NCS5500 device over XR SSH (CLI, port 22) as well as sshd_operns (XR linux shell, port 57722)
 
@@ -720,6 +720,7 @@ root@bf408eb70f88:/#
 ```
 
 
+**NCS5500 setup**
 
 
 
