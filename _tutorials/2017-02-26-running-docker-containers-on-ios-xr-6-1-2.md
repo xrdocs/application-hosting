@@ -737,7 +737,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 root@dhcpserver:~# 
 ```
 
-and a sample image (ubuntu) pushed and tagged with localhost:5000:
+and a sample image (ubuntu) pushed and tagged with localhost:5000
 
 ```
 root@dhcpserver:~# docker images localhost:5000/ubuntu
@@ -746,6 +746,30 @@ localhost:5000/ubuntu   latest              0ef2e08ed3fa        1 day ago       
 root@dhcpserver:~# 
 
 ```
+
+
+
+Now hop over to the NCS5500 and issue the "bash" CLI. Your "ip route" setup should look something like this:
+
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+RP/0/RP0/CPU0:ncs5508#bash
+Tue Mar  7 00:29:56.416 UTC
+
+[ncs5508:~]$ip route
+<mark>default dev fwdintf  scope link  src 1.1.1.1</mark>
+10.10.10.10 dev fwd_ew  scope link  src 1.1.1.1 
+11.11.11.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 11.11.11.59 
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$
+
+</code>
+</pre>
+</div> 
+
 
 
 
