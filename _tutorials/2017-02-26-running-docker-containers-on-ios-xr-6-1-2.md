@@ -631,6 +631,30 @@ default dev fwdintf  scope link  src 11.1.1.10
 
 ```
 
+Before we launch the container, we need to configure the XR docker daemon to disregard security for our registry. This is done by modifying /etc/sysconfig/docker inside the XR LXC. This is what my eventual configuration looks like:
+
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+[xr-vm_node0_RP0_CPU0:~]$cat /etc/sysconfig/docker
+# DOCKER_OPTS can be used to add insecure private registries to be supported 
+# by the docker daemon
+# eg : DOCKER_OPTS="--insecure-registry foo --insecure-registry bar"
+
+# Following are the valid configs
+# DOCKER_OPTS="<space>--insecure-registry<space>foo"
+# DOCKER_OPTS+="<space>--insecure-registry<space>bar"
+
+DOCKER_OPTS=" --insecure-registry 11.1.1.20:5000"
+[xr-vm_node0_RP0_CPU0:~]$
+ </code>
+ </pre>
+ </div> 
+
+
+
+
 Now issue the docker run command to launch the container on XR.
 
 ```shell
@@ -659,9 +683,12 @@ bf408eb70f88        11.1.1.20:5000/ubuntu   "bash"              8 seconds ago   
 ```
 You will notice two peculiar things in the command we run:
 
-*  **Mounting of /var/run/netns**: We mount /var/run/netns into the docker container. This is an option we use to mount all the potential network namespaces that may be created to match the XR vrfs. These network namespaces are created on the host and then bind-mounted into the XR LXC for user convenience. The docker container, running on the host, will simply inherit these network namespaces through the /var/run/netns mount. **Bear in mind that before 6.2.11 release only the `global-vrf` is supported in the XR linux shell**.
+*  **Mounting of /var/run/netns**: We mount /var/run/netns into the docker container. This is an option we use to mount all the potential network namespaces that may be created to match the XR vrfs. These network namespaces (XR release 6.2.11+) are created on the host and then bind-mounted into the XR LXC for user convenience. The docker container, running on the host, will simply inherit these network namespaces through the /var/run/netns mount. **Bear in mind that before 6.2.11 release only the `global-vrf` is supported in the XR linux shell**.
 
 *  **--privileged flag**: We're using the `--privileged` flag because even when network namespaces are mounted from the "host" into the docker container, a user can change into a particular network namespace or execute commands in a particular namespace, only if the container is launched with privileged capabilties.
+
+Finally, let's
+
 
 
 
