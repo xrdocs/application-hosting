@@ -516,6 +516,10 @@ This may not be the preferred setup for production deployments, understandably, 
 {: .notice--info} 
 
 
+**Vagrant Setup**
+
+The vagrant IOS-XR box comes with connectivity to the internet already. All you need to do is set up the domain name-server in the global-vrf (before 6.2.11, we only support the global/default vrf for the docker daemon image downloads).  
+
 
 
 ### Private "insecure" registry
