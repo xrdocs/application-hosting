@@ -449,5 +449,55 @@ On your vagrant box, there are two ways to get access to the docker client:
 
 ### NCS5508 Setup Docker Client Access.
 
-If you followed the steps in the pre-requisites section above : [Pre-requisites](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#physical-ncs5500-router), you'll notice 
+If you followed the steps in the pre-requisites section above : [Pre-requisites](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#physical-ncs5500-router), you would already have access to your NCS5500 device over XR SSH (CLI, port 22) as well as sshd_operns (XR linux shell, port 57722)
+
+
+Following the Vagrant model, over XR SSH, we use the "bash" CLI to access the docker client on the NCS5500:
+
+```shell
+cisco@dhcpserver:~$ 
+cisco@dhcpserver:~$ ssh root@11.11.11.59
+The authenticity of host '11.11.11.59 (11.11.11.59)' can't be established.
+RSA key fingerprint is 8a:42:49:bf:4c:cd:f9:3c:e1:19:f9:02:b6:3a:ad:01.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '11.11.11.59' (RSA) to the list of known hosts.
+Password: 
+
+
+RP/0/RP0/CPU0:ncs5508#
+RP/0/RP0/CPU0:ncs5508#
+RP/0/RP0/CPU0:ncs5508#bash
+Mon Mar  6 09:36:37.221 UTC
+
+[ncs5508:~]$whoami
+root
+[ncs5508:~]$docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+[ncs5508:~]$
+[ncs5508:~]$
+
+```
+
+Similarly, for direct access to the linux shell, we ssh over 57722, become sudo and then access the docker client:
+
+SSH password and sudo password for user cisco will be whatever you've set up during the Pre-requisites stage.
+{: .notice-info} 
+
+```shell
+cisco@dhcpserver:~$ ssh cisco@11.11.11.59 -p 57722
+cisco@11.11.11.59's password: 
+Permission denied, please try again.
+cisco@11.11.11.59's password: 
+Last login: Mon Mar  6 06:30:47 2017 from 11.11.11.2
+-sh: /var/log/boot.log: Permission denied
+ncs5508:~$ 
+ncs5508:~$ 
+ncs5508:~$ sudo -i
+Password: 
+[ncs5508:~]$ 
+[ncs5508:~]$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+[ncs5508:~]$ 
+```
+
 
