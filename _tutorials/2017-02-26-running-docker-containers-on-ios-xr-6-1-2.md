@@ -527,6 +527,69 @@ This is the simplest technique:
 We follow the steps described here: <https://docs.docker.com/registry/deploying/>
 
 
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$<mark>vagrant ssh devbox </mark>
+Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 3.13.0-95-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+ System information disabled due to load higher than 1.0
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+0 packages can be updated.
+0 updates are security updates.
+
+New release '16.04.2 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo -s </mark>
+root@vagrant-ubuntu-trusty-64:~# 
+root@vagrant-ubuntu-trusty-64:~# <mark>docker run -d -p 5000:5000 --restart=always --name registry registry:2</mark>
+Unable to find image 'registry:2' locally
+2: Pulling from library/registry
+709515475419: Pull complete 
+df6e278d8f96: Pull complete 
+16218e264e88: Pull complete 
+16748da81f63: Pull complete 
+8d73e673c34c: Pull complete 
+Digest: sha256:28be0609f90ef53e86e1872a11d672434ce1361711760cf1fe059efd222f8d37
+Status: Downloaded newer image for registry:2
+b6a2a5fef7b7c201ee4d162b56f1e35054e25225ad27ad3fbf3a267d2ef9fb7a
+root@vagrant-ubuntu-trusty-64:~# 
+root@vagrant-ubuntu-trusty-64:~#<mark> docker pull ubuntu && docker tag ubuntu localhost:5000/ubuntu</mark>
+Using default tag: latest
+latest: Pulling from library/ubuntu
+d54efb8db41d: Pull complete 
+f8b845f45a87: Pull complete 
+e8db7bf7c39f: Pull complete 
+9654c40e9079: Pull complete 
+6d9ef359eaaa: Pull complete 
+Digest: sha256:dd7808d8792c9841d0b460122f1acf0a2dd1f56404f8d1e56298048885e45535
+Status: Downloaded newer image for ubuntu:latest
+root@vagrant-ubuntu-trusty-64:~# 
+root@vagrant-ubuntu-trusty-64:~#<mark> docker push localhost:5000/ubuntu </mark>
+The push refers to a repository [localhost:5000/ubuntu]
+56827159aa8b: Pushed 
+440e02c3dcde: Pushed 
+29660d0e5bb2: Pushed 
+85782553e37a: Pushed 
+745f5be9952c: Pushed 
+latest: digest: sha256:6b079ae764a6affcb632231349d4a5e1b084bece8c46883c099863ee2aeb5cf8 size: 1357
+root@vagrant-ubuntu-trusty-64:~# 
+root@vagrant-ubuntu-trusty-64:~# 
+
+ </code>
+ </pre>
+ </div> 
 
 
 
