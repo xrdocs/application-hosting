@@ -631,7 +631,7 @@ default dev fwdintf  scope link  src 11.1.1.10
 
 ```
 
-Before we launch the container, we need to configure the XR docker daemon to disregard security for our registry. This is done by modifying /etc/sysconfig/docker inside the XR LXC. This is what my eventual configuration looks like:
+Before we launch the container, we need to configure the XR docker daemon to disregard security for our registry. This is done by modifying `/etc/sysconfig/docker` inside the XR LXC. This is what my eventual configuration looks like:
 
 
 <div class="highlighter-rouge">
