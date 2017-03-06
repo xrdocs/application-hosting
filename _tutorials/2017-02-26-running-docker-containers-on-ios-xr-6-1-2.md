@@ -825,6 +825,11 @@ Digest: sha256:dd7808d8792c9841d0b460122f1acf0a2dd1f56404f8d1e56298048885e45535
 Status: Downloaded newer image for 11.11.11.2:5000/ubuntu:latest
 aa73f6a81b9346131118b84f30ddfc2d3bd981a4a54ea21ba2e2bc5c3d18d348
 [ncs5508:~]$
+[ncs5508:~]$docker ps
+CONTAINER ID        IMAGE                    COMMAND             CREATED             STATUS              PORTS               NAMES
+aa73f6a81b93        11.11.11.2:5000/ubuntu   "/bin/bash"         4 hours ago         Up 4 hours                              ubuntu
+[ncs5508:~]$
+
 
 
 ```
