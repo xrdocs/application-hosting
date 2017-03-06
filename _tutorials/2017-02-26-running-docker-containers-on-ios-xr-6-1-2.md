@@ -601,5 +601,21 @@ Based off the config applied via the Vagrantfile, the reachable IP address of th
 {: .notice--info}
 
 
+Log into XR CLI. We will first make sure that the request from XR's docker daemon originates with a source IP that is reachable from the docker registry. So set the TPA ip address = Gig0/0/0/0 ip address:  
 
+
+```
+RP/0/RP0/CPU0:ios(config)#tpa
+RP/0/RP0/CPU0:ios(config-tpa)#address-family ipv4 ?
+  update-source  Update the Source for Third Party
+  <cr>           
+RP/0/RP0/CPU0:ios(config-tpa)#address-family ipv4 
+RP/0/RP0/CPU0:ios(config-tpa-afi)#update-source gigabitEthernet 0/0/0/0 
+RP/0/RP0/CPU0:ios(config-tpa-afi)#commit
+Mon Mar  6 05:08:32.436 UTC
+RP/0/RP0/CPU0:ios(config-tpa-afi)#
+
+
+
+```
 
