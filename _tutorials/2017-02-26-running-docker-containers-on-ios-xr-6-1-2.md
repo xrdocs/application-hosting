@@ -646,7 +646,7 @@ Before we launch the container, we need to configure the XR docker daemon to dis
 # DOCKER_OPTS="lt&;spacegt&;--insecure-registrylt&;spacegt&;foo"
 # DOCKER_OPTS+="lt&;spacegt&;--insecure-registrylt&;spacegt&;bar"
 
-DOCKER_OPTS=" --insecure-registry 11.1.1.20:5000"
+<mark>DOCKER_OPTS=" --insecure-registry 11.1.1.20:5000"</mark>
 [xr-vm_node0_RP0_CPU0:~]$
 </code>
 </pre>
