@@ -688,8 +688,33 @@ You will notice two peculiar things in the command we run:
 
 *  **--privileged flag**: We're using the `--privileged` flag because even when network namespaces are mounted from the "host" into the docker container, a user can change into a particular network namespace or execute commands in a particular namespace, only if the container is launched with privileged capabilties.
 
-Finally, let's
 
+Yay! The container's running. We can get into the container by starting bash through a docker exec. If you're running container images that do not support a shell, try docker attach instead.
+
+```shell
+
+[xr-vm_node0_RP0_CPU0:~]$docker exec -it ubuntu bash
+root@bf408eb70f88:/# 
+root@bf408eb70f88:/# cat /etc/*-release 
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=16.04
+DISTRIB_CODENAME=xenial
+DISTRIB_DESCRIPTION="Ubuntu 16.04.2 LTS"
+NAME="Ubuntu"
+VERSION="16.04.2 LTS (Xenial Xerus)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 16.04.2 LTS"
+VERSION_ID="16.04"
+HOME_URL="http://www.ubuntu.com/"
+SUPPORT_URL="http://help.ubuntu.com/"
+BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"
+VERSION_CODENAME=xenial
+UBUNTU_CODENAME=xenial
+root@bf408eb70f88:/# 
+
+
+```
 
 
 
