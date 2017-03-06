@@ -563,7 +563,8 @@ Status: Downloaded newer image for ubuntu:latest
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 495ec2ab0b20        ubuntu              "bash"              7 minutes ago       Up 7 minutes                            ubuntu
 [xr-vm_node0_RP0_CPU0:~]$ 
-```
+```  
+
 >
 You will notice two peculiar things in the command we run:
 >
