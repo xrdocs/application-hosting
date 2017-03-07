@@ -298,7 +298,7 @@ The two topologies in use are:
 
 <div class="notice--warning">
 <kbd>
-{{ output | markdownify }}
+<img src="https://xrdocs.github.io/xrdocs-images/assets/images/vagrant_docker_topo.png" alt="vagrant docker topo">
 </kbd>
 </div>
 
