@@ -296,11 +296,10 @@ The two topologies in use are:
 {% endcapture %}  
 
 
-<div class="notice--warning">
 <kbd>
 <img src="https://xrdocs.github.io/xrdocs-images/assets/images/vagrant_docker_topo.png" alt="vagrant docker topo">
 </kbd>
-</div>
+
 
 ![NCS5500 docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/ncs5500_docker_topo.png){: .align-center}
 {: .notice--warning}  
