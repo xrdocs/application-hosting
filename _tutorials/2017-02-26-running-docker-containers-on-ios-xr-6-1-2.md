@@ -291,9 +291,13 @@ This is owing to the fact that the Management port of the vagrant IOS-XR box is 
 
 The two topologies in use are:  
 
+{% capture "output" %}
+![vagrant docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/vagrant_docker_topo.png)
+{% endcapture %}  
 
-![vagrant docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/vagrant_docker_topo.png){: .align-center}
-{: .notice}  
+<div class="notice--warning">
+{{ output | markdownify }}
+</div>
 
 ![NCS5500 docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/ncs5500_docker_topo.png){: .align-center}
 {: .notice--warning}  
