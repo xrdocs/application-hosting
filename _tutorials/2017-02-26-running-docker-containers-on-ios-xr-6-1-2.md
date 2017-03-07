@@ -295,9 +295,11 @@ The two topologies in use are:
 ![vagrant docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/vagrant_docker_topo.png)
 {% endcapture %}  
 
+<kbd>
 <div class="notice--warning">
 {{ output | markdownify }}
 </div>
+</kbd>
 
 ![NCS5500 docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/ncs5500_docker_topo.png){: .align-center}
 {: .notice--warning}  
