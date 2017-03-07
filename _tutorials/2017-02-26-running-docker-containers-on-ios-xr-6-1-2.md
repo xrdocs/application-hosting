@@ -360,7 +360,8 @@ The Docker client/daemon setup follows the exact same principle as shown below. 
 
 Can we verify this?
 
-### Vagrant setup Docker Client Access: 
+### Vagrant setup Docker Client Access 
+
 On your vagrant box, there are two ways to get access to the docker client:
 
 *  **Drop into the "bash" shell from XR CLI:** Using "bash" ensures that the correct environment 
