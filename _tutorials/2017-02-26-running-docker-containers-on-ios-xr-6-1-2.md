@@ -291,13 +291,11 @@ This is owing to the fact that the Management port of the vagrant IOS-XR box is 
 
 The two topologies in use are:  
 
-
-![vagrant docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/vagrant_docker_topo.png)  
-{: .notice}
-  
-    
+>
+![vagrant docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/vagrant_docker_topo.png)   
+>    
 ![NCS5500 docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/ncs5500_docker_topo.png)    
-{: .notice}  
+{: .notice--info}  
   
   
   
@@ -599,6 +597,15 @@ UBUNTU_CODENAME=xenial
 root@bf408eb70f88:/# 
 
 ```
+
+**NCS5500 Setup**
+  
+Remember the topology for the NCS5508 setup? In order to reach the internet, the NCS5508 needs to be configured with a default route through the Management port which is NAT-ted to the outside world.
+
+
+
+
+
 
 ### Private "insecure" registry
 
