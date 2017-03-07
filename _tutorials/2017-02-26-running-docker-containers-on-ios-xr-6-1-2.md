@@ -453,7 +453,7 @@ On your vagrant box, there are two ways to get access to the docker client:
     
     
 
-### NCS5500 Setup Docker Client Access.
+### NCS5500 Setup Docker Client Access
 
 If you followed the steps in the pre-requisites section above : [Pre-requisites](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#physical-ncs5500-router), you would already have access to your NCS5500 device over XR SSH (CLI, port 22) as well as sshd_operns (XR linux shell, port 57722)
 
