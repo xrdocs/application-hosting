@@ -296,7 +296,7 @@ The two topologies in use are:
 {% endcapture %}  
 
 
-<img src="https://xrdocs.github.io/xrdocs-images/assets/images/vagrant_docker_topo.png" alt="vagrant docker topo" style="padding:1px;border:thin solid black;>
+<img src="https://xrdocs.github.io/xrdocs-images/assets/images/vagrant_docker_topo.png" alt="vagrant docker topo" style="padding:1px;border:thin solid black;">
 
 
 
