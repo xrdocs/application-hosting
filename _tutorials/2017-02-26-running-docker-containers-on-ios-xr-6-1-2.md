@@ -608,7 +608,7 @@ root@bf408eb70f88:/#
 
 **NCS5500 Setup**
   
-Remember the topology for the NCS5508 setup?: https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#ncs5500-setup
+Remember the topology for the NCS5508 setup?: <https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#ncs5500-setup>
 
 In order to reach the internet, the NCS5508 needs to be configured with a default route through the Management port which is NAT-ted to the outside world through devbox.
 
