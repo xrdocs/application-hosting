@@ -296,7 +296,7 @@ The two topologies in use are:
 {: .notice}  
 
 ![NCS5500 docker topo](https://xrdocs.github.io/xrdocs-images/assets/images/ncs5500_docker_topo.png){: .align-center}
-{: .notice}  
+{: .notice--warning}  
   
   
 ## Install docker-engine on the devbox
