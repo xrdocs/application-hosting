@@ -692,6 +692,19 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 Post 6.3.1, the default route wouldn't have to be set using the linux command. We have introduced a default-route CLI under tpa (along with vrfs, but more on that in another blog).   
 
+The CLI will look something like :
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+tpa
+  vrf lt&;vrf-namegt&;
+    address-family ipv4[ipv6]
+      default-route east-west
+</code>
+</pre>
+</div>
+
 
 The advantage of introducing a CLI is to   
 
