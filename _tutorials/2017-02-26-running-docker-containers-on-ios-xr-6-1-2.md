@@ -115,7 +115,7 @@ RP/0/RP0/CPU0:ncs5508#
 
 This is openssh running in the XR linux environment. Users may choose to keep this disabled based on the kind of operations they intend to have. Enabling it in a given network namespace (equivalent to XR vrf) opens up port 57722 on all the IP addresses reachable in that VRF.
 
-In 6.1.2, only global-vrf (default vrf) is supported in the linux environment for SSH and apps. Post 6.2.11, support for Mgmt vrfs in the linux shell will be brought in.
+In 6.1.2, only global-vrf (default vrf) is supported in the linux environment for SSH and apps. Post 6.3.1, support for Mgmt vrfs in the linux shell will be brought in.
 {: .notice-warning} 
 
 To enable SSH access in the XR linux shell for a sudo user, we'll take 3 steps:
@@ -524,9 +524,9 @@ This may not be the preferred setup for production deployments, understandably, 
 
 **Vagrant Setup**
 
-The vagrant IOS-XR box comes with connectivity to the internet already. All you need to do is set up the domain name-server in the global-vrf (before 6.2.11, we only support the global/default vrf for the docker daemon image downloads).  
+The vagrant IOS-XR box comes with connectivity to the internet already. All you need to do is set up the domain name-server in the global-vrf (before 6.3.1, we only support the global/default vrf for the docker daemon image downloads).  
 
-Remember that we're setting up this domain name on per vrf basis. In the future, we intend to sync this through XR CLI for all vrfs to the corresponding network namespaces. Before 6.2.11, of course only global-vrf may be used.
+Remember that we're setting up this domain name on per vrf basis. In the future, we intend to sync this through XR CLI for all vrfs to the corresponding network namespaces. Before 6.3.1, of course only global-vrf may be used.
 
 Update `/etc/netns/global-vrf/resolv.conf` to point to a reachable nameserver, in this case 8.8.8.8:
 
@@ -574,7 +574,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 >
 You will notice two peculiar things in the command we run:
 >
-*  **Mounting of /var/run/netns**: We mount /var/run/netns into the docker container. This is an option we use to mount all the potential network namespaces that may be created to match the XR vrfs. These network namespaces (XR release 6.2.11+) are created on the host and then bind-mounted into the XR LXC for user convenience. The docker container, running on the host, will simply inherit these network namespaces through the /var/run/netns mount. **Bear in mind that before 6.2.11 release only the `global-vrf` is supported in the XR linux shell**.  
+*  **Mounting of /var/run/netns**: We mount /var/run/netns into the docker container. This is an option we use to mount all the potential network namespaces that may be created to match the XR vrfs. These network namespaces (XR release 6.3.1+) are created on the host and then bind-mounted into the XR LXC for user convenience. The docker container, running on the host, will simply inherit these network namespaces through the /var/run/netns mount. **Bear in mind that before 6.3.1 release only the `global-vrf` is supported in the XR linux shell**.  
 >
 *  **--privileged flag**: We're using the `--privileged` flag because even when network namespaces are mounted from the "host" into the docker container, a user can change into a particular network namespace or execute commands in a particular namespace, only if the container is launched with privileged capabilties.
 {: .notice--info}
@@ -620,15 +620,15 @@ For those who understand the basic principle behind the IOS-XR Packet I/O archit
 >
 This leads to 3 types of routes:
 1.  Default route through "fwdintf" : To allow packets through the front panel ports by default. Herein the update-source CLI is used to set the source IP address of the packets.
-2.  East-West route through "fwd_ew" : This enables packets to flow between XR and a linux app running in a given vrf (network namespace - only global-vrf supported before 6.2.11 release).
+2.  East-West route through "fwd_ew" : This enables packets to flow between XR and a linux app running in a given vrf (network namespace - only global-vrf supported before 6.3.1 release).
 3.  Management Subnet:  The directly connected subnet for the Management port as well non-default routes in the RIB through the Management port.
 
 
 To set up a default route through the Management port:
 
-**Prior to 6.2.11 release**
+**Prior to 6.3.1 release**
 
-Prior to 6.2.11, there is no direct knob in the tpa CLI to help set this up. So we drop into the linux shell directly and set the default route ourselves:
+Prior to 6.3.1, there is no direct knob in the tpa CLI to help set this up. So we drop into the linux shell directly and set the default route ourselves:
 
 ```
 RP/0/RP0/CPU0:ncs5508#bash
@@ -688,9 +688,12 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 ```
 
-**Post 6.2.11 release**
+**Post 6.3.1 release**
+
+Post 6.3.1, the default route wouldn't have to be set using the linux command. We have introduced a default-route CLI under tpa (along with vrfs, but more on that in another blog).   
 
 
+The advantage of introducing a CLI is to   
 
 
 ### Private "insecure" registry
