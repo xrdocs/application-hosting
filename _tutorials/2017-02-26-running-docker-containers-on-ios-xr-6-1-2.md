@@ -612,9 +612,60 @@ Remember the topology for the NCS5508 setup?: ![NCS5500 Setup Topology](<https:/
 
 In order to reach the internet, the NCS5508 needs to be configured with a default route through the Management port which is NAT-ted to the outside world through devbox.
 
+Read the note below if you need a refresher on the routing in XR's linux kernel:
+>
+**Setting up Default routes in the Linux Kernel:**
+>
+For those who understand the basic principle behind the IOS-XR Packet I/O architecture for Linux application traffic (see here: ![Application hosting Infrastructure in IOS-XR](><{{ base_path }}/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/>) ), it might be clear that routes in the linux kernel are controlled through the "tpa" CLI.
+>
+This leads to 3 types of routes:
+1.  Default route through "fwdintf" : To allow packets through the front panel ports by default. Herein the update-source CLI is used to set the source IP address of the packets.
+2.  East-West route through "fwd_ew" : This enables packets to flow between XR and a linux app running in a given vrf (network namespace - only global-vrf supported before 6.2.11 release).
+3.  Management Subnet:  The directly connected subnet for the Management port as well non-default routes in the RIB through the Management port.
 
 
+To set up a default route through the Management port:
 
+**Prior to 6.2.11 release**
+
+Prior to 6.2.11, there is no direct knob in the tpa CLI to help set this up. So we drop into the linux shell directly and set the default route ourselves:
+
+```
+RP/0/RP0/CPU0:ncs5508#bash
+Wed Mar  8 02:06:54.590 UTC
+
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$ip route
+default dev fwdintf  scope link  src 1.1.1.1 
+10.10.10.10 dev fwd_ew  scope link  src 1.1.1.1 
+11.11.11.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 11.11.11.59 
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$ip route del default
+[ncs5508:~]$ip route add default via 11.11.11.2 dev Mg0_RP0_CPU0_0
+[ncs5508:~]$
+[ncs5508:~]$ip route
+default via 11.11.11.2 dev Mg0_RP0_CPU0_0 
+10.10.10.10 dev fwd_ew  scope link  src 1.1.1.1 
+11.11.11.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 11.11.11.59 
+[ncs5508:~]$
+
+```
+Having done the above change, set up the DNS server much like in the Vagrant setup:
+
+
+```
+[ncs5508:~]$cat /etc/netns/global-vrf/resolv.conf
+nameserver ######
+[ncs5508:~]$
+```
+
+Of course, use an actual IP address of the DNS server in your network, and not #####. I use it to simply hide the private DNS IP in our setup :)
+{: .notice--info}
+
+
+**Post 6.2.11 release**
 
 
 
