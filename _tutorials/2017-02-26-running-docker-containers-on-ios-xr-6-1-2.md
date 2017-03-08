@@ -698,7 +698,7 @@ The CLI will look something like :
 <pre class="highlight">
 <code>
 tpa
-  vrf lt&;vrf-namegt&;
+  vrf &lt;vrf-name&gt;
     address-family ipv4[ipv6]
       default-route east-west
 </code>
@@ -867,8 +867,8 @@ Before we launch the container, we need to configure the XR docker daemon to dis
 # eg : DOCKER_OPTS="--insecure-registry foo --insecure-registry bar"
 
 # Following are the valid configs
-# DOCKER_OPTS="lt&;spacegt&;--insecure-registrylt&;spacegt&;foo"
-# DOCKER_OPTS+="lt&;spacegt&;--insecure-registrylt&;spacegt&;bar"
+# DOCKER_OPTS="&lt;space&gt;--insecure-registry&lt;space&gt;foo"
+# DOCKER_OPTS+="&lt;space&gt;--insecure-registry&lt;space&gt;bar"
 
 <mark>DOCKER_OPTS=" --insecure-registry 11.1.1.20:5000"</mark>
 [xr-vm_node0_RP0_CPU0:~]$
