@@ -690,7 +690,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 **Post 6.3.1 release**
 
-Post 6.3.1, the default route wouldn't have to be set using the linux command. We have introduced a default-route CLI under tpa (along with vrfs, but more on that in another blog).   
+Post 6.3.1, the default route wouldn't have to be set using the linux command (ip route default...). We have introduced a default-route CLI under tpa (along with vrfs, but more on that in another blog).   
 
 The CLI will look something like :
 
