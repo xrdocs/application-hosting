@@ -610,7 +610,7 @@ root@bf408eb70f88:/#
   
 Remember the topology for the NCS5508 setup?: ![NCS5500 Setup Topology](<https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#ncs5500-setup)
 
-In order to reach the internet, the NCS5508 needs to be configured with a default route through the Management port which is NAT-ted to the outside world through devbox.
+In order to reach the internet, the NCS5508 needs to be configured with a default route through the Management port which is NAT-ted (using iptables Masquerade rules, not shown here) to the outside world through devbox.
 
 Read the note below if you need a refresher on the routing in XR's linux kernel:
 >
@@ -652,7 +652,7 @@ default via 11.11.11.2 dev Mg0_RP0_CPU0_0
 [ncs5508:~]$
 
 ```
-Having done the above change, set up the DNS server much like in the Vagrant setup:
+Having done the above change, set up the DNS server in global-vrf network namespace, much like in the Vagrant setup:
 
 
 ```
@@ -661,9 +661,32 @@ nameserver ######
 [ncs5508:~]$
 ```
 
-Of course, use an actual IP address of the DNS server in your network, and not #####. I use it to simply hide the private DNS IP in our setup :)
+Of course, use an actual IP address of the DNS server in your network, and not #####. I use it to simply hide the private DNS IP in my setup :)
 {: .notice--info}
 
+
+```
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$docker run -itd --name ubuntu --privileged -v /var/run/netns:/var/run/netns ubuntu bash
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+d54efb8db41d: Pull complete 
+f8b845f45a87: Pull complete 
+e8db7bf7c39f: Pull complete 
+9654c40e9079: Pull complete 
+6d9ef359eaaa: Pull complete 
+Digest: sha256:dd7808d8792c9841d0b460122f1acf0a2dd1f56404f8d1e56298048885e45535
+Status: Downloaded newer image for ubuntu:latest
+67b781a19b5a164d77ee7ed95201c422e70be57c9ee6547a7e8e9457f8db514b
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+67b781a19b5a        ubuntu              "bash"              3 minutes ago       Up 3 minutes                            ubuntu
+[ncs5508:~]$
+
+```
 
 **Post 6.2.11 release**
 
