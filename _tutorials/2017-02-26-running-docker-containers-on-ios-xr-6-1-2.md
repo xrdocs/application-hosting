@@ -706,7 +706,8 @@ tpa
 </div>
 
 
-The advantage of introducing a CLI is to   
+The advantage of introducing a CLI is that it helps handle the routes in the linux kernel across reloads and switchovers as well.
+
 
 
 ### Private "insecure" registry
