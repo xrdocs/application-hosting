@@ -80,7 +80,7 @@ print(output)
 output = net_connect.send_config_set(['hostname my_sweet_rtr', 'commit'])
 print(output)
 
-output = net_connect.send_config_set(['show run | b hostname'])
+output = net_connect.send_command('show run | b hostname')
 print(output)
 ```
 
