@@ -381,15 +381,25 @@ In this case, the libvirtd and docker daemons are available inside the XR contro
 This does not change the user experience from a docker client or virsh client perspective. 
 The difference is mainly how one may interact with the docker daemon as we'll touch upon in subsequent sections.  
 
-This is the architecture looks like for ASR9k:  
+This is what the architecture looks like for ASR9k:  
 
 
+**ASR9k LXC/libvirt Setup:**
+
+[![xr_asr9k_libvirt_libvirt](https://xrdocs.github.io/xrdocs-images/assets/images/xr_asr9k_libvirt_architecture.png)](https://xrdocs.github.io/xrdocs-images/assets/images/xr_asr9k_libvirt_architecture.png)
+
+Libvirt daemon is local to the XR control plane VM.
 
 
+**ASR9k LXC/libvirt Setup:**
+[![xr_asr9k_docker_libvirt](https://xrdocs.github.io/xrdocs-images/assets/images/xr_asr9k_docker_architecture.png)](https://xrdocs.github.io/xrdocs-images/assets/images/xr_asr9k_docker_architecture.png)
+
+Docker daemon is local to the XR control plane VM.
 
 
+Alright, so can we verify this?  
 
-Can we verify this?
+
 
 ### Vagrant setup Docker Client Access 
 
