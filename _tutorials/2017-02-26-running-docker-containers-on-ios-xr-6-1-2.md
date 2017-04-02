@@ -658,7 +658,8 @@ Remember the topology for the NCS5508 setup?: ![NCS5500 Setup Topology](<https:/
 
 In order to reach the internet, the NCS5508 needs to be configured with a default route through the Management port which is NAT-ted (using iptables Masquerade rules, not shown here) to the outside world through devbox.
 
-Read the note below if you need a refresher on the routing in XR's linux kernel:
+Read the note below if you need a refresher on the routing in XR's linux kernel: 
+
 >
 **Setting up Default routes in the Linux Kernel:**
 >
@@ -714,7 +715,7 @@ Of course, use an actual IP address of the DNS server in your network, and not #
 ```
 [ncs5508:~]$
 [ncs5508:~]$
-[ncs5508:~]$docker run -itd --name ubuntu --privileged -v /var/run/netns:/var/run/netns ubuntu bash
+[ncs5508:~]$docker run -itd --name ubuntu --cap-add=SYS_ADMIN -v /var/run/netns:/var/run/netns ubuntu bash
 Unable to find image 'ubuntu:latest' locally
 latest: Pulling from library/ubuntu
 d54efb8db41d: Pull complete 
@@ -936,7 +937,7 @@ RP/0/RP0/CPU0:ios#
 RP/0/RP0/CPU0:ios#bash
 Mon Mar  6 05:51:14.341 UTC
 [xr-vm_node0_RP0_CPU0:~]$
-[xr-vm_node0_RP0_CPU0:~]$docker run -itd --name ubuntu -v /var/run/netns --privileged 11.1.1.20:5000/ubuntu bash
+[xr-vm_node0_RP0_CPU0:~]$docker run -itd --name ubuntu -v /var/run/netns --cap-add=SYS_ADMIN 11.1.1.20:5000/ubuntu bash
 Unable to find image '11.1.1.20:5000/ubuntu:latest' locally
 latest: Pulling from ubuntu
 fec6b243e075: Pull complete 
@@ -1034,7 +1035,7 @@ When you make the above change,the docker daemon will be automatically restarted
 Now we can issue a docker run (or docker pull followed by a docker run) to download and launch the docker ubuntu image from the registry.
 
 ```
-[ncs5508:~]$docker run -itd --name ubuntu -v /var/run/netns --privileged 11.11.11.2:5000/ubuntu
+[ncs5508:~]$docker run -itd --name ubuntu -v /var/run/netns --cap-add=SYS_ADMIN 11.11.11.2:5000/ubuntu
 Unable to find image '11.11.11.2:5000/ubuntu:latest' locally
 latest: Pulling from ubuntu
 d54efb8db41d: Pull complete 
@@ -1142,7 +1143,7 @@ docker start/running, process 12276
 Now we can issue a docker run (or docker pull followed by a docker run) to download and launch the docker ubuntu image from the registry.
 
 ```
-[asr9k:~]$docker run -itd --name ubuntu -v /var/run/netns --privileged 11.11.11.2:5000/ubuntu
+[asr9k:~]$docker run -itd --name ubuntu -v /var/run/netns --cap-add=SYS_ADMIN 11.11.11.2:5000/ubuntu
 Unable to find image '11.11.11.2:5000/ubuntu:latest' locally
 latest: Pulling from ubuntu
 d54efb8db41d: Pull complete 
