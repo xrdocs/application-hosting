@@ -560,7 +560,7 @@ As discussed earlier, we'll showcase a few different techniques through which a 
 
 
 
-### Public Dockerhub registry:
+## Public Dockerhub registry:
 
 This is the simplest setup that most docker users would know already. The obvious configuration necessary would be to make sure connectivity to the internet is available from the router.
 
@@ -568,7 +568,7 @@ This may not be the preferred setup for production deployments, understandably, 
 {: .notice--info} 
 
 
-**Vagrant Setup**
+### Vagrant Setup  
 
 The vagrant IOS-XR box comes with connectivity to the internet already. All you need to do is set up the domain name-server in the global-vrf (before 6.3.1, we only support the global/default vrf for the docker daemon image downloads).  
 
@@ -652,7 +652,7 @@ root@bf408eb70f88:/#
 
 ```
 
-**NCS5500 Setup**
+## NCS5500 and ASR9k Setup
   
 Remember the topology for the NCS5508 setup?: ![NCS5500 Setup Topology](<https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#ncs5500-setup)
 
@@ -756,7 +756,7 @@ The advantage of introducing a CLI is that it helps handle the routes in the lin
 
 
 
-### Private "insecure" registry
+## Private "insecure" registry
 
 This is a straightforward technique when a user expects to bring up private registries for their docker images in a secure part of the network (so that connection between the registry and the router doesn't necessarily need to be secured) :
 
@@ -772,7 +772,7 @@ This is a straightforward technique when a user expects to bring up private regi
 
 
 
-**Vagrant Setup**
+### Vagrant Setup
 
 Before we start let's come back to square-one on our Vagrant setup. Delete the previously running container and downloaded image:
 
@@ -864,7 +864,8 @@ root@vagrant-ubuntu-trusty-64:~#
 In the above steps, we've simply set up the registry on the devbox, pulled down an ubuntu docker image from dockerhub and pushed the image to the local registry.
 
 
-** Vagrant Setup**
+### Vagrant Setup  
+
 Now let's setup XR's docker daemon to accept the insecure registry located on the directly connected network on Gig0/0/0/0.   
 
 
@@ -958,7 +959,7 @@ bf408eb70f88        11.1.1.20:5000/ubuntu   "bash"              8 seconds ago   
 There, you've launched a docker container on XR using a private "insecure" registry.
 {: .notice--success}
 
-**NCS5500 setup**
+### NCS5500 setup
 
 The workflow is more or less identical to the Vagrant setup.
 In this case we're setting up the registry to be reachable over the Management network (and over the same subnet). For this, you don't need to set the TPA IP.  
@@ -1008,7 +1009,110 @@ Tue Mar  7 00:29:56.416 UTC
 </pre>
 </div> 
 
-We won't be leveraging the tpa setup for the fwdintf interface (meant for reachability over front panel ports) and instead just use the local management network subnet (11.11.11.0/24) for reachability to the docker registry.
+We won't be leveraging the tpa setup for the fwdintf interface (meant for reachability over front panel/data ports) and instead just use the local management network subnet (11.11.11.0/24) for reachability to the docker registry.
+
+
+Further, much like before, set up `/etc/sysconfig/docker` to disregard security for our registry.
+
+```
+[ncs5508:~]$cat /etc/sysconfig/docker
+# DOCKER_OPTS can be used to add insecure private registries to be supported 
+# by the docker daemon
+# eg : DOCKER_OPTS="--insecure-registry foo --insecure-registry bar"
+
+# Following are the valid configs
+# DOCKER_OPTS="<space>--insecure-registry<space>foo"
+# DOCKER_OPTS+="<space>--insecure-registry<space>bar"
+
+DOCKER_OPTS=" --insecure-registry 11.11.11.2:5000"
+[ncs5508:~]$
+```
+
+When you make the above change,the docker daemon will be automatically restarted. Wait for about 10-15 seconds before issuing any docker commands.
+{: .notice--info}
+
+Now we can issue a docker run (or docker pull followed by a docker run) to download and launch the docker ubuntu image from the registry.
+
+```
+[ncs5508:~]$docker run -itd --name ubuntu -v /var/run/netns --privileged 11.11.11.2:5000/ubuntu
+Unable to find image '11.11.11.2:5000/ubuntu:latest' locally
+latest: Pulling from ubuntu
+d54efb8db41d: Pull complete 
+f8b845f45a87: Pull complete 
+e8db7bf7c39f: Pull complete 
+9654c40e9079: Pull complete 
+6d9ef359eaaa: Pull complete 
+Digest: sha256:dd7808d8792c9841d0b460122f1acf0a2dd1f56404f8d1e56298048885e45535
+Status: Downloaded newer image for 11.11.11.2:5000/ubuntu:latest
+aa73f6a81b9346131118b84f30ddfc2d3bd981a4a54ea21ba2e2bc5c3d18d348
+[ncs5508:~]$
+[ncs5508:~]$docker ps
+CONTAINER ID        IMAGE                    COMMAND             CREATED             STATUS              PORTS               NAMES
+aa73f6a81b93        11.11.11.2:5000/ubuntu   "/bin/bash"         4 hours ago         Up 4 hours                              ubuntu
+[ncs5508:~]$
+
+
+
+```
+
+
+
+### ASR9k setup
+
+The ASR9k setup for an insecure docker registry is slightly different from Vagrant IOS-XR or NCS platforms. There is no automatic mechanism to restart the docker daemon.
+
+**The user must restart the docker daemon once they modify the /etc/sysconfig/docker file.**
+{: notice--info}  
+
+The workflow is more or less identical to the Vagrant setup.
+In this case we're setting up the registry to be reachable over the Management network (and over the same subnet). For this, you don't need to set the TPA IP.  
+
+
+Again, set up the connected devbox to host the registry. The steps are again garnered from here: <https://docs.docker.com/registry/deploying/>
+
+In the end, you'll have a registry running on port 5000:
+
+```
+root@dhcpserver:~# docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+46550ef7e5f3        registry:2          "/entrypoint.sh /etc/"   3 minutes ago       Up 3 minutes        0.0.0.0:5000->5000/tcp   registry
+root@dhcpserver:~# 
+```
+
+and a sample image (ubuntu) pushed and tagged with localhost:5000
+
+```
+root@dhcpserver:~# docker images localhost:5000/ubuntu
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+localhost:5000/ubuntu   latest              0ef2e08ed3fa        1 day ago          130 MB
+root@dhcpserver:~# 
+
+```
+
+
+
+Now hop over to the NCS5500 and issue the "bash" CLI. Your "ip route" setup should look something like this:
+
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+RP/0/RP0/CPU0:ncs5508#bash
+Tue Mar  7 00:29:56.416 UTC
+
+[ncs5508:~]$ip route
+<mark>default dev fwdintf  scope link  src 1.1.1.1</mark>
+10.10.10.10 dev fwd_ew  scope link  src 1.1.1.1 
+<mark>11.11.11.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 11.11.11.59</mark>
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$
+
+</code>
+</pre>
+</div> 
+
+We won't be leveraging the tpa setup for the fwdintf interface (meant for reachability over front panel/data ports) and instead just use the local management network subnet (11.11.11.0/24) for reachability to the docker registry.
 
 
 Further, much like before, set up `/etc/sysconfig/docker` to disregard security for our registry.
