@@ -1133,6 +1133,8 @@ DOCKER_OPTS=" --insecure-registry 11.11.11.2:5000"
 ```
 
 **Important:** For the ASR9k, you need to restart the docker daemon for the above config change to take effect.    
+{: .notice--warning}  
+
 
 ```
 [asr9k:~]$service docker restart
@@ -1171,4 +1173,6 @@ aa73f6a81b93        11.11.11.2:5000/ubuntu   "/bin/bash"         4 hours ago    
 
 
 
-## Using a container/image tar ball
+## Using a container/image tar ball  
+
+
