@@ -654,7 +654,7 @@ root@bf408eb70f88:/#
 
 ### NCS5500 and ASR9k Setup
   
-Remember the topology for the NCS5508 setup?: ![NCS5500 Setup Topology](<https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#ncs5500-setup)
+Remember the topology for the NCS5508 setup?: [NCS5500 Setup Topology](<https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#ncs5500-setup)
 
 In order to reach the internet, the NCS5508 needs to be configured with a default route through the Management port which is NAT-ted (using iptables Masquerade rules, not shown here) to the outside world through devbox.
 
@@ -664,7 +664,7 @@ Read the note below if you need a refresher on the routing in XR's linux kernel:
 >
 **Setting up Default routes in the Linux Kernel:**
 >
-For those who understand the basic principle behind the IOS-XR Packet I/O architecture for Linux application traffic (see here: ![Application hosting Infrastructure in IOS-XR](><{{ base_path }}/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/>) ), it might be clear that routes in the linux kernel are controlled through the "tpa" CLI.
+For those who understand the basic principle behind the IOS-XR Packet I/O architecture for Linux application traffic (see here: [Application hosting Infrastructure in IOS-XR](><{{ base_path }}/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/>) ), it might be clear that routes in the linux kernel are controlled through the "tpa" CLI.
 >
 This leads to 3 types of routes:
 1.  Default route through "fwdintf" : To allow packets through the front panel ports by default. Herein the update-source CLI is used to set the source IP address of the packets.
