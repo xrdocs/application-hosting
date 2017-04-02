@@ -664,7 +664,10 @@ root@bf408eb70f88:/#
   
 Remember the topology for the NCS5508/ASR9k setup?: [NCS5500 and ASR9k Setup Topology](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#physical-ncs5500-and-asr9k)
 
-In order to reach the internet, the NCS5508 needs to be configured with a default route through the Management port which is NAT-ted (using iptables Masquerade rules, not shown here) to the outside world through devbox.
+In order to reach the internet, the NCS5508/ASR9k needs to be configured with a default route through the Management port which is NAT-ted (using iptables Masquerade rules, not shown here) to the outside world through devbox.
+
+**Note:** Steps below are applicable to ASR9k as well.
+{: .notice--warning}
 
 Read the note below if you need a refresher on the routing in XR's linux kernel: 
   
