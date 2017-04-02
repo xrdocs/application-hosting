@@ -414,7 +414,7 @@ On your vagrant box, there are two ways to get access to the docker client:
    
   
     <div class="highlighter-rouge">
-    <pre class="highlight">
+    <pre class="highlight" style="white-space: pre-wrap;">
     <code>
     AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$<mark> vagrant port rtr </mark>
     The forwarded ports for the machine are listed below. Please note that
@@ -469,10 +469,10 @@ On your vagrant box, there are two ways to get access to the docker client:
     
 
     <div class="highlighter-rouge">
-    <pre class="highlight">
+    <pre class="highlight" style="white-space: pre-wrap;">
     <code>
    
-   AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$<mark> vagrant ssh rtr</mark>
+    AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$<mark> vagrant ssh rtr</mark>
     Last login: Sun Mar  5 18:55:20 2017 from 10.0.2.2
     xr-vm_node0_RP0_CPU0:~$ 
     xr-vm_node0_RP0_CPU0:~$whoami
@@ -584,7 +584,9 @@ nameserver 8.8.8.8
 
 Again, become root with the correct environment (sudo -i)  to execute the relevant docker commands to spin up the container.
 
-```
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
 [xr-vm_node0_RP0_CPU0:~]$sudo -i
 [xr-vm_node0_RP0_CPU0:~]$ 
 [xr-vm_node0_RP0_CPU0:~]$ whoami    
@@ -616,6 +618,9 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 495ec2ab0b20        ubuntu              "bash"              7 minutes ago       Up 7 minutes                            ubuntu
 [xr-vm_node0_RP0_CPU0:~]$ 
 ```  
+</code>
+</pre>
+</div>
 
 >
 You will notice two peculiar things in the command we run:
@@ -713,7 +718,9 @@ Of course, use an actual IP address of the DNS server in your network, and not #
 {: .notice--info}
 
 
-```
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
 [ncs5508:~]$
 [ncs5508:~]$
 [ncs5508:~]$docker run -itd --name ubuntu --cap-add=SYS_ADMIN -v /var/run/netns:/var/run/netns ubuntu bash
@@ -734,7 +741,9 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 67b781a19b5a        ubuntu              "bash"              3 minutes ago       Up 3 minutes                            ubuntu
 [ncs5508:~]$
 
-```
+</code>
+</pre>
+</div>
 
 **Post 6.3.1 release**
 
@@ -781,7 +790,7 @@ We follow the steps described here: <https://docs.docker.com/registry/deploying/
 
 
 <div class="highlighter-rouge">
-<pre class="highlight">
+<pre class="highlight" style="white-space: pre-wrap;">
 <code>
 AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$<mark>vagrant ssh devbox </mark>
 Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 3.13.0-95-generic x86_64)
@@ -933,7 +942,9 @@ Further, since the docker daemon will be automatically restarted, wait for about
 
 Now issue the docker run command to launch the container on XR.
 
-```shell
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
 RP/0/RP0/CPU0:ios#
 RP/0/RP0/CPU0:ios#bash
 Mon Mar  6 05:51:14.341 UTC
@@ -956,7 +967,9 @@ CONTAINER ID        IMAGE                   COMMAND             CREATED         
 bf408eb70f88        11.1.1.20:5000/ubuntu   "bash"              8 seconds ago       Up 8 seconds                            ubuntu
 [xr-vm_node0_RP0_CPU0:~]$
 
-```  
+</code>
+</pre>
+</div>
 
 There, you've launched a docker container on XR using a private "insecure" registry.
 {: .notice--success}  
@@ -1036,7 +1049,9 @@ When you make the above change,the docker daemon will be automatically restarted
 
 Now we can issue a docker run (or docker pull followed by a docker run) to download and launch the docker ubuntu image from the registry.
 
-```
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
 [ncs5508:~]$docker run -itd --name ubuntu -v /var/run/netns --cap-add=SYS_ADMIN 11.11.11.2:5000/ubuntu
 Unable to find image '11.11.11.2:5000/ubuntu:latest' locally
 latest: Pulling from ubuntu
@@ -1054,9 +1069,9 @@ CONTAINER ID        IMAGE                    COMMAND             CREATED        
 aa73f6a81b93        11.11.11.2:5000/ubuntu   "/bin/bash"         4 hours ago         Up 4 hours                              ubuntu
 [ncs5508:~]$
 
-
-
-```
+</code>
+</pre>
+</div>
 
 
 
@@ -1146,7 +1161,9 @@ docker start/running, process 12276
 
 Now we can issue a docker run (or docker pull followed by a docker run) to download and launch the docker ubuntu image from the registry.
 
-```
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
 [asr9k:~]$docker run -itd --name ubuntu -v /var/run/netns --cap-add=SYS_ADMIN 11.11.11.2:5000/ubuntu
 Unable to find image '11.11.11.2:5000/ubuntu:latest' locally
 latest: Pulling from ubuntu
@@ -1164,9 +1181,9 @@ CONTAINER ID        IMAGE                    COMMAND             CREATED        
 aa73f6a81b93        11.11.11.2:5000/ubuntu   "/bin/bash"         4 hours ago         Up 4 hours                              ubuntu
 [asr9k:~]$
 
-
-
-```
+</code>
+</pre>
+</div>
 
 
 ## Private Self-Signed Registry
