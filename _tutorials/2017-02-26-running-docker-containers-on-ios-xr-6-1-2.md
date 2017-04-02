@@ -342,11 +342,23 @@ Perfect! Now we're all set with the topology and SSH access. Before we begin, le
   
 ## Docker Daemon support on IOS-XR
 
+
+### Vagrant and NCS5500 architecture  
+
 If you haven't already gone through the basic overview on the application hosting infrastructure on XR, I would urge you to have a quick read:  
   
 ><{{ base_path }}/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/>  
   
-
+>
+**Relevant Platforms**: The LXC architecture described above and expanded on below is relevant to the following platforms:  
+>
+  *  NCS5500 (NCS5501, NCS5501-SE, NCS5502, NCS5502-SE, NCS5508, NCS5516)
+  *  NCS5000
+  *  NCS5011
+  *  XRv9k
+  *  IOS-XRv64 (Vagrant box and ISO)  
+  
+  
 From the above article it becomes fairly clear that internally the IOS-XR architecture involves a Host layer running the libvirtd daemon and IOS-XR runs as an LXC spawned using the daemon.  
 
 Further, the "virsh" client is provided within the XR LXC, so that a user may have client level access to the daemon while sitting inside the XR LXC itself.  
@@ -360,6 +372,16 @@ The setup for launching LXCs in IOS-XR is shown below:
 The Docker client/daemon setup follows the exact same principle as shown below. Docker Daemon runs on the host and Docker client is made available inside the XR LXC for easy operationalization:  
   
 [![xr-docker](https://xrdocs.github.io/xrdocs-images/assets/images/xr_docker.png)](https://xrdocs.github.io/xrdocs-images/assets/images/xr_docker.png)  
+
+### ASR9k architecture  
+
+The ASR9k architecture is slightly different. In ASR9k, IOS-XR runs inside its own VM on the 64-bit Linux host), the libvirtd and docker daemons are packages inside XR control plane VM itself.
+
+This is what it looks like: 
+
+
+
+
 
 Can we verify this?
 
