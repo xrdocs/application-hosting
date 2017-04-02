@@ -1190,6 +1190,84 @@ This technique is a bit more secure than the insecure registry setup and may be 
 *  Pull the relevant images from the insecure registry down to XR's docker daemon and spin up containers
 
 
+### Setting up self-signed Docker Registry  
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ vagrant ssh devbox
+Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 3.13.0-95-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+ System information disabled due to load higher than 1.0
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+0 packages can be updated.
+0 updates are security updates.
+
+New release '16.04.2 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> mkdir -p certs && openssl req -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key -x509 -days 365 -out certs/domain.crt </mark>
+Generating a 4096 bit RSA private key
+.......................++
+..........................++
+writing new private key to 'certs/domain.key'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:
+State or Province Name (full name) [Some-State]:
+Locality Name (eg, city) []:
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:
+Organizational Unit Name (eg, section) []:
+Common Name (e.g. server FQDN or YOUR name) []:<mark>devbox.com</mark>
+Email Address []:
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ cd certs/
+vagrant@vagrant-ubuntu-trusty-64:~/certs$ ls
+domain.crt  domain.key
+vagrant@vagrant-ubuntu-trusty-64:~/certs$ 
+vagrant@vagrant-ubuntu-trusty-64:~/certs$ 
+vagrant@vagrant-ubuntu-trusty-64:~/certs$ 
+vagrant@vagrant-ubuntu-trusty-64:~/certs$ cd ..
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ <mark>sudo docker run -d -p 5000:5000 --restart=always --name registry -v `pwd`/certs:/certs -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key registry:2 </mark>
+Unable to find image 'registry:2' locally
+2: Pulling from library/registry
+709515475419: Pull complete 
+df6e278d8f96: Pull complete 
+16218e264e88: Pull complete 
+16748da81f63: Pull complete 
+8d73e673c34c: Pull complete 
+Digest: sha256:28be0609f90ef53e86e1872a11d672434ce1361711760cf1fe059efd222f8d37
+Status: Downloaded newer image for registry:2
+c423ae398af2ec05fabd9c1efc29b846b21c63af71ed0b59ba6ec7f4d13a6762
+vagrant@vagrant-ubuntu-trusty-64:~$ <mark>sudo docker ps </mark>
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+c423ae398af2        registry:2          "/entrypoint.sh /e..."   5 seconds ago       Up 4 seconds        0.0.0.0:5000->5000/tcp   registry
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+
+</code>
+</pre>
+</div>
+
 ## Using a container/image tar ball  
 
 
