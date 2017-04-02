@@ -391,7 +391,8 @@ This is what the architecture looks like for ASR9k:
 Libvirt daemon is local to the XR control plane VM.
 
 
-**ASR9k LXC/libvirt Setup:**
+**ASR9k Docker Setup:**  
+
 [![xr_asr9k_docker_libvirt](https://xrdocs.github.io/xrdocs-images/assets/images/xr_asr9k_docker_architecture.png)](https://xrdocs.github.io/xrdocs-images/assets/images/xr_asr9k_docker_architecture.png)
 
 Docker daemon is local to the XR control plane VM.
