@@ -300,7 +300,7 @@ The two topologies in use are:
 <img src="https://xrdocs.github.io/xrdocs-images/assets/images/vagrant_docker_topo.png" alt="vagrant docker topo" style="padding:1px;border:thin solid black;">
 </div>
 
-### NCS5500 Setup
+### NCS5500 and ASR9k Setup
 
 <div class="notice">
 <img src="https://xrdocs.github.io/xrdocs-images/assets/images/ncs5500_docker_topo.png" alt="NCS5500 docker topo" style="padding:1px;border:thin solid black;">
@@ -328,7 +328,7 @@ AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$
 This is the vagrant provisioner for the devbox and will install docker-engine on boot (vagrant up).  
 
 
-### NCS5500 setup
+### NCS5500 and ASR9k setup
 
 In this case, the devbox must be provisioned by the user. On an ubuntu devbox, docker-engine can be installed by following the instructions at:  
   
@@ -456,12 +456,16 @@ On your vagrant box, there are two ways to get access to the docker client:
     
     
 
-### NCS5500 Setup Docker Client Access
+### NCS5500 and ASR9k Docker Client Access
 
 If you followed the steps in the pre-requisites section above : [Pre-requisites](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#physical-ncs5500-router), you would already have access to your NCS5500 device over XR SSH (CLI, port 22) as well as sshd_operns (XR linux shell, port 57722)
 
 
 Following the Vagrant model, over XR SSH, we use the "bash" CLI to access the docker client on the NCS5500:
+
+**Note:** ASR9k steps are identical.
+{: notice--warning}
+
 
 ```
 cisco@dhcpserver:~$ 
