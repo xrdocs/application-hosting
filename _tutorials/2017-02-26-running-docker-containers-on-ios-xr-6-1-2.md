@@ -94,7 +94,7 @@ On my NCS5500 setup, I can enable SSH in XR in the default (global) vrf with the
 <pre class="highlight" style="white-space: pre-wrap;">
 <code>
 
-RP/0/RP0/CPU0:ncs5508#crypto key generate rsa
+RP/0/RP0/CPU0:ncs5508#<mark>crypto key generate rsa</mark>
 Mon Mar  6 05:28:57.184 UTC
 The name for the keys will be: the_default
   Choose the size of the key modulus in the range of 512 to 4096 for your General Purpose Keypair. Choosing a key modulus greater than 512 may take a few minutes.
