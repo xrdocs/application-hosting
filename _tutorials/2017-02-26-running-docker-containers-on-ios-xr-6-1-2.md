@@ -652,7 +652,7 @@ root@bf408eb70f88:/#
 
 ```
 
-## NCS5500 and ASR9k Setup
+### NCS5500 and ASR9k Setup
   
 Remember the topology for the NCS5508 setup?: ![NCS5500 Setup Topology](<https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#ncs5500-setup)
 
@@ -865,8 +865,7 @@ root@vagrant-ubuntu-trusty-64:~#
 
 In the above steps, we've simply set up the registry on the devbox, pulled down an ubuntu docker image from dockerhub and pushed the image to the local registry.
 
-
-### Vagrant Setup  
+ 
 
 Now let's setup XR's docker daemon to accept the insecure registry located on the directly connected network on Gig0/0/0/0.   
 
@@ -959,9 +958,10 @@ bf408eb70f88        11.1.1.20:5000/ubuntu   "bash"              8 seconds ago   
 ```  
 
 There, you've launched a docker container on XR using a private "insecure" registry.
-{: .notice--success}
+{: .notice--success}  
 
-### NCS5500 setup
+
+### NCS5500 setup  
 
 The workflow is more or less identical to the Vagrant setup.
 In this case we're setting up the registry to be reachable over the Management network (and over the same subnet). For this, you don't need to set the TPA IP.  
