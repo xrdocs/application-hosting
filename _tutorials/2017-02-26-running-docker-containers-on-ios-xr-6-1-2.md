@@ -1132,7 +1132,7 @@ DOCKER_OPTS=" --insecure-registry 11.11.11.2:5000"
 [asr9k:~]$
 ```
 
-**Important:** You need to restart the docker daemon for the above config change to take effect.    
+**Important:** For the ASR9k, you need to restart the docker daemon for the above config change to take effect.    
 
 ```
 [asr9k:~]$service docker restart
