@@ -1171,4 +1171,4 @@ aa73f6a81b93        11.11.11.2:5000/ubuntu   "/bin/bash"         4 hours ago    
 
 
 
-### Importing/Loading a downloaded docker container/image tar ball
+### Using a container/image tar ball
