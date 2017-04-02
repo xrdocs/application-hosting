@@ -82,7 +82,7 @@ The server needs to be reachable from the router over the Management network.
 
 Further, we're going to enable SSH access in XR CLI and in  XR linux shell to achieve an equivalence between the NCS5500/ASR9k and Vagrant setup.  
 
-**Note**: ASR9k works in exactly the same way. 
+**Note**: NCS5500 steps are described, but ASR9k works in exactly the same way. 
 {: .notice--warning}  
 
 **Enable SSH access in the XR CLI**
@@ -463,8 +463,8 @@ If you followed the steps in the pre-requisites section above : [Pre-requisites]
 
 Following the Vagrant model, over XR SSH, we use the "bash" CLI to access the docker client on the NCS5500/ASR9k:
 
-**Note:** ASR9k steps are identical.
-{: notice--warning}
+**Note**: NCS5500 steps are described, but ASR9k works in exactly the same way. 
+{: .notice--warning}  
 
 
 ```
