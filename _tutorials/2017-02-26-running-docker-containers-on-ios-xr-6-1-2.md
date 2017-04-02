@@ -659,7 +659,8 @@ Remember the topology for the NCS5508 setup?: ![NCS5500 Setup Topology](<https:/
 In order to reach the internet, the NCS5508 needs to be configured with a default route through the Management port which is NAT-ted (using iptables Masquerade rules, not shown here) to the outside world through devbox.
 
 Read the note below if you need a refresher on the routing in XR's linux kernel: 
-
+  
+  
 >
 **Setting up Default routes in the Linux Kernel:**
 >
