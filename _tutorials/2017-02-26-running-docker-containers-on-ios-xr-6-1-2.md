@@ -42,7 +42,7 @@ In this part, we explore how a user can spin up Docker containers on IOS-XR. The
 *  **Tarball image/container**:  This is the simplest setup - very similar to LXC deployments. In this case, a user may create and set up a container completely off-box, package it up as an image or a container tar ball, transfer it to the router and then load/import it, before running.  
 
 
-For each case, we will compare IOS-XR running as a Vagrant box with IOS-XR running on a physical box (NCS5500). They should be identical, except for reachability through the Management ports.  
+For each case, we will compare IOS-XR running as a Vagrant box with IOS-XR running on a physical box (NCS5500 and ASR9k). They should be identical, except for reachability through the Management ports.  
   
   
 ## Pre-requisites
@@ -80,7 +80,10 @@ On the other hand, if you have an NCS5500 or ASR9k lying around (don't we all?),
 
 The server needs to be reachable from the router over the Management network.
 
-Further, we're going to enable SSH access in XR CLI and in  XR linux shell to achieve an equivalence between the NCS5500 and Vagrant setup.  
+Further, we're going to enable SSH access in XR CLI and in  XR linux shell to achieve an equivalence between the NCS5500/ASR9k and Vagrant setup.  
+
+**Note**: ASR9k works in exactly the same way. 
+{: .notice--warning}  
 
 **Enable SSH access in the XR CLI**
 {: .notice}
@@ -283,9 +286,6 @@ root
 Works like a charm!
 {: .notice--success}
 
-**Note**: ASR9k works in exactly the same way. 
-{: .notice--warning}  
-
 
 ## Understand the topology
 
@@ -458,10 +458,10 @@ On your vagrant box, there are two ways to get access to the docker client:
 
 ### NCS5500 and ASR9k Docker Client Access
 
-If you followed the steps in the pre-requisites section above : [Pre-requisites](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#physical-ncs5500-router), you would already have access to your NCS5500 device over XR SSH (CLI, port 22) as well as sshd_operns (XR linux shell, port 57722)
+If you followed the steps in the pre-requisites section above : [Pre-requisites](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#physical-ncs5500-router), you would already have access to your NCS5500/ASR9k device over XR SSH (CLI, port 22) as well as sshd_operns (XR linux shell, port 57722)
 
 
-Following the Vagrant model, over XR SSH, we use the "bash" CLI to access the docker client on the NCS5500:
+Following the Vagrant model, over XR SSH, we use the "bash" CLI to access the docker client on the NCS5500/ASR9k:
 
 **Note:** ASR9k steps are identical.
 {: notice--warning}
