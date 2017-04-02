@@ -74,9 +74,9 @@ AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar$
 ```
 
 
-### Physical (NCS5500 router)  
+### Physical (NCS5500 and ASR9k)  
 
-On the other hand, if you have an NCS5500 lying around (don't we all?), then load up a 6.1.2+ image on the router and connect an Ubuntu server (for the purpose of this tutorial), to the Management network of the router.
+On the other hand, if you have an NCS5500 or ASR9k lying around (don't we all?), then load up a 6.1.2+ image on the router and connect an Ubuntu server (for the purpose of this tutorial), to the Management network of the router.
 
 The server needs to be reachable from the router over the Management network.
 
@@ -282,6 +282,9 @@ root
 
 Works like a charm!
 {: .notice--success}
+
+**Note**: ASR9k works in exactly the same way. 
+{: .notice--warning}  
 
 
 ## Understand the topology
