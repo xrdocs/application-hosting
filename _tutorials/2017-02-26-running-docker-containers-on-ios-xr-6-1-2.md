@@ -463,7 +463,7 @@ If you followed the steps in the pre-requisites section above : [Pre-requisites]
 
 Following the Vagrant model, over XR SSH, we use the "bash" CLI to access the docker client on the NCS5500/ASR9k:
 
-**Note**: NCS5500 steps are described, but ASR9k works in exactly the same way. 
+**Note**: The steps for ASR9k are identical. NCS5500 steps are shown below. 
 {: .notice--warning}  
 
 
