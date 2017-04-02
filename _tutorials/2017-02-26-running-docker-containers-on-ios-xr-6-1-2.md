@@ -1213,7 +1213,7 @@ This technique is a bit more secure than the insecure registry setup and may be 
 *  Pull the relevant images from the registry down to XR's docker daemon and spin up containers
 
 
-### Setting up self-signed Docker Registry  
+### Setting up a self-signed Docker Registry  
 
 <div class="highlighter-rouge">
 <pre class="highlight" style="white-space: pre-wrap;">
