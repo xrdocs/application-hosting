@@ -90,7 +90,9 @@ Further, we're going to enable SSH access in XR CLI and in  XR linux shell to ac
 
 On my NCS5500 setup, I can enable SSH in XR in the default (global) vrf with the following steps and CLI:  
 
-```shell
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
 
 RP/0/RP0/CPU0:ncs5508#crypto key generate rsa
 Mon Mar  6 05:28:57.184 UTC
@@ -110,8 +112,9 @@ ssh server vrf default
 
 RP/0/RP0/CPU0:ncs5508#
 
-
-```
+</code>
+</pre>
+</div>
 
 **Enable SSH access to XR linux shell**
 {: .notice}
