@@ -598,7 +598,7 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 [xr-vm_node0_RP0_CPU0:~]$
 [xr-vm_node0_RP0_CPU0:~]$
 [xr-vm_node0_RP0_CPU0:~]$
-[xr-vm_node0_RP0_CPU0:~]$ docker run -itd --name ubuntu -v /var/run/netns:/var/run/netns --privileged ubuntu bash
+[xr-vm_node0_RP0_CPU0:~]$ docker run -itd --name ubuntu -v /var/run/netns/global-vrf:/var/run/netns/global-vrf --cap-add=SYS_ADMIN ubuntu bash
 Unable to find image 'ubuntu:latest' locally
 latest: Pulling from library/ubuntu
 d54efb8db41d: Pull complete 
@@ -620,9 +620,9 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 >
 You will notice two peculiar things in the command we run:
 >
-*  **Mounting of /var/run/netns**: We mount /var/run/netns into the docker container. This is an option we use to mount all the potential network namespaces that may be created to match the XR vrfs. These network namespaces (XR release 6.3.1+) are created on the host and then bind-mounted into the XR LXC for user convenience. The docker container, running on the host, will simply inherit these network namespaces through the /var/run/netns mount. **Bear in mind that before 6.3.1 release only the `global-vrf` is supported in the XR linux shell**.  
+*  **Mounting of /var/run/netns/<vrf-name>**: We mount /var/run/netns/<vrf-name> into the docker container. This is an option we use to mount the appropriate network namespace(s) (one or more -v options may be used) into the container. These network namespaces (XR release 6.3.1+) are created on the host and then bind-mounted into the XR LXC for user convenience. In case of ASR9k, these network namespaces are local. The docker container, running on the host (inside XR VM in case of ASR9k), will simply inherit these network namespaces through the /var/run/netns/<vrf-name> mount. **Bear in mind that before 6.3.1 release only the `global-vrf` is supported in the XR linux shell**.  
 >
-*  **--privileged flag**: We're using the `--privileged` flag because even when network namespaces are mounted from the "host" into the docker container, a user can change into a particular network namespace or execute commands in a particular namespace, only if the container is launched with privileged capabilties.
+*  **--cap-add=SYS_ADMIN flag**: We're using the `--cap-add=SYS_ADMIN` flag because even when network namespaces are mounted from the "host" (or XR VM in case of ASR9k) into the docker container, a user can change into a particular network namespace or execute commands in a particular namespace, only if the container is launched with privileged capabilties.
 
 
 Yay! The container's running. We can get into the container by starting bash through a docker exec. If you're running container images that do not support a shell, try docker attach instead.
@@ -1064,11 +1064,10 @@ The ASR9k setup for an insecure docker registry is slightly different from Vagra
 **The user must restart the docker daemon once they modify the /etc/sysconfig/docker file.**
 {: notice--info}  
 
-The workflow is more or less identical to the Vagrant setup.
-In this case we're setting up the registry to be reachable over the Management network (and over the same subnet). For this, you don't need to set the TPA IP.  
 
+Again, we're setting up the registry to be reachable over the Management network (and over the same subnet). For this, you don't need to set the TPA IP.  
 
-Again, set up the connected devbox to host the registry. The steps are again garnered from here: <https://docs.docker.com/registry/deploying/>
+Set up the connected devbox to host the registry. The steps are again garnered from here: <https://docs.docker.com/registry/deploying/>
 
 In the end, you'll have a registry running on port 5000:
 
@@ -1091,22 +1090,22 @@ root@dhcpserver:~#
 
 
 
-Now hop over to the NCS5500 and issue the "bash" CLI. Your "ip route" setup should look something like this:
+Now hop over to the ASR9k and issue the "bash" CLI. Your "ip route" setup should look something like this:
 
 
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-RP/0/RP0/CPU0:ncs5508#bash
+RP/0/RSP1/CPU0:asr9k#bash
 Tue Mar  7 00:29:56.416 UTC
 
-[ncs5508:~]$ip route
+[asr9k:~]$ip route
 <mark>default dev fwdintf  scope link  src 1.1.1.1</mark>
 10.10.10.10 dev fwd_ew  scope link  src 1.1.1.1 
 <mark>11.11.11.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 11.11.11.59</mark>
-[ncs5508:~]$
-[ncs5508:~]$
-[ncs5508:~]$
+[asr9k:~]$
+[asr9k:~]$
+[asr9k:~]$
 
 </code>
 </pre>
@@ -1118,7 +1117,7 @@ We won't be leveraging the tpa setup for the fwdintf interface (meant for reacha
 Further, much like before, set up `/etc/sysconfig/docker` to disregard security for our registry.
 
 ```
-[ncs5508:~]$cat /etc/sysconfig/docker
+[asr9k:~]$cat /etc/sysconfig/docker
 # DOCKER_OPTS can be used to add insecure private registries to be supported 
 # by the docker daemon
 # eg : DOCKER_OPTS="--insecure-registry foo --insecure-registry bar"
@@ -1128,16 +1127,22 @@ Further, much like before, set up `/etc/sysconfig/docker` to disregard security 
 # DOCKER_OPTS+="<space>--insecure-registry<space>bar"
 
 DOCKER_OPTS=" --insecure-registry 11.11.11.2:5000"
-[ncs5508:~]$
+[asr9k:~]$
 ```
 
-When you make the above change,the docker daemon will be automatically restarted. Wait for about 10-15 seconds before issuing any docker commands.
-{: .notice--info}
+**Important:** You need to restart the docker daemon for the above config change to take effect.    
+
+```
+[asr9k:~]$service docker restart
+docker stop/waiting
+docker start/running, process 12276
+[asr9k:~]$
+```
 
 Now we can issue a docker run (or docker pull followed by a docker run) to download and launch the docker ubuntu image from the registry.
 
 ```
-[ncs5508:~]$docker run -itd --name ubuntu -v /var/run/netns --privileged 11.11.11.2:5000/ubuntu
+[asr9k:~]$docker run -itd --name ubuntu -v /var/run/netns --privileged 11.11.11.2:5000/ubuntu
 Unable to find image '11.11.11.2:5000/ubuntu:latest' locally
 latest: Pulling from ubuntu
 d54efb8db41d: Pull complete 
@@ -1152,7 +1157,7 @@ aa73f6a81b9346131118b84f30ddfc2d3bd981a4a54ea21ba2e2bc5c3d18d348
 [ncs5508:~]$docker ps
 CONTAINER ID        IMAGE                    COMMAND             CREATED             STATUS              PORTS               NAMES
 aa73f6a81b93        11.11.11.2:5000/ubuntu   "/bin/bash"         4 hours ago         Up 4 hours                              ubuntu
-[ncs5508:~]$
+[asr9k:~]$
 
 
 
