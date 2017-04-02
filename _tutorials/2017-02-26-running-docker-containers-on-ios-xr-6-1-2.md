@@ -774,25 +774,7 @@ This is a straightforward technique when a user expects to bring up private regi
 
 
 
-### Vagrant Setup
-
-Before we start let's come back to square-one on our Vagrant setup. Delete the previously running container and downloaded image:
-
-```
-[xr-vm_node0_RP0_CPU0:~]$ docker stop ubuntu && docker rm ubuntu
-ubuntu
-ubuntu
-[xr-vm_node0_RP0_CPU0:~]$ docker rmi ubuntu
-Untagged: ubuntu:latest
-Deleted: sha256:0ef2e08ed3fabfc44002ccb846c4f2416a2135affc3ce39538834059606f32dd
-Deleted: sha256:0d58a35162057295d273c5fb8b7e26124a31588cdadad125f4bce63b638dddb5
-Deleted: sha256:cb7f997e049c07cdd872b8354052c808499937645f6164912c4126015df036cc
-Deleted: sha256:fcb4581c4f016b2e9761f8f69239433e1e123d6f5234ca9c30c33eba698487cc
-Deleted: sha256:b53cd3273b78f7f9e7059231fe0a7ed52e0f8e3657363eb015c61b2a6942af87
-Deleted: sha256:745f5be9952c1a22dd4225ed6c8d7b760fe0d3583efd52f91992463b53f7aea3
-[xr-vm_node0_RP0_CPU0:~]$ 
-```
-
+### Setting up the insecure registry
 
 Let's begin by spinning up a registry on the devbox in our Vagrant setup.
 We follow the steps described here: <https://docs.docker.com/registry/deploying/>
@@ -865,9 +847,28 @@ root@vagrant-ubuntu-trusty-64:~#
 
 In the above steps, we've simply set up the registry on the devbox, pulled down an ubuntu docker image from dockerhub and pushed the image to the local registry.
 
- 
 
-Now let's setup XR's docker daemon to accept the insecure registry located on the directly connected network on Gig0/0/0/0.   
+### Vagrant Setup
+
+Before we start let's come back to square-one on our Vagrant setup. Delete the previously running container and downloaded image:
+
+```
+[xr-vm_node0_RP0_CPU0:~]$ docker stop ubuntu && docker rm ubuntu
+ubuntu
+ubuntu
+[xr-vm_node0_RP0_CPU0:~]$ docker rmi ubuntu
+Untagged: ubuntu:latest
+Deleted: sha256:0ef2e08ed3fabfc44002ccb846c4f2416a2135affc3ce39538834059606f32dd
+Deleted: sha256:0d58a35162057295d273c5fb8b7e26124a31588cdadad125f4bce63b638dddb5
+Deleted: sha256:cb7f997e049c07cdd872b8354052c808499937645f6164912c4126015df036cc
+Deleted: sha256:fcb4581c4f016b2e9761f8f69239433e1e123d6f5234ca9c30c33eba698487cc
+Deleted: sha256:b53cd3273b78f7f9e7059231fe0a7ed52e0f8e3657363eb015c61b2a6942af87
+Deleted: sha256:745f5be9952c1a22dd4225ed6c8d7b760fe0d3583efd52f91992463b53f7aea3
+[xr-vm_node0_RP0_CPU0:~]$ 
+```
+
+
+Now let's set up XR's docker daemon to accept the insecure registry located on the directly connected network on Gig0/0/0/0.   
 
 
 Based off the config applied via the Vagrantfile, the reachable IP address of the registry running on devbox = 11.1.1.20, port 5000.
@@ -967,7 +968,7 @@ The workflow is more or less identical to the Vagrant setup.
 In this case we're setting up the registry to be reachable over the Management network (and over the same subnet). For this, you don't need to set the TPA IP.  
 
 
-Again, set up the connected devbox to host the registry. The steps are again garnered from here: <https://docs.docker.com/registry/deploying/>
+Set up the connected devbox to host the registry. The steps are again garnered from here: <https://docs.docker.com/registry/deploying/>
 
 In the end, you'll have a registry running on port 5000:
 
@@ -1171,6 +1172,22 @@ aa73f6a81b93        11.11.11.2:5000/ubuntu   "/bin/bash"         4 hours ago    
 ## Private Self-Signed Registry
 
 
+This technique is a bit more secure than the insecure registry setup and may be used to partially secure the connection between the router's docker daemon and the docker registry running externally. The basic steps involved are:
+
+
+* Generate your own certificate on the devbox
+
+* Use the result to start your docker registry with TLS enabled
+
+* Copy the certificates to the /etc/docker/certs.d/ folder on the router
+
+* Don’t forget to restart the Docker daemon for the ASR9k. In case of other platforms, the restart is automatic  
+
+*  Set up the route to the registry
+
+*  Populate the registry with some docker images from dockerhub
+
+*  Pull the relevant images from the insecure registry down to XR's docker daemon and spin up containers
 
 
 ## Using a container/image tar ball  
