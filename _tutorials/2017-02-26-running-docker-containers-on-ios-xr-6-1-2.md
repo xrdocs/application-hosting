@@ -560,7 +560,7 @@ As discussed earlier, we'll showcase a few different techniques through which a 
 
 
 
-## Public Dockerhub registry:
+## Public Dockerhub registry
 
 This is the simplest setup that most docker users would know already. The obvious configuration necessary would be to make sure connectivity to the internet is available from the router.
 
