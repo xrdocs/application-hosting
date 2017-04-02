@@ -375,9 +375,15 @@ The Docker client/daemon setup follows the exact same principle as shown below. 
 
 ### ASR9k architecture  
 
-The ASR9k architecture is slightly different. In ASR9k, IOS-XR runs inside its own VM on the 64-bit Linux host), the libvirtd and docker daemons are packages inside XR control plane VM itself.
+The ASR9k architecture is slightly different. In ASR9k, IOS-XR runs inside its own VM on the 64-bit Linux host to be able to support ISSU requirements relevant to traditional Service Provider deployments.
 
-This is what it looks like: 
+In this case, the libvirtd and docker daemons are available inside the XR control plane VM itself.
+This does not change the user experience from a docker client or virsh client perspective. 
+The difference is mainly how one may interact with the docker daemon as we'll touch upon in subsequent sections.  
+
+This is the architecture looks like for ASR9k:  
+
+
 
 
 
