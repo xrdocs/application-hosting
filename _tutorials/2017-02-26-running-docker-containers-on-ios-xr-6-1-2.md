@@ -1187,13 +1187,13 @@ This technique is a bit more secure than the insecure registry setup and may be 
 
 *  Populate the registry with some docker images from dockerhub
 
-*  Pull the relevant images from the insecure registry down to XR's docker daemon and spin up containers
+*  Pull the relevant images from the registry down to XR's docker daemon and spin up containers
 
 
 ### Setting up self-signed Docker Registry  
 
 <div class="highlighter-rouge">
-<pre class="highlight">
+<pre class="highlight" style="white-space: pre-wrap;">
 <code>
 AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ vagrant ssh devbox
 Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 3.13.0-95-generic x86_64)
