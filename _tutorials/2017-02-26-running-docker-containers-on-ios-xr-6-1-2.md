@@ -791,7 +791,7 @@ This is a straightforward technique when a user expects to bring up private regi
 
 ### Setting up the insecure registry
 
-Let's begin by spinning up a registry on the devbox in our Vagrant setup.
+Let's begin by spinning up a registry on the devbox in our Vagrant setup. The same exact steps are relevant to the devbox environment on the NCS5500/ASR9k setup as well. 
 We follow the steps described here: <https://docs.docker.com/registry/deploying/>
 
 
