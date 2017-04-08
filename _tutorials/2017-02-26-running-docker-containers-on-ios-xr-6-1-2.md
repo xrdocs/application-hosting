@@ -1348,19 +1348,75 @@ Add the dns entry for devbox.com in /etc/hosts of the vrf you're working in. Sin
 Here, 11.1.1.20 is the IP address of the directly connected interface of the devbox on the port Gi0/0/0/0 of the IOS-XR instance.
 {: .notice--info}  
 
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
 
 [xr-vm_node0_RP0_CPU0:~]$ 
-[xr-vm_node0_RP0_CPU0:~]$ scp vagrant@11.1.1.20:~/certs/domain.crt /etc/docker/certs.d/devbox.com\:5000/ca.crt
-vagrant@11.1.1.20's password: 
-vagrant@11.1.1.20's password: 
+[xr-vm_node0_RP0_CPU0:~]$ scp vagrant@devbox.com:~/certs/domain.crt /etc/docker/certs.d/devbox.com\:5000/ca.crt
+vagrant@devbox.com's password: 
 domain.crt                                                                                                                                                              100% 1976     1.9KB/s   00:00    
 [xr-vm_node0_RP0_CPU0:~]$ 
+
+</code>
+</pre>
+</div>
+
+
+Perfect. Now wait about 5-10 seconds as the certificate gets automatically sync-ed to the underlying host layer (remember, the docker daemon is running on the host).  
+{: .notice--info}   
+
+
+Pull the docker image from the registry:  
+
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[xr-vm_node0_RP0_CPU0:~]$ <mark>docker pull devbox.com:5000/ubuntu</mark>
+Using default tag: latest
+latest: Pulling from ubuntu
+fec6b243e075: Pull complete 
+190e0e9a3e79: Pull complete 
+0d79cf192e4c: Pull complete 
+38398c307b51: Pull complete 
+356665655a72: Pull complete 
+Digest: sha256:6b079ae764a6affcb632231349d4a5e1b084bece8c46883c099863ee2aeb5cf8
+Status: Downloaded newer image for devbox.com:5000/ubuntu:latest
+[xr-vm_node0_RP0_CPU0:~]$ 
 [xr-vm_node0_RP0_CPU0:~]$ 
 
+[xr-vm_node0_RP0_CPU0:~]$<mark> docker images </mark>
+REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
+devbox.com:5000/ubuntu   latest              0ef2e08ed3fa        4 weeks ago         130 MB
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+</code>
+</pre>
+</div>
+
+Spin it up! :  
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$<mark> docker run -itd --name ubuntu -v /var/run/netns/global-vrf:/var/run/netns/global-vrf --cap-add=SYS_ADMIN devbox.com:5000/ubuntu bash</mark>
+b50424bbe195fd4b79c0d375dcc081228395da467d1c0d5367897180c421b41d
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ docker ps
+CONTAINER ID        IMAGE                    COMMAND             CREATED             STATUS              PORTS               NAMES
+b50424bbe195        devbox.com:5000/ubuntu   "bash"              4 seconds ago       Up 3 seconds                            ubuntu
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+</code>
+</pre>
+</div>
 
 
-```
-
+### NCS5500 and ASR9k Setup
 
 
 
