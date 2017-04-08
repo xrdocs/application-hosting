@@ -1195,7 +1195,7 @@ aa73f6a81b93        11.11.11.2:5000/ubuntu   "/bin/bash"         4 hours ago    
 ## Private Self-Signed Registry
 
 
-This technique is a bit more secure than the insecure registry setup and may be used to partially secure the connection between the router's docker daemon and the docker registry running externally. The basic steps involved are:
+This technique is a bit more secure than the insecure registry setup and may be used to more or less secure the connection between the router's docker daemon and the docker registry running externally. The basic steps involved are:
 
 
 * Generate your own certificate on the devbox
@@ -1290,6 +1290,76 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 </code>
 </pre>
 </div>
+
+
+
+### Vagrant Setup
+
+All we have to do get out docker daemon on the router working with the self-signed docker registry is to make sure the certificate is available in the right directory: /etc/docker/certs.d/ in the XR shell.
+
+Hop over to the router and create folder with name = "&lt;Common Name of the certificate&gt;:5000" in the folder `/etc/docker/certs.d/` as shown below:
+
+
+Hop into the router shell from your host/laptop:
+  
+```
+AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ vagrant ssh rtr
+Last login: Sun Apr  2 13:45:29 2017 from 10.0.2.2
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ sudo -i
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+```
+
+Create a folder named `devbox.com:5000` under `/etc/docker/certs.d`.   
+
+The folder name = `&lt;Common Name of the certificate&gt;:&lt;Port opened by the registry&gt;`
+
+```
+
+[xr-vm_node0_RP0_CPU0:~]$ mkdir /etc/docker/certs.d/devbox.com:5000
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+```
+
+Add the dns entry for devbox.com in /etc/hosts of the vrf you're working in. Since before 6.3.1, we only support global-vrf in the linux kernel, we set up `/etc/netns/global-vrf/hosts` to create a pointer to `devbox.com` using vi as an editor. In the end the file should look something like:  
+
+
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ cat /etc/netns/global-vrf/hosts 
+127.0.0.1	localhost.localdomain		localhost
+<mark>11.1.1.20       devbox.com </mark>
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+</code>
+</pre>
+</div>
+
+Here, 11.1.1.20 is the IP address of the directly connected interface of the devbox on the port Gi0/0/0/0 of the IOS-XR instance.
+{: .notice--info}  
+
+
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ scp vagrant@11.1.1.20:~/certs/domain.crt /etc/docker/certs.d/devbox.com\:5000/ca.crt
+vagrant@11.1.1.20's password: 
+vagrant@11.1.1.20's password: 
+domain.crt                                                                                                                                                              100% 1976     1.9KB/s   00:00    
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+
+
+```
 
 
 
