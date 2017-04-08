@@ -37,7 +37,7 @@ In this part, we explore how a user can spin up Docker containers on IOS-XR. The
    
 *  **Private "self-signed" registry**: This is more secure than the "insecure" setup, and allows a user to enable TLS.
 
-*  **Private "secure" registry**: Set up reachability to your private registry, created using a certificate obtained from a CA. We won't really tackle this scenario separately in this tutorial due to the absence of said certificate :).
+*  **Private "secure" registry**: Set up reachability to your private registry, created using a certificate obtained from a CA. The steps used to set this up are identical to a private self-signed registry except for the creation of the certificate. We won't really tackle this scenario separately in this tutorial due to the absence of said certificate :).
     
 *  **Tarball image/container**:  This is the simplest setup - very similar to LXC deployments. In this case, a user may create and set up a container completely off-box, package it up as an image or a container tar ball, transfer it to the router and then load/import it, before running.  
 
@@ -1291,6 +1291,7 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 </pre>
 </div>
 
-## Using a container/image tar ball  
 
 
+
+## Using a container/image tar ball
