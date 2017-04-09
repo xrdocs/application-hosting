@@ -1702,11 +1702,87 @@ root@vagrant-ubuntu-trusty-64:~#
 Just like the previous technique, scp the docker container tar ball into the router, but this time `import` it:  
 
 
+scp the tarball onto the router:
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ vagrant ssh rtr
+xr-vm_node0_RP0_CPU0:~$sudo -i
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ scp  vagrant@11.1.1.20:~/ubuntu_iproute2.tar /misc/app_host/
+vagrant@10.0.2.2's password: 
+ubuntu_iproute2.tar                                                                                                                                                     100%  141MB  17.6MB/s   00:08    
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+</code>
+</pre>
+</div>
+
+Now import the tar ball and spin up the docker container:  
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ <mark>docker import /misc/app_host/ubuntu_iproute2.tar ubuntu_iproute2 </mark>
+sha256:26265a51af3e826b92130ef6bc8a1ead85988908b836c2659164d482e0a73248
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ docker images ubuntu_iproute2
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu_iproute2     latest              26265a51af3e        38 seconds ago      141.7 MB
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ <mark>docker run -itd --name ubuntu_iproute2 -v /var/run/netns/global-vrf:/var/run/netns/global-vrf --cap-add=SYS_ADMIN ubuntu_iproute2 bash</mark>
+3736cb8350e324636ebad4822bcd4437451c5ba59b9b5d025c7ba9914afd4379
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+3736cb8350e3        ubuntu_iproute2     "bash"              29 seconds ago      Up 28 seconds                           ubuntu_iproute2
+
+</code>
+</pre>
+</div>
 
 
+### NCS5500 and ASR9k setup.
 
+NCS5500 and ASR9k follow the exact same steps as the Vagrant box above. For completeness, though:
 
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
 
+RP/0/RP0/CPU0:ncs5508#bash
+Sun Apr  9 11:29:09.531 UTC
+
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$scp cisco@11.11.11.2:~/ubuntu_iproute2.tar /misc/app_host/
+cisco@11.11.11.2's password: 
+ubuntu_iproute2.tar                           100%  141MB  10.1MB/s   00:14    
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$<mark>docker import /misc/app_host/ubuntu_iproute2.tar  ubuntu_iproute2 </mark>
+sha256:170f8ce009cc920160e47b3e4e7dae1a0711ae4542c9ef0dcfcca4007741a13f
+[ncs5508:~]$
+[ncs5508:~]$docker images ubuntu_iproute2
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu_iproute2     latest              170f8ce009cc        25 seconds ago      141.7 MB
+[ncs5508:~]$
+[ncs5508:~]$<mark>docker run -itd --name ubuntu_iproute2 -v /var/run/netns/global-vrf:/var/run/netns/global-vrf --cap-add=SYS_ADMIN ubuntu_iproute2 bash </mark>
+36f8ae4cad2c575885f2c1243a042972dc74e7dd541e270c06628fe141a5f63a
+[ncs5508:~]$
+[ncs5508:~]$docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+36f8ae4cad2c        ubuntu_iproute2     "bash"              4 seconds ago       Up 4 seconds                            ubuntu_iproute2
+
+</code>
+</pre>
+</div>
 
 This can be done by first pulling the relevant docker image into your devbox (From dockerhub) or building it on your own on the devbox (we will not delve into this here), and then issuing a `docker save` to save the image into a loadable tar-ball.  
 
