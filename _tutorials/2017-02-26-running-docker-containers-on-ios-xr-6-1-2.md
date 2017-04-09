@@ -1248,6 +1248,46 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 </pre>
 </div>
 
+Now pull an ubuntu image (just an example) from dockerhub and push it to the local registry: 
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo -s
+root@vagrant-ubuntu-trusty-64:~# 
+
+root@vagrant-ubuntu-trusty-64:~#<mark> docker pull ubuntu && docker tag ubuntu localhost:5000/ubuntu </mark>
+Using default tag: latest
+latest: Pulling from library/ubuntu
+d54efb8db41d: Pull complete 
+f8b845f45a87: Pull complete 
+e8db7bf7c39f: Pull complete 
+9654c40e9079: Pull complete 
+6d9ef359eaaa: Pull complete 
+Digest: sha256:dd7808d8792c9841d0b460122f1acf0a2dd1f56404f8d1e56298048885e45535
+Status: Downloaded newer image for ubuntu:latest
+root@vagrant-ubuntu-trusty-64:~# 
+root@vagrant-ubuntu-trusty-64:~# 
+root@vagrant-ubuntu-trusty-64:~# 
+root@vagrant-ubuntu-trusty-64:~# <mark> docker push localhost:5000/ubuntu </mark>
+The push refers to a repository [localhost:5000/ubuntu]
+56827159aa8b: Layer already exists 
+440e02c3dcde: Layer already exists 
+29660d0e5bb2: Layer already exists 
+85782553e37a: Layer already exists 
+745f5be9952c: Layer already exists 
+latest: digest: sha256:6b079ae764a6affcb632231349d4a5e1b084bece8c46883c099863ee2aeb5cf8 size: 1357
+root@vagrant-ubuntu-trusty-64:~# 
+root@vagrant-ubuntu-trusty-64:~#<mark> docker images </mark>
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+registry                2                   047218491f8c        5 weeks ago         33.2 MB
+ubuntu                  latest              0ef2e08ed3fa        5 weeks ago         130 MB
+localhost:5000/ubuntu   latest              0ef2e08ed3fa        5 weeks ago         130 MB
+root@vagrant-ubuntu-trusty-64:~# 
+</code>
+</pre>
+</div>
 
 
 ### Vagrant Setup
@@ -1285,7 +1325,7 @@ The folder name = `&lt;Common Name of the certificate&gt;:&lt;Port opened by the
 
 Add the dns entry for devbox.com in /etc/hosts of the vrf you're working in. Since before 6.3.1, we only support global-vrf in the linux kernel, we set up `/etc/hosts` of the global-vrf network namespace to create a pointer to `devbox.com`. To do this change into the correct network namespace (global-vrf) and edit /etc/hosts as shown below: 
 
-Another way to do this would be to edit  `/etc/netns/global-vrf/hosts` file and then change into the network namespace for subsequent scp to immediately work.
+Another way to do this would be to edit  `/etc/netns/global-vrf/hosts` file and then change into the network namespace for the subsequent scp to immediately work.
 {: .notice--info}  
 
 
@@ -1412,15 +1452,50 @@ Set up the directory to store the certificates created for the docker registry:
 
 scp over the self-signed certificate from the devbox into the above directory:  
 
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[ncs5508:~]$scp cisco@devbox.com:~/certs/domain.crt /etc/docker/certs.d/devbox.com\:5000/ca.crt
+Warning: Permanently added 'devbox.com,11.11.11.2' (ECDSA) to the list of known hosts.
+cisco@devbox.com's password: 
+domain.crt                                    100% 1976     1.9KB/s   00:00    
+[ncs5508:~]$
 
-```
+</code>
+</pre>
+</div>
 
 
-```
+Now pull the docker image from the registry and spin it up:  
 
 
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[ncs5508:~]$<mark>docker pull devbox.com:5000/ubuntu</mark>
+Using default tag: latest
+latest: Pulling from ubuntu
 
+d54efb8db41d: Pull complete 
+f8b845f45a87: Pull complete 
+e8db7bf7c39f: Pull complete 
+9654c40e9079: Pull complete 
+6d9ef359eaaa: Pull complete 
+Digest: sha256:dd7808d8792c9841d0b460122f1acf0a2dd1f56404f8d1e56298048885e45535
+Status: Downloaded newer image for devbox.com:5000/ubuntu:latest
+[ncs5508:~]$
+[ncs5508:~]$ <mark> docker run -itd --name ubuntu -v /var/run/netns/global-vrf:/var/run/netns/global-vrf --cap-add=SYS_ADMIN devbox.com:5000/ubuntu bash</mark>
+3b4721fa053a97325ccaa2ac98b3dc3fd9fb224543e0ed699be597f773ab875d
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$docker ps
+CONTAINER ID        IMAGE                    COMMAND             CREATED             STATUS              PORTS               NAMES
+3b4721fa053a        devbox.com:5000/ubuntu   "bash"              5 seconds ago       Up 4 seconds                            ubuntu
+[ncs5508:~]$
 
+</code>
+</pre>
+</div>
 
 
 ## Using a container/image tar ball
