@@ -1790,15 +1790,15 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 {: .notice--success}
 
 
+
+
 ## Network access inside Docker container
 
 As a user you might be wondering:  What can processes inside the spun-up Docker container really do?
-The answer: everything.
-You have a distribution of your choice with complete access to XR RIB/FIB (through routes in the kernel) and interfaces (data and management) to bind to.  
+The answer: everything that a native app/agent (running inside the XR process space) can do from the perspective of reachability and binding to XR interface IP addresses.  
+You basically have a distribution of your choice with complete access to XR RIB/FIB (through routes in the kernel) and interfaces (data and management) to bind to.  
 
-**Docker images by default are extremely basic and do not include most utilities. To be able to showcase the kind of access that a container has, I pull in a special ubuntu docker image with pre-installed iproute2**.  
-This is pretty simple to do.  
-On your devbox pull in a base ubuntu docker image from devhub:  
+**Docker images by default are extremely basic and do not include most utilities. To be able to showcase the kind of access that a container has, I pull in a special ubuntu docker image with pre-installed iproute2**. To understand how to do this follow the previous section: [Importing a Custom Docker container tar ball]()
 
 
 {: .notice--warning}  
