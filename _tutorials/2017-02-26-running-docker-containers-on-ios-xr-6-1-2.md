@@ -1382,7 +1382,43 @@ The setup of the self-signed registry is already covered above in the [Setting u
 
 The steps for NCS5500 and ASR9k are identical from hereon and match what we did for the Vagrant setup. To be thorough, here are the steps on an NCS5500 setup:  
 
-Hop over to the router and issue the "bash" CLI. Your "ip route" setup should look something like this:
+Hop over to the router and issue the "bash" CLI.
+
+Now change into the network namespace (explicitly) and set up `/etc/hosts` (In my setup, the devbox is reachable over the management port on IP=11.11.11.2) :    
+
+```
+[ncs5508:~]$ip netns exec global-vrf bash 
+[ncs5508:~]$cat /etc/hosts
+127.0.0.1	localhost.localdomain		localhost
+
+127.0.1.1    ncs5508.cisco.com    ncs5508
+
+11.11.11.2 devbox.com
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$
+
+```
+
+Set up the directory to store the certificates created for the docker registry: 
+
+```
+[ncs5508:~]$
+[ncs5508:~]$mkdir /etc/docker/certs.d/devbox.com:5000
+[ncs5508:~]$
+[ncs5508:~]$
+
+```
+
+scp over the self-signed certificate from the devbox into the above directory:  
+
+
+```
+
+
+```
+
+
 
 
 
