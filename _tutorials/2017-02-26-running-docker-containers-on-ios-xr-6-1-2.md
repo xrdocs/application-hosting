@@ -1782,11 +1782,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 </code>
 </pre>
-</div>
-
-This can be done by first pulling the relevant docker image into your devbox (From dockerhub) or building it on your own on the devbox (we will not delve into this here), and then issuing a `docker save` to save the image into a loadable tar-ball.  
-
-This is shown below. We assume you know how to get images into the devbox environment already:  
+</div>  
 
 
 
