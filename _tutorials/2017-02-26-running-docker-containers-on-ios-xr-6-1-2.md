@@ -1619,7 +1619,13 @@ As a user you might be wondering:  What can processes inside the spun-up Docker 
 The answer: everything.
 You have a distribution of your choice with complete access to XR RIB/FIB (through routes in the kernel) and interfaces (data and management) to bind to.  
 
-Assuming you've selected one of the techniques above 
+Assuming you've selected one of the techniques above to spin up the docker container, let's exec into the container using `docker exec`:  
+
+We're executing the steps on an NCS5500. The steps are identical for ASR9k, NCS5500/NCS5000 and Vagrant setups.  
+{: .notice--info}  
+
+
+
 
 
  
