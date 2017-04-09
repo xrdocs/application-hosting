@@ -1497,15 +1497,16 @@ CONTAINER ID        IMAGE                    COMMAND             CREATED        
 </div>
 
 
-## Docker Save/Load
+## Docker Save/Load Technique
 
 This is the potentially the easiest secure technique if you don't want to meddle around with certificates on a docker registry and potentially don't want a registry at all.
 
 ### Create a docker image tarball
 
-As a first step, on your devbox create a docker image tar ball. This can be done by first pulling the relevant docker image into your devbox (From dockerhub) or building it on your own on the devbox (we will not delve into this here: for details: <https://docs.docker.com/engine/getstarted/step_four/>), and then issuing a `docker save` to save the image into a loadable tar-ball.  
+As a first step, on your devbox create a docker image tar ball. You can either pull the relevant docker image into your devbox (From dockerhub or some other private registry) or build it on your own on the devbox (we will not delve into this here: for details: <https://docs.docker.com/engine/getstarted/step_four/>).
+Once you have the image locally, issue a `docker save` to save the image into a loadable tar-ball.  
 
-This is shown below. We assume you know how to get images into the devbox environment already:  
+This is shown below:
 
 <div class="highlighter-rouge">
 <pre class="highlight" style="white-space: pre-wrap;">
@@ -1608,11 +1609,11 @@ ffc95e05e05c        ubuntu              "bash"              About a minute ago  
 </div>
 
 
-## Docker export/import
+## Docker export/import Technique
 
 A lot of times you might create a tar ball from a custom Docker container on your server (devbox) and would like to run the custom container directly on the router. This technique explores that option.
 
-### Create a docker Container tarball/snapshot
+### Create a custom docker Container tarball/snapshot
 
 As a first step, on your devbox spin up a docker container from an image you'd like to customize.
 
@@ -1621,10 +1622,10 @@ Assuming you've already learnt how to pull docker images into your devbox enviro
 <div class="highlighter-rouge">
 <pre class="highlight" style="white-space: pre-wrap;">
 <code>
-root@dhcpserver:~# docker images ubuntu
+root@vagrant-ubuntu-trusty-64:~# docker images ubuntu
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 ubuntu              latest              0ef2e08ed3fa        5 weeks ago         130 MB
-root@dhcpserver:~# docker run -itd --name ubuntu ubuntu bash
+root@vagrant-ubuntu-trusty-64:~# docker run -itd --name ubuntu ubuntu bash
 a544ddc41b1fd92cf6b7a751dcafaf63de36f6499f59c256918ca23c32645159
 </code>
 </pre>
@@ -1635,8 +1636,75 @@ Now exec into the created container and start installing iproute2:
 <div class="highlighter-rouge">
 <pre class="highlight" style="white-space: pre-wrap;">
 <code>
-root@dhcpserver:~# docker exec -it ubuntu bash
+root@vagrant-ubuntu-trusty-64:~# <mark> docker exec -it ubuntu bash </mark>
 root@a544ddc41b1f:/# 
+root@3cc4d9dd0056:/# <mark>apt-get update && apt-get install -y iproute2 </mark>
+Get:1 http://archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
+Get:2 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [102 kB]
+Get:3 http://archive.ubuntu.com/ubuntu xenial-security InRelease [102 kB]
+Get:4 http://archive.ubuntu.com/ubuntu xenial/main Sources [1103 kB]
+Get:5 http://archive.ubuntu.com/ubuntu xenial/restricted Sources [5179 B]
+
+############################  SNIP Output  ######################################## 
+Get:18 http://archive.ubuntu.com/ubuntu xenial-security/universe Sources [30.0 kB]
+Get:19 http://archive.ubuntu.com/ubuntu xenial-security/main amd64 Packages [303 kB]
+Get:20 http://archive.ubuntu.com/ubuntu xenial-security/restricted amd64 Packages [12.8 kB]
+Get:21 http://archive.ubuntu.com/ubuntu xenial-security/universe amd64 Packages [132 kB]
+
+############################  SNIP Output  ######################################## 
+
+The following NEW packages will be installed:
+  iproute2 libatm1 libmnl0 libxtables11
+0 upgraded, 4 newly installed, 0 to remove and 8 not upgraded.
+Need to get 586 kB of archives.
+After this operation, 1808 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu xenial/main amd64 libatm1 amd64 1:2.5.1-1.5 [24.2 kB]
+Get:2 http://archive.ubuntu.com/ubuntu xenial/main amd64 libmnl0 amd64 1.0.3-5 [12.0 kB]
+Get:3 http://archive.ubuntu.com/ubuntu xenial/main amd64 iproute2 amd64 4.3.0-1ubuntu3 [522 kB]
+Get:4 http://archive.ubuntu.com/ubuntu xenial/main amd64 libxtables11 amd64 1.6.0-2ubuntu3 [27.2 kB]
+Fetched 586 kB in 0s (11.1 MB/s)   
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package libatm1:amd64.
+(Reading database ... 7256 files and directories currently installed.)
+Preparing to unpack .../libatm1_1%3a2.5.1-1.5_amd64.deb ...
+
+############################  SNIP Output  ######################################## 
+
+Setting up libmnl0:amd64 (1.0.3-5) ...
+Setting up iproute2 (4.3.0-1ubuntu3) ...
+Setting up libxtables11:amd64 (1.6.0-2ubuntu3) ...
+Processing triggers for libc-bin (2.23-0ubuntu5) ...
+root@3cc4d9dd0056:/# exit
+exit
+root@vagrant-ubuntu-trusty-64:~# 
+</code>
+</pre>
+</div>
+
+Finally, use the `docker export` command to save your custom container tar ball:  
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+root@vagrant-ubuntu-trusty-64:~# 
+root@vagrant-ubuntu-trusty-64:~# <mark>docker export ubuntu_iproute2 > ubuntu_iproute2.tar </mark>
+root@vagrant-ubuntu-trusty-64:~# ls -l ubuntu_iproute2.tar 
+-rw-r--r-- 1 root root 147474432 Apr  8 11:31 ubuntu_iproute2.tar
+root@vagrant-ubuntu-trusty-64:~# 
+</code>
+</pre>
+</div>
+
+
+
+### Vagrant Setup
+
+Just like the previous technique, scp the docker container tar ball into the router, but this time `import` it:  
+
+
+
+
+
 
 
 
