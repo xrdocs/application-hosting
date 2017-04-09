@@ -1497,13 +1497,13 @@ CONTAINER ID        IMAGE                    COMMAND             CREATED        
 </div>
 
 
-## Using a container/image tar ball
+## Docker Save/Load
 
 This is the potentially the easiest secure technique if you don't want to meddle around with certificates on a docker registry and potentially don't want a registry at all.
 
 ### Create a docker image tarball
 
-As a first step, on your devbox create a docker image tar ball. This can be done by first pulling the relevant docker image into your devbox (From dockerhub) or building it on your own on the devbox (we will not delve into this here), and then issuing a `docker save` to save the image into a loadable tar-ball.  
+As a first step, on your devbox create a docker image tar ball. This can be done by first pulling the relevant docker image into your devbox (From dockerhub) or building it on your own on the devbox (we will not delve into this here: for details: <https://docs.docker.com/engine/getstarted/step_four/>), and then issuing a `docker save` to save the image into a loadable tar-ball.  
 
 This is shown below. We assume you know how to get images into the devbox environment already:  
 
@@ -1608,6 +1608,43 @@ ffc95e05e05c        ubuntu              "bash"              About a minute ago  
 </div>
 
 
+## Docker export/import
+
+A lot of times you might create a tar ball from a custom Docker container on your server (devbox) and would like to run the custom container directly on the router. This technique explores that option.
+
+### Create a docker Container tarball/snapshot
+
+As a first step, on your devbox spin up a docker container from an image you'd like to customize.
+
+Assuming you've already learnt how to pull docker images into your devbox environment, let's spin up an ubuntu container and install iproute2 on it:  
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+root@dhcpserver:~# docker images ubuntu
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu              latest              0ef2e08ed3fa        5 weeks ago         130 MB
+root@dhcpserver:~# docker run -itd --name ubuntu ubuntu bash
+a544ddc41b1fd92cf6b7a751dcafaf63de36f6499f59c256918ca23c32645159
+</code>
+</pre>
+</div>
+
+Now exec into the created container and start installing iproute2: 
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+root@dhcpserver:~# docker exec -it ubuntu bash
+root@a544ddc41b1f:/# 
+
+
+
+This can be done by first pulling the relevant docker image into your devbox (From dockerhub) or building it on your own on the devbox (we will not delve into this here), and then issuing a `docker save` to save the image into a loadable tar-ball.  
+
+This is shown below. We assume you know how to get images into the devbox environment already:  
+
+
 
 **And there you have it! We've successfully tried all the possible techniques through which a docker image can be pulled into the router before we spin up the container.** 
 {: .notice--success}
@@ -1619,8 +1656,16 @@ As a user you might be wondering:  What can processes inside the spun-up Docker 
 The answer: everything.
 You have a distribution of your choice with complete access to XR RIB/FIB (through routes in the kernel) and interfaces (data and management) to bind to.  
 
-**Docker images by default are extremely basic and do not include most utilities. To be able to showcase the kind of access that a container has, I pull in a special ubuntu docker image with pre-installed iproute2**  
+**Docker images by default are extremely basic and do not include most utilities. To be able to showcase the kind of access that a container has, I pull in a special ubuntu docker image with pre-installed iproute2**.  
+This is pretty simple to do.  
+On your devbox pull in a base ubuntu docker image from devhub:  
+
+
 {: .notice--warning}  
+
+
+
+
 
 Assuming you've selected one of the techniques above to spin up the docker container, I'm going to  let's exec into the container using `docker exec`:  
 
