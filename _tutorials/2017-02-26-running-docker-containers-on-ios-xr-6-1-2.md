@@ -1798,9 +1798,7 @@ As a user you might be wondering:  What can processes inside the spun-up Docker 
 The answer: everything that a native app/agent (running inside the XR process space) can do from the perspective of reachability and binding to XR interface IP addresses.  
 You basically have a distribution of your choice with complete access to XR RIB/FIB (through routes in the kernel) and interfaces (data and management) to bind to.  
 
-**Docker images by default are extremely basic and do not include most utilities. To be able to showcase the kind of access that a container has, I pull in a special ubuntu docker image with pre-installed iproute2**. To understand how to do this follow the previous section: [Importing a Custom Docker container tar ball]()
-
-
+**Docker images by default are extremely basic and do not include most utilities. To be able to showcase the kind of access that a container has, I pull in a special ubuntu docker image with pre-installed iproute2**. To understand how to do this follow the previous section: [Importing a Custom Docker container tar ball](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#docker-exportimport-technique)
 {: .notice--warning}  
 
 
