@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2017-02-26 14:40 -0800'
-title: Running Docker Containers on IOS-XR (6.1.2+)
+title: 'XR toolbox, Part 6: Running Docker Containers on IOS-XR (6.1.2+)'
 position: hidden
 author: Akshat Sharma
 excerpt: >-
@@ -560,7 +560,6 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 ## Launch a Docker Container
 
 As discussed earlier, we'll showcase a few different techniques through which a user may spin up a docker container on IOS-XR.
-
 
 
 ## Public Dockerhub registry
@@ -1499,3 +1498,132 @@ CONTAINER ID        IMAGE                    COMMAND             CREATED        
 
 
 ## Using a container/image tar ball
+
+This is the potentially the easiest secure technique if you don't want to meddle around with certificates on a docker registry and potentially don't want a registry at all.
+
+### Create a docker image tarball
+
+As a first step, on your devbox create a docker image tar ball. This can be done by first pulling the relevant docker image into your devbox (From dockerhub) or building it on your own on the devbox (we will not delve into this here), and then issuing a `docker save` to save the image into a loadable tar-ball.  
+
+This is shown below. We assume you know how to get images into the devbox environment already:  
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo docker images 
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+registry                2                   047218491f8c        5 weeks ago         33.2 MB
+localhost:5000/ubuntu   latest              0ef2e08ed3fa        5 weeks ago         130 MB
+ubuntu                  latest              0ef2e08ed3fa        5 weeks ago         130 MB
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ <mark>sudo docker save ubuntu > ubuntu.tar </mark>
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+
+</code>
+</pre>
+</div>
+
+
+### Vagrant Setup
+
+Login to your Router (directly into the shell or by issuing the `bash` command in XR CLI). We first scp the docker image tar ball into an available volume on the router and then load it up.  
+
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ df -h  /misc/app_host/
+Filesystem                       Size  Used Avail Use% Mounted on
+/dev/mapper/app_vol_grp-app_lv0  3.9G  260M  3.5G   7% /misc/app_host
+[xr-vm_node0_RP0_CPU0:~]$ <mark>scp vagrant@11.1.1.20:~/ubuntu.tar /misc/app_host/</mark>
+vagrant@11.1.1.20's password: 
+ubuntu.tar                                                                                                                                                             100%  129MB 107.7KB/s   20:31    
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ <mark> docker load &lt; /misc/app_host/ubuntu.tar </mark>
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ docker images
+REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
+ubuntu                   latest              0ef2e08ed3fa        4 weeks ago         130 MB
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+</code>
+</pre>
+</div>
+
+Now go ahead and spin it up as shown earlier:  
+
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$<mark> docker run -itd --name ubuntu -v /var/run/netns/global-vrf:/var/run/netns/global-vrf --cap-add=SYS_ADMIN ubuntu bash</mark>
+b50424bbe195fd4b79c0d375dcc081228395da467d1c0d5367897180c421b41d
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+108a5ad711ca        ubuntu              "bash"              3 seconds ago       Up 2 seconds                            ubuntu
+[xr-vm_node0_RP0_CPU0:~]$ 
+</code>
+</pre>
+</div>
+
+
+
+### NCS5500 and ASR9k setup.
+
+NCS5500 and ASR9k follow the exact same steps as the Vagrant box above. For completeness, though:
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[ncs5508:~]$
+[ncs5508:~]$scp cisco@11.11.11.2:~/ubuntu.tar /misc/app_host/
+cisco@11.11.11.2's password: 
+ubuntu.tar                                    100%  317MB  10.2MB/s   00:31    
+[ncs5508:~]$
+[ncs5508:~]$docker load &lt; /misc/app_host/ubuntu.tar 
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+[ncs5508:~]$
+[ncs5508:~]$<mark> docker run -itd --name ubuntu -v /var/run/netns/global-vrf:/var/run/netns/global-vrf --cap-add=SYS_ADMIN ubuntu bash</mark>
+ffc95e05e05c6e2e6b8e4aa05b299f513fd5df6d1ca8fe641cfa7f44671e6f07
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS               NAMES
+ffc95e05e05c        ubuntu              "bash"              About a minute ago   Up About a minute                       ubuntu
+[ncs5508:~]$
+</code>
+</pre>
+</div>
+
+
+
+**And there you have it! We've successfully tried all the possible techniques through which a docker image can be pulled into the router before we spin up the container.** 
+{: .notice--success}
+
+
+## Network access inside Docker container
+
+As a user you might be wondering:  What can processes inside the spun-up Docker container really do?
+The answer: everything.
+You have a distribution of your choice with complete access to XR RIB/FIB (through routes in the kernel) and interfaces (data and management) to bind to.  
+
+Assuming you've selected one of the techniques above 
+
+
+ 
+
+
+
+
