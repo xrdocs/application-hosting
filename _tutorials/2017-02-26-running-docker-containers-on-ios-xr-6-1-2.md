@@ -1794,7 +1794,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 
 
-## Network access inside Docker container
+## What can I do with the Docker container?
 
 As a user you might be wondering:  What can processes inside the spun-up Docker container really do?
 The answer: everything that a native app/agent (running inside the XR process space) can do from the perspective of reachability and binding to XR interface IP addresses.  
