@@ -1631,14 +1631,14 @@ a544ddc41b1fd92cf6b7a751dcafaf63de36f6499f59c256918ca23c32645159
 </pre>
 </div>
 
-Now exec into the created container and start installing iproute2: 
+Now exec into the created container and start installing iproute2 and python(we'll use this later): 
 
 <div class="highlighter-rouge">
 <pre class="highlight" style="white-space: pre-wrap;">
 <code>
 root@vagrant-ubuntu-trusty-64:~# <mark> docker exec -it ubuntu bash </mark>
 root@a544ddc41b1f:/# 
-root@3cc4d9dd0056:/# <mark>apt-get update && apt-get install -y iproute2 </mark>
+root@3cc4d9dd0056:/# <mark>apt-get update && apt-get install -y iproute2 python</mark>
 Get:1 http://archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
 Get:2 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [102 kB]
 Get:3 http://archive.ubuntu.com/ubuntu xenial-security InRelease [102 kB]
@@ -1654,7 +1654,9 @@ Get:21 http://archive.ubuntu.com/ubuntu xenial-security/universe amd64 Packages 
 ############################  SNIP Output  ######################################## 
 
 The following NEW packages will be installed:
-  iproute2 libatm1 libmnl0 libxtables11
+  file iproute2 libatm1 libexpat1 libffi6 libmagic1 libmnl0 libpython-stdlib libpython2.7-minimal libpython2.7-stdlib libsqlite3-0 libssl1.0.0 libxtables11 mime-support python
+  python-minimal python2.7 python2.7-minimal
+
 0 upgraded, 4 newly installed, 0 to remove and 8 not upgraded.
 Need to get 586 kB of archives.
 After this operation, 1808 kB of additional disk space will be used.
@@ -1804,6 +1806,8 @@ You basically have a distribution of your choice with complete access to XR RIB/
 
 At the end of the previous section you would have the ubuntu_iproute2 container up and running:  
 
+We're running the steps below on an NCS5500. But the steps are the same for a vagrant setup or for ASR9k.
+
 <div class="highlighter-rouge">
 <pre class="highlight" style="white-space: pre-wrap;">
 <code>
@@ -1880,9 +1884,84 @@ root@36f8ae4cad2c:/#
 </pre>
 </div> 
 
+Awesome! The entire XR routing stack is your oyster :).
+{: .notice--success}  
 
-We're executing the steps on an NCS5500. The steps are identical for ASR9k, NCS5500/NCS5000 and Vagrant setups.  
-{: .notice--info}  
+
+### Testing out a Web Server
+
+Let's test this setup out quickly. If you remember, we installed python as part of the ubuntu_iproute2 custom container creation. We'll spin up a python HTTP web server inside the docker container and see if we can reach it from the outside.
+
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+root@642894d230a8:/# ip netns exec global-vrf bash
+root@642894d230a8:/# 
+root@642894d230a8:/# 
+root@642894d230a8:/# ip addr show Mg0_RP0_CPU0_0
+53: Mg0_RP0_CPU0_0: &lt;MULTICAST,NOARP,UP,LOWER_UP&gt; mtu 1514 qdisc pfifo_fast state UNKNOWN group default qlen 1000
+    link/ether 80:e0:1d:00:fc:ea brd ff:ff:ff:ff:ff:ff
+    inet 11.11.11.59/24 scope global Mg0_RP0_CPU0_0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::82e0:1dff:fe00:fcea/64 scope link 
+       valid_lft forever preferred_lft forever
+root@642894d230a8:/# 
+root@642894d230a8:/# 
+root@642894d230a8:/# python -m SimpleHTTPServer 8080
+root@642894d230a8:/# 
+root@642894d230a8:/# 
+root@642894d230a8:/# echo  "Hello World" > /test.txt
+root@642894d230a8:/# 
+root@642894d230a8:/# python -m SimpleHTTPServer 8080
+Serving HTTP on 0.0.0.0 port 8080 ...
+
+</code>
+</pre>
+</div> 
+
+
+Hop into the connected devbox and issue a wget for the test.txt file we created above:  
+
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+
+root@dhcpserver:~# wget http://11.11.11.59:8080/test.txt
+--2017-04-08 12:46:50--  http://11.11.11.59:8080/test.txt
+Connecting to 11.11.11.59:8080... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 12 [text/plain]
+Saving to: ‘test.txt’
+
+100%[========================================================================================================================================>] 12          --.-K/s   in 0s      
+
+2017-04-08 12:46:50 (2.13 MB/s) - ‘test.txt’ saved [12/12]
+
+root@dhcpserver:~# 
+
+</code>
+</pre>
+</div> 
+
+The request coming in to the docker container: 
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+
+root@642894d230a8:/# python -m SimpleHTTPServer 8080
+Serving HTTP on 0.0.0.0 port 8080 ...
+11.11.11.2 - - [09/Apr/2017 12:09:07] "GET /test.txt HTTP/1.1" 200 -
+
+</code>
+</pre>
+</div> 
+
+
+Success! It all works as expected.
+{: .notice--success}
+
 
 
 
