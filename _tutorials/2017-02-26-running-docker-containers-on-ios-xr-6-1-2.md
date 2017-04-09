@@ -2,7 +2,7 @@
 published: true
 date: '2017-02-26 14:40 -0800'
 title: 'XR toolbox, Part 6: Running Docker Containers on IOS-XR (6.1.2+)'
-position: hidden
+position: top
 author: Akshat Sharma
 excerpt: >-
   Running Docker containers on IOS-XR running as a Vagrant box and on a physical
@@ -1921,7 +1921,7 @@ Serving HTTP on 0.0.0.0 port 8080 ...
 </div> 
 
 
-Hop into the connected devbox and issue a wget for the test.txt file we created above:  
+Hop onto the connected devbox and issue a wget for the test.txt file we created above:  
 
 
 <div class="highlighter-rouge">
