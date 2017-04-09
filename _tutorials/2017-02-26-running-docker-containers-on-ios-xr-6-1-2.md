@@ -986,28 +986,7 @@ There, you've launched a docker container on XR using a private "insecure" regis
 The workflow is more or less identical to the Vagrant setup.
 In this case we're setting up the registry to be reachable over the Management network (and over the same subnet). For this, you don't need to set the TPA IP.  
 
-
-Set up the connected devbox to host the registry. The steps are again garnered from here: <https://docs.docker.com/registry/deploying/>
-
-In the end, you'll have a registry running on port 5000:
-
-```
-root@dhcpserver:~# docker ps
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
-46550ef7e5f3        registry:2          "/entrypoint.sh /etc/"   3 minutes ago       Up 3 minutes        0.0.0.0:5000->5000/tcp   registry
-root@dhcpserver:~# 
-```
-
-and a sample image (ubuntu) pushed and tagged with localhost:5000
-
-```
-root@dhcpserver:~# docker images localhost:5000/ubuntu
-REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
-localhost:5000/ubuntu   latest              0ef2e08ed3fa        1 day ago          130 MB
-root@dhcpserver:~# 
-
-```
-
+If you've followed the steps above in the [Setting up the Insecure Registry](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#setting-up-the-insecure-registry) section, then you should have an insecure registry already running on the devbox environment, along with a "pushed" ubuntu image.  
 
 
 Now hop over to the NCS5500 and issue the "bash" CLI. Your "ip route" setup should look something like this:
@@ -1090,28 +1069,6 @@ The ASR9k setup for an insecure docker registry is slightly different from Vagra
 
 
 Again, we're setting up the registry to be reachable over the Management network (and over the same subnet). For this, you don't need to set the TPA IP.  
-
-Set up the connected devbox to host the registry. The steps are again garnered from here: <https://docs.docker.com/registry/deploying/>
-
-In the end, you'll have a registry running on port 5000:
-
-```
-root@dhcpserver:~# docker ps
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
-46550ef7e5f3        registry:2          "/entrypoint.sh /etc/"   3 minutes ago       Up 3 minutes        0.0.0.0:5000->5000/tcp   registry
-root@dhcpserver:~# 
-```
-
-and a sample image (ubuntu) pushed and tagged with localhost:5000
-
-```
-root@dhcpserver:~# docker images localhost:5000/ubuntu
-REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
-localhost:5000/ubuntu   latest              0ef2e08ed3fa        1 day ago          130 MB
-root@dhcpserver:~# 
-
-```
-
 
 
 Now hop over to the ASR9k and issue the "bash" CLI. Your "ip route" setup should look something like this:
@@ -1326,7 +1283,7 @@ The folder name = `&lt;Common Name of the certificate&gt;:&lt;Port opened by the
 
 ```
 
-Add the dns entry for devbox.com in /etc/hosts of the vrf you're working in. Since before 6.3.1, we only support global-vrf in the linux kernel, we set up `/etc/netns/global-vrf/hosts` to create a pointer to `devbox.com` using vi as an editor. In the end the file should look something like:  
+Add the dns entry for devbox.com in /etc/hosts of the vrf you're working in. Since before 6.3.1, we only support global-vrf in the linux kernel, we set up `/etc/hosts` of the global-vrf network namespace to create a pointer to `devbox.com`. To do this change into the correct network namesapce (global-vrf) and edit /etc/hosts as shown below:  
 
 
 
@@ -1335,8 +1292,9 @@ Add the dns entry for devbox.com in /etc/hosts of the vrf you're working in. Sin
 <code>
 
 [xr-vm_node0_RP0_CPU0:~]$ 
-[xr-vm_node0_RP0_CPU0:~]$ 
-[xr-vm_node0_RP0_CPU0:~]$ cat /etc/netns/global-vrf/hosts 
+[xr-vm_node0_RP0_CPU0:~]$ ip netns exec global-vrf bash
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$ cat /etc/hosts 
 127.0.0.1	localhost.localdomain		localhost
 <mark>11.1.1.20       devbox.com </mark>
 [xr-vm_node0_RP0_CPU0:~]$ 
@@ -1417,6 +1375,13 @@ b50424bbe195        devbox.com:5000/ubuntu   "bash"              4 seconds ago  
 
 
 ### NCS5500 and ASR9k Setup
+
+The setup of the self-signed registry is already covered above in the [Setting up a Self-Signed Docker Registry](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#setting-up-a-self-signed-docker-registry) section.  
+
+The steps for NCS5500 and ASR9k are identical from hereon and match what we did for the Vagrant setup. To be thorough, here are the steps on an NCS5500 setup:  
+
+Hop over to the router and issue the "bash" CLI. Your "ip route" setup should look something like this:
+
 
 
 
