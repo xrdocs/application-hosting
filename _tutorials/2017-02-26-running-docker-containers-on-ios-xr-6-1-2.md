@@ -1802,10 +1802,84 @@ You basically have a distribution of your choice with complete access to XR RIB/
 {: .notice--warning}  
 
 
+At the end of the previous section you would have the ubuntu_iproute2 container up and running:  
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[ncs5508:~]$docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+36f8ae4cad2c        ubuntu_iproute2     "bash"              9 minutes ago       Up 9 minutes                            ubuntu_iproute2
+[ncs5508:~]$
+</code>
+</pre>
+</div>  
 
 
+Now exec into the running container using `docker exec`:  
 
-Assuming you've selected one of the techniques above to spin up the docker container, I'm going to  let's exec into the container using `docker exec`:  
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[ncs5508:~]$
+[ncs5508:~]$<mark>docker exec -it ubuntu_iproute2 bash</mark>
+root@36f8ae4cad2c:/# 
+root@36f8ae4cad2c:/# 
+</code>
+</pre>
+</div> 
+
+To view the IOS-XR network interfaces and the relevant routes in the kernel, exec into the global-vrf network namespace:  
+
+If you remember, every `docker run` command we have run till now involves mounting the relevant network namespace into the container under `/var/run/netns`.
+{: .notice--info}  
+
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+
+root@36f8ae4cad2c:/# <mark>ip netns exec global-vrf bash </mark>
+root@36f8ae4cad2c:/# 
+root@36f8ae4cad2c:/# <mark>ip route</mark>
+default dev fwdintf  scope link  src 11.11.11.59 
+10.10.10.10 dev fwd_ew  scope link  src 11.11.11.59 
+11.11.11.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 11.11.11.59 
+root@36f8ae4cad2c:/# 
+root@36f8ae4cad2c:/# 
+root@36f8ae4cad2c:/# <mark>ip link show</mark>
+1: lo: &lt;LOOPBACK,MULTICAST,NOARP,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+3: fwdintf: &lt;MULTICAST,NOARP,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UNKNOWN mode DEFAULT group default qlen 1000
+    link/ether 00:00:00:00:00:0a brd ff:ff:ff:ff:ff:ff
+4: fwd_ew: &lt;MULTICAST,NOARP,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UNKNOWN mode DEFAULT group default qlen 1000
+    link/ether 00:00:00:00:00:0b brd ff:ff:ff:ff:ff:ff
+7: Hg0_0_0_0: &lt;&gt; mtu 1514 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 0c:11:67:46:10:00 brd ff:ff:ff:ff:ff:ff
+8: Hg0_0_0_35: &lt;&gt; mtu 1514 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 0c:11:67:46:10:8c brd ff:ff:ff:ff:ff:ff
+9: Hg0_0_0_34: &lt;&gt; mtu 1514 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 0c:11:67:46:10:88 brd ff:ff:ff:ff:ff:ff
+10: Hg0_0_0_33: &lt;&gt; mtu 1514 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 0c:11:67:46:10:84 brd ff:ff:ff:ff:ff:ff
+
+
+############################  SNIP Output  ######################################## 
+
+47: Hg0_0_0_1: &lt;&gt; mtu 1514 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 0c:11:67:46:10:04 brd ff:ff:ff:ff:ff:ff
+48: Fg0_0_0_32: &lt;&gt; mtu 1514 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 0c:11:67:46:10:80 brd ff:ff:ff:ff:ff:ff
+49: Fg0_0_0_28: &lt;&gt; mtu 1514 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 0c:11:67:46:10:70 brd ff:ff:ff:ff:ff:ff
+53: Mg0_RP0_CPU0_0: &lt;MULTICAST,NOARP,UP,LOWER_UP&gt; mtu 1514 qdisc pfifo_fast state UNKNOWN mode DEFAULT group default qlen 1000
+    link/ether 80:e0:1d:00:fc:ea brd ff:ff:ff:ff:ff:ff
+root@36f8ae4cad2c:/# 
+
+</code>
+</pre>
+</div> 
+
 
 We're executing the steps on an NCS5500. The steps are identical for ASR9k, NCS5500/NCS5000 and Vagrant setups.  
 {: .notice--info}  
