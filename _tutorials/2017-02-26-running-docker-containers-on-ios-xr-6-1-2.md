@@ -1283,8 +1283,10 @@ The folder name = `&lt;Common Name of the certificate&gt;:&lt;Port opened by the
 
 ```
 
-Add the dns entry for devbox.com in /etc/hosts of the vrf you're working in. Since before 6.3.1, we only support global-vrf in the linux kernel, we set up `/etc/hosts` of the global-vrf network namespace to create a pointer to `devbox.com`. To do this change into the correct network namesapce (global-vrf) and edit /etc/hosts as shown below:  
+Add the dns entry for devbox.com in /etc/hosts of the vrf you're working in. Since before 6.3.1, we only support global-vrf in the linux kernel, we set up `/etc/hosts` of the global-vrf network namespace to create a pointer to `devbox.com`. To do this change into the correct network namespace (global-vrf) and edit /etc/hosts as shown below: 
 
+Another way to do this would be to edit  `/etc/netns/global-vrf/hosts` file and then change into the network namespace for subsequent scp to immediately work.
+{: .notice--info}  
 
 
 <div class="highlighter-rouge">
