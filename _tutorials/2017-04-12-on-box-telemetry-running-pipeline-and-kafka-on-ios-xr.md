@@ -47,7 +47,14 @@ A tool we recently open-sourced in this space with complete support for Model Dr
 
 
 
+## What is on-box Telemetry?
 
+
+There is no one-size-fits-all technique for Monitoring and managing network devices. There are a lot of network operators that will follow the typical approach: Set up the Model Driven Telemetry on IOS-XR and stream operational data to an external receiver.  
+
+
+
+However, quite a few of our users have come and asked us 
 
 
 
