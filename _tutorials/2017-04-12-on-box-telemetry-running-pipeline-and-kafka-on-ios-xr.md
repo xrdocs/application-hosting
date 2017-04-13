@@ -241,33 +241,49 @@ All the references below to Dockefile instructions are derived from official Doc
 {: .notice-warning}  
 
 
-```Dockerfile
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code class="language-dockerfile">
 ARG vrf=global-vrf
-```
+</code>
+</pre>
+</div>  
+
 
 We setup the script to accept arguments from the user during build time. This will allow us to be flexible in specifying the vrf (network namespace) to spin up the daemons in, in the future. Today in 6.1.2 (before 6.3.1), only global-vrf is supported.  
 {: .notice--info}
 
 
-```Dockerfile
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code class="language-dockerfile">
 ENV vrf_exec "ip netns exec $vrf"
-```
+</code>
+</pre>
+</div> 
 
 In Dockerfiles, the ARG variables are rejected in the ENTRYPOINT or CMD instructions. So we set up an ENV variable (which is honored) to create a command prefix necessary to execute a command in a given network namespace (vrf).  
 {: .notice--info}
 
-
-```Dockerfile
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code class="language-dockerfile">
 ADD kafka_consumer.py /kafka_consumer.py
-```
+</code>
+</pre>
+</div> 
 
 We place the sample application (in this case written in python) inside the image to act as a consumer of the Telemetry data pushed to Kafka. This application can contain custom triggers to initiate alerts or other actions. For this tutorial, we will initiate the script manually post launch of the container. The user can choose to start the application by default as part of the ENTRYPOINT or CMD instructions in the dockerfile.
 {: .notice--info}
 
 
-```Dockerfile
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code class="language-dockerfile">
 CMD $vrf_exec echo "127.0.0.1 localhost" >> /etc/hosts && $vrf_exec supervisord -n
-```
+</code>
+</pre>
+</div> 
 
 This specifies the command that will be run inside the container post boot. The first part of the command `$vrf_exec echo "127.0.0.1 localhost" >> /etc/hosts` sets up /etc/hosts with an entry for localhost making it easier for kafka and applications to talk to each other locally. The second part of the command `$vrf_exec supervisord -n` is used to start all the services in the correct vrf (hence the `$vrf_exec`).    
 We use supervisord to easily specify multiple daemons that need to be launched (pipeline, kafka, zookeeper).  You can get more details on supervisord here: <http://supervisord.org/>  
