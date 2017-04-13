@@ -86,6 +86,10 @@ The deployed setup for onbox telemetry with a Docker container eventually will l
 
 
 
+### Docker image for Pipeline+Kafka 
+
+While a user is welcome to build their own custom Docker images, we have a base image that can take care of basic installation of pipeline and Kafka+zookeeper for already.
+
 
 
 
