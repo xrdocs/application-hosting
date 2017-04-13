@@ -145,7 +145,7 @@ We will utilize this image and build our own custom variant to run on an IOS-XR 
 
 
 
-### Building a Pipeline-kafka Docker image for IOS-XR
+## Building a Pipeline-kafka Docker image for IOS-XR
    
    
 To build our own Docker image, you need a development environment with Docker engine installed.  
@@ -159,6 +159,7 @@ This is basically the devbox environment that we have setup in earlier tutorials
 * **Set up the Devbox environment:** [Install docker-engine on the devbox](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#install-docker-engine-on-the-devbox)  
 
 
+### Clone Github repo
 
 Now that you have a running devbox environment, let's clone the github-repo for the pipeline-kafka project:  
 
@@ -205,6 +206,8 @@ vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka/iosxr_dockerfile$
 </div>
 
 
+### Understand the Dockerfile 
+
 Let's take a look at the Dockerfile under the `iosxr_dockerfile` folder:  
 
 <div class="highlighter-rouge">
@@ -234,7 +237,7 @@ CMD $vrf_exec echo "127.0.0.1 localhost" >> /etc/hosts && $vrf_exec supervisord 
 
 
 
-Let's break it down:  
+**Let's break it down:**
 
 All the references below to Dockefile instructions are derived from official Dockerfile Documentation:  
 <https://docs.docker.com/engine/reference/builder/#known-issues-run>
