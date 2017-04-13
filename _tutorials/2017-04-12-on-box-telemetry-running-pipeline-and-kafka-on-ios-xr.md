@@ -70,10 +70,30 @@ If you haven't had a chance to learn how we enable hosting for Docker containers
 
 >[Understanding Docker Setup on IOS-XR platforms](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#docker-daemon-support-on-ios-xr)
 
-The deployed setup for onbox telemetry with a Docker container eventually will look something like:  
+
+As shown in the platform specific sections below, the pipeline-kafka combination runs as a Docker container onbox. Some specifics on the setup:
+
+*  In IOS-XR 6.1.2 (before 6.3.1) only global-vrf is supported in the linux kernel.  
+
+*  The docker container is launched with the global-vrf network namespace mounted inside the container.  
+
+*  The pipeline and kafka instances are launched inside the global-vrf network namespace and listen on all visible XR IP addresses in the kernel (Data ports in global-vrf, Management port in Global-vrf, loopback interfaces in global-vrf).  
+
+*  The ports and listening IP selected by pipeline can be changed by the user during docker bringup itself by mounting a custom pipeline.conf (shown in subsequent sections).  
+
+*  The XR telemetry process is configured to send Telemetry data to pipeline over **UDP** (only UDP is supported for onbox telemetry) and destination address = listening IP address (some local XR IP) for pipeline.    
+
 
 
 ### NCS5500/Vagrant On-Box Telemetry Setup  
+
+The docker daemon on NCS5500, NCS5000, XRv9k and Vagrant XR (IOS-XRv64) platforms runs on the Host layer at the bottom. The onbox telemetry setup will thus look something like: 
+
+[![xr-docker](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry.png)](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry.png)  
+
+
+
+### ASR9k On-Box Telemetry Setup
 
 As shown below, the pipeline-kafka combination runs as a Docker container onbox. Some specifics on the setup:
 
@@ -83,11 +103,7 @@ As shown below, the pipeline-kafka combination runs as a Docker container onbox.
 *  The ports and listening IP selected by pipeline can be changed by the user during docker bringup itself by mounting a custom pipeline.conf (shown in subsequent sections).
 *  The docker daemon NCS5500, NCS5000, XRv9k and Vagrant XR (IOS-XRv64) platforms runs on the Host layer at the bottom as shown below:  
 
-[![xr-docker](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry.png)](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry.png)  
 
-
-
-### ASR9k On-Box Telemetry Setup
 
 [![xr_asr9k_docker_libvirt](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry_asr9k.png)](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry_asr9k.png)  
 
