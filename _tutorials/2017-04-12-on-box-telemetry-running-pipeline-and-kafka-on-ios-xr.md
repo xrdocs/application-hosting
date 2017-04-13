@@ -117,10 +117,32 @@ On ASR9k, the setup is the same from the user perspective. But for accuracy, the
     
     
 
-While a user is welcome to build their own custom Docker images, we have a base image that can take care of basic installation of pipeline and Kafka+zookeeper already available on Docker hub:
+While a user is welcome to build their own custom Docker images, we have a base image that can take care of installation of pipeline and Kafka+zookeeper for you and is already available on Docker hub:
 
 
->[pipeline-kafka Docker image on Docker Hub]()
+><https://hub.docker.com/r/akshshar/pipeline-kafka/>
+
+
+This image is built out automatically from the following github repo:
+
+><https://github.com/ios-xr/pipeline-kafka>
+
+
+We will utilize this image and build our own custom variant to run on an IOS-XR box for onbox telemetry.
+
+
+
+
+### Building a Docker image for IOS-XR
+
+To build our own Docker image, you need a development environment with Docker engine installed.  
+This is basically the devbox environment that we have setup in earlier tutorials. To understand how to do this, follow the steps in the sections below from the Docker guide for IOS-XR:  
+
+* **Pre-requisites:**  [Setup your Vagrant environment and/or physical boxes (ASR9k, NCS5500 etc.)](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#pre-requisites)  
+
+* **Set up your topology:** [Understand the Topology](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#understand-the-topology) 
+  
+* **Set up the Devbox environment:** [Install docker-engine on the devbox](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#install-docker-engine-on-the-devbox)  
 
 
 
