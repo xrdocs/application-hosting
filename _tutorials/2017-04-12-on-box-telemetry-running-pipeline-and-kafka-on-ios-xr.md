@@ -53,6 +53,7 @@ A tool we recently open-sourced in this space with complete support for Model Dr
 There is no one-size-fits-all technique for Monitoring and managing network devices. There are a lot of network operators that will follow the typical approach: Set up the Model Driven Telemetry on IOS-XR and stream operational data to an external receiver.  
 
 
+![typical Pipeline deployment](https://xrdocs.github.io/xrdocs-images/assets/images/deploy_pipeline.png)
 
 However, quite a few of our users have come and asked us 
 
