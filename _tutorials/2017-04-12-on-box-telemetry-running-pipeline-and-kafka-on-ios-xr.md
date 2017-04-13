@@ -53,10 +53,31 @@ A tool we recently open-sourced in this space with complete support for Model Dr
 There is no one-size-fits-all technique for Monitoring and managing network devices. There are a lot of network operators that will follow the typical approach: Set up the Model Driven Telemetry on IOS-XR and stream operational data to an external receiver or set of receivers. This is shown below. Pipeline as mentioned earlier, is used as a conduit to a set of tools like Kafka,prometheus etc.
 
 
-![typical Pipeline deployment](https://xrdocs.github.io/xrdocs-images/assets/images/deploy_pipeline.png)  
+[![typical Pipeline deployment](https://xrdocs.github.io/xrdocs-images/assets/images/deploy_pipeline.png)](https://xrdocs.github.io/xrdocs-images/assets/images/deploy_pipeline.png)
 
 
-However, quite a few of our users have come and asked us if it's possible to have a telemetry receiver run on the router inside a container (lxc or docker) so that applications running inside the container can take local actions based on Telemetry data on each router, without having to set up external services to process large amounts of data from all routers.  
+However, quite a few of our users have come and asked us if it's possible to have a telemetry receiver run on the router inside a container (lxc or docker) so that applications running inside the container can take local actions based on Telemetry data locally.
+This would remove the need to set up external services to process large amounts of data from all routers. As always, this is a user's operational decision.
+
+
+
+In this tutorial, we look at using a Docker container to host Pipeline and Kafka (with zookeper) as a Telemetry receiver. Further a simple Kafka consumer is written in python to interact with Kafka and take some sample action on a Telemetry data point.
+
+The deployed setup for onbox telemetry with a Docker container eventually will look something like:  
+
+
+**NCS5500 Setup/ Vagrant Setup**
+
+[![xr-docker](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry.png)](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry.png)  
+
+
+
+**ASR9k Setup**
+
+[![xr_asr9k_docker_libvirt](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry_asr9k.png)](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry_asr9k.png)  
+
+
+
 
 
 
