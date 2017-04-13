@@ -147,6 +147,19 @@ This is basically the devbox environment that we have setup in earlier tutorials
 
 
 
+Now that you have a running debox environment, let's clone the github-repo for the pipeline-kafka project:  
+
+**we use --recursive to make sure all the submodules get pulled as well. The submodules are actual github repos for the standalone pipeline and docker-kafka projects.**
+{: .notice--info}
+
+```shell
+
+
+
+```
+
+
+
 
 
 
