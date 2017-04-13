@@ -155,6 +155,41 @@ Now that you have a running debox environment, let's clone the github-repo for t
 
 
 ```shell
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ git clone --recursive https://github.com/ios-xr/pipeline-kafka
+Cloning into 'pipeline-kafka'...
+remote: Counting objects: 38, done.
+remote: Compressing objects: 100% (30/30), done.
+remote: Total 38 (delta 15), reused 20 (delta 4), pack-reused 0
+Unpacking objects: 100% (38/38), done.
+Checking connectivity... done.
+Submodule 'bigmuddy-network-telemetry-pipeline' (https://github.com/cisco/bigmuddy-network-telemetry-pipeline) registered for path 'bigmuddy-network-telemetry-pipeline'
+Submodule 'docker-kafka' (https://github.com/spotify/docker-kafka) registered for path 'docker-kafka'
+Cloning into 'bigmuddy-network-telemetry-pipeline'...
+remote: Counting objects: 14615, done.
+remote: Compressing objects: 100% (8021/8021), done.
+remote: Total 14615 (delta 3586), reused 0 (delta 0), pack-reused 3349
+Receiving objects: 100% (14615/14615), 43.97 MiB | 2.02 MiB/s, done.
+Resolving deltas: 100% (4012/4012), done.
+Checking connectivity... done.
+Submodule path 'bigmuddy-network-telemetry-pipeline': checked out 'a57e87c59ac220ad7725b6b74c3570243e1a4ac3'
+Cloning into 'docker-kafka'...
+remote: Counting objects: 98, done.
+remote: Total 98 (delta 0), reused 0 (delta 0), pack-reused 98
+Unpacking objects: 100% (98/98), done.
+Checking connectivity... done.
+Submodule path 'docker-kafka': checked out 'fc8cdbd2e23a5cac21e7138d07ea884b4309c59a'
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ cd pipeline-kafka/
+vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka$ cd
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ cd pipeline-kafka/iosxr_dockerfile/
+vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka/iosxr_dockerfile$ ls
+Dockerfile  kafka_consumer.py
+vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka/iosxr_dockerfile$ 
 
 
 
