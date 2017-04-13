@@ -73,7 +73,15 @@ If you haven't had a chance to learn how we enable hosting for Docker containers
 The deployed setup for onbox telemetry with a Docker container eventually will look something like:  
 
 
-### NCS5500/Vagrant On-Box Telemetry Setup
+### NCS5500/Vagrant On-Box Telemetry Setup  
+
+As shown below, the pipeline-kafka combination runs as a Docker container onbox. Some specifics on the setup:
+
+*  In IOS-XR 6.1.2 (before 6.3.1) only global-vrf is supported in the linux kernel.
+*  The docker container is launched with the global-vrf network namespace mounted inside the container.
+*  The pipeline and kafka instances are launched inside the global-vrf network namespace and listen on all visible XR IP addresses in the kernel (Data ports in global-vrf, Management port in Global-vrf, loopback interfaces in global-vrf)
+*  The ports and listening IP selected by pipeline can be changed by the user during docker bringup itself by mounting a custom pipeline.conf (shown in subsequent sections).
+*  The docker daemon NCS5500, NCS5000, XRv9k and Vagrant XR (IOS-XRv64) platforms runs on the Host layer at the bottom as shown below:  
 
 [![xr-docker](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry.png)](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry.png)  
 
