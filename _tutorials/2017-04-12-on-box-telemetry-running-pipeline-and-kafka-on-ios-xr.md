@@ -56,8 +56,9 @@ There is no one-size-fits-all technique for Monitoring and managing network devi
 [![typical Pipeline deployment](https://xrdocs.github.io/xrdocs-images/assets/images/deploy_pipeline.png)](https://xrdocs.github.io/xrdocs-images/assets/images/deploy_pipeline.png)
 
 
-However, quite a few of our users have come and asked us if it's possible to have a telemetry receiver run on the router inside a container (lxc or docker) so that applications running locally inside the container can take local actions based on Telemetry data.
-This would remove the need to set up external services to process large amounts of data from all routers. As always, this is a user's operational decision.
+However, quite a few of our users have come and asked us if it's possible to have a telemetry receiver run on the router inside a container (lxc or docker) so that applications running locally inside the container can take actions based on Telemetry data.
+
+This would remove the need to set up external services to process large amounts of data from all routers at the same time, but comes with its own concerns of managing the disk space on each individual router. As always, this is a user's operational decision.
 
 
 ### Docker containers to host pipeline + Kafka
