@@ -85,7 +85,7 @@ As shown in the platform specific sections below, the pipeline-kafka combination
 *  The XR telemetry process is configured to send Telemetry data to pipeline over 
 >    * Transport = **UDP** (only UDP is supported for onbox telemetry) and   
 >    * Destination address = listening IP address (some local XR IP) for pipeline.    
-
+{: .notice--warning}
 
 
 ### NCS5500/Vagrant On-Box Telemetry Setup  
