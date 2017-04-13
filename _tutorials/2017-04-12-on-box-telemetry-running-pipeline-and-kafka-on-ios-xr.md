@@ -154,9 +154,11 @@ Now that you have a running debox environment, let's clone the github-repo for t
 {: .notice--info}
 
 
-```shell
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
 vagrant@vagrant-ubuntu-trusty-64:~$ 
-vagrant@vagrant-ubuntu-trusty-64:~$ git clone --recursive https://github.com/ios-xr/pipeline-kafka
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> git clone --recursive https://github.com/ios-xr/pipeline-kafka</mark>
 Cloning into 'pipeline-kafka'...
 remote: Counting objects: 38, done.
 remote: Compressing objects: 100% (30/30), done.
@@ -181,42 +183,13 @@ Checking connectivity... done.
 Submodule path 'docker-kafka': checked out 'fc8cdbd2e23a5cac21e7138d07ea884b4309c59a'
 vagrant@vagrant-ubuntu-trusty-64:~$ 
 vagrant@vagrant-ubuntu-trusty-64:~$ 
-vagrant@vagrant-ubuntu-trusty-64:~$ 
-vagrant@vagrant-ubuntu-trusty-64:~$ cd pipeline-kafka/
-vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka$ cd
-vagrant@vagrant-ubuntu-trusty-64:~$ 
-vagrant@vagrant-ubuntu-trusty-64:~$ 
-vagrant@vagrant-ubuntu-trusty-64:~$ cd pipeline-kafka/iosxr_dockerfile/
+vagrant@vagrant-ubuntu-trusty-64:~$ <mark>cd pipeline-kafka/iosxr_dockerfile/</mark>
 vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka/iosxr_dockerfile$ ls
 Dockerfile  kafka_consumer.py
 vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka/iosxr_dockerfile$ 
 
-
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</code>
+</pre>
+</div>
 
 
