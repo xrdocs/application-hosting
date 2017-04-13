@@ -134,7 +134,8 @@ We will utilize this image and build our own custom variant to run on an IOS-XR 
 
 
 ### Building a Docker image for IOS-XR
-
+   
+   
 To build our own Docker image, you need a development environment with Docker engine installed.  
 This is basically the devbox environment that we have setup in earlier tutorials. To understand how to do this, follow the steps in the sections below from the Docker guide for IOS-XR:  
 
@@ -143,6 +144,8 @@ This is basically the devbox environment that we have setup in earlier tutorials
 * **Set up your topology:** [Understand the Topology](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#understand-the-topology) 
   
 * **Set up the Devbox environment:** [Install docker-engine on the devbox](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#install-docker-engine-on-the-devbox)  
+
+
 
 
 
