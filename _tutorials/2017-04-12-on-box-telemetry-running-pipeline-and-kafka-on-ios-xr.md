@@ -82,7 +82,9 @@ As shown in the platform specific sections below, the pipeline-kafka combination
 >
 *  The ports and listening IP selected by pipeline can be changed by the user during docker bringup itself by mounting a custom pipeline.conf (shown in subsequent sections).  
 >
-*  The XR telemetry process is configured to send Telemetry data to pipeline over **UDP** (only UDP is supported for onbox telemetry) and destination address = listening IP address (some local XR IP) for pipeline.    
+*  The XR telemetry process is configured to send Telemetry data to pipeline over **UDP** (only UDP is supported for onbox telemetry) and   
+>
+destination address = listening IP address (some local XR IP) for pipeline.    
 
 
 
