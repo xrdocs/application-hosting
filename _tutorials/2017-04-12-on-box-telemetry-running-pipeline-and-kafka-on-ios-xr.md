@@ -96,6 +96,8 @@ The docker daemon on NCS5500, NCS5000, XRv9k and Vagrant XR (IOS-XRv64) platform
 
 
 
+
+
 ### ASR9k On-Box Telemetry Setup
 
 
@@ -105,6 +107,9 @@ On ASR9k, the setup is the same from the user perspective. The Docker daemon run
 [![xr_asr9k_docker_libvirt](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry_asr9k.png)](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry_asr9k.png)  
 
 
+
+It is recommended to host onbox daemons (in this case Kafka, pipeline, zookeeper) on either the all IP address (0.0.0.0)  or on XR loopback IP addresses. This makes sure that these daemons stay up and available even when a physical interface goes down.  
+{: .notice--info}  
 
 
 ## Docker image for Pipeline+Kafka 
