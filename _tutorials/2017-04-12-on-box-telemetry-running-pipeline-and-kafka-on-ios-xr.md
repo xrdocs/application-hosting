@@ -262,8 +262,16 @@ ADD kafka_consumer.py /kafka_consumer.py
 ```
 
 We place the sample application (in this case written in python) inside the image to act as a consumer of the Telemetry data pushed to Kafka. This application can contain custom triggers to initiate alerts or other actions. For this tutorial, we will initiate the script manually post launch of the container. The user can choose to start the application by default as part of the ENTRYPOINT or CMD instructions in the dockerfile.
+{: .notice--info}
 
 
+```Dockerfile
+CMD $vrf_exec echo "127.0.0.1 localhost" >> /etc/hosts && $vrf_exec supervisord -n
+```
+
+This specifies the command that will be run inside the container post boot. The first part of the command `$vrf_exec echo "127.0.0.1 localhost" >> /etc/hosts` sets up /etc/hosts with an entry for localhost making it easier for kafka and applications to talk to each other locally. The second part of the command `$vrf_exec supervisord -n` is used to start all the services in the correct vrf (hence the `$vrf_exec`).    
+We use supervisord to easily specify multiple daemons that need to be launched (pipeline, kafka, zookeeper).  You can get more details on supervisord here: <http://supervisord.org/>  
+{: .notice--info}
 
 
 
