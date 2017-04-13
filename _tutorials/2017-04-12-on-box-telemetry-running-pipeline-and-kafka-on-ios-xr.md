@@ -218,7 +218,41 @@ ADD kafka_consumer.py /kafka_consumer.py
 CMD $vrf_exec echo "127.0.0.1 localhost" >> /etc/hosts && $vrf_exec supervisord -n
 </code>
 </pre>
-</div>
+</div>  
+
+
+
+Let's break it down:  
+
+All the references below to Dockefile instructions are derived from official Dockerfile Documentation:  
+<https://docs.docker.com/engine/reference/builder/#known-issues-run>
+{: .notice-warning}  
+
+
+```Dockerfile
+ARG vrf=global-vrf
+```
+
+We setup the script to accept arguments from the user during build time. This will allow us to be flexible in specifying the vrf (network namespace) to spin up the daemons in, in the future. Today in 6.1.2 (before 6.3.1), only global-vrf is supported.  
+{: .notice--info}
+
+
+```Dockerfile
+ENV vrf_exec "ip netns exec $vrf"
+```
+
+In Dockerfiles, the ARG variables are rejected in the ENTRYPOINT or CMD instructions. So we set up an ENV variable (which is honored) to create a command prefix necessary to execute a command in a given network namespace (vrf).  
+{: .notice--info}
+
+
+```Dockerfile
+ADD kafka_consumer.py /kafka_consumer.py
+```
+
+We place the sample application (in this case written in python) inside the image to act as a consumer of the Telemetry data pushed to Kafka. This application can contain custom triggers to initiate alerts or other actions. For this tutorial, we will initiate the script manually post launch of the container. The user can choose to start the application by default as part of the ENTRYPOINT or CMD instructions in the dockerfile.
+
+
+
 
 
 
