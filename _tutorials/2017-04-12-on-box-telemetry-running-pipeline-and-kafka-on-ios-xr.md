@@ -102,7 +102,6 @@ The docker daemon on NCS5500, NCS5000, XRv9k and Vagrant XR (IOS-XRv64) platform
 On ASR9k, the setup is the same from the user perspective. The Docker daemon runs inside the XR VM in this case.
 
 
-
 [![xr_asr9k_docker_libvirt](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry_asr9k.png)](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry_asr9k.png)  
 
 
