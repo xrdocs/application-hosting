@@ -59,7 +59,19 @@ There is no one-size-fits-all technique for monitoring and managing network devi
 However, quite a few of our users have come and asked us if it's possible to have a telemetry receiver run on the router inside a container (lxc or docker) so that applications running locally inside the container can take actions based on Telemetry data.
   
   
-This would remove the need to set up external services to process large amounts of data from all routers at the same time, but comes with its own concerns of managing the disk space on each individual router. As always, this is a user's operational decision.
+This may be done for different reasons:  
+
+  * Users may choose to simplify their server environment and not run external services (like    
+    Kafka, influxDB stack or prometheus/Grafana etc.). Typically, some  
+    background in devops engineering is often important to understand how to scale out these 
+    services and process large amounts of data coming from all routers at the same time. 
+
+  * The alerts or the remediation actions that a user intends to perform based on the Telemetry 
+    data received may be fairly simplistic and can be done on box.
+
+
+Bear in mind that running onbox does come with its own concerns. Network devices typically have limited compute capacity (CPU/RAM) and limited disk capacity. While CPU/RAM isolation can be achieved using Containers on box, managing the disk space on each individual router does require special care when dealing with Streaming Telemetry applications.
+{: .notice--warning}
 
 
 ### Docker container to host Pipeline + Kafka
