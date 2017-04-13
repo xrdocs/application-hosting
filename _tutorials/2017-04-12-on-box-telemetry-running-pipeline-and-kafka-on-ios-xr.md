@@ -133,7 +133,7 @@ We will utilize this image and build our own custom variant to run on an IOS-XR 
 
 
 
-### Building a Docker image for IOS-XR
+### Building a Pipeline-kafka Docker image for IOS-XR
    
    
 To build our own Docker image, you need a development environment with Docker engine installed.  
