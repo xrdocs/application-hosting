@@ -70,8 +70,9 @@ If you haven't had a chance to learn how we enable hosting for Docker containers
 
 >[Understanding Docker Setup on IOS-XR platforms](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#docker-daemon-support-on-ios-xr)
 
->
-As shown in the platform specific sections below, the pipeline-kafka combination runs as a Docker container onbox. Some specifics on the setup:
+
+As shown in the platform specific sections below, the pipeline-kafka combination runs as a Docker container onbox. Some specifics on the setup:  
+
 >
 *  In IOS-XR 6.1.2 (before 6.3.1) only global-vrf is supported in the linux kernel.  
 >
