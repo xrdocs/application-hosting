@@ -148,7 +148,7 @@ This is basically the devbox environment that we have setup in earlier tutorials
 
 
 
-Now that you have a running debox environment, let's clone the github-repo for the pipeline-kafka project:  
+Now that you have a running devbox environment, let's clone the github-repo for the pipeline-kafka project:  
 
 **we use --recursive to make sure all the submodules get pulled as well. The submodules are actual github repos for the standalone pipeline and docker-kafka projects.**
 {: .notice--info}
@@ -191,5 +191,35 @@ vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka/iosxr_dockerfile$
 </code>
 </pre>
 </div>
+
+
+Let's take a look at the Dockerfile under the `iosxr_dockerfile` folder:  
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka/iosxr_dockerfile$<mark> cat Dockerfile </mark>
+FROM akshshar/pipeline-kafka:latest
+
+Maintainer akshshar
+
+# Specify the "vrf" you want to run daemons in during build time
+# By default, it is global-vrf
+
+ARG vrf=global-vrf
+
+# Set up the ARG for use by Entrypoint or CMD scripts
+ENV vrf_exec "ip netns exec $vrf"
+
+# Add a sample kafka_consumer.py script. User can provide their own
+ADD kafka_consumer.py /kafka_consumer.py
+
+
+CMD $vrf_exec echo "127.0.0.1 localhost" >> /etc/hosts && $vrf_exec supervisord -n
+</code>
+</pre>
+</div>
+
+
 
 
