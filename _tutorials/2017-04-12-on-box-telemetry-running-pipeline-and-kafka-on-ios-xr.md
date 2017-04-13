@@ -62,7 +62,7 @@ However, quite a few of our users have come and asked us if it's possible to hav
 This would remove the need to set up external services to process large amounts of data from all routers at the same time, but comes with its own concerns of managing the disk space on each individual router. As always, this is a user's operational decision.
 
 
-### Docker containers to host pipeline + Kafka
+### Docker container to host Pipeline + Kafka
 
 In this tutorial, we look at using a Docker container to host Pipeline and Kafka (with zookeper) as a Telemetry receiver. Further a simple Kafka consumer is written in python to interact with Kafka and take some sample action on a Telemetry data point.
 
@@ -73,13 +73,13 @@ If you haven't had a chance to learn how we enable hosting for Docker containers
 The deployed setup for onbox telemetry with a Docker container eventually will look something like:  
 
 
-#### NCS5500 Setup/ Vagrant Setup
+### NCS5500/Vagrant On-Box Telemetry Setup
 
 [![xr-docker](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry.png)](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry.png)  
 
 
 
-#### ASR9k Setup
+### ASR9k On-Box Telemetry Setup
 
 [![xr_asr9k_docker_libvirt](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry_asr9k.png)](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry_asr9k.png)  
 
@@ -88,7 +88,9 @@ The deployed setup for onbox telemetry with a Docker container eventually will l
 
 ### Docker image for Pipeline+Kafka 
 
-While a user is welcome to build their own custom Docker images, we have a base image that can take care of basic installation of pipeline and Kafka+zookeeper for already.
+While a user is welcome to build their own custom Docker images, we have a base image that can take care of basic installation of pipeline and Kafka+zookeeper already on Docker hub:
+
+
 
 
 
