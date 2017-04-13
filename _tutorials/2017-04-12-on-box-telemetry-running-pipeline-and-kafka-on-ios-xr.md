@@ -73,13 +73,13 @@ If you haven't had a chance to learn how we enable hosting for Docker containers
 The deployed setup for onbox telemetry with a Docker container eventually will look something like:  
 
 
-#### NCS5500 Setup/ Vagrant Setup**
+#### NCS5500 Setup/ Vagrant Setup
 
 [![xr-docker](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry.png)](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry.png)  
 
 
 
-#### ASR9k Setup**
+#### ASR9k Setup
 
 [![xr_asr9k_docker_libvirt](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry_asr9k.png)](https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry_asr9k.png)  
 
