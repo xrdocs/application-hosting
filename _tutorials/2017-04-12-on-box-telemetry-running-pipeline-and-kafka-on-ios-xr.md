@@ -87,7 +87,8 @@ As shown in the platform specific sections below, the pipeline-kafka combination
 >    * Destination address = listening IP address (some local XR IP) for pipeline.    
 {: .notice--warning}
 
-
+   
+   
 ### NCS5500/Vagrant On-Box Telemetry Setup  
 
 The docker daemon on NCS5500, NCS5000, XRv9k and Vagrant XR (IOS-XRv64) platforms runs on the Host layer at the bottom. The onbox telemetry setup will thus look something like: 
@@ -96,8 +97,8 @@ The docker daemon on NCS5500, NCS5000, XRv9k and Vagrant XR (IOS-XRv64) platform
 
 
 
-
-
+    
+    
 ### ASR9k On-Box Telemetry Setup
 
 
@@ -113,6 +114,8 @@ On ASR9k, the setup is the same from the user perspective. The Docker daemon run
 
 
 ## Docker image for Pipeline+Kafka 
+    
+    
 
 While a user is welcome to build their own custom Docker images, we have a base image that can take care of basic installation of pipeline and Kafka+zookeeper already available on Docker hub:
 
