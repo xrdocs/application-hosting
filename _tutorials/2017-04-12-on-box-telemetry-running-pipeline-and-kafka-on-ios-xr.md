@@ -669,6 +669,146 @@ root@localhost:/#
 </div>
 
 
+As you can guess from the logs above we're executing the commands on an ASR9k. The script above has been built to dump the Telemetry stats in json format in realtime and also parse them to based on the interface key = "MgmtEth0/RSP1/CPU0/0 ". If you want this piece of code to work for the Vagrant setup, you will have to use an interface key based on the Vagrant IOS-XR interface naming convention (MgmtEth0/RP0/CPU0/0, GigabitEthernet0/0/0/0 etc.)
 
 
+When we run the script, we get:  
+
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code class="shell">
+root@localhost:/# python kafka_consumer.py 
+
+Telemetry data Received:
+ 
+{
+    "Rows": [
+        {
+            "Content": {
+                "applique": 0, 
+                "availability-flag": 0, 
+                "broadcast-packets-received": 0, 
+                "broadcast-packets-sent": 0, 
+                "bytes-received": 0, 
+                "bytes-sent": 0, 
+                "carrier-transitions": 0, 
+                "crc-errors": 0, 
+                "framing-errors-received": 0, 
+                "giant-packets-received": 0, 
+                "input-aborts": 0, 
+                "input-drops": 0, 
+                "input-errors": 0, 
+                "input-ignored-packets": 0, 
+                "input-overruns": 0, 
+                "input-queue-drops": 0, 
+                "last-data-time": 1492110984, 
+                "last-discontinuity-time": 1484314261, 
+                "multicast-packets-received": 0, 
+                "multicast-packets-sent": 0, 
+                "output-buffer-failures": 0, 
+                "output-buffers-swapped-out": 0, 
+                "output-drops": 0, 
+                "output-errors": 0, 
+                "output-queue-drops": 0, 
+                "output-underruns": 0, 
+                "packets-received": 0, 
+                "packets-sent": 0, 
+                "parity-packets-received": 0, 
+                "resets": 0, 
+                "runt-packets-received": 0, 
+                "seconds-since-last-clear-counters": 0, 
+                "seconds-since-packet-received": 4294967295, 
+                "seconds-since-packet-sent": 4294967295, 
+                "throttled-packets-received": 0, 
+                "unknown-protocol-packets-received": 0
+            }, 
+            "Keys": {
+                "interface-name": "Null0"
+            }, 
+            "Timestamp": 1492110987184
+        }, 
+        {
+            "Content": {
+                "applique": 0, 
+                "availability-flag": 0, 
+                "broadcast-packets-received": 5894231, 
+                "broadcast-packets-sent": 0, 
+                "bytes-received": 2413968971, 
+                "bytes-sent": 830100769, 
+                "carrier-transitions": 15, 
+                "crc-errors": 0, 
+                "framing-errors-received": 0, 
+                "giant-packets-received": 0, 
+                "input-aborts": 0, 
+                "input-drops": 0, 
+                "input-errors": 0, 
+                "input-ignored-packets": 0, 
+                "input-overruns": 0, 
+                "input-queue-drops": 0, 
+                "last-data-time": 1492110987, 
+                "last-discontinuity-time": 1484314243, 
+                "multicast-packets-received": 24, 
+                "multicast-packets-sent": 0, 
+                "output-buffer-failures": 0, 
+                "output-buffers-swapped-out": 0, 
+                "output-drops": 0, 
+                "output-errors": 0, 
+                "output-queue-drops": 0, 
+                "output-underruns": 0, 
+                "packets-received": 8712938, 
+                "packets-sent": 2328185, 
+                "parity-packets-received": 0, 
+                "resets": 0, 
+                "runt-packets-received": 0, 
+                "seconds-since-last-clear-counters": 0, 
+                "seconds-since-packet-received": 0, 
+                "seconds-since-packet-sent": 3, 
+                "throttled-packets-received": 0, 
+                "unknown-protocol-packets-received": 0
+            }, 
+            "Keys": {
+                "interface-name": "MgmtEth0/RSP1/CPU0/0"
+            }, 
+            "Timestamp": 1492110987184
+        }
+    ], 
+    "Source": "1.1.1.1:18046", 
+    "Telemetry": {
+        "collection_end_time": 0, 
+        "collection_id": 12254, 
+        "collection_start_time": 1492110987176, 
+        "encoding_path": "Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters", 
+        "msg_timestamp": 1492110987176, 
+        "node_id_str": "asr9k", 
+        "subscription_id_str": "Sub1"
+    }
+}
+
+Parsed fields for interface  MgmtEth0/RSP1/CPU0/0:                            
+  Packets Received = 8712938,                            
+  Input Drops = 0
+
+Telemetry data Received:
+ 
+{
+    "Source": "1.1.1.1:18046", 
+    "Telemetry": {
+        "collection_end_time": 1492110987186, 
+        "collection_id": 12254, 
+        "collection_start_time": 0, 
+        "encoding_path": "Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters", 
+        "msg_timestamp": 1492110987186, 
+        "node_id_str": "asr9k", 
+        "subscription_id_str": "Sub1"
+    }
+}
+</code>
+</pre>
+</div>
+
+
+
+Works Great! Now that you're able to capture Telemetry messages in realtime through a python script and are able to parse through the fields, you should be able to create your own conditions and actions based on the value of the fields. There you have it! Your own standalone pipeline and Kafka based Telemetry receiver running on the box.
+{: .notice--success}
 
