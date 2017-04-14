@@ -636,7 +636,15 @@ root@localhost:/# <mark>ip netns exec global-vrf bash </mark>
 root@localhost:/# 
 root@localhost:/# pwd
 /
-root@localhost:/# cat kafka_consumer.py 
+root@localhost:/# ls kafka_consumer.py 
+kafka_consumer.py
+</code>
+</pre>
+</div>
+
+This is what the script looks like:  
+
+```python
 from kafka import KafkaConsumer
 import json
 
@@ -664,9 +672,7 @@ if __name__ == "__main__":
                             \n  Input Drops = %s" %(pkt_rcvd, input_drops)) 
 
 root@localhost:/# 
-</code>
-</pre>
-</div>
+```
 
 
 As you can guess from the logs above we're executing the commands on an ASR9k. The script above has been built to dump the Telemetry stats in json format in realtime and also parse them to based on the interface key = `"MgmtEth0/RSP1/CPU0/0"`. If you want this piece of code to work for the Vagrant setup, you will have to use an interface key based on the Vagrant IOS-XR interface naming convention (`MgmtEth0/RP0/CPU0/0`, `GigabitEthernet0/0/0/0` etc.)
