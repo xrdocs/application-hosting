@@ -617,7 +617,7 @@ Notice the highlighted configurations:
 
 
 
-## Testing the local Kafka instance
+### Query the local Kafka instance
 
 As soon as you configure Model-Driven Telemetry as shown above, the router will start streaming statistics to the local pipeline instance.
 Pipeline will then push the stats to Kafka running locally to the topic = 'telemetry' ( We configured this in our custom pipeline.conf file).  
