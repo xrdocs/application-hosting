@@ -155,14 +155,14 @@ This is basically the devbox environment that we have setup in earlier tutorials
 * **Pre-requisites:**  [Setup your Vagrant environment and/or physical boxes (ASR9k, NCS5500 etc.)](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#pre-requisites)  
 
 
-    {% capture info-text %}
+     <div class="notice--warning">
     **Important:** If you're using the Vagrant setup for this tutorial, bear in mind that the 
     default Vagrant image runs in 4G RAM. Since the docker image we host on the router is 
     relatively resource intensive, we will need to increase the memory for our Vagrant IOS-XR 
     instance to atleast 5G (5120 MB). This can be done easily by modifying the `Vagrantfile` in 
     your directory and adding the following:  
     
-    <div class="notice--warning">
+   
     <div class="highlighter-rouge">
     <pre class="highlight" style="white-space: pre-wrap;">
     <code>
