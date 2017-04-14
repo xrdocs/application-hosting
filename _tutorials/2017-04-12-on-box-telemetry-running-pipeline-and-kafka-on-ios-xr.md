@@ -21,7 +21,7 @@ tags:
 {% include toc icon="table" title="Running Pipeline and Kafka on IOS-XR" %}
 {% include base_path %}
 
-## Steaming Telemetry
+## Streaming Telemetry
 
 If you haven't checked out the great set of tutorials from [Shelly Cadora](http://twitter.com/scadora) and team on the Telemetry page of xrdocs: <https://xrdocs.github.io/telemetry/tutorials>, it's time to dive in.  
 
