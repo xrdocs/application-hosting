@@ -479,12 +479,48 @@ As for ASR9k, there is no issue placing the file anywhere since docker daemon ru
 {: .notice--info}  
 
 
-Finally, launch the docker container by mounting /root/pipeline.conf to /data/pipeline.conf inside the container where it will be picked up by the pipeline process.
+Finally, launch the docker container by mounting /misc/app_host/pipeline.conf to /data/pipeline.conf inside the container where it will be picked up by the pipeline process.
 
-```
-docker run -itd --name pipeline-kafka -v /var/run/netns/global-vrf:/var/run/netns/global-vrf -v /home/cisco/custom_pipeline.conf:/data/pipeline.conf --hostname localhost  --cap-add=SYS_ADMIN pipeline-kafka-xr:latest
 
-```
+
+
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ <mark>docker run -itd --name pipeline-kafka -v /var/run/netns/global-vrf:/var/run/netns/global-vrf -v /misc/app_host/pipeline.conf:/data/pipeline.conf --hostname localhost  --cap-add=SYS_ADMIN pipeline-kafka-xr:latest </mark>
+e42e7e2526253e37b28362bf70c98550ca9ac108dc2aaa667da1290e44c2a035
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$<mark> docker ps </mark>
+CONTAINER ID        IMAGE                      COMMAND                  CREATED             STATUS              PORTS               NAMES
+e42e7e252625        pipeline-kafka-xr:latest   "/bin/sh -c '$vrf_exe"   2 minutes ago       Up 2 minutes                            pipeline-kafka
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$<mark> docker exec -it pipeline-kafka bash</mark>
+root@localhost:/# 
+root@localhost:/# 
+root@localhost:/# <mark>ip netns exec global-vrf bash </mark>
+root@localhost:/# 
+root@localhost:/# 
+root@localhost:/# <mark>ps -ef | grep -E "pipeline|kafka|zookeeper" </mark>
+root         9     6  0 02:05 ?        00:00:00 /pipeline --config=/data/pipeline.conf --log=/data/pipeline.log
+root        10     6  0 02:05 ?        00:00:00 /usr/bin/java -Dzookeeper.log.dir=/var/log/zookeeper -Dzookeeper.root.logger=INFO,ROLLINGFILE -cp /etc/zookeeper/conf:/usr/share/java/jline.jar:/usr/share/java/log4j-1.2.jar:/usr/share/java/xercesImpl.jar:/usr/share/java/xmlParserAPIs.jar:/usr/share/java/netty.jar:/usr/share/java/slf4j-api.jar:/usr/share/java/slf4j-log4j12.jar:/usr/share/java/zookeeper.jar org.apache.zookeeper.server.quorum.QuorumPeerMain /etc/zookeeper/conf/zoo.cfg
+root        11     6  0 02:05 ?        00:00:00 /bin/sh /usr/bin/start-kafka.sh
+root        12    11  3 02:05 ?        00:00:02 /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java -Xmx256M -Xms256M -server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+DisableExplicitGC -Djava.awt.headless=true -Xloggc:/opt/kafka_2.11-0.10.1.0/bin/../logs/kafkaServer-gc.log -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dkafka.logs.dir=/opt/kafka_2.11-0.10.1.0/bin/../logs -Dlog4j.configuration=file:/opt/kafka_2.11-0.10.1.0/bin/../config/log4j.properties -cp :/opt/kafka_2.11-0.10.1.0/bin/../libs/aopalliance-repackaged-2.4.0-b34.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/argparse4j-0.5.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/connect-api-0.10.1.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/connect-file-0.10.1.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/connect-json-0.10.1.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/connect-runtime-0.10.1.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/guava-18.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/hk2-api-2.4.0-b34.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/hk2-locator-2.4.0-b34.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/hk2-utils-2.4.0-b34.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jackson-annotations-2.6.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jackson-core-2.6.3.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jackson-databind-2.6.3.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jackson-jaxrs-base-2.6.3.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jackson-jaxrs-json-provider-2.6.3.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jackson-module-jaxb-annotations-2.6.3.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/javassist-3.18.2-GA.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/javax.annotation-api-1.2.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/javax.inject-1.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/javax.inject-2.4.0-b34.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/javax.servlet-api-3.1.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/javax.ws.rs-api-2.0.1.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jersey-client-2.22.2.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jersey-common-2.22.2.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jersey-container-servlet-2.22.2.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jersey-container-servlet-core-2.22.2.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jersey-guava-2.22.2.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jersey-media-jaxb-2.22.2.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jersey-server-2.22.2.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jetty-continuation-9.2.15.v20160210.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jetty-http-9.2.15.v20160210.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jetty-io-9.2.15.v20160210.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jetty-security-9.2.15.v20160210.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jetty-server-9.2.15.v20160210.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jetty-servlet-9.2.15.v20160210.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jetty-servlets-9.2.15.v20160210.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jetty-util-9.2.15.v20160210.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jopt-simple-4.9.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/kafka-clients-0.10.1.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/kafka-log4j-appender-0.10.1.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/kafka-streams-0.10.1.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/kafka-streams-examples-0.10.1.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/kafka-tools-0.10.1.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/kafka_2.11-0.10.1.0-sources.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/kafka_2.11-0.10.1.0-test-sources.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/kafka_2.11-0.10.1.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/log4j-1.2.17.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/lz4-1.3.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/metrics-core-2.2.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/osgi-resource-locator-1.0.1.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/reflections-0.9.10.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/rocksdbjni-4.9.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/scala-library-2.11.8.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/scala-
+root       314   312  0 02:06 ?        00:00:00 grep -E pipeline|kafka|zookeeper
+root@localhost:/# 
+</code>
+</pre>
+</div> 
+
+
+Perfect! As we can see the required services: Pipeline, Kafka and Zookeeper were started in the correct network namespace ( notice we did an exec into the global-vrf network namespace) before checking if the processes are running.
+{: .notice--success}  
+
+
+
 
 
 
