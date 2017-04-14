@@ -3,7 +3,7 @@ published: true
 date: '2017-04-12 23:53 -0700'
 title: 'On-box Telemetry: Running  Pipeline and Kafka on IOS-XR (6.2.1+)'
 author: Akshat Sharma
-position: hidden
+position: top
 excerpt: >-
   Running On-box Agents for Model Driven Telemetry on IOS-XR. In this case we
   use pipeline and a standalone Kafka client running inside a docker container
