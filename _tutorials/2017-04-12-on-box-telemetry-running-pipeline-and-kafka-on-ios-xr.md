@@ -415,7 +415,7 @@ Considering the above limitation, we modify pipeline.conf to only enable UDP as 
 <pre class="highlight" style="white-space: pre-wrap;">
 <code>
 
-[xr-vm_node0_RP0_CPU0:~]$<mark> grep -v "^#" /root/pipeline.conf </mark>
+[xr-vm_node0_RP0_CPU0:~]$<mark> grep -v "^#" /misc/app_host/pipeline.conf </mark>
 [default]
 
 id = pipeline
@@ -430,14 +430,6 @@ encoding = json
 topic = telemetry
 datachanneldepth = 1000
 
-
-[inspector]
-<mark>stage = xport_output</mark>
-<mark>type = tap</mark>
-<mark>file = /data/dump.txt</mark>
-
-
-datachanneldepth = 1000
 
 
 
@@ -478,11 +470,22 @@ Let me break down the above output:
     container. Pipeline is instructed to deliver data in a josn format to Kafka running at 
     localhost:9092
     
-*   [inspector] This stage is meant to be used for testing purposes to inspect the data sent by 
-    pipeline to different output stages. In this case the data will be dumped into a file at 
-    `/data/dump.txt`
 
-Finally, launch the docker container by mounting /root/pipeline.conf to /data/pipeline.conf inside the container where it will be picked up by pipeline.
+
+Notice the location in which we create the customer pipeline.conf file:  
+`/misc/app_host/pipeline.conf`  
+This is important because the docker daemon runs on the underlying host layer in case of NCS5500/NCS5000/XRv9k and Vagrant IOS-XR platforms. `/misc/app_host` is a shared volume between the host layer and the XR LXC in these platforms.  
+As for ASR9k, there is no issue placing the file anywhere since docker daemon runs inside the XR VM itself. But for consistency we'll stick to the `/misc/app_host` location.  
+{: .notice--info}  
+
+
+Finally, launch the docker container by mounting /root/pipeline.conf to /data/pipeline.conf inside the container where it will be picked up by the pipeline process.
+
+```
+docker run -itd --name pipeline-kafka -v /var/run/netns/global-vrf:/var/run/netns/global-vrf -v /home/cisco/custom_pipeline.conf:/data/pipeline.conf --hostname localhost  --cap-add=SYS_ADMIN pipeline-kafka-xr:latest
+
+```
+
 
 
 
