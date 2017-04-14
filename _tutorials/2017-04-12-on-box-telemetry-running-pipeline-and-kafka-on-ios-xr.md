@@ -294,5 +294,169 @@ We use supervisord to easily specify multiple daemons that need to be launched (
 
 
 
+### Build the Docker image
+
+Issue a docker build in the same folder and let's tag it as pipeline-kafka-xr:latest
+
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka/iosxr_dockerfile$<mark> sudo docker build -t pipeline-kafka-xr . </mark>
+Sending build context to Docker daemon  3.584kB
+Step 1/6 : FROM akshshar/pipeline-kafka:latest
+latest: Pulling from akshshar/pipeline-kafka
+5040bd298390: Pull complete 
+fce5728aad85: Pull complete 
+c42794440453: Pull complete 
+0c0da797ba48: Pull complete 
+7c9b17433752: Pull complete 
+114e02586e63: Pull complete 
+e4c663802e9a: Pull complete 
+efafcf20d522: Pull complete 
+b5a0de42a291: Pull complete 
+e36cca8778db: Pull complete 
+c3626ac93375: Pull complete 
+3b079f5713c1: Pull complete 
+2ac62e83a2a3: Pull complete 
+5fe3b4ab290e: Pull complete 
+08b6bc2f514b: Pull complete 
+b86ae3d2d58d: Pull complete 
+Digest: sha256:164adfb0da7f5a74d3309ddec4bc7078a81dcd32591cdb72410eccaf1448d88c
+Status: Downloaded newer image for akshshar/pipeline-kafka:latest
+ ---> 0f131a6f1d8c
+Step 2/6 : MAINTAINER akshshar
+ ---> Running in 4da444d1b027
+ ---> e21b468c12b5
+Removing intermediate container 4da444d1b027
+Step 3/6 : ARG vrf=global-vrf
+ ---> Running in 5cdb3d4eecdf
+ ---> e347fe8cd7d9
+Removing intermediate container 5cdb3d4eecdf
+Step 4/6 : ENV vrf_exec "ip netns exec $vrf"
+ ---> Running in 6601c66ff5fb
+ ---> 6104847fbe17
+Removing intermediate container 6601c66ff5fb
+Step 5/6 : ADD kafka_consumer.py /kafka_consumer.py
+ ---> 6cf31ccbf679
+Removing intermediate container 72d2b0320cf2
+Step 6/6 : CMD $vrf_exec echo "127.0.0.1 localhost" >> /etc/hosts && $vrf_exec supervisord -n
+ ---> Running in 8c44808a44e6
+ ---> d9c6ec3671c0
+Removing intermediate container 8c44808a44e6
+Successfully built d9c6ec3671c0
+vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka/iosxr_dockerfile$ 
+</code>
+</pre>
+</div> 
+
+
+You should now have the docker image available on the devbox: 
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka/iosxr_dockerfile$ sudo docker images
+REPOSITORY                TAG                 IMAGE ID            CREATED              SIZE
+pipeline-kafka-xr         latest              d9c6ec3671c0        About a minute ago   676MB
+akshshar/pipeline-kafka   latest              0f131a6f1d8c        5 hours ago          676MB
+vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka/iosxr_dockerfile$ 
+</code>
+</pre>
+</div> 
+
+
+
+### Pull Docker image on the router
+
+There are multiple ways in which the freshly created Docker image could be transferred to the IOS-XR router. These methods are discussed in detail in the Docker Guide for IOS-XR. Choose your poison :) :  
+
+
+*  [Using an insecure registry](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#private-insecure-registry)
+
+*  [Using a self-signed registry](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#private-self-signed-registry)
+
+*  [Using Docker save/load](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#docker-saveload-technique)
+
+
+
+## Launch the Docker container
+
+Let's assume you chose one of the above methods and pulled the docker container onto the router. In the end, you should see on  the router's linux shell:
+
+
+```
+[xr-vm_node0_RP0_CPU0:~]$ sudo -i
+[xr-vm_node0_RP0_CPU0:~]$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+pipeline-kafka-xr   latest              d9c6ec3671c0        34 minutes ago      676.4 MB
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+```
+
+The name of the image may be different based on the "docker pull" technique you use.   
+
+
+### Create a custom pipeline.conf
+
+
+Before we spin up the container, let's create a custom pipeline.conf file.
+   
+A sample pipeline.conf can be found here: <https://github.com/cisco/bigmuddy-network-telemetry-pipeline/blob/master/pipeline.conf>  
+
+
+**On-box telemetry in 6.1.2 only works over UDP as transport. Support for TCP and GRPC dial-in/dial-out will come soon**
+
+Considering the above limitation, we modify pipeline.conf to only enable UDP as an input transport. Further, we'll point pipeline to Kafka as an output stage. In the end, the relevant lines in my custom pipeline.conf are shown below:  
+
+
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+
+[xr-vm_node0_RP0_CPU0:~]$<mark> grep -v "^#" /root/pipeline.conf </mark>
+[default]
+
+id = pipeline
+
+
+
+[mykafka]
+stage = xport_output
+<mark>type = kafka</mark>
+encoding = json
+<mark>brokers = localhost:9092</mark>
+topic = telemetry
+datachanneldepth = 1000
+
+
+[inspector]
+<mark>stage = xport_output</mark>
+<mark>type = tap</mark>
+<mark>file = /data/dump.txt</mark>
+
+
+datachanneldepth = 1000
+
+
+
+[udpin]
+<mark>type = udp </mark>
+stage = xport_input
+<mark>listen = localhost:5958 </mark>
+encap = st
+logdata = off
+
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+</code>
+</pre>
+</div> 
+
+
+
+
+
 
 
