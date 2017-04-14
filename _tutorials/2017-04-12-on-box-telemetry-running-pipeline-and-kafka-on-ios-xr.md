@@ -444,7 +444,7 @@ datachanneldepth = 1000
 [udpin]
 <mark>type = udp </mark>
 stage = xport_input
-<mark>listen = localhost:5958 </mark>
+<mark>listen = 1.1.1.1:5958 </mark>
 encap = st
 logdata = off
 
@@ -455,8 +455,27 @@ logdata = off
 </div> 
 
 
+Let me break down the above output. 
+*  [udpin] specifies UDP as the input transport for pipeline and forces pipeline to listen on 
+   1.1.1.1:5958. What is 1.1.1.1 : Address of one of the loopbacks in IOS-XR config as shown 
+   below:
 
+   ```
+   RP/0/RSP1/CPU0:asr9k#show  running-config  int loopback 0
+   Thu Apr 13 16:21:57.749 UTC
+   interface Loopback0
+    ipv4 address 1.1.1.1 255.255.255.255
+   !
+   RP/0/RSP1/CPU0:asr9k#
+   ```
+   Be a little careful here. Do not select loopback1 IP address or any explicitly configured east-
+   west interface for TPA. To understand more on TPA east-west IP addresses, see here:
+   <https://xrdocs.github.io/application-hosting/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/>
+   {: .notice--info}
 
+* 
+
+Finally, launch the docker container by mounting /root/pipeline.conf to /data/pipeline.conf inside the container where it will be picked up by pipeline.
 
 
 
