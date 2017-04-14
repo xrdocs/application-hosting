@@ -180,7 +180,7 @@ This is basically the devbox environment that we have setup in earlier tutorials
 {% endcapture %} 
 
 
-<div class="notice--info">
+<div class="notice--warning">
     {{ info-text | markdownify }}
 </div>
 
