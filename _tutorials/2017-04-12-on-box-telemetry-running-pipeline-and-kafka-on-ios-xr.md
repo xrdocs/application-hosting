@@ -161,7 +161,8 @@ This is basically the devbox environment that we have setup in earlier tutorials
     relatively resource intensive, we will need to increase the memory for our Vagrant IOS-XR 
     instance to atleast 5G (5120 MB). This can be done easily by modifying the `Vagrantfile` in 
     your directory and adding the following:  
-
+    
+    <div class="notice--warning">
     <div class="highlighter-rouge">
     <pre class="highlight" style="white-space: pre-wrap;">
     <code>
@@ -184,12 +185,11 @@ This is basically the devbox environment that we have setup in earlier tutorials
     </code>
     </pre>
     </div> 
-    {% endcapture %} 
-
-
-    <div class="notice--warning">
-        {{ info-text | markdownify }}
     </div>
+
+
+   
+   
 
 * **Set up your topology:** [Understand the Topology](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#understand-the-topology) 
   
