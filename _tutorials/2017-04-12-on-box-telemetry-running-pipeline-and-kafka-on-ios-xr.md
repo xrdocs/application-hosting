@@ -627,7 +627,6 @@ Finally purely for test purposes, the docker build process includes a sample pyt
 You can find this inside the running docker container under / :
 
 
-
 <div class="highlighter-rouge">
 <pre class="highlight" style="white-space: pre-wrap;">
 <code class="language-python">
@@ -642,7 +641,7 @@ kafka_consumer.py
 </pre>
 </div>
 
-This is what the script looks like:  
+This is what the sample query script looks like:  
 
 ```python
 from kafka import KafkaConsumer
