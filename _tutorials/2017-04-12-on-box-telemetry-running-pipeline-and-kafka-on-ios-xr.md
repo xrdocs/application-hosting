@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2017-04-12 23:53 -0700'
-title: 'On-box Telemetry: Running  Pipeline and Kafka on IOS-XR '
+title: 'On-box Telemetry: Running  Pipeline and Kafka on IOS-XR (6.2.1+)'
 author: Akshat Sharma
 position: hidden
 excerpt: >-
@@ -86,7 +86,7 @@ If you haven't had a chance to learn how we enable hosting for Docker containers
 As shown in the platform specific sections below, the pipeline-kafka combination runs as a Docker container onbox. Some specifics on the setup:  
 
 >
-*  In IOS-XR 6.1.2 (before 6.3.1) only global-vrf is supported in the linux kernel.  
+*  In IOS-XR 6.2.1 (before 6.3.1) only global-vrf is supported in the linux kernel.  
 >
 *  The docker container is launched with the global-vrf network namespace mounted inside the container.  
 >
@@ -153,6 +153,27 @@ This is basically the devbox environment that we have setup in earlier tutorials
 
 
 * **Pre-requisites:**  [Setup your Vagrant environment and/or physical boxes (ASR9k, NCS5500 etc.)](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#pre-requisites)  
+
+
+
+**Important:** If you're using the Vagrant setup for this tutorial, bear in mind that the default Vagrant image runs in 4G RAM. Since the docker image we host on the router is relatively resource intensive, we will need to increase the memory for our Vagrant IOS-XR instance to atleast 5G (5120 MB). This can be done easily by modifying the `Vagrantfile` in your directory and adding the following:  
+```
+   config.vm.define "rtr" do |node|
+    ##############  SNIP  #############
+      node.vm.provider "virtualbox" do |v|
+         v.memory = 5120 
+      end
+    end
+    
+   config.vm.define "devbox" do |node|
+      node.vm.box =  "ubuntu/trusty64"
+    ##############  SNIP  ##############
+    
+
+```
+{: .notice--warning} 
+
+
 
 * **Set up your topology:** [Understand the Topology](https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#understand-the-topology) 
   
@@ -253,7 +274,7 @@ ARG vrf=global-vrf
 </div>  
 
 
-We setup the script to accept arguments from the user during build time. This will allow us to be flexible in specifying the vrf (network namespace) to spin up the daemons in, in the future. Today in 6.1.2 (before 6.3.1), only global-vrf is supported.  
+We setup the script to accept arguments from the user during build time. This will allow us to be flexible in specifying the vrf (network namespace) to spin up the daemons in, in the future. Today in 6.2.1 (before 6.3.1), only global-vrf is supported.  
 {: .notice--info}
 
 
@@ -405,7 +426,7 @@ Before we spin up the container, let's create a custom pipeline.conf file.
 A sample pipeline.conf can be found here: <https://github.com/cisco/bigmuddy-network-telemetry-pipeline/blob/master/pipeline.conf>  
 
 
-**On-box telemetry in 6.1.2 only works over UDP as transport. Support for TCP and GRPC dial-in/dial-out will come soon**
+**On-box telemetry in 6.2.1 only works over UDP as transport. Support for TCP and GRPC dial-in/dial-out will come soon**
 
 Considering the above limitation, we modify pipeline.conf to only enable UDP as an input transport. Further, we'll point pipeline to Kafka as an output stage. In the end, the relevant lines in my custom pipeline.conf are shown below:  
 
@@ -571,5 +592,10 @@ Notice the highlighted configurations:
 *  We select the following sensor path: `Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters`. This sensor path is used to export interface stats for all interfaces on the box using the Cisco IOS-XR infra-statsd-oper YANG model.
 
 **To learn more about how to configure model-driven telemetry, check out this great tutorial by Shelly:  <https://xrdocs.github.io/telemetry/tutorials/2016-07-21-configuring-model-driven-telemetry-mdt/>** 
-{: .notice--info}
+{: .notice--info} 
+
+
+
+
+
 
