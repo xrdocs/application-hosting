@@ -521,7 +521,55 @@ Perfect! As we can see the required services: Pipeline, Kafka and Zookeeper were
 
 
 
+## Testing the on-box Telemetry receiver
+
+To test out the setup, let us first configure IOS-XR to send model-driven Telemetry data to the local pipeline receiver.
+**Remember, in our custom pipeline.conf we set up pipeline to listen on UDP port 5958 on IP=1.1.1.1** 
 
 
+The configuration required on IOS-XR is:  
 
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+RP/0/RSP1/CPU0:asr9k#
+RP/0/RSP1/CPU0:asr9k#show  running-config  interface  loopback 0
+Thu Apr 13 18:11:33.729 UTC
+interface Loopback0
+ ipv4 address 1.1.1.1 255.255.255.255
+!
+
+RP/0/RSP1/CPU0:asr9k#show  running-config  telemetry model-driven 
+Thu Apr 13 18:11:39.862 UTC
+telemetry model-driven
+ destination-group DGroup1
+ <mark>address family ipv4 1.1.1.1 port 5958 </mark>
+   encoding self-describing-gpb
+ <mark>protocol udp </mark>
+  !
+ !
+ sensor-group SGroup1
+  <mark>sensor-path Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters </mark>
+ !
+ subscription Sub1
+  sensor-group-id SGroup1 sample-interval 30000
+  destination-id DGroup1
+ !
+!
+
+RP/0/RSP1/CPU0:asr9k#
+
+</code>
+</pre>
+</div>
+
+
+Notice the highlighted configurations:
+
+*  We configure the destination to be 1.1.1.1:5958 over UDP, where 1.1.1.1 = loopback0 ip address of XR. Could be any Loopback or interface IP (Except any east-west interface IP address under tpa)  
+
+*  We select the following sensor path: `Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters`. This sensor path is used to export interface stats for all interfaces on the box using the Cisco IOS-XR infra-statsd-oper YANG model.
+
+**To learn more about how to configure model-driven telemetry, check out this great tutorial by Shelly:  <https://xrdocs.github.io/telemetry/tutorials/2016-07-21-configuring-model-driven-telemetry-mdt/>** 
+{: .notice--info}
 
