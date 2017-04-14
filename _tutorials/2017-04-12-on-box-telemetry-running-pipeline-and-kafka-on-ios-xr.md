@@ -172,8 +172,8 @@ This is basically the devbox environment that we have setup in earlier tutorials
 
          <mark> node.vm.provider "virtualbox" do |v|
              v.memory = 5120 
-          end
-        end</mark>
+          end</mark>
+        end
     
     
     
