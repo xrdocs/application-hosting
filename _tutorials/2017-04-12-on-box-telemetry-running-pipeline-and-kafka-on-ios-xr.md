@@ -627,7 +627,11 @@ Finally purely for test purposes, the docker build process includes a sample pyt
 You can find this inside the running docker container under / :
 
 
-docker exec -it pipeline-kafka bash
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code class="language-python">
+[xr-vm_node0_RP0_CPU0:~]$ docker exec -it pipeline-kafka bash
 root@localhost:/# ip netns exec global-vrf bash
 root@localhost:/# 
 root@localhost:/# cat kafka_consumer.py 
@@ -658,7 +662,9 @@ if __name__ == "__main__":
                             \n  Input Drops = %s" %(pkt_rcvd, input_drops)) 
 
 root@localhost:/# 
-
+</code>
+</pre>
+</div>
 
 
 
