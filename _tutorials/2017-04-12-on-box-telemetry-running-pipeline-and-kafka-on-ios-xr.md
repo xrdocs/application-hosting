@@ -158,15 +158,17 @@ This is basically the devbox environment that we have setup in earlier tutorials
 {% capture info-text %}
 **Important:** If you're using the Vagrant setup for this tutorial, bear in mind that the default Vagrant image runs in 4G RAM. Since the docker image we host on the router is relatively resource intensive, we will need to increase the memory for our Vagrant IOS-XR instance to atleast 5G (5120 MB). This can be done easily by modifying the `Vagrantfile` in your directory and adding the following:  
 
-```
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
    config.vm.define "rtr" do |node|
 
    ##############  SNIP  #############
 
-      node.vm.provider "virtualbox" do |v|
+     <mark> node.vm.provider "virtualbox" do |v|
          v.memory = 5120 
       end
-    end
+    end</mark>
     
     
     
@@ -174,9 +176,10 @@ This is basically the devbox environment that we have setup in earlier tutorials
       node.vm.box =  "ubuntu/trusty64"
     
     ##############  SNIP  ##############
-    
-
-```
+ 
+</code>
+</pre>
+</div> 
 {% endcapture %} 
 
 
