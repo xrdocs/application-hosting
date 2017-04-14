@@ -669,8 +669,7 @@ if __name__ == "__main__":
                     print("\nParsed fields for interface  MgmtEth0/RSP1/CPU0/0:\
                             \n  Packets Received = %s,\
                             \n  Input Drops = %s" %(pkt_rcvd, input_drops)) 
-
-root@localhost:/# 
+ 
 ```
 
 
