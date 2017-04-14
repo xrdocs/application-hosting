@@ -631,9 +631,11 @@ You can find this inside the running docker container under / :
 <div class="highlighter-rouge">
 <pre class="highlight" style="white-space: pre-wrap;">
 <code class="language-python">
-[xr-vm_node0_RP0_CPU0:~]$ docker exec -it pipeline-kafka bash
-root@localhost:/# ip netns exec global-vrf bash
+[asr9k:~]$<mark> docker exec -it pipeline-kafka bash </mark>
+root@localhost:/# <mark>ip netns exec global-vrf bash </mark>
 root@localhost:/# 
+root@localhost:/# pwd
+/
 root@localhost:/# cat kafka_consumer.py 
 from kafka import KafkaConsumer
 import json
