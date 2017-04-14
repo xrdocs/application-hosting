@@ -455,7 +455,8 @@ logdata = off
 </div> 
 
 
-Let me break down the above output. 
+Let me break down the above output:  
+
 *  [udpin] specifies UDP as the input transport for pipeline and forces pipeline to listen on 
    1.1.1.1:5958. What is 1.1.1.1 : Address of one of the loopbacks in IOS-XR config as shown 
    below:
@@ -473,7 +474,13 @@ Let me break down the above output.
    <https://xrdocs.github.io/application-hosting/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/>
    {: .notice--info}
 
-* 
+*   [mykafka] stage describes the output stage of pipeline pointing to Kafka running inside the 
+    container. Pipeline is instructed to deliver data in a josn format to Kafka running at 
+    localhost:9092
+    
+*   [inspector] This stage is meant to be used for testing purposes to inspect the data sent by 
+    pipeline to different output stages. In this case the data will be dumped into a file at 
+    `/data/dump.txt`
 
 Finally, launch the docker container by mounting /root/pipeline.conf to /data/pipeline.conf inside the container where it will be picked up by pipeline.
 
