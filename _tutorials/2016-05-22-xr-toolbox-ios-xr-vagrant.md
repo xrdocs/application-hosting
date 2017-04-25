@@ -78,27 +78,27 @@ Bear in mind, there maybe bugs and you are free to ask us questions and/or raise
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-$ BOXURL="https://devhub.cisco.com/artifactory/appdevci-release/XRv64/latest/iosxrv-fullk9-x64.box"
+$ BOXURL="https://devhub.cisco.com/artifactory/XRv64-snapshot/latest/iosxrv-fullk9-x64.latest.box"
 
-$ curl <b><mark>-u your-cco-id:API-KEY</mark></b> $BOXURL --output ~/iosxrv-fullk9-x64.box
+$ curl <b><mark>-u your-cco-id:API-KEY</mark></b> $BOXURL --output ~/iosxrv-fullk9-x64.latest.box
 
-$ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
+$ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.latest.box
 </code>
 </pre>
 </div>
 
-### Pick the last stable version
+### Pick a stable version
 
-The last stable version of XR vagrant was 6.1.2.These images have been out for a while, and should work well. Pick this if you'd rather play it safe.
+The first stable version of XR vagrant was 6.1.2. These images have been out for a while, and should work well. Pick this (or a more recent XR version) if you'd rather play it safe.
 
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-$ BOXURL="https://devhub.cisco.com/artifactory/appdevci-release/XRv64/6.1.2/iosxrv-fullk9-x64.box"
+$ BOXURL="https://devhub.cisco.com/artifactory/XRv64-release/6.1.2/iosxrv-fullk9-x64-6.1.2.box"
 
-$ curl <b><mark>-u your-cco-id:API-KEY</mark></b> $BOXURL --output ~/iosxrv-fullk9-x64.box
+$ curl <b><mark>-u your-cco-id:API-KEY</mark></b> $BOXURL --output ~/iosxrv-fullk9-x64-6.1.2.box
 
-$ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
+$ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64-6.1.2.box
 </code>
 </pre>
 </div>
