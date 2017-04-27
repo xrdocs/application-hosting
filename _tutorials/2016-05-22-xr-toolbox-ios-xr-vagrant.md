@@ -78,7 +78,7 @@ Bear in mind, there maybe bugs and you are free to ask us questions and/or raise
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-$ BOXURL="https://devhub.cisco.com/artifactory/appdevci-release/XRv64/latest/iosxrv-fullk9-x64.box"
+$ BOXURL="https://devhub.cisco.com/artifactory/XRv64-snapshot/latest/iosxrv-fullk9-x64.box"
 
 $ curl <b><mark>-u your-cco-id:API-KEY</mark></b> $BOXURL --output ~/iosxrv-fullk9-x64.box
 
