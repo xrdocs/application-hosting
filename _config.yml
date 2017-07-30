@@ -13,10 +13,10 @@ title_separator          : "|"
 name                     : &name "Cisco Systems Inc"
 description              : &description "Documentation, Blogs and Tutorials on the Application Hosting Infrastructure in IOS-XR"
 url                      : "https://xrdocs.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : "/application-hosting" # the subpath of your site, e.g. "/blog"
+baseurl                  : "/apphosting-updated" # the subpath of your site, e.g. "/blog"
 gh_repo                  : "https://github.com/xrdocs/application-hosting"
 teaser                   : # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
-# breadcrumbs            : false # true, false (default)
+breadcrumbs              : true # true, false (default)
 words_per_minute         : 200
 comments:
   provider               : "disqus" # false (default), "disqus", "facebook", "google-plus", custom"
@@ -36,7 +36,7 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               : &twitter "CiscoDevNet"
+  username               : &twitter "xrdocs"
 facebook:
   username               :
   app_id                 :
@@ -48,7 +48,7 @@ social:
   type                   : # Person or Organization (defaults to Person)
   name                   : # If the user or organization name differs from the site's name
   links: # An array of links to social media profiles
-    - "https://twitter.com/CiscoDevNet"
+    - "https://twitter.com/xrdocs"
 
 # Analytics
 analytics:
@@ -150,7 +150,7 @@ kramdown:
 # Collections
 collections:
   techdocs:
-    output: true
+    output: false 
     permalink: /:collection/:path/
   blogs:
     output: true
@@ -305,6 +305,7 @@ prose:
     - /_recipes
     - /assets
     - /images
+    - /_sass
     - /_data/ui-text.yml
     - Gemfile
     - Gemfile.lock
@@ -457,5 +458,5 @@ compress_html:
   ignore:
     envs: development
 
-host: "0.0.0.0"
+host: "10.0.0.22"
 port: 4000

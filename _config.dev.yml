@@ -7,15 +7,16 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "AppHosting @xrdocs!"
+title                    : "IOS XR Application Hosting @xrdocs"
+title_short              : "App-Hosting"
 title_separator          : "|"
 name                     : &name "Cisco Systems Inc"
 description              : &description "Documentation, Blogs and Tutorials on the Application Hosting Infrastructure in IOS-XR"
-url                      : http://localhost:4000  #"https://xrdocs.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : "http://localhost:4000" #"https://xrdocs.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : #"/application-hosting" # the subpath of your site, e.g. "/blog"
 gh_repo                  : "https://github.com/xrdocs/application-hosting"
 teaser                   : # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
-# breadcrumbs            : false # true, false (default)
+breadcrumbs              : true # true, false (default)
 words_per_minute         : 200
 comments:
   provider               : "disqus" # false (default), "disqus", "facebook", "google-plus", custom"
@@ -35,26 +36,26 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               : &twitter "CiscoDevNet"
+  username               : &twitter "xrdocs"
 facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : "site-logo.png" # Open Graph/Twitter default site image
+og_image                 : "app-hosting-xrdocs.jpg" # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
   type                   : # Person or Organization (defaults to Person)
   name                   : # If the user or organization name differs from the site's name
   links: # An array of links to social media profiles
-    - "https://twitter.com/CiscoDevNet"
+    - "https://twitter.com/xrdocs"
 
 # Analytics
 analytics:
   provider               : "google-universal" # false (default), "google", "google-universal", "custom"
   google:
     tracking_id          : "UA-78256516-1"
-    
+
 # Google AdSense
 google_ad_client         :
 google_ad_slot           :
@@ -149,7 +150,7 @@ kramdown:
 # Collections
 collections:
   techdocs:
-    output: true
+    output: false 
     permalink: /:collection/:path/
   blogs:
     output: true
@@ -315,6 +316,8 @@ prose:
     - .jekyll-metadata
     - CHANGELOG.md
     - feed.xml
+    - README.md
+    - _config.pdf.yml
   metadata:
     _blogs:
       - name: "title"
@@ -322,11 +325,6 @@ prose:
             element: "text"
             label: "Title"
             value: ""
-      - name: "permalink"
-        field:
-            element: "text"
-            label: "Relative URL"
-            help: "provide a url relative to site url, for eg. /blogs/blog1"
       - name: "author"
         field:
             element: "text"
@@ -410,11 +408,6 @@ prose:
             element: "text"
             label: "Title"
             value: ""
-      - name: "permalink"
-        field:
-            element: "text"
-            label: "Relative URL"
-            help: "provide a url relative to site url, for eg. /tutorials/tutorial1"
       - name: "author"
         field:
             element: "text"
@@ -451,7 +444,7 @@ prose:
             value: "CURRENT_DATETIME"
 
 
-
+tag_array: []
 
 sass:
   sass_dir: _sass
@@ -464,5 +457,5 @@ compress_html:
   ignore:
     envs: development
 
-host: "0.0.0.0"
-port: 4000
+host: "localhost"
+port: 4002
