@@ -69,7 +69,7 @@
         display: block !important;
         list-style-position: inside;
       }
-      border: 1px solid $border-color;
+      border: 0.1px solid $border-color;
       border-radius: $border-radius;
       box-shadow: $box-shadow;
   }
@@ -237,7 +237,7 @@
     padding-top: 2px;
     padding-bottom: 2px;
     color: inherit;
-    font-size: $type-size-3;
+    font-size: $type-size-3_75;
     text-decoration: none;
 
     &:hover {

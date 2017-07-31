@@ -50,12 +50,13 @@
 
 .page__content {
 
+  font-size: $type-size-4;
   h2 {
     padding-bottom: 0.5em;
     border-bottom: 1px solid $border-color;
   }
 
-  p, li, dl {
+  li, dl {
     font-size: $type-size-4;
     text-align: justify;
   }

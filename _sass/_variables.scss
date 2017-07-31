@@ -34,12 +34,15 @@ $caption-font-family        : CiscoSans, Arial, Helvetica, "Helvetica Neue", "He
 
 /* type scale */
 $type-size-1                : 1.563em !default;  // ~31.248px
-$type-size-2                : 1.25em  !default;  // ~25.008px
-$type-size-3                : 1em !default;   // ~20px
+$type-size-2                : 1.35em  !default;  // ~25.008px
+$type-size-2_5              : 1.30em  !default;  // ~25.008px
+$type-size-3                : 1.25em !default;   // ~20px
+$type-size-3_5              : 1.10em !default;
+$type-size-3_75             : 1em !default;
 $type-size-4                : 0.8em !default;      // ~16px
-$type-size-5                : 0.725em !default;   // ~12px
-$type-size-6                : 0.65em !default; // ~11px
-$type-size-7                : 0.625em !default;  // ~10px
+$type-size-5                : 0.75em !default;   // ~12px
+$type-size-6                : 0.70em !default; // ~11px
+$type-size-7                : 0.65em !default;  // ~10px
 $type-size-8                : 0.6em !default;  // ~10px
 $type-size-9                : 0.5em !default;  //~8px
 /*
@@ -113,8 +116,8 @@ $x-large                    : 1280px !default;
    Grid
    ========================================================================== */
 
-$right-sidebar-width-narrow : 10em !default;
-$right-sidebar-width        : 10em !default;
+$right-sidebar-width-narrow : 11em !default;
+$right-sidebar-width        : 14em !default;
 $right-sidebar-width-wide   : 0 !default;
 
 
@@ -124,7 +127,7 @@ $right-sidebar-width-wide   : 0 !default;
 
 $border-radius              : 5px !default;
 $btn-border-radius          : 60px !default;
-$box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125) !default;
+$box-shadow                 : 0 0px 0.2px rgba(0, 0, 0, 0.125) !default;
 $navicon-width              : 20px !default;
 $navicon-height             : 5px !default;
 $global-transition          : all 0.2s ease-in-out !default;
