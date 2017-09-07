@@ -90,7 +90,7 @@ Once done, download the ISO as shown:
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-$ ISOURL="https://devhub.cisco.com/artifactory/appdevci-release/XRv64/latest/iosxrv-fullk9-x64.iso"
+$ ISOURL="https://devhub.cisco.com/artifactory/XRv64-snapshot/latest/iosxrv-fullk9-x64.latest.iso"
 
 $ curl <b><mark>-u your-cco-id:API-KEY</mark></b> $ISOURL --output ~/iosxrv-fullk9-x64.iso
 
@@ -98,11 +98,4 @@ $ curl <b><mark>-u your-cco-id:API-KEY</mark></b> $ISOURL --output ~/iosxrv-full
 </pre>
 </div>
 
-I hope you enjoyed this quick blog. The links above provide far more information. As one of the technical leads behind the new platform, and author of the vagrant tooling I'm very motivated to make this a great platform for Cisco customers. Please contact me at rwellum@cisco.com for any questions or concerns.  
-
-
-
-
-
-
-
+I hope you enjoyed this quick blog. The links above provide far more information. As one of the technical leads behind the new platform, and author of the vagrant tooling I'm very motivated to make this a great platform for Cisco customers. Please contact me at rwellum@cisco.com for any questions or concerns.
