@@ -323,6 +323,7 @@ prose:
     - .gitmodules
     - .travis.yml
     - _data
+    - _config.travis.yml
     
   metadata:
     _blogs:
