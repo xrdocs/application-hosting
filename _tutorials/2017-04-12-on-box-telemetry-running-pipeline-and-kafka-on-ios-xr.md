@@ -276,7 +276,7 @@ CMD $vrf_exec echo "127.0.0.1 localhost" >> /etc/hosts && $vrf_exec supervisord 
 
 **Let's break it down:**
 
-All the references below to Dockefile instructions are derived from official Dockerfile Documentation:  
+All the references below to Dockerfile instructions are derived from official Dockerfile Documentation:  
 <https://docs.docker.com/engine/reference/builder/#known-issues-run>
 {: .notice-warning}  
 
@@ -815,4 +815,3 @@ Telemetry data Received:
 
 Works Great! Now that you're able to capture Telemetry messages in realtime through a python script and are able to parse through the fields, you should be able to create your own conditions and actions based on the value of the fields. There you have it! Your own standalone pipeline and Kafka based Telemetry receiver running on the box.
 {: .notice--success}
-
