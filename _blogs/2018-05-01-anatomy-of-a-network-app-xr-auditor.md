@@ -125,7 +125,7 @@ Once the install is triggered, individual cron jobs and apps are set up in the d
 
 
 
-## Setting up the Build environment on your laptop:
+## The Build environment:
 
 All you need to build the application is a linux environment with python 2.7 installed.
 To make things simpler, there is a vagrant setup already included with the code. We will use the vagrant setup to build and test our application against IOS-XRv64 on our laptops before we run it on physical hardware (NCS5500):
