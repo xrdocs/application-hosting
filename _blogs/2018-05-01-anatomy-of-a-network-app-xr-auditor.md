@@ -464,7 +464,7 @@ The vagrant setup looks something like this:
      |    |         |        |--- id_rsa_server
      |    |         |
      |    |         |
-     |    |         |--- audit_xr.py
+     |    |         |--- audit_host.py
      |    | 
      |    |--- audit_host.cron
      |    
