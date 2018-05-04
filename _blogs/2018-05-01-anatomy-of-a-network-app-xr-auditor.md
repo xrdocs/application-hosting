@@ -1403,7 +1403,7 @@ If we deconstruct parts of the XML data, we can see the basic structure starts w
 
 The next set of higher level tags are:
 
-1.  &lt;GENERAL&gt;
+1.  **&lt;GENERAL&gt**;
 
   ```
 
@@ -1423,7 +1423,7 @@ The next set of higher level tags are:
 
 
 
-2. &lt;INTEGRITY-SET&gt;
+2. **&lt;INTEGRITY-SET&gt**;
 
 This is the actual compliance/audit data being collected by the apps from the individual Linux shells. It can be seen from the snippets below, that the integrity set consists of three sections identified by the `domain` which can be `XR-LXC`, `ADMIN-LXC` or `HOST`.
 
