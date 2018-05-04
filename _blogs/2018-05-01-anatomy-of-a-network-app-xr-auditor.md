@@ -334,7 +334,7 @@ The vagrant setup looks something like this:
    >    
    >1. Create an ssh-key pair on the server (devbox) .  
    > 
-   >2. Add the public key of the pair to the devbox (server)'s  ~/.ssh/authorized_keys file . 
+   >2. Add the public key of the pair to the devbox (server)'s  `~/.ssh/authorized_keys file` . 
    > 
    >3. Package the private key as part of the app during the build process and transfer to the router .  
    >  
