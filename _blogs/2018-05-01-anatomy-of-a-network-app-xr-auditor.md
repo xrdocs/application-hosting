@@ -1,15 +1,14 @@
 ---
 published: true
 date: '2018-05-01 20:39 -0700'
-title: >-
-  Anatomy of a Network App:   "xr-auditor",  python based model-driven auditing
-  solution for IOS-XR 
+title: 'Anatomy of a Network App:   "xr-auditor"'
 author: Akshat Sharma
 excerpt: >-
-  We walk through the drivers behind the creation of an auditing app that can
-  periodically collect information from XR LXC, Admin LXC and Host Shells of
-  IOS-XR 6.1.2+  and stream out a schema-based XML dump of the linux environment
-  state to a remote server over SSH.
+  A python-based, model-driven auditing solution for IOS-XR:  We walk through
+  the drivers behind the creation of an auditing app that can periodically
+  collect information from XR LXC, Admin LXC and Host Shells of IOS-XR 6.1.2+ 
+  and stream out a schema-based XML dump of the linux environment state to a
+  remote server over SSH.
 tags:
   - vagrant
   - iosxr
