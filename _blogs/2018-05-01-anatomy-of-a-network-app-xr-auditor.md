@@ -328,8 +328,7 @@ The vagrant setup looks something like this:
 &nbsp;    
 &nbsp;  
 
-*  **Step 5**:   Create a new ssh-key pair for your devbox environment (if you see see the earlier [image]
-(https://github.com/akshshar/xr-auditor/blob/master/images/iosxr-auditor-operation.png?raw=true) the devbox will serve as the remote server to which the router sends the collected XML data.
+*  **Step 5**:   Create a new ssh-key pair for your devbox environment (if you see see the earlier [image](https://github.com/akshshar/xr-auditor/blob/master/images/iosxr-auditor-operation.png?raw=true) the devbox will serve as the remote server to which the router sends the collected XML data.
 
    >For password-less operation, the way we make this work is:  
    >    
@@ -1891,14 +1890,3 @@ cisco@dhcpserver:~$
 ```
 
 Perfect! Within 2 minutes, we have the auditor apps on the standby RP sending us the required compliance data!
-
-
-
-
-
-
-
-
-
-
-     
