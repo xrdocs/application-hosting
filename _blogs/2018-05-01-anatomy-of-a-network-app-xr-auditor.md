@@ -692,7 +692,7 @@ v1.0.0
 ```
 
 
-### Install the auditing components:
+### Install the app:
 
 Use the `-i` option to install the apps and cron jobs: 
 
@@ -1508,7 +1508,7 @@ Within each domain, there are a list of `<FILES>` each of which can be subjected
 &nbsp;  
 
 
-### Uninstalling the auditing apps
+### Uninstall the app
 
 To uninstall everything that the auditor app installs and to return back to the clean original state, use `-u` option.
 To clean up the generated XML files along with the apps and cronjobs, add the `-c' option to the command:  
