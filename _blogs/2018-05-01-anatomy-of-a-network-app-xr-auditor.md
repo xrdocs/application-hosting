@@ -35,8 +35,7 @@ This application enables **periodic auditing** of the linux shells in the IOS-XR
 >*   ADMIN-LXC   
 >*   HOST    
   
-&nbsp;    
-&nbsp;  
+&nbsp;     
 **Functionally**, the individual python applications:    
 &nbsp;   
 >*  **Collect local data based on a YAML based user-config** provided during the build process 
@@ -44,7 +43,6 @@ This application enables **periodic auditing** of the linux shells in the IOS-XR
 >*  **Send the accummulated XML data periodically to an external server over SSH** where it may be easily processed and visualized using any tools that can consume the XML schema and the data.
 
 &nbsp;    
-&nbsp;   
 Further, the **application supports**:       
 &nbsp;      
 
@@ -53,14 +51,11 @@ Further, the **application supports**:
 >3.  **Troubleshooting**:   **Dump filesystem view** - The ability to view the entire system's affected (user-defined in YAML file) system across active/standby RPs using a single command.  
 >4.  **Troubleshooting**:   **Gather debug Data** - The ability to collect generated logs from all the environments (Active/Standby XR LXC, Admin LXC, HOST) and create a single tar ball using a single command.  
     
-&nbsp;    
-&nbsp;   
+&nbsp;      
 No SMUs needed, leverages the native app-hosting architecture in IOS-XR and the internal SSH-based access between different parts of the IOS-XR architecture - namely, XR-LXC, Admin-LXC and HOST of the active and/or Standby RPs to easily manage movement of data, logs and apps across the system.
-
-
-
-&nbsp;    
-&nbsp;
+    
+&nbsp;  
+ß
 ## User Story (Click to Expand)
   
 &nbsp;    
