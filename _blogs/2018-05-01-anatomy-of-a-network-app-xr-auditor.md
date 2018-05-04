@@ -20,7 +20,7 @@ tags:
   - python
   - pyinstaller
   - application
-position: hidden
+position: top
 ---
 
 
