@@ -78,14 +78,17 @@ For a quick refresher on the IOS-XR container based architecture, see the figure
 &nbsp;    
 &nbsp;  
 
-### IOS-XR AAA support vs Linux {:.no_toc}
+### IOS-XR AAA support vs Linux 
+{:.no_toc}
+
 As shown above, access to the linux shells (in blue inside the containers) and the underlying shells is protected through XR AAA authentication and authorization.
 IOS-XR AAA also supports accounting which sends logs to a remote TACACS/RADIUS server to log what an authenticated and authorized user is upto on the XR interface.  
 
 While IOS-XR supports the 3 A's of AAA (Authentication, Authorization and Accounting),  Linux supports only 2 of them: Authentication and authorization.  
 Usually accounting is handled through separate tools such as auditd, snoopy etc. We showcase the usage of snoopy with IOS-XR here:  <https://github.com/akshshar/snoopy-xr>    
 
-### IOS-XR Telemetry support vs Linux {:.no_toc}
+### IOS-XR Telemetry support vs Linux 
+{:.no_toc}
 
 Similarly, IOS-XR also supports sending structured operational data (modeled using Yang models) over transports such as gRPC, TCP and UDP to external receivers that can process the data - You can learn more about IOS-XR telemetry here:   
 ><https://xrdocs.github.io/telemetry/>   
@@ -634,7 +637,8 @@ RP/0/RP0/CPU0:rtr#
 
 ```
 
-###  View the options available {:.no_toc}
+###  View the options available 
+{:.no_toc}
 
 Jump into the bash shell in the IOS-XRv instance and use the `-h` option for the auditor app:
 
