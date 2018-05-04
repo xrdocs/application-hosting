@@ -2,8 +2,8 @@
 published: true
 date: '2018-05-01 20:39 -0700'
 title: >-
-  Anatomy of a Network App:   "xr-auditor"     A python based model-driven
-  auditing solution for IOS-XR 
+  Anatomy of a Network App:   "xr-auditor",  python based model-driven auditing
+  solution for IOS-XR 
 author: Akshat Sharma
 excerpt: >-
   We walk through the drivers behind the creation of an auditing app that can
