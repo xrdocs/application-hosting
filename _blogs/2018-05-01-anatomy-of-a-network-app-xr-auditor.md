@@ -713,7 +713,7 @@ Use the `-i` option to install the apps and cron jobs:
 ```  
 
 
-The locations where the apps are installed and where the XML files get dumped are all defined in `userfiles/auditor.cfg.yml`. View the `INSTALLER_CONFIG` section of the yml file:  
+The locations where the apps are installed and where the XML files get dumped are all defined in `userfiles/auditor.cfg.yml`. View the `INSTALL_CONFIG` section of the yml file:  
 
 <a href="https://github.com/akshshar/xr-auditor/blob/master/images/auditor_cfg_yml_installer_config.png?raw=true">![installer_config](https://github.com/akshshar/xr-auditor/blob/master/images/auditor_cfg_yml_installer_config.png?raw=true)</a>
 
