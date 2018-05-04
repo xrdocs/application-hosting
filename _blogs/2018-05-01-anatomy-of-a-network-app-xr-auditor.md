@@ -125,7 +125,7 @@ Once the install is triggered, individual cron jobs and apps are set up in the d
 
 
 
-## The Build environment:
+## The Build Environment
 
 All you need to build the application is a linux environment with python 2.7 installed.
 To make things simpler, there is a vagrant setup already included with the code. We will use the vagrant setup to build and test our application against IOS-XRv64 on our laptops before we run it on physical hardware (NCS5500):
@@ -144,7 +144,7 @@ The vagrant setup looks something like this:
 &nbsp;    
 &nbsp; 
 
-## Building the Application:
+## Building the Application
       
 &nbsp;    
 &nbsp;   
@@ -692,7 +692,7 @@ v1.0.0
 ```
 
 
-### Install the app:
+### Install the App
 
 Use the `-i` option to install the apps and cron jobs: 
 
@@ -1762,7 +1762,7 @@ The log tar ball will then be available to copy from the router directory to ano
 
 
 
-## Support for Active/Standby RP systems:
+## Support for Active/Standby RP systems
 
 As mentioned earlier, the app supports active/standby systems as well. To demonstate see the outputs from an NCS5508 device with an active/standby RP to see how the application installs components on both the RPs:
 
