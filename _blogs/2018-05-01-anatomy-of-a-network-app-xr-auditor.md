@@ -604,7 +604,7 @@ The vagrant setup looks something like this:
    ```
    
    
- ## Transfer auditor app to the router
+## Transferring the app to the router
  
  You will need the ssh credentials for your IOS-XR router to transfer the generated app to its `/misc/scratch` directory (also called `disk0:`.
  
