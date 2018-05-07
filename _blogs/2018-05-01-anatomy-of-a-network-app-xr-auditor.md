@@ -380,7 +380,7 @@ The vagrant setup looks something like this:
       
       ```
       vagrant@vagrant:~/xr-auditor$ 
-      vagrant@vagrant:~/xr-auditor$ cat ~/.ssh/id_rsa >> ~/.ssh/authorized_keys 
+      vagrant@vagrant:~/xr-auditor$ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys 
       vagrant@vagrant:~/xr-auditor$ 
       ```
     
