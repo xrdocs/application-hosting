@@ -815,3 +815,6 @@ Telemetry data Received:
 
 Works Great! Now that you're able to capture Telemetry messages in realtime through a python script and are able to parse through the fields, you should be able to create your own conditions and actions based on the value of the fields. There you have it! Your own standalone pipeline and Kafka based Telemetry receiver running on the box.
 {: .notice--success}
+
+
+<a href="//pdfcrowd.com/https://xrdocs.github.io/application-hosting/tutorials/2016-07-09-pathchecker-iperf-netconf-for-ospf-path-failover/">Save to PDF</a>
