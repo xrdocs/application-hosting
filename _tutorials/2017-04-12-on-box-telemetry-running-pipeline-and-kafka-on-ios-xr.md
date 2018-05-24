@@ -817,4 +817,3 @@ Works Great! Now that you're able to capture Telemetry messages in realtime thro
 {: .notice--success}
 
 
-<a href="//pdfcrowd.com/url_to_pdf/">Save to PDF</a>
