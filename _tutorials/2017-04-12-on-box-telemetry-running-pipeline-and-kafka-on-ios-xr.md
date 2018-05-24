@@ -817,4 +817,4 @@ Works Great! Now that you're able to capture Telemetry messages in realtime thro
 {: .notice--success}
 
 
-<a href="//pdfcrowd.com/https://xrdocs.github.io/application-hosting/tutorials/2016-07-09-pathchecker-iperf-netconf-for-ospf-path-failover/">Save to PDF</a>
+<a href="//pdfcrowd.com/url_to_pdf/">Save to PDF</a>
