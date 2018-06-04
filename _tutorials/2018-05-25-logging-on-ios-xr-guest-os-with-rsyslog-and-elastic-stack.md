@@ -373,7 +373,7 @@ To verify, that Logstash is sending data to Elasticsearch, open a browser  _http
 You should see the output from rsyslog: 
 ```
 {
-      "_index" : "logstash-monitoring",
+      "_index" : ".monitoring-logstash",
       "_type" : "rsyslog",
       "_id" : "d9tyx2MBc17MjdSrF223",
       "_score" : 1.0,
