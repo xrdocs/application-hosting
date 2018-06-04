@@ -19,8 +19,9 @@ position: hidden
 
 # Intro 
 
-Do you every worry about logging in the IOS-XR Linux environment? With Linux adoption, we can align our techniques and operational flows with the server world. There should as little as possible difference in terms of operations. 
-In this tutorial, we are going to cover routers configuration to stream Syslog message and accept those messages on an Ubuntu machine with Syslog-ng and Elastic stack.  
+Have you every worry about logging in the IOS-XR Linux environment? With Linux adoption, we can align our techniques and operational flows with the server world. There should be as little as possible difference in operations. 
+
+In this tutorial, we are going to cover routers configuration to stream Syslog message and accept those messages on an Ubuntu machine with [Syslog-ng](https://syslog-ng.com/) and [Elastic stack](https://elastic.co).  
 
 ![]({{site.baseurl}}/images/logging/logging-arch.png)
 _Figure 1 - Logging concepts_
