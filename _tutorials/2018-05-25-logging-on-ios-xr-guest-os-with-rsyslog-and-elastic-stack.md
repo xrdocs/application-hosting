@@ -19,7 +19,7 @@ position: hidden
 
 # Intro 
 
-Did you think about logging in IOS-XR Linux shell? With Linux adaption, we will align our techniques and operations flow with server world. There should as little as possible difference in terms of operations. 
+Did you think about logging in IOS-XR guest OS? With Linux adaption, we will align our techniques and operations flow with server world. There should as little as possible difference in terms of operations. 
 In this tutorial, we are going to cover routers configuration to stream Syslog message and acceptance those messages on Ubuntu machine with Syslog-ng and Elastic stack.  
 
 ![]({{site.baseurl}}/images/logging/logging-arch.png)
@@ -409,4 +409,4 @@ With such simple addition, your hard drive capacity will last longer.
 
 # Conclusion
 
-Your logs streamed via rsyslog to multiple destinations: syslog-ng and Logstash. Consider visualization with some tools like Kibana or another piece of software and grow up your log system! 
+Your logs streamed via rsyslog to multiple destinations: syslog-ng and Logstash. Consider visualization with some tools like Kibana or another piece of software and grow up your log system!
