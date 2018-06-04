@@ -363,7 +363,7 @@ output {
 Run the containers! For Logstash container you can mount the whole folder with config files, or specify files directly. 
 
 ```
-docker run -itd --rm --name=logstash --network host -v ~/Documents/elastic/:/usr/share/logstash/config/ docker.elastic.co/logstash/logstash:6.2.4 
+docker run -itd --rm --name=logstash -v ~/Documents/elastic/:/usr/share/logstash/pipeline/ docker.elastic.co/logstash/logstash:6.2.4 
 
 docker run -itd -p 9200:9200 -p 9300:9300 --name=elasticsearch  -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.2.4
 
