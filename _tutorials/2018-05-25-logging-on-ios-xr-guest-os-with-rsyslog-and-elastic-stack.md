@@ -19,8 +19,8 @@ position: hidden
 
 # Intro 
 
-Did you think about logging in IOS-XR guest OS? With Linux adaption, we will align our techniques and operations flow with server world. There should as little as possible difference in terms of operations. 
-In this tutorial, we are going to cover routers configuration to stream Syslog message and acceptance those messages on Ubuntu machine with Syslog-ng and Elastic stack.  
+Do you every worry about logging in the IOS-XR Linux environment? With Linux adoption, we can align our techniques and operational flows with the server world. There should as little as possible difference in terms of operations. 
+In this tutorial, we are going to cover routers configuration to stream Syslog message and accept those messages on an Ubuntu machine with Syslog-ng and Elastic stack.  
 
 ![]({{site.baseurl}}/images/logging/logging-arch.png)
 _Figure 1 - Logging concepts_
@@ -28,15 +28,15 @@ _Figure 1 - Logging concepts_
 
 # rsyslog
 
-What is rsyslog and why we should care? 
+What is rsyslog and why should we care? 
 
 rsyslog is the Rocket-fast SYStem for LOG processing.
 
-It offers high-performance, excellent security features, and a modular design. While it started as a regular syslogd, rsyslog has evolved into a kind of swiss army knife of logging, being able to accept inputs from a wide variety of sources, transform them, and output to the results to diverse destinations.
+It offers high-performance, excellent security features, and a modular design. While it started as regular syslogd, rsyslog has evolved into a kind of swiss army knife of logging, being able to accept inputs from a wide variety of sources, transform them, and output the results to a variety of destinations.
 
-RSYSLOG can deliver over one million messages per second to local destinations when limited processing is applied (based on v7, December 2013). Even with remote destinations and more elaborate processing the performance is usually considered "stunning". The crucial advantage over traditional syslog – the capability to send messages to remote receivers. 
+RSYSLOG can deliver over one million messages per second to local destinations when limited processing is applied (based on v7, December 2013). Even with remote destinations and more elaborate processing the performance is usually considered impressive. The crucial advantage over traditional syslog – the capability to send messages to remote receivers. 
 
-From the other advantages we could highlight following items: 
+There are of course, several other advantages: 
 
 - Multi-threading
 - TCP, SSL, TLS, RELP
@@ -46,7 +46,7 @@ From the other advantages we could highlight following items:
 
 ## Package installation on IOS-XR
 
-By default, syslog is utilized on IOS-XR Guest OS. We will replace it rsyslog. To do it, we will need to get the package installed on the router. 
+By default, syslog is utilized in the IOS-XR Linux environment. We will replace it with rsyslog. To do it, we will need to get the package installed on the router. 
 
 There are two options to get rpm on the box: 
 - SCP
@@ -59,8 +59,7 @@ If you are going to use SCP, you can grab package [directly](https://devhub.cisc
 [Canonball:~]$ yum install localonly -y rsyslog-7.4.4-r0.0.core2_64.rpm
 ```
 
-If you want to use YUM and your router has external connectivity, you may download rpm right from the router and install it via YUM.
-
+If you want to use YUM and your router has external connectivity, you may setup a yum repository and install the package via yum.
 
 Based on your setup, which may vary, make sure you have DNS server configured on the router.
 {: .notice--info}  
@@ -306,7 +305,7 @@ log {
 
 ```
     
-The syslog-ng service should listen on all IP address, because we specify 0.0.0.0 and TCP/UDP port 514. If you want to listen on specific IP, just replace zeroes. 
+The syslog-ng service should listen on all IP address, because we specify 0.0.0.0 and TCP/UDP port 514. If you want to listen on specific IP, just replace 0.0.0.0 with your required ip address. 
 
 ```
 $ netstat -tulpn | grep 514
@@ -409,4 +408,4 @@ With such simple addition, your hard drive capacity will last longer.
 
 # Conclusion
 
-Your logs streamed via rsyslog to multiple destinations: syslog-ng and Logstash. Consider visualization with some tools like Kibana or another piece of software and grow up your log system!
+Your logs streamed via rsyslog to multiple destinations: syslog-ng and Logstash. Consider visualization with some tools like Kibana or another piece of software and elevate your logging techniques.
