@@ -99,11 +99,16 @@ There are two options to get rpm on the box:
 - SCP
 - Installation via YUM
 
+
+### SCP option
+
 If you are going to use SCP, you can grab package [directly](https://devhub.cisco.com/artifactory/xr600/3rdparty/x86_64/) and copy it to the router. Use yum with option _localonly_ to proceed with the installation:
 
 ```
 [Canonball:~]$ yum install localonly -y rsyslog-7.4.4-r0.0.core2_64.rpm
 ```
+
+### YUM installation from public repo
 
 If you want to use YUM and your router has external connectivity, you may setup a yum repository and install the package via yum. Based on your setup, few extra steps may be required, such as DNS configuration and setting proxy environment.  
 {: .notice--info}  
@@ -140,9 +145,9 @@ If your device is behind a proxy, configure it in XR Linux shell:
 [Canonball:~]$ export https_proxy=http://proxy.custom.com:80/
 ```
 
-Now you external connectivity should be good, proceed with YUM for package installation.
+Now your external connectivity should be good, proceed with YUM for package installation.
 
-In the beginning we need to add repo via config manager:
+In the beginning we need to add the repo via config manager:
 
 ```
 [Canonball:~]$ yum-config-manager --add-repo https://devhub.cisco.com/artifactory/xr600/3rdparty/x86_64/
@@ -186,7 +191,7 @@ Complete!
 
 ```
 
-If you are facing issues with specific build versions or installation doesn't go smoothly for you, **rpm** could be utilized directly, like in snippet below (rpm already located on device hard drive). 
+If you are facing issues with specific build versions or installation doesn't go smoothly for you, **rpm** could be utilized directly, like in snippet below (rpm is already located on device hard drive). 
 {: .notice--warning}  
 
 
@@ -248,15 +253,15 @@ template(name="JsonFormat"
 }
 ```
 
-Template is defined, next step to apply it: 
+The template is defined, next step to apply it: 
 
 ```
 *.* @<remote_ip>:10514;JsonFormat
 ```
 
-With such configuration, the router will send messages to 2 destinations, one in plain text format to port 514 and another in JSON format to port 10514.
+With such configuration, the router will send messages to 2 destinations, one in the plain text format to port 514 and another in JSON format to port 10514.
 
-Out of box Logstash supports UDP, TCP available via "[TCP input plugin](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-tcp.html)". To not to ample our guide, we will stick to UDP for now. 
+Out of box Logstash supports UDP, TCP available via "[TCP input plugin](https://www.elastic.co/guide/en/logstash/current/plugins-inputs-tcp.html)". Not to ample our guide, we will stick to UDP for now. 
 {: .notice--info}  
 
 
@@ -272,7 +277,7 @@ Some extra commands, which will help you to do the health check on your setup. T
 rsyslogd -version
 ```
 
-Check the Linux system log for rsyslog errors. You should see an event that it started and no errors. Some logs may also be in /var/log/syslog.
+Check the Linux system log for rsyslog errors. You should see an event that it  it has started with no errors. Some logs may also be in /var/log/syslog.
 
 ```
 sudo cat /var/log/messages | grep rsyslog
@@ -293,7 +298,7 @@ If you decide to utilize rsyslog version 8+, make sure you have library libestr 
 
 ## Filters
 
-rsyslog provides the comprehensive set of filters and rules. By specifying *.* in config file, we determine that all information from all facilities would be sent to the remote location.  
+rsyslog provides the comprehensive set of filters and rules. By specifying dot *(“.”)* in the config file, we determine that all information from all facilities would be sent to the remote location.  
 What if we want to exclude some facilities from sending process?  Adding **;** should solve this case.
 
 ```code
@@ -304,7 +309,7 @@ auth.warn
 # will match facility auth, with security level 'warning' or higher
 ```
 
-What would be filter example? Let's say we want to search **msg** property of the incoming Syslog message, for a specific string and pipe it to the custom file. All messages with substring   _pam_unix(crond:session):_  now logged to _ncs-custom.log_
+What could be a filter example? Let's say we want to search **msg** property of the incoming Syslog message, for a specific string and pipe it to the custom file. All messages with substring   _pam_unix(crond:session):_  now logged to _ncs-custom.log_
 
 ```
 :msg, contains, "pam_unix(crond:session)" -/var/log/syslog-ng/ncs-custom.log
@@ -319,18 +324,18 @@ Official documentation with notification levels and more on filters [here](https
 
 # Configuring server side
 
-On a server side (aka receiver) we will run syslog-ng to get messages from routers in plain text. Syslog-ng would be run natively (docker image also [available](https://syslog-ng.com/blog/central-log-server-docker/)) and Elastic (Logstash + Elasticsearch) would start in docker container for easier deployment. 
+On a server side (aka receiver) we will run syslog-ng to get messages from routers in plain text. Syslog-ng would be run natively (the docker image also [available](https://syslog-ng.com/blog/central-log-server-docker/)) and Elastic (Logstash + Elasticsearch) would start in docker container for easier deployment. 
 
 
 ## syslog-ng
 
-If you running Ubuntu, apt-get could be used to install syslog-ng. 
+If you have Ubuntu, apt-get should be used to install syslog-ng. 
 
 ```
 sudo apt-get install syslog-ng -y
 ```
 
-Check that installation was successful. With apt, you will not get latest version of software, but it will serve our purpose without limitations. 
+Check that installation was successful. With apt, you will not get the latest version of software, but it will serve our purpose without limitations. 
 
 ```
 % syslog-ng --version
@@ -340,7 +345,7 @@ Revision: 3.5.6-2.1 [@416d315] (Ubuntu/16.04)
 Compile-Date: Oct 24 2015 03:49:19
 ```
 
-Next step would be to modify Syslog configuration file _/etc/syslog-ng/syslog-ng.conf_
+Next step would be to modify Syslog configuration file _/etc/syslog-ng/syslog-ng.conf_. 
 Following config lines will open port for listening and write all messages to file ncs.log
 
 
@@ -361,7 +366,7 @@ log {
 
 ```
     
-The syslog-ng service should listen on all IP address, because we specify 0.0.0.0 and TCP/UDP port 514. If you want to listen on specific IP, just replace 0.0.0.0 with your required ip address. 
+The syslog-ng service should listen on all IP addresses, because we specify 0.0.0.0 and TCP/UDP port 514. If you want to listen to specific IP, just replace 0.0.0.0 with your required ip address. 
 
 ```
 $ netstat -tulpn | grep 514
