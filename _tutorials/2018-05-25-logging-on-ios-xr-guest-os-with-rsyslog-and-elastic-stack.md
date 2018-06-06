@@ -40,7 +40,9 @@ You will need following resources:
 Clone the repo: 
 
 ```
-$ git clone https://github.com/Maikor/IOS-XR-logging-tutorial.git
+$ <div class="highlighter-rouge">
+<pre class="highlight">
+<code>git clone https://github.com/Maikor/IOS-XR-logging-tutorial.git </code></pre></div>
 Cloning into 'IOS-XR-logging-tutorial'...
 remote: Counting objects: 14, done.
 remote: Compressing objects: 100% (12/12), done.
