@@ -37,7 +37,7 @@ You will need following resources:
 - Virtualbox, Vagrant and git installed;
 - IOS-XRv instance. Follow [this tutorial]({{ base.url }}/application-hosting/tutorials/iosxr-vagrant-quickstart) to request it. 
 
-Quick how to spin up Vagrant setup: 
+## Quick how to spin up Vagrant setup: 
 
 <div class="highlighter-rouge">
 <pre class="highlight">
@@ -101,17 +101,16 @@ There are two options to get rpm on the box:
 - SCP
 - Installation via YUM
 
-If you are going to use SCP, you can grab package [directly](https://devhub.cisco.com/artifactory/xr600/3rdparty/x86_64/) and copy it to the router. 
-
+If you are going to use SCP, you can grab package [directly](https://devhub.cisco.com/artifactory/xr600/3rdparty/x86_64/) and copy it to the router. Use yum with option _localonly_ to proceed with installation:
 
 ```
 [Canonball:~]$ yum install localonly -y rsyslog-7.4.4-r0.0.core2_64.rpm
 ```
 
-If you want to use YUM and your router has external connectivity, you may setup a yum repository and install the package via yum.
-
-Based on your setup, which may vary, make sure you have DNS server configured on the router.
+If you want to use YUM and your router has external connectivity, you may setup a yum repository and install the package via yum.Based on your setup, few extra step maybe required, such as DNS configuration and setting proxy environment.  
 {: .notice--info}  
+
+Let's configure DNS servers on the router.
 
 ```
 RP/0/RP0/CPU0:Canonball#conf t
@@ -143,7 +142,9 @@ If your device is behind a proxy, configure it in XR Linux shell:
 [Canonball:~]$ export https_proxy=http://proxy.custom.com:80/
 ```
 
-Proceed with YUM for package installation:
+Now you external connectivity should be good, proceed with YUM for package installation.
+
+In the beginning we need to add repo via config manager:
 
 ```
 [Canonball:~]$ yum-config-manager --add-repo https://devhub.cisco.com/artifactory/xr600/3rdparty/x86_64/
@@ -153,8 +154,11 @@ adding repo from: https://devhub.cisco.com/artifactory/xr600/3rdparty/x86_64/
 name=added from: https://devhub.cisco.com/artifactory/xr600/3rdparty/x86_64/
 baseurl=https://devhub.cisco.com/artifactory/xr600/3rdparty/x86_64/
 enabled=1
+```
 
+Enable new repo:
 
+```
 [Canonball:~]$ yum-config-manager --enable    https://devhub.cisco.com/artifactory/xr600/3rdparty/x86_64/
 [Canonball:~]$ yum check-update
 Loaded plugins: downloadonly, protect-packages, rpm-persistence
@@ -162,6 +166,11 @@ localdb                                                                         
 devhub.cisco.com_artifactory_xr600_3rdparty_x86_64_                                                          | 1.3 kB     00:00
 devhub.cisco.com_artifactory_xr600_3rdparty_x86_64_/primary                                                  | 1.1 MB     00:01
 devhub.cisco.com_artifactory_xr600_3rdparty_x86_64_                                                                       5912/5912
+```
+
+Proceed with installation:
+
+```
 [Canonball:~]$
 [Canonball:~]$ yum install rsyslog
 
@@ -179,7 +188,7 @@ Complete!
 
 ```
 
-If you are facing issues with specific build versions or installation doesn't go smoothly for you, **rpm** could be utilized directly:
+If you are facing issues with specific build versions or installation doesn't go smoothly for you, **rpm** could be utilized directly, like in example below (rpm already located on device hard drive). 
 {: .notice--warning}  
 
 
