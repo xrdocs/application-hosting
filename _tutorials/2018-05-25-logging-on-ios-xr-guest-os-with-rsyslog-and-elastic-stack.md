@@ -58,7 +58,7 @@ The forwarded ports for the machine are listed below. Please note that
 these values may differ from values configured in the Vagrantfile if the
 provider supports automatic port collision detection and resolution.
 
-    <span style="background-color: #FFFF00">22 (guest) => 2223 (host)</span>
+ <span style="background-color: #FFFF00">22 (guest) => 2223 (host)</span>
  57722 (guest) => 2200 (host)
  
 # to access IOS-XR (password for access vagrant):
@@ -66,7 +66,7 @@ $<span style="background-color: #FFFF00"> ssh -p 2223 vagrant@127.0.0.1 </span>
 Password:
 RP/0/RP0/CPU0:xr#
 # to access ubuntu
-vagrant ssh ubuntu
+<span style="background-color: #FFFF00">vagrant ssh ubuntu</span>
 Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.4.0-127-generic x86_64)
 vagrant@ubuntu-xenial:~$
 
