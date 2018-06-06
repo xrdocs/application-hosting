@@ -26,7 +26,7 @@ In this tutorial, we are going to cover routers configuration to stream Syslog m
 ![]({{site.baseurl}}/images/logging/logging-arch.png)
 _Figure 1 - Logging concepts_
 
-# Requirements to run tutorial locally
+## Requirements
 
 You can run this tutorial on your computer using [Vagrant](https://www.vagrantup.com/) and virtualization technologies. Topology consist of Ubuntu devbox and IOS-XRv instance.  
 
@@ -37,7 +37,7 @@ You will need following resources:
 - Virtualbox, Vagrant and git installed;
 - IOS-XRv instance. Follow [this tutorial]({{ base.url }}/application-hosting/tutorials/iosxr-vagrant-quickstart) to request it. 
 
-## Quick how to spin up Vagrant setup: 
+### Quick how to spin up Vagrant setup: 
 
 <div class="highlighter-rouge">
 <pre class="highlight">
