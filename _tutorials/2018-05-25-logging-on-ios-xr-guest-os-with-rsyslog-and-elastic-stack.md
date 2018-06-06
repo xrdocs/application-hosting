@@ -50,8 +50,25 @@ remote: Compressing objects: 100% (12/12), done.
 remote: Total 14 (delta 1), reused 8 (delta 0), pack-reused 0
 Unpacking objects: 100% (14/14), done.
 Checking connectivity... done.
-$<code><span style="background-color: #FFFF00"> cd IOS-XR-logging-tutorial</span>
-$<code><span style="background-color: #FFFF00"> vagrant up</span>
+$<span style="background-color: #FFFF00"> cd IOS-XR-logging-tutorial</span>
+$<span style="background-color: #FFFF00"> vagrant up</span>
+
+$<span style="background-color: #FFFF00"> vagrant port xr</span>
+The forwarded ports for the machine are listed below. Please note that
+these values may differ from values configured in the Vagrantfile if the
+provider supports automatic port collision detection and resolution.
+
+    <span style="background-color: #FFFF00">22 (guest) => 2223 (host)</span>
+ 57722 (guest) => 2200 (host)
+ 
+# to access IOS-XR (password for access vagrant):
+$<span style="background-color: #FFFF00"> ssh -p 2223 vagrant@127.0.0.1 </span>
+Password:
+RP/0/RP0/CPU0:xr#
+# to access ubuntu
+vagrant ssh ubuntu
+Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.4.0-127-generic x86_64)
+vagrant@ubuntu-xenial:~$
 
 </code>
 </pre>
