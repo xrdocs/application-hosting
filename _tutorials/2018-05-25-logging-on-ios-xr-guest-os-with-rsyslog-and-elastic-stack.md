@@ -378,7 +378,7 @@ udp        0      0 0.0.0.0:514             0.0.0.0:*                           
 
 Open source software, such as Elasticsearch and Logstash provide you the tools to transform and store our log data.
 
-We can verify the messages in JSON format are received on the server side, before proceeding with the installation. **[netcat](http://netcat.sourceforge.net/)** is used for that.
+We can verify the messages in JSON format are received on the server side, before proceeding with the installation. [netcat](http://netcat.sourceforge.net/) is used for that.
 
 ```
 nc -ul server_ip 10514
