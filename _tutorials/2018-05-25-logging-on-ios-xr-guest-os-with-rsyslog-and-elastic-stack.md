@@ -39,22 +39,22 @@ You will need following resources:
 
 Clone the repo: 
 
-```
-$ <div class="highlighter-rouge">
+<div class="highlighter-rouge">
 <pre class="highlight">
-<code>git clone https://github.com/Maikor/IOS-XR-logging-tutorial.git </code></pre></div>
+<code>
+$<span style="background-color: #FDD7E4">git clone https://github.com/Maikor/IOS-XR-logging-tutorial.git </span>
 Cloning into 'IOS-XR-logging-tutorial'...
 remote: Counting objects: 14, done.
 remote: Compressing objects: 100% (12/12), done.
 remote: Total 14 (delta 1), reused 8 (delta 0), pack-reused 0
 Unpacking objects: 100% (14/14), done.
 Checking connectivity... done.
-$ cd IOS-XR-logging-tutorial
-$ vagrant up
+$<code><span style="background-color: #FDD7E4"> cd IOS-XR-logging-tutorial</span>
+$<code><span style="background-color: #FDD7E4"> vagrant up</span>
 
-
-
-```
+</code>
+</pre>
+</div>
 
 # rsyslog
 
