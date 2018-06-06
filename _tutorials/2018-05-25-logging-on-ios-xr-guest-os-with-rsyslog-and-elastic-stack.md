@@ -212,7 +212,7 @@ update-alternatives: Linking //etc/init.d/syslog to /etc/init.d/syslog.rsyslog
 starting rsyslogd ... done
 ```
 
-To send messages to the remote server, we will need to configure rsyslog, in particular modify its configuration file _/etc/rsyslog.conf_
+To send messages to the remote server, we will need to configure rsyslog, in particular, modify its configuration file _/etc/rsyslog.conf_
 
 For TCP we will use @@
 
