@@ -42,7 +42,6 @@ You will need following resources:
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
-
 $<span style="background-color: #FFFF00">git clone https://github.com/Maikor/IOS-XR-logging-tutorial.git </span>
 Cloning into 'IOS-XR-logging-tutorial'...
 remote: Counting objects: 14, done.
@@ -69,7 +68,6 @@ RP/0/RP0/CPU0:xr#
 <span style="background-color: #FFFF00">vagrant ssh ubuntu</span>
 Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.4.0-127-generic x86_64)
 vagrant@ubuntu-xenial:~$
-
 </code>
 </pre>
 </div>
