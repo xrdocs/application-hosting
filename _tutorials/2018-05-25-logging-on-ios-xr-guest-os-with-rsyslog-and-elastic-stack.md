@@ -37,7 +37,7 @@ You will need following resources:
 - Virtualbox, Vagrant and git installed;
 - IOS-XRv instance. Follow [this tutorial]({{ base.url }}/application-hosting/tutorials/iosxr-vagrant-quickstart) to request it. 
 
-### Quick how to spin up Vagrant setup
+### Step to spin up Vagrant setup
 
 <div class="highlighter-rouge">
 <pre class="highlight">
