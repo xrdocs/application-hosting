@@ -26,6 +26,30 @@ In this tutorial, we are going to cover routers configuration to stream Syslog m
 ![]({{site.baseurl}}/images/logging/logging-arch.png)
 _Figure 1 - Logging concepts_
 
+# Requirements to run locally
+
+You can run this tutorial on your computer using [Vagrant](https://www.vagrantup.com/) and virtualization technologies. Topology consist of Ubuntu devbox and IOS-XRv instance.  
+
+You will need following resources:
+
+- 5 GB of RAM;
+- 2 vCPU;
+- Virtualbox and Vagrant installed;
+- IOS-XRv instance. Follow [this tutorial]({{ base.url }}/application-hosting/tutorials/iosxr-vagrant-quickstart) to request it. 
+
+Clone the repo: 
+
+```
+$ git clone https://github.com/Maikor/IOS-XR-logging-tutorial.git
+Cloning into 'IOS-XR-logging-tutorial'...
+remote: Counting objects: 14, done.
+remote: Compressing objects: 100% (12/12), done.
+remote: Total 14 (delta 1), reused 8 (delta 0), pack-reused 0
+Unpacking objects: 100% (14/14), done.
+Checking connectivity... done.
+$ cd IOS-XR-logging-tutorial
+```
+
 # rsyslog
 
 What is rsyslog and why should we care? 
