@@ -42,6 +42,7 @@ Clone the repo:
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
+
 $<span style="background-color: #FFFF00">git clone https://github.com/Maikor/IOS-XR-logging-tutorial.git </span>
 Cloning into 'IOS-XR-logging-tutorial'...
 remote: Counting objects: 14, done.
@@ -55,6 +56,7 @@ $<code><span style="background-color: #FFFF00"> vagrant up</span>
 </code>
 </pre>
 </div>
+
 
 # rsyslog
 
