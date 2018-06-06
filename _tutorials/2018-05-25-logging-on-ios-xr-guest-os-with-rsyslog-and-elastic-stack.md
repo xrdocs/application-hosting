@@ -34,10 +34,10 @@ You will need following resources:
 
 - 5 GB of RAM;
 - 2 vCPU;
-- Virtualbox and Vagrant installed;
+- Virtualbox, Vagrant and git installed;
 - IOS-XRv instance. Follow [this tutorial]({{ base.url }}/application-hosting/tutorials/iosxr-vagrant-quickstart) to request it. 
 
-Clone the repo: 
+Quick how to spin up Vagrant setup: 
 
 <div class="highlighter-rouge">
 <pre class="highlight">
