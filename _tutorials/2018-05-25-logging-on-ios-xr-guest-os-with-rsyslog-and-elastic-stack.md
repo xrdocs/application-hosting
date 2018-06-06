@@ -26,7 +26,6 @@ In this tutorial, we are going to cover routers configuration to stream Syslog m
 ![]({{site.baseurl}}/images/logging/logging-arch.png)
 _Figure 1 - Logging concepts_
 
-
 # rsyslog
 
 What is rsyslog and why should we care? 
