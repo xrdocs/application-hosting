@@ -387,7 +387,7 @@ nc -ul server_ip 10514
 {"@timestamp":"2018-06-03T19:10:01.524813+00:00","@version":"1","message":" (root) CMD (/usr/bin/logrotate /etc/logrotate.conf >/dev/null 2>&1)","sysloghost":"Red_Pine","severity":"info","facility":"cron","programname":"CROND","procid":"21502"}
 ```
 
-To proceed with installation we will pull images: 
+To proceed with the installation, pull the images: 
 
 ```
 docker pull docker.elastic.co/logstash/logstash:6.2.4
@@ -420,7 +420,7 @@ output {
 }
 ```
 
-Run the containers! For Logstash container you can mount the whole folder with config files, or specify files directly. 
+Run the containers! For the Logstash container you can mount the whole folder with the config files, or specify the files directly. 
 
 ```
 docker run -itd --rm --name=logstash -v ~/Documents/elastic/:/usr/share/logstash/pipeline/ docker.elastic.co/logstash/logstash:6.2.4 
@@ -429,7 +429,8 @@ docker run -itd -p 9200:9200 -p 9300:9300 --name=elasticsearch  -e "discovery.ty
 
 ```
 
-To verify, that Logstash is sending data to Elasticsearch, open a browser  _http://server_ip:9200/_all/_search?q=*&pretty_ 
+To verify, that Logstash is sending data to Elasticsearch, open a browser  _http://server_ip:9200/_all/_search?q=*&pretty_.
+
 You should see the output from rsyslog: 
 ```
 {
@@ -446,7 +447,7 @@ Congratulations, all your software is up and running!
 
 ## logrotate 
 
-It's worth to mention one critical component for logging solution. Space on your hard drive is finite. It's worth investing some amount of time to configure proper rules for your machine to free up space. [Logrorate](https://syslog-ng.com/documents/html/syslog-ng-ose-latest-guides/en/syslog-ng-ose-guide-admin/html/example-logrotate.html) is a perfect solution for that. 
+It's worth to mention one critical component for logging solution. The space on your hard drive is finite. It's worth investing some amount of time to configure proper rules for your machine to free up space. [Logrorate](https://syslog-ng.com/documents/html/syslog-ng-ose-latest-guides/en/syslog-ng-ose-guide-admin/html/example-logrotate.html) is a perfect solution for that. 
 Let's take a look at configuration excerpts for ncs.log:
 
 ```
@@ -465,8 +466,8 @@ cisco@walnut ~ % cat /etc/logrotate.d/apt
 - **missingok** - no errors if log file is missing;
 - **notifempty** - skip rotate, if log file is empty. 
 
-With such simple addition, your hard drive capacity will last longer. 
+With such a simple addition, your hard drive capacity will last longer. 
 
 # Conclusion
 
-Your logs streamed via rsyslog to multiple destinations: syslog-ng and Logstash. Consider visualization with some tools like Kibana or another piece of software and elevate your logging techniques.
+Your logs streamed via rsyslog to multiple destinations: syslog-ng and Logstash. Consider visualization with some tools like Kibana or another application and elevate your logging techniques.
