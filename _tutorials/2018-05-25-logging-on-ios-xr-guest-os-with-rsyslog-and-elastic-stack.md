@@ -105,7 +105,7 @@ If you are going to use SCP, you can grab package [directly](https://devhub.cisc
 [Canonball:~]$ yum install localonly -y rsyslog-7.4.4-r0.0.core2_64.rpm
 ```
 
-If you want to use YUM and your router has external connectivity, you may setup a yum repository and install the package via yum.Based on your setup, few extra step maybe required, such as DNS configuration and setting proxy environment.  
+If you want to use YUM and your router has external connectivity, you may setup a yum repository and install the package via yum. Based on your setup, few extra steps may be required, such as DNS configuration and setting proxy environment.  
 {: .notice--info}  
 
 Let's configure DNS servers on the router.
