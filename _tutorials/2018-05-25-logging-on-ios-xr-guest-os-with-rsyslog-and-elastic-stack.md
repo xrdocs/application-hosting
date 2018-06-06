@@ -19,7 +19,7 @@ position: hidden
 
 # Intro 
 
-Have you every worry about logging in the IOS-XR Linux environment? With Linux adoption, we can align our techniques and operational flows with the server world. There should be as little as possible difference in operations. 
+Have you ever worry about logging in the IOS-XR Linux environment? With Linux adoption, we can align our techniques and operational flows with the server world. There should be as little as possible difference in operations. 
 
 In this tutorial, we are going to cover routers configuration to stream Syslog message and accept those messages on an Ubuntu machine with [Syslog-ng](https://syslog-ng.com/) and [Elastic stack](https://elastic.co).  
 
@@ -28,7 +28,7 @@ _Figure 1 - Logging concepts_
 
 ## Requirements
 
-You can run this tutorial on your computer using [Vagrant](https://www.vagrantup.com/) and virtualization technologies. Topology consist of Ubuntu devbox and IOS-XRv instance.  
+You can run this tutorial on your computer using [Vagrant](https://www.vagrantup.com/) and virtualization technologies. Topology consists of Ubuntu VM and IOS-XRv instance.  
 
 You will need following resources:
 
@@ -99,7 +99,7 @@ There are two options to get rpm on the box:
 - SCP
 - Installation via YUM
 
-If you are going to use SCP, you can grab package [directly](https://devhub.cisco.com/artifactory/xr600/3rdparty/x86_64/) and copy it to the router. Use yum with option _localonly_ to proceed with installation:
+If you are going to use SCP, you can grab package [directly](https://devhub.cisco.com/artifactory/xr600/3rdparty/x86_64/) and copy it to the router. Use yum with option _localonly_ to proceed with the installation:
 
 ```
 [Canonball:~]$ yum install localonly -y rsyslog-7.4.4-r0.0.core2_64.rpm
@@ -186,7 +186,7 @@ Complete!
 
 ```
 
-If you are facing issues with specific build versions or installation doesn't go smoothly for you, **rpm** could be utilized directly, like in example below (rpm already located on device hard drive). 
+If you are facing issues with specific build versions or installation doesn't go smoothly for you, **rpm** could be utilized directly, like in snippet below (rpm already located on device hard drive). 
 {: .notice--warning}  
 
 
