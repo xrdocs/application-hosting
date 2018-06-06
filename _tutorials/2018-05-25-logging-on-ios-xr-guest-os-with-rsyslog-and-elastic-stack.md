@@ -26,7 +26,7 @@ In this tutorial, we are going to cover routers configuration to stream Syslog m
 ![]({{site.baseurl}}/images/logging/logging-arch.png)
 _Figure 1 - Logging concepts_
 
-# Requirements to run locally
+# Requirements to run tutorial locally
 
 You can run this tutorial on your computer using [Vagrant](https://www.vagrantup.com/) and virtualization technologies. Topology consist of Ubuntu devbox and IOS-XRv instance.  
 
@@ -48,6 +48,10 @@ remote: Total 14 (delta 1), reused 8 (delta 0), pack-reused 0
 Unpacking objects: 100% (14/14), done.
 Checking connectivity... done.
 $ cd IOS-XR-logging-tutorial
+$ vagrant up
+
+
+
 ```
 
 # rsyslog
