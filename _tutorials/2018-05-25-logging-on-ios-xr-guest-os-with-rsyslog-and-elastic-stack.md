@@ -9,7 +9,7 @@ author: Mike Korshunov
 excerpt: >-
   In this tutorial we are going to cover how to configure logging solution on
   IOS-XR guest OS and apply it on Elastic stack. 
-position: hidden
+position: top
 ---
 
 {% include toc icon="table" title="Logging on IOS-XR guest OS with rsyslog and Elastic stack" %}
