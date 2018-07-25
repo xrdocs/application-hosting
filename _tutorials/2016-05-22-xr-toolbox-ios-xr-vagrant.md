@@ -74,7 +74,18 @@ To get the API-KEY and a CCO-ID, browse to the following link and follow the ste
 
 The last stable version of XR vagrant was 6.1.2.These images have been out for a while, and should work well. Pick this if you want something that works for sure.
 
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+$ BOXURL="https://devhub.cisco.com/artifactory/appdevci-release/XRv64/6.1.2/iosxrv-fullk9-x64.box"
 
+$ curl <b><mark>-u your-cco-id:API-KEY</mark></b> $BOXURL --output ~/iosxrv-fullk9-x64.box
+
+$ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
+
+</code>
+</pre>
+</div>
 
 
 ### Pick the latest (run with scissors)
