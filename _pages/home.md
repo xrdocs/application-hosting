@@ -22,7 +22,7 @@ date: null
             <div class="archive__item-excerpt" style="font-size: 0.65em;">
               <p>We will explore how a user can spin up Docker containers on IOS-XR.
                In this tutorial we will go through multiple scenarios: utilization of public Docker Hub registry,
-                 private "secure" and "self-signed" registries.</p>
+                 private "secure" and "self-signed" registries or bringing up docker images directly copied onto the router</p>
             </div>
             <p><a href="{{ base_path }}/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/" 
                   class="btn ">Check out!</a></p>
@@ -42,7 +42,7 @@ date: null
         <div class="archive__item-body">
             <h2 class="archive__item-title">IOS-XRv Vagrant Image</h2>
             <div class="archive__item-excerpt" style="font-size: 0.65em;">
-            <p> Looking for a way to spin up virtual router on your laptop? Fill a form 📝 and get an access to an image.</p>
+            <p> Looking for a way to spin up virtual routers on your laptop? Fill a form 📝 and get access to the latest IOS-XR vagrant box.</p>
             </div>
           <p><a href="{{ base_path }}/tutorials/iosxr-vagrant-quickstart" class="btn btn--large">
           Explore!
@@ -62,7 +62,7 @@ date: null
         <div class="archive__item-body">
             <h2 class="archive__item-title">Python & IOS-XR️</h2>
             <div class="archive__item-excerpt" style="font-size: 0.65em;">
-              <p>Take a look how to start your work with Netmiko and NAPALM, most popular multi-vendor frameworks 
+              <p>Take a look at getting started with Netmiko and NAPALM, most popular multi-vendor frameworks 
               to automate actions on your network device.</p>
             </div>
             <p><a href="{{ base_path }}/tutorials/2016-08-15-netmiko-and-napalm-with-ios-xr-quick-look/" 
