@@ -76,7 +76,7 @@
 
 .material-scrolltop,
 .material-scrolltop::before {
-    background-image: url(http://localhost:4000/application-hosting/images/top-arrow.svg);
+    background-image: url(https://xrdocs.io/application-hosting/images/top-arrow.svg);
     background-position: center 50%;
     background-repeat: no-repeat;
 }

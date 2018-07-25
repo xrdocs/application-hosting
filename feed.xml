@@ -4,8 +4,8 @@
 	<channel>
 		<title>IOS XR Application Hosting @xrdocs</title>
 		<description>Documentation, Blogs and Tutorials on the Application Hosting Infrastructure in IOS-XR</description>
-		<link>http://localhost:4000/application-hosting</link>
-		<atom:link href="http://localhost:4000/application-hosting/feed.xml" rel="self" type="application/rss+xml" />
+		<link>https://xrdocs.io/application-hosting</link>
+		<atom:link href="https://xrdocs.io/application-hosting/feed.xml" rel="self" type="application/rss+xml" />
 		
       
 			<item>
@@ -16,10 +16,10 @@
 				
 					<description>Meet us at Nanog-67 in Chicago. Beer-n-Gear, Demos and sessions and much more!</description>
 				
-                                <enclosure url='http://localhost:4000/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+                                <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
 				<pubDate>Sun, 12 Jun 2016 01:31:00 +0000</pubDate>
-				<link>http://localhost:4000/application-hosting/blogs/2016-06-11-nanog-67-meet-us-there/</link>
-				<guid isPermaLink="true">http://localhost:4000/application-hosting/blogs/2016-06-11-nanog-67-meet-us-there/</guid>
+				<link>https://xrdocs.io/application-hosting/blogs/2016-06-11-nanog-67-meet-us-there/</link>
+				<guid isPermaLink="true">https://xrdocs.io/application-hosting/blogs/2016-06-11-nanog-67-meet-us-there/</guid>
 			</item>
       
 		
@@ -32,10 +32,10 @@
 				
 					<description>Quick Walkthrough of the XR app-hosting architecture</description>
 				
-                                <enclosure url='http://localhost:4000/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+                                <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
 				<pubDate>Tue, 28 Jun 2016 08:54:00 +0000</pubDate>
-				<link>http://localhost:4000/application-hosting/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/</link>
-				<guid isPermaLink="true">http://localhost:4000/application-hosting/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/</guid>
+				<link>https://xrdocs.io/application-hosting/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/</link>
+				<guid isPermaLink="true">https://xrdocs.io/application-hosting/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/</guid>
 			</item>
       
 		
@@ -48,10 +48,10 @@
 				
 					<description>Tools to build your own XR vagrant box  </description>
 				
-                                <enclosure url='http://localhost:4000/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+                                <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
 				<pubDate>Tue, 12 Jul 2016 12:30:00 +0000</pubDate>
-				<link>http://localhost:4000/application-hosting/blogs/2016-07-12-building-an-ios-xrv-vagrant-virtualbox/</link>
-				<guid isPermaLink="true">http://localhost:4000/application-hosting/blogs/2016-07-12-building-an-ios-xrv-vagrant-virtualbox/</guid>
+				<link>https://xrdocs.io/application-hosting/blogs/2016-07-12-building-an-ios-xrv-vagrant-virtualbox/</link>
+				<guid isPermaLink="true">https://xrdocs.io/application-hosting/blogs/2016-07-12-building-an-ios-xrv-vagrant-virtualbox/</guid>
 			</item>
       
 		
@@ -64,10 +64,10 @@
 				
 					<description>A python-based, model-driven auditing solution for IOS-XR:  We walk through the drivers behind the creation of an auditing app that can periodically collect information from XR LXC, Admin LXC and Host Shells of IOS-XR 6.1.2+  and stream out a schema-based XML dump of the linux environment state to a remote server over SSH.</description>
 				
-                                <enclosure url='http://localhost:4000/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+                                <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
 				<pubDate>Wed, 02 May 2018 03:39:00 +0000</pubDate>
-				<link>http://localhost:4000/application-hosting/blogs/2018-05-01-anatomy-of-a-network-app-xr-auditor/</link>
-				<guid isPermaLink="true">http://localhost:4000/application-hosting/blogs/2018-05-01-anatomy-of-a-network-app-xr-auditor/</guid>
+				<link>https://xrdocs.io/application-hosting/blogs/2018-05-01-anatomy-of-a-network-app-xr-auditor/</link>
+				<guid isPermaLink="true">https://xrdocs.io/application-hosting/blogs/2018-05-01-anatomy-of-a-network-app-xr-auditor/</guid>
 			</item>
       
 		
@@ -81,10 +81,10 @@
         
           <description>Getting started with Cisco's IOS-XR Vagrant box</description>
         
-        <enclosure url='http://localhost:4000/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+        <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
         <pubDate>Sun, 22 May 2016 20:49:00 +0000</pubDate>
-        <link>http://localhost:4000/application-hosting/tutorials/iosxr-vagrant-quickstart</link>
-        <guid isPermaLink="true">http://localhost:4000/application-hosting/tutorials/iosxr-vagrant-quickstart</guid>
+        <link>https://xrdocs.io/application-hosting/tutorials/iosxr-vagrant-quickstart</link>
+        <guid isPermaLink="true">https://xrdocs.io/application-hosting/tutorials/iosxr-vagrant-quickstart</guid>
       </item>
       
     
@@ -97,10 +97,10 @@
         
           <description>Configure an IOS-XR Vagrant box on boot using a Shell provisioner</description>
         
-        <enclosure url='http://localhost:4000/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+        <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
         <pubDate>Tue, 31 May 2016 09:13:00 +0000</pubDate>
-        <link>http://localhost:4000/application-hosting/tutorials/iosxr-vagrant-bootstrap-config</link>
-        <guid isPermaLink="true">http://localhost:4000/application-hosting/tutorials/iosxr-vagrant-bootstrap-config</guid>
+        <link>https://xrdocs.io/application-hosting/tutorials/iosxr-vagrant-bootstrap-config</link>
+        <guid isPermaLink="true">https://xrdocs.io/application-hosting/tutorials/iosxr-vagrant-bootstrap-config</guid>
       </item>
       
     
@@ -113,10 +113,10 @@
         
           <description>Getting started with IOSXR and Ansible playbooks</description>
         
-        <enclosure url='http://localhost:4000/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+        <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
         <pubDate>Tue, 31 May 2016 16:48:00 +0000</pubDate>
-        <link>http://localhost:4000/application-hosting/tutorials/IOSXR-Ansible</link>
-        <guid isPermaLink="true">http://localhost:4000/application-hosting/tutorials/IOSXR-Ansible</guid>
+        <link>https://xrdocs.io/application-hosting/tutorials/IOSXR-Ansible</link>
+        <guid isPermaLink="true">https://xrdocs.io/application-hosting/tutorials/IOSXR-Ansible</guid>
       </item>
       
     
@@ -129,10 +129,10 @@
         
           <description>Typical Vagrant Developer Topology to build and test Apps for IOS-XR</description>
         
-        <enclosure url='http://localhost:4000/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+        <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
         <pubDate>Mon, 06 Jun 2016 07:13:00 +0000</pubDate>
-        <link>http://localhost:4000/application-hosting/tutorials/2016-06-06-xr-toolbox-app-development-topology</link>
-        <guid isPermaLink="true">http://localhost:4000/application-hosting/tutorials/2016-06-06-xr-toolbox-app-development-topology</guid>
+        <link>https://xrdocs.io/application-hosting/tutorials/2016-06-06-xr-toolbox-app-development-topology</link>
+        <guid isPermaLink="true">https://xrdocs.io/application-hosting/tutorials/2016-06-06-xr-toolbox-app-development-topology</guid>
       </item>
       
     
@@ -145,10 +145,10 @@
         
           <description>Launch a Container app (LXC) on IOS-XR</description>
         
-        <enclosure url='http://localhost:4000/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+        <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
         <pubDate>Thu, 16 Jun 2016 08:17:00 +0000</pubDate>
-        <link>http://localhost:4000/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/</link>
-        <guid isPermaLink="true">http://localhost:4000/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/</guid>
+        <link>https://xrdocs.io/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/</link>
+        <guid isPermaLink="true">https://xrdocs.io/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/</guid>
       </item>
       
     
@@ -161,10 +161,10 @@
         
           <description>Deploy container at IOS-XR with Ansible</description>
         
-        <enclosure url='http://localhost:4000/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+        <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
         <pubDate>Sat, 18 Jun 2016 16:11:00 +0000</pubDate>
-        <link>http://localhost:4000/application-hosting/tutorials/2016-06-08-ios-xr-ansible-container-deployment/</link>
-        <guid isPermaLink="true">http://localhost:4000/application-hosting/tutorials/2016-06-08-ios-xr-ansible-container-deployment/</guid>
+        <link>https://xrdocs.io/application-hosting/tutorials/2016-06-08-ios-xr-ansible-container-deployment/</link>
+        <guid isPermaLink="true">https://xrdocs.io/application-hosting/tutorials/2016-06-08-ios-xr-ansible-container-deployment/</guid>
       </item>
       
     
@@ -177,10 +177,10 @@
         
           <description>Build, Install and launch a native app in IOS-XR (WRL7 RPM or binary)</description>
         
-        <enclosure url='http://localhost:4000/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+        <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
         <pubDate>Mon, 18 Jul 2016 00:47:00 +0000</pubDate>
-        <link>http://localhost:4000/application-hosting/tutorials/2016-06-17-xr-toolbox-part-5-running-a-native-wrl7-app/</link>
-        <guid isPermaLink="true">http://localhost:4000/application-hosting/tutorials/2016-06-17-xr-toolbox-part-5-running-a-native-wrl7-app/</guid>
+        <link>https://xrdocs.io/application-hosting/tutorials/2016-06-17-xr-toolbox-part-5-running-a-native-wrl7-app/</link>
+        <guid isPermaLink="true">https://xrdocs.io/application-hosting/tutorials/2016-06-17-xr-toolbox-part-5-running-a-native-wrl7-app/</guid>
       </item>
       
     
@@ -193,10 +193,10 @@
         
           <description>OSPF path remediation using container based iperf and netconf</description>
         
-        <enclosure url='http://localhost:4000/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+        <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
         <pubDate>Tue, 19 Jul 2016 06:47:00 +0000</pubDate>
-        <link>http://localhost:4000/application-hosting/tutorials/2016-07-09-pathchecker-iperf-netconf-for-ospf-path-failover/</link>
-        <guid isPermaLink="true">http://localhost:4000/application-hosting/tutorials/2016-07-09-pathchecker-iperf-netconf-for-ospf-path-failover/</guid>
+        <link>https://xrdocs.io/application-hosting/tutorials/2016-07-09-pathchecker-iperf-netconf-for-ospf-path-failover/</link>
+        <guid isPermaLink="true">https://xrdocs.io/application-hosting/tutorials/2016-07-09-pathchecker-iperf-netconf-for-ospf-path-failover/</guid>
       </item>
       
     
@@ -209,10 +209,10 @@
         
           <description>Python libraries to configure your IOS-XR device</description>
         
-        <enclosure url='http://localhost:4000/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+        <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
         <pubDate>Mon, 15 Aug 2016 07:25:00 +0000</pubDate>
-        <link>http://localhost:4000/application-hosting/tutorials/2016-08-15-netmiko-and-napalm-with-ios-xr-quick-look/</link>
-        <guid isPermaLink="true">http://localhost:4000/application-hosting/tutorials/2016-08-15-netmiko-and-napalm-with-ios-xr-quick-look/</guid>
+        <link>https://xrdocs.io/application-hosting/tutorials/2016-08-15-netmiko-and-napalm-with-ios-xr-quick-look/</link>
+        <guid isPermaLink="true">https://xrdocs.io/application-hosting/tutorials/2016-08-15-netmiko-and-napalm-with-ios-xr-quick-look/</guid>
       </item>
       
     
@@ -225,10 +225,10 @@
         
           <description>Getting started with IOSXR and Puppet</description>
         
-        <enclosure url='http://localhost:4000/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+        <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
         <pubDate>Mon, 22 Aug 2016 22:29:00 +0000</pubDate>
-        <link>http://localhost:4000/application-hosting/tutorials/2016-08-22-using-puppet-with-iosxr-6-1-1</link>
-        <guid isPermaLink="true">http://localhost:4000/application-hosting/tutorials/2016-08-22-using-puppet-with-iosxr-6-1-1</guid>
+        <link>https://xrdocs.io/application-hosting/tutorials/2016-08-22-using-puppet-with-iosxr-6-1-1</link>
+        <guid isPermaLink="true">https://xrdocs.io/application-hosting/tutorials/2016-08-22-using-puppet-with-iosxr-6-1-1</guid>
       </item>
       
     
@@ -241,10 +241,10 @@
         
           <description>This tutorial shows how to build the Solenoid application for injecting third-party BGP routes in Cisco's RIB table.</description>
         
-        <enclosure url='http://localhost:4000/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+        <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
         <pubDate>Wed, 28 Sep 2016 23:17:00 +0000</pubDate>
-        <link>http://localhost:4000/application-hosting/tutorials/2016-09-28-solenoid-inject-routes-into-cisco-s-rib-table-using-grpc/</link>
-        <guid isPermaLink="true">http://localhost:4000/application-hosting/tutorials/2016-09-28-solenoid-inject-routes-into-cisco-s-rib-table-using-grpc/</guid>
+        <link>https://xrdocs.io/application-hosting/tutorials/2016-09-28-solenoid-inject-routes-into-cisco-s-rib-table-using-grpc/</link>
+        <guid isPermaLink="true">https://xrdocs.io/application-hosting/tutorials/2016-09-28-solenoid-inject-routes-into-cisco-s-rib-table-using-grpc/</guid>
       </item>
       
     
@@ -257,10 +257,10 @@
         
           <description>Running Docker containers on IOS-XR running as a Vagrant box and on a physical NCS5500</description>
         
-        <enclosure url='http://localhost:4000/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+        <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
         <pubDate>Sun, 26 Feb 2017 22:40:00 +0000</pubDate>
-        <link>http://localhost:4000/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/</link>
-        <guid isPermaLink="true">http://localhost:4000/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/</guid>
+        <link>https://xrdocs.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/</link>
+        <guid isPermaLink="true">https://xrdocs.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/</guid>
       </item>
       
     
@@ -273,10 +273,10 @@
         
           <description>Running On-box Agents for Model Driven Telemetry on IOS-XR. In this case we use pipeline and a standalone Kafka client running inside a docker container on XR to carry out local actions based on Telemetry data.</description>
         
-        <enclosure url='http://localhost:4000/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+        <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
         <pubDate>Thu, 13 Apr 2017 06:53:00 +0000</pubDate>
-        <link>http://localhost:4000/application-hosting/tutorials/2017-04-12-on-box-telemetry-running-pipeline-and-kafka-on-ios-xr/</link>
-        <guid isPermaLink="true">http://localhost:4000/application-hosting/tutorials/2017-04-12-on-box-telemetry-running-pipeline-and-kafka-on-ios-xr/</guid>
+        <link>https://xrdocs.io/application-hosting/tutorials/2017-04-12-on-box-telemetry-running-pipeline-and-kafka-on-ios-xr/</link>
+        <guid isPermaLink="true">https://xrdocs.io/application-hosting/tutorials/2017-04-12-on-box-telemetry-running-pipeline-and-kafka-on-ios-xr/</guid>
       </item>
       
     
@@ -289,10 +289,10 @@
         
           <description>In this tutorial we are going to cover how to configure logging solution on IOS-XR guest OS and apply it on Elastic stack. </description>
         
-        <enclosure url='http://localhost:4000/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+        <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
         <pubDate>Fri, 25 May 2018 20:33:00 +0000</pubDate>
-        <link>http://localhost:4000/application-hosting/tutorials/2018-05-25-logging-on-ios-xr-guest-os-with-rsyslog-and-elastic-stack/</link>
-        <guid isPermaLink="true">http://localhost:4000/application-hosting/tutorials/2018-05-25-logging-on-ios-xr-guest-os-with-rsyslog-and-elastic-stack/</guid>
+        <link>https://xrdocs.io/application-hosting/tutorials/2018-05-25-logging-on-ios-xr-guest-os-with-rsyslog-and-elastic-stack/</link>
+        <guid isPermaLink="true">https://xrdocs.io/application-hosting/tutorials/2018-05-25-logging-on-ios-xr-guest-os-with-rsyslog-and-elastic-stack/</guid>
       </item>
       
     
