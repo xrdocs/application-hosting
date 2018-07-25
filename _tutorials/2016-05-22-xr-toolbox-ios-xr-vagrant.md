@@ -79,7 +79,7 @@ The last stable version of XR vagrant was 6.1.2.These images have been out for a
 <code>
 $ BOXURL="https://devhub.cisco.com/artifactory/appdevci-release/XRv64/6.1.2/iosxrv-fullk9-x64.box"
 
-$ curl <b><mark>-u your-cco-id:API-KEY</mark></b> $BOXURL --output ~/iosxrv-fullk9-x64.box
+$ curl -u your-cco-id:API-KEY $BOXURL --output ~/iosxrv-fullk9-x64.box
 
 $ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
 
