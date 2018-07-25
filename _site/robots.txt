@@ -1,1 +1,1 @@
-Sitemap: https://xrdocs.io/application-hosting/sitemap.xml
+Sitemap: http://localhost:4000/application-hosting/sitemap.xml

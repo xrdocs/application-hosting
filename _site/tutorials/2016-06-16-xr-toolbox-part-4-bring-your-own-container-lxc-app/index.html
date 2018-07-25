@@ -32,8 +32,8 @@
 <meta property="og:title" content="XR toolbox, Part 4: Bring your own Container (LXC) App">
 
 
-  <link rel="canonical" href="https://xrdocs.io/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/">
-  <meta property="og:url" content="https://xrdocs.io/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/">
+  <link rel="canonical" href="http://localhost:4000/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/">
+  <meta property="og:url" content="http://localhost:4000/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/">
 
 
 
@@ -44,12 +44,12 @@
   <meta name="twitter:site" content="@xrdocs">
   <meta name="twitter:title" content="XR toolbox, Part 4: Bring your own Container (LXC) App">
   <meta name="twitter:description" content="Launch a Container app (LXC) on IOS-XR">
-  <meta name="twitter:url" content="https://xrdocs.io/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/">
+  <meta name="twitter:url" content="http://localhost:4000/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/">
 
   
     <meta name="twitter:card" content="summary">
     
-      <meta name="twitter:image" content="https://xrdocs.io/application-hosting/images/app-hosting-xrdocs.jpg">
+      <meta name="twitter:image" content="http://localhost:4000/application-hosting/images/app-hosting-xrdocs.jpg">
     
   
 
@@ -70,10 +70,10 @@
   <meta property="og:type" content="article">
   <meta property="article:published_time" content="2016-06-16T08:17:00+00:00">
   
-    <link rel="next" href="https://xrdocs.io/application-hosting/tutorials/2016-06-08-ios-xr-ansible-container-deployment/" title="IOS-XR: Ansible based LXC deployment">
+    <link rel="next" href="http://localhost:4000/application-hosting/tutorials/2016-06-08-ios-xr-ansible-container-deployment/" title="IOS-XR: Ansible based LXC deployment">
   
   
-    <link rel="prev" href="https://xrdocs.io/application-hosting/tutorials/2016-06-06-xr-toolbox-app-development-topology" title="XR Toolbox, Part 3 : App Development Topology ">
+    <link rel="prev" href="http://localhost:4000/application-hosting/tutorials/2016-06-06-xr-toolbox-app-development-topology" title="XR Toolbox, Part 3 : App Development Topology ">
   
 
 
@@ -82,8 +82,8 @@
     {
       "@context": "http://schema.org",
       "@type": "Organization",
-      "url": "https://xrdocs.io/application-hosting",
-      "logo": "https://xrdocs.io/application-hosting/images/app-hosting-xrdocs.jpg"
+      "url": "http://localhost:4000/application-hosting",
+      "logo": "http://localhost:4000/application-hosting/images/app-hosting-xrdocs.jpg"
     }
   </script>
 
@@ -94,7 +94,7 @@
       "@context" : "http://schema.org",
       "@type" : "person",
       "name" : "Cisco Systems Inc",
-      "url" : "https://xrdocs.io/application-hosting",
+      "url" : "http://localhost:4000/application-hosting",
       "sameAs" : ["https://twitter.com/xrdocs"]
     }
   </script>
@@ -106,7 +106,7 @@
 
 <!-- end SEO -->
 
-<link href="https://xrdocs.io/application-hosting/feed.xml" type="application/atom+xml" rel="alternate" title="IOS XR Application Hosting @xrdocs Feed">
+<link href="http://localhost:4000/application-hosting/feed.xml" type="application/atom+xml" rel="alternate" title="IOS XR Application Hosting @xrdocs Feed">
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
@@ -146,31 +146,31 @@ if (!(window.location.host.startsWith("127.0.0.1") || window.location.host.start
 
 <!-- start custom head snippets -->
 
-<link href="https://xrdocs.io/application-hosting/assets/css/lity.min.css" rel="stylesheet">
-<link href="https://xrdocs.io/application-hosting/assets/css/cisco-sans.min.css" rel="stylesheet">
-<link href="https://xrdocs.io/application-hosting/assets/css/material-scrolltop.css" rel="stylesheet">
+<link href="http://localhost:4000/application-hosting/assets/css/lity.min.css" rel="stylesheet">
+<link href="http://localhost:4000/application-hosting/assets/css/cisco-sans.min.css" rel="stylesheet">
+<link href="http://localhost:4000/application-hosting/assets/css/material-scrolltop.css" rel="stylesheet">
 
-<link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://xrdocs.io/application-hosting/images/apple-touch-icon-57x57.png" />
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://xrdocs.io/application-hosting/images/apple-touch-icon-114x114.png" />
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://xrdocs.io/application-hosting/images/apple-touch-icon-72x72.png" />
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://xrdocs.io/application-hosting/images/apple-touch-icon-144x144.png" />
-<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://xrdocs.io/application-hosting/images/apple-touch-icon-60x60.png" />
-<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://xrdocs.io/application-hosting/images/apple-touch-icon-120x120.png" />
-<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://xrdocs.io/application-hosting/images/apple-touch-icon-76x76.png" />
-<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://xrdocs.io/application-hosting/images/apple-touch-icon-152x152.png" />
-<link rel="icon" type="image/png" href="https://xrdocs.io/application-hosting/images/favicon-196x196.png" sizes="196x196" />
-<link rel="icon" type="image/png" href="https://xrdocs.io/application-hosting/images/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/png" href="https://xrdocs.io/application-hosting/images/favicon-32x32.png" sizes="32x32" />
-<link rel="icon" type="image/png" href="https://xrdocs.io/application-hosting/images/favicon-16x16.png" sizes="16x16" />
-<link rel="icon" type="image/png" href="https://xrdocs.io/application-hosting/images/favicon-128.png" sizes="128x128" />
-<link rel="shortcut icon" href="https://xrdocs.io/application-hosting/images/favicon_cisco.ico" />
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://localhost:4000/application-hosting/images/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/application-hosting/images/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/application-hosting/images/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/application-hosting/images/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="http://localhost:4000/application-hosting/images/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://localhost:4000/application-hosting/images/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://localhost:4000/application-hosting/images/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://localhost:4000/application-hosting/images/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="http://localhost:4000/application-hosting/images/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="http://localhost:4000/application-hosting/images/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="http://localhost:4000/application-hosting/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="http://localhost:4000/application-hosting/images/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="http://localhost:4000/application-hosting/images/favicon-128.png" sizes="128x128" />
+<link rel="shortcut icon" href="http://localhost:4000/application-hosting/images/favicon_cisco.ico" />
 <meta name="application-name" content="&nbsp;"/>
 <meta name="msapplication-TileColor" content="#FFFFFF" />
-<meta name="msapplication-TileImage" content="https://xrdocs.io/application-hosting/images/mstile-144x144.png" />
-<meta name="msapplication-square70x70logo" content="https://xrdocs.io/application-hosting/images/mstile-70x70.png" />
-<meta name="msapplication-square150x150logo" content="https://xrdocs.io/application-hosting/images/mstile-150x150.png" />
-<meta name="msapplication-wide310x150logo" content="https://xrdocs.io/application-hosting/images/mstile-310x150.png" />
-<meta name="msapplication-square310x310logo" content="https://xrdocs.io/application-hosting/images/mstile-310x310.png" />
+<meta name="msapplication-TileImage" content="http://localhost:4000/application-hosting/images/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="http://localhost:4000/application-hosting/images/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="http://localhost:4000/application-hosting/images/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="http://localhost:4000/application-hosting/images/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="http://localhost:4000/application-hosting/images/mstile-310x310.png" />
 
 
 <!-- end custom head snippets -->
@@ -190,23 +190,14 @@ if (!(window.location.host.startsWith("127.0.0.1") || window.location.host.start
       <nav id="site-nav" class="greedy-nav">
         <button><div class="navicon"></div></button>
         <ul class="visible-links">
-          <img src="https://xrdocs.io/application-hosting/images/xrdocs_logo.png" width="45px" height="45px" alt="xrdocs logo" style="float:left;">
-          <li class="masthead__menu-item masthead__menu-item--lg"><a href="https://xrdocs.io">@xrdocs</a></li>
-          <li class="masthead__menu-item"><a href="https://xrdocs.io/application-hosting/">App-Hosting</a></li>
+          <img src="http://localhost:4000/application-hosting/images/xrdocs_logo.png" width="45px" height="45px" alt="xrdocs logo" style="float:left;">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000">@xrdocs</a></li>
+          <li class="masthead__menu-item"><a href="http://localhost:4000/application-hosting/">App-Hosting</a></li>
           
             
             
                 
-                    <li class="masthead__menu-item"><a href="https://xrdocs.io/application-hosting/blogs/">Blogs</a></li>
-                
-            
-
-
-          
-            
-            
-                
-                    <li class="masthead__menu-item greedy-nav-active"><a href="https://xrdocs.io/application-hosting/tutorials/">Tutorials</a></li>
+                    <li class="masthead__menu-item"><a href="http://localhost:4000/application-hosting/blogs/">Blogs</a></li>
                 
             
 
@@ -215,7 +206,7 @@ if (!(window.location.host.startsWith("127.0.0.1") || window.location.host.start
             
             
                 
-                    <li class="masthead__menu-item"><a href="https://xrdocs.io/application-hosting/search">Search <i class="fa fa-search" aria-hidden="true"></i></a></li>
+                    <li class="masthead__menu-item greedy-nav-active"><a href="http://localhost:4000/application-hosting/tutorials/">Tutorials</a></li>
                 
             
 
@@ -224,7 +215,16 @@ if (!(window.location.host.startsWith("127.0.0.1") || window.location.host.start
             
             
                 
-                    <li class="masthead__menu-item"><a href="https://xrdocs.io/application-hosting/tags/">Tags</a></li>
+                    <li class="masthead__menu-item"><a href="http://localhost:4000/application-hosting/search">Search <i class="fa fa-search" aria-hidden="true"></i></a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="http://localhost:4000/application-hosting/tags/">Tags</a></li>
                 
             
 
@@ -255,7 +255,7 @@ if (!(window.location.host.startsWith("127.0.0.1") || window.location.host.start
 
   <div class="author__avatar">
     
-    	<img src="https://xrdocs.io/application-hosting/images/avatars/akshat_bio_photo.jpeg" class="author__avatar" alt="Akshat Sharma">
+    	<img src="http://localhost:4000/application-hosting/images/avatars/akshat_bio_photo.jpeg" class="author__avatar" alt="Akshat Sharma">
     
   </div>
 
@@ -346,7 +346,7 @@ if (!(window.location.host.startsWith("127.0.0.1") || window.location.host.start
     
       
         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" style="margin:0;padding:0;">
-          <a href="https://xrdocs.io/application-hosting/" itemprop="item"><span itemprop="name">Home</span></a>
+          <a href="http://localhost:4000/application-hosting/" itemprop="item"><span itemprop="name">Home</span></a>
           <meta itemprop="position" content="1" />
         </li>
         <span class="sep">/</span>
@@ -354,7 +354,7 @@ if (!(window.location.host.startsWith("127.0.0.1") || window.location.host.start
       
         
         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" style="margin:0;padding:0;">
-          <a href="https://xrdocs.io/application-hosting/tutorials" itemprop="item"><span itemprop="name">Tutorials</span></a>
+          <a href="http://localhost:4000/application-hosting/tutorials" itemprop="item"><span itemprop="name">Tutorials</span></a>
           <meta itemprop="position" content="2" />
         </li>
         <span class="sep">/</span>
@@ -400,7 +400,7 @@ if (!(window.location.host.startsWith("127.0.0.1") || window.location.host.start
   </nav>
 </aside>
 
-<p>Check out Part 3 of the XR toolbox series: <a href="https://xrdocs.io/application-hosting/tutorials/2016-06-06-xr-toolbox-app-development-topology">App Development Topology</a>.</p>
+<p>Check out Part 3 of the XR toolbox series: <a href="http://localhost:4000/application-hosting/tutorials/2016-06-06-xr-toolbox-app-development-topology">App Development Topology</a>.</p>
 
 <h2 id="introduction">Introduction</h2>
 
@@ -408,7 +408,7 @@ if (!(window.location.host.startsWith("127.0.0.1") || window.location.host.start
 
 <blockquote>
 
-  <p><a href="https://xrdocs.io/application-hosting/tags/#xr-toolbox">XR Toolbox Series</a></p>
+  <p><a href="http://localhost:4000/application-hosting/tags/#xr-toolbox">XR Toolbox Series</a></p>
 </blockquote>
 
 <p>The purpose of this series is simple. Get users started with an IOS-XR setup on their laptop and incrementally enable them to try out the application-hosting infrastructure on IOS-XR.</p>
@@ -422,7 +422,7 @@ If you haven’t checked it out, go through the “App-Development Topology” t
 
 <blockquote>
 
-  <p><a href="https://xrdocs.io/application-hosting/tutorials/2016-06-06-xr-toolbox-app-development-topology">XR Toolbox, Part 3: App Development Topology</a></p>
+  <p><a href="http://localhost:4000/application-hosting/tutorials/2016-06-06-xr-toolbox-app-development-topology">XR Toolbox, Part 3: App Development Topology</a></p>
 </blockquote>
 
 <p>Follow the instructions to get your topology up and running as shown below:</p>
@@ -480,7 +480,7 @@ A user can easily use their own pre-built rootfs tar ball and ignore this sectio
 
 <p>This is showcased in the following section below:</p>
 
-<p><a href="https://xrdocs.io/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#change-ssh-port-inside-your-container">Change SSH port inside your container</a></p>
+<p><a href="http://localhost:4000/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#change-ssh-port-inside-your-container">Change SSH port inside your container</a></p>
 
 
 </div>
@@ -833,7 +833,7 @@ However, /misc/app_host is owned by root and root access over SSH is not allowed
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>scp -P 57722 /home/vagrant/xr-lxc-app-rootfs.tar.gz vagrant@11.1.1.10:/misc/app_host/scratch/
 scp -P 57722 /home/vagrant/xr-lxc-app.xml vagrant@11.1.1.10:/misc/app_host/scratch/
 </code></pre></div></div>
-<p>Where 11.1.1.10 is the directly connected Gig0/0/0/0 interface of IOS-XR instance (this config was explained in the <a href="https://xrdocs.io/application-hosting/tutorials/2016-06-06-xr-toolbox-app-development-topology">XR Toolbox, Part 3: App Development Topology</a> tutorial).</p>
+<p>Where 11.1.1.10 is the directly connected Gig0/0/0/0 interface of IOS-XR instance (this config was explained in the <a href="http://localhost:4000/application-hosting/tutorials/2016-06-06-xr-toolbox-app-development-topology">XR Toolbox, Part 3: App Development Topology</a> tutorial).</p>
 
 <p><strong>But this process might be slow since Gig interfaces in the Vagrant IOS-XR image are rate-limited.</strong></p>
 
@@ -1230,7 +1230,7 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 </pre>
 </div>
 
-<p class="notice--success">There you have it! iperf running inside an Ubuntu Container on IOS-XR. Too many steps to look up? In our next tutorial, we look at automating all of the  steps needed to bring up a container using an Ansible Playbook: <strong><a href="https://xrdocs.io/application-hosting/tutorials/2016-06-08-ios-xr-ansible-container-deployment/">IOS-XR: Ansible based LXC deployment</a></strong></p>
+<p class="notice--success">There you have it! iperf running inside an Ubuntu Container on IOS-XR. Too many steps to look up? In our next tutorial, we look at automating all of the  steps needed to bring up a container using an Ansible Playbook: <strong><a href="http://localhost:4000/application-hosting/tutorials/2016-06-08-ios-xr-ansible-container-deployment/">IOS-XR: Ansible based LXC deployment</a></strong></p>
 
         
       </section>
@@ -1252,31 +1252,31 @@ vagrant@vagrant-ubuntu-trusty-64:~$
     
       
       
-      <a href="https://xrdocs.io/application-hosting/tags/#cisco" class="page__taxonomy-item" rel="tag">cisco</a><span class="sep">, </span>
+      <a href="http://localhost:4000/application-hosting/tags/#cisco" class="page__taxonomy-item" rel="tag">cisco</a><span class="sep">, </span>
     
       
       
-      <a href="https://xrdocs.io/application-hosting/tags/#containers" class="page__taxonomy-item" rel="tag">containers</a><span class="sep">, </span>
+      <a href="http://localhost:4000/application-hosting/tags/#containers" class="page__taxonomy-item" rel="tag">containers</a><span class="sep">, </span>
     
       
       
-      <a href="https://xrdocs.io/application-hosting/tags/#iosxr" class="page__taxonomy-item" rel="tag">iosxr</a><span class="sep">, </span>
+      <a href="http://localhost:4000/application-hosting/tags/#iosxr" class="page__taxonomy-item" rel="tag">iosxr</a><span class="sep">, </span>
     
       
       
-      <a href="https://xrdocs.io/application-hosting/tags/#linux" class="page__taxonomy-item" rel="tag">linux</a><span class="sep">, </span>
+      <a href="http://localhost:4000/application-hosting/tags/#linux" class="page__taxonomy-item" rel="tag">linux</a><span class="sep">, </span>
     
       
       
-      <a href="https://xrdocs.io/application-hosting/tags/#lxc" class="page__taxonomy-item" rel="tag">lxc</a><span class="sep">, </span>
+      <a href="http://localhost:4000/application-hosting/tags/#lxc" class="page__taxonomy-item" rel="tag">lxc</a><span class="sep">, </span>
     
       
       
-      <a href="https://xrdocs.io/application-hosting/tags/#vagrant" class="page__taxonomy-item" rel="tag">vagrant</a><span class="sep">, </span>
+      <a href="http://localhost:4000/application-hosting/tags/#vagrant" class="page__taxonomy-item" rel="tag">vagrant</a><span class="sep">, </span>
     
       
       
-      <a href="https://xrdocs.io/application-hosting/tags/#xr-toolbox" class="page__taxonomy-item" rel="tag">xr toolbox</a>
+      <a href="http://localhost:4000/application-hosting/tags/#xr-toolbox" class="page__taxonomy-item" rel="tag">xr toolbox</a>
     
     </span>
   </p>
@@ -1296,13 +1296,13 @@ vagrant@vagrant-ubuntu-trusty-64:~$
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=https://xrdocs.io/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https://xrdocs.io/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://plus.google.com/share?url=https://xrdocs.io/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+  <a href="https://plus.google.com/share?url=http://localhost:4000/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://xrdocs.io/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 
     <br>
     <br>
@@ -1346,7 +1346,7 @@ vagrant@vagrant-ubuntu-trusty-64:~$
       <li><a href="http://github.com/xrdocs"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
     
     
-    <li><a href="https://xrdocs.io/application-hosting/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    <li><a href="http://localhost:4000/application-hosting/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
   </ul>
 </div>
 
@@ -1355,8 +1355,8 @@ vagrant@vagrant-ubuntu-trusty-64:~$
       </footer>
     </div>
 
-    <script src="https://xrdocs.io/application-hosting/assets/js/main.min.js"></script>
-<script src="https://xrdocs.io/application-hosting/assets/js/scrollmenu.js"></script>
+    <script src="http://localhost:4000/application-hosting/assets/js/main.min.js"></script>
+<script src="http://localhost:4000/application-hosting/assets/js/scrollmenu.js"></script>
 
 
 
@@ -1407,7 +1407,7 @@ vagrant@vagrant-ubuntu-trusty-64:~$
 <button class="material-scrolltop" type="button"></button>
 
 <!-- material-scrolltop plugin -->
-<script src="https://xrdocs.io/application-hosting/assets/js/material-scrolltop.js"></script>
+<script src="http://localhost:4000/application-hosting/assets/js/material-scrolltop.js"></script>
 
 <!-- Initialize material-scrolltop with (minimal) -->
 <script>
