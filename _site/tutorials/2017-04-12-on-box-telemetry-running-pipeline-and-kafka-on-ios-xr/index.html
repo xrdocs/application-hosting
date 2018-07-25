@@ -1,0 +1,1335 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>            On-box Telemetry: Running  Pipeline and Kafka on IOS-XR (6.2.1+)      IOS XR Application Hosting @xrdocs      </title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="IOS XR Application Hosting @xrdocs">
+<meta property="og:title" content="On-box Telemetry: Running  Pipeline and Kafka on IOS-XR (6.2.1+)">
+
+
+  <link rel="canonical" href="http://localhost:4000/application-hosting/tutorials/2017-04-12-on-box-telemetry-running-pipeline-and-kafka-on-ios-xr/">
+  <meta property="og:url" content="http://localhost:4000/application-hosting/tutorials/2017-04-12-on-box-telemetry-running-pipeline-and-kafka-on-ios-xr/">
+
+
+
+  <meta property="og:description" content="Running On-box Agents for Model Driven Telemetry on IOS-XR. In this case we use pipeline and a standalone Kafka client running inside a docker container on XR to carry out local actions based on Telemetry data.">
+
+
+
+  <meta name="twitter:site" content="@xrdocs">
+  <meta name="twitter:title" content="On-box Telemetry: Running  Pipeline and Kafka on IOS-XR (6.2.1+)">
+  <meta name="twitter:description" content="Running On-box Agents for Model Driven Telemetry on IOS-XR. In this case we use pipeline and a standalone Kafka client running inside a docker container on XR to carry out local actions based on Telemetry data.">
+  <meta name="twitter:url" content="http://localhost:4000/tutorials/2017-04-12-on-box-telemetry-running-pipeline-and-kafka-on-ios-xr/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="http://localhost:4000/application-hosting/images/app-hosting-xrdocs.jpg">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@irakshat">
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-04-13T06:53:00+00:00">
+  
+    <link rel="next" href="http://localhost:4000/application-hosting/tutorials/2018-05-25-logging-on-ios-xr-guest-os-with-rsyslog-and-elastic-stack/" title="Logging on IOS-XR guest OS with rsyslog and Elastic stack ">
+  
+  
+    <link rel="prev" href="http://localhost:4000/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/" title="XR toolbox, Part 6: Running Docker Containers on IOS-XR (6.1.2+)">
+  
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://localhost:4000/application-hosting",
+      "logo": "http://localhost:4000/application-hosting/images/app-hosting-xrdocs.jpg"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "person",
+      "name" : "Cisco Systems Inc",
+      "url" : "http://localhost:4000/application-hosting",
+      "sameAs" : ["https://twitter.com/xrdocs"]
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+<link href="http://localhost:4000/application-hosting/feed.xml" type="application/atom+xml" rel="alternate" title="IOS XR Application Hosting @xrdocs Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="jgRKKm6B9FwJJPXxpmc0-EP3D0Mh8JHXaJqoYIGj1ek" />
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<script>
+if (!(window.location.host.startsWith("127.0.0.1") || window.location.host.startsWith("localhost")) && (window.location.host.substr(-3) == '.io') && (window.location.protocol != "https:"))
+    window.location.protocol = "https";
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/application-hosting/assets/css/main.css">
+<meta http-equiv="cleartype" content="on">
+<style>
+.underline-on-hover:hover {
+    text-decoration: underline;
+}
+.searchForm{
+      border-radius:5px;
+      -moz-border-radius:5px;
+      -webkit-border-radius:5px;
+      width: 900px;
+   }
+#search_results{
+      display: table; margin:0 auto;
+   }
+</style>
+</style>
+
+    
+
+<!-- start custom head snippets -->
+
+<link href="http://localhost:4000/application-hosting/assets/css/lity.min.css" rel="stylesheet">
+<link href="http://localhost:4000/application-hosting/assets/css/cisco-sans.min.css" rel="stylesheet">
+<link href="http://localhost:4000/application-hosting/assets/css/material-scrolltop.css" rel="stylesheet">
+
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://localhost:4000/application-hosting/images/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/application-hosting/images/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/application-hosting/images/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/application-hosting/images/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="http://localhost:4000/application-hosting/images/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://localhost:4000/application-hosting/images/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://localhost:4000/application-hosting/images/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://localhost:4000/application-hosting/images/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="http://localhost:4000/application-hosting/images/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="http://localhost:4000/application-hosting/images/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="http://localhost:4000/application-hosting/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="http://localhost:4000/application-hosting/images/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="http://localhost:4000/application-hosting/images/favicon-128.png" sizes="128x128" />
+<link rel="shortcut icon" href="http://localhost:4000/application-hosting/images/favicon_cisco.ico" />
+<meta name="application-name" content="&nbsp;"/>
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="http://localhost:4000/application-hosting/images/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="http://localhost:4000/application-hosting/images/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="http://localhost:4000/application-hosting/images/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="http://localhost:4000/application-hosting/images/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="http://localhost:4000/application-hosting/images/mstile-310x310.png" />
+
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu" style="padding-left:2em;">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <img src="http://localhost:4000/application-hosting/images/xrdocs_logo.png" width="45px" height="45px" alt="xrdocs logo" style="float:left;">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000">@xrdocs</a></li>
+          <li class="masthead__menu-item"><a href="http://localhost:4000/application-hosting/">App-Hosting</a></li>
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="http://localhost:4000/application-hosting/blogs/">Blogs</a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item greedy-nav-active"><a href="http://localhost:4000/application-hosting/tutorials/">Tutorials</a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="http://localhost:4000/application-hosting/search">Search <i class="fa fa-search" aria-hidden="true"></i></a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="http://localhost:4000/application-hosting/tags/">Tags</a></li>
+                
+            
+
+
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="http://localhost:4000/application-hosting/images/avatars/akshat_bio_photo.jpeg" class="author__avatar" alt="Akshat Sharma">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Akshat Sharma</h3>
+    <p class="author__bio">Evangelist, tinkerer, dog-lover and Technical Marketing Engineer, Cisco.</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+      
+      
+        <li><a href="mailto:akshshar@cisco.com"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+      
+      
+      
+        <li><a href="http://twitter.com/irakshat"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="http://github.com/akshshar"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+
+  </div>
+    <br><button class="btn"><a href="//pdfcrowd.com/url_to_pdf/" style="color:white">Save as PDF</a></button>
+
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="On-box Telemetry: Running  Pipeline and Kafka on IOS-XR (6.2.1+)">
+    <meta itemprop="description" content="Running On-box Agents for Model Driven Telemetry on IOS-XR. In this case we use pipeline and a standalone Kafka client running inside a docker container on XR to carry out local actions based on Telemetry data.">
+    <meta itemprop="datePublished" content="April 13, 2017">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">On-box Telemetry: Running  Pipeline and Kafka on IOS-XR (6.2.1+)
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  16 minutes read
+</p>
+          
+        </header>
+      
+
+    
+      
+        
+
+
+
+
+
+<div class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList" style="margin:0;padding:0;">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" style="margin:0;padding:0;">
+          <a href="http://localhost:4000/application-hosting/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" style="margin:0;padding:0;">
+          <a href="http://localhost:4000/application-hosting/tutorials" itemprop="item"><span itemprop="name">Tutorials</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current" style="margin:0;padding:0;">On-box Telemetry: Running  Pipeline and Kafka on IOS-XR (6.2.1+)</li>
+      
+    
+  </ol>
+</div>
+
+      
+    
+
+      <section class="page__content" itemprop="text">
+        <aside class="sidebar__right">
+<nav class="toc">
+    <header><h4 class="nav__title"><i class="fa fa-table"></i> Running Pipeline and Kafka on IOS-XR</h4></header>
+<ul class="toc__menu" id="markdown-toc">
+  <li><a href="#streaming-telemetry" id="markdown-toc-streaming-telemetry">Streaming Telemetry</a></li>
+  <li><a href="#what-is-on-box-telemetry" id="markdown-toc-what-is-on-box-telemetry">What is on-box Telemetry?</a>    <ul>
+      <li><a href="#docker-container-to-host-pipeline--kafka" id="markdown-toc-docker-container-to-host-pipeline--kafka">Docker container to host Pipeline + Kafka</a></li>
+      <li><a href="#ncs5500vagrant-on-box-telemetry-setup" id="markdown-toc-ncs5500vagrant-on-box-telemetry-setup">NCS5500/Vagrant On-Box Telemetry Setup</a></li>
+      <li><a href="#asr9k-on-box-telemetry-setup" id="markdown-toc-asr9k-on-box-telemetry-setup">ASR9k On-Box Telemetry Setup</a></li>
+    </ul>
+  </li>
+  <li><a href="#docker-image-for-pipelinekafka" id="markdown-toc-docker-image-for-pipelinekafka">Docker image for Pipeline+Kafka</a></li>
+  <li><a href="#building-a-pipeline-kafka-docker-image-for-ios-xr" id="markdown-toc-building-a-pipeline-kafka-docker-image-for-ios-xr">Building a Pipeline-kafka Docker image for IOS-XR</a>    <ul>
+      <li><a href="#clone-github-repo" id="markdown-toc-clone-github-repo">Clone Github repo</a></li>
+      <li><a href="#understand-the-dockerfile" id="markdown-toc-understand-the-dockerfile">Understand the Dockerfile</a></li>
+      <li><a href="#build-the-docker-image" id="markdown-toc-build-the-docker-image">Build the Docker image</a></li>
+      <li><a href="#pull-docker-image-on-the-router" id="markdown-toc-pull-docker-image-on-the-router">Pull Docker image on the router</a></li>
+    </ul>
+  </li>
+  <li><a href="#launch-the-docker-container" id="markdown-toc-launch-the-docker-container">Launch the Docker container</a>    <ul>
+      <li><a href="#create-a-custom-pipelineconf" id="markdown-toc-create-a-custom-pipelineconf">Create a custom pipeline.conf</a></li>
+    </ul>
+  </li>
+  <li><a href="#testing-the-on-box-telemetry-receiver" id="markdown-toc-testing-the-on-box-telemetry-receiver">Testing the on-box Telemetry receiver</a>    <ul>
+      <li><a href="#query-the-local-kafka-instance" id="markdown-toc-query-the-local-kafka-instance">Query the local Kafka instance</a></li>
+    </ul>
+  </li>
+</ul>
+
+  </nav>
+</aside>
+
+<h2 id="streaming-telemetry">Streaming Telemetry</h2>
+
+<p>If you haven’t checked out the great set of tutorials from <a href="http://twitter.com/scadora">Shelly Cadora</a> and team on the Telemetry page of xrdocs: <a href="https://xrdocs.github.io/telemetry/tutorials">https://xrdocs.github.io/telemetry/tutorials</a>, it’s time to dive in.</p>
+
+<p>Streaming Telemetry in principle is tied to our need to evolve network device monitoring, above and beyond the capabilities that SNMP can provide.</p>
+
+<p>To get started, check out the following blogs:</p>
+
+<ul>
+  <li>
+    <p><a href="http://blogs.cisco.com/sp/the-limits-of-snmp">The Limits of SNMP</a></p>
+  </li>
+  <li>
+    <p><a href="http://blogs.cisco.com/sp/why-you-should-care-about-model-driven-telemetry">Why you should care about Model Driven Telemetry</a></p>
+  </li>
+  <li>
+    <p><a href="http://blogs.cisco.com/sp/introducing-pipeline-a-model-driven-telemetry-collection-service">Introduction to pipeline</a></p>
+  </li>
+</ul>
+
+<p>The running theme through the above set of blogs is clear: We need a consistent, model-driven method of exposing operational data from Network devices (read Yang Models: Openconfig, Vendor specific, and IETF)  and <strong>PUSH</strong> the data over industry accepted transport protocols like <a href="http://www.grpc.io/">GRPC</a> or plain TCP/UDP to external Telemetry receivers. This is where IOS-XR really excels.</p>
+
+<p>The move from pull (SNMP style) to a push-based model for gathering Telemetry data is crucial to understand. It allows operational data to be collected at higher rates and higher scale (been shown and tested to be nearly 100x more effective than SNMP).</p>
+
+<p>Consequently, there is greater focus on tools that can help consume this large amount of data off-box. There are a variety of tools (opensource and otherwise) available for big data consumption:  Apache Kafka, Prometheus, influxDB stack, SignalFX etc.</p>
+
+<p>A tool we recently open-sourced in this space with complete support for Model Driven Telemetry on IOS-XR (6.0.1+) that, as the name suggests, serves as a pipe/conduit between IOS-XR (over TCP, UDP or GRPC) on the input side and a whole host of tools (Kafka, influxDB, prometheus etc.) on the output side is called <strong>Pipeline</strong>. You can find it on <a href="https://github.com/cisco/bigmuddy-network-telemetry-pipeline">Github</a>. Find more about it <a href="http://blogs.cisco.com/sp/introducing-pipeline-a-model-driven-telemetry-collection-service">here</a> and <a href="https://xrdocs.github.io/telemetry/tutorials/2016-10-03-pipeline-to-text-tutorial/">here</a>.</p>
+
+<h2 id="what-is-on-box-telemetry">What is on-box Telemetry?</h2>
+
+<p>There is no one-size-fits-all technique for monitoring and managing network devices. There are a lot of network operators that will follow the typical approach: Set up the Model Driven Telemetry on IOS-XR and stream operational data to an external receiver or set of receivers. This is shown below. Pipeline as mentioned earlier, is used as a conduit to a set of tools like Kafka,prometheus etc.</p>
+
+<p><a href="https://xrdocs.github.io/xrdocs-images/assets/images/deploy_pipeline.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/deploy_pipeline.png" alt="typical Pipeline deployment" /></a></p>
+
+<p>However, quite a few of our users have come and asked us if it’s possible to have a telemetry receiver run on the router inside a container (lxc or docker) so that applications running locally inside the container can take actions based on Telemetry data.</p>
+
+<p>This may be done for different reasons:</p>
+
+<ul>
+  <li>
+    <p>Users may choose to simplify their server environment and not run external services (like  <br />
+Kafka, influxDB stack or prometheus/Grafana etc.). Typically, some<br />
+background in devops engineering is often important to understand how to scale out these 
+services and process large amounts of data coming from all routers at the same time.</p>
+  </li>
+  <li>
+    <p>The alerts or the remediation actions that a user intends to perform based on the Telemetry 
+data received may be fairly simplistic and can be done on box.</p>
+  </li>
+</ul>
+
+<p class="notice--warning">Bear in mind that running onbox does come with its own concerns. Network devices typically have limited compute capacity (CPU/RAM) and limited disk capacity. While CPU/RAM isolation can be achieved using Containers on box, managing the disk space on each individual router does require special care when dealing with Streaming Telemetry applications.</p>
+
+<h3 id="docker-container-to-host-pipeline--kafka">Docker container to host Pipeline + Kafka</h3>
+
+<p>In this tutorial, we look at using a Docker container to host Pipeline and Kafka (with zookeper) as a Telemetry receiver. Further a simple Kafka consumer is written in python to interact with Kafka and take some sample action on a Telemetry data point.</p>
+
+<p>If you haven’t had a chance to learn how we enable hosting for Docker containers on IOS-XR platforms and how we set up routing capabilities within the container, take a look at the following section of our detailed Docker guide for IOS-XR:</p>
+
+<blockquote>
+  <p><a href="https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#docker-daemon-support-on-ios-xr">Understanding Docker Setup on IOS-XR platforms</a></p>
+</blockquote>
+
+<p>As shown in the platform specific sections below, the pipeline-kafka combination runs as a Docker container onbox. Some specifics on the setup:</p>
+
+<blockquote class="notice--warning">
+
+  <ul>
+    <li>
+      <p>In IOS-XR 6.2.1 (before 6.3.1) only global-vrf is supported in the linux kernel.</p>
+    </li>
+    <li>
+      <p>The docker container is launched with the global-vrf network namespace mounted inside the container.</p>
+    </li>
+    <li>
+      <p>The pipeline and kafka instances are launched inside the global-vrf network namespace and listen on all visible XR IP addresses in the kernel (Data ports in global-vrf, Management port in Global-vrf, loopback interfaces in global-vrf).</p>
+    </li>
+    <li>
+      <p>The ports and listening IP selected by pipeline can be changed by the user during docker bringup itself by mounting a custom pipeline.conf (shown in subsequent sections).</p>
+    </li>
+    <li>
+      <p>The XR telemetry process is configured to send Telemetry data to pipeline over</p>
+      <ul>
+        <li>Transport = <strong>UDP</strong> (only UDP is supported for onbox telemetry) and</li>
+        <li>Destination address = listening IP address (some local XR IP) for pipeline.</li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<h3 id="ncs5500vagrant-on-box-telemetry-setup">NCS5500/Vagrant On-Box Telemetry Setup</h3>
+
+<p>The docker daemon on NCS5500, NCS5000, XRv9k and Vagrant XR (IOS-XRv64) platforms runs on the Host layer at the bottom. The onbox telemetry setup will thus look something like:</p>
+
+<p><a href="https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry.png" alt="xr-docker" /></a></p>
+
+<h3 id="asr9k-on-box-telemetry-setup">ASR9k On-Box Telemetry Setup</h3>
+
+<p>On ASR9k, the setup is the same from the user perspective. But for accuracy, the Docker daemon runs inside the XR VM in this case, as is shown below.</p>
+
+<p><a href="https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry_asr9k.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/docker_onbox_telemetry_asr9k.png" alt="xr_asr9k_docker_libvirt" /></a></p>
+
+<p class="notice--info"><strong>It is recommended to host onbox daemons (in this case Kafka, pipeline, zookeeper) on either the all IP address (0.0.0.0)  or on XR loopback IP addresses. This makes sure that these daemons stay up and available even when a physical interface goes down.</strong></p>
+
+<h2 id="docker-image-for-pipelinekafka">Docker image for Pipeline+Kafka</h2>
+
+<p>While a user is welcome to build their own custom Docker images, we have a base image that can take care of installation of pipeline and Kafka+zookeeper for you and is already available on Docker hub:</p>
+
+<blockquote>
+  <p><a href="https://hub.docker.com/r/akshshar/pipeline-kafka/">https://hub.docker.com/r/akshshar/pipeline-kafka/</a></p>
+</blockquote>
+
+<p>This image is built out automatically from the following github repo:</p>
+
+<blockquote>
+  <p><a href="https://github.com/ios-xr/pipeline-kafka">https://github.com/ios-xr/pipeline-kafka</a></p>
+</blockquote>
+
+<p>We will utilize this image and build our own custom variant to run on an IOS-XR box for onbox telemetry.</p>
+
+<h2 id="building-a-pipeline-kafka-docker-image-for-ios-xr">Building a Pipeline-kafka Docker image for IOS-XR</h2>
+
+<p>To build our own Docker image, you need a development environment with Docker engine installed.<br />
+This is basically the devbox environment that we have setup in earlier tutorials. To understand how to do this, follow the steps below (in order) from the Docker guide for IOS-XR:</p>
+
+<ul>
+  <li>
+    <p><strong>Pre-requisites:</strong>  <a href="https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#pre-requisites">Setup your Vagrant environment and/or physical boxes (ASR9k, NCS5500 etc.)</a></p>
+
+    <div class="notice--warning">
+  **Important:** If you're using the Vagrant setup for this tutorial, bear in mind that the 
+  default Vagrant image runs in 4G RAM. Since the docker image we host on the router is 
+  relatively resource intensive, we will need to increase the memory for our Vagrant IOS-XR 
+  instance to atleast 5G (5120 MB). This can be done easily by modifying the `Vagrantfile` in 
+  your directory and adding the following:  
+    
+   
+  <div class="highlighter-rouge">
+  <pre class="highlight" style="white-space: pre-wrap;">
+  <code>
+    config.vm.define "rtr" do |node|
+    
+     ##############  SNIP  #############
+
+       <mark> node.vm.provider "virtualbox" do |v|
+           v.memory = 5120 
+        end</mark>
+      end
+    
+    
+    
+     config.vm.define "devbox" do |node|
+        node.vm.box =  "ubuntu/trusty64"
+    
+      ##############  SNIP  ##############
+ 
+  </code>
+  </pre>
+  </div> 
+  </div>
+  </li>
+  <li>
+    <p><strong>Set up your topology:</strong> <a href="https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#understand-the-topology">Understand the Topology</a></p>
+  </li>
+  <li>
+    <p><strong>Set up the Devbox environment:</strong> <a href="https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#install-docker-engine-on-the-devbox">Install docker-engine on the devbox</a></p>
+  </li>
+</ul>
+
+<h3 id="clone-github-repo">Clone Github repo</h3>
+
+<p>Now that you have a running devbox environment, let’s clone the github-repo for the pipeline-kafka project:</p>
+
+<p class="notice--info"><strong>we use –recursive to make sure all the submodules get pulled as well. The submodules are actual github repos for the standalone pipeline and docker-kafka projects.</strong></p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> git clone --recursive https://github.com/ios-xr/pipeline-kafka</mark>
+Cloning into 'pipeline-kafka'...
+remote: Counting objects: 38, done.
+remote: Compressing objects: 100% (30/30), done.
+remote: Total 38 (delta 15), reused 20 (delta 4), pack-reused 0
+Unpacking objects: 100% (38/38), done.
+Checking connectivity... done.
+Submodule 'bigmuddy-network-telemetry-pipeline' (https://github.com/cisco/bigmuddy-network-telemetry-pipeline) registered for path 'bigmuddy-network-telemetry-pipeline'
+Submodule 'docker-kafka' (https://github.com/spotify/docker-kafka) registered for path 'docker-kafka'
+Cloning into 'bigmuddy-network-telemetry-pipeline'...
+remote: Counting objects: 14615, done.
+remote: Compressing objects: 100% (8021/8021), done.
+remote: Total 14615 (delta 3586), reused 0 (delta 0), pack-reused 3349
+Receiving objects: 100% (14615/14615), 43.97 MiB | 2.02 MiB/s, done.
+Resolving deltas: 100% (4012/4012), done.
+Checking connectivity... done.
+Submodule path 'bigmuddy-network-telemetry-pipeline': checked out 'a57e87c59ac220ad7725b6b74c3570243e1a4ac3'
+Cloning into 'docker-kafka'...
+remote: Counting objects: 98, done.
+remote: Total 98 (delta 0), reused 0 (delta 0), pack-reused 98
+Unpacking objects: 100% (98/98), done.
+Checking connectivity... done.
+Submodule path 'docker-kafka': checked out 'fc8cdbd2e23a5cac21e7138d07ea884b4309c59a'
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ <mark>cd pipeline-kafka/iosxr_dockerfile/</mark>
+vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka/iosxr_dockerfile$ ls
+Dockerfile  kafka_consumer.py
+vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka/iosxr_dockerfile$ 
+
+</code>
+</pre>
+</div>
+
+<h3 id="understand-the-dockerfile">Understand the Dockerfile</h3>
+
+<p>Let’s take a look at the Dockerfile under the <code class="highlighter-rouge">iosxr_dockerfile</code> folder:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka/iosxr_dockerfile$<mark> cat Dockerfile </mark>
+FROM akshshar/pipeline-kafka:latest
+
+Maintainer akshshar
+
+# Specify the "vrf" you want to run daemons in during build time
+# By default, it is global-vrf
+
+ARG vrf=global-vrf
+
+# Set up the ARG for use by Entrypoint or CMD scripts
+ENV vrf_exec "ip netns exec $vrf"
+
+# Add a sample kafka_consumer.py script. User can provide their own
+ADD kafka_consumer.py /kafka_consumer.py
+
+
+CMD $vrf_exec echo "127.0.0.1 localhost" &gt;&gt; /etc/hosts &amp;&amp; $vrf_exec supervisord -n
+</code>
+</pre>
+</div>
+
+<p><strong>Let’s break it down:</strong></p>
+
+<p class="notice-warning">All the references below to Dockerfile instructions are derived from official Dockerfile Documentation:
+<a href="https://docs.docker.com/engine/reference/builder/#known-issues-run">https://docs.docker.com/engine/reference/builder/#known-issues-run</a></p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code class="language-dockerfile">
+ARG vrf=global-vrf
+</code>
+</pre>
+</div>
+
+<p class="notice--info">We setup the script to accept arguments from the user during build time. This will allow us to be flexible in specifying the vrf (network namespace) to spin up the daemons in, in the future. Today in 6.2.1 (before 6.3.1), only global-vrf is supported.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code class="language-dockerfile">
+ENV vrf_exec "ip netns exec $vrf"
+</code>
+</pre>
+</div>
+
+<p class="notice--info">In Dockerfiles, the ARG variables are rejected in the ENTRYPOINT or CMD instructions. So we set up an ENV variable (which is honored) to create a command prefix necessary to execute a command in a given network namespace (vrf).</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code class="language-dockerfile">
+ADD kafka_consumer.py /kafka_consumer.py
+</code>
+</pre>
+</div>
+
+<p class="notice--info">We place the sample application (in this case written in python) inside the image to act as a consumer of the Telemetry data pushed to Kafka. This application can contain custom triggers to initiate alerts or other actions. For this tutorial, we will initiate the script manually post launch of the container. The user can choose to start the application by default as part of the ENTRYPOINT or CMD instructions in the dockerfile.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code class="language-dockerfile">
+CMD $vrf_exec echo "127.0.0.1 localhost" &gt;&gt; /etc/hosts &amp;&amp; $vrf_exec supervisord -n
+</code>
+</pre>
+</div>
+
+<p class="notice--info">This specifies the command that will be run inside the container post boot. The first part of the command <code class="highlighter-rouge">$vrf_exec echo "127.0.0.1 localhost" &gt;&gt; /etc/hosts</code> sets up /etc/hosts with an entry for localhost making it easier for kafka and applications to talk to each other locally. The second part of the command <code class="highlighter-rouge">$vrf_exec supervisord -n</code> is used to start all the services in the correct vrf (hence the <code class="highlighter-rouge">$vrf_exec</code>).  <br />
+We use supervisord to easily specify multiple daemons that need to be launched (pipeline, kafka, zookeeper).  You can get more details on supervisord here: <a href="http://supervisord.org/">http://supervisord.org/</a></p>
+
+<h3 id="build-the-docker-image">Build the Docker image</h3>
+
+<p>Issue a docker build in the same folder and let’s tag it as pipeline-kafka-xr:latest</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka/iosxr_dockerfile$<mark> sudo docker build -t pipeline-kafka-xr . </mark>
+Sending build context to Docker daemon  3.584kB
+Step 1/6 : FROM akshshar/pipeline-kafka:latest
+latest: Pulling from akshshar/pipeline-kafka
+5040bd298390: Pull complete 
+fce5728aad85: Pull complete 
+c42794440453: Pull complete 
+0c0da797ba48: Pull complete 
+7c9b17433752: Pull complete 
+114e02586e63: Pull complete 
+e4c663802e9a: Pull complete 
+efafcf20d522: Pull complete 
+b5a0de42a291: Pull complete 
+e36cca8778db: Pull complete 
+c3626ac93375: Pull complete 
+3b079f5713c1: Pull complete 
+2ac62e83a2a3: Pull complete 
+5fe3b4ab290e: Pull complete 
+08b6bc2f514b: Pull complete 
+b86ae3d2d58d: Pull complete 
+Digest: sha256:164adfb0da7f5a74d3309ddec4bc7078a81dcd32591cdb72410eccaf1448d88c
+Status: Downloaded newer image for akshshar/pipeline-kafka:latest
+ ---&gt; 0f131a6f1d8c
+Step 2/6 : MAINTAINER akshshar
+ ---&gt; Running in 4da444d1b027
+ ---&gt; e21b468c12b5
+Removing intermediate container 4da444d1b027
+Step 3/6 : ARG vrf=global-vrf
+ ---&gt; Running in 5cdb3d4eecdf
+ ---&gt; e347fe8cd7d9
+Removing intermediate container 5cdb3d4eecdf
+Step 4/6 : ENV vrf_exec "ip netns exec $vrf"
+ ---&gt; Running in 6601c66ff5fb
+ ---&gt; 6104847fbe17
+Removing intermediate container 6601c66ff5fb
+Step 5/6 : ADD kafka_consumer.py /kafka_consumer.py
+ ---&gt; 6cf31ccbf679
+Removing intermediate container 72d2b0320cf2
+Step 6/6 : CMD $vrf_exec echo "127.0.0.1 localhost" &gt;&gt; /etc/hosts &amp;&amp; $vrf_exec supervisord -n
+ ---&gt; Running in 8c44808a44e6
+ ---&gt; d9c6ec3671c0
+Removing intermediate container 8c44808a44e6
+Successfully built d9c6ec3671c0
+vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka/iosxr_dockerfile$ 
+</code>
+</pre>
+</div>
+
+<p>You should now have the docker image available on the devbox:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka/iosxr_dockerfile$ sudo docker images
+REPOSITORY                TAG                 IMAGE ID            CREATED              SIZE
+pipeline-kafka-xr         latest              d9c6ec3671c0        About a minute ago   676MB
+akshshar/pipeline-kafka   latest              0f131a6f1d8c        5 hours ago          676MB
+vagrant@vagrant-ubuntu-trusty-64:~/pipeline-kafka/iosxr_dockerfile$ 
+</code>
+</pre>
+</div>
+
+<h3 id="pull-docker-image-on-the-router">Pull Docker image on the router</h3>
+
+<p>There are multiple ways in which the freshly created Docker image could be transferred to the IOS-XR router. These methods are discussed in detail in the Docker Guide for IOS-XR. Choose your poison :) :</p>
+
+<ul>
+  <li>
+    <p><a href="https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#private-insecure-registry">Using an insecure registry</a></p>
+  </li>
+  <li>
+    <p><a href="https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#private-self-signed-registry">Using a self-signed registry</a></p>
+  </li>
+  <li>
+    <p><a href="https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#docker-saveload-technique">Using Docker save/load</a></p>
+  </li>
+</ul>
+
+<h2 id="launch-the-docker-container">Launch the Docker container</h2>
+
+<p>Let’s assume you chose one of the above methods and pulled the docker container onto the router. In the end, you should see on  the router’s linux shell:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[xr-vm_node0_RP0_CPU0:~]$ sudo -i
+[xr-vm_node0_RP0_CPU0:~]$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+pipeline-kafka-xr   latest              d9c6ec3671c0        34 minutes ago      676.4 MB
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+</code></pre></div></div>
+
+<p>The name of the image may be different based on the “docker pull” technique you use.</p>
+
+<h3 id="create-a-custom-pipelineconf">Create a custom pipeline.conf</h3>
+
+<p>Before we spin up the container, let’s create a custom pipeline.conf file.</p>
+
+<p>A sample pipeline.conf can be found here: <a href="https://github.com/cisco/bigmuddy-network-telemetry-pipeline/blob/master/pipeline.conf">https://github.com/cisco/bigmuddy-network-telemetry-pipeline/blob/master/pipeline.conf</a></p>
+
+<p><strong>On-box telemetry in 6.2.1 only works over UDP as transport. Support for TCP and GRPC dial-in/dial-out will come soon</strong></p>
+
+<p>Considering the above limitation, we modify pipeline.conf to only enable UDP as an input transport. Further, we’ll point pipeline to Kafka as an output stage. In the end, the relevant lines in my custom pipeline.conf are shown below:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+
+[xr-vm_node0_RP0_CPU0:~]$<mark> grep -v "^#" /misc/app_host/pipeline.conf </mark>
+[default]
+
+id = pipeline
+
+
+
+[mykafka]
+stage = xport_output
+<mark>type = kafka</mark>
+encoding = json
+<mark>brokers = localhost:9092</mark>
+topic = telemetry
+datachanneldepth = 1000
+
+
+
+
+[udpin]
+<mark>type = udp </mark>
+stage = xport_input
+<mark>listen = 1.1.1.1:5958 </mark>
+encap = st
+logdata = off
+
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+</code>
+</pre>
+</div>
+
+<p>Let me break down the above output:</p>
+
+<ul>
+  <li>
+    <p>[udpin] specifies UDP as the input transport for pipeline and forces pipeline to listen on 
+1.1.1.1:5958. What is 1.1.1.1 : Address of one of the loopbacks in IOS-XR config as shown 
+below:</p>
+
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RP/0/RSP1/CPU0:asr9k#show  running-config  int loopback 0
+Thu Apr 13 16:21:57.749 UTC
+interface Loopback0
+ ipv4 address 1.1.1.1 255.255.255.255
+!
+RP/0/RSP1/CPU0:asr9k#
+</code></pre></div>    </div>
+    <p class="notice--info">Be a little careful here. Do not select loopback1 IP address or any explicitly configured east-
+west interface for TPA. To understand more on TPA east-west IP addresses, see here:
+<a href="https://xrdocs.github.io/application-hosting/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/">https://xrdocs.github.io/application-hosting/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/</a></p>
+  </li>
+  <li>
+    <p>[mykafka] stage describes the output stage of pipeline pointing to Kafka running inside the 
+container. Pipeline is instructed to deliver data in a josn format to Kafka running at 
+localhost:9092</p>
+  </li>
+</ul>
+
+<p class="notice--info">Notice the location in which we create the customer pipeline.conf file:<br />
+<code class="highlighter-rouge">/misc/app_host/pipeline.conf</code><br />
+This is important because the docker daemon runs on the underlying host layer in case of NCS5500/NCS5000/XRv9k and Vagrant IOS-XR platforms. <code class="highlighter-rouge">/misc/app_host</code> is a shared volume between the host layer and the XR LXC in these platforms.<br />
+As for ASR9k, there is no issue placing the file anywhere since docker daemon runs inside the XR VM itself. But for consistency we’ll stick to the <code class="highlighter-rouge">/misc/app_host</code> location.</p>
+
+<p>Finally, launch the docker container by mounting /misc/app_host/pipeline.conf to /data/pipeline.conf inside the container where it will be picked up by the pipeline process.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ <mark>docker run -itd --name pipeline-kafka -v /var/run/netns/global-vrf:/var/run/netns/global-vrf -v /misc/app_host/pipeline.conf:/data/pipeline.conf --hostname localhost  --cap-add=SYS_ADMIN pipeline-kafka-xr:latest </mark>
+e42e7e2526253e37b28362bf70c98550ca9ac108dc2aaa667da1290e44c2a035
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$<mark> docker ps </mark>
+CONTAINER ID        IMAGE                      COMMAND                  CREATED             STATUS              PORTS               NAMES
+e42e7e252625        pipeline-kafka-xr:latest   "/bin/sh -c '$vrf_exe"   2 minutes ago       Up 2 minutes                            pipeline-kafka
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$<mark> docker exec -it pipeline-kafka bash</mark>
+root@localhost:/# 
+root@localhost:/# 
+root@localhost:/# <mark>ip netns exec global-vrf bash </mark>
+root@localhost:/# 
+root@localhost:/# 
+root@localhost:/# <mark>ps -ef | grep -E "pipeline|kafka|zookeeper" </mark>
+root         9     6  0 02:05 ?        00:00:00 /pipeline --config=/data/pipeline.conf --log=/data/pipeline.log
+root        10     6  0 02:05 ?        00:00:00 /usr/bin/java -Dzookeeper.log.dir=/var/log/zookeeper -Dzookeeper.root.logger=INFO,ROLLINGFILE -cp /etc/zookeeper/conf:/usr/share/java/jline.jar:/usr/share/java/log4j-1.2.jar:/usr/share/java/xercesImpl.jar:/usr/share/java/xmlParserAPIs.jar:/usr/share/java/netty.jar:/usr/share/java/slf4j-api.jar:/usr/share/java/slf4j-log4j12.jar:/usr/share/java/zookeeper.jar org.apache.zookeeper.server.quorum.QuorumPeerMain /etc/zookeeper/conf/zoo.cfg
+root        11     6  0 02:05 ?        00:00:00 /bin/sh /usr/bin/start-kafka.sh
+root        12    11  3 02:05 ?        00:00:02 /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java -Xmx256M -Xms256M -server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+DisableExplicitGC -Djava.awt.headless=true -Xloggc:/opt/kafka_2.11-0.10.1.0/bin/../logs/kafkaServer-gc.log -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCTimeStamps -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dkafka.logs.dir=/opt/kafka_2.11-0.10.1.0/bin/../logs -Dlog4j.configuration=file:/opt/kafka_2.11-0.10.1.0/bin/../config/log4j.properties -cp :/opt/kafka_2.11-0.10.1.0/bin/../libs/aopalliance-repackaged-2.4.0-b34.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/argparse4j-0.5.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/connect-api-0.10.1.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/connect-file-0.10.1.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/connect-json-0.10.1.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/connect-runtime-0.10.1.0.jar:/opt/kafka_2.11-0-
+
+########################  SNIP Output #########################################
+
+9.2.15.v20160210.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jetty-server-9.2.15.v20160210.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jetty-servlet-9.2.15.v20160210.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jetty-servlets-9.2.15.v20160210.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/jetty-util-9.2.15.v20160210.jar:/opt/kafka_2.11-0.10.1.0/-locator-1.0.1.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/reflections-0.9.10.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/rocksdbjni-4.9.0.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/scala-library-2.11.8.jar:/opt/kafka_2.11-0.10.1.0/bin/../libs/scala-
+root       314   312  0 02:06 ?        00:00:00 grep -E pipeline|kafka|zookeeper
+root@localhost:/# 
+</code>
+</pre>
+</div>
+
+<p class="notice--success">Perfect! As we can see the required services: Pipeline, Kafka and Zookeeper were started in the correct network namespace ( notice we did an exec into the global-vrf network namespace) before checking if the processes are running.</p>
+
+<h2 id="testing-the-on-box-telemetry-receiver">Testing the on-box Telemetry receiver</h2>
+
+<p>To test out the setup, let us first configure IOS-XR to send model-driven Telemetry data to the local pipeline receiver.
+<strong>Remember, in our custom pipeline.conf we set up pipeline to listen on UDP port 5958 on IP=1.1.1.1</strong></p>
+
+<p>The configuration required on IOS-XR is:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+RP/0/RSP1/CPU0:asr9k#
+RP/0/RSP1/CPU0:asr9k#show  running-config  interface  loopback 0
+Thu Apr 13 18:11:33.729 UTC
+interface Loopback0
+ ipv4 address 1.1.1.1 255.255.255.255
+!
+
+RP/0/RSP1/CPU0:asr9k#show  running-config  telemetry model-driven 
+Thu Apr 13 18:11:39.862 UTC
+telemetry model-driven
+ destination-group DGroup1
+ <mark>address family ipv4 1.1.1.1 port 5958 </mark>
+   encoding self-describing-gpb
+ <mark>protocol udp </mark>
+  !
+ !
+ sensor-group SGroup1
+  <mark>sensor-path Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters </mark>
+ !
+ subscription Sub1
+  sensor-group-id SGroup1 sample-interval 30000
+  destination-id DGroup1
+ !
+!
+
+RP/0/RSP1/CPU0:asr9k#
+
+</code>
+</pre>
+</div>
+
+<p>Notice the highlighted configurations:</p>
+
+<ul>
+  <li>
+    <p>We configure the destination to be 1.1.1.1:5958 over UDP, where 1.1.1.1 = loopback0 ip address of XR. Could be any Loopback or interface IP (Except any east-west interface IP address under tpa)</p>
+  </li>
+  <li>
+    <p>We select the following sensor path: <code class="highlighter-rouge">Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters</code>. This sensor path is used to export interface stats for all interfaces on the box using the Cisco IOS-XR infra-statsd-oper YANG model.</p>
+  </li>
+</ul>
+
+<p class="notice--info"><strong>To learn more about how to configure model-driven telemetry, check out this great tutorial by Shelly:  <a href="https://xrdocs.github.io/telemetry/tutorials/2016-07-21-configuring-model-driven-telemetry-mdt/">https://xrdocs.github.io/telemetry/tutorials/2016-07-21-configuring-model-driven-telemetry-mdt/</a></strong></p>
+
+<h3 id="query-the-local-kafka-instance">Query the local Kafka instance</h3>
+
+<p>As soon as you configure Model-Driven Telemetry as shown above, the router will start streaming statistics to the local pipeline instance.
+Pipeline will then push the stats to Kafka running locally to the topic = ‘telemetry’ ( We configured this in our custom pipeline.conf file).</p>
+
+<p>Finally purely for test purposes, the docker build process includes a sample python script that uses the python-kafka library to act as a kafka consumer.</p>
+
+<p>You can find this inside the running docker container under / :</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code class="language-python">
+[asr9k:~]$<mark> docker exec -it pipeline-kafka bash </mark>
+root@localhost:/# <mark>ip netns exec global-vrf bash </mark>
+root@localhost:/# 
+root@localhost:/# pwd
+/
+root@localhost:/# ls kafka_consumer.py 
+kafka_consumer.py
+</code>
+</pre>
+</div>
+
+<p>This is what the sample query script looks like:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">kafka</span> <span class="kn">import</span> <span class="n">KafkaConsumer</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">"__main__"</span><span class="p">:</span>
+
+    <span class="n">consumer</span> <span class="o">=</span> <span class="n">KafkaConsumer</span><span class="p">(</span><span class="s">'telemetry'</span><span class="p">,</span> <span class="n">bootstrap_servers</span><span class="o">=</span><span class="p">[</span><span class="s">"1.1.1.1:9092"</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="n">msg</span> <span class="ow">in</span> <span class="n">consumer</span><span class="p">:</span>
+        <span class="n">telemetry_msg</span> <span class="o">=</span>  <span class="n">msg</span><span class="o">.</span><span class="n">value</span>
+        <span class="n">telemetry_msg_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">telemetry_msg</span><span class="p">)</span>
+
+        <span class="k">print</span> <span class="s">"</span><span class="se">\n</span><span class="s">Telemetry data Received:</span><span class="se">\n</span><span class="s"> "</span>
+
+        <span class="k">print</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">telemetry_msg_json</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s">"Rows"</span> <span class="ow">in</span> <span class="n">telemetry_msg_json</span><span class="p">:</span>
+            <span class="n">content_rows</span> <span class="o">=</span> <span class="n">telemetry_msg_json</span><span class="p">[</span><span class="s">"Rows"</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">content_rows</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s">"Keys"</span><span class="p">][</span><span class="s">"interface-name"</span><span class="p">]</span> <span class="o">==</span> <span class="s">'MgmtEth0/RSP1/CPU0/0'</span><span class="p">:</span>
+                    <span class="n">pkt_rcvd</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s">"Content"</span><span class="p">][</span><span class="s">"packets-received"</span><span class="p">]</span>               
+                    <span class="n">input_drops</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s">"Content"</span><span class="p">][</span><span class="s">"input-drops"</span><span class="p">]</span>
+
+                    <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Parsed fields for interface  MgmtEth0/RSP1/CPU0/0:</span><span class="se">\
+</span><span class="s">                            </span><span class="se">\n</span><span class="s">  Packets Received = </span><span class="si">%</span><span class="s">s,</span><span class="se">\
+</span><span class="s">                            </span><span class="se">\n</span><span class="s">  Input Drops = </span><span class="si">%</span><span class="s">s"</span> <span class="o">%</span><span class="p">(</span><span class="n">pkt_rcvd</span><span class="p">,</span> <span class="n">input_drops</span><span class="p">))</span> 
+ 
+</code></pre></div></div>
+
+<p>As you can guess from the output above we’re executing the commands on an ASR9k. The script above has been built to dump the Telemetry stats in json format in realtime and also parse them to based on the interface key = <code class="highlighter-rouge">"MgmtEth0/RSP1/CPU0/0"</code>. If you want this piece of code to work for the Vagrant setup, you will have to use an interface key based on the Vagrant IOS-XR interface naming convention (<code class="highlighter-rouge">MgmtEth0/RP0/CPU0/0</code>, <code class="highlighter-rouge">GigabitEthernet0/0/0/0</code> etc.)</p>
+
+<p>When we run the script, we get:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code class="shell">
+root@localhost:/# python kafka_consumer.py 
+
+Telemetry data Received:
+ 
+{
+    "Rows": [
+        {
+            "Content": {
+                "applique": 0, 
+                "availability-flag": 0, 
+                "broadcast-packets-received": 0, 
+                "broadcast-packets-sent": 0, 
+                "bytes-received": 0, 
+                "bytes-sent": 0, 
+                "carrier-transitions": 0, 
+                "crc-errors": 0, 
+                "framing-errors-received": 0, 
+                "giant-packets-received": 0, 
+                "input-aborts": 0, 
+                "input-drops": 0, 
+                "input-errors": 0, 
+                "input-ignored-packets": 0, 
+                "input-overruns": 0, 
+                "input-queue-drops": 0, 
+                "last-data-time": 1492110984, 
+                "last-discontinuity-time": 1484314261, 
+                "multicast-packets-received": 0, 
+                "multicast-packets-sent": 0, 
+                "output-buffer-failures": 0, 
+                "output-buffers-swapped-out": 0, 
+                "output-drops": 0, 
+                "output-errors": 0, 
+                "output-queue-drops": 0, 
+                "output-underruns": 0, 
+                "packets-received": 0, 
+                "packets-sent": 0, 
+                "parity-packets-received": 0, 
+                "resets": 0, 
+                "runt-packets-received": 0, 
+                "seconds-since-last-clear-counters": 0, 
+                "seconds-since-packet-received": 4294967295, 
+                "seconds-since-packet-sent": 4294967295, 
+                "throttled-packets-received": 0, 
+                "unknown-protocol-packets-received": 0
+            }, 
+            "Keys": {
+                "interface-name": "Null0"
+            }, 
+            "Timestamp": 1492110987184
+        }, 
+        {
+            "Content": {
+                "applique": 0, 
+                "availability-flag": 0, 
+                "broadcast-packets-received": 5894231, 
+                "broadcast-packets-sent": 0, 
+                "bytes-received": 2413968971, 
+                "bytes-sent": 830100769, 
+                "carrier-transitions": 15, 
+                "crc-errors": 0, 
+                "framing-errors-received": 0, 
+                "giant-packets-received": 0, 
+                "input-aborts": 0, 
+                "input-drops": 0, 
+                "input-errors": 0, 
+                "input-ignored-packets": 0, 
+                "input-overruns": 0, 
+                "input-queue-drops": 0, 
+                "last-data-time": 1492110987, 
+                "last-discontinuity-time": 1484314243, 
+                "multicast-packets-received": 24, 
+                "multicast-packets-sent": 0, 
+                "output-buffer-failures": 0, 
+                "output-buffers-swapped-out": 0, 
+                "output-drops": 0, 
+                "output-errors": 0, 
+                "output-queue-drops": 0, 
+                "output-underruns": 0, 
+                "packets-received": 8712938, 
+                "packets-sent": 2328185, 
+                "parity-packets-received": 0, 
+                "resets": 0, 
+                "runt-packets-received": 0, 
+                "seconds-since-last-clear-counters": 0, 
+                "seconds-since-packet-received": 0, 
+                "seconds-since-packet-sent": 3, 
+                "throttled-packets-received": 0, 
+                "unknown-protocol-packets-received": 0
+            }, 
+            "Keys": {
+                "interface-name": "MgmtEth0/RSP1/CPU0/0"
+            }, 
+            "Timestamp": 1492110987184
+        }
+    ], 
+    "Source": "1.1.1.1:18046", 
+    "Telemetry": {
+        "collection_end_time": 0, 
+        "collection_id": 12254, 
+        "collection_start_time": 1492110987176, 
+        "encoding_path": "Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters", 
+        "msg_timestamp": 1492110987176, 
+        "node_id_str": "asr9k", 
+        "subscription_id_str": "Sub1"
+    }
+}
+
+Parsed fields for interface  MgmtEth0/RSP1/CPU0/0:                            
+  Packets Received = 8712938,                            
+  Input Drops = 0
+
+Telemetry data Received:
+ 
+{
+    "Source": "1.1.1.1:18046", 
+    "Telemetry": {
+        "collection_end_time": 1492110987186, 
+        "collection_id": 12254, 
+        "collection_start_time": 0, 
+        "encoding_path": "Cisco-IOS-XR-infra-statsd-oper:infra-statistics/interfaces/interface/latest/generic-counters", 
+        "msg_timestamp": 1492110987186, 
+        "node_id_str": "asr9k", 
+        "subscription_id_str": "Sub1"
+    }
+}
+</code>
+</pre>
+</div>
+
+<p class="notice--success">Works Great! Now that you’re able to capture Telemetry messages in realtime through a python script and are able to parse through the fields, you should be able to create your own conditions and actions based on the value of the fields. There you have it! Your own standalone pipeline and Kafka based Telemetry receiver running on the box.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/application-hosting/tags/#cisco" class="page__taxonomy-item" rel="tag">cisco</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/application-hosting/tags/#docker" class="page__taxonomy-item" rel="tag">docker</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/application-hosting/tags/#iosxr" class="page__taxonomy-item" rel="tag">iosxr</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/application-hosting/tags/#pipeline" class="page__taxonomy-item" rel="tag">pipeline</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/application-hosting/tags/#telemetry" class="page__taxonomy-item" rel="tag">telemetry</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/application-hosting/tags/#vagrant" class="page__taxonomy-item" rel="tag">vagrant</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-04-13T06:53:00+00:00">April 13, 2017</time></p>
+        
+        
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/application-hosting/tutorials/2017-04-12-on-box-telemetry-running-pipeline-and-kafka-on-ios-xr/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/application-hosting/tutorials/2017-04-12-on-box-telemetry-running-pipeline-and-kafka-on-ios-xr/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/application-hosting/tutorials/2017-04-12-on-box-telemetry-running-pipeline-and-kafka-on-ios-xr/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/application-hosting/tutorials/2017-04-12-on-box-telemetry-running-pipeline-and-kafka-on-ios-xr/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+
+    <br>
+    <br>
+    <br>
+</section>
+
+
+    </div>
+
+    
+      
+
+<div class="page__comments">
+  <h4 class="page__comments-title">Leave a Comment</h4>
+  
+    <section id="disqus_thread"></section>
+  
+</div>
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/xrdocs"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/xrdocs"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/application-hosting/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">This site is maintained by Cisco Systems, Inc. employees. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/application-hosting/assets/js/main.min.js"></script>
+<script src="http://localhost:4000/application-hosting/assets/js/scrollmenu.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-78256516-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'xrdocs';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+<!-- material-scrolltop button -->
+<button class="material-scrolltop" type="button"></button>
+
+<!-- material-scrolltop plugin -->
+<script src="http://localhost:4000/application-hosting/assets/js/material-scrolltop.js"></script>
+
+<!-- Initialize material-scrolltop with (minimal) -->
+<script>
+    $('body').materialScrollTop();
+</script>
+
+
+  </body>
+</html>
+

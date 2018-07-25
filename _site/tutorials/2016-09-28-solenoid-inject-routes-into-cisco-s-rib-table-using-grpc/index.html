@@ -1,0 +1,1208 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>            Solenoid: inject routes into Cisco’s RIB table using gRPC      IOS XR Application Hosting @xrdocs      </title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="IOS XR Application Hosting @xrdocs">
+<meta property="og:title" content="Solenoid: inject routes into Cisco’s RIB table using gRPC">
+
+
+  <link rel="canonical" href="http://localhost:4000/application-hosting/tutorials/2016-09-28-solenoid-inject-routes-into-cisco-s-rib-table-using-grpc/">
+  <meta property="og:url" content="http://localhost:4000/application-hosting/tutorials/2016-09-28-solenoid-inject-routes-into-cisco-s-rib-table-using-grpc/">
+
+
+
+  <meta property="og:description" content="This tutorial shows how to build the Solenoid application for injecting third-party BGP routes in Cisco’s RIB table.">
+
+
+
+  <meta name="twitter:site" content="@xrdocs">
+  <meta name="twitter:title" content="Solenoid: inject routes into Cisco’s RIB table using gRPC">
+  <meta name="twitter:description" content="This tutorial shows how to build the Solenoid application for injecting third-party BGP routes in Cisco’s RIB table.">
+  <meta name="twitter:url" content="http://localhost:4000/tutorials/2016-09-28-solenoid-inject-routes-into-cisco-s-rib-table-using-grpc/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="http://localhost:4000/application-hosting/images/app-hosting-xrdocs.jpg">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@">
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2016-09-28T23:17:00+00:00">
+  
+    <link rel="next" href="http://localhost:4000/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/" title="XR toolbox, Part 6: Running Docker Containers on IOS-XR (6.1.2+)">
+  
+  
+    <link rel="prev" href="http://localhost:4000/application-hosting/tutorials/2016-08-22-using-puppet-with-iosxr-6-1-1" title="Using Puppet with IOS-XR 6.1.1">
+  
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://localhost:4000/application-hosting",
+      "logo": "http://localhost:4000/application-hosting/images/app-hosting-xrdocs.jpg"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "person",
+      "name" : "Cisco Systems Inc",
+      "url" : "http://localhost:4000/application-hosting",
+      "sameAs" : ["https://twitter.com/xrdocs"]
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+<link href="http://localhost:4000/application-hosting/feed.xml" type="application/atom+xml" rel="alternate" title="IOS XR Application Hosting @xrdocs Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="jgRKKm6B9FwJJPXxpmc0-EP3D0Mh8JHXaJqoYIGj1ek" />
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<script>
+if (!(window.location.host.startsWith("127.0.0.1") || window.location.host.startsWith("localhost")) && (window.location.host.substr(-3) == '.io') && (window.location.protocol != "https:"))
+    window.location.protocol = "https";
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/application-hosting/assets/css/main.css">
+<meta http-equiv="cleartype" content="on">
+<style>
+.underline-on-hover:hover {
+    text-decoration: underline;
+}
+.searchForm{
+      border-radius:5px;
+      -moz-border-radius:5px;
+      -webkit-border-radius:5px;
+      width: 900px;
+   }
+#search_results{
+      display: table; margin:0 auto;
+   }
+</style>
+</style>
+
+    
+
+<!-- start custom head snippets -->
+
+<link href="http://localhost:4000/application-hosting/assets/css/lity.min.css" rel="stylesheet">
+<link href="http://localhost:4000/application-hosting/assets/css/cisco-sans.min.css" rel="stylesheet">
+<link href="http://localhost:4000/application-hosting/assets/css/material-scrolltop.css" rel="stylesheet">
+
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://localhost:4000/application-hosting/images/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/application-hosting/images/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/application-hosting/images/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/application-hosting/images/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="http://localhost:4000/application-hosting/images/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://localhost:4000/application-hosting/images/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://localhost:4000/application-hosting/images/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://localhost:4000/application-hosting/images/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="http://localhost:4000/application-hosting/images/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="http://localhost:4000/application-hosting/images/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="http://localhost:4000/application-hosting/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="http://localhost:4000/application-hosting/images/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="http://localhost:4000/application-hosting/images/favicon-128.png" sizes="128x128" />
+<link rel="shortcut icon" href="http://localhost:4000/application-hosting/images/favicon_cisco.ico" />
+<meta name="application-name" content="&nbsp;"/>
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="http://localhost:4000/application-hosting/images/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="http://localhost:4000/application-hosting/images/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="http://localhost:4000/application-hosting/images/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="http://localhost:4000/application-hosting/images/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="http://localhost:4000/application-hosting/images/mstile-310x310.png" />
+
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu" style="padding-left:2em;">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <img src="http://localhost:4000/application-hosting/images/xrdocs_logo.png" width="45px" height="45px" alt="xrdocs logo" style="float:left;">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000">@xrdocs</a></li>
+          <li class="masthead__menu-item"><a href="http://localhost:4000/application-hosting/">App-Hosting</a></li>
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="http://localhost:4000/application-hosting/blogs/">Blogs</a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item greedy-nav-active"><a href="http://localhost:4000/application-hosting/tutorials/">Tutorials</a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="http://localhost:4000/application-hosting/search">Search <i class="fa fa-search" aria-hidden="true"></i></a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="http://localhost:4000/application-hosting/tags/">Tags</a></li>
+                
+            
+
+
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="http://localhost:4000/application-hosting/images/avatars/lisa_bio.png" class="author__avatar" alt="Lisa Roach">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Lisa Roach</h3>
+    <p class="author__bio">Programmer dedicated to making good code and drinking good beer.</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+      
+      
+        <li><a href="mailto:lisroach@cisco.com"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="http://github.com/lisroach"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+
+  </div>
+    <br><button class="btn"><a href="//pdfcrowd.com/url_to_pdf/" style="color:white">Save as PDF</a></button>
+
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Solenoid: inject routes into Cisco’s RIB table using gRPC">
+    <meta itemprop="description" content="This tutorial shows how to build the Solenoid application for injecting third-party BGP routes in Cisco’s RIB table.">
+    <meta itemprop="datePublished" content="September 28, 2016">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Solenoid: inject routes into Cisco’s RIB table using gRPC
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  17 minutes read
+</p>
+          
+        </header>
+      
+
+    
+      
+        
+
+
+
+
+
+<div class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList" style="margin:0;padding:0;">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" style="margin:0;padding:0;">
+          <a href="http://localhost:4000/application-hosting/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" style="margin:0;padding:0;">
+          <a href="http://localhost:4000/application-hosting/tutorials" itemprop="item"><span itemprop="name">Tutorials</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current" style="margin:0;padding:0;">Solenoid: inject routes into Cisco's RIB table using gRPC</li>
+      
+    
+  </ol>
+</div>
+
+      
+    
+
+      <section class="page__content" itemprop="text">
+        <aside class="sidebar__right">
+<nav class="toc">
+    <header><h4 class="nav__title"><i class="fa fa-file-text"></i> On This Page</h4></header>
+<ul class="toc__menu" id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a>    <ul>
+      <li><a href="#how-solenoid-works" id="markdown-toc-how-solenoid-works">How Solenoid Works</a></li>
+    </ul>
+  </li>
+  <li><a href="#pre-requisites" id="markdown-toc-pre-requisites">Pre-requisites</a></li>
+  <li><a href="#understand-the-topology" id="markdown-toc-understand-the-topology">Understand the Topology</a></li>
+  <li><a href="#clone-the-git-repo" id="markdown-toc-clone-the-git-repo">Clone the git repo</a></li>
+  <li><a href="#spin-up-the-ubuntu-devbox" id="markdown-toc-spin-up-the-ubuntu-devbox">Spin up the Ubuntu devbox</a></li>
+  <li><a href="#create-solenoid-lxc-tarball" id="markdown-toc-create-solenoid-lxc-tarball">Create Solenoid LXC tarball</a>    <ul>
+      <li><a href="#install-application-dependencies-inside-lxc" id="markdown-toc-install-application-dependencies-inside-lxc">Install Application dependencies inside LXC</a></li>
+      <li><a href="#fetch-the-application-code-from-github" id="markdown-toc-fetch-the-application-code-from-github">Fetch the Application code from github</a></li>
+      <li><a href="#configure-solenoid-and-exabgp" id="markdown-toc-configure-solenoid-and-exabgp">Configure Solenoid and exaBGP</a></li>
+      <li><a href="#change-the-ssh-port-inside-the-container" id="markdown-toc-change-the-ssh-port-inside-the-container">Change the SSH port inside the container</a></li>
+      <li><a href="#package-up-the-lxc" id="markdown-toc-package-up-the-lxc">Package up the LXC</a></li>
+    </ul>
+  </li>
+  <li><a href="#launch-router-topology" id="markdown-toc-launch-router-topology">Launch router topology</a></li>
+  <li><a href="#test-out-solenoid" id="markdown-toc-test-out-solenoid">Test out Solenoid</a>    <ul>
+      <li><a href="#solenoid-gui" id="markdown-toc-solenoid-gui">Solenoid GUI</a></li>
+      <li><a href="#solenoid-on-the-backend" id="markdown-toc-solenoid-on-the-backend">Solenoid on the Backend</a></li>
+    </ul>
+  </li>
+</ul>
+
+  </nav>
+</aside>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>If you haven’t checked out the XR toolbox Series, then you can do so here:</p>
+
+<p><a href="http://localhost:4000/application-hostingapplication-hosting/tags/#xr-toolbox">XR Toolbox Series</a></p>
+
+<p>This series is meant to help a beginner get started with application-hosting on IOS-XR.</p>
+
+<p>In this tutorial we intend to utilize almost all the techniques learned in the above series to inject third-party BGP routes into Cisco’s RIB table.</p>
+
+<h3 id="how-solenoid-works">How Solenoid Works</h3>
+
+<p>This tutorial focuses on hosting the Solenoid application on IOS-XR, but following is a brief description of how Solenoid works.</p>
+
+<p>For the demos Solenoid uses <a href="https://github.com/Exa-Networks/exabgp">exaBGP</a> as a third-party BGP software. exaBGP will be running on an Ubuntu vagrant box as well as in a third-party container on the IOS-XR (see <a href="#understand-the-topology">Understand the Topology</a> for more information). The two boxes form a BGP neighbor relationship.</p>
+
+<p>When exaBGP in the IOS-XR container hears a neighborhood update (either an announcement of a new route or a withdrawal of an old route), Solenoid works as the glue between exaBGP and the Cisco RIB table. Solenoid hears the exaBGP update, and pulls out the relevant data from the exaBGP udate and models it using the <a href="https://github.com/YangModels/yang/blob/master/vendor/cisco/xr/600/Cisco-IOS-XR-ip-static-cfg.yang">Cisco YANG</a> model for static routes. Then it uses <a href="http://www.grpc.io/">gRPC</a> to send the data to the RIB table.</p>
+
+<h2 id="pre-requisites">Pre-requisites</h2>
+
+<p>Make sure you have <a href="https://www.vagrantup.com/downloads.html">Vagrant</a> and <a href="https://www.virtualbox.org/wiki/Downloads">Virtualbox</a> installed on your system.</p>
+
+<p>The system must have  4.5GB of space available. The topology includes an IOS-XRv router (3.5G RAM) and an Ubuntu instance (501MB RAM).</p>
+
+<p>Go through the Vagrant quick-start tutorial, if you haven’t already, to learn how to use Vagrant with IOS-XR: <a href="http://localhost:4000/application-hosting/application-hosting/tutorials/iosxr-vagrant-quickstart">IOS-XR vagrant quick-start</a></p>
+
+<p>It would be beneficial for the user to go through the <a href="http://localhost:4000/application-hosting/application-hosting/tags/#xr-toolbox">XR Toolbox Series</a>. But it is not a hard requirement. Following the steps in this tutorial should work out just fine for this demo.</p>
+
+<p>Once you have everything set up, you should be able to see the IOS-XRv vagrant box in the <code class="highlighter-rouge">vagrant box list</code> command:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+lisroach@LISROACH-M-J0AY ~/W/X/S/vagrant&gt; vagrant box list
+IOS XRv         (virtualbox, 0)
+</code>
+</pre>
+</div>
+
+<h2 id="understand-the-topology">Understand the Topology</h2>
+
+<p><img src="https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/SolenoidDiagram.png" alt="image-center" class="align-center" /></p>
+
+<ul>
+  <li>
+    <p><strong>devbox</strong>: The Ubuntu Vagrant box on the right. This is running exaBGP and is peered with the xrv router to its left. exaBGP is sending out 3 BGP neighbor announcements and withdrawals about every 2 seconds.</p>
+  </li>
+  <li>
+    <p><strong>xrv</strong>: The router on the left. This router is running a gRPC server, and is not running any version of Cisco’s BGP. It has an Ubuntu LXC as it’s third-party container instead, which is running exaBGP and the Solenoid application.</p>
+  </li>
+  <li>
+    <p><strong>solenoid container</strong>: The Ubuntu LXC that is running on the xrv. exaBGP is peered with the devbox and hears all of its neighbor’s announcements and withdrawals. Upon receiving a neighborhood update, exaBGP runs Solenoid, which uses a gRPC client and YANG models to send the new route (or withdrawn route) to the RIB table in the IOS-XR.</p>
+  </li>
+</ul>
+
+<h2 id="clone-the-git-repo">Clone the git repo</h2>
+
+<p>The entire environment can be replicated on any environment running vagrant, provided there is at least 4.5GB of space available.</p>
+
+<p>Clone the Solenoid code from here: <a href="https://github.com/ios-xr/Solenoid.git">https://github.com/ios-xr/Solenoid.git</a></p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+lisroach@LISROACH-M-J0AY ~/Workspace&gt; <mark>git clone https://github.com/ios-xr/Solenoid.git</mark>
+Cloning into 'Solenoid'...
+remote: Counting objects: 1539, done.
+remote: Compressing objects: 100% (623/623), done.
+remote: Total 1539 (delta 884), reused 1508 (delta 866), pack-reused 0
+Receiving objects: 100% (1539/1539), 713.76 KiB | 317.00 KiB/s, done.
+Resolving deltas: 100% (884/884), done.
+Checking connectivity... done.
+lisroach@LISROACH-M-J0AY ~/Workspace&gt;
+</code>
+</pre>
+</div>
+
+<h2 id="spin-up-the-ubuntu-devbox">Spin up the Ubuntu devbox</h2>
+
+<p>Before we spin up the routers, we can create the container tarball for the Solenoid code. The way the launch scripts are setup for xrv, you can launch the vagrant boxes without creating a new Solenoid tarball (since one with the latest release will be downloaded for you automatically). But if you interested in the absolute latest code, or are interested in the process for your own education, follow the steps below to create your own Solenoid tarball. If you are not interested, skip to <a href="#launch-router-topology">Launch router topology</a>.</p>
+
+<p>Move into the vagrant directory and launch only the devbox node:</p>
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+lisroach@LISROACH-M-J0AY ~/Workspace&gt; cd Solenoid/vagrant
+lisroach@LISROACH-M-J0AY ~/W/S/vagrant&gt; vagrant up devbox
+</code>
+</pre>
+</div>
+
+<p>exaBGP is already installed and running on your devbox. If you want to see it running, you can jump into the exabgp screen.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo screen -ls
+There is a screen on:
+       	1762.exabgp    	(09/27/2016 10:43:34 PM)       	(Detached)
+1 Socket in /var/run/screen/S-root.
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo screen -r exabgp
+Tue, 27 Sep 2016 23:43:25 | INFO     | 1764   | processes     | Command from process add-routes : announce route 2.2.2.0/24 next-hop self
+Tue, 27 Sep 2016 23:43:25 | INFO     | 1764   | reactor       | Route added to neighbor 11.1.1.10 local-ip 11.1.1.20 local-as 65000 peer-as 65000 router-id 11.1.1.20 family-allowed in-open : 2.2.2.0/24 next-hop 11.1.1.20
+</code>
+</pre>
+</div>
+
+<p>To detach from the screen, do the following:</p>
+
+<p class="notice--warning">CTRL+a, d</p>
+
+<p>You do not want to kill the process in the screen or destroy the screen, so be sure you detach properly. You will see the following output:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo screen -r exabgp
+[detached from 1762.exabgp]
+</code>
+</pre>
+</div>
+
+<h2 id="create-solenoid-lxc-tarball">Create Solenoid LXC tarball</h2>
+
+<p>Enter the devbox:</p>
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+lisroach@LISROACH-M-J0AY ~/W/S/vagrant&gt; <mark>vagrant ssh devbox</mark>
+Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.13.0-92-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+  System information as of Tue Sep 27 23:20:46 UTC 2016
+
+  System load:  0.06              Users logged in:       0
+  Usage of /:   5.4% of 39.34GB   IP address for eth0:   10.0.2.15
+  Memory usage: 36%               IP address for eth1:   11.1.1.20
+  Swap usage:   0%                IP address for lxcbr0: 10.0.3.1
+  Processes:    80
+
+  Graph this data and manage this system at:
+    https://landscape.canonical.com/
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+New release '16.04.1 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+Last login: Tue Sep 27 23:20:46 2016 from 10.0.2.2
+vagrant@vagrant-ubuntu-trusty-64:~$
+</code>
+</pre>
+</div>
+<p>Install LXC:</p>
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo apt-get update
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo apt -y install lxc
+</code>
+</pre>
+</div>
+<p>Create the Solenoid LXC template:</p>
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo lxc-create -t ubuntu --name solenoid	 
+</code>
+</pre>
+</div>
+<p>Start the container. You will be dropped into the console once boot is complete.</p>
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo lxc-start --name solenoid
+solenoid login: init: setvtrgb main process (428) terminated with status 1
+init: plymouth-upstart-bridge main process ended, respawning
+<mark>ubuntu</mark>
+Password:
+</code>
+</pre>
+</div>
+
+<p class="notice--info">Username: ubuntu<br />
+Password: ubuntu</p>
+
+<h3 id="install-application-dependencies-inside-lxc">Install Application dependencies inside LXC</h3>
+
+<p>Install Solenoid, exaBGP and all of their dependencies inside the container. Initiate the following commands:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+ubuntu@solenoid:~$ sudo apt-get -y install git curl screen python-dev python-setuptools
+[sudo] password for ubuntu: ubuntu
+ubuntu@solenoid:~$ sudo easy_install pip
+ubuntu@solenoid:~$ sudo pip install virtualenv exabgp
+</code>
+</pre>
+</div>
+
+<p>These dependencies make it possible for us to install the important components of our applications.</p>
+
+<h3 id="fetch-the-application-code-from-github">Fetch the Application code from github</h3>
+
+<p>Now, download Solenoid from github. Using the Solenoid directory, we can install most of the remaining dependencies with the setup.py installation script.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+ubuntu@solenoid:~$ git clone https://github.com/ios-xr/Solenoid.git
+</code>
+</pre>
+</div>
+
+<p>Let’s install the dependencies in a <a href="http://docs.python-guide.org/en/latest/dev/virtualenvs/">virtualenv</a>. First, navigate into the Solenoid directory and activate the virtualenv.</p>
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+ubuntu@solenoid:~$ cd Solenoid
+ubuntu@solenoid:~$ virtualenv venv
+ubuntu@solenoid:~$ source venv/bin/activate
+</code>
+</pre>
+</div>
+
+<p>The <code class="highlighter-rouge">(venv)</code> indicates that you have entered your virtualenv. Now you can install the dependencies, and they will only be available in your virtualenv. This means you will have to activate your virtualenv in order to run Solenoid.</p>
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+(venv) ubuntu@solenoid:~$ pip install grpcio
+(venv) ubuntu@solenoid:~$ python setup.py install 
+</code>
+</pre>
+</div>
+
+<p class="notice--success">Perfect! Now all of our dependencies have been installed.</p>
+
+<h3 id="configure-solenoid-and-exabgp">Configure Solenoid and exaBGP</h3>
+
+<p>Solenoid requires a configuration file to indicate some important metadata. Create a file named <code class="highlighter-rouge">solenoid.config</code> with the following data (in the <strong>Solenoid/</strong> top-level directory):</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+[default]	# Name you choose for the node
+transport: gRPC    # Either gRPC or RESTconf
+ip: 11.1.1.10      # IP address of the destination RIB table (the XR device you intend to control)
+port: 57777 	   # Depends on what is configured for your gRPC or RESTconf servers
+username: vagrant  # Username for the XR device
+password: vagrant  # Password for the XR device
+</code>
+</pre>
+</div>
+
+<p>That is all we need to configure Solenoid for your system. Now we need to add a configuration file for exaBGP. Navigate to your <strong>home directory</strong>, and add a file named <strong>router.ini</strong>:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+group demo {
+        router-id 11.1.1.10;
+
+        process monitor-neighbors {
+            encoder json;
+            receive {
+                parsed;
+                updates;
+                neighbor-changes;
+            }
+            <mark>run /usr/bin/env python /home/ubuntu/Solenoid/solenoid/edit_rib.py -f '/home/ubuntu/Solenoid/filter.txt';</mark>
+        }
+
+        neighbor 11.1.1.20 {
+                local-address 11.1.1.10;
+                local-as 65000;
+                peer-as 65000;
+        }
+}
+</code>
+</pre>
+</div>
+
+<p>The most important part of this code is:<br />
+<code class="highlighter-rouge">run /usr/bin/env python /home/ubuntu/Solenoid/solenoid/edit_rib.py -f '/home/ubuntu/Solenoid/filter.txt';</code></p>
+
+<p>This line runs a custom script. The <code class="highlighter-rouge">/usr/bin/env python</code> is the path to your python instance. Specifically, it is the path to the first python instance in your PATH, which is important because we are using a virtualenv where the python path might be different than the normal <code class="highlighter-rouge">/usr/bin/python</code>.</p>
+
+<p><code class="highlighter-rouge">/home/ubuntu/Solenoid/solenoid/edit_rib.py</code> is the path to the file that launches Solenoid.</p>
+
+<p>The second half of the line, <code class="highlighter-rouge">-f '/home/ubuntu/Solenoid/filter.txt'</code> is an optional file argument pointing to the file used for filtering .</p>
+
+<p>For more information about the router.ini file, please consult <a href="https://github.com/ios-xr/Solenoid/wiki/router.ini-file">Solenoid’s Wiki</a> and review <a href="https://github.com/Exa-Networks/exabgp/wiki/Controlling-ExaBGP-:-possible-options-for-process">exaBGP’s documentation</a>.</p>
+
+<h3 id="change-the-ssh-port-inside-the-container">Change the SSH port inside the container</h3>
+
+<p>When we deploy the container to IOS-XR, we will share XR’s network namespace. Since IOS-XR already uses up port 22 and port 57722 for its own purposes, we need to pick some other port for our container.</p>
+
+<p><strong>P.S. If you check the Vagrantfile, we intend to expose port 58822 to the user’s laptop directly, on IOS-XRv.</strong></p>
+
+<p>Let’s change the SSH port to 58822:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+(venv) ubuntu@solenoid:~$ sudo sed -i s/Port\ 22/Port\ 58822/ /etc/ssh/sshd_config
+</code>
+</pre>
+</div>
+
+<p>Check that your port was updated successfully:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+(venv) ubuntu@solenoid:~$ cat /etc/ssh/sshd_config | grep Port
+Port 58822
+</code>
+</pre>
+</div>
+
+<p>We’re good!</p>
+
+<h3 id="package-up-the-lxc">Package up the LXC</h3>
+
+<p>Shutdown the container:</p>
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+(venv) ubuntu@solenoid:~$ sudo shutdown -h now
+(venv) ubuntu@solenoid:~$
+Broadcast message from ubuntu@solenoid
+       	(/dev/lxc/console) at 23:00 ...
+
+The system is going down for halt NOW!
+init: tty4 main process (369) killed by TERM signal
+init: tty2 main process (372) killed by TERM signal
+init: tty3 main process (373) killed by TERM signal
+init: cron main process (383) killed by TERM signal
+...
+</code>
+</pre>
+</div>
+
+<p class="notice--success">You’re back on the devbox.</p>
+
+<p>Become root and package up your tarball:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo -s
+root@vagrant-ubuntu-trusty-64:~# cd /var/lib/lxc/solenoid/rootfs/
+root@vagrant-ubuntu-trusty-64:~# tar -czvf /vagrant/solenoid.tgz *
+</code>
+</pre>
+</div>
+
+<p>See what we did there? We packaged up the container tarball as <code class="highlighter-rouge">solenoid.tgz</code> under <code class="highlighter-rouge">/vagrant</code> directory. Why is this important?<br />
+Well, Vagrant also automatically shares a certain directory with your laptop (for most types of guest operating systems). So the <code class="highlighter-rouge">/vagrant</code> is automatically mapped to the directory in which you launched your vagrant instance. To check this, let’s get out of our vagrant instance and issue an ls in your launch directory:</p>
+<div class="highlighter-rouge notice--info">
+<pre class="highlight">
+<code>
+root@vagrant-ubuntu-trusty-64:~# exit
+exit
+vagrant@vagrant-ubuntu-trusty-64:~$ exit
+logout
+Connection to 127.0.0.1 closed.
+lisroach@LISROACH-M-J0AY ~/W/S/vagrant&gt; pwd
+/Users/lisroach/Workspace/Solenoid/vagrant
+lisroach@LISROACH-M-J0AY ~/W/S/vagrant&gt; ls -la solenoid.tgz
+-rw-r--r--  1 lisroach  staff  252417007 Aug 2 11:27 solenoid.tgz
+&gt;
+</code>
+</pre>
+</div>
+
+<p class="notice--success">Now you have your solenoid tarball! This will be used to launch the container on your IOS-XRv. If you did not create this tarball, the Vagrantfile is smart enough to grab the container from the internet.</p>
+
+<h2 id="launch-router-topology">Launch router topology</h2>
+
+<p>Launching the router topology is incredibly simple. Just do a <code class="highlighter-rouge">vagrant up</code> in the <code class="highlighter-rouge">Solenoid/vagrant/</code> directory.</p>
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+lisroach@LISROACH-M-J0AY ~/W/S/vagrant&gt; pwd
+/Users/lisroach/Workspace/Solenoid/vagrant
+lisroach@LISROACH-M-J0AY ~/W/S/vagrant&gt; <mark>vagrant up</mark>
+Bringing machine 'xrv' up with 'virtualbox' provider...
+Bringing machine 'devbox' up with 'virtualbox' provider...
+==&gt; xrv: Importing base box 'IOS XRv'...
+</code>
+</pre>
+</div>
+
+<p>It will take a few minutes, and you will see a number of ugly looking messages like these:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+==&gt; xrv: tar: dev/audio2: Cannot mknod: Operation not permitted
+==&gt; xrv: tar: dev/sequencer: Cannot mknod: Operation not permitted
+==&gt; xrv: tar: dev/midi3: Cannot mknod: Operation not permitted
+==&gt; xrv: tar: dev/mixer3: Cannot mknod: Operation not permitted
+==&gt; xrv: tar: dev/smpte3: Cannot mknod: Operation not permitted
+==&gt; xrv: tar: dev/mpu401data: Cannot mknod: Operation not permitted
+</code>
+</pre>
+</div>
+
+<p>But don’t worry, your vagrant boxes are working perfectly. Once you see the following message you will know you are done:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+==&gt; xrv: Machine 'xrv' has a post `vagrant up` message. This is a message
+==&gt; xrv: from the creator of the Vagrantfile, and not from Vagrant itself:
+==&gt; xrv:
+==&gt; xrv:
+==&gt; xrv:     Welcome to the IOS XRv (64-bit) VirtualBox.
+...
+</code>
+</pre>
+</div>
+
+<p>You can also check the status of your vagrant boxes:</p>
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+lisroach@LISROACH-M-J0AY ~/W/S/vagrant&gt; vagrant status
+Current machine states:
+
+<mark>xrv                       running (virtualbox)</mark>
+<mark>devbox                    running (virtualbox)</mark>
+
+This environment represents multiple VMs. The VMs are all listed
+above with their current state. For more information about a specific
+VM, run `vagrant status NAME`.
+</code>
+</pre>
+</div>
+
+<p class="notice--success">Great! Time to start playing with Solenoid.</p>
+
+<h2 id="test-out-solenoid">Test out Solenoid</h2>
+
+<h3 id="solenoid-gui">Solenoid GUI</h3>
+
+<p>After completing the initial <code class="highlighter-rouge">vagrant up</code>, the application is already up and running. In your browser, navigate to:</p>
+
+<p><code class="highlighter-rouge">localhost:57780</code></p>
+
+<p><img src="https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/solenoid-browser.png" alt="image-center" class="align-center" /></p>
+
+<p>Here you will see the routes being added and withdrawn from the IOS-XRv’s RIB table.</p>
+
+<p>These routes are the routes that are being automatically sent and withdrawn from the exaBGP instance running in your devbox.</p>
+
+<p>Currently there is no filtering enabled, but feel free to add prefixes or prefix ranges to the filtering file. This file acts as a <strong>whitelist</strong>, so by adding a prefix or prefix range, all other prefixes will be dropped. 
+<img src="https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/solenoid-filtering1.png" alt="image-center" class="align-center" /></p>
+
+<p>For example, add the prefix range <code class="highlighter-rouge">1.1.1.0/24-2.2.2.0/24</code> to the filtering. Now watch as the <code class="highlighter-rouge">3.3.3.0/24</code> network never gets added to the RIB table, because it has been filtered out.</p>
+
+<p><img src="https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/solenoid-filtering2.png" alt="image-center" class="align-center" /></p>
+
+<p>To view the application running on the box, reference the instructions below on how to navigate the vagrant environment.</p>
+
+<h3 id="solenoid-on-the-backend">Solenoid on the Backend</h3>
+
+<p>Let’s see what Solenoid looks like on the box. First we’ll check our RIB table on the <code class="highlighter-rouge">xrv</code>. In order to do this, we need to SSH into the <code class="highlighter-rouge">xrv</code>. First, find out the port that has been forwarded for port 22. Then ssh into that port, and you will find yourself in the CLI. From there, view your RIB table.</p>
+
+<p class="notice--info">Password: vagrant</p>
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+lisroach@LISROACH-M-J0AY ~/W/S/vagrant&gt; <mark>vagrant port xrv</mark>
+The forwarded ports for the machine are listed below. Please note that
+these values may differ from values configured in the Vagrantfile if the
+provider supports automatic port collision detection and resolution.
+
+<mark>22 (guest) =&gt; 2223 (host)</mark>
+ 57722 (guest) =&gt; 2222 (host)
+ 57780 (guest) =&gt; 57780 (host)
+ 58822 (guest) =&gt; 58822 (host)
+ (venv) lisroach@LISROACH-M-J0AY ~/W/S/vagrant&gt; <mark>ssh -p 2223 vagrant@localhost</mark>
+vagrant@localhost's password:
+
+
+RP/0/RP0/CPU0:ios#
+RP/0/RP0/CPU0:ios#<mark>show ip route</mark>
+Wed Sep 28 18:33:18.266 UTC
+
+Codes: C - connected, S - static, R - RIP, B - BGP, (&gt;) - Diversion path
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - ISIS, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, su - IS-IS summary null, * - candidate default
+       U - per-user static route, o - ODR, L - local, G  - DAGR, l - LISP
+       A - access/subscriber, a - Application route
+       M - mobile route, r - RPL, (!) - FRR Backup path
+
+Gateway of last resort is 10.0.2.2 to network 0.0.0.0
+
+S*   0.0.0.0/0 [1/0] via 10.0.2.2, 01:01:34
+C    10.0.2.0/24 is directly connected, 01:03:27, MgmtEth0/RP0/CPU0/0
+L    10.0.2.15/32 is directly connected, 01:03:27, MgmtEth0/RP0/CPU0/0
+L    10.1.1.5/32 is directly connected, 01:01:34, Loopback1
+C    11.1.1.0/24 is directly connected, 01:01:34, GigabitEthernet0/0/0/0
+L    11.1.1.10/32 is directly connected, 01:01:34, GigabitEthernet0/0/0/0
+RP/0/RP0/CPU0:ios#
+</code>
+</pre>
+</div>
+
+<p>We can see here there are currently no static routes except for 0.0.0.0/0. You may see some routes other than this, as Solenoid is running and adding routes constantly to the RIB.</p>
+
+<p>Now leave this screen up, open a new tab in your terminal and jump into the Solenoid container. Remember when we <a href="#change-the-ssh-port-inside-the-container">changed the ssh port of the container</a>? Now we will use that port to SSH directly from our CLI into the Solenoid container.</p>
+
+<p class="notice--info">Password : ubuntu</p>
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+lisroach@LISROACH-M-J0AY ~/W/S/vagrant&gt; <mark>vagrant port xrv</mark>
+The forwarded ports for the machine are listed below. Please note that
+these values may differ from values configured in the Vagrantfile if the
+provider supports automatic port collision detection and resolution.
+
+ 22 (guest) =&gt; 2223 (host)
+ 57722 (guest) =&gt; 2222 (host)
+ 57780 (guest) =&gt; 57780 (host)
+ <mark>58822 (guest) =&gt; 58822 (host)</mark>
+lisroach@LISROACH-M-J0AY ~/W/S/vagrant&gt;<mark> ssh -p 58822 ubuntu@localhost </mark>
+The authenticity of host '[localhost]:58822 ([127.0.0.1]:58822)' can't be established.
+ECDSA key fingerprint is SHA256:Swie3V2VIYDNCACaRLbSjQa7417yIM6hpbeimNwZr1o.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '[localhost]:58822' (ECDSA) to the list of known hosts.
+ubuntu@localhost's password:
+Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 3.14.23-WR7.0.0.2_standard x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+Last login: Thu Sep 22 21:31:13 2016
+</code>
+</pre>
+</div>
+
+<p>We are now on the Solenoid container that is running on the xrv. Solenoid is currently running in a <a href="https://linux.die.net/man/1/screen">screen</a> named exaBGP. Resume the screen to see Solenoid running.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+ubuntu@solenoid:~$
+ubuntu@solenoid:~$ <mark>screen -ls</mark>
+There are screens on:
+       	1423.website   	(09/28/2016 05:38:22 PM)       	(Detached)
+       	1421.exabgp    	(09/28/2016 05:38:22 PM)       	(Detached)
+2 Sockets in /var/run/screen/S-ubuntu.
+
+ubuntu@solenoid:~$
+ubuntu@solenoid:~$ <mark>screen -r exabgp</mark>
+Wed, 28 Sep 2016 18:35:04 | INFO     | 1436   | solenoid      | WITHDRAW | OK
+Wed, 28 Sep 2016 18:35:06 | INFO     | 1436   | solenoid      | WITHDRAW | OK
+Wed, 28 Sep 2016 18:35:11 | INFO     | 1436   | solenoid      | ANNOUNCE | OK
+Wed, 28 Sep 2016 18:35:13 | INFO     | 1436   | solenoid      | ANNOUNCE | OK
+Wed, 28 Sep 2016 18:35:17 | INFO     | 1436   | solenoid      | WITHDRAW | OK
+Wed, 28 Sep 2016 18:35:19 | INFO     | 1436   | solenoid      | WITHDRAW | OK
+Wed, 28 Sep 2016 18:35:25 | INFO     | 1436   | solenoid      | ANNOUNCE | OK
+Wed, 28 Sep 2016 18:35:27 | INFO     | 1436   | solenoid      | ANNOUNCE | OK
+Wed, 28 Sep 2016 18:35:37 | INFO     | 1436   | solenoid      | WITHDRAW | OK
+Wed, 28 Sep 2016 18:35:37 | INFO     | 1436   | solenoid      | WITHDRAW | OK
+Wed, 28 Sep 2016 18:35:38 | INFO     | 1436   | solenoid      | ANNOUNCE | OK
+Wed, 28 Sep 2016 18:35:40 | INFO     | 1436   | solenoid      | ANNOUNCE | OK
+Wed, 28 Sep 2016 18:35:44 | INFO     | 1436   | solenoid      | WITHDRAW | OK
+Wed, 28 Sep 2016 18:35:46 | INFO     | 1436   | solenoid      | WITHDRAW | OK
+</code>
+</pre>
+</div>
+
+<p>These messages show the output of Solenoid running. All of the <code class="highlighter-rouge">OK</code>s show us that it is running properly. If you hop back to your tab running the CLI and run <code class="highlighter-rouge">show ip route</code> a few times, you will see the RIB table changing with the messages that Solenoid is sending.</p>
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+RP/0/RP0/CPU0:ios#show ip route
+Wed Sep 28 18:49:22.165 UTC
+
+Codes: C - connected, S - static, R - RIP, B - BGP, (&gt;) - Diversion path
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - ISIS, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, su - IS-IS summary null, * - candidate default
+       U - per-user static route, o - ODR, L - local, G  - DAGR, l - LISP
+       A - access/subscriber, a - Application route
+       M - mobile route, r - RPL, (!) - FRR Backup path
+
+Gateway of last resort is 10.0.2.2 to network 0.0.0.0
+
+S*   0.0.0.0/0 [1/0] via 10.0.2.2, 01:17:38
+<mark>S    1.1.1.0/24 [1/0] via 11.1.1.20, 00:00:00</mark>
+C    10.0.2.0/24 is directly connected, 01:19:31, MgmtEth0/RP0/CPU0/0
+L    10.0.2.15/32 is directly connected, 01:19:31, MgmtEth0/RP0/CPU0/0
+L    10.1.1.5/32 is directly connected, 01:17:38, Loopback1
+C    11.1.1.0/24 is directly connected, 01:17:38, GigabitEthernet0/0/0/0
+L    11.1.1.10/32 is directly connected, 01:17:38, GigabitEthernet0/0/0/0
+RP/0/RP0/CPU0:ios#show ip route
+Wed Sep 28 18:49:25.660 UTC
+
+Codes: C - connected, S - static, R - RIP, B - BGP, (&gt;) - Diversion path
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - ISIS, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, su - IS-IS summary null, * - candidate default
+       U - per-user static route, o - ODR, L - local, G  - DAGR, l - LISP
+       A - access/subscriber, a - Application route
+       M - mobile route, r - RPL, (!) - FRR Backup path
+
+Gateway of last resort is 10.0.2.2 to network 0.0.0.0
+
+S*   0.0.0.0/0 [1/0] via 10.0.2.2, 01:17:42
+<mark>S    1.1.1.0/24 [1/0] via 11.1.1.20, 00:00:03</mark>
+<mark>S    2.2.2.0/24 [1/0] via 11.1.1.20, 00:00:01</mark>
+C    10.0.2.0/24 is directly connected, 01:19:35, MgmtEth0/RP0/CPU0/0
+L    10.0.2.15/32 is directly connected, 01:19:35, MgmtEth0/RP0/CPU0/0
+L    10.1.1.5/32 is directly connected, 01:17:42, Loopback1
+C    11.1.1.0/24 is directly connected, 01:17:42, GigabitEthernet0/0/0/0
+L    11.1.1.10/32 is directly connected, 01:17:42, GigabitEthernet0/0/0/0
+RP/0/RP0/CPU0:ios#
+</code>
+</pre>
+</div>
+
+<p>From this example you can see that we first added <code class="highlighter-rouge">1.1.1.0/24</code>, then in a moment <code class="highlighter-rouge">2.2.2.0/24</code> was added. <code class="highlighter-rouge">3.3.3.0/24</code> will never be added, since we added the filtering on the GUI.</p>
+
+<p>Hopfully this tutorial was helpful! If you have issues or questions running Solenoid, please visit <a href="https://github.com/ios-xr/Solenoid/issues">Solenoid’s Issues page</a> and submit your question.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/application-hosting/tags/#iosxr" class="page__taxonomy-item" rel="tag">iosxr</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/application-hosting/tags/#vagrant" class="page__taxonomy-item" rel="tag">vagrant</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-09-28T23:17:00+00:00">September 28, 2016</time></p>
+        
+        
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/application-hosting/tutorials/2016-09-28-solenoid-inject-routes-into-cisco-s-rib-table-using-grpc/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/application-hosting/tutorials/2016-09-28-solenoid-inject-routes-into-cisco-s-rib-table-using-grpc/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/application-hosting/tutorials/2016-09-28-solenoid-inject-routes-into-cisco-s-rib-table-using-grpc/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/application-hosting/tutorials/2016-09-28-solenoid-inject-routes-into-cisco-s-rib-table-using-grpc/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+
+    <br>
+    <br>
+    <br>
+</section>
+
+
+    </div>
+
+    
+      
+
+<div class="page__comments">
+  <h4 class="page__comments-title">Leave a Comment</h4>
+  
+    <section id="disqus_thread"></section>
+  
+</div>
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/xrdocs"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/xrdocs"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/application-hosting/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">This site is maintained by Cisco Systems, Inc. employees. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/application-hosting/assets/js/main.min.js"></script>
+<script src="http://localhost:4000/application-hosting/assets/js/scrollmenu.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-78256516-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'xrdocs';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+<!-- material-scrolltop button -->
+<button class="material-scrolltop" type="button"></button>
+
+<!-- material-scrolltop plugin -->
+<script src="http://localhost:4000/application-hosting/assets/js/material-scrolltop.js"></script>
+
+<!-- Initialize material-scrolltop with (minimal) -->
+<script>
+    $('body').materialScrollTop();
+</script>
+
+
+  </body>
+</html>
+
