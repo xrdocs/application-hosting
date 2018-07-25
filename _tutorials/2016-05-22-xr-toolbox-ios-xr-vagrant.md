@@ -67,7 +67,8 @@ To get the API-KEY and a CCO-ID, browse to the following link and follow the ste
 >
 [Steps to Generate API-KEY]({{ site.url }}/getting-started/steps-download-iosxr-vagrant)
 {: .notice--danger}
-
+  
+  
 
 ### Pick the last stable version
 
@@ -83,6 +84,7 @@ $ curl <b><mark>-u your-cco-id:API-KEY</mark></b> $BOXURL --output ~/iosxrv-full
 $ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
 </code>
 </pre>
+</div>
 </div>
 
 
