@@ -88,6 +88,7 @@ $ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
 </div>
 
 
+
 ### Pick the latest (run with scissors)
 
 If you're feeling adventurous, pick the latest version of the XR vagrant box as shown below.
