@@ -1,0 +1,2480 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>            XR toolbox, Part 6: Running Docker Containers on IOS-XR (6.1.2+)      IOS XR Application Hosting @xrdocs      </title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="IOS XR Application Hosting @xrdocs">
+<meta property="og:title" content="XR toolbox, Part 6: Running Docker Containers on IOS-XR (6.1.2+)">
+
+
+  <link rel="canonical" href="https://xrdocs.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/">
+  <meta property="og:url" content="https://xrdocs.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/">
+
+
+
+  <meta property="og:description" content="Running Docker containers on IOS-XR running as a Vagrant box and on a physical NCS5500">
+
+
+
+  <meta name="twitter:site" content="@xrdocs">
+  <meta name="twitter:title" content="XR toolbox, Part 6: Running Docker Containers on IOS-XR (6.1.2+)">
+  <meta name="twitter:description" content="Running Docker containers on IOS-XR running as a Vagrant box and on a physical NCS5500">
+  <meta name="twitter:url" content="https://xrdocs.io/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="https://xrdocs.io/application-hosting/images/app-hosting-xrdocs.jpg">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@irakshat">
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-02-26T22:40:00+00:00">
+  
+    <link rel="next" href="https://xrdocs.io/application-hosting/tutorials/2017-04-12-on-box-telemetry-running-pipeline-and-kafka-on-ios-xr/" title="On-box Telemetry: Running  Pipeline and Kafka on IOS-XR (6.2.1+)">
+  
+  
+    <link rel="prev" href="https://xrdocs.io/application-hosting/tutorials/2016-09-28-solenoid-inject-routes-into-cisco-s-rib-table-using-grpc/" title="Solenoid: inject routes into Cisco's RIB table using gRPC">
+  
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "https://xrdocs.io/application-hosting",
+      "logo": "https://xrdocs.io/application-hosting/images/app-hosting-xrdocs.jpg"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "person",
+      "name" : "Cisco Systems Inc",
+      "url" : "https://xrdocs.io/application-hosting",
+      "sameAs" : ["https://twitter.com/xrdocs"]
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+<link href="https://xrdocs.io/application-hosting/feed.xml" type="application/atom+xml" rel="alternate" title="IOS XR Application Hosting @xrdocs Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="jgRKKm6B9FwJJPXxpmc0-EP3D0Mh8JHXaJqoYIGj1ek">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<script>
+if (!(window.location.host.startsWith("127.0.0.1") || window.location.host.startsWith("localhost")) && (window.location.host.substr(-3) == '.io') && (window.location.protocol != "https:"))
+    window.location.protocol = "https";
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/application-hosting/assets/css/main.css">
+<meta http-equiv="cleartype" content="on">
+<style>
+.underline-on-hover:hover {
+    text-decoration: underline;
+}
+.searchForm{
+      border-radius:5px;
+      -moz-border-radius:5px;
+      -webkit-border-radius:5px;
+      width: 900px;
+   }
+#search_results{
+      display: table; margin:0 auto;
+   }
+</style>
+
+
+    
+
+<!-- start custom head snippets -->
+
+<link href="https://xrdocs.io/application-hosting/assets/css/lity.min.css" rel="stylesheet">
+<link href="https://xrdocs.io/application-hosting/assets/css/cisco-sans.min.css" rel="stylesheet">
+<link href="https://xrdocs.io/application-hosting/assets/css/material-scrolltop.css" rel="stylesheet">
+
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="https://xrdocs.io/application-hosting/images/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://xrdocs.io/application-hosting/images/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://xrdocs.io/application-hosting/images/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://xrdocs.io/application-hosting/images/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="https://xrdocs.io/application-hosting/images/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="https://xrdocs.io/application-hosting/images/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="https://xrdocs.io/application-hosting/images/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://xrdocs.io/application-hosting/images/apple-touch-icon-152x152.png">
+<link rel="icon" type="image/png" href="https://xrdocs.io/application-hosting/images/favicon-196x196.png" sizes="196x196">
+<link rel="icon" type="image/png" href="https://xrdocs.io/application-hosting/images/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="https://xrdocs.io/application-hosting/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://xrdocs.io/application-hosting/images/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="https://xrdocs.io/application-hosting/images/favicon-128.png" sizes="128x128">
+<link rel="shortcut icon" href="https://xrdocs.io/application-hosting/images/favicon_cisco.ico">
+<meta name="application-name" content=" ">
+<meta name="msapplication-TileColor" content="#FFFFFF">
+<meta name="msapplication-TileImage" content="https://xrdocs.io/application-hosting/images/mstile-144x144.png">
+<meta name="msapplication-square70x70logo" content="https://xrdocs.io/application-hosting/images/mstile-70x70.png">
+<meta name="msapplication-square150x150logo" content="https://xrdocs.io/application-hosting/images/mstile-150x150.png">
+<meta name="msapplication-wide310x150logo" content="https://xrdocs.io/application-hosting/images/mstile-310x150.png">
+<meta name="msapplication-square310x310logo" content="https://xrdocs.io/application-hosting/images/mstile-310x310.png">
+
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu" style="padding-left:2em;">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <img src="https://xrdocs.io/application-hosting/images/xrdocs_logo.png" width="45px" height="45px" alt="xrdocs logo" style="float:left;">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="https://xrdocs.io">@xrdocs</a></li>
+          <li class="masthead__menu-item"><a href="https://xrdocs.io/application-hosting/">App-Hosting</a></li>
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="https://xrdocs.io/application-hosting/blogs/">Blogs</a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item greedy-nav-active"><a href="https://xrdocs.io/application-hosting/tutorials/">Tutorials</a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="https://xrdocs.io/application-hosting/search">Search <i class="fa fa-search" aria-hidden="true"></i></a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="https://xrdocs.io/application-hosting/tags/">Tags</a></li>
+                
+            
+
+
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="https://xrdocs.io/application-hosting/images/avatars/akshat_bio_photo.jpeg" class="author__avatar" alt="Akshat Sharma">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Akshat Sharma</h3>
+    <p class="author__bio">Evangelist, tinkerer, dog-lover and Technical Marketing Engineer, Cisco.</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+      
+      
+        <li><a href="mailto:akshshar@cisco.com"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+      
+      
+      
+        <li><a href="http://twitter.com/irakshat"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="http://github.com/akshshar"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+
+  </div>
+    <br><button class="btn"><a href="//pdfcrowd.com/url_to_pdf/" style="color:white">Save as PDF</a></button>
+
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="XR toolbox, Part 6: Running Docker Containers on IOS-XR (6.1.2+)">
+    <meta itemprop="description" content="Running Docker containers on IOS-XR running as a Vagrant box and on a physical NCS5500">
+    <meta itemprop="datePublished" content="February 26, 2017">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">XR toolbox, Part 6: Running Docker Containers on IOS-XR (6.1.2+)
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  40 minutes read
+</p>
+          
+        </header>
+      
+
+    
+      
+        
+
+
+
+
+
+<div class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList" style="margin:0;padding:0;">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" style="margin:0;padding:0;">
+          <a href="https://xrdocs.io/application-hosting/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1">
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" style="margin:0;padding:0;">
+          <a href="https://xrdocs.io/application-hosting/tutorials" itemprop="item"><span itemprop="name">Tutorials</span></a>
+          <meta itemprop="position" content="2">
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current" style="margin:0;padding:0;">XR toolbox, Part 6: Running Docker Containers on IOS-XR (6.1.2+)</li>
+      
+    
+  </ol>
+</div>
+
+      
+    
+
+      <section class="page__content" itemprop="text">
+        <aside class="sidebar__right">
+<nav class="toc">
+    <header><h4 class="nav__title">
+<i class="fa fa-table"></i> Running Docker Containers on IOS-XR</h4></header>
+<ul class="toc__menu" id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li>
+<a href="#pre-requisites" id="markdown-toc-pre-requisites">Pre-requisites</a>    <ul>
+      <li><a href="#vagrant-ios-xr-box" id="markdown-toc-vagrant-ios-xr-box">Vagrant IOS-XR box</a></li>
+      <li><a href="#physical-ncs5500-and-asr9k" id="markdown-toc-physical-ncs5500-and-asr9k">Physical (NCS5500 and ASR9k)</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#understand-the-topology" id="markdown-toc-understand-the-topology">Understand the topology</a>    <ul>
+      <li><a href="#vagrant-setup" id="markdown-toc-vagrant-setup">Vagrant Setup</a></li>
+      <li><a href="#ncs5500-and-asr9k-setup" id="markdown-toc-ncs5500-and-asr9k-setup">NCS5500 and ASR9k Setup</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#install-docker-engine-on-the-devbox" id="markdown-toc-install-docker-engine-on-the-devbox">Install docker-engine on the devbox</a>    <ul>
+      <li><a href="#vagrant-setup-1" id="markdown-toc-vagrant-setup-1">Vagrant setup</a></li>
+      <li><a href="#ncs5500-and-asr9k-setup-1" id="markdown-toc-ncs5500-and-asr9k-setup-1">NCS5500 and ASR9k setup</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#docker-daemon-support-on-ios-xr" id="markdown-toc-docker-daemon-support-on-ios-xr">Docker Daemon support on IOS-XR</a>    <ul>
+      <li><a href="#vagrant-and-ncs5500-architecture" id="markdown-toc-vagrant-and-ncs5500-architecture">Vagrant and NCS5500 architecture</a></li>
+      <li><a href="#asr9k-architecture" id="markdown-toc-asr9k-architecture">ASR9k architecture</a></li>
+      <li><a href="#vagrant-setup-docker-client-access" id="markdown-toc-vagrant-setup-docker-client-access">Vagrant setup Docker Client Access</a></li>
+      <li><a href="#ncs5500-and-asr9k-docker-client-access" id="markdown-toc-ncs5500-and-asr9k-docker-client-access">NCS5500 and ASR9k Docker Client Access</a></li>
+    </ul>
+  </li>
+  <li><a href="#launch-a-docker-container" id="markdown-toc-launch-a-docker-container">Launch a Docker Container</a></li>
+  <li>
+<a href="#public-dockerhub-registry" id="markdown-toc-public-dockerhub-registry">Public Dockerhub registry</a>    <ul>
+      <li><a href="#vagrant-setup-2" id="markdown-toc-vagrant-setup-2">Vagrant Setup</a></li>
+      <li><a href="#ncs5500-and-asr9k-setup-2" id="markdown-toc-ncs5500-and-asr9k-setup-2">NCS5500 and ASR9k Setup</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#private-insecure-registry" id="markdown-toc-private-insecure-registry">Private “insecure” registry</a>    <ul>
+      <li><a href="#setting-up-the-insecure-registry" id="markdown-toc-setting-up-the-insecure-registry">Setting up the insecure registry</a></li>
+      <li><a href="#vagrant-setup-3" id="markdown-toc-vagrant-setup-3">Vagrant Setup</a></li>
+      <li><a href="#ncs5500-setup" id="markdown-toc-ncs5500-setup">NCS5500 setup</a></li>
+      <li><a href="#asr9k-setup" id="markdown-toc-asr9k-setup">ASR9k setup</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#private-self-signed-registry" id="markdown-toc-private-self-signed-registry">Private Self-Signed Registry</a>    <ul>
+      <li><a href="#setting-up-a-self-signed-docker-registry" id="markdown-toc-setting-up-a-self-signed-docker-registry">Setting up a self-signed Docker Registry</a></li>
+      <li><a href="#vagrant-setup-4" id="markdown-toc-vagrant-setup-4">Vagrant Setup</a></li>
+      <li><a href="#ncs5500-and-asr9k-setup-3" id="markdown-toc-ncs5500-and-asr9k-setup-3">NCS5500 and ASR9k Setup</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#docker-saveload-technique" id="markdown-toc-docker-saveload-technique">Docker Save/Load Technique</a>    <ul>
+      <li><a href="#create-a-docker-image-tarball" id="markdown-toc-create-a-docker-image-tarball">Create a docker image tarball</a></li>
+      <li><a href="#vagrant-setup-5" id="markdown-toc-vagrant-setup-5">Vagrant Setup</a></li>
+      <li><a href="#ncs5500-and-asr9k-setup-4" id="markdown-toc-ncs5500-and-asr9k-setup-4">NCS5500 and ASR9k setup.</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#docker-exportimport-technique" id="markdown-toc-docker-exportimport-technique">Docker export/import Technique</a>    <ul>
+      <li><a href="#create-a-custom-docker-container-tarballsnapshot" id="markdown-toc-create-a-custom-docker-container-tarballsnapshot">Create a custom docker Container tarball/snapshot</a></li>
+      <li><a href="#vagrant-setup-6" id="markdown-toc-vagrant-setup-6">Vagrant Setup</a></li>
+      <li><a href="#ncs5500-and-asr9k-setup-5" id="markdown-toc-ncs5500-and-asr9k-setup-5">NCS5500 and ASR9k setup.</a></li>
+    </ul>
+  </li>
+  <li>
+<a href="#what-can-i-do-with-the-docker-container" id="markdown-toc-what-can-i-do-with-the-docker-container">What can I do with the Docker container?</a>    <ul>
+      <li><a href="#testing-out-a-web-server" id="markdown-toc-testing-out-a-web-server">Testing out a Web Server</a></li>
+    </ul>
+  </li>
+</ul>
+
+  </nav>
+</aside>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>If you haven’t checked out the earlier parts to the XR toolbox Series, then you can do so here:</p>
+
+<blockquote>
+
+  <p><a href="https://xrdocs.io/application-hosting/tags/#xr-toolbox">XR Toolbox Series</a></p>
+</blockquote>
+
+<p>The purpose of this series is simple. Get users started with an IOS-XR setup on their laptop and incrementally enable them to try out the application-hosting infrastructure on IOS-XR.</p>
+
+<p>In this part, we explore how a user can spin up Docker containers on IOS-XR. There are multiple ways to do this and we’ll explore each one:</p>
+
+<ul>
+  <li>
+    <p><strong>Public  Dockerhub Registry</strong>: This is the simplest setup that most docker users would be well aware of. All you need to do is set up reachability to dockerhub with the correct dns resolution.</p>
+  </li>
+  <li>
+    <p><strong>Private “insecure” registry</strong>: Some users may choose to do this, specially if they’re running a local docker registry inside a secured part of their network.</p>
+  </li>
+  <li>
+    <p><strong>Private “self-signed” registry</strong>: This is more secure than the “insecure” setup, and allows a user to enable TLS.</p>
+  </li>
+  <li>
+    <p><strong>Private “secure” registry</strong>: Set up reachability to your private registry, created using a certificate obtained from a CA. The steps used to set this up are identical to a private self-signed registry except for the creation of the certificate. We won’t really tackle this scenario separately in this tutorial due to the absence of said certificate :).</p>
+  </li>
+  <li>
+    <p><strong>Tarball image/container</strong>:  This is the simplest setup - very similar to LXC deployments. In this case, a user may create and set up a container completely off-box, package it up as an image or a container tar ball, transfer it to the router and then load/import it, before running.</p>
+  </li>
+</ul>
+
+<p>For each case, we will compare IOS-XR running as a Vagrant box with IOS-XR running on a physical box (NCS5500 and ASR9k). They should be identical, except for reachability through the Management ports.</p>
+
+<h2 id="pre-requisites">Pre-requisites</h2>
+
+<h3 id="vagrant-ios-xr-box">Vagrant IOS-XR box</h3>
+
+<p>If you’re bringing up the topology on your laptop using the IOS-XR vagrant box, then:</p>
+
+<ul>
+  <li>Meet the pre-requisites specified in the <a href="https://xrdocs.io/application-hosting/tutorials/iosxr-vagrant-quickstart#pre-requisites">IOS-XR Vagrant Quick Start guide: Pre-requisites</a>. <br>
+The topology here will require about 5G RAM and 2 cores on the user’s laptop.</li>
+  <li>Clone the following repository: <a href="https://github.com/ios-xr/vagrant-xrdocs">https://github.com/ios-xr/vagrant-xrdocs</a>, before we start.</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/
+git clone https://github.com/ios-xr/vagrant-xrdocs.git
+<span class="nb">cd </span>vagrant-xrdocs/
+</code></pre></div></div>
+
+<p class="notice--info">You will notice a few directories. We will utilize the <code class="highlighter-rouge">docker-app-topo-bootstrap</code> directory in this tutorial.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar<span class="nv">$ </span><span class="nb">pwd</span>
+/Users/akshshar/vagrant-xrdocs
+AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar<span class="nv">$ </span><span class="nb">ls </span>docker-app-topo-bootstrap/
+Vagrantfile	configs		scripts
+AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar<span class="nv">$ </span>
+
+</code></pre></div></div>
+
+<h3 id="physical-ncs5500-and-asr9k">Physical (NCS5500 and ASR9k)</h3>
+
+<p>On the other hand, if you have an NCS5500 or ASR9k lying around (don’t we all?), then load up a 6.1.2+ image on the router and connect an Ubuntu server (for the purpose of this tutorial), to the Management network of the router.</p>
+
+<p>The server needs to be reachable from the router over the Management network.</p>
+
+<p>Further, we’re going to enable SSH access in XR CLI and in  XR linux shell to achieve an equivalence between the NCS5500/ASR9k and Vagrant setup.</p>
+
+<p class="notice--warning"><strong>Note</strong>: NCS5500 steps are described, but ASR9k works in exactly the same way.</p>
+
+<p class="notice"><strong>Enable SSH access in the XR CLI</strong></p>
+
+<p>On my NCS5500 setup, I can enable SSH in XR in the default (global) vrf with the following steps and CLI:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+
+RP/0/RP0/CPU0:ncs5508#<mark>crypto key generate rsa</mark>
+Mon Mar  6 05:28:57.184 UTC
+The name for the keys will be: the_default
+  Choose the size of the key modulus in the range of 512 to 4096 for your General Purpose Keypair. Choosing a key modulus greater than 512 may take a few minutes.
+
+How many bits in the modulus [2048]: 
+Generating RSA keys ...
+Done w/ crypto generate keypair
+[OK]
+
+RP/0/RP0/CPU0:ncs5508#
+RP/0/RP0/CPU0:ncs5508#show  running-config ssh
+Mon Mar  6 05:29:51.819 UTC
+ssh server v2
+ssh server vrf default
+
+RP/0/RP0/CPU0:ncs5508#
+
+</code>
+</pre>
+</div>
+
+<p class="notice"><strong>Enable SSH access to XR linux shell</strong></p>
+
+<p>This is openssh running in the XR linux environment. Users may choose to keep this disabled based on the kind of operations they intend to have. Enabling it in a given network namespace (equivalent to XR vrf) opens up port 57722 on all the IP addresses reachable in that VRF.</p>
+
+<p class="notice-warning">In 6.1.2, only global-vrf (default vrf) is supported in the linux environment for SSH and apps. Post 6.3.1, support for Mgmt vrfs in the linux shell will be brought in.</p>
+
+<p>To enable SSH access in the XR linux shell for a sudo user, we’ll take 3 steps:</p>
+
+<ul>
+  <li>
+    <p>Enable the “sudo” group permissions in /etc/sudoers</p>
+
+    <p>Open up /etc/sudoers using vi in the XR bash shell and uncomment the following line:</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code># %sudo ALL=(ALL) ALL
+</code></pre></div>    </div>
+
+    <p>Save and exit (:wq in vi).</p>
+  </li>
+  <li>
+    <p>Create a non-root user. This is important. For security reasons, root user access over SSH (SSH    in the linux shell) is disabled. Only the root XR user can create new (sudo or non-sudo) users,    so use the “bash” cli to get into the shell:</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>RP/0/RP0/CPU0:ncs5508#
+RP/0/RP0/CPU0:ncs5508#bash
+Mon Mar  6 06:16:01.391 UTC
+  
+[ncs5508:~]$
+[ncs5508:~]$adduser cisco
+Login name for new user []:cisco
+
+User id for cisco [ defaults to next available]:
+
+Initial group for cisco [users]:
+
+Additional groups for cisco []:sudo
+
+cisco's home directory [/home/cisco]:
+
+cisco's shell [/bin/bash]:
+
+cisco's account expiry date (MM/DD/YY) []:
+
+OK, Im about to make a new account. Heres what you entered so far:
+New login name: cisco
+New UID: [Next available]
+Initial group: users
+/usr/sbin/adduser: line 68: [: -G: binary operator expected
+Additional groups: sudo
+Home directory: /home/cisco
+Shell: /bin/bash
+Expiry date: [no expiration]
+This is it... if you want to bail out, you'd better do it now.
+
+Making new account...
+useradd: user 'cisco' already exists
+Changing the user information for cisco
+Enter the new value, or press ENTER for the default
+    Full Name []: 
+    Room Number []: 
+    Work Phone []: 
+    Home Phone []: 
+    Other []: 
+Enter new UNIX password: 
+Retype new UNIX password: 
+passwd: password updated successfully
+Done...
+[ncs5508:~]$
+
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Finally enable SSH access by starting the sshd_operns service:</p>
+
+    <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>[ncs5508:~]$service sshd_operns start
+Mon Mar 6 06:21:53 UTC 2017 /etc/init.d/sshd_operns: Waiting for OPERNS interface creation...
+Mon Mar 6 06:21:53 UTC 2017 /etc/init.d/sshd_operns: Press ^C to stop if needed.
+Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: Found nic, Mg0_RP0_CPU0_0
+Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: Waiting for OPERNS management interface      creation...
+Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: Found nic, Mg0_RP0_CPU0_0
+Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: OPERNS is ready
+Mon Mar 6 06:21:54 UTC 2017 /etc/init.d/sshd_operns: Start sshd_operns
+Starting OpenBSD Secure Shell server: sshd
+  generating ssh RSA key...
+  generating ssh ECDSA key...
+  generating ssh DSA key...
+  generating ssh ED25519 key...
+[ncs5508:~]$
+</code></pre></div>    </div>
+
+    <p>Check that the sshd_operns service is now listening on port 57722 in the global-vrf network        namespace:</p>
+
+    <p class="notice--info">netns_identify utility is to check which network namespace a process is in. <code class="highlighter-rouge">$$</code> gets the pid      of the current shell. In the output below, tpnns is a symbolic link of  global-vrf. So they        both mean the same thing - XR default VRF mapped to a network namespace in linux. All XR          interfaces in the default(global) vrf will appear in the linux shell in this network namespace.    Issuing an <code class="highlighter-rouge">ifconfig</code> will show up these interfaces.</p>
+
+    <div class="language-shell highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>
+<span class="o">[</span>ncs5508:~]<span class="nv">$netns_identify</span> <span class="nv">$$</span>
+tpnns
+global-vrf
+<span class="o">[</span>ncs5508:~]<span class="nv">$netstat</span> <span class="nt">-nlp</span> | <span class="nb">grep </span>57722
+tcp        0      0 0.0.0.0:57722           0.0.0.0:<span class="k">*</span>               LISTEN      622/sshd        
+tcp6       0      0 :::57722                :::<span class="k">*</span>                    LISTEN      622/sshd        
+<span class="o">[</span>ncs5508:~]<span class="err">$</span>
+<span class="o">[</span>ncs5508:~]<span class="nv">$ifconfig</span>
+Mg0_RP0_CPU0_0 Link encap:Ethernet  HWaddr 80:e0:1d:00:fc:ea  
+          inet addr:11.11.11.59  Mask:255.255.255.0
+          inet6 addr: fe80::82e0:1dff:fe00:fcea/64 Scope:Link
+          UP RUNNING NOARP MULTICAST  MTU:1514  Metric:1
+          RX packets:3830 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:4 errors:0 dropped:0 overruns:0 carrier:3
+          collisions:0 txqueuelen:1000 
+          RX bytes:1288428 <span class="o">(</span>1.2 MiB<span class="o">)</span>  TX bytes:280 <span class="o">(</span>280.0 B<span class="o">)</span>
+
+fwd_ew    Link encap:Ethernet  HWaddr 00:00:00:00:00:0b  
+          inet6 addr: fe80::200:ff:fe00:b/64 Scope:Link
+          UP RUNNING NOARP MULTICAST  MTU:1500  Metric:1
+          RX packets:18 errors:0 dropped:10 overruns:0 frame:0
+          TX packets:2 errors:0 dropped:1 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:486 <span class="o">(</span>486.0 B<span class="o">)</span>  TX bytes:140 <span class="o">(</span>140.0 B<span class="o">)</span>
+  
+fwdintf   Link encap:Ethernet  HWaddr 00:00:00:00:00:0a  
+          inet6 addr: fe80::200:ff:fe00:a/64 Scope:Link
+          UP RUNNING NOARP MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:2 errors:0 dropped:1 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 <span class="o">(</span>0.0 B<span class="o">)</span>  TX bytes:140 <span class="o">(</span>140.0 B<span class="o">)</span>
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING NOARP MULTICAST  MTU:65536  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 <span class="o">(</span>0.0 B<span class="o">)</span>  TX bytes:0 <span class="o">(</span>0.0 B<span class="o">)</span>
+
+lo:0      Link encap:Local Loopback  
+          inet addr:1.1.1.1  Mask:255.255.255.255
+          UP LOOPBACK RUNNING NOARP MULTICAST  MTU:65536  Metric:1
+
+<span class="o">[</span>ncs5508:~]<span class="err">$</span>
+
+ 
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>Awesome! Now let’s test SSH access directly into the linux shell:</p>
+
+<p>As seen from the above output, the Mgmt port (Mg0_RP0_CPU0_0) has an IP 11.11.11.59 and the port 57722 is open all the IP addresses in the corresponding network namespace.</p>
+
+<p>From the directly connected “devbox” or jumpserver I can then issue an ssh as follows:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cisco@dhcpserver:~$ ssh cisco@11.11.11.59 -p 57722
+cisco@11.11.11.59's password: 
+-sh: /var/log/boot.log: Permission denied
+ncs5508:~$ 
+ncs5508:~$ sudo -i
+Password: 
+[ncs5508:~]$ 
+[ncs5508:~]$ whoami
+root
+[ncs5508:~]$ 
+</code></pre></div></div>
+
+<p class="notice--success">Works like a charm!</p>
+
+<h2 id="understand-the-topology">Understand the topology</h2>
+
+<p>The topology I’m using differs slightly between the vagrant setup and the NCS5500 setup.
+This is owing to the fact that the Management port of the vagrant IOS-XR box is used up in the NAT network. So to show equivalence between the two setups, I directly connect the Gig0/0/0/0 interface of Vagrant ios-xrv64 with eth1 of the devbox as shown in the figure below.</p>
+
+<p>The two topologies in use are:</p>
+
+<h3 id="vagrant-setup">Vagrant Setup</h3>
+
+<div class="notice">
+<img src="https://xrdocs.github.io/xrdocs-images/assets/images/vagrant_docker_topo.png" alt="vagrant docker topo" style="padding:1px;border:thin solid black;">
+</div>
+
+<h3 id="ncs5500-and-asr9k-setup">NCS5500 and ASR9k Setup</h3>
+
+<div class="notice">
+<img src="https://xrdocs.github.io/xrdocs-images/assets/images/ncs5500_docker_topo.png" alt="NCS5500 docker topo" style="padding:1px;border:thin solid black;">
+</div>
+
+<h2 id="install-docker-engine-on-the-devbox">Install docker-engine on the devbox</h2>
+
+<h3 id="vagrant-setup-1">Vagrant setup</h3>
+<p>For the Vagrant setup, you will see a script called <code class="highlighter-rouge">docker_install.sh</code> under the scripts folder:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar<span class="nv">$ </span><span class="nb">pwd</span>
+/Users/akshshar/vagrant-xrdocs/docker-app-topo-bootstrap
+AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar<span class="nv">$ </span><span class="nb">ls
+</span>Vagrantfile	configs		scripts
+AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar<span class="nv">$ </span><span class="nb">ls </span>scripts/
+apply_config.sh		docker_install.sh
+AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar<span class="nv">$ </span>
+
+</code></pre></div></div>
+
+<p>This is the vagrant provisioner for the devbox and will install docker-engine on boot (vagrant up).</p>
+
+<h3 id="ncs5500-and-asr9k-setup-1">NCS5500 and ASR9k setup</h3>
+
+<p>In this case, the devbox must be provisioned by the user. On an ubuntu devbox, docker-engine can be installed by following the instructions at:</p>
+
+<blockquote>
+  <p><a href="https://docs.docker.com/engine/installation/linux/ubuntu/">https://docs.docker.com/engine/installation/linux/ubuntu/</a></p>
+</blockquote>
+
+<p class="notice--success">Perfect! Now we’re all set with the topology and SSH access. Before we begin, let’s understand the docker daemon/client setup inside IOS-XR.</p>
+
+<h2 id="docker-daemon-support-on-ios-xr">Docker Daemon support on IOS-XR</h2>
+
+<h3 id="vagrant-and-ncs5500-architecture">Vagrant and NCS5500 architecture</h3>
+
+<p>If you haven’t already gone through the basic overview on the application hosting infrastructure on XR, I would urge you to have a quick read:</p>
+
+<blockquote>
+  <p><a href="https://xrdocs.io/application-hosting/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/">https://xrdocs.io/application-hosting/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/</a></p>
+</blockquote>
+
+<blockquote>
+
+  <p><strong>Relevant Platforms</strong>: The LXC architecture described above and expanded on below is relevant to the following platforms:</p>
+
+  <ul>
+    <li>NCS5500 (NCS5501, NCS5501-SE, NCS5502, NCS5502-SE, NCS5508, NCS5516)</li>
+    <li>NCS5000</li>
+    <li>NCS5011</li>
+    <li>XRv9k</li>
+    <li>IOS-XRv64 (Vagrant box and ISO)</li>
+  </ul>
+</blockquote>
+
+<p>From the above article it becomes fairly clear that internally the IOS-XR architecture involves a Host layer running the libvirtd daemon and IOS-XR runs as an LXC spawned using the daemon.</p>
+
+<p>Further, the “virsh” client is provided within the XR LXC, so that a user may have client level access to the daemon while sitting inside the XR LXC itself.</p>
+
+<p>The setup for launching LXCs in IOS-XR is shown below:</p>
+
+<p><a href="https://xrdocs.github.io/xrdocs-images/assets/images/xr_lxc.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr_lxc.png" alt="xr-lxc"></a></p>
+
+<p>The Docker client/daemon setup follows the exact same principle as shown below. Docker Daemon runs on the host and Docker client is made available inside the XR LXC for easy operationalization:</p>
+
+<p><a href="https://xrdocs.github.io/xrdocs-images/assets/images/xr_docker.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr_docker.png" alt="xr-docker"></a></p>
+
+<h3 id="asr9k-architecture">ASR9k architecture</h3>
+
+<p>The ASR9k architecture is slightly different. In ASR9k, IOS-XR runs inside its own VM on the 64-bit Linux host to be able to support ISSU requirements relevant to traditional Service Provider deployments.</p>
+
+<p>In this case, the libvirtd and docker daemons are available inside the XR control plane VM itself.
+This does not change the user experience from a docker client or virsh client perspective. 
+The difference is mainly how one may interact with the docker daemon as we’ll touch upon in subsequent sections.</p>
+
+<p>This is what the architecture looks like for ASR9k:</p>
+
+<p><strong>ASR9k LXC/libvirt Setup:</strong></p>
+
+<p><a href="https://xrdocs.github.io/xrdocs-images/assets/images/xr_asr9k_libvirt_architecture.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr_asr9k_libvirt_architecture.png" alt="xr_asr9k_libvirt_libvirt"></a></p>
+
+<p>Libvirt daemon is local to the XR control plane VM.</p>
+
+<p><strong>ASR9k Docker Setup:</strong></p>
+
+<p><a href="https://xrdocs.github.io/xrdocs-images/assets/images/xr_asr9k_docker_architecture.png"><img src="https://xrdocs.github.io/xrdocs-images/assets/images/xr_asr9k_docker_architecture.png" alt="xr_asr9k_docker_libvirt"></a></p>
+
+<p>Docker daemon is local to the XR control plane VM.</p>
+
+<p>Alright, so can we verify this?</p>
+
+<h3 id="vagrant-setup-docker-client-access">Vagrant setup Docker Client Access</h3>
+
+<p>On your vagrant box, there are two ways to get access to the docker client:</p>
+
+<ul>
+  <li>
+    <p><strong>Drop into the “bash” shell from XR CLI:</strong> Using “bash” ensures that the correct environment 
+variables are sourced to gain access to the Docker Daemon on the host:</p>
+
+    <p class="notice--info"><strong>Password for the XR CLI:   vagrant</strong></p>
+
+    <div class="highlighter-rouge">
+ <pre class="highlight" style="white-space: pre-wrap;">
+ <code>
+ AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$<mark> vagrant port rtr </mark>
+ The forwarded ports for the machine are listed below. Please note that
+ these values may differ from values configured in the Vagrantfile if the
+ provider supports automatic port collision detection and resolution.
+
+     <mark>22 (guest) =&gt; 2223 (host)</mark>
+  57722 (guest) =&gt; 2222 (host)
+ AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ 
+ AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ 
+ AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ 
+ AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$<mark> ssh -p 2223 vagrant@localhost</mark>
+ The authenticity of host '[localhost]:2223 ([127.0.0.1]:2223)' can't be established.
+ RSA key fingerprint is SHA256:uHev9uiAa0LM36RnnxDYuRyKywra8Oe/G5Gt34OiBqk.
+ Are you sure you want to continue connecting (yes/no)? yes
+ Warning: Permanently added '[localhost]:2223' (RSA) to the list of known hosts.
+ vagrant@localhost's password: 
+
+
+ RP/0/RP0/CPU0:ios#
+ RP/0/RP0/CPU0:ios#
+ RP/0/RP0/CPU0:ios#<mark>bash</mark>
+ Sun Mar  5 18:17:18.380 UTC
+
+ [xr-vm_node0_RP0_CPU0:~]$
+ [xr-vm_node0_RP0_CPU0:~]$
+ [xr-vm_node0_RP0_CPU0:~]$whoami
+ <mark>root</mark>
+ [xr-vm_node0_RP0_CPU0:~]$
+ [xr-vm_node0_RP0_CPU0:~]$<mark>docker ps</mark>
+ CONTAINER ID    IMAGE      COMMAND      CREATED       STATUS        PORTS         NAMES
+ [xr-vm_node0_RP0_CPU0:~]$
+ </code>
+ </pre>
+ </div>
+
+    <p class="notice--warning">Bear in mind that when you drop into the XR linux shell using the “bash” CLI, you are droppped
+ in as <code class="highlighter-rouge">root</code>. This is why you can access the docker client without any hassle. 
+ For any other  user, you will need to first become root (using sudo).</p>
+  </li>
+  <li>
+    <p><strong>Drop directly into the Linux shell over SSH (port 57722):</strong></p>
+
+    <p>From the above output for <code class="highlighter-rouge">vagrant port rtr</code>, the port 57722 on XR (running openssh in the XR linux shell) is accessible via port 2222 on the host machine (laptop):</p>
+
+    <p>Use either <code class="highlighter-rouge">vagrant ssh rtr</code> or <code class="highlighter-rouge">ssh -p 2222 vagrant@localhost</code> to drop into the XR linux shell</p>
+
+    <p class="notice--warning"><strong>Username: vagrant<br>
+Password: vagrant</strong></p>
+
+    <div class="highlighter-rouge">
+ <pre class="highlight" style="white-space: pre-wrap;">
+ <code>
+   
+ AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$<mark> vagrant ssh rtr</mark>
+ Last login: Sun Mar  5 18:55:20 2017 from 10.0.2.2
+ xr-vm_node0_RP0_CPU0:~$ 
+ xr-vm_node0_RP0_CPU0:~$whoami
+ <mark>vagrant</mark>
+ xr-vm_node0_RP0_CPU0:~$ 
+ xr-vm_node0_RP0_CPU0:~$<mark> sudo -i </mark>
+ [xr-vm_node0_RP0_CPU0:~]$ 
+ [xr-vm_node0_RP0_CPU0:~]$ whoami
+ <mark>root</mark>
+ [xr-vm_node0_RP0_CPU0:~]$ 
+ [xr-vm_node0_RP0_CPU0:~]$<mark> docker ps</mark>
+ CONTAINER ID      IMAGE       COMMAND       CREATED       STATUS       PORTS        NAMES
+ [xr-vm_node0_RP0_CPU0:~]$ 
+ </code>
+ </pre>
+ </div>
+
+    <p class="notice--info">As shown above, we become root by using <code class="highlighter-rouge">-i</code> flag for <code class="highlighter-rouge">sudo</code> to make sure the correct environment variables are sourced.</p>
+  </li>
+</ul>
+
+<h3 id="ncs5500-and-asr9k-docker-client-access">NCS5500 and ASR9k Docker Client Access</h3>
+
+<p>If you followed the steps in the pre-requisites section above : <a href="https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#physical-ncs5500-router">Pre-requisites</a>, you would already have access to your NCS5500/ASR9k device over XR SSH (CLI, port 22) as well as sshd_operns (XR linux shell, port 57722)</p>
+
+<p>Following the Vagrant model, over XR SSH, we use the “bash” CLI to access the docker client on the NCS5500/ASR9k:</p>
+
+<p class="notice--warning"><strong>Note</strong>: The steps for ASR9k are identical. NCS5500 steps are shown below.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cisco@dhcpserver:~$ 
+cisco@dhcpserver:~$ ssh root@11.11.11.59
+The authenticity of host '11.11.11.59 (11.11.11.59)' can't be established.
+RSA key fingerprint is 8a:42:49:bf:4c:cd:f9:3c:e1:19:f9:02:b6:3a:ad:01.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '11.11.11.59' (RSA) to the list of known hosts.
+Password: 
+
+
+RP/0/RP0/CPU0:ncs5508#
+RP/0/RP0/CPU0:ncs5508#
+RP/0/RP0/CPU0:ncs5508#bash
+Mon Mar  6 09:36:37.221 UTC
+
+[ncs5508:~]$whoami
+root
+[ncs5508:~]$docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+[ncs5508:~]$
+[ncs5508:~]$
+
+</code></pre></div></div>
+
+<p>Similarly, for direct access to the linux shell, we ssh over 57722, become sudo and then access the docker client:</p>
+
+<p class="notice-info">SSH password and sudo password for user cisco will be whatever you’ve set up during the Pre-requisites stage.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cisco@dhcpserver:~$ ssh cisco@11.11.11.59 -p 57722
+cisco@11.11.11.59's password: 
+Permission denied, please try again.
+cisco@11.11.11.59's password: 
+Last login: Mon Mar  6 06:30:47 2017 from 11.11.11.2
+-sh: /var/log/boot.log: Permission denied
+ncs5508:~$ 
+ncs5508:~$ 
+ncs5508:~$ sudo -i
+Password: 
+[ncs5508:~]$ 
+[ncs5508:~]$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+[ncs5508:~]$ 
+</code></pre></div></div>
+
+<h2 id="launch-a-docker-container">Launch a Docker Container</h2>
+
+<p>As discussed earlier, we’ll showcase a few different techniques through which a user may spin up a docker container on IOS-XR.</p>
+
+<h2 id="public-dockerhub-registry">Public Dockerhub registry</h2>
+
+<p>This is the simplest setup that most docker users would know already. The obvious configuration necessary would be to make sure connectivity to the internet is available from the router.</p>
+
+<p class="notice--info">This may not be the preferred setup for production deployments, understandably, since direct connectivity to the internet from a production router is not typical. The next few techniques with private registries or tarball based docker container bringup might be more your cup of tea, in that case.</p>
+
+<h3 id="vagrant-setup-2">Vagrant Setup</h3>
+
+<p>The vagrant IOS-XR box comes with connectivity to the internet already. All you need to do is set up the domain name-server in the global-vrf (before 6.3.1, we only support the global/default vrf for the docker daemon image downloads).</p>
+
+<p>Remember that we’re setting up this domain name on per vrf basis. In the future, we intend to sync this through XR CLI for all vrfs to the corresponding network namespaces. Before 6.3.1, of course only global-vrf may be used.</p>
+
+<p>Update <code class="highlighter-rouge">/etc/netns/global-vrf/resolv.conf</code> to point to a reachable nameserver, in this case 8.8.8.8:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[xr-vm_node0_RP0_CPU0:~]$cat /etc/netns/global-vrf/resolv.conf
+nameserver 8.8.8.8
+[xr-vm_node0_RP0_CPU0:~]$
+</code></pre></div></div>
+
+<p>Again, become root with the correct environment (sudo -i)  to execute the relevant docker commands to spin up the container.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[xr-vm_node0_RP0_CPU0:~]$sudo -i
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ whoami    
+root
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+[xr-vm_node0_RP0_CPU0:~]$docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$ docker run -itd --name ubuntu -v /var/run/netns/global-vrf:/var/run/netns/global-vrf --cap-add=SYS_ADMIN ubuntu bash
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+d54efb8db41d: Pull complete 
+f8b845f45a87: Pull complete 
+e8db7bf7c39f: Pull complete 
+9654c40e9079: Pull complete 
+6d9ef359eaaa: Pull complete 
+Digest: sha256:dd7808d8792c9841d0b460122f1acf0a2dd1f56404f8d1e56298048885e45535
+Status: Downloaded newer image for ubuntu:latest
+495ec2ab0b201418999e159b81a934072be504b05cc278192d8152efd4965635
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+495ec2ab0b20        ubuntu              "bash"              7 minutes ago       Up 7 minutes                            ubuntu
+[xr-vm_node0_RP0_CPU0:~]$ 
+```  
+</code>
+</pre>
+</div>
+
+<blockquote>
+
+  <p>You will notice two peculiar things in the command we run:</p>
+
+  <ul>
+    <li>
+      <p><strong>Mounting of /var/run/netns/&lt;vrf-name&gt;</strong>: We mount /var/run/netns/&lt;vrf-name&gt; into the docker container. This is an option we use to mount the appropriate network namespace(s) (one or more -v options may be used) into the container. These network namespaces (XR release 6.3.1+) are created on the host and then bind-mounted into the XR LXC for user convenience. In case of ASR9k, these network namespaces are local. The docker container, running on the host (inside XR VM in case of ASR9k), will simply inherit these network namespaces through the /var/run/netns/&lt;vrf-name&gt; mount. <strong>Each Network namespace may correspond to a VRF in XR (CLI option to achieve this will be available post 6.3.1. Bear in mind that before 6.3.1 release only the <code class="highlighter-rouge">global-vrf</code> is supported in the XR linux shell</strong>.</p>
+    </li>
+    <li>
+      <p><strong>–cap-add=SYS_ADMIN flag</strong>: We’re using the <code class="highlighter-rouge">--cap-add=SYS_ADMIN</code> flag because even when network namespaces are mounted from the “host” (or XR VM in case of ASR9k) into the docker container, a user can change into a particular network namespace or execute commands in a particular namespace, only if the container is launched with privileged capabilties.</p>
+    </li>
+  </ul>
+</blockquote>
+
+<p>Yay! The container’s running. We can get into the container by starting bash through a docker exec. If you’re running container images that do not support a shell, try docker attach instead.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>xr-vm_node0_RP0_CPU0:~]<span class="err">$</span>
+<span class="o">[</span>xr-vm_node0_RP0_CPU0:~]<span class="err">$</span>
+<span class="o">[</span>xr-vm_node0_RP0_CPU0:~]<span class="nv">$docker</span> <span class="nb">exec</span> <span class="nt">-it</span> ubuntu bash
+root@bf408eb70f88:/# 
+root@bf408eb70f88:/# <span class="nb">cat</span> /etc/<span class="k">*</span><span class="nt">-release</span> 
+<span class="nv">DISTRIB_ID</span><span class="o">=</span>Ubuntu
+<span class="nv">DISTRIB_RELEASE</span><span class="o">=</span>16.04
+<span class="nv">DISTRIB_CODENAME</span><span class="o">=</span>xenial
+<span class="nv">DISTRIB_DESCRIPTION</span><span class="o">=</span><span class="s2">"Ubuntu 16.04.2 LTS"</span>
+<span class="nv">NAME</span><span class="o">=</span><span class="s2">"Ubuntu"</span>
+<span class="nv">VERSION</span><span class="o">=</span><span class="s2">"16.04.2 LTS (Xenial Xerus)"</span>
+<span class="nv">ID</span><span class="o">=</span>ubuntu
+<span class="nv">ID_LIKE</span><span class="o">=</span>debian
+<span class="nv">PRETTY_NAME</span><span class="o">=</span><span class="s2">"Ubuntu 16.04.2 LTS"</span>
+<span class="nv">VERSION_ID</span><span class="o">=</span><span class="s2">"16.04"</span>
+<span class="nv">HOME_URL</span><span class="o">=</span><span class="s2">"http://www.ubuntu.com/"</span>
+<span class="nv">SUPPORT_URL</span><span class="o">=</span><span class="s2">"http://help.ubuntu.com/"</span>
+<span class="nv">BUG_REPORT_URL</span><span class="o">=</span><span class="s2">"http://bugs.launchpad.net/ubuntu/"</span>
+<span class="nv">VERSION_CODENAME</span><span class="o">=</span>xenial
+<span class="nv">UBUNTU_CODENAME</span><span class="o">=</span>xenial
+root@bf408eb70f88:/# 
+
+</code></pre></div></div>
+
+<h3 id="ncs5500-and-asr9k-setup-2">NCS5500 and ASR9k Setup</h3>
+
+<p>Remember the topology for the NCS5508/ASR9k setup?: <a href="https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#physical-ncs5500-and-asr9k">NCS5500 and ASR9k Setup Topology</a></p>
+
+<p>In order to reach the internet, the NCS5508/ASR9k needs to be configured with a default route through the Management port which is NAT-ted (using iptables Masquerade rules, not shown here) to the outside world through devbox.</p>
+
+<p class="notice--warning"><strong>Note:</strong> Steps below are applicable to ASR9k as well.</p>
+
+<p>Read the note below if you need a refresher on the routing in XR’s linux kernel:</p>
+
+<blockquote>
+
+  <p><strong>Setting up Default routes in the Linux Kernel:</strong></p>
+
+  <p>For those who understand the basic principle behind the IOS-XR Packet I/O architecture for Linux application traffic (see here: <a href="&gt;&lt;https://xrdocs.io/application-hosting/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/&gt;">Application hosting Infrastructure in IOS-XR</a> ), it might be clear that routes in the linux kernel are controlled through the “tpa” CLI.</p>
+
+  <p>This leads to 3 types of routes:</p>
+  <ol>
+    <li>Default route through “fwdintf” : To allow packets through the front panel ports by default. Herein the update-source CLI is used to set the source IP address of the packets.</li>
+    <li>East-West route through “fwd_ew” : This enables packets to flow between XR and a linux app running in a given vrf (network namespace - only global-vrf supported before 6.3.1 release).</li>
+    <li>Management Subnet:  The directly connected subnet for the Management port as well non-default routes in the RIB through the Management port.</li>
+  </ol>
+</blockquote>
+
+<p>To set up a default route through the Management port:</p>
+
+<p><strong>Prior to 6.3.1 release</strong></p>
+
+<p>Prior to 6.3.1, there is no direct knob in the tpa CLI to help set this up. So we drop into the linux shell directly and set the default route ourselves:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RP/0/RP0/CPU0:ncs5508#bash
+Wed Mar  8 02:06:54.590 UTC
+
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$ip route
+default dev fwdintf  scope link  src 1.1.1.1 
+10.10.10.10 dev fwd_ew  scope link  src 1.1.1.1 
+11.11.11.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 11.11.11.59 
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$ip route del default
+[ncs5508:~]$ip route add default via 11.11.11.2 dev Mg0_RP0_CPU0_0
+[ncs5508:~]$
+[ncs5508:~]$ip route
+default via 11.11.11.2 dev Mg0_RP0_CPU0_0 
+10.10.10.10 dev fwd_ew  scope link  src 1.1.1.1 
+11.11.11.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 11.11.11.59 
+[ncs5508:~]$
+
+</code></pre></div></div>
+<p>Having done the above change, set up the DNS server in global-vrf network namespace, much like in the Vagrant setup:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ncs5508:~]$cat /etc/netns/global-vrf/resolv.conf
+nameserver ######
+[ncs5508:~]$
+</code></pre></div></div>
+
+<p class="notice--info">Of course, use an actual IP address of the DNS server in your network, and not #####. I use it to simply hide the private DNS IP in my setup :)</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$docker run -itd --name ubuntu --cap-add=SYS_ADMIN -v /var/run/netns:/var/run/netns ubuntu bash
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+d54efb8db41d: Pull complete 
+f8b845f45a87: Pull complete 
+e8db7bf7c39f: Pull complete 
+9654c40e9079: Pull complete 
+6d9ef359eaaa: Pull complete 
+Digest: sha256:dd7808d8792c9841d0b460122f1acf0a2dd1f56404f8d1e56298048885e45535
+Status: Downloaded newer image for ubuntu:latest
+67b781a19b5a164d77ee7ed95201c422e70be57c9ee6547a7e8e9457f8db514b
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+67b781a19b5a        ubuntu              "bash"              3 minutes ago       Up 3 minutes                            ubuntu
+[ncs5508:~]$
+
+</code>
+</pre>
+</div>
+
+<p><strong>Post 6.3.1 release</strong></p>
+
+<p>Post 6.3.1, the default route wouldn’t have to be set using the linux command (ip route default…). We have introduced a default-route CLI under tpa (along with vrfs, but more on that in another blog).</p>
+
+<p>The CLI will look something like :</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+tpa
+  vrf &lt;vrf-name&gt;
+    address-family ipv4[ipv6]
+      default-route east-west
+</code>
+</pre>
+</div>
+
+<p>The advantage of introducing a CLI is that it helps handle the routes in the linux kernel across reloads and switchovers as well.</p>
+
+<h2 id="private-insecure-registry">Private “insecure” registry</h2>
+
+<p>This is a straightforward technique when a user expects to bring up private registries for their docker images in a secure part of the network (so that connection between the registry and the router doesn’t necessarily need to be secured) :</p>
+
+<ul>
+  <li>
+    <p>We spin up an insecure docker registry(which is itself a docker container pulled down from dockerhub) on our devbox.</p>
+  </li>
+  <li>
+    <p>We then modify /etc/sysconfig/docker in XR linux to add the insecure registry information</p>
+  </li>
+  <li>
+    <p>Set up the route to the registry</p>
+  </li>
+  <li>
+    <p>Populate the registry with some docker images from dockerhub</p>
+  </li>
+  <li>
+    <p>Pull the relevant images from the insecure registry down to XR’s docker daemon and spin up containers</p>
+  </li>
+</ul>
+
+<h3 id="setting-up-the-insecure-registry">Setting up the insecure registry</h3>
+
+<p>Let’s begin by spinning up a registry on the devbox in our Vagrant setup. The same exact steps are relevant to the devbox environment on the NCS5500/ASR9k setup as well. 
+We follow the steps described here: <a href="https://docs.docker.com/registry/deploying/">https://docs.docker.com/registry/deploying/</a></p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$<mark>vagrant ssh devbox </mark>
+Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 3.13.0-95-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+ System information disabled due to load higher than 1.0
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+0 packages can be updated.
+0 updates are security updates.
+
+New release '16.04.2 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> sudo -s </mark>
+root@vagrant-ubuntu-trusty-64:~# 
+root@vagrant-ubuntu-trusty-64:~# <mark>docker run -d -p 5000:5000 --restart=always --name registry registry:2</mark>
+Unable to find image 'registry:2' locally
+2: Pulling from library/registry
+709515475419: Pull complete 
+df6e278d8f96: Pull complete 
+16218e264e88: Pull complete 
+16748da81f63: Pull complete 
+8d73e673c34c: Pull complete 
+Digest: sha256:28be0609f90ef53e86e1872a11d672434ce1361711760cf1fe059efd222f8d37
+Status: Downloaded newer image for registry:2
+b6a2a5fef7b7c201ee4d162b56f1e35054e25225ad27ad3fbf3a267d2ef9fb7a
+root@vagrant-ubuntu-trusty-64:~# 
+root@vagrant-ubuntu-trusty-64:~#<mark> docker pull ubuntu &amp;&amp; docker tag ubuntu localhost:5000/ubuntu</mark>
+Using default tag: latest
+latest: Pulling from library/ubuntu
+d54efb8db41d: Pull complete 
+f8b845f45a87: Pull complete 
+e8db7bf7c39f: Pull complete 
+9654c40e9079: Pull complete 
+6d9ef359eaaa: Pull complete 
+Digest: sha256:dd7808d8792c9841d0b460122f1acf0a2dd1f56404f8d1e56298048885e45535
+Status: Downloaded newer image for ubuntu:latest
+root@vagrant-ubuntu-trusty-64:~# 
+root@vagrant-ubuntu-trusty-64:~#<mark> docker push localhost:5000/ubuntu </mark>
+The push refers to a repository [localhost:5000/ubuntu]
+56827159aa8b: Pushed 
+440e02c3dcde: Pushed 
+29660d0e5bb2: Pushed 
+85782553e37a: Pushed 
+745f5be9952c: Pushed 
+latest: digest: sha256:6b079ae764a6affcb632231349d4a5e1b084bece8c46883c099863ee2aeb5cf8 size: 1357
+root@vagrant-ubuntu-trusty-64:~# 
+root@vagrant-ubuntu-trusty-64:~# 
+
+ </code>
+ </pre>
+ </div>
+
+<p>In the above steps, we’ve simply set up the registry on the devbox, pulled down an ubuntu docker image from dockerhub and pushed the image to the local registry.</p>
+
+<h3 id="vagrant-setup-3">Vagrant Setup</h3>
+
+<p>Before we start let’s come back to square-one on our Vagrant setup. Delete the previously running container and downloaded image:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[xr-vm_node0_RP0_CPU0:~]$ docker stop ubuntu &amp;&amp; docker rm ubuntu
+ubuntu
+ubuntu
+[xr-vm_node0_RP0_CPU0:~]$ docker rmi ubuntu
+Untagged: ubuntu:latest
+Deleted: sha256:0ef2e08ed3fabfc44002ccb846c4f2416a2135affc3ce39538834059606f32dd
+Deleted: sha256:0d58a35162057295d273c5fb8b7e26124a31588cdadad125f4bce63b638dddb5
+Deleted: sha256:cb7f997e049c07cdd872b8354052c808499937645f6164912c4126015df036cc
+Deleted: sha256:fcb4581c4f016b2e9761f8f69239433e1e123d6f5234ca9c30c33eba698487cc
+Deleted: sha256:b53cd3273b78f7f9e7059231fe0a7ed52e0f8e3657363eb015c61b2a6942af87
+Deleted: sha256:745f5be9952c1a22dd4225ed6c8d7b760fe0d3583efd52f91992463b53f7aea3
+[xr-vm_node0_RP0_CPU0:~]$ 
+</code></pre></div></div>
+
+<p>Now let’s set up XR’s docker daemon to accept the insecure registry located on the directly connected network on Gig0/0/0/0.</p>
+
+<p class="notice--info">Based off the config applied via the Vagrantfile, the reachable IP address of the registry running on devbox = 11.1.1.20, port 5000.</p>
+
+<p>Log into XR CLI. We will first make sure that the request from XR’s docker daemon originates with a source IP that is reachable from the docker registry. So set the TPA ip address = Gig0/0/0/0 ip address (directly connected subnet):</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RP/0/RP0/CPU0:ios(config)#tpa
+RP/0/RP0/CPU0:ios(config-tpa)#address-family ipv4 ?
+  update-source  Update the Source for Third Party
+  &lt;cr&gt;           
+RP/0/RP0/CPU0:ios(config-tpa)#address-family ipv4 
+RP/0/RP0/CPU0:ios(config-tpa-afi)#update-source gigabitEthernet 0/0/0/0 
+RP/0/RP0/CPU0:ios(config-tpa-afi)#commit
+Mon Mar  6 05:08:32.436 UTC
+RP/0/RP0/CPU0:ios(config-tpa-afi)#
+
+</code></pre></div></div>
+
+<p>This should lead to the following routes in the linux kernel:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RP/0/RP0/CPU0:ios#
+RP/0/RP0/CPU0:ios#bash
+Mon Mar  6 05:35:49.459 UTC
+
+[xr-vm_node0_RP0_CPU0:~]$ip route
+default dev fwdintf  scope link  src 11.1.1.10 
+10.0.2.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 10.0.2.15 
+[xr-vm_node0_RP0_CPU0:~]$
+
+</code></pre></div></div>
+
+<p>Before we launch the container, we need to configure the XR docker daemon to disregard security for our registry. This is done by modifying <code class="highlighter-rouge">/etc/sysconfig/docker</code> inside the XR LXC. My eventual configuration looks something like:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+[xr-vm_node0_RP0_CPU0:~]$cat /etc/sysconfig/docker
+# DOCKER_OPTS can be used to add insecure private registries to be supported 
+# by the docker daemon
+# eg : DOCKER_OPTS="--insecure-registry foo --insecure-registry bar"
+
+# Following are the valid configs
+# DOCKER_OPTS="&lt;space&gt;--insecure-registry&lt;space&gt;foo"
+# DOCKER_OPTS+="&lt;space&gt;--insecure-registry&lt;space&gt;bar"
+
+<mark>DOCKER_OPTS=" --insecure-registry 11.1.1.20:5000"</mark>
+[xr-vm_node0_RP0_CPU0:~]$
+</code>
+</pre>
+</div>
+
+<p class="notice--info">As the instructions/comments inside the file indicate, make sure there is a space before –insecure-registry flag. Further, in a normal docker daemon setup, a user is supposed to restart the docker daemon when changes to /etc/sysconfig/docker are made. In case of XR, this is not needed. We handle automatic restarts of the docker daemon when a user makes changes to /etc/sysconfig/docker and saves it. <br>
+Further, since the docker daemon will be automatically restarted, wait for about 10-15 seconds before issuing any docker commands.</p>
+
+<p>Now issue the docker run command to launch the container on XR.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+RP/0/RP0/CPU0:ios#
+RP/0/RP0/CPU0:ios#bash
+Mon Mar  6 05:51:14.341 UTC
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$docker run -itd --name ubuntu -v /var/run/netns --cap-add=SYS_ADMIN 11.1.1.20:5000/ubuntu bash
+Unable to find image '11.1.1.20:5000/ubuntu:latest' locally
+latest: Pulling from ubuntu
+fec6b243e075: Pull complete 
+190e0e9a3e79: Pull complete 
+0d79cf192e4c: Pull complete 
+38398c307b51: Pull complete 
+356665655a72: Pull complete 
+Digest: sha256:6b079ae764a6affcb632231349d4a5e1b084bece8c46883c099863ee2aeb5cf8
+Status: Downloaded newer image for 11.1.1.20:5000/ubuntu:latest
+bf408eb70f88c8050c29fb46610d354a113a46edbece105acc68507e71442d38
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$docker ps
+CONTAINER ID        IMAGE                   COMMAND             CREATED             STATUS              PORTS               NAMES
+bf408eb70f88        11.1.1.20:5000/ubuntu   "bash"              8 seconds ago       Up 8 seconds                            ubuntu
+[xr-vm_node0_RP0_CPU0:~]$
+
+</code>
+</pre>
+</div>
+
+<p class="notice--success">There, you’ve launched a docker container on XR using a private “insecure” registry.</p>
+
+<h3 id="ncs5500-setup">NCS5500 setup</h3>
+
+<p>The workflow is more or less identical to the Vagrant setup.
+In this case we’re setting up the registry to be reachable over the Management network (and over the same subnet). For this, you don’t need to set the TPA IP.</p>
+
+<p>If you’ve followed the steps above in the <a href="https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#setting-up-the-insecure-registry">Setting up the Insecure Registry</a> section, then you should have an insecure registry already running on the devbox environment, along with a “pushed” ubuntu image.</p>
+
+<p>Now hop over to the NCS5500 and issue the “bash” CLI. Your “ip route” setup should look something like this:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+RP/0/RP0/CPU0:ncs5508#bash
+Tue Mar  7 00:29:56.416 UTC
+
+[ncs5508:~]$ip route
+<mark>default dev fwdintf  scope link  src 1.1.1.1</mark>
+10.10.10.10 dev fwd_ew  scope link  src 1.1.1.1 
+<mark>11.11.11.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 11.11.11.59</mark>
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$
+
+</code>
+</pre>
+</div>
+
+<p>We won’t be leveraging the tpa setup for the fwdintf interface (meant for reachability over front panel/data ports) and instead just use the local management network subnet (11.11.11.0/24) for reachability to the docker registry.</p>
+
+<p>Further, much like before, set up <code class="highlighter-rouge">/etc/sysconfig/docker</code> to disregard security for our registry.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ncs5508:~]$cat /etc/sysconfig/docker
+# DOCKER_OPTS can be used to add insecure private registries to be supported 
+# by the docker daemon
+# eg : DOCKER_OPTS="--insecure-registry foo --insecure-registry bar"
+
+# Following are the valid configs
+# DOCKER_OPTS="&lt;space&gt;--insecure-registry&lt;space&gt;foo"
+# DOCKER_OPTS+="&lt;space&gt;--insecure-registry&lt;space&gt;bar"
+
+DOCKER_OPTS=" --insecure-registry 11.11.11.2:5000"
+[ncs5508:~]$
+</code></pre></div></div>
+
+<p class="notice--info">When you make the above change,the docker daemon will be automatically restarted. Wait for about 10-15 seconds before issuing any docker commands.</p>
+
+<p>Now we can issue a docker run (or docker pull followed by a docker run) to download and launch the docker ubuntu image from the registry.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[ncs5508:~]$docker run -itd --name ubuntu -v /var/run/netns --cap-add=SYS_ADMIN 11.11.11.2:5000/ubuntu
+Unable to find image '11.11.11.2:5000/ubuntu:latest' locally
+latest: Pulling from ubuntu
+d54efb8db41d: Pull complete 
+f8b845f45a87: Pull complete 
+e8db7bf7c39f: Pull complete 
+9654c40e9079: Pull complete 
+6d9ef359eaaa: Pull complete 
+Digest: sha256:dd7808d8792c9841d0b460122f1acf0a2dd1f56404f8d1e56298048885e45535
+Status: Downloaded newer image for 11.11.11.2:5000/ubuntu:latest
+aa73f6a81b9346131118b84f30ddfc2d3bd981a4a54ea21ba2e2bc5c3d18d348
+[ncs5508:~]$
+[ncs5508:~]$docker ps
+CONTAINER ID        IMAGE                    COMMAND             CREATED             STATUS              PORTS               NAMES
+aa73f6a81b93        11.11.11.2:5000/ubuntu   "/bin/bash"         4 hours ago         Up 4 hours                              ubuntu
+[ncs5508:~]$
+
+</code>
+</pre>
+</div>
+
+<h3 id="asr9k-setup">ASR9k setup</h3>
+
+<p>The ASR9k setup for an insecure docker registry is slightly different from Vagrant IOS-XR or NCS platforms. There is no automatic mechanism to restart the docker daemon.</p>
+
+<p><strong>The user must restart the docker daemon once they modify the /etc/sysconfig/docker file.</strong></p>
+
+<p>Again, we’re setting up the registry to be reachable over the Management network (and over the same subnet). For this, you don’t need to set the TPA IP.</p>
+
+<p>Now hop over to the ASR9k and issue the “bash” CLI. Your “ip route” setup should look something like this:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+RP/0/RSP1/CPU0:asr9k#bash
+Tue Mar  7 00:29:56.416 UTC
+
+[asr9k:~]$ip route
+<mark>default dev fwdintf  scope link  src 1.1.1.1</mark>
+10.10.10.10 dev fwd_ew  scope link  src 1.1.1.1 
+<mark>11.11.11.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 11.11.11.59</mark>
+[asr9k:~]$
+[asr9k:~]$
+[asr9k:~]$
+
+</code>
+</pre>
+</div>
+
+<p>We won’t be leveraging the tpa setup for the fwdintf interface (meant for reachability over front panel/data ports) and instead just use the local management network subnet (11.11.11.0/24) for reachability to the docker registry.</p>
+
+<p>Further, much like before, set up <code class="highlighter-rouge">/etc/sysconfig/docker</code> to disregard security for our registry.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[asr9k:~]$cat /etc/sysconfig/docker
+# DOCKER_OPTS can be used to add insecure private registries to be supported 
+# by the docker daemon
+# eg : DOCKER_OPTS="--insecure-registry foo --insecure-registry bar"
+
+# Following are the valid configs
+# DOCKER_OPTS="&lt;space&gt;--insecure-registry&lt;space&gt;foo"
+# DOCKER_OPTS+="&lt;space&gt;--insecure-registry&lt;space&gt;bar"
+
+DOCKER_OPTS=" --insecure-registry 11.11.11.2:5000"
+[asr9k:~]$
+</code></pre></div></div>
+
+<p class="notice--warning"><strong>Important:</strong> For the ASR9k, you need to restart the docker daemon for the above config change to take effect.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[asr9k:~]$service docker restart
+docker stop/waiting
+docker start/running, process 12276
+[asr9k:~]$
+</code></pre></div></div>
+
+<p>Now we can issue a docker run (or docker pull followed by a docker run) to download and launch the docker ubuntu image from the registry.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[asr9k:~]$docker run -itd --name ubuntu -v /var/run/netns --cap-add=SYS_ADMIN 11.11.11.2:5000/ubuntu
+Unable to find image '11.11.11.2:5000/ubuntu:latest' locally
+latest: Pulling from ubuntu
+d54efb8db41d: Pull complete 
+f8b845f45a87: Pull complete 
+e8db7bf7c39f: Pull complete 
+9654c40e9079: Pull complete 
+6d9ef359eaaa: Pull complete 
+Digest: sha256:dd7808d8792c9841d0b460122f1acf0a2dd1f56404f8d1e56298048885e45535
+Status: Downloaded newer image for 11.11.11.2:5000/ubuntu:latest
+aa73f6a81b9346131118b84f30ddfc2d3bd981a4a54ea21ba2e2bc5c3d18d348
+[ncs5508:~]$
+[ncs5508:~]$docker ps
+CONTAINER ID        IMAGE                    COMMAND             CREATED             STATUS              PORTS               NAMES
+aa73f6a81b93        11.11.11.2:5000/ubuntu   "/bin/bash"         4 hours ago         Up 4 hours                              ubuntu
+[asr9k:~]$
+
+</code>
+</pre>
+</div>
+
+<h2 id="private-self-signed-registry">Private Self-Signed Registry</h2>
+
+<p>This technique is a bit more secure than the insecure registry setup and may be used to more or less secure the connection between the router’s docker daemon and the docker registry running externally. The basic steps involved are:</p>
+
+<ul>
+  <li>
+    <p>Generate your own certificate on the devbox</p>
+  </li>
+  <li>
+    <p>Use the result to start your docker registry with TLS enabled</p>
+  </li>
+  <li>
+    <p>Copy the certificates to the /etc/docker/certs.d/ folder on the router</p>
+  </li>
+  <li>
+    <p>Don’t forget to restart the Docker daemon for the ASR9k. In case of other platforms, the restart is automatic</p>
+  </li>
+  <li>
+    <p>Set up the route to the registry</p>
+  </li>
+  <li>
+    <p>Populate the registry with some docker images from dockerhub</p>
+  </li>
+  <li>
+    <p>Pull the relevant images from the registry down to XR’s docker daemon and spin up containers</p>
+  </li>
+</ul>
+
+<h3 id="setting-up-a-self-signed-docker-registry">Setting up a self-signed Docker Registry</h3>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ vagrant ssh devbox
+Welcome to Ubuntu 14.04.5 LTS (GNU/Linux 3.13.0-95-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+ System information disabled due to load higher than 1.0
+
+  Get cloud support with Ubuntu Advantage Cloud Guest:
+    http://www.ubuntu.com/business/services/cloud
+
+0 packages can be updated.
+0 updates are security updates.
+
+New release '16.04.2 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$<mark> mkdir -p certs &amp;&amp; openssl req -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key -x509 -days 365 -out certs/domain.crt </mark>
+Generating a 4096 bit RSA private key
+.......................++
+..........................++
+writing new private key to 'certs/domain.key'
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:
+State or Province Name (full name) [Some-State]:
+Locality Name (eg, city) []:
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:
+Organizational Unit Name (eg, section) []:
+Common Name (e.g. server FQDN or YOUR name) []:<mark>devbox.com</mark>
+Email Address []:
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ cd certs/
+vagrant@vagrant-ubuntu-trusty-64:~/certs$ ls
+domain.crt  domain.key
+vagrant@vagrant-ubuntu-trusty-64:~/certs$ 
+vagrant@vagrant-ubuntu-trusty-64:~/certs$ 
+vagrant@vagrant-ubuntu-trusty-64:~/certs$ 
+vagrant@vagrant-ubuntu-trusty-64:~/certs$ cd ..
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ <mark>sudo docker run -d -p 5000:5000 --restart=always --name registry -v `pwd`/certs:/certs -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key registry:2 </mark>
+Unable to find image 'registry:2' locally
+2: Pulling from library/registry
+709515475419: Pull complete 
+df6e278d8f96: Pull complete 
+16218e264e88: Pull complete 
+16748da81f63: Pull complete 
+8d73e673c34c: Pull complete 
+Digest: sha256:28be0609f90ef53e86e1872a11d672434ce1361711760cf1fe059efd222f8d37
+Status: Downloaded newer image for registry:2
+c423ae398af2ec05fabd9c1efc29b846b21c63af71ed0b59ba6ec7f4d13a6762
+vagrant@vagrant-ubuntu-trusty-64:~$ <mark>sudo docker ps </mark>
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+c423ae398af2        registry:2          "/entrypoint.sh /e..."   5 seconds ago       Up 4 seconds        0.0.0.0:5000-&gt;5000/tcp   registry
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+
+</code>
+</pre>
+</div>
+
+<p>Now pull an ubuntu image (just an example) from dockerhub and push it to the local registry:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo -s
+root@vagrant-ubuntu-trusty-64:~# 
+
+root@vagrant-ubuntu-trusty-64:~#<mark> docker pull ubuntu &amp;&amp; docker tag ubuntu localhost:5000/ubuntu </mark>
+Using default tag: latest
+latest: Pulling from library/ubuntu
+d54efb8db41d: Pull complete 
+f8b845f45a87: Pull complete 
+e8db7bf7c39f: Pull complete 
+9654c40e9079: Pull complete 
+6d9ef359eaaa: Pull complete 
+Digest: sha256:dd7808d8792c9841d0b460122f1acf0a2dd1f56404f8d1e56298048885e45535
+Status: Downloaded newer image for ubuntu:latest
+root@vagrant-ubuntu-trusty-64:~# 
+root@vagrant-ubuntu-trusty-64:~# 
+root@vagrant-ubuntu-trusty-64:~# 
+root@vagrant-ubuntu-trusty-64:~# <mark> docker push localhost:5000/ubuntu </mark>
+The push refers to a repository [localhost:5000/ubuntu]
+56827159aa8b: Layer already exists 
+440e02c3dcde: Layer already exists 
+29660d0e5bb2: Layer already exists 
+85782553e37a: Layer already exists 
+745f5be9952c: Layer already exists 
+latest: digest: sha256:6b079ae764a6affcb632231349d4a5e1b084bece8c46883c099863ee2aeb5cf8 size: 1357
+root@vagrant-ubuntu-trusty-64:~# 
+root@vagrant-ubuntu-trusty-64:~#<mark> docker images </mark>
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+registry                2                   047218491f8c        5 weeks ago         33.2 MB
+ubuntu                  latest              0ef2e08ed3fa        5 weeks ago         130 MB
+localhost:5000/ubuntu   latest              0ef2e08ed3fa        5 weeks ago         130 MB
+root@vagrant-ubuntu-trusty-64:~# 
+</code>
+</pre>
+</div>
+
+<h3 id="vagrant-setup-4">Vagrant Setup</h3>
+
+<p>All we have to do get out docker daemon on the router working with the self-signed docker registry is to make sure the certificate is available in the right directory: /etc/docker/certs.d/ in the XR shell.</p>
+
+<p>Hop over to the router and create folder with name = “&lt;Common Name of the certificate&gt;:5000” in the folder <code class="highlighter-rouge">/etc/docker/certs.d/</code> as shown below:</p>
+
+<p>Hop into the router shell from your host/laptop:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ vagrant ssh rtr
+Last login: Sun Apr  2 13:45:29 2017 from 10.0.2.2
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ 
+xr-vm_node0_RP0_CPU0:~$ sudo -i
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+</code></pre></div></div>
+
+<p>Create a folder named <code class="highlighter-rouge">devbox.com:5000</code> under <code class="highlighter-rouge">/etc/docker/certs.d</code>.</p>
+
+<p>The folder name = <code class="highlighter-rouge">&amp;lt;Common Name of the certificate&amp;gt;:&amp;lt;Port opened by the registry&amp;gt;</code></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+[xr-vm_node0_RP0_CPU0:~]$ mkdir /etc/docker/certs.d/devbox.com:5000
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+</code></pre></div></div>
+
+<p>Add the dns entry for devbox.com in /etc/hosts of the vrf you’re working in. Since before 6.3.1, we only support global-vrf in the linux kernel, we set up <code class="highlighter-rouge">/etc/hosts</code> of the global-vrf network namespace to create a pointer to <code class="highlighter-rouge">devbox.com</code>. To do this change into the correct network namespace (global-vrf) and edit /etc/hosts as shown below:</p>
+
+<p class="notice--info">Another way to do this would be to edit  <code class="highlighter-rouge">/etc/netns/global-vrf/hosts</code> file and then change into the network namespace for the subsequent scp to immediately work.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ ip netns exec global-vrf bash
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$ cat /etc/hosts 
+127.0.0.1	localhost.localdomain		localhost
+<mark>11.1.1.20       devbox.com </mark>
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+</code>
+</pre>
+</div>
+
+<p class="notice--info">Here, 11.1.1.20 is the IP address of the directly connected interface of the devbox on the port Gi0/0/0/0 of the IOS-XR instance.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ scp vagrant@devbox.com:~/certs/domain.crt /etc/docker/certs.d/devbox.com\:5000/ca.crt
+vagrant@devbox.com's password: 
+domain.crt                                                                                                                                                              100% 1976     1.9KB/s   00:00    
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+</code>
+</pre>
+</div>
+
+<p class="notice--info">Perfect. Now wait about 5-10 seconds as the certificate gets automatically sync-ed to the underlying host layer (remember, the docker daemon is running on the host).</p>
+
+<p>Pull the docker image from the registry:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[xr-vm_node0_RP0_CPU0:~]$ <mark>docker pull devbox.com:5000/ubuntu</mark>
+Using default tag: latest
+latest: Pulling from ubuntu
+fec6b243e075: Pull complete 
+190e0e9a3e79: Pull complete 
+0d79cf192e4c: Pull complete 
+38398c307b51: Pull complete 
+356665655a72: Pull complete 
+Digest: sha256:6b079ae764a6affcb632231349d4a5e1b084bece8c46883c099863ee2aeb5cf8
+Status: Downloaded newer image for devbox.com:5000/ubuntu:latest
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+[xr-vm_node0_RP0_CPU0:~]$<mark> docker images </mark>
+REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
+devbox.com:5000/ubuntu   latest              0ef2e08ed3fa        4 weeks ago         130 MB
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+</code>
+</pre>
+</div>
+
+<p>Spin it up! :</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$<mark> docker run -itd --name ubuntu -v /var/run/netns/global-vrf:/var/run/netns/global-vrf --cap-add=SYS_ADMIN devbox.com:5000/ubuntu bash</mark>
+b50424bbe195fd4b79c0d375dcc081228395da467d1c0d5367897180c421b41d
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ docker ps
+CONTAINER ID        IMAGE                    COMMAND             CREATED             STATUS              PORTS               NAMES
+b50424bbe195        devbox.com:5000/ubuntu   "bash"              4 seconds ago       Up 3 seconds                            ubuntu
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+</code>
+</pre>
+</div>
+
+<h3 id="ncs5500-and-asr9k-setup-3">NCS5500 and ASR9k Setup</h3>
+
+<p>The setup of the self-signed registry is already covered above in the <a href="https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#setting-up-a-self-signed-docker-registry">Setting up a Self-Signed Docker Registry</a> section.</p>
+
+<p>The steps for NCS5500 and ASR9k are identical from hereon and match what we did for the Vagrant setup. To be thorough, here are the steps on an NCS5500 setup:</p>
+
+<p>Hop over to the router and issue the “bash” CLI.</p>
+
+<p>Now change into the network namespace (explicitly) and set up <code class="highlighter-rouge">/etc/hosts</code> (In my setup, the devbox is reachable over the management port on IP=11.11.11.2) :</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ncs5508:~]$ip netns exec global-vrf bash 
+[ncs5508:~]$cat /etc/hosts
+127.0.0.1	localhost.localdomain		localhost
+
+127.0.1.1    ncs5508.cisco.com    ncs5508
+
+11.11.11.2 devbox.com
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$
+
+</code></pre></div></div>
+
+<p>Set up the directory to store the certificates created for the docker registry:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ncs5508:~]$
+[ncs5508:~]$mkdir /etc/docker/certs.d/devbox.com:5000
+[ncs5508:~]$
+[ncs5508:~]$
+
+</code></pre></div></div>
+
+<p>scp over the self-signed certificate from the devbox into the above directory:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[ncs5508:~]$scp cisco@devbox.com:~/certs/domain.crt /etc/docker/certs.d/devbox.com\:5000/ca.crt
+Warning: Permanently added 'devbox.com,11.11.11.2' (ECDSA) to the list of known hosts.
+cisco@devbox.com's password: 
+domain.crt                                    100% 1976     1.9KB/s   00:00    
+[ncs5508:~]$
+
+</code>
+</pre>
+</div>
+
+<p>Now pull the docker image from the registry and spin it up:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[ncs5508:~]$<mark>docker pull devbox.com:5000/ubuntu</mark>
+Using default tag: latest
+latest: Pulling from ubuntu
+
+d54efb8db41d: Pull complete 
+f8b845f45a87: Pull complete 
+e8db7bf7c39f: Pull complete 
+9654c40e9079: Pull complete 
+6d9ef359eaaa: Pull complete 
+Digest: sha256:dd7808d8792c9841d0b460122f1acf0a2dd1f56404f8d1e56298048885e45535
+Status: Downloaded newer image for devbox.com:5000/ubuntu:latest
+[ncs5508:~]$
+[ncs5508:~]$ <mark> docker run -itd --name ubuntu -v /var/run/netns/global-vrf:/var/run/netns/global-vrf --cap-add=SYS_ADMIN devbox.com:5000/ubuntu bash</mark>
+3b4721fa053a97325ccaa2ac98b3dc3fd9fb224543e0ed699be597f773ab875d
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$docker ps
+CONTAINER ID        IMAGE                    COMMAND             CREATED             STATUS              PORTS               NAMES
+3b4721fa053a        devbox.com:5000/ubuntu   "bash"              5 seconds ago       Up 4 seconds                            ubuntu
+[ncs5508:~]$
+
+</code>
+</pre>
+</div>
+
+<h2 id="docker-saveload-technique">Docker Save/Load Technique</h2>
+
+<p>This is the potentially the easiest secure technique if you don’t want to meddle around with certificates on a docker registry and potentially don’t want a registry at all.</p>
+
+<h3 id="create-a-docker-image-tarball">Create a docker image tarball</h3>
+
+<p>As a first step, on your devbox create a docker image tar ball. You can either pull the relevant docker image into your devbox (From dockerhub or some other private registry) or build it on your own on the devbox (we will not delve into this here: for details: <a href="https://docs.docker.com/engine/getstarted/step_four/">https://docs.docker.com/engine/getstarted/step_four/</a>).
+Once you have the image locally, issue a <code class="highlighter-rouge">docker save</code> to save the image into a loadable tar-ball.</p>
+
+<p>This is shown below:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+
+vagrant@vagrant-ubuntu-trusty-64:~$ sudo docker images 
+REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+registry                2                   047218491f8c        5 weeks ago         33.2 MB
+localhost:5000/ubuntu   latest              0ef2e08ed3fa        5 weeks ago         130 MB
+ubuntu                  latest              0ef2e08ed3fa        5 weeks ago         130 MB
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+vagrant@vagrant-ubuntu-trusty-64:~$ <mark>sudo docker save ubuntu &gt; ubuntu.tar </mark>
+vagrant@vagrant-ubuntu-trusty-64:~$ 
+
+</code>
+</pre>
+</div>
+
+<h3 id="vagrant-setup-5">Vagrant Setup</h3>
+
+<p>Login to your Router (directly into the shell or by issuing the <code class="highlighter-rouge">bash</code> command in XR CLI). We first scp the docker image tar ball into an available volume on the router and then load it up.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ df -h  /misc/app_host/
+Filesystem                       Size  Used Avail Use% Mounted on
+/dev/mapper/app_vol_grp-app_lv0  3.9G  260M  3.5G   7% /misc/app_host
+[xr-vm_node0_RP0_CPU0:~]$ <mark>scp vagrant@11.1.1.20:~/ubuntu.tar /misc/app_host/</mark>
+vagrant@11.1.1.20's password: 
+ubuntu.tar                                                                                                                                                             100%  129MB 107.7KB/s   20:31    
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ <mark> docker load &lt; /misc/app_host/ubuntu.tar </mark>
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ docker images
+REPOSITORY               TAG                 IMAGE ID            CREATED             SIZE
+ubuntu                   latest              0ef2e08ed3fa        4 weeks ago         130 MB
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+</code>
+</pre>
+</div>
+
+<p>Now go ahead and spin it up as shown earlier:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[xr-vm_node0_RP0_CPU0:~]$
+[xr-vm_node0_RP0_CPU0:~]$<mark> docker run -itd --name ubuntu -v /var/run/netns/global-vrf:/var/run/netns/global-vrf --cap-add=SYS_ADMIN ubuntu bash</mark>
+b50424bbe195fd4b79c0d375dcc081228395da467d1c0d5367897180c421b41d
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+108a5ad711ca        ubuntu              "bash"              3 seconds ago       Up 2 seconds                            ubuntu
+[xr-vm_node0_RP0_CPU0:~]$ 
+</code>
+</pre>
+</div>
+
+<h3 id="ncs5500-and-asr9k-setup-4">NCS5500 and ASR9k setup.</h3>
+
+<p>NCS5500 and ASR9k follow the exact same steps as the Vagrant box above. For completeness, though:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[ncs5508:~]$
+[ncs5508:~]$scp cisco@11.11.11.2:~/ubuntu.tar /misc/app_host/
+cisco@11.11.11.2's password: 
+ubuntu.tar                                    100%  317MB  10.2MB/s   00:31    
+[ncs5508:~]$
+[ncs5508:~]$docker load &lt; /misc/app_host/ubuntu.tar 
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+[ncs5508:~]$
+[ncs5508:~]$<mark> docker run -itd --name ubuntu -v /var/run/netns/global-vrf:/var/run/netns/global-vrf --cap-add=SYS_ADMIN ubuntu bash</mark>
+ffc95e05e05c6e2e6b8e4aa05b299f513fd5df6d1ca8fe641cfa7f44671e6f07
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED              STATUS              PORTS               NAMES
+ffc95e05e05c        ubuntu              "bash"              About a minute ago   Up About a minute                       ubuntu
+[ncs5508:~]$
+</code>
+</pre>
+</div>
+
+<h2 id="docker-exportimport-technique">Docker export/import Technique</h2>
+
+<p>A lot of times you might create a tar ball from a custom Docker container on your server (devbox) and would like to run the custom container directly on the router. This technique explores that option.</p>
+
+<h3 id="create-a-custom-docker-container-tarballsnapshot">Create a custom docker Container tarball/snapshot</h3>
+
+<p>As a first step, on your devbox spin up a docker container from an image you’d like to customize.</p>
+
+<p>Assuming you’ve already learnt how to pull docker images into your devbox environment, let’s spin up an ubuntu container and install iproute2 on it:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+root@vagrant-ubuntu-trusty-64:~# docker images ubuntu
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu              latest              0ef2e08ed3fa        5 weeks ago         130 MB
+root@vagrant-ubuntu-trusty-64:~# docker run -itd --name ubuntu ubuntu bash
+a544ddc41b1fd92cf6b7a751dcafaf63de36f6499f59c256918ca23c32645159
+</code>
+</pre>
+</div>
+
+<p>Now exec into the created container and start installing iproute2 and python(we’ll use this later):</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+root@vagrant-ubuntu-trusty-64:~# <mark> docker exec -it ubuntu bash </mark>
+root@a544ddc41b1f:/# 
+root@3cc4d9dd0056:/# <mark>apt-get update &amp;&amp; apt-get install -y iproute2 python</mark>
+Get:1 http://archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
+Get:2 http://archive.ubuntu.com/ubuntu xenial-updates InRelease [102 kB]
+Get:3 http://archive.ubuntu.com/ubuntu xenial-security InRelease [102 kB]
+Get:4 http://archive.ubuntu.com/ubuntu xenial/main Sources [1103 kB]
+Get:5 http://archive.ubuntu.com/ubuntu xenial/restricted Sources [5179 B]
+
+############################  SNIP Output  ######################################## 
+Get:18 http://archive.ubuntu.com/ubuntu xenial-security/universe Sources [30.0 kB]
+Get:19 http://archive.ubuntu.com/ubuntu xenial-security/main amd64 Packages [303 kB]
+Get:20 http://archive.ubuntu.com/ubuntu xenial-security/restricted amd64 Packages [12.8 kB]
+Get:21 http://archive.ubuntu.com/ubuntu xenial-security/universe amd64 Packages [132 kB]
+
+############################  SNIP Output  ######################################## 
+
+The following NEW packages will be installed:
+  file iproute2 libatm1 libexpat1 libffi6 libmagic1 libmnl0 libpython-stdlib libpython2.7-minimal libpython2.7-stdlib libsqlite3-0 libssl1.0.0 libxtables11 mime-support python
+  python-minimal python2.7 python2.7-minimal
+
+0 upgraded, 4 newly installed, 0 to remove and 8 not upgraded.
+Need to get 586 kB of archives.
+After this operation, 1808 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu xenial/main amd64 libatm1 amd64 1:2.5.1-1.5 [24.2 kB]
+Get:2 http://archive.ubuntu.com/ubuntu xenial/main amd64 libmnl0 amd64 1.0.3-5 [12.0 kB]
+Get:3 http://archive.ubuntu.com/ubuntu xenial/main amd64 iproute2 amd64 4.3.0-1ubuntu3 [522 kB]
+Get:4 http://archive.ubuntu.com/ubuntu xenial/main amd64 libxtables11 amd64 1.6.0-2ubuntu3 [27.2 kB]
+Fetched 586 kB in 0s (11.1 MB/s)   
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package libatm1:amd64.
+(Reading database ... 7256 files and directories currently installed.)
+Preparing to unpack .../libatm1_1%3a2.5.1-1.5_amd64.deb ...
+
+############################  SNIP Output  ######################################## 
+
+Setting up libmnl0:amd64 (1.0.3-5) ...
+Setting up iproute2 (4.3.0-1ubuntu3) ...
+Setting up libxtables11:amd64 (1.6.0-2ubuntu3) ...
+Processing triggers for libc-bin (2.23-0ubuntu5) ...
+root@3cc4d9dd0056:/# exit
+exit
+root@vagrant-ubuntu-trusty-64:~# 
+</code>
+</pre>
+</div>
+
+<p>Finally, use the <code class="highlighter-rouge">docker export</code> command to save your custom container tar ball:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+root@vagrant-ubuntu-trusty-64:~# 
+root@vagrant-ubuntu-trusty-64:~# <mark>docker export ubuntu_iproute2 &gt; ubuntu_iproute2.tar </mark>
+root@vagrant-ubuntu-trusty-64:~# ls -l ubuntu_iproute2.tar 
+-rw-r--r-- 1 root root 147474432 Apr  8 11:31 ubuntu_iproute2.tar
+root@vagrant-ubuntu-trusty-64:~# 
+</code>
+</pre>
+</div>
+
+<h3 id="vagrant-setup-6">Vagrant Setup</h3>
+
+<p>Just like the previous technique, scp the docker container tar ball into the router, but this time <code class="highlighter-rouge">import</code> it:</p>
+
+<p>scp the tarball onto the router:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+AKSHSHAR-M-K0DS:docker-app-topo-bootstrap akshshar$ vagrant ssh rtr
+xr-vm_node0_RP0_CPU0:~$sudo -i
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ scp  vagrant@11.1.1.20:~/ubuntu_iproute2.tar /misc/app_host/
+vagrant@10.0.2.2's password: 
+ubuntu_iproute2.tar                                                                                                                                                     100%  141MB  17.6MB/s   00:08    
+[xr-vm_node0_RP0_CPU0:~]$ 
+
+</code>
+</pre>
+</div>
+
+<p>Now import the tar ball and spin up the docker container:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ <mark>docker import /misc/app_host/ubuntu_iproute2.tar ubuntu_iproute2 </mark>
+sha256:26265a51af3e826b92130ef6bc8a1ead85988908b836c2659164d482e0a73248
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ docker images ubuntu_iproute2
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu_iproute2     latest              26265a51af3e        38 seconds ago      141.7 MB
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ <mark>docker run -itd --name ubuntu_iproute2 -v /var/run/netns/global-vrf:/var/run/netns/global-vrf --cap-add=SYS_ADMIN ubuntu_iproute2 bash</mark>
+3736cb8350e324636ebad4822bcd4437451c5ba59b9b5d025c7ba9914afd4379
+[xr-vm_node0_RP0_CPU0:~]$ 
+[xr-vm_node0_RP0_CPU0:~]$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+3736cb8350e3        ubuntu_iproute2     "bash"              29 seconds ago      Up 28 seconds                           ubuntu_iproute2
+
+</code>
+</pre>
+</div>
+
+<h3 id="ncs5500-and-asr9k-setup-5">NCS5500 and ASR9k setup.</h3>
+
+<p>NCS5500 and ASR9k follow the exact same steps as the Vagrant box above. For completeness, though:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+
+RP/0/RP0/CPU0:ncs5508#bash
+Sun Apr  9 11:29:09.531 UTC
+
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$scp cisco@11.11.11.2:~/ubuntu_iproute2.tar /misc/app_host/
+cisco@11.11.11.2's password: 
+ubuntu_iproute2.tar                           100%  141MB  10.1MB/s   00:14    
+[ncs5508:~]$
+[ncs5508:~]$
+[ncs5508:~]$<mark>docker import /misc/app_host/ubuntu_iproute2.tar  ubuntu_iproute2 </mark>
+sha256:170f8ce009cc920160e47b3e4e7dae1a0711ae4542c9ef0dcfcca4007741a13f
+[ncs5508:~]$
+[ncs5508:~]$docker images ubuntu_iproute2
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu_iproute2     latest              170f8ce009cc        25 seconds ago      141.7 MB
+[ncs5508:~]$
+[ncs5508:~]$<mark>docker run -itd --name ubuntu_iproute2 -v /var/run/netns/global-vrf:/var/run/netns/global-vrf --cap-add=SYS_ADMIN ubuntu_iproute2 bash </mark>
+36f8ae4cad2c575885f2c1243a042972dc74e7dd541e270c06628fe141a5f63a
+[ncs5508:~]$
+[ncs5508:~]$docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+36f8ae4cad2c        ubuntu_iproute2     "bash"              4 seconds ago       Up 4 seconds                            ubuntu_iproute2
+
+</code>
+</pre>
+</div>
+
+<p class="notice--success"><strong>And there you have it! We’ve successfully tried all the possible techniques through which a docker image can be pulled into the router before we spin up the container.</strong></p>
+
+<h2 id="what-can-i-do-with-the-docker-container">What can I do with the Docker container?</h2>
+
+<p>As a user you might be wondering:  What can processes inside the spun-up Docker container really do?
+The answer: everything that a native app/agent (running inside the XR process space) can do from the perspective of reachability and binding to XR interface IP addresses.<br>
+You basically have a distribution of your choice with complete access to XR RIB/FIB (through routes in the kernel) and interfaces (data and management) to bind to.</p>
+
+<p class="notice--warning"><strong>Docker images by default are extremely basic and do not include most utilities. To be able to showcase the kind of access that a container has, I pull in a special ubuntu docker image with pre-installed iproute2</strong>. To understand how to do this follow the previous section: <a href="https://xrdocs.github.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/#docker-exportimport-technique">Importing a Custom Docker container tar ball</a></p>
+
+<p>At the end of the previous section you would have the ubuntu_iproute2 container up and running:</p>
+
+<p>We’re running the steps below on an NCS5500. But the steps are the same for a vagrant setup or for ASR9k.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[ncs5508:~]$docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+36f8ae4cad2c        ubuntu_iproute2     "bash"              9 minutes ago       Up 9 minutes                            ubuntu_iproute2
+[ncs5508:~]$
+</code>
+</pre>
+</div>
+
+<p>Now exec into the running container using <code class="highlighter-rouge">docker exec</code>:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+[ncs5508:~]$
+[ncs5508:~]$<mark>docker exec -it ubuntu_iproute2 bash</mark>
+root@36f8ae4cad2c:/# 
+root@36f8ae4cad2c:/# 
+</code>
+</pre>
+</div>
+
+<p>To view the IOS-XR network interfaces and the relevant routes in the kernel, exec into the global-vrf network namespace:</p>
+
+<p class="notice--info">If you remember, every <code class="highlighter-rouge">docker run</code> command we have run till now involves mounting the relevant network namespace into the container under <code class="highlighter-rouge">/var/run/netns</code>.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+
+root@36f8ae4cad2c:/# <mark>ip netns exec global-vrf bash </mark>
+root@36f8ae4cad2c:/# 
+root@36f8ae4cad2c:/# <mark>ip route</mark>
+default dev fwdintf  scope link  src 11.11.11.59 
+10.10.10.10 dev fwd_ew  scope link  src 11.11.11.59 
+11.11.11.0/24 dev Mg0_RP0_CPU0_0  proto kernel  scope link  src 11.11.11.59 
+root@36f8ae4cad2c:/# 
+root@36f8ae4cad2c:/# 
+root@36f8ae4cad2c:/# <mark>ip link show</mark>
+1: lo: &lt;LOOPBACK,MULTICAST,NOARP,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+3: fwdintf: &lt;MULTICAST,NOARP,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UNKNOWN mode DEFAULT group default qlen 1000
+    link/ether 00:00:00:00:00:0a brd ff:ff:ff:ff:ff:ff
+4: fwd_ew: &lt;MULTICAST,NOARP,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UNKNOWN mode DEFAULT group default qlen 1000
+    link/ether 00:00:00:00:00:0b brd ff:ff:ff:ff:ff:ff
+7: Hg0_0_0_0: &lt;&gt; mtu 1514 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 0c:11:67:46:10:00 brd ff:ff:ff:ff:ff:ff
+8: Hg0_0_0_35: &lt;&gt; mtu 1514 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 0c:11:67:46:10:8c brd ff:ff:ff:ff:ff:ff
+9: Hg0_0_0_34: &lt;&gt; mtu 1514 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 0c:11:67:46:10:88 brd ff:ff:ff:ff:ff:ff
+10: Hg0_0_0_33: &lt;&gt; mtu 1514 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 0c:11:67:46:10:84 brd ff:ff:ff:ff:ff:ff
+
+
+############################  SNIP Output  ######################################## 
+
+47: Hg0_0_0_1: &lt;&gt; mtu 1514 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 0c:11:67:46:10:04 brd ff:ff:ff:ff:ff:ff
+48: Fg0_0_0_32: &lt;&gt; mtu 1514 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 0c:11:67:46:10:80 brd ff:ff:ff:ff:ff:ff
+49: Fg0_0_0_28: &lt;&gt; mtu 1514 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether 0c:11:67:46:10:70 brd ff:ff:ff:ff:ff:ff
+53: Mg0_RP0_CPU0_0: &lt;MULTICAST,NOARP,UP,LOWER_UP&gt; mtu 1514 qdisc pfifo_fast state UNKNOWN mode DEFAULT group default qlen 1000
+    link/ether 80:e0:1d:00:fc:ea brd ff:ff:ff:ff:ff:ff
+root@36f8ae4cad2c:/# 
+
+</code>
+</pre>
+</div>
+
+<p class="notice--success">Awesome! The entire XR routing stack is your oyster :).</p>
+
+<h3 id="testing-out-a-web-server">Testing out a Web Server</h3>
+
+<p>Let’s test this setup out quickly. If you remember, we installed python as part of the ubuntu_iproute2 custom container creation. We’ll spin up a python HTTP web server inside the docker container and see if we can reach it from the outside.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+root@642894d230a8:/# ip netns exec global-vrf bash
+root@642894d230a8:/# 
+root@642894d230a8:/# 
+root@642894d230a8:/# ip addr show Mg0_RP0_CPU0_0
+53: Mg0_RP0_CPU0_0: &lt;MULTICAST,NOARP,UP,LOWER_UP&gt; mtu 1514 qdisc pfifo_fast state UNKNOWN group default qlen 1000
+    link/ether 80:e0:1d:00:fc:ea brd ff:ff:ff:ff:ff:ff
+    inet 11.11.11.59/24 scope global Mg0_RP0_CPU0_0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::82e0:1dff:fe00:fcea/64 scope link 
+       valid_lft forever preferred_lft forever
+root@642894d230a8:/# 
+root@642894d230a8:/# 
+root@642894d230a8:/# python -m SimpleHTTPServer 8080
+root@642894d230a8:/# 
+root@642894d230a8:/# 
+root@642894d230a8:/# echo  "Hello World" &gt; /test.txt
+root@642894d230a8:/# 
+root@642894d230a8:/# python -m SimpleHTTPServer 8080
+Serving HTTP on 0.0.0.0 port 8080 ...
+
+</code>
+</pre>
+</div>
+
+<p>Hop onto the connected devbox and issue a wget for the test.txt file we created above:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+
+root@dhcpserver:~# wget http://11.11.11.59:8080/test.txt
+--2017-04-08 12:46:50--  http://11.11.11.59:8080/test.txt
+Connecting to 11.11.11.59:8080... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 12 [text/plain]
+Saving to: ‘test.txt’
+
+100%[========================================================================================================================================&gt;] 12          --.-K/s   in 0s      
+
+2017-04-08 12:46:50 (2.13 MB/s) - ‘test.txt’ saved [12/12]
+
+root@dhcpserver:~# 
+
+</code>
+</pre>
+</div>
+
+<p>The request coming in to the docker container:</p>
+<div class="highlighter-rouge">
+<pre class="highlight" style="white-space: pre-wrap;">
+<code>
+
+root@642894d230a8:/# python -m SimpleHTTPServer 8080
+Serving HTTP on 0.0.0.0 port 8080 ...
+11.11.11.2 - - [09/Apr/2017 12:09:07] "GET /test.txt HTTP/1.1" 200 -
+
+</code>
+</pre>
+</div>
+
+<p class="notice--success">Success! It all works as expected.</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="https://xrdocs.io/application-hosting/tags/#docker" class="page__taxonomy-item" rel="tag">docker</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://xrdocs.io/application-hosting/tags/#iosxr" class="page__taxonomy-item" rel="tag">iosxr</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://xrdocs.io/application-hosting/tags/#ncs5500" class="page__taxonomy-item" rel="tag">NCS5500</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://xrdocs.io/application-hosting/tags/#vagrant" class="page__taxonomy-item" rel="tag">vagrant</a><span class="sep">, </span>
+    
+      
+      
+      <a href="https://xrdocs.io/application-hosting/tags/#xr-toolbox" class="page__taxonomy-item" rel="tag">xr toolbox</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2017-02-26T22:40:00+00:00">February 26, 2017</time></p>
+        
+        
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=https://xrdocs.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://xrdocs.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=https://xrdocs.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://xrdocs.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+
+    <br>
+    <br>
+    <br>
+</section>
+
+
+    </div>
+
+    
+      
+
+<div class="page__comments">
+  <h4 class="page__comments-title">Leave a Comment</h4>
+  
+    <section id="disqus_thread"></section>
+  
+</div>
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/xrdocs"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/xrdocs"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="https://xrdocs.io/application-hosting/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">This site is maintained by Cisco Systems, Inc. employees. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="https://xrdocs.io/application-hosting/assets/js/main.min.js"></script>
+<script src="https://xrdocs.io/application-hosting/assets/js/scrollmenu.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-78256516-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'xrdocs';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+
+
+
+
+
+<!-- material-scrolltop button -->
+<button class="material-scrolltop" type="button"></button>
+
+<!-- material-scrolltop plugin -->
+<script src="https://xrdocs.io/application-hosting/assets/js/material-scrolltop.js"></script>
+
+<!-- Initialize material-scrolltop with (minimal) -->
+<script>
+    $('body').materialScrollTop();
+</script>
+
+
+  </body>
+</html>
