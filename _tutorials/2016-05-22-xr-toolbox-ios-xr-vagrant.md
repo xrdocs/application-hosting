@@ -82,9 +82,9 @@ $ BOXURL="https://devhub.cisco.com/artifactory/appdevci-release/XRv64/6.1.2/iosx
 $ curl <b><mark>-u your-cco-id:API-KEY</mark></b> $BOXURL --output ~/iosxrv-fullk9-x64.box
 
 $ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
+
 </code>
 </pre>
-</div>
 </div>
 
 
