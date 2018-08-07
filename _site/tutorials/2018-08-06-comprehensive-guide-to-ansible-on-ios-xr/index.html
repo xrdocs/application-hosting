@@ -537,7 +537,7 @@ ssh server netconf vrf default
 
 <p>https://docs.ansible.com/ansible/2.6/network/user_guide/network_working_with_command_output.html</p>
 
-<p>Usually, Ansible runs on managed nodes, however, it’s not the case for the network modules. Everything stays the same from the user perspective and for accustomed keywords. All the magic happens in the background. Typically network devices lack of Python support (IOS-XR support application hosting concepts. <a href="/application_hosting">Read more about it</a>. Because of that network module executes locally and CLI/XML instruction sent over to the device.</p>
+<p>Usually, Ansible runs on managed nodes, however, it’s not the case for the network modules. Everything stays the same from the user perspective and for accustomed keywords. All the magic happens in the background. Typically network devices lack of Python support (IOS-XR support application hosting concepts. <a href="/application-hosting">Read more about it</a>. Because of that network module executes locally and CLI/XML instruction sent over to the device.</p>
 
 <p>One more important aspect for Linux/Unix, configuration files for the system exist in files on hard disks, so the backup for them created in the same directory. It’s not the case for the network modules (configuration not stored on disk) and we will see an example in the <strong>iosxr_config</strong> module, where backup folder created on the machine, from which we are running playbooks.</p>
 
@@ -640,7 +640,7 @@ ansible
 
 <h3 id="hosts-file">Hosts file</h3>
 
-<p>We need to define the hosts first. There is a separation of variables from host definition in ini file. In provided example, passwords stored in plain text. To avoid it, <a href="https://wwwin-github.cisco.com/pages/spnstme/application-hosting/tutorials/2018-07-24-comprehensive-guide-to-ansible-on-ios-xr/#ansible-vault">Ansible Vault</a> should be used and will be covered later in this tutorial. Another mechanism - <a href="https://wwwin-github.cisco.com/pages/spnstme/application-hosting/tutorials/2018-07-24-comprehensive-guide-to-ansible-on-ios-xr/#key-based-authentication-to-ios-xr-device">passwordless authentication</a>, based on keys.</p>
+<p>We need to define the hosts first. There is a separation of variables from host definition in ini file. In provided example, passwords stored in plain text. To avoid it, <a href="https://xrdocs.io/application-hosting/tutorials/2018-08-06-comprehensive-guide-to-ansible-on-ios-xr#ansible-vault">Ansible Vault</a> should be used and will be covered later in this tutorial. Another mechanism - <a href="https://xrdocs.io/application-hosting/tutorials/2018-08-06-comprehensive-guide-to-ansible-on-ios-xr/#key-based-authentication-to-ios-xr-device">passwordless authentication</a>, based on keys.</p>
 
 <div class="highlighter-rouge">
 <pre class="highlight">
