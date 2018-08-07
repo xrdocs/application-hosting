@@ -77,6 +77,7 @@ The last stable version of XR vagrant was 6.1.2.These images have been out for a
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
+
 $ BOXURL="https://devhub.cisco.com/artifactory/appdevci-release/XRv64/6.1.2/iosxrv-fullk9-x64.box"
 
 $ curl <b><mark>-u your-cco-id:API-KEY</mark></b> $BOXURL --output ~/iosxrv-fullk9-x64.box
@@ -94,16 +95,18 @@ $ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
 If you're feeling adventurous, pick the latest version of the XR vagrant box as shown below.
 Bear in mind, there may be bugs and you are free to ask us questions and/or raise issues on our github repo:
 
-><https://github.com/xrdocs/application-hosting/issues>
+> <https://github.com/xrdocs/application-hosting/issues>
 
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
+
 $ BOXURL="https://devhub.cisco.com/artifactory/XRv64-snapshot/latest/iosxrv-fullk9-x64.latest.box"
 
 $ curl <b><mark>-u your-cco-id:API-KEY</mark></b> $BOXURL --output ~/iosxrv-fullk9-x64.box
 
 $ vagrant box add --name IOS-XRv ~/iosxrv-fullk9-x64.box
+
 </code>
 </pre>
 </div>
@@ -142,12 +145,14 @@ Now, in this directory, let's initialize a Vagrantfile with the name of the box 
 <div class="highlighter-rouge">
 <pre class="highlight">
 <code>
+
 AKSHSHAR-M-K0DS:iosxrv akshshar$<mark> vagrant init IOS-XRv </mark>
 A `Vagrantfile` has been placed in this directory. You are now
 ready to `vagrant up` your first virtual environment! Please read
 the comments in the Vagrantfile as well as documentation on
 `vagrantup.com` for more information on using Vagrant.
 AKSHSHAR-M-K0DS:iosxrv akshshar$
+
 </code>
 </pre>
 </div>
