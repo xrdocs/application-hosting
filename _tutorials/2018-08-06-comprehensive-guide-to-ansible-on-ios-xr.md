@@ -252,7 +252,7 @@ Folder content:
 
 ### Hosts file
 
-We need to define the hosts first. There is a separation of variables from host definition in ini file. In provided example, passwords stored in plain text. To avoid it, [Ansible Vault](https://wwwin-github.cisco.com/pages/spnstme/application-hosting/tutorials/2018-07-24-comprehensive-guide-to-ansible-on-ios-xr/#ansible-vault) should be used and will be covered later in this tutorial. Another mechanism - [passwordless authentication](https://wwwin-github.cisco.com/pages/spnstme/application-hosting/tutorials/2018-07-24-comprehensive-guide-to-ansible-on-ios-xr/#key-based-authentication-to-ios-xr-device), based on keys.
+We need to define the hosts first. There is a separation of variables from host definition in ini file. In provided example, passwords stored in plain text. To avoid it, [Ansible Vault](https://xrdocs.io/application-hosting/tutorials/2018-08-06-comprehensive-guide-to-ansible-on-ios-xr#ansible-vault) should be used and will be covered later in this tutorial. Another mechanism - [passwordless authentication](https://xrdocs.io/application-hosting/tutorials/2018-08-06-comprehensive-guide-to-ansible-on-ios-xr/#key-based-authentication-to-ios-xr-device), based on keys.
 
 
 <div class="highlighter-rouge">
