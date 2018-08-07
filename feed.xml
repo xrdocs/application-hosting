@@ -296,5 +296,21 @@
       </item>
       
     
+      
+      <item>
+        <title>Comprehensive guide to Ansible on IOS-XR</title>
+        
+          <dc:creator>Mike Korshunov</dc:creator>
+        
+        
+          <description>Learn how to utilize Ansible and unleash its power on IOS-XR box. </description>
+        
+        <enclosure url='https://xrdocs.io/application-hosting/images/avatars/app-hosting-team.jpg'></enclosure>
+        <pubDate>Mon, 06 Aug 2018 21:27:00 +0000</pubDate>
+        <link>https://xrdocs.io/application-hosting/tutorials/2018-08-06-comprehensive-guide-to-ansible-on-ios-xr/</link>
+        <guid isPermaLink="true">https://xrdocs.io/application-hosting/tutorials/2018-08-06-comprehensive-guide-to-ansible-on-ios-xr/</guid>
+      </item>
+      
+    
 	</channel>
 </rss>
