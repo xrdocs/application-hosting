@@ -1,0 +1,835 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>            XR Toolbox, Part 2 : Bootstrap XR configuration with Vagrant      IOS XR Application Hosting @xrdocs      </title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="IOS XR Application Hosting @xrdocs">
+<meta property="og:title" content="XR Toolbox, Part 2 : Bootstrap XR configuration with Vagrant">
+
+
+  <link rel="canonical" href="http://0.0.0.0:4000/application-hosting/tutorials/iosxr-vagrant-bootstrap-config">
+  <meta property="og:url" content="http://0.0.0.0:4000/application-hosting/tutorials/iosxr-vagrant-bootstrap-config">
+
+
+
+  <meta property="og:description" content="Configure an IOS-XR Vagrant box on boot using a Shell provisioner">
+
+
+
+  <meta name="twitter:site" content="@xrdocs">
+  <meta name="twitter:title" content="XR Toolbox, Part 2 : Bootstrap XR configuration with Vagrant">
+  <meta name="twitter:description" content="Configure an IOS-XR Vagrant box on boot using a Shell provisioner">
+  <meta name="twitter:url" content="http://0.0.0.0:4000/tutorials/iosxr-vagrant-bootstrap-config">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="http://0.0.0.0:4000/application-hosting/images/app-hosting-xrdocs.jpg">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@irakshat">
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2016-05-31T09:13:00+00:00">
+  
+    <link rel="next" href="http://0.0.0.0:4000/application-hosting/tutorials/IOSXR-Ansible" title="Using Ansible with IOS-XR 6.1.1">
+  
+  
+    <link rel="prev" href="http://0.0.0.0:4000/application-hosting/tutorials/iosxr-vagrant-quickstart" title="XR toolbox, Part 1 : IOS-XR Vagrant Quick Start">
+  
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://0.0.0.0:4000/application-hosting",
+      "logo": "http://0.0.0.0:4000/application-hosting/images/app-hosting-xrdocs.jpg"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "person",
+      "name" : "Cisco Systems Inc",
+      "url" : "http://0.0.0.0:4000/application-hosting",
+      "sameAs" : ["https://twitter.com/xrdocs"]
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+<link href="http://0.0.0.0:4000/application-hosting/feed.xml" type="application/atom+xml" rel="alternate" title="IOS XR Application Hosting @xrdocs Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="jgRKKm6B9FwJJPXxpmc0-EP3D0Mh8JHXaJqoYIGj1ek" />
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<script>
+if (!(window.location.host.startsWith("127.0.0.1") || window.location.host.startsWith("localhost")) && (window.location.host.substr(-3) == '.io') && (window.location.protocol != "https:"))
+    window.location.protocol = "https";
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/application-hosting/assets/css/main.css">
+<meta http-equiv="cleartype" content="on">
+<style>
+.underline-on-hover:hover {
+    text-decoration: underline;
+}
+.searchForm{
+      border-radius:5px;
+      -moz-border-radius:5px;
+      -webkit-border-radius:5px;
+      width: 900px;
+   }
+#search_results{
+      display: table; margin:0 auto;
+   }
+</style>
+</style>
+
+    
+
+<!-- start custom head snippets -->
+
+<link href="http://0.0.0.0:4000/application-hosting/assets/css/lity.min.css" rel="stylesheet">
+<link href="http://0.0.0.0:4000/application-hosting/assets/css/cisco-sans.min.css" rel="stylesheet">
+<link href="http://0.0.0.0:4000/application-hosting/assets/css/material-scrolltop.css" rel="stylesheet">
+
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="http://0.0.0.0:4000/application-hosting/images/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="http://0.0.0.0:4000/application-hosting/images/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="http://0.0.0.0:4000/application-hosting/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="http://0.0.0.0:4000/application-hosting/images/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="http://0.0.0.0:4000/application-hosting/images/favicon-128.png" sizes="128x128" />
+<link rel="shortcut icon" href="http://0.0.0.0:4000/application-hosting/images/favicon_cisco.ico" />
+<meta name="application-name" content="&nbsp;"/>
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="http://0.0.0.0:4000/application-hosting/images/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="http://0.0.0.0:4000/application-hosting/images/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="http://0.0.0.0:4000/application-hosting/images/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="http://0.0.0.0:4000/application-hosting/images/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="http://0.0.0.0:4000/application-hosting/images/mstile-310x310.png" />
+
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu" style="padding-left:2em;">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <img src="http://0.0.0.0:4000/application-hosting/images/xrdocs_logo.png" width="45px" height="45px" alt="xrdocs logo" style="float:left;">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://0.0.0.0:4000">@xrdocs</a></li>
+          <li class="masthead__menu-item"><a href="http://0.0.0.0:4000/application-hosting/">App-Hosting</a></li>
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="http://0.0.0.0:4000/application-hosting/blogs/">Blogs</a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item greedy-nav-active"><a href="http://0.0.0.0:4000/application-hosting/tutorials/">Tutorials</a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="http://0.0.0.0:4000/application-hosting/search">Search <i class="fa fa-search" aria-hidden="true"></i></a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="http://0.0.0.0:4000/application-hosting/tags/">Tags</a></li>
+                
+            
+
+
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="http://0.0.0.0:4000/application-hosting/images/avatars/akshat_bio_photo.jpeg" class="author__avatar" alt="Akshat Sharma">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Akshat Sharma</h3>
+    <p class="author__bio">Evangelist, tinkerer, dog-lover and Technical Marketing Engineer, Cisco.</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+      
+      
+        <li><a href="mailto:akshshar@cisco.com"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+      
+      
+      
+        <li><a href="http://twitter.com/irakshat"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="http://github.com/akshshar"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+
+  </div>
+    <br><button class="btn"><a href="//pdfcrowd.com/url_to_pdf/" style="color:white">Save as PDF</a></button>
+
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="XR Toolbox, Part 2 : Bootstrap XR configuration with Vagrant">
+    <meta itemprop="description" content="Configure an IOS-XR Vagrant box on boot using a Shell provisioner">
+    <meta itemprop="datePublished" content="May 31, 2016">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">XR Toolbox, Part 2 : Bootstrap XR configuration with Vagrant
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  6 minutes read
+</p>
+          
+        </header>
+      
+
+    
+      
+        
+
+
+
+
+
+<div class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList" style="margin:0;padding:0;">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" style="margin:0;padding:0;">
+          <a href="http://0.0.0.0:4000/application-hosting/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" style="margin:0;padding:0;">
+          <a href="http://0.0.0.0:4000/application-hosting/tutorials" itemprop="item"><span itemprop="name">Tutorials</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current" style="margin:0;padding:0;">XR Toolbox, Part 2 : Bootstrap XR configuration with Vagrant</li>
+      
+    
+  </ol>
+</div>
+
+      
+    
+
+      <section class="page__content" itemprop="text">
+        <aside class="sidebar__right">
+<nav class="toc">
+    <header><h4 class="nav__title"><i class="fa fa-table"></i> IOS-XR Vagrant: Bootstrap Config</h4></header>
+<ul class="toc__menu" id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#pre-requisite" id="markdown-toc-pre-requisite">Pre-requisite</a></li>
+  <li><a href="#bootstrap-configuration-shell-provisioner" id="markdown-toc-bootstrap-configuration-shell-provisioner">Bootstrap Configuration: Shell Provisioner</a>    <ul>
+      <li><a href="#transfer-a-configuration-file-to-xr-bash" id="markdown-toc-transfer-a-configuration-file-to-xr-bash">Transfer a Configuration file to XR bash</a></li>
+      <li><a href="#use-a-shell-script-to-apply-xr-config" id="markdown-toc-use-a-shell-script-to-apply-xr-config">Use a Shell script to Apply XR Config</a></li>
+    </ul>
+  </li>
+  <li><a href="#single-node-bootstrap" id="markdown-toc-single-node-bootstrap">Single node bootstrap</a>    <ul>
+      <li><a href="#configuration-file" id="markdown-toc-configuration-file">Configuration File</a></li>
+      <li><a href="#bootstrap-script" id="markdown-toc-bootstrap-script">Bootstrap script</a></li>
+      <li><a href="#vagrantfile" id="markdown-toc-vagrantfile">Vagrantfile</a></li>
+    </ul>
+  </li>
+  <li><a href="#bootstrap-in-action" id="markdown-toc-bootstrap-in-action">Bootstrap in action!</a></li>
+</ul>
+
+  </nav>
+</aside>
+
+<p>Check out Part 1 of the XR toolbox series: <a href="http://0.0.0.0:4000/application-hosting/tutorials/iosxr-vagrant-quickstart">IOS-XR Vagrant quick-start</a>.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>The <a href="http://0.0.0.0:4000/application-hosting/tutorials/iosxr-vagrant-quickstart">IOS-XR Vagrant Quick Start guide</a>
+showcases how a user can get started with an IOS-XR vagrant box.</p>
+
+<p class="notice--warning"><strong>This tutorial will extend the quick-start guide to showcase how one can apply a node-specific configuration to an XR vagrant instance during boot-up itself.<br />
+Make sure you take a look at the quick-start guide before proceeding.</strong></p>
+
+<blockquote>
+
+  <p>Bear in mind that the IOS-XR vagrant box is published without a need for any custom plugins.
+We thought about it and felt that masking the core functionality of the router with Vagrant workflows could prevent us from showcasing some core functionalities of IOS-XR, namely :</p>
+
+  <ul>
+    <li>Day 0: ZTP helpers and shell/bash based automation</li>
+    <li>Day 1: automation techniques based off YANG models</li>
+    <li>Day 2: Streaming Telemetry and application-hosting</li>
+  </ul>
+</blockquote>
+
+<p>This tutorial invariably ends up using the new shell/bash based automation techniques that have been introduced as part of the Zero Touch provisioning (ZTP) functionality in IOS-XR.</p>
+
+<h2 id="pre-requisite">Pre-requisite</h2>
+<ul>
+  <li>
+    <p>Meet the pre-requisites specified in the <a href="http://0.0.0.0:4000/application-hosting/tutorials/iosxr-vagrant-quickstart#pre-requisites">IOS-XR Vagrant Quick Start guide: Pre-requisites</a></p>
+  </li>
+  <li>
+    <p>Clone the following repository: <a href="https://github.com/ios-xr/vagrant-xrdocs">https://github.com/ios-xr/vagrant-xrdocs</a>, before we start.</p>
+  </li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/
+git clone https://github.com/ios-xr/vagrant-xrdocs.git
+<span class="nb">cd </span>vagrant-xrdocs/
+</code></pre></div></div>
+
+<p class="notice--info">You will notice a couple of  directories. We will utilize the <code class="highlighter-rouge">single_node_bootstrap</code> directory in this tutorial.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar<span class="nv">$ </span><span class="nb">pwd</span>
+/Users/akshshar/vagrant-xrdocs
+AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar<span class="nv">$ </span><span class="nb">ls </span>single_node_bootstrap/
+Vagrantfile	configs		scripts
+AKSHSHAR-M-K0DS:vagrant-xrdocs akshshar<span class="nv">$ </span>
+
+</code></pre></div></div>
+
+<h2 id="bootstrap-configuration-shell-provisioner">Bootstrap Configuration: Shell Provisioner</h2>
+
+<p>The concept is simple: We’ll use the Vagrant shell provisioner to apply a bootstrap configuration to an XR instance when we issue a <code class="highlighter-rouge">vagrant up</code>.</p>
+
+<p>All we need is a shell provisioner section in the Vagrantfile for each node:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c1">#Source a config file and apply it to XR</span>
+      
+ <span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">provision</span> <span class="s2">"file"</span><span class="p">,</span> <span class="ss">source: </span><span class="s2">"configs/rtr_config"</span><span class="p">,</span> <span class="ss">destination: </span><span class="s2">"/home/vagrant/rtr_config"</span>
+      
+ <span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">provision</span> <span class="s2">"shell"</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+   <span class="n">s</span><span class="p">.</span><span class="nf">path</span> <span class="o">=</span>  <span class="s2">"scripts/apply_config.sh"</span>
+   <span class="n">s</span><span class="p">.</span><span class="nf">args</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"/home/vagrant/rtr_config"</span><span class="p">]</span>
+ <span class="k">end</span>
+</code></pre></div></div>
+
+<p>We will look at a complete Vagrantfile in a bit. But let’s desconstruct the above piece of code.</p>
+
+<h3 id="transfer-a-configuration-file-to-xr-bash">Transfer a Configuration file to XR bash</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">provision</span> <span class="s2">"file"</span><span class="p">,</span> <span class="ss">source: </span><span class="s2">"configs/rtr_config"</span><span class="p">,</span> <span class="ss">destination: </span><span class="s2">"/home/vagrant/rtr_config"</span>
+</code></pre></div></div>
+
+<p>The above line uses the Vagrant “file” provisioner to transfer a file from the host (your laptop) to the XR linux shell (bash).</p>
+
+<p>The root of the source directory is the working directory for your vagrant instance. Hence, the <code class="highlighter-rouge">rtr_config</code> file is located in the <code class="highlighter-rouge">configs</code> directory.</p>
+
+<h3 id="use-a-shell-script-to-apply-xr-config">Use a Shell script to Apply XR Config</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">provision</span> <span class="s2">"shell"</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+   <span class="n">s</span><span class="p">.</span><span class="nf">path</span> <span class="o">=</span>  <span class="s2">"scripts/apply_config.sh"</span>
+   <span class="n">s</span><span class="p">.</span><span class="nf">args</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"/home/vagrant/rtr_config"</span><span class="p">]</span>
+ <span class="k">end</span>
+</code></pre></div></div>
+<p>The shell script will eventually be run on XR bash of the vagrant instance. This script is placed in the <code class="highlighter-rouge">scripts</code> directory and is named <code class="highlighter-rouge">apply_config.sh</code>.</p>
+
+<p>Further, the script needs the location of the router config file as an argument. This is the <code class="highlighter-rouge">destination</code> parameter in the “file” provisioner above.</p>
+
+<p class="notice--success">So, in short, Vagrant copies a config file to the router bash, and then runs a shell script on the router bash to apply the config file that was copied!</p>
+
+<h2 id="single-node-bootstrap">Single node bootstrap</h2>
+
+<p>To meet the above requirements, you will need a directory structure as laid out under ~/vagrant-xrdocs/single_node_bootstrap:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AKSHSHAR-M-K0DS:single_node_bootstrap akshshar<span class="nv">$ </span><span class="nb">pwd</span>
+/Users/akshshar/vagrant-xrdocs/single_node_bootstrap
+AKSHSHAR-M-K0DS:single_node_bootstrap akshshar<span class="nv">$ </span>tree ./
+./
+├── Vagrantfile
+├── configs
+│   └── rtr_config
+└── scripts
+    └── apply_config.sh
+
+2 directories, 3 files
+</code></pre></div></div>
+
+<p class="notice--info">We will stick to the single_node_bootstrap directory throughout this section.</p>
+
+<h3 id="configuration-file">Configuration File</h3>
+<p>Let’s assume we’re applying a simple XR config that configures the grpc server on port 57891.
+This will be the contents of our <code class="highlighter-rouge">configs/rtr_config</code> file</p>
+
+<p class="notice--info">This configuration will be an <strong>addendum</strong> to the pre-existing configuration on the vagrant instance.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AKSHSHAR-M-K0DS:iosxrv akshshar<span class="nv">$ </span><span class="nb">cat </span>configs/rtr_config 
+<span class="o">!!</span> XR configuration
+<span class="o">!</span>
+grpc
+  port 57891
+<span class="o">!</span>
+end
+</code></pre></div></div>
+
+<h3 id="bootstrap-script">Bootstrap script</h3>
+<p>The shell script to apply the configuration will run on XR bash. The following new shell commands are made available to enable this:</p>
+
+<ul>
+  <li><strong>xrcmd</strong>: This command allows a user to run “exec” commands on XR CLI from the shell. For eg. “show run”, “show version” etc.</li>
+  <li><strong>xrapply</strong>: This command allows a user to apply (append) a config file to the existing configuration.</li>
+  <li><strong>xrapply_string</strong>: This command can be used to apply a config directly using a single inline string. For eg. <code class="highlighter-rouge">xrapply_string "interface Gig0/0/0/0\n ip address 1.1.1.2/24 \n no shutdown"</code></li>
+</ul>
+
+<p class="notice--danger">Only the root user is allowed to run the above commands as a good security practice. Unless specified, Vagrant will always escalate the privilege to run the shell provisioner script as root.</p>
+
+<p>Our shell script will look something like this:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AKSHSHAR-M-K0DS:iosxrv akshshar<span class="nv">$ </span><span class="nb">cat </span>scripts/apply_config.sh 
+<span class="c">#!/bin/bash</span>
+
+<span class="c">## Source ztp_helper.sh to get the xrapply and xrcmd functions.</span>
+<span class="nb">source</span> /pkg/bin/ztp_helper.sh
+
+<span class="k">function </span>configure_xr<span class="o">()</span> 
+<span class="o">{</span>
+   <span class="c">## Apply a blind config </span>
+   xrapply <span class="nv">$1</span>
+   <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="nt">-ne</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">then
+       </span><span class="nb">echo</span> <span class="s2">"xrapply failed to run"</span>
+   <span class="k">fi
+   </span>xrcmd <span class="s2">"show config failed"</span> <span class="o">&gt;</span> /home/vagrant/config_failed_check
+<span class="o">}</span>
+
+<span class="c">## The location of the config file is an argument to the script</span>
+<span class="nv">config_file</span><span class="o">=</span><span class="nv">$1</span>
+
+<span class="c">## Call the configure_xr() function to use xrapply and xrcmd in parallel</span>
+configure_xr <span class="nv">$config_file</span>
+
+<span class="c">## Check if there was an error during config application</span>
+<span class="nb">grep</span> <span class="nt">-q</span> <span class="s2">"ERROR"</span> /home/vagrant/config_failed_check
+
+<span class="c">## Condition based on the result of grep ($?)</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="nt">-ne</span> 0 <span class="o">]</span><span class="p">;</span> <span class="k">then
+    </span><span class="nb">echo</span> <span class="s2">"Configuration was successful!"</span>
+    <span class="nb">echo</span> <span class="s2">"Last applied configuration was:"</span>
+    xrcmd <span class="s2">"show configuration commit changes last 1"</span>
+<span class="k">else
+    </span><span class="nb">echo</span> <span class="s2">"Configuration Failed. Check /home/vagrant/config_failed on the router for logs"</span>
+    xrcmd <span class="s2">"show configuration failed"</span> <span class="o">&gt;</span> /home/vagrant/config_failed
+    <span class="nb">exit </span>1
+<span class="k">fi</span>
+
+</code></pre></div></div>
+<blockquote>
+
+  <p>Few things to note in the above script:</p>
+
+  <ol>
+    <li><code class="highlighter-rouge">source /pkg/bin/ztp_helper.sh</code> is necessary for the <code class="highlighter-rouge">xrapply</code>, <code class="highlighter-rouge">xrcmd</code> commands to be available.</li>
+    <li>There are comments in the script to help understand the steps taken. Essentially, the shell script blindly applies the config file specified as an argument ($1) and then checks to see if there was an error during config application.</li>
+  </ol>
+</blockquote>
+
+<h3 id="vagrantfile">Vagrantfile</h3>
+
+<p>Take a look at the Vagrantfile in the same directory. The shell provisioner code has been added:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># -*- mode: ruby -*-</span>
+<span class="c1"># vi: set ft=ruby :</span>
+
+<span class="c1"># All Vagrant configuration is done below. The "2" in Vagrant.configure</span>
+<span class="c1"># configures the configuration version (we support older styles for</span>
+<span class="c1"># backwards compatibility). Please don't change it unless you know what</span>
+<span class="c1"># you're doing.</span>
+
+<span class="no">Vagrant</span><span class="p">.</span><span class="nf">configure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+  
+  <span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">box</span> <span class="o">=</span> <span class="s2">"IOS-XRv"</span>
+
+  <span class="c1">#Source a config file and apply it to XR</span>
+      
+  <span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">provision</span> <span class="s2">"file"</span><span class="p">,</span> <span class="ss">source: </span><span class="s2">"configs/rtr_config"</span><span class="p">,</span> <span class="ss">destination: </span><span class="s2">"/home/vagrant/rtr_config"</span>
+
+  <span class="n">config</span><span class="p">.</span><span class="nf">vm</span><span class="p">.</span><span class="nf">provision</span> <span class="s2">"shell"</span> <span class="k">do</span> <span class="o">|</span><span class="n">s</span><span class="o">|</span>
+    <span class="n">s</span><span class="p">.</span><span class="nf">path</span> <span class="o">=</span>  <span class="s2">"scripts/apply_config.sh"</span>
+    <span class="n">s</span><span class="p">.</span><span class="nf">args</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"/home/vagrant/rtr_config"</span><span class="p">]</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h2 id="bootstrap-in-action">Bootstrap in action!</h2>
+
+<p>Assuming that the box (IOS-XRv) is already in the vagrant box list as shown in the  <a href="http://0.0.0.0:4000/application-hosting/tutorials/iosxr-vagrant-quickstart">IOS-XR Vagrant Quick Start guide</a>, just issue a <code class="highlighter-rouge">vagrant up</code> to see the magic happen:</p>
+
+<p><img src="https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/shell_provisioner_single_node.png" alt="Shell provisioner single node" /></p>
+
+<p>Let’s get into the XR CLI to check that it worked:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+
+AKSHSHAR-M-K0DS:single_node_bootstrap akshshar$<mark> vagrant port </mark>
+The forwarded ports for the machine are listed below. Please note that
+these values may differ from values configured in the Vagrantfile if the
+provider supports automatic port collision detection and resolution.
+
+    <mark>22 (guest) =&gt; 2223 (host) </mark>
+ 57722 (guest) =&gt; 2222 (host)
+AKSHSHAR-M-K0DS:single_node_bootstrap akshshar$ 
+AKSHSHAR-M-K0DS:single_node_bootstrap akshshar$<mark> ssh -p 2223 vagrant@localhost </mark>
+vagrant@localhost's password: 
+
+
+RP/0/RP0/CPU0:ios#
+RP/0/RP0/CPU0:ios#<mark>show  running-config grpc</mark>
+Tue May 31 16:59:44.581 UTC
+grpc
+ port 57891
+!
+
+RP/0/RP0/CPU0:ios#<mark>show configuration commit changes last 1</mark>
+Tue May 31 17:02:45.770 UTC
+Building configuration...
+!! IOS XR Configuration version = 6.1.1.17I
+grpc
+ port 57891
+!
+end
+
+RP/0/RP0/CPU0:ios#
+
+</code>
+</pre>
+</div>
+
+<p class="notice--success">It worked! The config was applied as part of the vagrant up process.</p>
+
+<p>Head over to Part 3 of the XR Toolbox series where we bring up a typical app-development topology  —&gt; <a href="http://0.0.0.0:4000/application-hosting/tutorials/2016-06-06-xr-toolbox-app-development-topology">App Development Topology</a>.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://0.0.0.0:4000/application-hosting/tags/#cisco" class="page__taxonomy-item" rel="tag">cisco</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://0.0.0.0:4000/application-hosting/tags/#configuration" class="page__taxonomy-item" rel="tag">configuration</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://0.0.0.0:4000/application-hosting/tags/#iosxr" class="page__taxonomy-item" rel="tag">iosxr</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://0.0.0.0:4000/application-hosting/tags/#vagrant" class="page__taxonomy-item" rel="tag">vagrant</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://0.0.0.0:4000/application-hosting/tags/#xr-toolbox" class="page__taxonomy-item" rel="tag">xr toolbox</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-05-31T09:13:00+00:00">May 31, 2016</time></p>
+        
+        
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://0.0.0.0:4000/application-hosting/tutorials/iosxr-vagrant-bootstrap-config" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://0.0.0.0:4000/application-hosting/tutorials/iosxr-vagrant-bootstrap-config" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://0.0.0.0:4000/application-hosting/tutorials/iosxr-vagrant-bootstrap-config" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://0.0.0.0:4000/application-hosting/tutorials/iosxr-vagrant-bootstrap-config" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+
+    <br>
+    <br>
+    <br>
+</section>
+
+
+    </div>
+
+    
+      
+
+<div class="page__comments">
+  <h4 class="page__comments-title">Leave a Comment</h4>
+  
+    <section id="disqus_thread"></section>
+  
+</div>
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/xrdocs"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/xrdocs"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://0.0.0.0:4000/application-hosting/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">This site is maintained by Cisco Systems, Inc. employees. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://0.0.0.0:4000/application-hosting/assets/js/main.min.js"></script>
+<script src="http://0.0.0.0:4000/application-hosting/assets/js/scrollmenu.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-78256516-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'xrdocs';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+<!-- material-scrolltop button -->
+<button class="material-scrolltop" type="button"></button>
+
+<!-- material-scrolltop plugin -->
+<script src="http://0.0.0.0:4000/application-hosting/assets/js/material-scrolltop.js"></script>
+
+<!-- Initialize material-scrolltop with (minimal) -->
+<script>
+    $('body').materialScrollTop();
+</script>
+
+
+  </body>
+</html>
+

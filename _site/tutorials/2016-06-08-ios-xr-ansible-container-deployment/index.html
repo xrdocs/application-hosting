@@ -1,0 +1,825 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>            IOS-XR: Ansible based LXC deployment      IOS XR Application Hosting @xrdocs      </title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="IOS XR Application Hosting @xrdocs">
+<meta property="og:title" content="IOS-XR: Ansible based LXC deployment">
+
+
+  <link rel="canonical" href="http://0.0.0.0:4000/application-hosting/tutorials/2016-06-08-ios-xr-ansible-container-deployment/">
+  <meta property="og:url" content="http://0.0.0.0:4000/application-hosting/tutorials/2016-06-08-ios-xr-ansible-container-deployment/">
+
+
+
+  <meta property="og:description" content="Deploy container at IOS-XR with Ansible">
+
+
+
+  <meta name="twitter:site" content="@xrdocs">
+  <meta name="twitter:title" content="IOS-XR: Ansible based LXC deployment">
+  <meta name="twitter:description" content="Deploy container at IOS-XR with Ansible">
+  <meta name="twitter:url" content="http://0.0.0.0:4000/tutorials/2016-06-08-ios-xr-ansible-container-deployment/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="http://0.0.0.0:4000/application-hosting/images/app-hosting-xrdocs.jpg">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@mike_korshunov">
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2016-06-18T16:11:00+00:00">
+  
+    <link rel="next" href="http://0.0.0.0:4000/application-hosting/tutorials/2016-06-17-xr-toolbox-part-5-running-a-native-wrl7-app/" title="XR toolbox, Part 5: Running a native WRL7 app">
+  
+  
+    <link rel="prev" href="http://0.0.0.0:4000/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/" title="XR toolbox, Part 4: Bring your own Container (LXC) App">
+  
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://0.0.0.0:4000/application-hosting",
+      "logo": "http://0.0.0.0:4000/application-hosting/images/app-hosting-xrdocs.jpg"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "person",
+      "name" : "Cisco Systems Inc",
+      "url" : "http://0.0.0.0:4000/application-hosting",
+      "sameAs" : ["https://twitter.com/xrdocs"]
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+<link href="http://0.0.0.0:4000/application-hosting/feed.xml" type="application/atom+xml" rel="alternate" title="IOS XR Application Hosting @xrdocs Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="jgRKKm6B9FwJJPXxpmc0-EP3D0Mh8JHXaJqoYIGj1ek" />
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<script>
+if (!(window.location.host.startsWith("127.0.0.1") || window.location.host.startsWith("localhost")) && (window.location.host.substr(-3) == '.io') && (window.location.protocol != "https:"))
+    window.location.protocol = "https";
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/application-hosting/assets/css/main.css">
+<meta http-equiv="cleartype" content="on">
+<style>
+.underline-on-hover:hover {
+    text-decoration: underline;
+}
+.searchForm{
+      border-radius:5px;
+      -moz-border-radius:5px;
+      -webkit-border-radius:5px;
+      width: 900px;
+   }
+#search_results{
+      display: table; margin:0 auto;
+   }
+</style>
+</style>
+
+    
+
+<!-- start custom head snippets -->
+
+<link href="http://0.0.0.0:4000/application-hosting/assets/css/lity.min.css" rel="stylesheet">
+<link href="http://0.0.0.0:4000/application-hosting/assets/css/cisco-sans.min.css" rel="stylesheet">
+<link href="http://0.0.0.0:4000/application-hosting/assets/css/material-scrolltop.css" rel="stylesheet">
+
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="http://0.0.0.0:4000/application-hosting/images/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="http://0.0.0.0:4000/application-hosting/images/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="http://0.0.0.0:4000/application-hosting/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="http://0.0.0.0:4000/application-hosting/images/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="http://0.0.0.0:4000/application-hosting/images/favicon-128.png" sizes="128x128" />
+<link rel="shortcut icon" href="http://0.0.0.0:4000/application-hosting/images/favicon_cisco.ico" />
+<meta name="application-name" content="&nbsp;"/>
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="http://0.0.0.0:4000/application-hosting/images/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="http://0.0.0.0:4000/application-hosting/images/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="http://0.0.0.0:4000/application-hosting/images/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="http://0.0.0.0:4000/application-hosting/images/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="http://0.0.0.0:4000/application-hosting/images/mstile-310x310.png" />
+
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu" style="padding-left:2em;">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <img src="http://0.0.0.0:4000/application-hosting/images/xrdocs_logo.png" width="45px" height="45px" alt="xrdocs logo" style="float:left;">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://0.0.0.0:4000">@xrdocs</a></li>
+          <li class="masthead__menu-item"><a href="http://0.0.0.0:4000/application-hosting/">App-Hosting</a></li>
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="http://0.0.0.0:4000/application-hosting/blogs/">Blogs</a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item greedy-nav-active"><a href="http://0.0.0.0:4000/application-hosting/tutorials/">Tutorials</a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="http://0.0.0.0:4000/application-hosting/search">Search <i class="fa fa-search" aria-hidden="true"></i></a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="http://0.0.0.0:4000/application-hosting/tags/">Tags</a></li>
+                
+            
+
+
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="http://0.0.0.0:4000/application-hosting/images/avatars/Mike_pic.jpg" class="author__avatar" alt="Mike Korshunov">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Mike Korshunov</h3>
+    <p class="author__bio">Technical Marketing Engineer, Cisco</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+      
+      
+        <li><a href="mailto:mkorshun@cisco.com"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+      
+      
+      
+        <li><a href="http://twitter.com/mike_korshunov"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+      
+      
+      
+      
+        <li><a href="http://linkedin.com/in/mkorshunov"><i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn</a></li>
+      
+      
+      
+      
+      
+      
+        <li><a href="http://github.com/maikor"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+
+  </div>
+    <br><button class="btn"><a href="//pdfcrowd.com/url_to_pdf/" style="color:white">Save as PDF</a></button>
+
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="IOS-XR: Ansible based LXC deployment">
+    <meta itemprop="description" content="Deploy container at IOS-XR with Ansible">
+    <meta itemprop="datePublished" content="June 18, 2016">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">IOS-XR: Ansible based LXC deployment
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  5 minutes read
+</p>
+          
+        </header>
+      
+
+    
+      
+        
+
+
+
+
+
+<div class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList" style="margin:0;padding:0;">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" style="margin:0;padding:0;">
+          <a href="http://0.0.0.0:4000/application-hosting/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" style="margin:0;padding:0;">
+          <a href="http://0.0.0.0:4000/application-hosting/tutorials" itemprop="item"><span itemprop="name">Tutorials</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current" style="margin:0;padding:0;">IOS-XR: Ansible based LXC deployment</li>
+      
+    
+  </ol>
+</div>
+
+      
+    
+
+      <section class="page__content" itemprop="text">
+        
+<aside class="sidebar__right">
+<nav class="toc">
+    <header><h4 class="nav__title"><i class="fa fa-table"></i> Ansible LXC deployment</h4></header>
+<ul class="toc__menu" id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#pre-requisite" id="markdown-toc-pre-requisite">Pre-requisite</a></li>
+  <li><a href="#boot-up-the-environment" id="markdown-toc-boot-up-the-environment">Boot up the environment</a></li>
+  <li><a href="#configure-passwordless-access-into-xr-linux-shell" id="markdown-toc-configure-passwordless-access-into-xr-linux-shell">Configure Passwordless Access into XR Linux shell</a></li>
+  <li><a href="#create-lxc-tar-ball-in-devbox" id="markdown-toc-create-lxc-tar-ball-in-devbox">Create LXC Tar ball in devbox</a></li>
+  <li><a href="#create-xml-file-in-devbox" id="markdown-toc-create-xml-file-in-devbox">Create XML file in devbox</a></li>
+  <li><a href="#ansible-playbook" id="markdown-toc-ansible-playbook">Ansible Playbook</a></li>
+  <li><a href="#run-playbook-to-deploy-lxc" id="markdown-toc-run-playbook-to-deploy-lxc">Run playbook to deploy LXC</a>    <ul>
+      <li><a href="#slow-playbook-run-xr-gig-interfaces-are-rate-limited" id="markdown-toc-slow-playbook-run-xr-gig-interfaces-are-rate-limited">Slow playbook run? XR Gig interfaces are rate limited!</a></li>
+    </ul>
+  </li>
+</ul>
+
+  </nav>
+</aside>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>The goal of this tutorial to deploy a container (LXC) on XR using an Ansible playbook.</p>
+
+<p>In this tutorial we will use techniques from 2 other tutorials:</p>
+
+<ul>
+  <li>
+    <p><a href="http://0.0.0.0:4000/application-hosting/tutorials/IOSXR-Ansible">IOS-XR: Ansible and Vagrant</a>. enable connectivity between machines and have preinstalled Ansible on devbox instance.</p>
+  </li>
+  <li>
+    <p><a href="http://0.0.0.0:4000/application-hosting/tutorials/iosxr-vagrant-bootstrap-config">XR Toolbox, Part 2: Bootstrap XR configuration with Vagrant</a>: using the new shell/bash based automation techniques.</p>
+  </li>
+</ul>
+
+<p>The figure below illustrates the basic steps required to launch an lxc container on IOS-XR 6.0+:</p>
+
+<p><img src="https://raw.githubusercontent.com/xrdocs/xrdocs-images/gh-pages/assets/tutorial-images/mkorshun/hosted_apps/01_workflow_app_hosting.png" width="600" height="400" class="align-center" /></p>
+
+<p class="notice--info"><strong>If you&#8217;ve gone through the tutorial: <a href="http://0.0.0.0:4000/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app">XR toolbox, Part 4: Bring your own Container (LXC) App</a>, you would have a fair idea about how to accomplish the manual steps illustrated above. In this tutorial, we want to automate all of these steps using an Ansible Playbook.</strong></p>
+
+<h2 id="pre-requisite">Pre-requisite</h2>
+
+<ul>
+  <li>
+    <p>Vagrant box added for <strong>IOS-XRv</strong>: If you don&#8217;t have it, get it using the steps specified here: <a href="http://0.0.0.0:4000/application-hosting/tutorials/iosxr-vagrant-quickstart">XR Toolbox, Part 1: IOS XR Vagrant quick start</a></p>
+  </li>
+  <li>
+    <p>Clone the following repository before we start:</p>
+  </li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/
+git clone https://github.com/ios-xr/vagrant-xrdocs.git
+<span class="nb">cd  </span>vagrant-xrdocs/ansible-tutorials/app_hosting/
+</code></pre></div></div>
+
+<h2 id="boot-up-the-environment">Boot up the environment</h2>
+
+<p><strong>We are ready to start, boot the boxes by issuing the <code class="highlighter-rouge">vagrant up</code> command</strong></p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+bash$<mark> vagrant up </mark>
+Bringing machine 'devbox' up with 'virtualbox' provider...
+Bringing machine 'rtr' up with 'virtualbox' provider...
+==&gt; devbox: Importing base box 'ubuntu/trusty64'...
+
+---------------------------snip output -----------------------
+</code>
+</pre>
+</div>
+
+<h2 id="configure-passwordless-access-into-xr-linux-shell">Configure Passwordless Access into XR Linux shell</h2>
+<p>Let&#8217;s copy public part of key from <strong>devbox</strong> box and allow access without a
+password.
+First,  connect to the devbox instance and copy its public key to XR via SCP:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant ssh devbox  
+
+scp -P 57722 /home/vagrant/.ssh/id_rsa.pub  vagrant@10.1.1.20:/home/vagrant/id_rsa_ubuntu.pub
+</code></pre></div></div>
+
+<p>Now add the copied keys to authorized_keys in XR linux</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant ssh rtr  
+
+cat /home/vagrant/id_rsa_ubuntu.pub &gt;&gt; /home/vagrant/.ssh/authorized_keys
+</code></pre></div></div>
+
+<p>Ansible is ready to work without password.</p>
+
+<h2 id="create-lxc-tar-ball-in-devbox">Create LXC Tar ball in devbox</h2>
+
+<p class="notice--warning">The user is free to bring their own lxc rootfs tar-ball for deployment on IOS-XR. This section is meant to help a user create a rootfs tar ball from scratch.</p>
+
+<p><img src="https://raw.githubusercontent.com/xrdocs/xrdocs-images/gh-pages/assets/tutorial-images/mkorshun/hosted_apps/02_we_need_to.png" alt="We need to go deeper" class="align-center" /></p>
+
+<blockquote>
+
+  <p>All the steps required to create a container rootfs are already covered in detail in the tutorial:</p>
+
+  <p><a href="http://0.0.0.0:4000/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app">XR toolbox, Part 4: Bring your own Container (LXC) App</a></p>
+
+  <p>Specifically, head over to the following section of the tutorial:<br />
+<a href="http://0.0.0.0:4000/application-hosting/tutorials/2016-06-16-xr-toolbox-part-4-bring-your-own-container-lxc-app/#create-a-container-rootfs">XR toolbox, Part 4&#8230;/create-a-container-rootfs</a>
+At the end of the section, you should have your very own rootfs (xr-lxc-app-rootfs.tar.gz), ready for deployment.</p>
+</blockquote>
+
+<p>Copy and keep the rootfs tar ball in the <code class="highlighter-rouge">/home/vagrant/</code> directory of your devbox. The Ansible playbook will expect the tar ball in this directory, so make sure an <code class="highlighter-rouge">ls -l</code> for the tar ball in <code class="highlighter-rouge">/home/vagrant</code> returns something like:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vagrant@vagrant-ubuntu-trusty-64:~<span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-l</span> /home/vagrant/xr-lxc-app-rootfs.tar.gz
+<span class="nt">-rw-r--r--</span> 1 root root 101246853 Jun 20 02:34 /home/vagrant/xr-lxc-app-rootfs.tar.gz
+vagrant@vagrant-ubuntu-trusty-64:~<span class="nv">$ </span>
+</code></pre></div></div>
+
+<p class="notice--success">Great! Ansible will copy this tar ball to XR for you.</p>
+
+<h2 id="create-xml-file-in-devbox">Create XML file in devbox</h2>
+<p>To create a container, we need an xml file with the specifications for the container. Create the following file in the /home/vagrant directory of your <code class="highlighter-rouge">devbox</code> :</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> /home/vagrant/xr-lxc-app.xml
+</code></pre></div></div>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;domain</span> <span class="na">type=</span><span class="s">'lxc'</span> <span class="na">xmlns:lxc=</span><span class="s">'http://libvirt.org/schemas/domain/lxc/1.0'</span> <span class="nt">&gt;</span>
+  <span class="nt">&lt;name&gt;</span>xr-lxc-app<span class="nt">&lt;/name&gt;</span>
+  <span class="nt">&lt;memory&gt;</span>327680<span class="nt">&lt;/memory&gt;</span>
+  <span class="nt">&lt;os&gt;</span>
+    <span class="nt">&lt;type&gt;</span>exe<span class="nt">&lt;/type&gt;</span>
+    <span class="nt">&lt;init&gt;</span>/sbin/init<span class="nt">&lt;/init&gt;</span>
+  <span class="nt">&lt;/os&gt;</span>
+  <span class="nt">&lt;lxc:namespace&gt;</span>
+    <span class="nt">&lt;sharenet</span> <span class="na">type=</span><span class="s">'netns'</span> <span class="na">value=</span><span class="s">'global-vrf'</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/lxc:namespace&gt;</span>
+  <span class="nt">&lt;vcpu&gt;</span>1<span class="nt">&lt;/vcpu&gt;</span>
+  <span class="nt">&lt;clock</span> <span class="na">offset=</span><span class="s">'utc'</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;on_poweroff&gt;</span>destroy<span class="nt">&lt;/on_poweroff&gt;</span>
+  <span class="nt">&lt;on_reboot&gt;</span>restart<span class="nt">&lt;/on_reboot&gt;</span>
+  <span class="nt">&lt;on_crash&gt;</span>destroy<span class="nt">&lt;/on_crash&gt;</span>
+  <span class="nt">&lt;devices&gt;</span>
+    <span class="nt">&lt;emulator&gt;</span>/usr/lib64/libvirt/libvirt_lxc<span class="nt">&lt;/emulator&gt;</span>
+    <span class="nt">&lt;filesystem</span> <span class="na">type=</span><span class="s">'mount'</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;source</span> <span class="na">dir=</span><span class="s">'/misc/app_host/xr-lxc-app/'</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;target</span> <span class="na">dir=</span><span class="s">'/'</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/filesystem&gt;</span>
+    <span class="nt">&lt;console</span> <span class="na">type=</span><span class="s">'pty'</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/devices&gt;</span>
+<span class="nt">&lt;/domain&gt;</span>
+</code></pre></div></div>
+
+<h2 id="ansible-playbook">Ansible Playbook</h2>
+
+<p>Ansible playbook contains 7 tasks:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat </span>deploy_container.yml
+<span class="nt">---</span>
+- hosts: ss-xr
+
+  tasks:
+  - name: Copy XML file
+    copy: <span class="nv">src</span><span class="o">=</span>/home/vagrant/xr-lxc-app.xml <span class="nv">dest</span><span class="o">=</span>/home/vagrant/xr-lxc-app.xml <span class="nv">owner</span><span class="o">=</span>vagrant <span class="nv">force</span><span class="o">=</span>no
+
+  - name: Copy rootfs <span class="nb">tar </span>ball
+    copy: <span class="nv">src</span><span class="o">=</span>/home/vagrant/xr-lxc-app-rootfs.tar.gz <span class="nv">dest</span><span class="o">=</span>/misc/app_host/scratch/xr-lxc-app-rootfs.tar.gz <span class="nv">owner</span><span class="o">=</span>vagrant <span class="nv">force</span><span class="o">=</span>no
+
+  - name: Create rootfs directory
+    file: <span class="nv">path</span><span class="o">=</span>/misc/app_host/xr-lxc-app/rootfs <span class="nv">state</span><span class="o">=</span>directory
+    become: yes
+
+  - <span class="nb">command</span>: <span class="nb">tar</span> <span class="nt">-zxf</span> /misc/app_host/scratch/xr-lxc-app-rootfs.tar.gz <span class="nt">-C</span> /misc/app_host/xr-lxc-app/rootfs
+    become: yes
+    register: output
+    ignore_errors: yes
+  - debug: <span class="nv">var</span><span class="o">=</span>output.stdout_lines
+
+  - name: <span class="nb">grep
+    </span>shell: <span class="nb">sudo</span> <span class="nt">-i</span> virsh list | <span class="nb">grep </span>xr-lxc-app
+    args:
+      warn: no
+    register: container_exist
+    ignore_errors: yes
+  - debug: <span class="nv">var</span><span class="o">=</span>output.stdout_lines
+
+  - name: virsh create
+    shell: <span class="nb">sudo</span> <span class="nt">-i</span> virsh  create /home/vagrant/xr-lxc-app.xml
+    args:
+      warn: no
+    register: output
+    when: <span class="s2">" container_exist | failed "</span>
+  - debug: <span class="nv">var</span><span class="o">=</span>output.stdout_lines
+
+  - shell: <span class="nb">sudo</span> <span class="nt">-i</span> virsh list
+    args:
+      warn: no
+    register: output
+  - debug: <span class="nv">var</span><span class="o">=</span>output.stdout_lines
+
+
+</code></pre></div></div>
+
+<p>Tasks overview:</p>
+
+<ul>
+  <li>Task 1 copies xr-lxc-app.xml to XR ;</li>
+  <li>Task 2 copies the xr-lxc-app-rootfs.tar.gz tar ball to XR;</li>
+  <li>Task 3 creates folder &#8220;xr-lxc-app&#8221; at XR, if it does not exist;</li>
+  <li>Task 4 unpacks archive with container filesystem (Notice the ignore_errors?- we&#8217;re simply avoiding the mknod warnings);</li>
+  <li>Task 5 getting list of container and checking if &#8216;xr-lxc-app&#8217; in grep output. In case of success variable would be changed and Task 6 would be skipped;</li>
+  <li>Task 6 creates the container itself using the virsh alias in the XR linux shell (issue
+command &#8220;type virsh&#8221; on XR Linux to check. &#8220;sudo -i&#8221; is important, to load up Aliases for the root user). Triggered only if container not exist;</li>
+  <li>Task 7 dumps the virsh list output to show that container is up and running.</li>
+</ul>
+
+<h2 id="run-playbook-to-deploy-lxc">Run playbook to deploy LXC</h2>
+
+<p>Ansible playbook is ready to use. Issue command in devbox:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ansible-playbook deploy_container.yml
+</code></pre></div></div>
+
+<blockquote>
+
+  <h3 id="slow-playbook-run-xr-gig-interfaces-are-rate-limited">Slow playbook run? XR Gig interfaces are rate limited!</h3>
+
+  <p>The default ansible setup uses the Gig0/0/0/0 XR interface (connected to eth1 of devbox) to transfer the files over port 57722 (ssh to XR linux). This playbook could be directly used for physical devices as well.</p>
+
+  <p>But, bear in mind that the IOS-XR Vagrant instance is rate-limited on its Gig interfaces. So the copy process might be quite slow. To speed up the process we could use the Management interface instead. To do this, determine to which port vagrant forwards port 57722 from XR:</p>
+
+</blockquote>
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+bash-3.2$ vagrant port rtr
+The forwarded ports for the machine are listed below. Please note that
+these values may differ from values configured in the Vagrantfile if the
+provider supports automatic port collision detection and resolution.
+
+ 58822 (guest) =&gt; 58822 (host)
+    22 (guest) =&gt; 2223 (host)
+    <mark>57722 (guest) =&gt; 2200 (host)</mark>
+bash-3.2$ 
+</code>
+</pre>
+</div>
+<blockquote>
+
+  <p>Based on the above output:</p>
+
+  <ul>
+    <li>Change the ansible host IP address from 10.1.1.20 (Gig0/0/0/0) address to 10.0.2.2 (gateway/laptop address) in <code class="highlighter-rouge">/home/vagrant/iosxr-ansible/remote/ansible_hosts</code> on devbox.</li>
+    <li>Change the remote_port  from 57722 to 2200 (forwarded port determined above, in your case it may be different) in <code class="highlighter-rouge">/home/vagrant/iosxr-ansible/remote/ansible_cfg</code> on devbox</li>
+  </ul>
+
+  <p>Thus by using 10.0.2.2:2200 to run the playbook over the management port we significantly reduce the runtime of the playbook.</p>
+</blockquote>
+
+<p>Verify container is up from XR Linux shell:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>xr-vm_node0_RP0_CPU0:/misc/app_host/rootfs<span class="nv">$ </span>virsh list
+ Id    Name                           State
+<span class="nt">----------------------------------------------------</span>
+ 4907  sysadmin                       running
+ 8087  xr-lxc-app                     running
+ 12057 default-sdr--1                 running
+
+</code></pre></div></div>
+
+<blockquote class="notice--success">
+
+  <p>Container is up and running. It might take some time to be fully up. Give it about 20-30 seconds and you should be able to SSH to it from your <strong>laptop</strong>:</p>
+
+  <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh <span class="nt">-p</span> 58822 ubuntu@127.0.0.1
+</code></pre></div>  </div>
+
+  <p>Congratulations!</p>
+</blockquote>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://0.0.0.0:4000/application-hosting/tags/#cisco" class="page__taxonomy-item" rel="tag">cisco</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://0.0.0.0:4000/application-hosting/tags/#iosxr" class="page__taxonomy-item" rel="tag">iosxr</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://0.0.0.0:4000/application-hosting/tags/#vagrant" class="page__taxonomy-item" rel="tag">vagrant</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2016-06-18T16:11:00+00:00">June 18, 2016</time></p>
+        
+        
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://0.0.0.0:4000/application-hosting/tutorials/2016-06-08-ios-xr-ansible-container-deployment/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://0.0.0.0:4000/application-hosting/tutorials/2016-06-08-ios-xr-ansible-container-deployment/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://0.0.0.0:4000/application-hosting/tutorials/2016-06-08-ios-xr-ansible-container-deployment/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://0.0.0.0:4000/application-hosting/tutorials/2016-06-08-ios-xr-ansible-container-deployment/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+
+    <br>
+    <br>
+    <br>
+</section>
+
+
+    </div>
+
+    
+      
+
+<div class="page__comments">
+  <h4 class="page__comments-title">Leave a Comment</h4>
+  
+    <section id="disqus_thread"></section>
+  
+</div>
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/xrdocs"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/xrdocs"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://0.0.0.0:4000/application-hosting/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">This site is maintained by Cisco Systems, Inc. employees. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://0.0.0.0:4000/application-hosting/assets/js/main.min.js"></script>
+<script src="http://0.0.0.0:4000/application-hosting/assets/js/scrollmenu.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-78256516-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'xrdocs';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+<!-- material-scrolltop button -->
+<button class="material-scrolltop" type="button"></button>
+
+<!-- material-scrolltop plugin -->
+<script src="http://0.0.0.0:4000/application-hosting/assets/js/material-scrolltop.js"></script>
+
+<!-- Initialize material-scrolltop with (minimal) -->
+<script>
+    $('body').materialScrollTop();
+</script>
+
+
+  </body>
+</html>
+
