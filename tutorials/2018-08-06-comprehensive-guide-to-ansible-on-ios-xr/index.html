@@ -1,0 +1,1424 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>            Comprehensive guide to Ansible on IOS-XR      IOS XR Application Hosting @xrdocs      </title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="IOS XR Application Hosting @xrdocs">
+<meta property="og:title" content="Comprehensive guide to Ansible on IOS-XR">
+
+
+  <link rel="canonical" href="http://0.0.0.0:4000/application-hosting/tutorials/2018-08-06-comprehensive-guide-to-ansible-on-ios-xr/">
+  <meta property="og:url" content="http://0.0.0.0:4000/application-hosting/tutorials/2018-08-06-comprehensive-guide-to-ansible-on-ios-xr/">
+
+
+
+  <meta property="og:description" content="Learn how to utilize Ansible and unleash its power on IOS-XR box.">
+
+
+
+  <meta name="twitter:site" content="@xrdocs">
+  <meta name="twitter:title" content="Comprehensive guide to Ansible on IOS-XR">
+  <meta name="twitter:description" content="Learn how to utilize Ansible and unleash its power on IOS-XR box.">
+  <meta name="twitter:url" content="http://0.0.0.0:4000/tutorials/2018-08-06-comprehensive-guide-to-ansible-on-ios-xr/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="http://0.0.0.0:4000/application-hosting/images/app-hosting-xrdocs.jpg">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@mike_korshunov">
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2018-08-06T21:27:00+00:00">
+  
+  
+    <link rel="prev" href="http://0.0.0.0:4000/application-hosting/tutorials/2018-05-25-logging-on-ios-xr-guest-os-with-rsyslog-and-elastic-stack/" title="Logging on IOS-XR guest OS with rsyslog and Elastic stack ">
+  
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://0.0.0.0:4000/application-hosting",
+      "logo": "http://0.0.0.0:4000/application-hosting/images/app-hosting-xrdocs.jpg"
+    }
+  </script>
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "person",
+      "name" : "Cisco Systems Inc",
+      "url" : "http://0.0.0.0:4000/application-hosting",
+      "sameAs" : ["https://twitter.com/xrdocs"]
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+<link href="http://0.0.0.0:4000/application-hosting/feed.xml" type="application/atom+xml" rel="alternate" title="IOS XR Application Hosting @xrdocs Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="jgRKKm6B9FwJJPXxpmc0-EP3D0Mh8JHXaJqoYIGj1ek" />
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<script>
+if (!(window.location.host.startsWith("127.0.0.1") || window.location.host.startsWith("localhost")) && (window.location.host.substr(-3) == '.io') && (window.location.protocol != "https:"))
+    window.location.protocol = "https";
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/application-hosting/assets/css/main.css">
+<meta http-equiv="cleartype" content="on">
+<style>
+.underline-on-hover:hover {
+    text-decoration: underline;
+}
+.searchForm{
+      border-radius:5px;
+      -moz-border-radius:5px;
+      -webkit-border-radius:5px;
+      width: 900px;
+   }
+#search_results{
+      display: table; margin:0 auto;
+   }
+</style>
+</style>
+
+    
+
+<!-- start custom head snippets -->
+
+<link href="http://0.0.0.0:4000/application-hosting/assets/css/lity.min.css" rel="stylesheet">
+<link href="http://0.0.0.0:4000/application-hosting/assets/css/cisco-sans.min.css" rel="stylesheet">
+<link href="http://0.0.0.0:4000/application-hosting/assets/css/material-scrolltop.css" rel="stylesheet">
+
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://0.0.0.0:4000/application-hosting/images/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="http://0.0.0.0:4000/application-hosting/images/favicon-196x196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="http://0.0.0.0:4000/application-hosting/images/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="http://0.0.0.0:4000/application-hosting/images/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="http://0.0.0.0:4000/application-hosting/images/favicon-16x16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="http://0.0.0.0:4000/application-hosting/images/favicon-128.png" sizes="128x128" />
+<link rel="shortcut icon" href="http://0.0.0.0:4000/application-hosting/images/favicon_cisco.ico" />
+<meta name="application-name" content="&nbsp;"/>
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="http://0.0.0.0:4000/application-hosting/images/mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="http://0.0.0.0:4000/application-hosting/images/mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="http://0.0.0.0:4000/application-hosting/images/mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="http://0.0.0.0:4000/application-hosting/images/mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="http://0.0.0.0:4000/application-hosting/images/mstile-310x310.png" />
+
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu" style="padding-left:2em;">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <img src="http://0.0.0.0:4000/application-hosting/images/xrdocs_logo.png" width="45px" height="45px" alt="xrdocs logo" style="float:left;">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://0.0.0.0:4000">@xrdocs</a></li>
+          <li class="masthead__menu-item"><a href="http://0.0.0.0:4000/application-hosting/">App-Hosting</a></li>
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="http://0.0.0.0:4000/application-hosting/blogs/">Blogs</a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item greedy-nav-active"><a href="http://0.0.0.0:4000/application-hosting/tutorials/">Tutorials</a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="http://0.0.0.0:4000/application-hosting/search">Search <i class="fa fa-search" aria-hidden="true"></i></a></li>
+                
+            
+
+
+          
+            
+            
+                
+                    <li class="masthead__menu-item"><a href="http://0.0.0.0:4000/application-hosting/tags/">Tags</a></li>
+                
+            
+
+
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="http://0.0.0.0:4000/application-hosting/images/avatars/Mike_pic.jpg" class="author__avatar" alt="Mike Korshunov">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Mike Korshunov</h3>
+    <p class="author__bio">Technical Marketing Engineer, Cisco</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+      
+      
+        <li><a href="mailto:mkorshun@cisco.com"><i class="fa fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+      
+      
+      
+        <li><a href="http://twitter.com/mike_korshunov"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+      
+      
+      
+      
+        <li><a href="http://linkedin.com/in/mkorshunov"><i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn</a></li>
+      
+      
+      
+      
+      
+      
+        <li><a href="http://github.com/maikor"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </ul>
+
+
+  </div>
+    <br><button class="btn"><a href="//pdfcrowd.com/url_to_pdf/" style="color:white">Save as PDF</a></button>
+
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Comprehensive guide to Ansible on IOS-XR">
+    <meta itemprop="description" content="Learn how to utilize Ansible and unleash its power on IOS-XR box.">
+    <meta itemprop="datePublished" content="August 06, 2018">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Comprehensive guide to Ansible on IOS-XR
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  18 minutes read
+</p>
+          
+        </header>
+      
+
+    
+      
+        
+
+
+
+
+
+<div class="breadcrumbs">
+  <ol itemscope itemtype="http://schema.org/BreadcrumbList" style="margin:0;padding:0;">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" style="margin:0;padding:0;">
+          <a href="http://0.0.0.0:4000/application-hosting/" itemprop="item"><span itemprop="name">Home</span></a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" style="margin:0;padding:0;">
+          <a href="http://0.0.0.0:4000/application-hosting/tutorials" itemprop="item"><span itemprop="name">Tutorials</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current" style="margin:0;padding:0;">Comprehensive guide to Ansible on IOS-XR</li>
+      
+    
+  </ol>
+</div>
+
+      
+    
+
+      <section class="page__content" itemprop="text">
+        <aside class="sidebar__right">
+<nav class="toc">
+    <header><h4 class="nav__title"><i class="fa fa-table"></i> Comprehensive guide to Ansible on IOS-XR</h4></header>
+<ul class="toc__menu" id="markdown-toc">
+  <li><a href="#prerequisites" id="markdown-toc-prerequisites">Prerequisites</a>    <ul>
+      <li><a href="#k9-security-package-comitted-on-the-device" id="markdown-toc-k9-security-package-comitted-on-the-device">k9 security package comitted on the device.</a></li>
+      <li><a href="#rsa-key-pair-is-present" id="markdown-toc-rsa-key-pair-is-present">RSA key pair is present</a></li>
+      <li><a href="#config-for-ssh-server" id="markdown-toc-config-for-ssh-server">Config for SSH server</a></li>
+    </ul>
+  </li>
+  <li><a href="#network-management-specific-moments" id="markdown-toc-network-management-specific-moments">Network management specific moments</a>    <ul>
+      <li><a href="#communication-mechanisms" id="markdown-toc-communication-mechanisms">Communication mechanisms</a></li>
+    </ul>
+  </li>
+  <li><a href="#directory-structure" id="markdown-toc-directory-structure">Directory structure</a></li>
+  <li><a href="#getting-into-modules" id="markdown-toc-getting-into-modules">Getting into modules</a>    <ul>
+      <li><a href="#hosts-file" id="markdown-toc-hosts-file">Hosts file</a></li>
+      <li><a href="#netconf-and-banner-modules" id="markdown-toc-netconf-and-banner-modules">NETCONF and Banner modules</a></li>
+      <li><a href="#config-logging-and-system-modules" id="markdown-toc-config-logging-and-system-modules">Config, Logging and System modules</a></li>
+      <li><a href="#interfaces-module" id="markdown-toc-interfaces-module">Interfaces module</a></li>
+      <li><a href="#user-module" id="markdown-toc-user-module">User module</a></li>
+      <li><a href="#get-facts-module" id="markdown-toc-get-facts-module">Get Facts module</a></li>
+      <li><a href="#command-module" id="markdown-toc-command-module">Command module</a></li>
+    </ul>
+  </li>
+  <li><a href="#dealing-with-passwords" id="markdown-toc-dealing-with-passwords">Dealing with passwords</a>    <ul>
+      <li><a href="#ansible-vault" id="markdown-toc-ansible-vault">Ansible Vault</a></li>
+      <li><a href="#key-based-authentication-to-ios-xr-device" id="markdown-toc-key-based-authentication-to-ios-xr-device">Key-based authentication to IOS-XR device.</a></li>
+    </ul>
+  </li>
+  <li><a href="#performance-tips" id="markdown-toc-performance-tips">Performance tips</a>    <ul>
+      <li><a href="#change-strategy-for-execution" id="markdown-toc-change-strategy-for-execution">Change strategy for execution</a></li>
+      <li><a href="#change-forks-number" id="markdown-toc-change-forks-number">Change forks number</a></li>
+    </ul>
+  </li>
+  <li><a href="#conclusion" id="markdown-toc-conclusion">Conclusion</a></li>
+</ul>
+
+  </nav>
+</aside>
+
+<p>Network Automation for the network is crucial nowadays. It changes how network feels and look. This tutorial is going to cover Ansible modules for IOS-XR, some tips and tricks and how to increase performance for Ansible playbooks.</p>
+
+<p>As per Ansible version 2.6.2, we have following 9 modules for IOS-XR. An excerpt from <a href="https://docs.ansible.com/ansible/2.6/modules/list_of_network_modules.html#iosxr">Ansible site</a> below:</p>
+
+<ul>
+  <li><strong>iosxr_banner</strong> - Manage multiline banners on Cisco IOS XR devices</li>
+  <li><strong>iosxr_command</strong> - Run commands on remote devices running Cisco IOS XR</li>
+  <li><strong>iosxr_config</strong> - Manage Cisco IOS XR configuration sections</li>
+  <li><strong>iosxr_facts</strong> - Collect facts from remote devices running IOS XR</li>
+  <li><strong>iosxr_interface</strong> - Manage Interface on Cisco IOS XR network devices</li>
+  <li><strong>iosxr_logging</strong> - Configuration management of system logging services on network devices</li>
+  <li><strong>iosxr_netconf</strong> - Configures NetConf sub-system service on Cisco IOS-XR devices</li>
+  <li><strong>iosxr_system</strong> - Manage the system attributes on Cisco IOS XR devices</li>
+  <li><strong>iosxr_user</strong> - Manage the aggregate of local users on Cisco IOS XR device</li>
+</ul>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>Since Ansible relies on SSH connection to the device, few requirements need to be met.</p>
+
+<h3 id="k9-security-package-comitted-on-the-device">k9 security package comitted on the device.</h3>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+RP/0/RP0/CPU0:flamboyant#show install active
+Wed Aug  1 18:00:24.162 UTC
+Node 0/RP0/CPU0 [RP]
+  Boot Partition: xr_lv0
+  Active Packages: 9
+        ncs5500-xr-6.3.2 version=6.3.2 [Boot image]
+        ncs5500-mcast-2.1.0.0-r632
+        ncs5500-mpls-2.1.0.0-r632
+        ncs5500-mgbl-4.0.0.0-r632
+        ncs5500-mpls-te-rsvp-2.2.0.0-r632
+        ncs5500-ospf-2.0.0.0-r632
+        ncs5500-isis-1.3.0.0-r632
+        ncs5500-li-1.0.0.0-r632
+        <mark>ncs5500-k9sec-4.1.0.0-r632</mark>
+
+Node 0/0/CPU0 [LC]
+  Boot Partition: xr_lcp_lv0
+  Active Packages: 9
+        ncs5500-xr-6.3.2 version=6.3.2 [Boot image]
+        ncs5500-mcast-2.1.0.0-r632
+        ncs5500-mpls-2.1.0.0-r632
+        ncs5500-mgbl-4.0.0.0-r632
+        ncs5500-mpls-te-rsvp-2.2.0.0-r632
+        ncs5500-ospf-2.0.0.0-r632
+        ncs5500-isis-1.3.0.0-r632
+        ncs5500-li-1.0.0.0-r632
+        <mark>ncs5500-k9sec-4.1.0.0-r632</mark>
+
+</code>
+</pre>
+</div>
+
+<h3 id="rsa-key-pair-is-present">RSA key pair is present</h3>
+
+<p>RSA key pair needs to be generated. Use the <strong>crypto key generate rsa command</strong> to generate it. You must configure a hostname for the router using the hostname global configuration command.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+RP/0/RP0/CPU0:flamboyant# crypto key generate rsa keypair-cisco
+Wed Aug  1 18:09:23.836 UTC
+The name for the keys will be: keypair-cisco
+  Choose the size of the key modulus in the range of 512 to 4096 for your General Purpose Keypair. Choosing a key modulus greater than 512 may take a few minutes.
+
+How many bits in the modulus [2048]:
+Generating RSA keys ...
+Done w/ crypto generate keypair
+[OK]
+
+RP/0/RP0/CPU0:flamboyant#
+
+RP/0/RP0/CPU0:flamboyant#! If you want to remove keys from device: 
+RP/0/RP0/CPU0:flamboyant#crypto key zeroize  rsa
+Wed Aug  1 18:08:37.471 UTC
+% Keys to be removed are named keypair-cisco
+Do you really want to remove these keys ?? [yes/no]: yes
+
+RP/0/RP0/CPU0:flamboyant#
+
+</code></pre></div></div>
+
+<p>If you want to generate keys without prompt, use following command:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RP/0/RP0/CPU0:flamboyant#crypto key generate rsa general-keys modulus
+Wed Aug  1 19:31:01.233 UTC
+The name for the keys will be: modulus
+  Choose the size of the key modulus in the range of 512 to 4096 for your General Purpose Keypair. Choosing a key modulus greater than 512 may take a few minutes.
+
+How many bits in the modulus [2048]: Generating RSA keys ...
+Done w/ crypto generate keypair
+[OK]
+
+RP/0/RP0/CPU0:flamboyant#
+
+</code></pre></div></div>
+
+<h3 id="config-for-ssh-server">Config for SSH server</h3>
+
+<p>Apply the following config on the target device to enable SSH and NETCONF.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+netconf agent tty
+!
+netconf-yang agent
+ ssh
+!
+ssh server session-limit 10
+ssh server v2
+ssh server netconf vrf default
+</code>
+</pre>
+</div>
+
+<h2 id="network-management-specific-moments">Network management specific moments</h2>
+
+<p>Ansible workflow for managing network nodes has its nuances.</p>
+
+<p>https://docs.ansible.com/ansible/2.6/network/user_guide/network_working_with_command_output.html</p>
+
+<p>Usually, Ansible runs on managed nodes, however, it’s not the case for the network modules. Everything stays the same from the user perspective and for accustomed keywords. All the magic happens in the background. Typically network devices lack of Python support (IOS-XR support application hosting concepts. <a href="/application-hosting">Read more about it</a>. Because of that network module executes locally and CLI/XML instruction sent over to the device.</p>
+
+<p>One more important aspect for Linux/Unix, configuration files for the system exist in files on hard disks, so the backup for them created in the same directory. It’s not the case for the network modules (configuration not stored on disk) and we will see an example in the <strong>iosxr_config</strong> module, where backup folder created on the machine, from which we are running playbooks.</p>
+
+<p>Additional introduction to Network module - <a href="https://docs.ansible.com/ansible/2.6/network/user_guide/network_working_with_command_output.html">conditions</a>. They allow you to work with output and make value comparison. In conjunction with match parameter, a more sophisticated state can be checked.</p>
+
+<h3 id="communication-mechanisms">Communication mechanisms</h3>
+
+<p>For network modules, there are 2 main connections: <strong>network_cli</strong> and <strong>netconf</strong></p>
+
+<p>Previous way to connect to targets was <strong>local</strong>, you can still use old style of declaration in the playbook, however, it’s deprecated and will be removed eventually. In official Ansible documentation, you will notice parameter <strong>provider</strong> as an indication that parameter local was used.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+- name: Configure IOS-XR devices
+  hosts: routers
+  gather_facts: no
+  # connection local instead of network_cli
+  connection: local
+
+  tasks:
+    - name: collect facts from IOS-XR routers
+      iosxr_facts:
+        gather_subset:
+        - config
+        provider: ""
+      register: config
+
+  vars:
+    cli:
+      host: ""
+      username: ""
+      password: ""
+
+</code></pre></div></div>
+
+<p>If you will run the playbook above with verbose key, in the output you will see</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+$ ansible-playbook head-playbook.yml -i ansible-hosts.ini  --forks 10 -vvv
+PLAYBOOK: head-playbook.yml ******************************************************************************
+***omitted output***
+
+TASK [include task] **************************************************************************************
+task path: /home/cisco/Documents/ansible/head-playbook.yml:16
+&lt;172.30.13.70&gt; using connection plugin <mark>network_cli (was local)</mark>
+&lt;172.30.13.71&gt; using connection plugin <mark>network_cli (was local)</mark>
+
+***omitted output***
+
+</code>
+</pre>
+</div>
+
+<p>The choice between network_cli and netconf connection should be made based on documentation <a href="https://docs.ansible.com/ansible/2.6/modules/list_of_network_modules.html#iosxr">for modules</a> Not all modules support both connection, so first check before usage.</p>
+
+<h2 id="directory-structure">Directory structure</h2>
+
+<p class="notice--info">All playbooks mentioned in tutorial, available on <a href="https://github.com/Maikor/Ansible-2.5-on-IOS-XR">Github</a>. In Github repo Vagrant folder included, feel free to practice against IOS-XRv image Request it <a href="https://xrdocs.io/getting-started/steps-download-iosxr-vagrant">here</a>.</p>
+
+<p>Here is the layout for ansible-playbooks.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ tree ansible 
+.
+ansible
+├── ansible-hosts.ini
+├── head-playbook.yml
+├── README.md
+├── roles
+│   ├── get_facts
+│   │   └── tasks
+│   │       └── main.yml
+│   ├── xr_commands
+│   │   └── tasks
+│   │       └── main.yml
+│   └── xr_config
+│       ├── backup
+│       │   ├── canonball_config.2018-08-06@14:22:09
+│       │   └── flamboyant_config.2018-08-06@14:22:09
+│       ├── common
+│       │   └── router.conf
+│       └── tasks
+│           └── main.yml
+└── xr-passes.yml
+
+9 directories, 12 files
+</code></pre></div></div>
+
+<p>Folder content:</p>
+
+<ul>
+  <li>ansible-hosts.ini contains information about target devices. More on <a href="https://docs.ansible.com/ansible/2.6/network/getting_started/first_inventory.html">inventory</a>;</li>
+  <li>head-playbook.yml - main playbook, from which most we will execute tasks;</li>
+  <li>roles - Ansible concept to separate list of provisioned apps/configs on the device. In terms of servers think of webserver, database, etc. In networking it’s more about services which could be provided via config changes: BGP, VPN, ISIS. In current case, we just demo the ability to separate playbooks into roles;</li>
+  <li>backup directory appears after iosxr_config module triggered with <em>backup: yes</em> parameter.</li>
+  <li>xr-passes.yml - our <a href="/application-hosting/tutorials/2018-07-24-comprehensive-guide-to-ansible-on-ios-xr/#ansible-vault">Vault</a>, described in tutorial.</li>
+</ul>
+
+<h2 id="getting-into-modules">Getting into modules</h2>
+
+<h3 id="hosts-file">Hosts file</h3>
+
+<p>We need to define the hosts first. There is a separation of variables from host definition in ini file. In provided example, passwords stored in plain text. To avoid it, <a href="https://xrdocs.io/application-hosting/tutorials/2018-08-06-comprehensive-guide-to-ansible-on-ios-xr#ansible-vault">Ansible Vault</a> should be used and will be covered later in this tutorial. Another mechanism - <a href="https://xrdocs.io/application-hosting/tutorials/2018-08-06-comprehensive-guide-to-ansible-on-ios-xr/#key-based-authentication-to-ios-xr-device">passwordless authentication</a>, based on keys.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+$ cat ansible-hosts.ini 
+[routers]
+flamboyant ansible_host=172.30.13.70 ansible_user=root
+canonball ansible_host=172.30.13.71  ansible_user=cisco
+
+[routers:vars]
+ansible_ssh_pass=cisco
+ansible_network_os=iosxr
+ansible_port=22
+</code>
+</pre>
+</div>
+
+<h3 id="netconf-and-banner-modules">NETCONF and Banner modules</h3>
+
+<p>As a first example we will run two modules: enable NETCONF on device, set the banner via NETCONF (we just enabled it, why not to utilize it?).</p>
+
+<p>Playbook itself demonstrated below. We will just utilize 2 tasks for now. Name of modules is self-describing.</p>
+
+<p>For NETCONF module we can provide additionally VRF value, via <strong>netconf_vrf</strong> parameter. Default VRF, if the parameter is omitted - default. 
+<strong>State</strong> parameter is responsible for adding or removing NETCONF related knob on the device. <strong>Present</strong> value will enable NETCONF configuration, <strong>Absent</strong> will withdraw config.</p>
+
+<p>Banner module uses same concept for <strong>State</strong> parameter (present/absent).
+Text parameter could start with “|” or “&gt;” as identificator for the multiline string. As per banner itself configuration, you can select would it be <strong>login</strong> or <strong>motd</strong> message. Currently, there is a minor bug with caret return symbol treatment, so please use “&gt;” as a multiline identifier.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+---
+- name: Configure IOS-XR devices
+  hosts: routers
+  gather_facts: no
+  connection: network_cli
+
+  tasks:
+
+    - name: enable netconf service on port 830
+      iosxr_netconf:
+        listens_on: 830
+        state: present
+
+    - name: set welcome banner to device!
+      iosxr_banner:
+        banner: login
+        text: &gt;
+          ! Unauthorized access to device:
+           restricted.
+        #    text: &gt;
+        #      ""
+        state: present
+      connection: netconf
+</code>
+</pre>
+</div>
+
+<p>Console output after playbook execution. For first time we run in verbose mode, since -vvv specified.  As careful reader may notice, temporary files created directly on the host machine, not on target nodes. This is specific of the network module.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+$ ansible-playbook head-playbook.yml -i ansible-hosts.ini  --forks 10 -vvv
+ansible-playbook 2.6.2
+  config file = /home/cisco/.ansible.cfg
+  configured module search path = [u'/home/cisco/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/lib/python2.7/dist-packages/ansible
+  executable location = /usr/local/bin/ansible-playbook
+  python version = 2.7.12 (default, Nov 20 2017, 18:23:56) [GCC 5.4.0 20160609]
+Using /home/cisco/.ansible.cfg as config file
+Parsed /home/cisco/Documents/ansible/ansible-hosts.ini inventory source with ini plugin
+
+PLAYBOOK: head-playbook.yml ******************************************************************************
+1 plays in head-playbook.yml
+ [WARNING]: Found variable using reserved name: vars_files
+
+
+PLAY [Configure IOS-XR devices] ****************************************************************************
+META: ran handlers
+
+TASK [enable netconf service on port 830] ****************************************************************
+task path: /home/cisco/Documents/ansible/head-playbook.yml:9
+&lt;172.30.13.70&gt; ESTABLISH LOCAL CONNECTION FOR USER: cisco
+&lt;172.30.13.70&gt; EXEC /bin/sh -c '( umask 77 &amp;&amp; mkdir -p "` echo /home/cisco/.ansible/tmp/ansible-local-238349mD4bn/ansible-tmp-1533330985.59-76269032799671 `" &amp;&amp; echo ansible-tmp-1533330985.59-76269032799671="` echo /home/cisco/.ansible/tmp/ansible-local-238349mD4bn/ansible-tmp-1533330985.59-76269032799671 `" ) &amp;&amp; sleep 0'
+Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/network/iosxr/iosxr_netconf.py
+Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/network/iosxr/iosxr_netconf.py
+&lt;172.30.13.70&gt; PUT /home/cisco/.ansible/tmp/ansible-local-238349mD4bn/tmpiboupH TO /home/cisco/.ansible/tmp/ansible-local-238349mD4bn/ansible-tmp-1533330985.59-76269032799671/iosxr_netconf.py
+&lt;172.30.13.70&gt; EXEC /bin/sh -c 'chmod u+x /home/cisco/.ansible/tmp/ansible-local-238349mD4bn/ansible-tmp-1533330985.59-76269032799671/ /home/cisco/.ansible/tmp/ansible-local-238349mD4bn/ansible-tmp-1533330985.59-76269032799671/iosxr_netconf.py &amp;&amp; sleep 0'
+&lt;172.30.13.70&gt; EXEC /bin/sh -c 'rm -f -r /home/cisco/.ansible/tmp/ansible-local-238349mD4bn/ansible-tmp-1533330985.59-76269032799671/ &gt; /dev/null 2&gt;&amp;1 &amp;&amp; sleep 0'
+changed: [flamboyant] =&gt; {
+    "changed": true,
+    "commands": [
+        <mark>"netconf-yang agent ssh",
+        "ssh server netconf port 830"</mark>
+    ],
+    "invocation": {
+        "module_args": {
+            "host": null,
+            "listens_on": 830,
+            "netconf_port": 830,
+            "netconf_vrf": "default",
+            "password": null,
+            "port": null,
+            "provider": null,
+            "ssh_keyfile": null,
+            "state": "present",
+            "timeout": null,
+            "username": null
+        }
+    }
+}
+
+TASK [set welcome banner to device!] *********************************************************************
+task path: /home/cisco/Documents/ansible/head-playbook.yml:14
+&lt;172.30.13.70&gt; ESTABLISH LOCAL CONNECTION FOR USER: cisco
+&lt;172.30.13.70&gt; EXEC /bin/sh -c '( umask 77 &amp;&amp; mkdir -p "` echo /home/cisco/.ansible/tmp/ansible-local-238349mD4bn/ansible-tmp-1533330997.74-174548583873229 `" &amp;&amp; echo ansible-tmp-1533330997.74-174548583873229="` echo /home/cisco/.ansible/tmp/ansible-local-238349mD4bn/ansible-tmp-1533330997.74-174548583873229 `" ) &amp;&amp; sleep 0'
+Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/network/iosxr/iosxr_banner.py
+&lt;172.30.13.70&gt; PUT /home/cisco/.ansible/tmp/ansible-local-238349mD4bn/tmpECuOQc TO /home/cisco/.ansible/tmp/ansible-local-238349mD4bn/ansible-tmp-1533330997.74-174548583873229/iosxr_banner.py
+&lt;172.30.13.70&gt; EXEC /bin/sh -c 'chmod u+x /home/cisco/.ansible/tmp/ansible-local-238349mD4bn/ansible-tmp-1533330997.74-174548583873229/ /home/cisco/.ansible/tmp/ansible-local-238349mD4bn/ansible-tmp-1533330997.74-174548583873229/iosxr_banner.py &amp;&amp; sleep 0'
+&lt;172.30.13.70&gt; EXEC /bin/sh -c 'https_proxy='"'"''"'"' http_proxy='"'"''"'"' /usr/bin/python /home/cisco/.ansible/tmp/ansible-local-238349mD4bn/ansible-tmp-1533330997.74-174548583873229/iosxr_banner.py &amp;&amp; sleep 0'
+&lt;172.30.13.70&gt; EXEC /bin/sh -c 'rm -f -r /home/cisco/.ansible/tmp/ansible-local-238349mD4bn/ansible-tmp-1533330997.74-174548583873229/ &gt; /dev/null 2&gt;&amp;1 &amp;&amp; sleep 0'
+changed: [flamboyant] =&gt; {
+    "changed": true,
+    "invocation": {
+        "module_args": {
+            "banner": "login",
+            "host": null,
+            "password": null,
+            "port": null,
+            "provider": null,
+            "ssh_keyfile": null,
+            "state": "present",
+            <mark>"text": "Unauthorized access to device: flamboyant restricted.\n",</mark>
+            "timeout": null,
+            "username": null
+        }
+    },
+    "xml": <mark>"&lt;config xmlns:xc=\<br />"urn:ietf:params:xml:ns:netconf:base:1.0\"&gt;&lt;banners xmlns=\<br />"http://cisco.com/ns/yang/Cisco-IOS-XR-infra-infra-cfg\"&gt;&lt;banner xc:operation=\"merge\"&gt;<banner-name>login</banner-name><banner-text><br />! Unauthorized access to device: flamboyant restricted.\n</banner-text>&lt;/banner&gt;&lt;/banners&gt;&lt;/config&gt;</mark>"
+}
+META: ran handlers
+
+PLAY RECAP ***********************************************************************************************
+flamboyant                 : ok=2    changed=2    unreachable=0    failed=0
+
+
+</code>
+</pre>
+</div>
+
+<p>From the output, we can observe that both changes applied on the device. There are two ways how to check if config properly applied.</p>
+
+<p>The first approach is a conservative one. Connect to the device and check latest commit changes. Since each task is separate commit, a command issued for last two configuration changes.</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+RP/0/RP0/CPU0:flamboyant#show configuration commit changes last 2
+Fri Aug  3 21:04:29.739 UTC
+Building configuration...
+!! IOS XR Configuration version = 6.3.2
+banner login Unauthorized access to device: flamboyant restricted.
+netconf-yang agent
+ ssh
+!
+end
+</code>
+</pre>
+</div>
+
+<p>More interesting approach to stay in same operations paradigm and use Ansible for config validation:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+
+#     1 new task introduced: 
+    - name: check if two first tasks 'enable netconf service on port 830' and 'set welcome banner to device!'  successfully applied on the device
+      iosxr_command:
+        commands:
+        - show run | begin netconf
+        - show run | include banner
+        wait_for:
+        - result[0] contains 'netconf-yang agent'
+        - result[1] contains 'banner login !'
+#        - result[1] contains 'banner login My Not Expected Message'
+</code>
+</pre>
+</div>
+
+<p>Such playbook will pass, and we will be sure, that config presented on the device. If we uncomment last string, the playbook will fail. We can use <strong>match</strong> parameter with value <strong>any</strong> and execution will succeed. The default value is all. Think about them as logical operators AND &amp; OR. If <strong>wait_for</strong> argument included in the task, an output will not be returned until success or number of retries exceeded.</p>
+
+<p>As you may notice, wait_for used in the last task. More documentation on <a href="https://docs.ansible.com/ansible/2.6/modules/wait_for_module.html">this module</a></p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+
+    "stdout_lines": [
+        [
+            "Building configuration...",
+            "netconf-yang agent",
+            " ssh",
+            "!",
+            "ssh server session-limit 10",
+            "ssh server v2",
+            "ssh server netconf vrf default",
+            "end"
+        ],
+        [
+            "Building configuration...",
+            "banner login ! Unauthorized access to device: flamboyant restricted."
+        ]
+    ]
+
+PLAY RECAP ***********************************************************************************************
+flamboyant                 : ok=3    changed=0    unreachable=0    failed=0
+    
+</code>
+</pre>
+</div>
+
+<h3 id="config-logging-and-system-modules">Config, Logging and System modules</h3>
+
+<p>Next modules to be utilized are iosxr_config, iosxr_logging and iosxr_system.</p>
+
+<p class="notice--info">iosxr_config doesn’t support netconf connection. ⚠️</p>
+
+<p>To show a more sophisticated flow, we will create a role in our initial playbook.</p>
+
+<p>File main.yml will include tasks, which need to be executed. router.conf - common configuration for devices.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>|____xr-passes.yml
+|____head-playbook.yml
+|____ansible-hosts.ini
+|____roles
+| |____xr_config
+| | |____common
+| | | |____router.conf
+| | |____tasks
+| | | |____main.yml
+
+$ cat roles/xr_config/common/router.conf
+router ospf 1
+ area 0
+  interface HundredGigE0/0/1/0 
+  
+</code></pre></div></div>
+
+<p>Playbook consists of three tasks. On first task, Ansible will change the device hostname. During second task Ansible applies configuration file on all devices. 
+Third task checks that OSPF configuration is properly applied and OSPF process is up and running.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cat roles/xr_config/tasks/main.yml
+---
+- name: Change hostname
+  iosxr_config:
+    lines:
+      - hostname 
+
+
+- name: Apply config from file
+  iosxr_config:
+    lines:
+      - ""
+    backup: yes
+    
+
+- name: check if OSPF is configured
+  iosxr_command:
+    commands:
+      - show run | i "router ospf"
+      - show processes ospf | i "Process state"
+    wait_for:
+      - result[0] contains "router ospf 1"
+      - result[1] contains "Run"
+</code></pre></div></div>
+
+<p>Main parameters for the config module are the following:</p>
+<ul>
+  <li><em>lines &amp; parents</em>. Lines - ordered set of configs. Parents parameter uniquely identifies, under which block lines should be configured.</li>
+  <li><em>replace</em> values are line (default), block, config. Defines the behavior for task. If set to block and difference exist in lines, whole block will be pushed.</li>
+  <li><em>match</em>  values are line (default), strict, exact, none. Similar parameter to the previous one in terms of comparison. Defines matching algorithm.</li>
+  <li><em>backup</em> will create the full running configuration in a backup subfolder, before applying new config;</li>
+  <li><em>before &amp; after</em> - will append commands respectively;</li>
+  <li><em>comment</em> - text added to commit description.  Default: configured by iosxr_config;</li>
+</ul>
+
+<p>Ready to get some logs out of the device? Logging module is purposed for that.  If you are interested in streaming operation data, check our thorough  <a href="/telemetry/tutorials">Telemetry tutorials</a></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+- name: Configure IOS-XR devices
+  hosts: routers
+  gather_facts: no
+  connection: network_cli
+
+  tasks:
+    - name: configure console logging level
+      iosxr_logging:
+        dest: console
+        level: debugging
+        state: present
+    - name: configure logging for syslog server host
+      iosxr_logging:
+        dest: host
+        name: 172.30.13.2
+        level: critical
+        state: present
+       
+</code></pre></div></div>
+
+<p>For logging in IOS-XR Guest OS, check <a href="/application-hosting/tutorials/2018-05-25-logging-on-ios-xr-guest-os-with-rsyslog-and-elastic-stack/">this tutorial</a></p>
+
+<p class="notice--info">iosxr_logging doesn’t allow you to specify the port, so you may use config module as a workaround. ⚠️</p>
+
+<p>The third module in the section is system configuration: configure DNS, domain-search, and lookup. State present/absent used for enable/disable configuration piece, like we saw earlier in the tutorial.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+- name: Configure IOS-XR devices
+  hosts: routers
+  gather_facts: no
+  connection: network_cli
+
+  tasks:
+    - name: configure DNS and domain-name (default vrf=default)
+      iosxr_system:
+        state: present
+        domain_name: local.cisco.com
+        domain-search:
+        - cisco.com
+        name_servers:
+        # new DNS from CloudFlare, easy to remember ;)
+        - 1.1.1.1
+        - 8.8.8.8
+        - 8.8.4.4
+     
+</code></pre></div></div>
+
+<h3 id="interfaces-module">Interfaces module</h3>
+
+<p>Wonder how to manage interfaces? There is the specific module for interface management. There are 4 states for interface: present(default), absent, up &amp; down. <strong>Up</strong> equal to present + operationally up. <strong>Down</strong> - present + operationally down.</p>
+
+<p>The aggregate parameter used to configure multiple interfaces in one task. New interface - new line. The first task will enable just one interface, second will enable two interfaces and will set MTU value.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- name: Unshut interface 
+  iosxr_interface:
+    description: link to RouterXX TenGigE0/0/0/11
+    name: TenGigE0/0/0/28
+    state: present
+        
+- name: Configure interfaces using aggregate
+  iosxr_interface:
+    aggregate:
+    - name: TenGigE0/0/0/30
+    - name: TenGigE0/0/0/31
+    mtu: 512
+    state: present
+
+</code></pre></div></div>
+
+<h3 id="user-module">User module</h3>
+
+<p>One more module, this time for user management. Password for user provided in the clear text. Public key could be used, but in this case, Python module <strong>base64</strong> required (usually it’s included into Python distributions). If <strong>public_key</strong> or <strong>public_key_contents</strong> used and multiple users created, the same key used for every user.</p>
+
+<p class="notice--warning">If you use parameter <strong>purge</strong>, which is boolean, all other users going to be removed from the device, except admin and newly created within the task.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- name: set multiple users to group sys-admin
+  iosxr_user:
+    name: user1
+    group: sysadmin
+    state: present
+    public_key_contents: ""
+
+
+- name: Create multiple users to multiple groups
+  iosxr_user:
+    aggregate:
+      - name: user2
+      - name: user3
+    configured_password: cisco
+    groups:
+      - sysadmin
+      - root-system
+    state: present
+
+# Remove users
+- name: user deletion
+  iosxr_user:
+    aggregate:
+      - name: user1
+      - name: user2
+    state: absent
+
+</code></pre></div></div>
+
+<h3 id="get-facts-module">Get Facts module</h3>
+
+<p>Facts is one of the most straightforward module, but also very resource intense because it will prompt device for running configuration. If <strong>gather_subset</strong> supplied, possible values are all, hardware, config, and interfaces. Try to limit usage of <em>show running-config</em> in playbooks to not sacrifice playbook performance.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- name: get config facts and hardware
+  iosxr_facts:
+    gather_subset:
+    - config
+    - hardware
+  register: hardware
+
+- name: get all facts, except information regarding interfaces, we have the special module for them!
+  iosxr_facts:
+    gather_subset:
+    - all
+    - "!interfaces"
+</code></pre></div></div>
+
+<h3 id="command-module">Command module</h3>
+
+<p>Few examples for this module already provided above.  Important parameters for this module:</p>
+
+<ul>
+  <li><strong>interval</strong> - default 1 second, sets the timer between retries;</li>
+  <li><strong>retries</strong> - how many attempts Ansible will do before failing on task. Default - 10;</li>
+  <li><strong>wait_for</strong> - example was provided when we enable NETCONF on the system and checked response from the device. Can be used in conjunction with match parameter.</li>
+</ul>
+
+<h2 id="dealing-with-passwords">Dealing with passwords</h2>
+
+<h3 id="ansible-vault">Ansible Vault</h3>
+
+<p>Ansible Vault is a feature to store your secrets and sensitive information in encrypted files, instead of plain text.</p>
+
+<p>First step to create vault file:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ansible-vault create xr-passes.yml
+New Vault password:
+Confirm New Vault password:
+$
+</code></pre></div></div>
+<p>Populate it with values aka variables, same key-value scheme used:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>my_sensitive_pass_vault: cisco_SecUre_P@ss
+</code></pre></div></div>
+
+<p>Save file. We can check the encrypted file content:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ cat xr-passes.yml 
+$ANSIBLE_VAULT;1.1;AES256
+30303565333538383465393933363636653565636465656438333331303261333866376363373932
+6539303964623031383065366135663166356263393937310a316436663938346165376636666631
+37623938383264396431326464323632346632636634333966376666353731623530343634373263
+6235353763653338370a643737653735396261346264633132383537643137383165346433303937
+35386364366566643065306633636361353739363865396166623830643630356535
+</code></pre></div></div>
+
+<p>Don’t like your Vault password? You can change it.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ansible-vault rekey xr-passes.yml
+</code></pre></div></div>
+
+<p>Advanced Encryption Standard (AES) is used for default encryption (which is shared-secret based).</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+---
+- name: Configure IOS-XR devices
+  hosts: routers
+  gather_facts: no
+  connection: local
+
+  roles:
+    - get_facts
+    - banner_setup
+    - xr_config
+
+
+  vars:
+    # Include vault 
+    <mark>vars_files: xr-passes.yml</mark>
+    cli:
+      host: "{{ inventory_hostname }}"
+      username: "{{ ansible_user }}"
+      # Password used from Vault 
+      <mark>password: "{{ my_sensitive_pass_vault }}"</mark>
+
+</code>
+</pre>
+</div>
+
+<p>To make it possible, you need to include vars_files key into the playbook with vault file value.</p>
+
+<h3 id="key-based-authentication-to-ios-xr-device">Key-based authentication to IOS-XR device.</h3>
+
+<p>To establish passwordless authentication on IOS-XR we need to go through multiple steps. The public key should be encoded in base64 format. You can use utility <strong>base64</strong>, part of Linux and macOS distribution, or try to use online tool for encoding, such as <a href="https://www.base64decode.org/">base64decode.org</a>. After copy key to IOS-XR based device and import it.</p>
+
+<p>Make sure that key-pair generated on the device and create b64 file.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ls ~/.ssh/ | grep id_rsa.pub
+id_rsa.pub
+
+$ cut -d" " -f2 ~/.ssh/id_rsa.pub | base64 -d &gt; ~/.ssh/id_rsa_pub.b64
+
+$ ls -la ~/.ssh/ | grep b64
+-rw-rw-r--  1 cisco cisco   535 Aug  6 10:43 id_rsa_pub.b64
+
+</code></pre></div></div>
+
+<p>Key transfer and import operation:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+RP/0/RP0/CPU0:flamboyant#scp cisco@172.30.13.2:/home/cisco/.ssh/id_rsa_pub.b64 /disk0:/id_rsa_pub.b64
+Mon Aug  6 17:40:58.958 UTC
+Connecting to 172.30.13.2...
+Password:
+  Transferred 535 Bytes
+  535 bytes copied in 0 sec (535000)bytes/sec
+
+RP/0/RP0/CPU0:flamboyant#dir disk0: | i rsa
+Mon Aug  6 10:50:14.476 PDT
+   56 -rw-r--r-- 1   535 Aug  6 10:41 id_rsa_pub.b64
+
+RP/0/RP0/CPU0:flamboyant#crypto key import authentication rsa disk0:/id_rsa_pub.b64
+Mon Aug  6 10:41:03.651 UTC
+RP/0/RP0/CPU0:flamboyant#
+
+</code></pre></div></div>
+
+<p>Verification, that key is imported:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>RP/0/RP0/CPU0:flamboyant#show crypto key authentication rsa
+Mon Aug  6 10:51:24.635 PDT
+Key label: root
+Type     : RSA public key authentication
+Size     : 4096
+Imported : 10:41:03 PDT Mon Aug 06 2018
+Data     :
+ 30820222 300D0609 2A864886 F70D0101 01050003 82020F00 3082020A 02820201
+ 00D031B9 C0CD4838 C031D9E8 390C51ED 8B77D3F8 F0637BE3 CB4631C5 5D84A294
+ BE475637 8F7CC395 3E4AD022 ABBE538A 5304CD3A EC9F0B19 0876132F 7675B36C
+ 46ED953D B870F3FB 2EDB9B50 E6C29278 5A48C0B5 66B09AC3 D03A54FB E7F8DE78
+ A7733571 660DFED5 FB6D0599 54227601 08924FFD CBB890F7 93DCE02C 13F4FFA2
+ E15FF061 9C64E0BF B62CF8B0 C6305613 D714F84F 7DBA3B1D ED93609B 8E8384A8
+ EC259CDA EEBBD07E 5931F467 4D86D59A 24B596C7 4AEDE957 FA8866C1 ED2988F5
+ 7B9945F9 CC308EA3 532A2470 75C8CE23 49C0AA75 A1F03538 BC3DD4DE EACC8150
+ 6640B368 7D5696A7 15C6D1BA D6534F34 3CD4ED92 A313A8D0 0480A169 4BF9575C
+ 6BCE836E D72F4E01 E76C94A1 3B35C430 FB6A471B 453B0DE3 ACD28034 2632E111
+ 192A9CA0 3DBF3410 0E9580C7 E0DE4968 01DB0C43 98254390 FDB43E3E 39429EA2
+ 9CFA40A5 2D8A89EC 1DA9ED1D 494306D2 96936B1D ABDA1F7C 513B9E89 4E45F1FA
+ 50B1DB14 A00D4A83 2B72C5EC 4557A975 A76D49D8 AC184BBE 3C75E292 CFE0F032
+ 2DAE7154 83AE0A21 D4177524 11F33960 56732666 84619C01 BA36E257 93DE4A8B
+ B8E1E7F7 67A80F9A 265320F4 949F6151 D67B1B2E BF3F6C61 C98C45CF EE3F2D87
+ EE7031D9 AD27C89A 20087789 F711FD69 0957C424 E216E439 51B95831 DCE9008A
+ 7F02D500 802AEADB 4C7469B9 04E98E1A 4BDC6BC1 C36C191F 31747564 5BC178F6
+ CD020301 0001
+ 
+ 
+</code></pre></div></div>
+
+<p>Try to connect, to make sure, no password required:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+ssh root@172.30.13.70
+
+ Unauthorized access to device: flamboyant restricted.
+
+RP/0/RP0/CPU0:flamboyant#
+</code></pre></div></div>
+
+<p>Voilà, passwordless authentication works.</p>
+
+<h2 id="performance-tips">Performance tips</h2>
+
+<h3 id="change-strategy-for-execution">Change strategy for execution</h3>
+
+<p>Playbook performance can be increased. In order to achieve this, we need to use strategy plugin and change default value <strong>linear</strong> to <strong>free</strong>. By default, Ansible task execution wait for completion on the host, then goes to another host and after execution on all hosts for the current task complete, a new task started. With <strong>free</strong> strategy, Ansible will create a fork of the process. It wouldn’t wait for execution of task to be completed on all nodes. When task is completed on the node, next task is started on it, without delay.</p>
+
+<p>It’s easy to change strategy in playbook:</p>
+
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
+---
+- name: Configure IOS-XR devices
+  hosts: routers
+  strategy: <mark>free</mark>
+  gather_facts: no
+  connection: network_cli
+
+  roles:
+    - get_facts   
+</code>
+</pre>
+</div>
+
+<h3 id="change-forks-number">Change forks number</h3>
+
+<p>Forks - parallel processes spawned by Ansible for communication with remote hosts and task execution. The default amount of processes - 5. Add the following string to <em>ansible.cfg</em> to increase number of forks.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># ansible.cfg 
+forks = 10
+</code></pre></div></div>
+
+<p>Another way to change amount of Forks to specify a value, when you run a playbook:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ansible-playbook head-playbook.yml -i ansible-hosts.ini  --forks 10 
+</code></pre></div></div>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>We cover Ansible modules available today for IOS-XR (particular attention to iosxr_command &amp; iosxr_config modules), prerequisites required for that, created role examples and tweak Ansible performance for faster playbook completion. Start slowly with your automation and increase the complexity as you grow.</p>
+
+<p>Good luck with further automation 🔧</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://0.0.0.0:4000/application-hosting/tags/#ansible" class="page__taxonomy-item" rel="tag">Ansible</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://0.0.0.0:4000/application-hosting/tags/#automation" class="page__taxonomy-item" rel="tag">Automation</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://0.0.0.0:4000/application-hosting/tags/#iosxr" class="page__taxonomy-item" rel="tag">iosxr</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-08-06T21:27:00+00:00">August 06, 2018</time></p>
+        
+        
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://0.0.0.0:4000/application-hosting/tutorials/2018-08-06-comprehensive-guide-to-ansible-on-ios-xr/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://0.0.0.0:4000/application-hosting/tutorials/2018-08-06-comprehensive-guide-to-ansible-on-ios-xr/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://0.0.0.0:4000/application-hosting/tutorials/2018-08-06-comprehensive-guide-to-ansible-on-ios-xr/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://0.0.0.0:4000/application-hosting/tutorials/2018-08-06-comprehensive-guide-to-ansible-on-ios-xr/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+
+    <br>
+    <br>
+    <br>
+</section>
+
+
+    </div>
+
+    
+      
+
+<div class="page__comments">
+  <h4 class="page__comments-title">Leave a Comment</h4>
+  
+    <section id="disqus_thread"></section>
+  
+</div>
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/xrdocs"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/xrdocs"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://0.0.0.0:4000/application-hosting/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">This site is maintained by Cisco Systems, Inc. employees. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    <script src="http://0.0.0.0:4000/application-hosting/assets/js/main.min.js"></script>
+<script src="http://0.0.0.0:4000/application-hosting/assets/js/scrollmenu.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-78256516-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  
+  <script type="text/javascript">
+  	/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  	var disqus_shortname = 'xrdocs';
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function() {
+  		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  	})();
+
+  	/* * * DON'T EDIT BELOW THIS LINE * * */
+  	(function () {
+  		var s = document.createElement('script'); s.async = true;
+  		s.type = 'text/javascript';
+  		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+  	}());
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+
+<!-- material-scrolltop button -->
+<button class="material-scrolltop" type="button"></button>
+
+<!-- material-scrolltop plugin -->
+<script src="http://0.0.0.0:4000/application-hosting/assets/js/material-scrolltop.js"></script>
+
+<!-- Initialize material-scrolltop with (minimal) -->
+<script>
+    $('body').materialScrollTop();
+</script>
+
+
+  </body>
+</html>
+
