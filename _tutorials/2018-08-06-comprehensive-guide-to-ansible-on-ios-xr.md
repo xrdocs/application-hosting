@@ -145,7 +145,7 @@ Ansible workflow for managing network nodes has its nuances.
 
 https://docs.ansible.com/ansible/2.6/network/user_guide/network_working_with_command_output.html
 
-Usually, Ansible runs on managed nodes, however, it's not the case for the network modules. Everything stays the same from the user perspective and for accustomed keywords. All the magic happens in the background. Typically network devices lack of Python support (IOS-XR support application hosting concepts. [Read more about it]( {{ base_url }}/application_hosting ). Because of that network module executes locally and CLI/XML instruction sent over to the device.  
+Usually, Ansible runs on managed nodes, however, it's not the case for the network modules. Everything stays the same from the user perspective and for accustomed keywords. All the magic happens in the background. Typically network devices lack of Python support (IOS-XR support application hosting concepts. [Read more about it]( {{ base_url }}/application-hosting ). Because of that network module executes locally and CLI/XML instruction sent over to the device.  
 
 One more important aspect for Linux/Unix, configuration files for the system exist in files on hard disks, so the backup for them created in the same directory. It's not the case for the network modules (configuration not stored on disk) and we will see an example in the **iosxr_config** module, where backup folder created on the machine, from which we are running playbooks.  
 
