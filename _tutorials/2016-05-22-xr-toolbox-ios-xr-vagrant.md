@@ -35,7 +35,7 @@ If you're unfamiliar with Vagrant as a tool for development, testing and design,
 take a look at the rest of the ["XR toolbox" series]({{ base_path }}/tags/#xr-toolbox).
 {: .notice--info}
 
-**Note to Users**: We try out best to offer the community a development platform for IOS-XR that brings the latest features in XR to your laptop or development environment. Having said that, any issues found on IOS-XRv64 are fixed on a best-effort basis and it is not an officially supported platform. We strive to provide a platform that the community can work with and help stabilize through their use. Any feedback is appreciated and you can always leave your comments below.
+**Note to Users**: We try out best to offer the community a development platform for IOS-XR that brings the latest features in XR to your laptop or development environment. Having said that, any issues found on IOS-XRv64 are fixed on a best-effort basis. We strive to provide a platform that the community can work with and help stabilize through their use. Any feedback is appreciated and you can always leave your comments below.
 {: .notice-info}
 
 ## Pre-requisites:
