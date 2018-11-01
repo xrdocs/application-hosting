@@ -36,7 +36,7 @@ take a look at the rest of the ["XR toolbox" series]({{ base_path }}/tags/#xr-to
 {: .notice--info}
 
 **Note to Users**: We try out best to offer the community a development platform for IOS-XR that brings the latest features in XR to your laptop or development environment. Having said that, any issues found on IOS-XRv64 are fixed on a best-effort basis. We strive to provide a platform that the community can work with and help stabilize through their use. Any feedback is appreciated and you can always leave your comments below.
-{: .notice-info}
+{: .notice--info}
 
 ## Pre-requisites:
 * [Vagrant](https://www.vagrantup.com/downloads.html) for your Operating System. 1.8+  
