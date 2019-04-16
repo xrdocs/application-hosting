@@ -290,7 +290,8 @@ export PYTHONPATH=$YDK_DIR
 
 ### Running Playbooks  
   
-  
+  ![01-dnx-fe3600.jpg]({{site.baseurl}}/images/01-dnx-fe3600.jpg)
+
 
 ```shell
 cd ~/iosxr-ansible/remote/  
