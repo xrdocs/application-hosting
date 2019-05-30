@@ -7,4 +7,4 @@ branches:
   - gh-pages     # test the gh-pages branch
 script:
   - bundle exec jekyll build --config _config.travis.yml
-  - bundle exec htmlproofer ./_site --external-only --url-ignore \"/#.*/,/getting-started\"
+  - bundle exec htmlproofer ./_site --external_only --url-ignore \"/#.*/,/getting-started\"
