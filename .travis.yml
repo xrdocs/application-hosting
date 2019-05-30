@@ -14,4 +14,4 @@ notifications:
     on_success: never
     on_failure: always
     template:
-      - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} by %{author} %{result} with the following result: %{message}"
+      - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} by %{author} %{result}. Click on the build number to see details."
