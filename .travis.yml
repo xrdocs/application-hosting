@@ -5,4 +5,6 @@ rvm:
 branches:
   only:
   - gh-pages     # test the gh-pages branch
-script: "bundle exec jekyll build --config _config.travis.yml; bundle exec htmlproofer  --url-ignore \"/#.*/,/getting-started\" ./_site/ --only-4xx"
+script:
+  - bundle exec jekyll build --config _config.travis.yml
+  - bundle exec htmlproofer ./_site --external-only --url-ignore \"/#.*/,/getting-started\"
