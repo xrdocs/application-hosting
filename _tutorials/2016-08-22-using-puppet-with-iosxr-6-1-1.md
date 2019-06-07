@@ -150,11 +150,11 @@ To access the Puppet Master box just issue the ``vagrant ssh`` command (no passw
 $ vagrant ssh puppetmaster
 ```
 
-The Puppet Master instance is already configured via file ["puppetmaster.sh"](https://github.com/ios-xr/vagrant-xrdocs/blob/master/puppet-tutorials/app_hosting/puppetmaster.sh). This section is only for the user's information.
+The Puppet Master instance is already configured via file ["puppetmaster.sh"](https://github.com/ios-xr/vagrant-xrdocs/blob/master/puppet-tutorials/app_hosting/centos-pm/puppetmaster.sh). This section is only for the user's information.
 {: .notice--warning}
 
 >
-Let's review the ["puppetmaster.sh"](https://github.com/ios-xr/vagrant-xrdocs/blob/master/puppet-tutorials/app_hosting/puppetmaster.sh) script.
+Let's review the ["puppetmaster.sh"](https://github.com/ios-xr/vagrant-xrdocs/blob/master/puppet-tutorials/app_hosting/centos-pm/puppetmaster.sh) script.
 The first line adds Puppet Master and IOS-XRv host information in /etc/hosts file.
 >
 ```shell
@@ -209,11 +209,11 @@ vagrant@localhost's password:
 RP/0/RP0/CPU0:xrv9k#
 ```
 
-The IOS-XRv instance is already configured via ["iosxrv.sh"](https://github.com/ios-xr/vagrant-xrdocs/blob/master/puppet-tutorials/app_hosting/iosxrv.sh). This section is only for the user's information.
+The IOS-XRv instance is already configured via ["iosxrv.sh"](https://github.com/ios-xr/vagrant-xrdocs/blob/master/puppet-tutorials/app_hosting/centos-pm/iosxrv.sh). This section is only for the user's information.
 {: .notice--warning}
 
 >
-Let's review the ["iosxrv.sh"](https://github.com/ios-xr/vagrant-xrdocs/blob/master/puppet-tutorials/app_hosting/iosxrv.sh) script.
+Let's review the ["iosxrv.sh"](https://github.com/ios-xr/vagrant-xrdocs/blob/master/puppet-tutorials/app_hosting/centos-pm/iosxrv.sh) script.
 The first section installs puppet agent on IOS-XRv.
 >
 ```shell
