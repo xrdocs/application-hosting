@@ -10,7 +10,7 @@ tags:
   - linux
 ---
 
-We're up at [NANOG 67](https://www.nanog.org/meetings/NANOG67/home) in Chicago, IL, next week!
+We're up at NANOG 67 in Chicago, IL, next week!
 
 Over the course of more than 2 decades, the **N**orth **A**merican **N**etwork **O**perators' **G**roup ([NANOG](https://www.nanog.org)) has been at the epicenter of the net-ops transformation.    
 This unique congregation of vendors, service-provider, Data-Center and Enterprise SMEs and network engineers provides a perfect opportunity to showcase some of the new enhancements in IOS-XR.   
@@ -22,7 +22,7 @@ Of course, if you're looking to talk about IOS-XR and other Cisco solutions for 
 If you're heading over to NANOG 67,  then check out the following sessions to get a gist of the upcoming enhancements in IOS-XR:
 
 
-**[Ten Lessons From Telemetry](https://www.nanog.org/meetings/abstract?id=2852)**    
+**Ten Lessons From Telemetry**    
 Shelly Cadora, Cisco Systems
 {: .notice--warning}   
 
