@@ -15,7 +15,7 @@ tags:
 
 If you haven’t checked out the XR toolbox Series, then you can do so here:
 
-[XR Toolbox Series]({{ base_path }}application-hosting/tags/#xr-toolbox)
+[XR Toolbox Series]({{ base_path }}/tags/#xr-toolbox)
 
 This series is meant to help a beginner get started with application-hosting on IOS-XR.
 
@@ -36,9 +36,9 @@ Make sure you have [Vagrant](https://www.vagrantup.com/downloads.html) and [Virt
 
 The system must have  4.5GB of space available. The topology includes an IOS-XRv router (3.5G RAM) and an Ubuntu instance (501MB RAM).
 
-Go through the Vagrant quick-start tutorial, if you haven’t already, to learn how to use Vagrant with IOS-XR: [IOS-XR vagrant quick-start]({{ base_path }}/application-hosting/tutorials/iosxr-vagrant-quickstart)
+Go through the Vagrant quick-start tutorial, if you haven’t already, to learn how to use Vagrant with IOS-XR: [IOS-XR vagrant quick-start]({{ base_path }}/tutorials/iosxr-vagrant-quickstart)
 
-It would be beneficial for the user to go through the [XR Toolbox Series]({{ base_path }}/application-hosting/tags/#xr-toolbox). But it is not a hard requirement. Following the steps in this tutorial should work out just fine for this demo.
+It would be beneficial for the user to go through the [XR Toolbox Series]({{ base_path }}/tags/#xr-toolbox). But it is not a hard requirement. Following the steps in this tutorial should work out just fine for this demo.
 
 Once you have everything set up, you should be able to see the IOS-XRv vagrant box in the `vagrant box list` command:
 
