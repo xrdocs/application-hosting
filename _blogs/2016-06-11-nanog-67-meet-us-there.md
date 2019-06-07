@@ -27,7 +27,7 @@ Shelly Cadora, Cisco Systems
 {: .notice--warning}   
 
 
-**[Suffering Withdrawal; an automated approach to connectivity evaluation](https://www.nanog.org/meetings/abstract?id=2851)**  
+**Suffering Withdrawal; an automated approach to connectivity evaluation**  
 Micah Croff, GitHub  
 Tim Hoffman, Twitter  
 Bruce McDougall, Cisco  
