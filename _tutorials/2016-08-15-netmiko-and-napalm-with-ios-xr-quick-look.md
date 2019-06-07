@@ -21,7 +21,7 @@ To begin with, let's take a look the tools we intend to use:
 
 [NAPALM](https://github.com/napalm-automation/napalm)- python based automation tool, which provides a common API for different vendor platforms. 
 
-We will use old setup, which consist of devbox (Ubuntu instance) and rtr (IOS-XRv)  [link]({{ site.url }}/tutorials/IOSXR-Ansible).
+We will use old setup, which consist of devbox (Ubuntu instance) and rtr (IOS-XRv).
 {: .notice--info}  
 ![setup](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/mkorshun/netmiko_setup.png){: .align-center}
 {: .notice}
