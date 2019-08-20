@@ -860,11 +860,13 @@ Some common setup details for both LXC containers and Docker containers on the I
 
 
     Now, we can start calculating:
-    * When no 3rd party application (docker or LXC, I’m not talking about native) is running on the system, then the allocation of CPU for the 3 system subgroups are (Remember 1024 cpu shares are reserved for the Host layer):
-      default-sdr—1 share = 1024/(1024+1024+1024+1024)  = 25%
-      default-sdr—2 share = 1024/(1024+1024+1024+1024)  = 25%
-      sysadmin share = 1024/(1024+1024+1024+1024)  = 25%  
-      Host = 1024/(1024+1024+1024+1024)  = 25%
+    * When no 3rd party application (docker or LXC, I’m not talking about native) is running on the system, then the allocation of CPU for the 3 system subgroups are (Remember 1024 cpu shares are reserved for the Host layer):  
+    
+      default-sdr—1 share = 1024/(1024+1024+1024+1024)  = 25%  
+      default-sdr—2 share = 1024/(1024+1024+1024+1024)  = 25%  
+      sysadmin share = 1024/(1024+1024+1024+1024)  = 25%    
+      Host = 1024/(1024+1024+1024+1024)  = 25%  
+      
     
     * When an application is running on the system as part of the tp_app.partition subgroup (either docker or LXC or both), then the remaining 3 subgroups are already active.
     So CPU allocated to the tp_app.partition process =    1024/(1024+1024+1024+1024+1024)  = 20%
