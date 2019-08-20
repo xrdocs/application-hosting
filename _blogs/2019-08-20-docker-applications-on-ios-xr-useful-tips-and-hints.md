@@ -28,7 +28,7 @@ tags:
 
 ## Choosing the distribution
 
-## Pulling Docker images: private insecure/secure registries, tarballs. 
+## Pulling Docker images 
 
 ## Routing through mgmt port
 
@@ -36,15 +36,15 @@ tags:
 
 ## Opening up TCP/UDP sockets
 
-## Mounting configuration files into Docker Containers
+## Mounting config files into Docker Containers
 
 ## Exposing XR vrfs to Docker containers
 
-## Managing CPU and Memory limits on docker containers
+## Managing CPU and Memory limits
 
-## Reducing the size of your Docker images
+## Reducing the size of Docker images
 
-## Managing Applications logs with Docker containers
+## Managing On-Box Applications logs
 
 ## Demo: Open/R as a Docker App on IOS-XR
 
