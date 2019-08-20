@@ -804,9 +804,44 @@ Some common setup details for both LXC containers and Docker containers on the I
     [host:~]$
     </code></pre></p>
 
+    Let's break down the cpu-shares allocated to different parts of the system:  
 
+    <p><pre><code>
+    [host]$ 
+    [host]$ cd /dev/cgroup/
+    [host:/dev/cgroup]$ virsh -c lxc:/// list
+     Id    Name                           State
+    ----------------------------------------------------
+     6396  sysadmin                       running
+     14448 default-sdr--1                 running
+     22946 default-sdr--2                 running
+ 
+    [host:/dev/cgroup]$ 
+    [host:/dev/cgroup]$ cat cpu/cpu.shares     <mark>>>>>  Host CPU shares</mark>
+    1024
+    [host:/dev/cgroup]$ cat  cpu/machine/cpu.shares     >>>> machine subgroup CPU shares
+    1024
+    [host:/dev/cgroup]$
+    [host:/dev/cgroup]$ cat cpu/machine/default-sdr--1.libvirt-lxc/cpu.shares   >>>>> XR Control Plane
+    1024
+    [host:/dev/cgroup]$ cat cpu/machine/default-sdr--2.libvirt-lxc/cpu.shares  >>>>>  Data Plane LC container
+    1024
+    [host:/dev/cgroup]$ cat cpu/machine/sysadmin.libvirt-lxc/cpu.shares >>> Sysadmin Container
+    1024
+    [host:/dev/cgroup]$
+    [host:/dev/cgroup]$ cat cpu/machine/tp_app.partition/cpu.shares     >>>>> Allocation for the    tp_app.partition subgroup
+    256
+    [host:/dev/cgroup]$ 
+    [host:/dev/cgroup]$ cat cpu/machine/tp_app.partition/docker/cpu.shares     >>>>>> Allocation for the third party docker container subgroup under the tp_app.partition subgroup
+    1024
+    [host:/dev/cgroup]$ 
+    [host:/dev/cgroup]$ cat cpu/machine/tp_app.partition/lxc.partition/cpu.shares     >>>>>>  Allocation for the third party LXC container subgroup under the tp_app.partition subgroup
+    1024
+    [host:/dev/cgroup]$ 
+</code></pre></p>
 
-**What do cpu share allocations below mean?**
+**What do cpu share allocations below mean?**  
+
 * CPU shares help determine the relative allocation of CPU resources when processes are running  in all groups and subgroups.  
 
 * Now at the highest level (Host), there is no competing group defined. So Host gets 1024 CPU shares.  
@@ -838,42 +873,7 @@ The remaining system subgroups will continue to get the same amount whether you 
     sysadmin share = 1024/(1024+1024+1024)  = 30.77%
  
  
-Logs:
- 
-[host:0_RP0:~]$ 
-[host:0_RP0:~]$ cd /dev/cgroup/
-[host:0_RP0:/dev/cgroup]$ virsh -c lxc:/// list
- Id    Name                           State
-----------------------------------------------------
- 6396  sysadmin                       running
- 14448 default-sdr--1                 running
- 22946 default-sdr--2                 running
- 
-[host:0_RP0:/dev/cgroup]$ 
-[host:0_RP0:/dev/cgroup]$ cat cpu/cpu.shares     >>>>  Host CPU shares
-1024
-[host:0_RP0:/dev/cgroup]$ cat  cpu/machine/cpu.shares     >>>> machine subgroup CPU shares
-1024
-[host:0_RP0:/dev/cgroup]$
-[host:0_RP0:/dev/cgroup]$ cat cpu/machine/default-sdr--1.libvirt-lxc/cpu.shares    >>>>> XR Control Plane
-1024
-[host:0_RP0:/dev/cgroup]$ cat cpu/machine/default-sdr--2.libvirt-lxc/cpu.shares   >>>>>  Data Plane LC container
-1024
-[host:0_RP0:/dev/cgroup]$ cat cpu/machine/sysadmin.libvirt-lxc/cpu.shares          >>>>>> Sysadmin (Calvados) Container
-1024
-[host:0_RP0:/dev/cgroup]$
-[host:0_RP0:/dev/cgroup]$ cat cpu/machine/tp_app.partition/cpu.shares     >>>>> Allocation for the tp_app.partition subgroup
-256
-[host:0_RP0:/dev/cgroup]$ 
-[host:0_RP0:/dev/cgroup]$ cat cpu/machine/tp_app.partition/docker/cpu.shares     >>>>>> Allocation for the third party docker container subgroup under the tp_app.partition subgroup
-1024
-[host:0_RP0:/dev/cgroup]$ 
-[host:0_RP0:/dev/cgroup]$ cat cpu/machine/tp_app.partition/lxc.partition/cpu.shares     >>>>>> Allocation for the third party LXC container subgroup under the tp_app.partition subgroup
-1024
-[host:0_RP0:/dev/cgroup]$ 
-
-
-    Once in the host shell, check the cpu shares allocated for LXCs by checking the content of the file: `/dev/cgroup/cpu/machine/tp_app.partition/lxc.partition/cpu.shares `
+Once in the host shell, check the cpu shares allocated for LXCs by checking the content of the file: `/dev/cgroup/cpu/machine/tp_app.partition/lxc.partition/cpu.shares `
 
     ```      
     [host:~]$ cat /dev/cgroup/cpu/machine/tp_app.partition/lxc.partition/cpu.shares
