@@ -24,7 +24,7 @@ excerpt: >-
 
 # Prerequisites
 
-We intend to dive into the specifics of the app-hosting infrastructure on IOS-XR using the [on-demand IOS-XR programmability Sandbox on Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/883f8ea6-54a1-453e-98f5-fc175a2a90de?diagramType=Topology).. This sandbox is easily reservable and allows the reader to walk through the steps in the blog. You can also choose to skip the reservation and simply read through the steps to gain a better understanding of the apphosting and packet-io architecture on IOS-XR.
+We intend to dive into the specifics of the app-hosting infrastructure on IOS-XR using the [on-demand IOS-XR programmability Sandbox on Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/883f8ea6-54a1-453e-98f5-fc175a2a90de?diagramType=Topology). This sandbox is easily reservable and allows the reader to walk through the steps in the blog. You can also choose to skip the reservation and simply read through the steps to gain a better understanding of the apphosting and packet-io architecture on IOS-XR.
 
 
 ## Reserve the IOS-XR Programmability sandbox
