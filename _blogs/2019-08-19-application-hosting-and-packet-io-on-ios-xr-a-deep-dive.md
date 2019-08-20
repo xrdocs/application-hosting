@@ -816,7 +816,7 @@ Some common setup details for both LXC containers and Docker containers on the I
 * Next level, machine is divided into 4 groups:   default-sdr—1 , default-sdr—2, sysadmin and tp_app.partition with cpu shares at 1024, 1024, 1024 and 256 respectively.  
 
 
-Now we can start calculating:
+Now, we can start calculating:
 * When no 3rd party application (docker or LXC, I’m not talking about native) is running on the system, then the allocation of CPU for the 3 system subgroups are:
     default-sdr—1 share = 1024/(1024+1024+1024)  = 33.33%
     default-sdr—2 share = 1024/(1024+1024+1024)  = 33.33%
@@ -833,9 +833,9 @@ Now, the allocations for the system subgroups are reduced to:
 
 * If you run any one of them (typically the case), then they get to use all of 7.69%
 The remaining system subgroups will continue to get the same amount whether you run 1 or 2 or 100 apps =
-default-sdr—1 share = 1024/(256+ 1024+1024+1024)  = 30.77 %
-default-sdr—2 share = 1024/(1024+1024+1024)  = 30.77%
-sysadmin share = 1024/(1024+1024+1024)  = 30.77%
+    default-sdr—1 share = 1024/(256+ 1024+1024+1024)  = 30.77 %
+    default-sdr—2 share = 1024/(1024+1024+1024)  = 30.77%
+    sysadmin share = 1024/(1024+1024+1024)  = 30.77%
  
  
 Logs:
