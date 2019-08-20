@@ -125,7 +125,7 @@ Just hover over a node in the topology and hit `SSH` from the dropdown menu. Thi
 
 
 **Pro Tip**: This browser based session uses [Guacamole](https://guacamole.apache.org/) on the server side to serve up the SSH connection. If you'd like to enable easy copy-paste from your laptop/machine into the session in the browser, then use `Chrome` as your browser and install the following [plugin](https://chrome.google.com/webstore/detail/clipboard-permission-mana/ipbhneeanpgkaleihlknhjiaamobkceh?hl=en). Once installed, then within the browser tab that has the SSH session open, enable clipboard copying by clicking the plugin icon on the top right and allowing clipboard permissions for the particular host/IP as shown below:  
-![enable_clipboard.png]({{site.baseurl}}/images/enable_clipboard.png)
+<img src="{{site.baseurl}}/images/enable_clipboard.png" alt="enable_clipboard.png" width="400px"/>
 {: .notice--info}
 
 &nbsp;  
