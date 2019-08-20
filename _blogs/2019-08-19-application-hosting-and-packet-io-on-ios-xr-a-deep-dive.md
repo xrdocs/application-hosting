@@ -201,8 +201,8 @@ RP/0/RP0/CPU0:r1#
 ```
 
 
-<p style="margin: 2em 0!important;padding: 1em;font-family: CiscoSans,Arial,Helvetica,sans-serif;font-size: 1em !important;text-indent: initial;background-color: #eff9ef;border-radius: 5px;box-shadow: 0 1px 1px rgba(0,127,171,0.25);">Perfect! You are now all set to start this lab.
-</p>  
+Perfect! You are now all set to start this lab.
+{: .notice--success}
 
 
 # Understand App-Hosting on IOS-XR
