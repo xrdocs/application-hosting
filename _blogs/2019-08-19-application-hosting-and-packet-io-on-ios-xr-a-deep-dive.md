@@ -387,16 +387,20 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
 
   RP/0/RP0/CPU0:r2#
   RP/0/RP0/CPU0:r2#
-  ```
-  Initially, the interface  `GigabitEthernet0/0/0/2` on router `r2` is shutdown and is by default in the `global-vrf` network namespace which corrsponds to vrf `default` in IOS-XR.  
+  ```  
+  
+  Initially, the interface  `GigabitEthernet0/0/0/2` on router `r2` is shutdown and is by default in the `global-vrf` network namespace which corrsponds to vrf `default` in IOS-XR.    
+  
   ```
   RP/0/RP0/CPU0:r2#show  running-config  int gigabitEthernet 0/0/0/2
   Mon Sep 10 05:13:15.645 UTC
   interface GigabitEthernet0/0/0/2
    shutdown
   !
-  ```
-  Check that this interface is visible in the `global-vrf` netns. We use `ifconfig -a` instead of just `ifconfig` since the interface is currently shutdown. We use the `netns_identify` utility in XR bash with the `$$` argument (represents the process ID of the current XR bash shell) to determine the netns we are dropped into when we issue the `bash` CLI in XR:
+  ```  
+  
+  Check that this interface is visible in the `global-vrf` netns. We use `ifconfig -a` instead of just `ifconfig` since the interface is currently shutdown. We use the `netns_identify` utility in XR bash with the `$$` argument (represents the process ID of the current XR bash shell) to determine the netns we are dropped into when we issue the `bash` CLI in XR:  
+  
 
   ```
   RP/0/RP0/CPU0:r2#
@@ -421,8 +425,10 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
             RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
 
   [r2:~]$
-  ```
-  Next, configure `vrf blue` at the global configuration level as well as under `tpa` to ensure that the netns called `blue` gets created in the kernel:  
+  ```  
+  
+  Next, configure `vrf blue` at the global configuration level as well as under `tpa` to ensure that the netns called `blue` gets created in the kernel:    
+  
 
   <p><pre><code>
   RP/0/RP0/CPU0:r2#conf t
@@ -441,7 +447,8 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   [r2:~]$ <mark>ls /var/run/netns
   blue  global-vrf  tpnns  xrnns</mark>
   [r2:~]$
-  </code></pre></p>
+  </code></pre></p>  
+  
   Perfect! Now configure interface `GigabitEthernet0/0/0/2` under `vrf blue` to trigger its migration in the kernel netns as well:  
 
   ```
@@ -457,8 +464,10 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   Mon Sep 10 05:15:15.502 UTC
   RP/0/RP0/CPU0:r2(config-if)#
   RP/0/RP0/CPU0:r2#
-  ```
-  Drop into bash and check if `Gi0_0_0_2` is still present in `global-vrf` netns:
+  ```  
+  
+  Drop into bash and check if `Gi0_0_0_2` is still present in `global-vrf` netns:  
+  
 
   ```
   RP/0/RP0/CPU0:r2#bash
@@ -468,8 +477,10 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   [r2:~]$ ifconfig -a Gi0_0_0_2
   Gi0_0_0_2: error fetching interface information: Device not found
   [r2:~]$
-  ```
-  Nope! now let's drop into netns `blue` and check the same:
+  ```  
+  
+  Nope! now let's drop into netns `blue` and check the same:  
+  
 
   ```
   [r2:~]$ ip netns exec blue bash
@@ -489,7 +500,8 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
             RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
 
   [r2:~]$
-  ```
+  ```  
+  
   Exactly what we expected. The interface `Gi0_0_0_2` has now migrated to netns `blue`.  
 
 
