@@ -54,7 +54,7 @@ These instructions and more are detailed here: [Reserving and Connecting to a De
 
 Once you're connected to the Anyconnect server:
 
-<br/><img src="assets/images/anyconnect.png" alt="reserve_button" width="300px"/><br/>
+<br/><img src="{{site.baseurl}}/images/anyconnect.png" alt="reserve_button" width="300px"/><br/>
 
 You should be able to ping the address: `10.10.20.170` which represents the External NAT address of the virtualization host on which the IOS-XRv9000 instances and the development environment (devbox) are running.  
 
