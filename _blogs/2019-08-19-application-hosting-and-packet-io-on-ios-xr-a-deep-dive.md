@@ -48,6 +48,7 @@ Within about 10 minutes, the entire sandbox environment should be ready and you'
 These instructions and more are detailed here: [Reserving and Connecting to a Devnet Sandbox](https://developer.cisco.com/docs/sandbox/#!first-reservation-guide/connect-to-sandbox-servers).
 
 ## Connect to the Sandbox
+{:.no_toc}  
 
 Once you're connected to the Anyconnect server:
 
