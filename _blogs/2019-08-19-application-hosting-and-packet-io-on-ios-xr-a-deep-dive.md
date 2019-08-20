@@ -39,7 +39,6 @@ As part of the reservation, select the duration for which you'd like to reserve 
 
 
 <img src="{{site.baseurl}}/images/reserve_duration.png" alt="reserve_button" width="400px"/>.
-
 To view the dropdown menu with variable reservation options, hit the edit button (pencil icon) next to schedule. Once your reservation is active, you can keep extending the duration if you start running out of time (with the maximum limit set to a total time of 1 week).
 {: .notice--info}
 
