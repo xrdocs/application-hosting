@@ -364,8 +364,9 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
 
   If a vrf is mapped to a network namespace of the same name using the tpa CLI then Interfaces configured under the vrf in XR CLI will automatically be isolated into the corresponding namespace in the RP's kernel.
 
-  <p text-align="center">
-  <a href="assets/images/pkt_io_vrfs.png"><img alt="pkt-io-routes"  src="assets/images/pkt_io_vrfs.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
+
+
+  <a href="{{site.baseurl}}/images/pkt_io_vrfs.png"><img class="align-center" alt="pkt_io_vrfs.png"  src="{{site.baseurl}}/images/pkt_io_vrfs.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
   </p>
 
   Let's try this out on route `r2` in the sandbox:
