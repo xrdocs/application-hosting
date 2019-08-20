@@ -111,7 +111,9 @@ To be clear, the connection details are listed below:
 
 To connect to the nodes in the topology, you have 3 options:
 
-## Browser Based:  
+## Browser Based:
+{:.no_toc}
+
 If you don't have an SSH Client or Terminal available on your Laptop/Machine that you're using to walk through this lab, then use the UI that Devnet Sandbox provides to connect to the instances within your browser (Chrome or Firefox).
 Just hover over a node in the topology and hit `SSH` from the dropdown menu. This is shown below for the `devbox`:
 
