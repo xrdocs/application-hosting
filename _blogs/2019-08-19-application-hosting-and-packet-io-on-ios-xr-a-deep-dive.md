@@ -761,29 +761,29 @@ Some common setup details for both LXC containers and Docker containers on the I
 
 *  **Disk Volume**: By default the mount volume `/misc/app_host` on the underlying host layer is mounted into the XR LXC by default. The amount of space allocated is about 3.9G on an xrv9k and about 3.7G on an NCS5500. It varies based on the resource availability of the platform, but is within this range.This can be checked by running `df -h` in the bash shell:
 
-  <p><pre><code>
-  [r1:~]$ df -h
-  Filesystem                                 Size  Used Avail Use% Mounted on
-  /dev/loop5                                 2.9G  1.4G  1.4G  49% /
-  run                                        7.3G  476K  7.3G   1% /bindmnt_netns
-  devfs                                      1.0M   16K 1008K   2% /dev
-  tmpfs                                       64K     0   64K   0% /dev/cgroup
-  /dev/mapper/panini_vol_grp-host_lv0        969M  412M  492M  46% /dev/sde
-  none                                       7.3G  787M  6.5G  11% /dev/shm
-  none                                       7.3G  787M  6.5G  11% /dev/shm
-  <mark>/dev/mapper/app_vol_grp-app_lv0            3.9G  106M  3.6G   3% /misc/app_host</mark>
-  tmpfs                                      7.3G  4.0K  7.3G   1% /var/volatile
-  tmpfs                                      7.3G   68K  7.3G   1% /run
-  tmpfs                                      7.3G     0  7.3G   0% /media/ram
-  tmpfs                                       64M  208K   64M   1% /tmp
-  tmpfs                                       64M  208K   64M   1% /tmp
-  /dev/mapper/panini_vol_grp-ssd_disk1_xr_1  1.5G  233M  1.1G  18% /misc/disk1
-  /dev/mapper/xr-vm_encrypted_log            475M   16M  430M   4% /var/log
-  /dev/mapper/xr-vm_encrypted_config         475M  3.3M  443M   1% /misc/config
-  /dev/mapper/xr-vm_encrypted_scratch        989M   21M  902M   3% /misc/scratch
-  none                                       512K     0  512K   0% /mnt
-  [r1:~]$
-  </code></pre></p>
+    <p><pre><code>
+    [r1:~]$ df -h
+    Filesystem                                 Size  Used Avail Use% Mounted on
+    /dev/loop5                                 2.9G  1.4G  1.4G  49% /
+    run                                        7.3G  476K  7.3G   1% /bindmnt_netns
+    devfs                                      1.0M   16K 1008K   2% /dev
+    tmpfs                                       64K     0   64K   0% /dev/cgroup
+    /dev/mapper/panini_vol_grp-host_lv0        969M  412M  492M  46% /dev/sde
+    none                                       7.3G  787M  6.5G  11% /dev/shm
+    none                                       7.3G  787M  6.5G  11% /dev/shm
+    <mark>/dev/mapper/app_vol_grp-app_lv0            3.9G  106M  3.6G   3% /misc/app_host</mark>
+    tmpfs                                      7.3G  4.0K  7.3G   1% /var/volatile
+    tmpfs                                      7.3G   68K  7.3G   1% /run
+    tmpfs                                      7.3G     0  7.3G   0% /media/ram
+    tmpfs                                       64M  208K   64M   1% /tmp
+    tmpfs                                       64M  208K   64M   1% /tmp
+    /dev/mapper/panini_vol_grp-ssd_disk1_xr_1  1.5G  233M  1.1G  18% /misc/disk1
+    /dev/mapper/xr-vm_encrypted_log            475M   16M  430M   4% /var/log
+    /dev/mapper/xr-vm_encrypted_config         475M  3.3M  443M   1% /misc/config
+    /dev/mapper/xr-vm_encrypted_scratch        989M   21M  902M   3% /misc/scratch
+    none                                       512K     0  512K   0% /mnt
+    [r1:~]$
+    </code></pre></p>
 
 
 * **CPU shares**: Both LXC containers and Docker containers on IOS-XR have their resources (CPU/Memory) governed by cgroups settings. To figure out the limits on these container applications by default, we need to drop into the Host shell and check the cgroups settings:
