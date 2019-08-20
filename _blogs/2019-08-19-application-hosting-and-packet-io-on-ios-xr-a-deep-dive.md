@@ -1090,4 +1090,5 @@ Deleted: sha256:a30b835850bfd4c7e9495edf7085cedfad918219227c7157ff71e8afe2661f63
 
 
 
-<p style="margin: 2em 0!important;padding: 1em;font-family: CiscoSans,Arial,Helvetica,sans-serif;font-size: 1em !important;text-indent: initial;background-color: #eff9ef;border-radius: 5px;box-shadow: 0 1px 1px rgba(0,127,171,0.25);">And that completes the quick crash-course on the application hosting infrastructure on IOS-XR! Let's move on to create our own docker image to host a telemetry client/collector on the router.</p>
+And that completes the crash-course on the application hosting infrastructure on IOS-XR! Use this blog along with the other blogs in the xr-toolbox series to build and host your own applications and tools on routers running IOS-XR.
+{: .notice--success}
