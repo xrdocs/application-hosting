@@ -30,23 +30,18 @@ Post Release 6.0.0, IOS-XR made a jump from a 32-bit QNX operating system to a 6
 
 The Deployment Architecture of IOS-XR on compatible platforms can be classified into two types:
 
+<div class="notice--primary" style="background-color: #d6d8d6; font-size: 1.1em !important; margin: 2em 0 !important; padding: 1.5em 1em 1em 1em;text-indent: initial; border-radius: 5px;box-shadow: 0 1px 1px rgba(0,127,171,0.25); "><div class="text-center"><p><b>LXC-Based Deployment <br/>(Contemporary platforms like NCS55xx, NCS5xxx platforms)</b></p></div></div>  
 
 ![xr-lxc-arch.png]({{site.baseurl}}/images/xr-lxc-arch.png)
 
-<p text-align="center">
-<a href="assets/images/iosxr-apphosting-lxc.png"><img alt="iosxr-apphosting-lxc"  src="{{site.baseurl}}/images/xr-lxc-arch.png" width=450px style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
-</p>
-
-<div class="notice--primary" style="background-color: #d6d8d6; font-size: 1.1em !important; margin: 2em 0 !important; padding: 1.5em 1em 1em 1em;text-indent: initial; border-radius: 5px;box-shadow: 0 1px 1px rgba(0,127,171,0.25); "><div class="text-center"><p><b>LXC-Based Deployment <br/>(Contemporary platforms like NCS55xx, NCS5xxx platforms)</b></p></div></div>
-
-<br/><br/>
-
-<p text-align="center">
-<a href="assets/images/iosxr-apphosting-vm.png"><img alt="iosxr-apphosting-lxc"  src="assets/images/iosxr-apphosting-vm.png" width=450px style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
-</p>
-
 
 <div class="notice--primary" style="background-color: #d6d8d6; font-size: 1.1em !important; margin: 2em 0 !important; padding: 1.5em 1em 1em 1em;text-indent: initial; border-radius: 5px; box-shadow: 0 1px 1px rgba(88,88,91,0.25); border-radius: 5px;box-shadow: 0 1px 1px rgba(0,127,171,0.25);"><div class="text-center"><p><b>VM-Based Deployment<br/>ASR9xxx platforms</b></p></div></div>
+
+![xr-vm-arch.png]({{site.baseurl}}/images/xr-vm-arch.png)
+
+
+
+
 
 
 Irrespective of the LXC or VM based architecture, the common components of the architecture are defined below:
