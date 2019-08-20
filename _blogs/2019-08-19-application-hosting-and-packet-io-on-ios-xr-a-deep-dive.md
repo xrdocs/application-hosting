@@ -355,7 +355,8 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   default dev fwd_ew  scope link  src 192.168.122.21
   192.168.122.0/24 dev Mg0_RP0_CPU0_0  scope link  src 192.168.122.21
   [r1:~]$
-  ```
+  ```  
+  
   where `192.168.122.21` was the IP address of the `MgmtEth0/RP0/CPU0/0` interface that got configured as src-hint because of the `update-source` CLI under `tpa`.
    
    
