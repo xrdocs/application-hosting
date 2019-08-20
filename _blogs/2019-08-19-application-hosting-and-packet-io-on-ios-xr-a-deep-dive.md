@@ -501,9 +501,8 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
    
   * **Route Sync**: Similarly, as shown below, KIM will accept the `tpa` CLI as described earlier to determine the default routes, src-hints, next-hop interface etc. and program the kernel to reflect the requirement. It also works with RIB events to configure static routes with the Mgmt port as the next hop into the kernel (since the Mgmt port is local to the RP).
 
-    <p text-align="center">
-    <a href="assets/images/kim_route_setup.png"><img alt="kim-route-setup"  src="assets/images/kim_route_setup.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
-    </p>  
+
+    <a href="{{site.baseurl}}/images/kim_route_setup.png"><img class="align-center" alt="kim-route-setup"  src="{{site.baseurl}}/images/kim_route_setup.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
 
   * **TCP/UDP socket sync**: When applications running (either natively or inside containers) attempt to open up TCP/UDP sockets, then it is essential for the IOS-XR LPTS framework (which is a distributed database of ports open on the system and exists across the RP and LCs) to be programmed to reflect these open ports so that any received packets can be subject to an LPTS lookup by an LC or RP and correctly forward the incoming traffic to the application opening up the socket.
 
