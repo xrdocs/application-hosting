@@ -278,7 +278,8 @@ But today, there is no infrastructure available in the Linux ecosystem to manage
 
 This is where the IOS-XR network stack excels with its long history of running across fixed systems with no linecards as well as  modular systems with multiple linecards.   
 
-<p style="margin: 2em 0!important;padding: 1em;font-family: CiscoSans,Arial,Helvetica,sans-serif;font-size: 1em !important;text-indent: initial;background-color: #e6f2f7;border-radius: 5px;box-shadow: 0 1px 1px rgba(0,127,171,0.25);">Knowing this, we implemented the Pkt/IO system such that the Linux kernel network stack on the RP in an IOS-XR platform can piggy-back on the IOS-XR network stack to allow the RP linux environment to have access to all the interfaces and packet paths on the distributed system for free, without any additional investment on the Linux kernel network stack.</p>  
+Knowing this, we implemented the Pkt/IO system such that the Linux kernel network stack on the RP in an IOS-XR platform can piggy-back on the IOS-XR network stack to allow the RP linux environment to have access to all the interfaces and packet paths on the distributed system for free, without any additional investment on the Linux kernel network stack.
+{: .notice--info}
 
 The way we accomplish this is shown through the series of images below.  
 
