@@ -484,7 +484,7 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   Nope! now let's drop into netns `blue` and check the same:  
   
 
-    ```
+  ```
   [r2:~]$ ip netns exec blue bash
   [r2:~]$
   [r2:~]$ source /etc/init.d/operns-functions
@@ -502,7 +502,8 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
             RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
 
   [r2:~]$
-  ```  
+  ```    
+  
   Exactly what we expected. The interface `Gi0_0_0_2` has now migrated to netns `blue`.  
 
 
