@@ -538,15 +538,14 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
 
   Transmit Traffic through Mgmt Port:  
 
-  
-  <a href="assets/images/transmit_management_traffic.png"><img alt="transmit_management_traffic"  src="assets/images/transmit_management_traffic.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
-  </p>  
+
+  <a href="{{site.baseurl}}/images/transmit_management_traffic.png"><img class="align-center" alt="transmit_management_traffic"  src="{{site.baseurl}}/images/transmit_management_traffic.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
+ 
 
   Receive Traffic via Mgmt Port:
+  
+  <a href="{{site.baseurl}}/images/receive_management_traffic.png"><img class="align-center"  alt="receive_management_traffic"  src="{{site.baseurl}}/images/receive_management_traffic.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
 
-  <p text-align="center">
-  <a href="assets/images/receive_management_traffic.png"><img alt="receive_management_traffic"  src="assets/images/receive_management_traffic.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
-  </p>  
 
 
 
