@@ -836,7 +836,7 @@ Some common setup details for both LXC containers and Docker containers on the I
     [host:/dev/cgroup]$
     [host:/dev/cgroup]$ cat cpu/machine/tp_app.partition/cpu.shares     
     <mark>>>>>> Allocation for the    tp_app.partition subgroup</mark>
-    256
+    1024
     [host:/dev/cgroup]$ 
     [host:/dev/cgroup]$ cat cpu/machine/tp_app.partition/docker/cpu.shares     
     <mark>>>>> Allocation for third party docker container subgroup under the tp_app.partition subgroup</mark>
@@ -856,7 +856,7 @@ Some common setup details for both LXC containers and Docker containers on the I
 
     * One level down, the “machine” sub group is defined and is given 1024 CPU shares. Again, no competing subgroup at this level, so all cpu resources get passed down.  
 
-    * Next level, machine is divided into 4 groups:   default-sdr—1 , default-sdr—2, sysadmin and tp_app.partition with cpu shares at 1024, 1024, 1024 and 256 respectively.  
+    * Next level, machine is divided into 4 groups:   default-sdr—1 , default-sdr—2, sysadmin and tp_app.partition with cpu shares at 1024, 1024, 1024 and 1024 respectively.  
 
 
     Now, we can start calculating:
@@ -866,19 +866,19 @@ Some common setup details for both LXC containers and Docker containers on the I
       sysadmin share = 1024/(1024+1024+1024)  = 33.33%  
     
     * When an application is running on the system as part of the tp_app.partition subgroup (either docker or LXC or both), then the remaining 3 subgroups are already active.
-    So CPU allocated to the tp_app.partition process =    256/(256+1024+1024+1024)  = 7.69%
+    So CPU allocated to the tp_app.partition process =    1024/(1024+1024+1024+1024)  = 25%
     Now, the allocations for the system subgroups are reduced to:
-      default-sdr—1 share = 1024/(256+ 1024+1024+1024)  = 30.77 %
-      default-sdr—2 share = 1024/(1024+1024+1024)  = 30.77%
-      sysadmin share = 1024/(1024+1024+1024)  = 30.77%
+      default-sdr—1 share = 1024/(256+ 1024+1024+1024)  = 25 %
+      default-sdr—2 share = 1024/(1024+1024+1024)  = 25%
+      sysadmin share = 1024/(1024+1024+1024)  = 25%
  
-    * Further, under the tp_app.partition subgroup, Docker and LXC get 1024 and 1024 shares respectively. So, in case you’re running an LXC app and a Docker app at the same time, they will get  7.69/2 = 3.845% of the CPU each.
+    * Further, under the tp_app.partition subgroup, Docker and LXC get 1024 and 1024 shares respectively. So, in case you’re running an LXC app and a Docker app at the same time, they will get  25/2 = 12.5% of the CPU each.
 
-    * If you run any one of them (typically the case), then they get to use all of 7.69%
+    * If you run any one of them (typically the case), then they get to use all of 25%
     The remaining system subgroups will continue to get the same amount whether you run 1 or 2 or 100 apps =
-      default-sdr—1 share = 1024/(256+ 1024+1024+1024)  = 30.77 %
-      default-sdr—2 share = 1024/(1024+1024+1024)  = 30.77%
-      sysadmin share = 1024/(1024+1024+1024)  = 30.77%
+      default-sdr—1 share = 1024/(1024+ 1024+1024+1024)  = 25 %
+      default-sdr—2 share = 1024/(1024+ 1024+1024+1024)  = 25%
+      sysadmin share = 1024/(1024+1024+1024+1024)  = 25%
  
  
 
@@ -898,8 +898,8 @@ Some common setup details for both LXC containers and Docker containers on the I
 
 
 
-Bear in mind that the above values are for an IOS-XRv9000 platform. Each platform would handle these limits based on the resources available. But you can use the same techniques described above across all IOS-XR platforms to determine the limits imposed by the one selected.
-{: .notice--info}
+Bear in mind that the above values are for an IOS-XRv9000 platform. Each platform would handle these limits based on the resources available. **Further, not all platforms have the default-sdr--2 container running on the RP. This is true for IOS-XRv9000 and the fixed boxes like the NCS540 or NCS5501/5502. For modular chassis like NCS5508/5516 etc., there is NO default--sdr-1 container. In such a case, the tp_app subgroup gets to utilize But you can use the same techniques described above across all IOS-XR platforms to determine the limits imposed by the one selected.
+{: .notice--warning}
 
 
 ### LXC Containers
