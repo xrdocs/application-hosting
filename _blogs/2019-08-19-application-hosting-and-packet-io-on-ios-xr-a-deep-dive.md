@@ -880,6 +880,8 @@ Some common setup details for both LXC containers and Docker containers on the I
       default-sdr—2 share = 1024/(1024+ 1024+1024+1024)  = 25%
       sysadmin share = 1024/(1024+1024+1024+1024)  = 25%
  
+    Not all platforms have the default-sdr--2 container running on the RP. This is true for IOS-XRv9000 and the fixed boxes like the NCS540 or NCS5501/5502. For modular chassis like NCS5508/5516 etc., there is NO default--sdr-1 container. In such a case, the tp_app subgroup gets to utilize
+    {: .notice--warning}
  
 
 * **Memory Limits**: Similarly, cgroups settings on the host shell can also be used to determine the maximum limit on the amount of memory that a container app can utilize on the system:  
@@ -898,7 +900,7 @@ Some common setup details for both LXC containers and Docker containers on the I
 
 
 
-Bear in mind that the above values are for an IOS-XRv9000 platform. Each platform would handle these limits based on the resources available. **Further, not all platforms have the default-sdr--2 container running on the RP. This is true for IOS-XRv9000 and the fixed boxes like the NCS540 or NCS5501/5502. For modular chassis like NCS5508/5516 etc., there is NO default--sdr-1 container. In such a case, the tp_app subgroup gets to utilize But you can use the same techniques described above across all IOS-XR platforms to determine the limits imposed by the one selected.
+Bear in mind that the above values are for an IOS-XRv9000 platform. Each platform would handle these limits based on the resources available. But you can use the same techniques described above across all IOS-XR platforms to determine the limits imposed by the one selected.
 {: .notice--warning}
 
 
