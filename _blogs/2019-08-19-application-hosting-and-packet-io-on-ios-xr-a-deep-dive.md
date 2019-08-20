@@ -525,9 +525,8 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
 
   * **Receive TCP/UDP traffic over Data port**: Here the packets arrive over the data port into the Linecard where an LPTS lookup takes place. Thanks to KIM which populates the LPTS entries based on TCP/UDP sockets opened by applications on the RP, the packets are then forwarded over the fabric towards the RP kernel and given to the application that opened up the matching socket.  
 
-  <p text-align="center">
-  <a href="assets/images/receive_tcp_udp_data.png"><img alt="receive_tcp_udp_data"  src="assets/images/receive_tcp_udp_data.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
-  </p>  
+
+  <a href="{{site.baseurl}}/images/receive_tcp_udp_data.png"><img class="align-center" alt="receive_tcp_udp_data"  src="{{site.baseurl}}/images/receive_tcp_udp_data.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
 
 
   * **Receive Exception Traffic(ping)** Any traffic received that does not contain a layer 4 header specifying a TCP/UDP port is treated as exception traffic since it will not match any entry during LPTS lookup (which only handles TCP/UDP sockets). For such a packet, there will be a punt towards the RP's slow packet path where a software lookup will happen and the packet will be forwarded to the kernel as well as XR (replication). This is how a ping initiated in the Linux kernel of the RP will be able to receive a reply back.  
