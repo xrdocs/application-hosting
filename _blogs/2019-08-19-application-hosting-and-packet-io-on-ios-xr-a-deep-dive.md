@@ -550,12 +550,6 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
 
 
 
-
-
-
-
-
-
 ## Native Applications on IOS-XR
 
 If you've gone through some of the CLI automation labs already, then it must be fairly clear that being able to run bash and python scripts natively in the XR shell is fairly common. Extend that to cron jobs and you get all the typical scripting capabilities that you expect on a Linux environment.  
