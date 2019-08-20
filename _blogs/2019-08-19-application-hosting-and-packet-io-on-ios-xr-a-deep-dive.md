@@ -11,6 +11,7 @@ tags:
   - application-hosting
   - xr6
   - packet-io
+  - xr toolbox
   - xr-toolbox
 excerpt: >-
   Looking to understand how Linux applications are able to run on IOS-XR and how
