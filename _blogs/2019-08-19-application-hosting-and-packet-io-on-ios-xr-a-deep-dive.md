@@ -219,7 +219,6 @@ The Deployment Architecture of IOS-XR on compatible platforms can be classified 
 <div class="notice--primary" style="background-color: #d6d8d6; font-size: 1.1em !important; margin: 2em 0 !important; padding: 1.5em 1em 1em 1em;text-indent: initial; border-radius: 5px; box-shadow: 0 1px 1px rgba(88,88,91,0.25); border-radius: 5px;box-shadow: 0 1px 1px rgba(0,127,171,0.25);"><div class="text-center"><p><b>VM-Based Deployment<br/>ASR9xxx platforms</b></p></div></div>
 
 
-
 <img class="align-center" src="{{site.baseurl}}/images/xr-vm-arch.png" alt="xr-vm-arch.png" width="600px"/>
 
 
@@ -246,7 +245,7 @@ Throughout the rest of the lab our focus will be on more contemporary platforms 
 
 Linux applications supported by IOS-XR can be classified into two types:
 
-*  <u>**Native Applications**</u>: An application that runs within the same process space as XR control-plane processes (BGP, OSPF, SYSDB etc.) is considered a native application. In either type of deployment as shown above, the native application runs inside the XR LXC/VM.  
+*  **Native Applications**: An application that runs within the same process space as XR control-plane processes (BGP, OSPF, SYSDB etc.) is considered a native application. In either type of deployment as shown above, the native application runs inside the XR LXC/VM.  
 
     There is an obvious red-flag when it comes to native applications that there is no well defined method to constrain the amount of resources (CPU, Memory, Disk) that a native application utilizes on the system.  
     **It is up to the native application itself to police itself in its use of CPU, memory, Disk and other resources on the system**.  
