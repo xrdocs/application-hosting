@@ -869,9 +869,9 @@ Some common setup details for both LXC containers and Docker containers on the I
     The above values are in bytes but it translates to 512 MB memory limit on container apps.
 
 
-<p style="margin: 2em 0 !important;padding: 1em;font-family: CiscoSans,Arial,Helvetica,sans-serif;font-size: 1em !important;text-indent: initial;background-color: #e6f2f7;border-radius: 5px;box-shadow: 0 1px 1px rgba(0,127,171,0.25);">
+
 Bear in mind that the above values are for an IOS-XRv9000 platform. Each platform would handle these limits based on the resources available. But you can use the same techniques described above across all IOS-XR platforms to determine the limits imposed by the one selected.
-</p>
+{: .notice--info}
 
 
 ### LXC Containers
