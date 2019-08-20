@@ -127,11 +127,15 @@ Just hover over a node in the topology and hit `SSH` from the dropdown menu. Thi
 &nbsp;  
 
 ## SSH CLient:
+{:.no_toc}
+
 If you have a 3rd party SSH client, use the SSH ports as described in the previous section to connect to the node of your choice. IP address is the same for all the nodes: `10.10.20.170`
 
 &nbsp;  
 
-### Terminal:  
+### Terminal:
+{:.no_toc}
+
 If you have a Terminal to work with (with an SSH client utility), then to connect to the **devbox**, run:
 <p style="margin: 2em 0!important;padding: 1em;font-family: CiscoSans,Arial,Helvetica,sans-serif;font-size: 1em !important;text-indent: initial;background-color: #e6f2f7;border-radius: 5px;box-shadow: 0 1px 1px rgba(0,127,171,0.25);">**Username**: admin<br/>**Password**: admin<br/>**SSH port**: 2211
 </p>  
