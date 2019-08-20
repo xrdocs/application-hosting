@@ -464,7 +464,8 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   Mon Sep 10 05:15:15.502 UTC
   RP/0/RP0/CPU0:r2(config-if)#
   RP/0/RP0/CPU0:r2#
-  ```
+  ```  
+  
   
   Drop into bash and check if `Gi0_0_0_2` is still present in `global-vrf` netns:  
   
