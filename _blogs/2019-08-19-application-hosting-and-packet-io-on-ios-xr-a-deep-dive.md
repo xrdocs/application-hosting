@@ -296,11 +296,9 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
 
    Support for routed BVI interfaces (routable virtual interfaces in an integrated Routing and Bridging (IRB) setup) was brought in with IOS-XR Release 6.3.1. This implies one can configure Layer-2 Subinterfaces, place them in a bridge-domain configuration and configure ip addresses on a routable BVI interface in the same bridge domain and the BVI interface will be synced into the kernel. Of course, like other virtual interfaces, an ip address configuration on the BVI interface is necessary for the kernel sync.
 
-  <p text-align="center">
-  <a href="assets/images/pkt_io_interfaces.png"><img alt="pkt-io-interfaces"  src="assets/images/pkt_io_interfaces.png"  style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
-  </p>
 
-  <br/>
+<a href="{{site.baseurl}}/images/pkt_io_interfaces.png"><img class='align-center' alt="pkt-io-interfaces"  src="{{site.baseurl}}/images/pkt_io_interfaces.png"  style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
+
 
 *  **Routes in the kernel**:  This was a decision with multiple implications. One way to solve the problem is to sync all routes from the IOS-XR RIB into the Active RP's kernel. This is possible but would be highly resource intensive to have two parallel RIBs on the system (one in IOS-XR, and the other in the kernel on the same node - RP), especially if the Router is being utilized to download internet Routing tables over BGP.  
 
