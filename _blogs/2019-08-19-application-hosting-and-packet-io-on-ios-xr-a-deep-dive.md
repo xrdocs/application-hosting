@@ -3,7 +3,7 @@ published: true
 date: '2019-08-19 20:12 -0700'
 title: 'Application-hosting and Packet-IO on IOS-XR: A Deep Dive'
 author: Akshat Sharma
-position: hidden
+position: top
 tags:
   - iosxr
   - cisco
