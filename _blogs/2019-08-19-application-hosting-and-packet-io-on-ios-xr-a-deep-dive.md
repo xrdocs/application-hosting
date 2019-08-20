@@ -848,88 +848,39 @@ Some common setup details for both LXC containers and Docker containers on the I
     [host:/dev/cgroup]$ 
     </code></pre></p>
 
-**What do these cpu share allocations mean?**  
+    **What do these cpu share allocations mean?**  
 
-* CPU shares help determine the relative allocation of CPU resources when processes are running  in all groups and subgroups.  
+    * CPU shares help determine the relative allocation of CPU resources when processes are running  in all groups and subgroups.  
 
-* Now at the highest level (Host), there is no competing group defined. So Host gets 1024 CPU shares.  
+    * Now at the highest level (Host), there is no competing group defined. So Host gets 1024 CPU shares.  
 
-* One level down, the “machine” sub group is defined and is given 1024 CPU shares. Again, no competing subgroup at this level, so all cpu resources get passed down.  
+    * One level down, the “machine” sub group is defined and is given 1024 CPU shares. Again, no competing subgroup at this level, so all cpu resources get passed down.  
 
-* Next level, machine is divided into 4 groups:   default-sdr—1 , default-sdr—2, sysadmin and tp_app.partition with cpu shares at 1024, 1024, 1024 and 256 respectively.  
+    * Next level, machine is divided into 4 groups:   default-sdr—1 , default-sdr—2, sysadmin and tp_app.partition with cpu shares at 1024, 1024, 1024 and 256 respectively.  
 
 
-Now, we can start calculating:
-* When no 3rd party application (docker or LXC, I’m not talking about native) is running on the system, then the allocation of CPU for the 3 system subgroups are:
-    default-sdr—1 share = 1024/(1024+1024+1024)  = 33.33%
-    default-sdr—2 share = 1024/(1024+1024+1024)  = 33.33%
-    sysadmin share = 1024/(1024+1024+1024)  = 33.33%  
+    Now, we can start calculating:
+    * When no 3rd party application (docker or LXC, I’m not talking about native) is running on the system, then the allocation of CPU for the 3 system subgroups are:
+      default-sdr—1 share = 1024/(1024+1024+1024)  = 33.33%
+      default-sdr—2 share = 1024/(1024+1024+1024)  = 33.33%
+      sysadmin share = 1024/(1024+1024+1024)  = 33.33%  
     
-* When an application is running on the system as part of the tp_app.partition subgroup (either docker or LXC or both), then the remaining 3 subgroups are already active.
-So CPU allocated to the tp_app.partition process =    256/(256+1024+1024+1024)  = 7.69%
-Now, the allocations for the system subgroups are reduced to:
-    default-sdr—1 share = 1024/(256+ 1024+1024+1024)  = 30.77 %
-    default-sdr—2 share = 1024/(1024+1024+1024)  = 30.77%
-    sysadmin share = 1024/(1024+1024+1024)  = 30.77%
+    * When an application is running on the system as part of the tp_app.partition subgroup (either docker or LXC or both), then the remaining 3 subgroups are already active.
+    So CPU allocated to the tp_app.partition process =    256/(256+1024+1024+1024)  = 7.69%
+    Now, the allocations for the system subgroups are reduced to:
+      default-sdr—1 share = 1024/(256+ 1024+1024+1024)  = 30.77 %
+      default-sdr—2 share = 1024/(1024+1024+1024)  = 30.77%
+      sysadmin share = 1024/(1024+1024+1024)  = 30.77%
  
-* Further, under the tp_app.partition subgroup, Docker and LXC get 1024 and 1024 shares respectively. So, in case you’re running an LXC app and a Docker app at the same time, they will get  7.69/2 = 3.845% of the CPU each.
+    * Further, under the tp_app.partition subgroup, Docker and LXC get 1024 and 1024 shares respectively. So, in case you’re running an LXC app and a Docker app at the same time, they will get  7.69/2 = 3.845% of the CPU each.
 
-* If you run any one of them (typically the case), then they get to use all of 7.69%
-The remaining system subgroups will continue to get the same amount whether you run 1 or 2 or 100 apps =
-    default-sdr—1 share = 1024/(256+ 1024+1024+1024)  = 30.77 %
-    default-sdr—2 share = 1024/(1024+1024+1024)  = 30.77%
-    sysadmin share = 1024/(1024+1024+1024)  = 30.77%
+    * If you run any one of them (typically the case), then they get to use all of 7.69%
+    The remaining system subgroups will continue to get the same amount whether you run 1 or 2 or 100 apps =
+      default-sdr—1 share = 1024/(256+ 1024+1024+1024)  = 30.77 %
+      default-sdr—2 share = 1024/(1024+1024+1024)  = 30.77%
+      sysadmin share = 1024/(1024+1024+1024)  = 30.77%
  
  
-Once in the host shell, check the cpu shares allocated for LXCs by checking the content of the file: `/dev/cgroup/cpu/machine/tp_app.partition/lxc.partition/cpu.shares `
-
-    ```      
-    [host:~]$ cat /dev/cgroup/cpu/machine/tp_app.partition/lxc.partition/cpu.shares
-    1024
-    [host:~]$
-    ```
-    Now, what do these CPU shares mean?
-
-    Let's check the allocated cpu shares for the other machines on the host layer:
-
-    ```
-    [host:~]$ cat /dev/cgroup/cpu/machine/default-sdr--1.libvirt-lxc/cpu.shares
-    1024
-    [host:~]$ cat /dev/cgroup/cpu/machine/default-sdr--2.libvirt-lxc/cpu.shares
-    1024
-    [host:~]$ cat /dev/cgroup/cpu/machine/sysadmin.libvirt-lxc/cpu.shares
-    1024
-    [host:~]$ cat /dev/cgroup/cpu/machine/cpu.shares                      
-    1024
-    [host:~]$
-    [host:~]$ cat /dev/cgroup/cpu/machine/tp_app.partition/docker/cpu.shares        
-    1024
-    [host:~]$
-    ```
-    What these values indicate is that an equal number of shares (1024) are allocated to default-sdr-1, default-sdr-2, sysadmin LXC, user LXCs, and docker containers.
-
-    Thus, we can calculate that the percentage of the CPU that is available for a user LXC on the system is:
-
-    ```
-    % CPU allocated for User LXCs =    (cpu shares for User LXCs)
-                                     _________________________________ * 100
-                                    (sum of cpu shares of all machines)
-    ```                                 
-
-    Based of this we, get:
-
-    ```
-    % CPU allocated for User LXCs = (1024)/(1024+ 1024+ 1024+1024+1024+1024) *100
-                                  = 16.67%
-
-    ```  
-
-    The same holds true for the docker partition as well, as we saw above, so,
-
-    ```
-    % CPU allocated for Docker containers = 16.67%
-    ```
-
 
 * **Memory Limits**: Similarly, cgroups settings on the host shell can also be used to determine the maximum limit on the amount of memory that a container app can utilize on the system:  
 
