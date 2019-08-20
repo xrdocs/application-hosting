@@ -319,7 +319,7 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
  These routes are shown in the figure below, with the example showcasing a `default` route through `fwdintf`.
 
 
-  <a href="{{site.baseurl}}/images/pkt_io_routes.png"><img alt="pkt-io-routes"  src="{{site.baseurl}}/images/pkt_io_routes.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
+  <a href="{{site.baseurl}}/images/pkt_io_routes.png"><img class="align-center" alt="pkt-io-routes"  src="{{site.baseurl}}/images/pkt_io_routes.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
 
   These routes are controlled through the `tpa` configuration CLI in IOS-XR:
 
