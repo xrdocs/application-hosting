@@ -202,7 +202,7 @@ Perfect! You are now all set to proceed with the rest of this blog.
 {: .notice--success}
 
 
-# Understand App-Hosting on IOS-XR
+# Understanding App-Hosting on IOS-XR
 
 Post Release 6.0.0, IOS-XR made a jump from a 32-bit QNX operating system to a 64-Bit Linux operating system. This 64-bit Linux environment with a modern Kernel and the ability to run Linux processes and applications from the larger Linux ecosystem enables a whole variety of new use cases.
 
@@ -212,8 +212,9 @@ The Deployment Architecture of IOS-XR on compatible platforms can be classified 
 
 <div class="notice--primary" style="background-color: #d6d8d6; font-size: 1.1em !important; margin: 2em 0 !important; padding: 1.5em 1em 1em 1em;text-indent: initial; border-radius: 5px;box-shadow: 0 1px 1px rgba(0,127,171,0.25); "><div class="text-center"><p><b>LXC-Based Deployment <br/>(Contemporary platforms like NCS55xx, NCS5xxx platforms)</b></p></div></div>  
 
-![xr-lxc-arch.png]({{site.baseurl}}/images/xr-lxc-arch.png)
-
+<p text-align="center">
+<img src="{{site.baseurl}}/images/xr-lxc-arch.png" alt="xr-lxc-arch.png" width="600px"/>
+</p>
 
 <div class="notice--primary" style="background-color: #d6d8d6; font-size: 1.1em !important; margin: 2em 0 !important; padding: 1.5em 1em 1em 1em;text-indent: initial; border-radius: 5px; box-shadow: 0 1px 1px rgba(88,88,91,0.25); border-radius: 5px;box-shadow: 0 1px 1px rgba(0,127,171,0.25);"><div class="text-center"><p><b>VM-Based Deployment<br/>ASR9xxx platforms</b></p></div></div>
 
