@@ -63,7 +63,6 @@ More details can be found at the [IOS-XR programmability Sandbox](https://devnet
 
 The topology that you will have access to is shown below:    
 
-![iosxr-programmability-sandbox-topo.png]()
 
 <br/><img src="{{site.baseurl}}/images/iosxr-programmability-sandbox-topo.png" alt="reserve_button" width="800px"/><br/><br/>
 
