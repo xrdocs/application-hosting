@@ -848,7 +848,7 @@ Some common setup details for both LXC containers and Docker containers on the I
     [host:/dev/cgroup]$ 
     </code></pre></p>
 
-**What do cpu share allocations below mean?**  
+**What do these cpu share allocations mean?**  
 
 * CPU shares help determine the relative allocation of CPU resources when processes are running  in all groups and subgroups.  
 
