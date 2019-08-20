@@ -372,10 +372,8 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   **Username**: admin  
   **Password**: admin  
   **SSH port**: 2231  
-  {: .notice--info}  
+  {: .notice--info}    
   
-  
-
   ```
   Laptop-terminal:$ ssh -p 2231 admin@10.10.20.170
 
