@@ -424,7 +424,7 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   ```    
   
   
-    Next, configure `vrf blue` at the global configuration level as well as under `tpa` to ensure that the netns called `blue` gets created in the kernel:    
+  Next, configure `vrf blue` at the global configuration level as well as under `tpa` to ensure that the netns called `blue` gets created in the kernel:    
   
 
  <div class="highlighter-rouge">
