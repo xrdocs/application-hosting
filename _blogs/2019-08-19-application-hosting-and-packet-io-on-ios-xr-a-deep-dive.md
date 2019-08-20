@@ -27,7 +27,7 @@ For readers looking to get hands-on with application-hosting on IOS-XR - bringin
 
 While the existing tutorials describe the operative aspect of application-hosting, it is often necessary to elucidate the architecture behind these capabilities so that users can better troubleshoot their applications and plan the resources their applications should acquire post deployment.
 
-We delve into these matters and more in this blog, providing an in-depth overview of all the elements of the application-hosting and packet-io architectures that enables Linux applications to run, route packets to-and-fro and interact with APIs on-box.
+We delve into these matters and more in this blog, providing an in-depth overview of all the elements of the application-hosting and packet-io architecture that enables Linux applications to run on IOS-XR, route packets to-and-fro and interact with APIs on-box.
 
 
 # Prerequisites
