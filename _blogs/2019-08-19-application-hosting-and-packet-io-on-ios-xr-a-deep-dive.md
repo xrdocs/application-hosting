@@ -252,7 +252,7 @@ Linux applications supported by IOS-XR can be classified into two types:
     However, the advantage is the amount of visibility (file system access, XR processes information etc.) that a native application has on the system. This is why most configuration management tool clients (like puppet-client, chef-client, salt-minion are ) end up being native applications. Another example is auditing apps, for example the xr-auditor which actually runs within XR, Admin as well as the Host layer natively:
     ><https://xrdocs.io/application-hosting/blogs/2018-05-01-anatomy-of-a-network-app-xr-auditor/>
 
-*  <u>**Container applications**</u>: Container applications require a container daemon available to launch the container on an available shared kernel on the system.  The container daemon could be libvirt (LXCs) or the Docker Daemon(Docker Containers).
+*  **Container applications**: Container applications require a container daemon available to launch the container on an available shared kernel on the system.  The container daemon could be libvirt (LXCs) or the Docker Daemon(Docker Containers).
 
   As shown in the figures above, the User managed container would be launched on the Host Layer in case of LXC-Based platforms and inside XR VM in case of VM-Based platforms.
 
