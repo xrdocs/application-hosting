@@ -377,13 +377,10 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   
   ```
   Laptop-terminal:$ ssh -p 2231 admin@10.10.20.170
-
   --------------------------------------------------------------------------
     Router 2 (Cisco IOS XR Sandbox)
   --------------------------------------------------------------------------
-
   Password:
-
   RP/0/RP0/CPU0:r2#
   RP/0/RP0/CPU0:r2#
   ```  
