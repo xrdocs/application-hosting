@@ -386,7 +386,19 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   ```  
   
   
+  Initially, the interface  `GigabitEthernet0/0/0/2` on router `r2` is shutdown and is by default in the `global-vrf` network namespace which corrsponds to vrf `default` in IOS-XR.    
   
+  ```
+  RP/0/RP0/CPU0:r2#show  running-config  int gigabitEthernet 0/0/0/2
+  Mon Sep 10 05:13:15.645 UTC
+  interface GigabitEthernet0/0/0/2
+   shutdown
+  !
+  ```  
+  
+  Check that this interface is visible in the `global-vrf` netns. We use `ifconfig -a` instead of just `ifconfig` since the interface is currently shutdown. We use the `netns_identify` utility in XR bash with the `$$` argument (represents the process ID of the current XR bash shell) to determine the netns we are dropped into when we issue the `bash` CLI in XR:  
+  
+
   Exactly what we expected. The interface `Gi0_0_0_2` has now migrated to netns `blue`.  
 
 
