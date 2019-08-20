@@ -565,8 +565,11 @@ Further, the IOS-XR team also hosts some pre-built libraries for common Linux ap
 
 To show how a native application RPM could be installed from this yum repo, let's connect to router `r1` in the sandbox:
 
-<p style="margin: 2em 0!important;padding: 1em;font-family: CiscoSans,Arial,Helvetica,sans-serif;font-size: 1em !important;text-indent: initial;background-color: #e6f2f7;border-radius: 5px;box-shadow: 0 1px 1px rgba(0,127,171,0.25);">**Username**: admin<br/>**Password**: admin<br/>**SSH port**: 2221
-</p>  
+**Username**: admin  
+**Password**: admin  
+**SSH port**: 2221  
+{: .notice--info} . 
+
 
 ```bash
 Laptop-terminal:$ ssh -p 2221 admin@10.10.20.170
