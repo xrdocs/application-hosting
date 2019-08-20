@@ -424,8 +424,27 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   ```    
   
   
+    Next, configure `vrf blue` at the global configuration level as well as under `tpa` to ensure that the netns called `blue` gets created in the kernel:    
   
 
+  <p><pre><code>
+  RP/0/RP0/CPU0:r2#conf t
+  Mon Sep 10 05:14:16.867 UTC
+  RP/0/RP0/CPU0:r2(config)#vrf blue
+  RP/0/RP0/CPU0:r2(config-vrf)#tpa
+  RP/0/RP0/CPU0:r2(config-tpa)#vrf blue
+  RP/0/RP0/CPU0:r2(config-tpa-vrf)#exit
+  RP/0/RP0/CPU0:r2(config-tpa)#
+  RP/0/RP0/CPU0:r2(config-tpa)#
+  RP/0/RP0/CPU0:r2(config-tpa)#commit
+  RP/0/RP0/CPU0:r2(config)#
+  RP/0/RP0/CPU0:r2#
+  RP/0/RP0/CPU0:r2#bash
+  Mon Sep 10 05:14:39.438 UTC
+  [r2:~]$ <mark>ls /var/run/netns
+  blue  global-vrf  tpnns  xrnns</mark>
+  [r2:~]$
+  </code></pre></p>  
   Exactly what we expected. The interface `Gi0_0_0_2` has now migrated to netns `blue`.  
 
 
