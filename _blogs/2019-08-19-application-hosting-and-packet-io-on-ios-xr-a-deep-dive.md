@@ -772,7 +772,9 @@ Some common setup details for both LXC containers and Docker containers on the I
 
 *  **Disk Volume**: By default the mount volume `/misc/app_host` on the underlying host layer is mounted into the XR LXC by default. The amount of space allocated is about 3.9G on an xrv9k and about 3.7G on an NCS5500. It varies based on the resource availability of the platform, but is within this range.This can be checked by running `df -h` in the bash shell:
 
-    <p><pre><code>
+     <div class="highlighter-rouge">
+     <pre class="highlight">
+     <code>
     [r1:~]$ df -h
     Filesystem                                 Size  Used Avail Use% Mounted on
     /dev/loop5                                 2.9G  1.4G  1.4G  49% /
@@ -794,14 +796,16 @@ Some common setup details for both LXC containers and Docker containers on the I
     /dev/mapper/xr-vm_encrypted_scratch        989M   21M  902M   3% /misc/scratch
     none                                       512K     0  512K   0% /mnt
     [r1:~]$
-    </code></pre></p>
+    </code></pre></div>
 
 
 * **CPU shares**: Both LXC containers and Docker containers on IOS-XR have their resources (CPU/Memory) governed by cgroups settings. To figure out the limits on these container applications by default, we need to drop into the Host shell and check the cgroups settings:
 
     To drop into the host shell, follow the exact sequence of commands shown below, starting from the XR CLI:
 
-    <p><pre><code>
+     <div class="highlighter-rouge">
+     <pre class="highlight">
+     <code>
     RP/0/RP0/CPU0:r1#
     RP/0/RP0/CPU0:r1#<mark>admin</mark>
     Mon Sep 10 02:33:43.456 UTC
@@ -813,11 +817,13 @@ Some common setup details for both LXC containers and Docker containers on the I
     [sysadmin-vm:0_RP0:~]$
     [sysadmin-vm:0_RP0:~]$<mark>ssh 10.0.2.16</mark>
     [host:~]$
-    </code></pre></p>
+    </code></pre></div>
 
     Let's break down the cpu-shares allocated to different parts of the system:  
 
-    <p><pre><code>
+     <div class="highlighter-rouge">
+     <pre class="highlight">
+     <code>
     [host]$ 
     [host]$ cd /dev/cgroup/
     [host:/dev/cgroup]$ virsh -c lxc:/// list
@@ -857,7 +863,7 @@ Some common setup details for both LXC containers and Docker containers on the I
     <mark>>>>>  Allocation for third party LXC container subgroup under the tp_app.partition subgroup</mark>
     1024
     [host:/dev/cgroup]$ 
-    </code></pre></p>
+    </code></pre></div>
 
     **What do these cpu share allocations mean?**  
 
@@ -1028,13 +1034,14 @@ Next, launch the docker image with the following essential parameters:
 *  `--cap-add SYS_ADMIN`: This is capability added to the container to give it enough privileges to run the `ip netns exec <>` command.
 *  `-v /var/run/netns:/var/run/netns`:  The `-v` flag is a mount flag that will mount the `/var/run/netns` volume from the host into the docker container.  This ensures that all the network namespaces created in the kernel by IOS-XR are available for use within the container's filesystem.  
 
-
-<p><pre><code>
-[r1:~]$
-[r1:~]$ <mark>docker run -itd --name ubuntu_iproute2 --cap-add SYS_ADMIN -v /var/run/netns:/var/run/netns akshshar/ubuntu_iproute2_docker bash</mark>
-871fe3fd745e903b3652ad89e013e83b64fa476ca79731037f9542c1fbca8b7f
-[r1:~]$
-</code></pre></p>
+ <div class="highlighter-rouge">
+ <pre class="highlight">
+ <code>
+ [r1:~]$
+ [r1:~]$ <mark>docker run -itd --name ubuntu_iproute2 --cap-add SYS_ADMIN -v  /var/run/netns:/var/run/netns akshshar/ubuntu_iproute2_docker bash</mark>
+ 871fe3fd745e903b3652ad89e013e83b64fa476ca79731037f9542c1fbca8b7f
+ [r1:~]$
+</code></pre></div>
 
 
 Check that the container is now running:
