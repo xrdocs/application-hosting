@@ -450,6 +450,41 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   </pre>
   </div> 
   
+  
+    Perfect! Now configure interface `GigabitEthernet0/0/0/2` under `vrf blue` to trigger its migration in the kernel netns as well:  
+
+  ```
+  RP/0/RP0/CPU0:r2#
+  RP/0/RP0/CPU0:r2#
+  RP/0/RP0/CPU0:r2#conf t
+  Mon Sep 10 05:14:54.079 UTC
+  RP/0/RP0/CPU0:r2(config)#interface gigabitEthernet 0/0/0/2
+  RP/0/RP0/CPU0:r2(config-if)#no shutdown
+  RP/0/RP0/CPU0:r2(config-if)#ip addr 101.1.1.20/24
+  RP/0/RP0/CPU0:r2(config-if)#vrf blue
+  RP/0/RP0/CPU0:r2(config-if)#commit
+  Mon Sep 10 05:15:15.502 UTC
+  RP/0/RP0/CPU0:r2(config-if)#
+  RP/0/RP0/CPU0:r2#
+  ```  
+  
+  Drop into bash and check if `Gi0_0_0_2` is still present in `global-vrf` netns:  
+  
+
+  ```
+  RP/0/RP0/CPU0:r2#bash
+  Mon Sep 10 05:15:19.643 UTC
+  [r2:~]$
+  [r2:~]$
+  [r2:~]$ ifconfig -a Gi0_0_0_2
+  Gi0_0_0_2: error fetching interface information: Device not found
+  [r2:~]$
+  ```  
+  
+  Nope! now let's drop into netns `blue` and check the same:  
+  
+
+
   Exactly what we expected. The interface `Gi0_0_0_2` has now migrated to netns `blue`.  
 
 
