@@ -106,7 +106,8 @@ To be clear, the connection details are listed below:
 |Username| admin |
 |Password| admin|
 
-<br/><br/><br/>  
+<br/>  
+
 
 
 ## Connect to the nodes in the Topology
