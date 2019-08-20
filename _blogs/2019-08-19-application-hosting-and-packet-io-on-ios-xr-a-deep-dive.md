@@ -121,11 +121,12 @@ If you don't have an SSH Client or Terminal available on your Laptop/Machine tha
 Just hover over a node in the topology and hit `SSH` from the dropdown menu. This is shown below for the `devbox`:
 
 
-<img src="assets/images/sandbox_connect-compressor.gif" alt="reserve_button" width="800px"/>
+![sandbox_connect-compressor.gif]({{site.baseurl}}/images/sandbox_connect-compressor.gif)
 
-<p style="margin: 2em 0 !important;padding: 1em;font-family: CiscoSans,Arial,Helvetica,sans-serif;font-size: 1em !important;text-indent: initial;background-color: #e6f2f7;border-radius: 5px;box-shadow: 0 1px 1px rgba(0,127,171,0.25);">**Pro Tip**: This browser based session uses [Guacamole](https://guacamole.apache.org/) on the server side to serve up the SSH connection. If you'd like to enable easy copy-paste from your laptop/machine into the session in the browser, then use `Chrome` as your browser and install the following [plugin](https://chrome.google.com/webstore/detail/clipboard-permission-mana/ipbhneeanpgkaleihlknhjiaamobkceh?hl=en). Once installed, then within the browser tab that has the SSH session open, enable clipboard copying by clicking the plugin icon on the top right and allowing clipboard permissions for the particular host/IP as shown below:
-<br/><img src="assets/images/enable_clipboard.png" alt="reserve_button" width="300px"/>
-</p>
+
+**Pro Tip**: This browser based session uses [Guacamole](https://guacamole.apache.org/) on the server side to serve up the SSH connection. If you'd like to enable easy copy-paste from your laptop/machine into the session in the browser, then use `Chrome` as your browser and install the following [plugin](https://chrome.google.com/webstore/detail/clipboard-permission-mana/ipbhneeanpgkaleihlknhjiaamobkceh?hl=en). Once installed, then within the browser tab that has the SSH session open, enable clipboard copying by clicking the plugin icon on the top right and allowing clipboard permissions for the particular host/IP as shown below:  
+![enable_clipboard.png]({{site.baseurl}}/images/enable_clipboard.png)
+{: .notice--info}
 
 &nbsp;  
 
@@ -139,9 +140,10 @@ If you have a 3rd party SSH client, use the SSH ports as described in the previo
 ### Terminal:
 {:.no_toc}
 
-If you have a Terminal to work with (with an SSH client utility), then to connect to the **devbox**, run:
-<p style="margin: 2em 0!important;padding: 1em;font-family: CiscoSans,Arial,Helvetica,sans-serif;font-size: 1em !important;text-indent: initial;background-color: #e6f2f7;border-radius: 5px;box-shadow: 0 1px 1px rgba(0,127,171,0.25);">**Username**: admin<br/>**Password**: admin<br/>**SSH port**: 2211
-</p>  
+If you have a Terminal to work with (with an SSH client utility), then to connect to the **devbox**, run:  
+
+**Username**: admin<br/>**Password**: admin<br/>**SSH port**: 2211
+{: .notice--info}
 
 ```
 Laptop-terminal:$ ssh -p 2211 admin@10.10.20.170
