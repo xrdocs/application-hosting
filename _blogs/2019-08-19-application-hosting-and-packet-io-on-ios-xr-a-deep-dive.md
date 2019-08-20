@@ -498,8 +498,7 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
 
     <a href="{{site.baseurl}}/images/kim_interface_setup.png"><img class="align-center" alt="kim-interface-setup"  src="{{site.baseurl}}/images/kim_interface_setup.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
    
-
-
+   
   * **Route Sync**: Similarly, as shown below, KIM will accept the `tpa` CLI as described earlier to determine the default routes, src-hints, next-hop interface etc. and program the kernel to reflect the requirement. It also works with RIB events to configure static routes with the Mgmt port as the next hop into the kernel (since the Mgmt port is local to the RP).
 
     <p text-align="center">
