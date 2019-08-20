@@ -142,7 +142,9 @@ If you have a 3rd party SSH client, use the SSH ports as described in the previo
 
 If you have a Terminal to work with (with an SSH client utility), then to connect to the **devbox**, run:  
 
-**Username**: admin<br/>**Password**: admin<br/>**SSH port**: 2211
+**Username**: admin  
+**Password**: admin  
+**SSH port**: 2211
 {: .notice--info}
 
 ```
