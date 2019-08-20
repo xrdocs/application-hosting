@@ -880,25 +880,27 @@ Some common setup details for both LXC containers and Docker containers on the I
     * When no 3rd party application (docker or LXC, I’m not talking about native) is running on the system, then the allocation of CPU for the 3 system subgroups are (Remember 1024 cpu shares are reserved for the Host layer):  
       
       ```
-      default-sdr—1 share = 1024/(1024+1024+1024+1024)  = 25%  
-      default-sdr—2 share = 1024/(1024+1024+1024+1024)  = 25%  
-      sysadmin share = 1024/(1024+1024+1024+1024)  = 25%    
-      Host share = 1024/(1024+1024+1024+1024)  = 25%  
+      machine subgroup share = 1024/(1024+1024) = 50%
+      Host share = 1024/(1024+1024) = 50%
+      default-sdr—1 share = (1024/(1024+1024+1024)) * 50%  = 16.67% 
+      default-sdr—2 share = (1024/(1024+1024+1024)) * 50%  = 16.67% 
+      sysadmin share = (1024/(1024+1024+1024)) * 50%  = 16.67%    
       ```
     
     * When an application is running on the system as part of the tp_app.partition subgroup (either docker or LXC or both), then the remaining 3 subgroups are already active. Now, the allocations for the system subgroups are reduced to:  
      
       ```
-      tp_app.partition process = 1024/(1024+1024+1024+1024+1024) = 20%
-      default-sdr—1 share = 1024/(1024+1024+1024+1024+1024)  = 20 %  
-      default-sdr—2 share = 1024/(1024+1024+1024+1024+1024)  = 20%  
-      sysadmin share = 1024/(1024+1024+1024+1024+1024)  = 20%  
-      Host share = 1024/(1024+1024+1024+1024+1024)  = 20% 
+      machine subgroup share = 1024/(1024+1024) = 50%
+      Host share = 1024/(1024+1024) = 50%
+      tp_app.partition process = 1024/(1024+1024+1024+1024) * 50% = 12.5%
+      default-sdr—1 share = 1024/(1024+1024+1024+1024) * 50% = 12.5% 
+      default-sdr—2 share = 1024/(1024+1024+1024+1024) * 50% = 12.5%
+      sysadmin share = 1024/(1024+1024+1024+1024) * 50% = 12.5%  
       ```
      
-    * Further, under the tp_app.partition subgroup, Docker and LXC get 1024 and 1024 shares respectively. So, **in case you’re running an LXC app and a Docker app at the same time, they will get  20/2 = 10% of the CPU each**.
+    * Further, under the tp_app.partition subgroup, Docker and LXC get 1024 and 1024 shares respectively. So, **in case you’re running an LXC app and a Docker app at the same time, they will get  12.5/2 = 6.25% of the CPU each**.
 
-    * If you run any one of them (typically the case), then they get to use all of 20%
+    * **If you run any one of them (typically the case), then they get to use all of 12.5%**
     
  
     Not all platforms have the default-sdr--2 container running on the RP. This is true for IOS-XRv9000 and the fixed boxes like the NCS540 or NCS5501/5502.   
