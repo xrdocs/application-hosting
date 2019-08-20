@@ -376,7 +376,7 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   
   
 
-  ```bash
+  ```
   Laptop-terminal:$ ssh -p 2231 admin@10.10.20.170
 
   --------------------------------------------------------------------------
