@@ -196,10 +196,7 @@ cisco IOS-XRv 9000 () processor
 System uptime is 1 day, 13 hours, 30 minutes
 
 RP/0/RP0/CPU0:r1#
-
-
 ```
-
 
 Perfect! You are now all set to proceed with the rest of this blog.
 {: .notice--success}
