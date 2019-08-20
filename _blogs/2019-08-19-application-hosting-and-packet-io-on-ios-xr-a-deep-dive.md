@@ -201,7 +201,7 @@ RP/0/RP0/CPU0:r1#
 ```
 
 
-Perfect! You are now all set to start this lab.
+Perfect! You are now all set to proceed with the rest of this blog.
 {: .notice--success}
 
 
