@@ -871,10 +871,10 @@ Some common setup details for both LXC containers and Docker containers on the I
     * When an application is running on the system as part of the tp_app.partition subgroup (either docker or LXC or both), then the remaining 3 subgroups are already active.
     
     So CPU allocated to the tp_app.partition process = 1024/(1024+1024+1024+1024+1024)  = 20%
-    Now, the allocations for the system subgroups are reduced to:
-      default-sdr—1 share = 1024/(1024+1024+1024+1024+1024)  = 20 %
-      default-sdr—2 share = 1024/(1024+1024+1024+1024+1024)  = 20%
-      sysadmin share = 1024/(1024+1024+1024+1024+1024)  = 20%
+    Now, the allocations for the system subgroups are reduced to:  
+      default-sdr—1 share = 1024/(1024+1024+1024+1024+1024)  = 20 %  
+      default-sdr—2 share = 1024/(1024+1024+1024+1024+1024)  = 20%  
+      sysadmin share = 1024/(1024+1024+1024+1024+1024)  = 20%  
       Host = 1024/(1024+1024+1024+1024+1024)  = 20% 
       
      
