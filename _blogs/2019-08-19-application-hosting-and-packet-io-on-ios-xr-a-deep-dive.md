@@ -496,8 +496,7 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
 
   * **Interface Sync**: As shown below, KIM utilizes interface manager events (shut/no-shut) to trigger a kernel module called LCND to create/delete/migrate mirrored interfaces corresponding to all the RP and LC interfaces in the kernel.  
 
-    <p text-align="center">
-    <a href="assets/images/kim_interface_setup.png"><img alt="kim-interface-setup"  src="assets/images/kim_interface_setup.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
+    <a href="{{site.baseurl}}/images/kim_interface_setup.png"><img class="align-center" alt="kim-interface-setup"  src="{{site.baseurl}}/images/kim_interface_setup.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
     </p>
 
 
