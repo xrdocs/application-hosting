@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2019-08-19 20:12 -0700'
-title: 'Application-hosting and Packet-IO on IOS-XR: A Deep Dive'
+title: 'Application-hosting and Packet-IO on IOS-XR : A Deep Dive'
 author: Akshat Sharma
 position: top
 tags:
@@ -22,7 +22,7 @@ excerpt: >-
 
 {% include toc %}
 
-# Application-hosting and Packet-IO on IOS-XR
+# Application-hosting and Packet-IO on IOS-XR 6.X
 
 For readers looking to get hands-on with application-hosting on IOS-XR - bringing up native, lxc or docker applications on IOS-XR plaforms - check out the [xr-toolbox](https://xrdocs.io/application-hosting/tags/#xr-toolbox) series. The goal of this series is to get an unintiated user up and running with simple Linux applications on IOS-XR in a step-by-step manner, enabling them to bring and integrate their own tools and applications. 
 
