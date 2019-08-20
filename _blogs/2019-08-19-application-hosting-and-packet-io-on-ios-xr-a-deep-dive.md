@@ -398,6 +398,30 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   
   Check that this interface is visible in the `global-vrf` netns. We use `ifconfig -a` instead of just `ifconfig` since the interface is currently shutdown. We use the `netns_identify` utility in XR bash with the `$$` argument (represents the process ID of the current XR bash shell) to determine the netns we are dropped into when we issue the `bash` CLI in XR:  
   
+  ```
+  RP/0/RP0/CPU0:r2#
+  RP/0/RP0/CPU0:r2#conf t
+  Mon Sep 10 05:13:23.081 UTC
+  RP/0/RP0/CPU0:r2(config)#                    
+  RP/0/RP0/CPU0:r2#
+  RP/0/RP0/CPU0:r2#
+  RP/0/RP0/CPU0:r2#bash
+  Mon Sep 10 05:13:30.038 UTC
+  [r2:~]$
+  [r2:~]$ netns_identify $$
+  tpnns
+  global-vrf
+  [r2:~]$
+  [r2:~]$ ifconfig -a Gi0_0_0_2
+  Gi0_0_0_2 Link encap:Ethernet  HWaddr 52:54:00:93:8a:b2  
+            [NO FLAGS]  MTU:1514  Metric:1
+            RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+            TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+            collisions:0 txqueuelen:1000
+            RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+  [r2:~]$
+  ```  
 
   Exactly what we expected. The interface `Gi0_0_0_2` has now migrated to netns `blue`.  
 
