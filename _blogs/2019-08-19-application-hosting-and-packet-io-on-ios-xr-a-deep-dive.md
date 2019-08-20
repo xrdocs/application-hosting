@@ -886,7 +886,8 @@ Some common setup details for both LXC containers and Docker containers on the I
     * If you run any one of them (typically the case), then they get to use all of 20%
     
  
-    Not all platforms have the default-sdr--2 container running on the RP. This is true for IOS-XRv9000 and the fixed boxes like the NCS540 or NCS5501/5502. But, for modular chassis like NCS5508/5516 etc., there is NO default--sdr-2 container. In such a case, the tp_app subgroup gets to utilize 25% of the cpu with remaning 75% used by default-sdr--1 (XR Control Plane container), sysadmin container and the host layer.
+    Not all platforms have the default-sdr--2 container running on the RP. This is true for IOS-XRv9000 and the fixed boxes like the NCS540 or NCS5501/5502.   
+    But, for modular chassis like NCS5508/5516 etc., there is NO default--sdr-2 container. In such a case, the tp_app subgroup gets to utilize 25% of the cpu with remaning 75% used by default-sdr--1 (XR Control Plane container), sysadmin container and the host layer.
     {: .notice--warning}
  
 
