@@ -22,13 +22,12 @@ excerpt: >-
 {% include toc %}
 
 
-## Prerequisites
+# Prerequisites
 
 We intend to dive into the specifics of the app-hosting infrastructure on IOS-XR using the on-demand IOS-XR programmability sandbox. This sandbox is easily reservable and allows the reader to walk through the steps in the blog. You can also choose to skip the reservation and simply read through the steps to gain a better understanding of the apphosting and packet-io architecture on IOS-XR.
 
 
-
-### Reserve the IOS-XR Programmability sandbox
+## Reserve the IOS-XR Programmability sandbox
 
 Take some time to reserve and familiarize yourself with the [IOS-XR programmability Sandbox on Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/883f8ea6-54a1-453e-98f5-fc175a2a90de?diagramType=Topology).
 Getting started is pretty straightforward - once you hit the above URL, click on the `Reserve` button on the top right:
@@ -48,7 +47,7 @@ Within about 10 minutes, the entire sandbox environment should be ready and you'
 
 These instructions and more are detailed here: [Reserving and Connecting to a Devnet Sandbox](https://developer.cisco.com/docs/sandbox/#!first-reservation-guide/connect-to-sandbox-servers).
 
-### Connect to the Sandbox
+## Connect to the Sandbox
 
 Once you're connected to the Anyconnect server:
 
@@ -106,11 +105,11 @@ To be clear, the connection details are listed below:
 <br/><br/><br/>  
 
 
-### Connect to the nodes in the Topology
+## Connect to the nodes in the Topology
 
 To connect to the nodes in the topology, you have 3 options:
 
-#### Browser Based:  
+## Browser Based:  
 If you don't have an SSH Client or Terminal available on your Laptop/Machine that you're using to walk through this lab, then use the UI that Devnet Sandbox provides to connect to the instances within your browser (Chrome or Firefox).
 Just hover over a node in the topology and hit `SSH` from the dropdown menu. This is shown below for the `devbox`:
 
@@ -123,12 +122,12 @@ Just hover over a node in the topology and hit `SSH` from the dropdown menu. Thi
 
 &nbsp;  
 
-#### SSH CLient:
+## SSH CLient:
 If you have a 3rd party SSH client, use the SSH ports as described in the previous section to connect to the node of your choice. IP address is the same for all the nodes: `10.10.20.170`
 
 &nbsp;  
 
-#### Terminal:  
+### Terminal:  
 If you have a Terminal to work with (with an SSH client utility), then to connect to the **devbox**, run:
 <p style="margin: 2em 0!important;padding: 1em;font-family: CiscoSans,Arial,Helvetica,sans-serif;font-size: 1em !important;text-indent: initial;background-color: #e6f2f7;border-radius: 5px;box-shadow: 0 1px 1px rgba(0,127,171,0.25);">**Username**: admin<br/>**Password**: admin<br/>**SSH port**: 2211
 </p>  
