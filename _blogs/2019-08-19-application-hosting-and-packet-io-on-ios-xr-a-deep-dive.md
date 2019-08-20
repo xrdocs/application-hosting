@@ -804,6 +804,75 @@ Some common setup details for both LXC containers and Docker containers on the I
     [host:~]$
     </code></pre></p>
 
+
+
+**What do cpu share allocations below mean?**
+* CPU shares help determine the relative allocation of CPU resources when processes are running  in all groups and subgroups.  
+
+* Now at the highest level (Host), there is no competing group defined. So Host gets 1024 CPU shares.  
+
+* One level down, the “machine” sub group is defined and is given 1024 CPU shares. Again, no competing subgroup at this level, so all cpu resources get passed down.  
+
+* Next level, machine is divided into 4 groups:   default-sdr—1 , default-sdr—2, sysadmin and tp_app.partition with cpu shares at 1024, 1024, 1024 and 256 respectively.  
+
+
+Now we can start calculating:
+* When no 3rd party application (docker or LXC, I’m not talking about native) is running on the system, then the allocation of CPU for the 3 system subgroups are:
+    default-sdr—1 share = 1024/(1024+1024+1024)  = 33.33%
+    default-sdr—2 share = 1024/(1024+1024+1024)  = 33.33%
+    sysadmin share = 1024/(1024+1024+1024)  = 33.33%  
+    
+* When an application is running on the system as part of the tp_app.partition subgroup (either docker or LXC or both), then the remaining 3 subgroups are already active.
+So CPU allocated to the tp_app.partition process =    256/(256+1024+1024+1024)  = 7.69%
+Now, the allocations for the system subgroups are reduced to:
+    default-sdr—1 share = 1024/(256+ 1024+1024+1024)  = 30.77 %
+    default-sdr—2 share = 1024/(1024+1024+1024)  = 30.77%
+    sysadmin share = 1024/(1024+1024+1024)  = 30.77%
+ 
+* Further, under the tp_app.partition subgroup, Docker and LXC get 1024 and 1024 shares respectively. So, in case you’re running an LXC app and a Docker app at the same time, they will get  7.69/2 = 3.845% of the CPU each.
+
+* If you run any one of them (typically the case), then they get to use all of 7.69%
+The remaining system subgroups will continue to get the same amount whether you run 1 or 2 or 100 apps =
+default-sdr—1 share = 1024/(256+ 1024+1024+1024)  = 30.77 %
+default-sdr—2 share = 1024/(1024+1024+1024)  = 30.77%
+sysadmin share = 1024/(1024+1024+1024)  = 30.77%
+ 
+ 
+Logs:
+ 
+[host:0_RP0:~]$ 
+[host:0_RP0:~]$ cd /dev/cgroup/
+[host:0_RP0:/dev/cgroup]$ virsh -c lxc:/// list
+ Id    Name                           State
+----------------------------------------------------
+ 6396  sysadmin                       running
+ 14448 default-sdr--1                 running
+ 22946 default-sdr--2                 running
+ 
+[host:0_RP0:/dev/cgroup]$ 
+[host:0_RP0:/dev/cgroup]$ cat cpu/cpu.shares     >>>>  Host CPU shares
+1024
+[host:0_RP0:/dev/cgroup]$ cat  cpu/machine/cpu.shares     >>>> machine subgroup CPU shares
+1024
+[host:0_RP0:/dev/cgroup]$
+[host:0_RP0:/dev/cgroup]$ cat cpu/machine/default-sdr--1.libvirt-lxc/cpu.shares    >>>>> XR Control Plane
+1024
+[host:0_RP0:/dev/cgroup]$ cat cpu/machine/default-sdr--2.libvirt-lxc/cpu.shares   >>>>>  Data Plane LC container
+1024
+[host:0_RP0:/dev/cgroup]$ cat cpu/machine/sysadmin.libvirt-lxc/cpu.shares          >>>>>> Sysadmin (Calvados) Container
+1024
+[host:0_RP0:/dev/cgroup]$
+[host:0_RP0:/dev/cgroup]$ cat cpu/machine/tp_app.partition/cpu.shares     >>>>> Allocation for the tp_app.partition subgroup
+256
+[host:0_RP0:/dev/cgroup]$ 
+[host:0_RP0:/dev/cgroup]$ cat cpu/machine/tp_app.partition/docker/cpu.shares     >>>>>> Allocation for the third party docker container subgroup under the tp_app.partition subgroup
+1024
+[host:0_RP0:/dev/cgroup]$ 
+[host:0_RP0:/dev/cgroup]$ cat cpu/machine/tp_app.partition/lxc.partition/cpu.shares     >>>>>> Allocation for the third party LXC container subgroup under the tp_app.partition subgroup
+1024
+[host:0_RP0:/dev/cgroup]$ 
+
+
     Once in the host shell, check the cpu shares allocated for LXCs by checking the content of the file: `/dev/cgroup/cpu/machine/tp_app.partition/lxc.partition/cpu.shares `
 
     ```      
