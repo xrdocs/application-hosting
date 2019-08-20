@@ -519,9 +519,9 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   * **Transmit TCP/UDP traffic over Data ports**: In this scenario, typically, the `default` route is set up to point to `fwdintf` as the next hop interface. The packet generated from the userspace process/application, exits `fwdintf`, is captured by a kernel module listening on a raw socket on `fwdintf` and the packet is then injected into the fabric towards the designated Linecard.    
   The Designated linecard then does a FIB lookup, determines if it can directly send it out of the interface on the same linecard, else it sends it back over the fabric to the correct linecard based on the FIB lookup result.
 
-  <p text-align="center">
-  <a href="assets/images/transmit_tcp_udp_data.png"><img alt="receive_tcp_udp_data"  src="assets/images/transmit_tcp_udp_data.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
-  </p>  
+  
+  <a href="{{site.baseurl}}/images/transmit_tcp_udp_data.png"><img class="align-center" alt="transmit_tcp_udp_data.png"  src="{{site.baseurl}}/images/transmit_tcp_udp_data.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
+
 
   * **Receive TCP/UDP traffic over Data port**: Here the packets arrive over the data port into the Linecard where an LPTS lookup takes place. Thanks to KIM which populates the LPTS entries based on TCP/UDP sockets opened by applications on the RP, the packets are then forwarded over the fabric towards the RP kernel and given to the application that opened up the matching socket.  
 
