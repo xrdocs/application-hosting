@@ -543,19 +543,12 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   <a href="{{site.baseurl}}/images/receive_exception_data.png"><img class="align-center" alt="receive_exception_data.png"  src="{{site.baseurl}}/images/receive_exception_data.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
  
 
-  * **Management traffic Transmit/Receive**: This is fairly straightforward. All the traffic transmitted and received via the Local Management port on the RP is handled by the slow packet path as shown below.
-
-  Transmit Traffic through Mgmt Port:  
-
-
+  * **Management traffic Transmit/Receive**: This is fairly straightforward. All the traffic transmitted and received via the Local Management port on the RP is handled by the slow packet path as shown below. <br>Transmit Traffic through Mgmt Port:  
+  
   <a href="{{site.baseurl}}/images/transmit_management_traffic.png"><img class="align-center" alt="transmit_management_traffic"  src="{{site.baseurl}}/images/transmit_management_traffic.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
- 
-
-  Receive Traffic via Mgmt Port:
+  <br><br>Receive Traffic via Mgmt Port:
   
   <a href="{{site.baseurl}}/images/receive_management_traffic.png"><img class="align-center"  alt="receive_management_traffic"  src="{{site.baseurl}}/images/receive_management_traffic.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
-
-
 
 
 
