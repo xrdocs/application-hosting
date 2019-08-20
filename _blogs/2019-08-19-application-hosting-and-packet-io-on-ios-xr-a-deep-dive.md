@@ -444,7 +444,8 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   [r2:~]$ <mark>ls /var/run/netns
   blue  global-vrf  tpnns  xrnns</mark>
   [r2:~]$
-  </code></pre></p>  
+  </code></pre></p> 
+  
   Exactly what we expected. The interface `Gi0_0_0_2` has now migrated to netns `blue`.  
 
 
