@@ -63,7 +63,9 @@ More details can be found at the [IOS-XR programmability Sandbox](https://devnet
 
 The topology that you will have access to is shown below:    
 
-<br/><img src="assets/images/iosxr-programmability-sandbox-topo.png" alt="reserve_button" width="800px"/><br/><br/>
+![iosxr-programmability-sandbox-topo.png]()
+
+<br/><img src="{{site.baseurl}}/images/iosxr-programmability-sandbox-topo.png" alt="reserve_button" width="800px"/><br/><br/>
 
 You have SSH access to each of the virtual machines - the two IOS-XRv9000 instances (r1 and r2) and the devbox (an Ubuntu 16.04 instance for access to a development environment).
 
