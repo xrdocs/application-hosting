@@ -427,8 +427,8 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
     Next, configure `vrf blue` at the global configuration level as well as under `tpa` to ensure that the netns called `blue` gets created in the kernel:    
   
 
- <p>
- <pre>
+ <div class="highlighter-rouge">
+ <pre class="highlight">
  <code>
   RP/0/RP0/CPU0:r2#conf t
   Mon Sep 10 05:14:16.867 UTC
@@ -448,7 +448,7 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   [r2:~]$
   </code>
   </pre>
-  </p> 
+  </div> 
   
   Exactly what we expected. The interface `Gi0_0_0_2` has now migrated to netns `blue`.  
 
