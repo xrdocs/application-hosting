@@ -357,8 +357,8 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   [r1:~]$
   ```
   where `192.168.122.21` was the IP address of the `MgmtEth0/RP0/CPU0/0` interface that got configured as src-hint because of the `update-source` CLI under `tpa`.
-
-  <br/>
+   
+   
 * **Network Namespace**:   If a vrf (complete BGP vrf or just vrf-lite) is configured in IOS-XR CLI and the same vrf (same name) is configured under the `tpa` configuration, then a corresponding network namespace is allocated in the kernel with the same name as the VRF.   
   This is very useful when trying to isolate your applications into separate VRFs and running across specific interfaces.  
 
