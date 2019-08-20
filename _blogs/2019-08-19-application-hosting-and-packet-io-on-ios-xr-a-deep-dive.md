@@ -109,7 +109,6 @@ To be clear, the connection details are listed below:
 <br/>  
 
 
-
 ## Connect to the nodes in the Topology
 {:.no_toc}  
 
