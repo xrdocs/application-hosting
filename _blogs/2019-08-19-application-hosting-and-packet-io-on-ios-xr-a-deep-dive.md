@@ -365,14 +365,15 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   If a vrf is mapped to a network namespace of the same name using the tpa CLI then Interfaces configured under the vrf in XR CLI will automatically be isolated into the corresponding namespace in the RP's kernel.
 
 
-
   <a href="{{site.baseurl}}/images/pkt_io_vrfs.png"><img class="align-center" alt="pkt_io_vrfs.png"  src="{{site.baseurl}}/images/pkt_io_vrfs.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
-  </p>
 
   Let's try this out on route `r2` in the sandbox:
 
-  <p style="margin: 2em 0!important;padding: 1em;font-family: CiscoSans,Arial,Helvetica,sans-serif;font-size: 1em !important;text-indent: initial;background-color: #e6f2f7;border-radius: 5px;box-shadow: 0 1px 1px rgba(0,127,171,0.25);">**Username**: admin<br/>**Password**: admin<br/>**SSH port**: 2231
-  </p>  
+  **Username**: admin  
+  **Password**: admin  
+  **SSH port**: 2231  
+  {: .notice--info} . 
+  
 
   ```bash
   Laptop-terminal:$ ssh -p 2231 admin@10.10.20.170
