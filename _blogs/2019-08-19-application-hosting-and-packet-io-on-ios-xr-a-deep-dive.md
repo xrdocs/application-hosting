@@ -532,13 +532,13 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   * **Receive Exception Traffic(ping)** Any traffic received that does not contain a layer 4 header specifying a TCP/UDP port is treated as exception traffic since it will not match any entry during LPTS lookup (which only handles TCP/UDP sockets). For such a packet, there will be a punt towards the RP's slow packet path where a software lookup will happen and the packet will be forwarded to the kernel as well as XR (replication). This is how a ping initiated in the Linux kernel of the RP will be able to receive a reply back.  
 
   <a href="{{site.baseurl}}/images/receive_exception_data.png"><img class="align-center" alt="receive_exception_data.png"  src="{{site.baseurl}}/images/receive_exception_data.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
-  </p>  
+ 
 
   * **Management traffic Transmit/Receive**: This is fairly straightforward. All the traffic transmitted and received via the Local Management port on the RP is handled by the slow packet path as shown below.
 
   Transmit Traffic through Mgmt Port:  
 
-  <p text-align="center">
+  
   <a href="assets/images/transmit_management_traffic.png"><img alt="transmit_management_traffic"  src="assets/images/transmit_management_traffic.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
   </p>  
 
