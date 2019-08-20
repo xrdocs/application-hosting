@@ -32,15 +32,17 @@ We intend to dive into the specifics of the app-hosting infrastructure on IOS-XR
 Take some time to reserve and familiarize yourself with the [IOS-XR programmability Sandbox on Devnet](https://devnetsandbox.cisco.com/RM/Diagram/Index/883f8ea6-54a1-453e-98f5-fc175a2a90de?diagramType=Topology).
 Getting started is pretty straightforward - once you hit the above URL, click on the `Reserve` button on the top right:
 
-<img src="assets/images/reserve_button.png" alt="reserve_button" width="250px"/>
-<p style="margin: 2em 0 !important;padding: 1em;font-family: CiscoSans,Arial,Helvetica,sans-serif;font-size: 1em !important;text-indent: initial;background-color: #fdefef;border-radius: 5px;box-shadow: 0 1px 1px rgba(0,127,171,0.25);"> You will need to be logged in to <https://devnetsandbox.cisco.com/> before you can reserve.
-</p>
+![reserve_button.png]({{site.baseurl}}/images/reserve_button.png)
+
 
 As part of the reservation, select the duration for which you'd like to reserve the sandbox (maximum duration = 1 week).
 
-<img src="assets/images/reserve_duration.png" alt="reserve_button" width="400px"/>.
 
-<p style="margin: 2em 0 !important;padding: 1em;font-family: CiscoSans,Arial,Helvetica,sans-serif;font-size: 1em !important;text-indent: initial;background-color: #e6f2f7;border-radius: 5px;box-shadow: 0 1px 1px rgba(0,127,171,0.25);"> To view the dropdown menu with variable reservation options, hit the edit button (pencil icon) next to schedule. Once your reservation is active, you can keep extending the duration if you start running out of time (with the maximum limit set to a total time of 1 week)</p>
+<img src="{{site.baseurl}}/images/reserve_duration.png" alt="reserve_button" width="400px"/>.
+
+To view the dropdown menu with variable reservation options, hit the edit button (pencil icon) next to schedule. Once your reservation is active, you can keep extending the duration if you start running out of time (with the maximum limit set to a total time of 1 week).
+{: .notice--info}
+
 
 Once reserved, expect an initial email (associated with your login) indicating that your sandbox environment is being set up.   
 Within about 10 minutes, the entire sandbox environment should be ready and you'll get another email detailing the [Anyconnect](https://developer.cisco.com/site/devnet/sandbox/anyconnect/) server and credential information you need to connect to the same network as the sandbox environment.
