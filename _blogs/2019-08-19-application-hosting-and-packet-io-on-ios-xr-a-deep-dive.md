@@ -817,28 +817,36 @@ Some common setup details for both LXC containers and Docker containers on the I
      22946 default-sdr--2                 running
  
     [host:/dev/cgroup]$ 
-    [host:/dev/cgroup]$ cat cpu/cpu.shares     <mark>>>>>  Host CPU shares</mark>
+    [host:/dev/cgroup]$ cat cpu/cpu.shares      
+    <mark>>>>>  Host CPU shares</mark>
     1024
-    [host:/dev/cgroup]$ cat  cpu/machine/cpu.shares     >>>> machine subgroup CPU shares
-    1024
-    [host:/dev/cgroup]$
-    [host:/dev/cgroup]$ cat cpu/machine/default-sdr--1.libvirt-lxc/cpu.shares   >>>>> XR Control Plane
-    1024
-    [host:/dev/cgroup]$ cat cpu/machine/default-sdr--2.libvirt-lxc/cpu.shares  >>>>>  Data Plane LC container
-    1024
-    [host:/dev/cgroup]$ cat cpu/machine/sysadmin.libvirt-lxc/cpu.shares >>> Sysadmin Container
+    [host:/dev/cgroup]$ cat  cpu/machine/cpu.shares     
+    <mark>>>>> machine subgroup CPU shares</mark>
     1024
     [host:/dev/cgroup]$
-    [host:/dev/cgroup]$ cat cpu/machine/tp_app.partition/cpu.shares     >>>>> Allocation for the    tp_app.partition subgroup
+    [host:/dev/cgroup]$ cat cpu/machine/default-sdr--1.libvirt-lxc/cpu.shares    
+    <mark>>>>>> XR Control Plane</mark>
+    1024
+    [host:/dev/cgroup]$ cat cpu/machine/default-sdr--2.libvirt-lxc/cpu.shares   
+    <mark>>>>>  Data Plane LC container</mark>
+    1024
+    [host:/dev/cgroup]$ cat cpu/machine/sysadmin.libvirt-lxc/cpu.shares 
+    <mark>>>> Sysadmin Container</mark>
+    1024
+    [host:/dev/cgroup]$
+    [host:/dev/cgroup]$ cat cpu/machine/tp_app.partition/cpu.shares     
+    <mark>>>>>> Allocation for the    tp_app.partition subgroup</mark>
     256
     [host:/dev/cgroup]$ 
-    [host:/dev/cgroup]$ cat cpu/machine/tp_app.partition/docker/cpu.shares     >>>>>> Allocation for the third party docker container subgroup under the tp_app.partition subgroup
+    [host:/dev/cgroup]$ cat cpu/machine/tp_app.partition/docker/cpu.shares     
+    <mark>>>>> Allocation for third party docker container subgroup under the tp_app.partition subgroup</mark>
     1024
     [host:/dev/cgroup]$ 
-    [host:/dev/cgroup]$ cat cpu/machine/tp_app.partition/lxc.partition/cpu.shares     >>>>>>  Allocation for the third party LXC container subgroup under the tp_app.partition subgroup
+    [host:/dev/cgroup]$ cat cpu/machine/tp_app.partition/lxc.partition/cpu.shares     
+    <mark>>>>>  Allocation for third party LXC container subgroup under the tp_app.partition subgroup</mark>
     1024
     [host:/dev/cgroup]$ 
-</code></pre></p>
+    </code></pre></p>
 
 **What do cpu share allocations below mean?**  
 
