@@ -568,7 +568,7 @@ To show how a native application RPM could be installed from this yum repo, let'
 **Username**: admin  
 **Password**: admin  
 **SSH port**: 2221  
-{: .notice--info} . 
+{: .notice--info}
 
 
 ```bash
