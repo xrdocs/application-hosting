@@ -532,7 +532,6 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
 
   * **Transmit TCP/UDP traffic over Data ports**: In this scenario, typically, the `default` route is set up to point to `fwdintf` as the next hop interface. The packet generated from the userspace process/application, exits `fwdintf`, is captured by a kernel module listening on a raw socket on `fwdintf` and the packet is then injected into the fabric towards the designated Linecard.    
   The Designated linecard then does a FIB lookup, determines if it can directly send it out of the interface on the same linecard, else it sends it back over the fabric to the correct linecard based on the FIB lookup result.
-
   
   <a href="{{site.baseurl}}/images/transmit_tcp_udp_data.png"><img class="align-center" alt="transmit_tcp_udp_data.png"  src="{{site.baseurl}}/images/transmit_tcp_udp_data.png" style="display: block; margin-left: auto !important; margin-right: auto !important;"/></a>
 
