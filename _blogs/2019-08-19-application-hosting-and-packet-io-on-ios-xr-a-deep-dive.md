@@ -484,7 +484,25 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   Nope! now let's drop into netns `blue` and check the same:  
   
 
+    ```
+  [r2:~]$ ip netns exec blue bash
+  [r2:~]$
+  [r2:~]$ source /etc/init.d/operns-functions
+  [r2:~]$ netns_identify $$
+  blue
+  [r2:~]$
+  [r2:~]$ ifconfig -a Gi0_0_0_2
+  Gi0_0_0_2 Link encap:Ethernet  HWaddr 52:54:00:93:8a:b2  
+            inet addr:101.1.1.20  Mask:255.255.255.0
+            inet6 addr: fe80::5054:ff:fe93:8ab2/64 Scope:Link
+            UP RUNNING NOARP MULTICAST  MTU:1500  Metric:1
+            RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+            TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+            collisions:0 txqueuelen:1000
+            RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
 
+  [r2:~]$
+  ```  
   Exactly what we expected. The interface `Gi0_0_0_2` has now migrated to netns `blue`.  
 
 
