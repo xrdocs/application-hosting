@@ -451,7 +451,7 @@ So it makes sense to have a system that **mimics** a fixed (pizza-box) system fo
   </div> 
   
   
-    Perfect! Now configure interface `GigabitEthernet0/0/0/2` under `vrf blue` to trigger its migration in the kernel netns as well:  
+  Perfect! Now configure interface `GigabitEthernet0/0/0/2` under `vrf blue` to trigger its migration in the kernel netns as well:  
 
   ```
   RP/0/RP0/CPU0:r2#
