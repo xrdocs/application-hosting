@@ -26,6 +26,8 @@ tags:
 # Introduction
 
 
+
+
 ## Choosing the distribution
 
 ## Pulling Docker images 
@@ -44,7 +46,7 @@ tags:
 
 ## Reducing the size of Docker images
 
-## Managing On-Box Applications logs
+## Managing On-Box Docker logs
 
 ## Demo: Open/R as a Docker App on IOS-XR
 
