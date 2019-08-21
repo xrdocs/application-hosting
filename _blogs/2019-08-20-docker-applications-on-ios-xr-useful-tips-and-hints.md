@@ -38,15 +38,19 @@ tags:
 
 ## Opening up TCP/UDP sockets
 
-## Mounting config files into Docker Containers
-
 ## Exposing XR vrfs to Docker containers
 
 ## Managing CPU and Memory limits
 
-## Reducing the size of Docker images
+## Mounting config files
 
-## Managing On-Box Docker logs
+## Managing On-Box Application logs
+
+## Handling Router Reloads
+
+## Handling RP Switchover (HA)
+
+## Reducing the size of Docker images
 
 ## Demo: Open/R as a Docker App on IOS-XR
 
