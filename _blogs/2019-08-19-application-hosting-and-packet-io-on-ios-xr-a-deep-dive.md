@@ -922,7 +922,7 @@ So, in our case, assuming the same number of processes are running in the Host (
     
  
     Not all platforms have the default-sdr--2 container running on the RP. This is true for IOS-XRv9000 and the fixed boxes like the NCS540 or NCS5501/5502.   
-    But, for modular chassis like NCS5508/5516 etc., there is NO default--sdr-2 container. In such a case, the tp_app subgroup gets to utilize 5.56% of the cpu with remaining 94.46% used by default-sdr--1 (22.22%), sysadmin container (22.22%) and the host layer (50%).
+    But, for modular chassis like NCS5508/5516 etc., there is NO default--sdr-2 container. In such a case, the tp_app subgroup gets to utilize 5.56% (256 shares) of the cpu with remaining 94.46% used by default-sdr--1 (22.22%), sysadmin container (22.22%) and the host layer (50%).
     {: .notice--warning}
  
 
