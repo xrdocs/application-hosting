@@ -876,12 +876,16 @@ Some common setup details for both LXC containers and Docker containers on the I
     * Next level, machine is divided into 4 groups:   default-sdr—1 , default-sdr—2, sysadmin and tp_app.partition with cpu shares at 1024, 1024, 1024 and 1024 respectively. **On the NCS55xx devices, tp_app.partition is allocated 256 cpu shares.**
 
 
-CPU shares do NOT easily map to percentages of the CPU that will get used up because the percentage of CPU utilized is a function of the distribution of  CURRENTLY running processes across different cgroups (root, machine, tp_app.partition etc.). The cpu shares are not hard limits, but rather guide how the CPU gets utilized across different process groups.
-I found a nice explanation of this breakdown in the RedHat documentation here: <https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/resource_management_guide/process_behavior>.
+    CPU shares do NOT easily map to percentages of the CPU that will get used up because the 
+    percentage of CPU utilized is a function of the distribution of  CURRENTLY running processes 
+    across different cgroups (root, machine, tp_app.partition etc.). The cpu shares are not hard 
+    limits, but rather guide how the CPU gets utilized across different process groups.
+    I found a nice explanation of this breakdown in the RedHat documentation here:
+    <https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/resource_management_guide/process_behavior>.
+    
+    So, in our case, assuming the same number of processes are running in the Host (root) and in each of the "machine" subgroups: default-sdr--1, default-sdr--2, syasdmin, tp_app.partition (This is not the case, but we use this to simplify the calculation):
 
-So, in our case, assuming the same number of processes are running in the Host (root) and in each of the "machine" subgroups: default-sdr--1, default-sdr--2, syasdmin, tp_app.partition (This is not the case, but we use this to simplify the calculation):
-
-  * When no 3rd party application (docker or LXC, I’m not talking about native) is running on the system, then the allocation of CPU for the 3 system subgroups are (Remember 1024 cpu shares are reserved for the Host(root) layer):  
+    * When no 3rd party application (docker or LXC, I’m not talking about native) is running on the system, then the allocation of CPU for the 3 system subgroups are (Remember 1024 cpu shares are reserved for the Host(root) layer):  
       
       ```
       machine subgroup share = 1024/(1024+1024) = 50%
