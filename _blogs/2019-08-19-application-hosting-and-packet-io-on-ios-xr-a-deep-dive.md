@@ -945,6 +945,16 @@ Some common setup details for both LXC containers and Docker containers on the I
 
     The above values are in bytes but it translates to 512 MB memory limit on container apps.
 
+    **For the NCS55XX platforms**, the same limits are increased to 1G:
+    
+    ```
+    [host:0_RP0:~]$ cat /dev/cgroup/memory/machine/tp_app.partition/lxc.partition/memory.limit_in_bytes
+    1073741824
+    [host:0_RP0:~]$ 
+    [host:0_RP0:~]$ cat /dev/cgroup/memory/machine/tp_app.partition/docker/memory.limit_in_bytes  
+    1073741824
+    [host:0_RP0:~]$ 
+    ```
 
 
 Bear in mind that the above values are for an IOS-XRv9000 platform. Each platform would handle these limits based on the resources available. But you can use the same techniques described above across all IOS-XR platforms to determine the limits imposed by the one selected.
