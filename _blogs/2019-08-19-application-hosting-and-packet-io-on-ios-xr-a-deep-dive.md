@@ -869,14 +869,18 @@ Some common setup details for both LXC containers and Docker containers on the I
 
     * CPU shares help determine the relative allocation of CPU resources when processes are running  in all groups and subgroups.  
 
-    * Now at the highest level (Host), there is no competing group defined. So Host gets 1024 CPU shares.  
+    * Now at the highest level (Host), there is no competing group defined. So Host gets 1024 CPU shares. This is the root cgroup. All processes at this level get to utilize 1024 shares
 
     * One level down, the “machine” sub group is defined and is given 1024 CPU shares. Again, no competing subgroup at this level, so all cpu resources get passed down.  
 
-    * Next level, machine is divided into 4 groups:   default-sdr—1 , default-sdr—2, sysadmin and tp_app.partition with cpu shares at 1024, 1024, 1024 and 1024 respectively.  
+    * Next level, machine is divided into 4 groups:   default-sdr—1 , default-sdr—2, sysadmin and tp_app.partition with cpu shares at 1024, 1024, 1024 and 1024 respectively. On the NCS55xx devices, tp_app.partition is allocated 256 cpu shares.
 
 
-    Now, we can start calculating:
+CPU shares do NOT easily map to percentages of the CPU that will get used up because the percentage of CPU utilized is a function of the distribution of  CURRENTLY running processes across different cgroups (root, machine, tp_app.partition etc.). The cpu shares are not hard limits, but rather guide how the CPU gets utilized across different process groups.
+Here's a simple breakdown for folks that are interested: <https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/resource_management_guide/process_behavior>.
+
+To easily explain this, let's look at a scenario where every group is running just 1 process - this is just an example to help explain a potential split - so 1 process in the root(Host) cgroup, 1 process in the default-sdr--1 cgroup, default-sdr--2 cgroup and 1
+
     * When no 3rd party application (docker or LXC, I’m not talking about native) is running on the system, then the allocation of CPU for the 3 system subgroups are (Remember 1024 cpu shares are reserved for the Host layer):  
       
       ```
