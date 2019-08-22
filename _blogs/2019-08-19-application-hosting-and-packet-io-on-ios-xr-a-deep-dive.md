@@ -881,7 +881,7 @@ I found a nice explanation of this breakdown in the RedHat documentation here: <
 
 So, in our case, assuming the same number of processes are running in the Host (root) and in each of the "machine" subgroups: default-sdr--1, default-sdr--2, syasdmin, tp_app.partition (This is not the case, but we use this to simplify the calculation):
 
-    * When no 3rd party application (docker or LXC, I’m not talking about native) is running on the system, then the allocation of CPU for the 3 system subgroups are (Remember 1024 cpu shares are reserved for the Host(root) layer):  
+  * When no 3rd party application (docker or LXC, I’m not talking about native) is running on the system, then the allocation of CPU for the 3 system subgroups are (Remember 1024 cpu shares are reserved for the Host(root) layer):  
       
       ```
       machine subgroup share = 1024/(1024+1024) = 50%
