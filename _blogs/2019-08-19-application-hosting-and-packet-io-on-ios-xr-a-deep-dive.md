@@ -873,15 +873,15 @@ Some common setup details for both LXC containers and Docker containers on the I
 
     * One level down, the “machine” sub group is defined and is given 1024 CPU shares. Again, no competing subgroup at this level, so all cpu resources get passed down.  
 
-    * Next level, machine is divided into 4 groups:   default-sdr—1 , default-sdr—2, sysadmin and tp_app.partition with cpu shares at 1024, 1024, 1024 and 1024 respectively. On the NCS55xx devices, tp_app.partition is allocated 256 cpu shares.
+    * Next level, machine is divided into 4 groups:   default-sdr—1 , default-sdr—2, sysadmin and tp_app.partition with cpu shares at 1024, 1024, 1024 and 1024 respectively. **On the NCS55xx devices, tp_app.partition is allocated 256 cpu shares.**
 
 
 CPU shares do NOT easily map to percentages of the CPU that will get used up because the percentage of CPU utilized is a function of the distribution of  CURRENTLY running processes across different cgroups (root, machine, tp_app.partition etc.). The cpu shares are not hard limits, but rather guide how the CPU gets utilized across different process groups.
 I found a nice explanation of this breakdown in the RedHat documentation here: <https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/resource_management_guide/process_behavior>.
 
-So, in our case, assuming the same number of processes are running in the Host (root) and the "machine" subgroup (This is not the case, but we use this to simplify the calculation):
+So, in our case, assuming the same number of processes are running in the Host (root) and in each of the "machine" subgroups: default-sdr--1, default-sdr--2, syasdmin, tp_app.partition (This is not the case, but we use this to simplify the calculation):
 
-    * When no 3rd party application (docker or LXC, I’m not talking about native) is running on the system, then the allocation of CPU for the 3 system subgroups are (Remember 1024 cpu shares are reserved for the Host layer):  
+    * When no 3rd party application (docker or LXC, I’m not talking about native) is running on the system, then the allocation of CPU for the 3 system subgroups are (Remember 1024 cpu shares are reserved for the Host(root) layer):  
       
       ```
       machine subgroup share = 1024/(1024+1024) = 50%
@@ -902,9 +902,23 @@ So, in our case, assuming the same number of processes are running in the Host (
       sysadmin share = 1024/(1024+1024+1024+1024) * 50% = 12.5%  
       ```
      
-    * Further, under the tp_app.partition subgroup, Docker and LXC get 1024 and 1024 shares respectively. So, **in case you’re running an LXC app and a Docker app at the same time, they will get  12.5/2 = 6.25% of the CPU each**.
+      On the NCS55xx platforms the tp_app.partition is actually allocated 256 CPU shares. So, for these platforms, the calculations would change to:
+     
+      **For NCS55xx platforms**:
+     
+      ```
+      machine subgroup share = 1024/(1024+1024) = 50%
+      Host share = 1024/(1024+1024) = 50%
+      tp_app.partition process = 256/(256+1024+1024+1024) * 50% = 3.84%
+      default-sdr—1 share = 1024/(256+1024+1024+1024) * 50% = 15.38% 
+      default-sdr—2 share = 1024/(256+1024+1024+1024) * 50% = 15.38%
+      sysadmin share = 1024/(256+1024+1024+1024) * 50% = 15.38%  
+      ```
+      
+    * Further, under the tp_app.partition subgroup, Docker and LXC get 1024 and 1024 shares respectively. So, **in case you’re running an LXC app and a Docker app at the same time, they will get  12.5/2 = 6.25% of the CPU each**. Again, this is for the IOS-XRv9000 platform in this devnet sandbox.
+      For NCS55XX platforms, running both an LXC and Docker app would reduce the CPU share to 3.84%/2 = 1.92% based on our calculations above.
 
-    * **If you run any one of them (typically the case), then they get to use all of 12.5%**
+    * **If you run any one of them (typically the case), then they get to use all of 12.5% (3.84% in case of NCS55xx platforms).**
     
  
     Not all platforms have the default-sdr--2 container running on the RP. This is true for IOS-XRv9000 and the fixed boxes like the NCS540 or NCS5501/5502.   
