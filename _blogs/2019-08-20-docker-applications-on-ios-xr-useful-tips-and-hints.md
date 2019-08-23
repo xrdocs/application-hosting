@@ -36,9 +36,9 @@ Bear in mind that most of the topics below are equally relevant to Native and LX
 
 For the sake of this blog we will run through an NCS55xx setup running IOS-XR 6.5.2 on each router. The topology is shown below:
 
-Router 1 and Router2 are NCS5501 devices and therefore not HA capable. However Router 3 is NCS5508 and contains two Route-Processors (RPs) enabling us to play around with some HA-capable Docker application deployment.
+Router-1 (rtr1) and Router-2 (rtr2) are NCS5501 devices and therefore not HA capable. However, Router-3 (rtr3) is NCS5508 and contains two Route-Processors (RPs) enabling us to play around with some HA-capable Docker application deployment.
 
-Since the app-hosting infrastructure is platform independent functionally, the same workflow can be attempted
+Since the app-hosting infrastructure is platform independent functionally, the same workflow can be attempted on a virtual setup (using xrv9000) or other IOS-XR family platforms like ASR9000 or NCS540/560. 
 
 ## Choosing the distribution
 
