@@ -124,6 +124,9 @@ cat /home/vagrant/xr-lxc-app.xml
 <domain type='lxc' xmlns:lxc='http://libvirt.org/schemas/domain/lxc/1.0' >
   <name>xr-lxc-app</name>
   <memory>327680</memory>
+  <resource>
+    <partition>/machine/tp_app/lxc</partition>
+  </resource>
   <os>
     <type>exe</type>
     <init>/sbin/init</init>
