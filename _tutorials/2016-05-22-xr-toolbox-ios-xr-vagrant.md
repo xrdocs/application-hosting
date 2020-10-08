@@ -23,7 +23,7 @@ This tutorial is meant to be a quick-start guide to get you up and running with 
 
 If you're unfamiliar with Vagrant as a tool for development, testing and design, then here's a quick look at why Vagrant is useful, directly from the folks at Hashicorp:
 
-><https://www.vagrantup.com/intro/index.html>
+<!-- ><https://www.vagrantup.com/intro/index.html> -->
 
 >
 **To learn more about how to use IOS-XR + Vagrant to**
