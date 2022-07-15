@@ -151,6 +151,9 @@ xr-collector-health-monitor-1.3.1-eXR_7.3.1.x86_64.rpm
 Done building package xr-collector-health-monitor
 ```
 
+NOTE: You must install have pyyaml installed to run the script. If the script fails with an import error, use **pip install pyyaml**.
+{: .notice--warning}
+
 ### Find Your RPM
 Great! Your application has been packaged as an RPM and can be found in the RPMS/x86_64 directory.
 
