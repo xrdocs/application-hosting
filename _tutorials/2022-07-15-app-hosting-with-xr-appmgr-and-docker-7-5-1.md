@@ -299,6 +299,7 @@ monitor  Docker  Activated  Up 10 seconds
 ```
 
 NOTE: If you tried running XR Collector Health Monitor and the container has EXITED, more than likely, it is an error with the config.yaml file or the gRPC configuration of your router, not with you packaging the RPM and configuring the application. You can check the container logs for more details.
+{: .notice}
 
 - **Clean Up:** Before we wrap up the tutorial, let’s stop the application, remove it, and uninstall the package. You can also enter the linux environment and remove the RPM from the /misc/app_host directory.
 
