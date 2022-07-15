@@ -55,7 +55,8 @@ Once you have built your Docker Image and want to test it directly on the router
 
 ![Application Packaging Workflow](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/application-packaging-workflow.jpg)
 
-- **Create Docker Image:** For the tutorial, I will be pulling my image for the XR Collector Health Monitor v1.3.1 from the [Docker Hub](https://hub.docker.com/r/adhorton/xr-collector-health-monitor). If you are working on your own application, you would most likely build it from scratch with a docker build command.
+#### Create Docker Image
+For the tutorial, I will be pulling my image for the XR Collector Health Monitor v1.3.1 from the [Docker Hub](https://hub.docker.com/r/adhorton/xr-collector-health-monitor). If you are working on your own application, you would most likely build it from scratch with a docker build command.
 ```bash
 cisco@cocoa:~/adam/appmgr/xr-appmgr-build$ docker pull adhorton/xr-collector-health-monitor:1.3.1
 1.3.1: Pulling from adhorton/xr-collector-health-monitor
@@ -72,14 +73,16 @@ Status: Downloaded newer image for adhorton/xr-collector-health-monitor:1.3.1
 docker.io/adhorton/xr-collector-health-monitor:1.3.1
 ```
 
-- **Save Image to TAR file:** This can simply be done with a docker save command. I make a subdirectory within the cloned xr-appmgr-build before saving the image to a TAR.
+#### Save Image to TAR file
+This can simply be done with a docker save command. I make a subdirectory within the cloned xr-appmgr-build before saving the image to a TAR.
 ```bash
 cisco@cocoa:~/adam/appmgr/xr-appmgr-build$ mkdir monitor
 cisco@cocoa:~/adam/appmgr/xr-appmgr-build$ cd monitor
 cisco@cocoa:~/adam/appmgr/xr-appmgr-build/monitor$ docker save adhorton/xr-collector-health-monitor:1.3.1 > monitor-131.tar
 ```
 
-- **Create build.yaml file:** The build.yaml file specifies the name, version, release platform, and location of your application as well as some other important configuration settings. A better explanation of what belongs in the build.yaml file can be found in the [xr-appmgr-build](https://github.com/ios-xr/xr-appmgr-build) README. My sample build.yaml file looks like this:
+#### Create build.yaml file
+The build.yaml file specifies the name, version, release platform, and location of your application as well as some other important configuration settings. A better explanation of what belongs in the build.yaml file can be found in the [xr-appmgr-build](https://github.com/ios-xr/xr-appmgr-build) README. My sample build.yaml file looks like this:
 
 ```
 packages:
@@ -91,7 +94,8 @@ packages:
       file: monitor/monitor-131.tar
 ```
 
-- **Package with xr-appmgr-build:** To package the application, simply run the appmgr_build script and provide the path to your build.yaml file with the -b option.
+#### Package with xr-appmgr-build
+To package the application, simply run the appmgr_build script and provide the path to your build.yaml file with the -b option.
 
 ```bash
 cisco@cocoa:~/adam/appmgr/xr-appmgr-build$ ./appmgr_build -b monitor/build.yaml
@@ -147,7 +151,8 @@ xr-collector-health-monitor-1.3.1-eXR_7.3.1.x86_64.rpm
 Done building package xr-collector-health-monitor
 ```
 
-- **Find Your RPM:** Great! Your application has been packaged as an RPM and can be found in the RPMS/x86_64 directory.
+#### Find Your RPM
+Great! Your application has been packaged as an RPM and can be found in the RPMS/x86_64 directory.
 
 ```bash
 cisco@cocoa:~/adam/appmgr/xr-appmgr-build$ cd RPMS/x86_64
@@ -158,7 +163,8 @@ xr-collector-health-monitor-1.3.1-eXR_7.3.1.x86_64.rpm
 ## Registering and Activating Your Application
 In the previous step, we packaged a Docker Image as an RPM to be hosted on IOS-XR with XR AppMgr. For applications that will be setup securely or for automated deployment across multiple routers, investigate secure onboarding with CLI/API, SZTP, or using a GISO. This demonstration is exclusively about getting your application up and running as quickly as possible, so I will shortcut some of the best practices for security and automation in an effort to speed up the visibility of results.
 
-- **Transfer RPM to the Router:** Enter the Linux environment from IOS-XR on your router and use scp to transfer the RPM from your machine to the router. The /misc/app_host directory is the preferred location to store RPMs.
+#### Transfer RPM to the Router
+Enter the Linux environment from IOS-XR on your router and use scp to transfer the RPM from your machine to the router. The /misc/app_host directory is the preferred location to store RPMs.
 ```bash
 RP/0/RP0/CPU0:R1-MAcrocarpa#bash
 Thu Jul 14 20:43:19.887 UTC
@@ -169,7 +175,8 @@ cisco@cocoa’s password:
 xr-collector-health-monitor-1.3.1-eXR_7.3.1.x86_64.rpm                                 100%   74MB  36.9MB/s   00:02
 ```
 
-- **Install Package with XR AppMgr:** Return to the IOS-XR CLI and install the package with AppMgr.
+#### Install Package with XR AppMgr
+Return to the IOS-XR CLI and install the package with AppMgr.
 
 ```
 [R1-MAcrocarpa:/misc/app_host]$ exit
@@ -184,7 +191,8 @@ Package
 xr-collector-health-monitor-1.3.1-eXR_7.3.1.x86_64
 ```
 
-- **XR COLLECTOR HEALTH MONITOR ONLY:** If you have been following this tutorial exactly, there are two more setup steps before you can run the XR Collector Health Monitor. If you are following this tutorial with your own application, feel free to skip this step. For those of you who are still reading, the XR Collector Health Monitor application requires gRPC to be enabled on the router and a config file to be mounted into the docker container be run properly. Let’s start by copying the [sample config file](https://github.com/adhorton-cisco/xr-collector-health-monitor/blob/main/config/sample.yaml) from the [GitHub repository](https://github.com/adhorton-cisco/xr-collector-health-monitor) into a new directory in the Linux environment.
+#### Additional Step for XR Collector Health Monitor
+If you have been following this tutorial exactly, there are two more setup steps before you can run the XR Collector Health Monitor. If you are following this tutorial with your own application, feel free to skip this step. For those of you who are still reading, the XR Collector Health Monitor application requires gRPC to be enabled on the router and a config file to be mounted into the docker container be run properly. Let’s start by copying the [sample config file](https://github.com/adhorton-cisco/xr-collector-health-monitor/blob/main/config/sample.yaml) from the [GitHub repository](https://github.com/adhorton-cisco/xr-collector-health-monitor) into a new directory in the Linux environment.
 
 <div class="highlighter-rouge">
 <pre class="highlight">
@@ -273,7 +281,8 @@ RP/0/RP0/CPU0:R1-MAcrocarpa(config-grpc)#end
 RP/0/RP0/CPU0:R1-MAcrocarpa#
 ```
 
-- **Activate Your Application:** Finally, it is time to activate your application and watch it run! Enter the config menu in the IOS-XR CLI and copy the activation command with your own information.
+#### Activate Your Application
+Finally, it is time to activate your application and watch it run! Enter the config menu in the IOS-XR CLI and copy the activation command with your own information.
 
 **Activation Command:**
 ```
@@ -290,7 +299,8 @@ Thu Jul 14 21:21:42.322 UTC
 RP/0/RP0/CPU0:R1-MAcrocarpa(config)#end
 ```
 
-- **Verify Your Application is Running:** If everything went to plan, your application is now running on the router! Let’s verify that it is running successfully, and I will share some other tips for using XR AppMgr. 
+#### Verify Your Application is Running
+If everything went to plan, your application is now running on the router! Let’s verify that it is running successfully, and I will share some other tips for using XR AppMgr. 
 ```
 RP/0/RP0/CPU0:R1-MAcrocarpa#show appmgr application-table
 Thu Jul 14 21:58:11.251 UTC
@@ -302,7 +312,8 @@ monitor  Docker  Activated  Up 10 seconds
 NOTE: If you tried running XR Collector Health Monitor and the container has EXITED, more than likely, it is an error with the config.yaml file or the gRPC configuration of your router, not with you packaging the RPM and configuring the application. You can check the container logs for more details.
 {: .notice}
 
-- **Clean Up:** Before we wrap up the tutorial, let’s stop the application, remove it, and uninstall the package. You can also enter the linux environment and remove the RPM from the /misc/app_host directory for extra cleanliness.
+#### Clean Up
+Before we wrap up the tutorial, let’s stop the application, remove it, and uninstall the package. You can also enter the linux environment and remove the RPM from the /misc/app_host directory for extra cleanliness.
 
 ```
 RP/0/RP0/CPU0:R1-MAcrocarpa#appmgr application stop name monitor
