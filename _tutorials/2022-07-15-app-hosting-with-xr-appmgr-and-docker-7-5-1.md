@@ -43,7 +43,7 @@ Thanks to the rich set of Model-Driven RPC-based APIs, docker containers hosted 
 ### How Do I Get Started?
 In my experience, the best way to learn a new technology is to follow an example. In this tutorial, I will walk through the process of packaging, installing, configuring, and activating the XR Collector Health Monitor, which is an app I developed to automate the configuration management of a telemetry stream. The details behind the design and function of the application are largely irrelevant for the purposes of this demonstration, but more details for the curious reader can be found [here](**OTHER XR DOCS POST**). We will be following the Quick Start workflow:
 
-![Application Lifecycle](https://xrdocs.github.io/xrdocs-images/assets/images/application-lifecycle.jpg)
+![Application Lifecycle](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/application-lifecycle.jpg)
 
 ### Docker Development Tips and Tricks
 Designing your Docker Image for IOS-XR is specific to your solution, so I will not go into too much detail. However, there are a few things to know that can simplify development. It is important to have a strong grasp of the IOS-XR application hosting architecture. Your application must communicate with the box, so you need to understand the channels that make that communication possible. Check out the links on XR AppMgr and the IOS-XR App-Hosting Architecture. As you will see later, it can also be helpful to setup a CI/CD pipeline before you begin developing your application to quickly test the latest changes without having to go through the lengthy packaging and building process. For a sample workflow using GitHub Actions, you can check out the source code in the XR Collector Health Monitor repository [here](https://github.com/adhorton-cisco/xr-collector-health-monitor/blob/main/.github/workflows/build-rpm.yaml).
@@ -51,7 +51,7 @@ Designing your Docker Image for IOS-XR is specific to your solution, so I will n
 ### Packaging Your Docker Image as an RPM
 Once you have built your Docker Image and want to test it directly on the router, it is time to package it as an RPM. If you have already set up CI/CD as mentioned in the previous section, this process is taken care of automatically for you. However, for the sake of demonstration and for your overall understanding, I will walk through the manual packaging process. We will be using another script to set up an environment similar to IOS-XR and build the RPM within that environment. You can start by cloning it from the [xr-appmgr-build](https://github.com/ios-xr/xr-appmgr-build) repository. After that step is complete, we will follow this workflow to assemble the package:
 
-![Application Packaging Workflow](https://xrdocs.github.io/xrdocs-images/assets/images/application-packaging-workflow.jpg)
+![Application Packaging Workflow](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/application-packaging-workflow.jpg)
 
 - **Create Docker Image:** For the tutorial, I will be pulling my image for the XR Collector Health Monitor v1.3.1 from the [Docker Hub](https://hub.docker.com/r/adhorton/xr-collector-health-monitor). If you are working on your own application, you would most likely build it from scratch with a docker build command.
 ```bash
