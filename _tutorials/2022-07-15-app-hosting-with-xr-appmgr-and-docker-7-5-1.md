@@ -13,10 +13,10 @@ position: hidden
 ---
 {% include toc %}
 
-### Introduction
+## Introduction
 Previous [tutorials](https://xrdocs.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/) have discussed running docker containers within the Linux environment on IOS-XR. However, with the recent debut of the XR AppMgr in release 7.5.1, there are now expanded capabilities to activate and manage the lifecycle of third-party docker containers directly within the XR Control Plane. My goal by the end of the article is to familiarize you with the ins and outs of AppMgr so you can begin developing and deploying custom solutions that meet your unique network demands.
 
-### Before You Dive In
+## Before You Dive In
 I highly recommend you look at some other resources on the IOS-XR application hosting architecture before you start, as I will be expanding upon some of these concepts throughout the article. Or if you are eager to get started, you can skip them and come back if you get confused.
 
 **Vagrant Setup:**
@@ -29,7 +29,7 @@ If you intend to follow along with this tutorial and do not have a physical rout
 - [Application-hosting and Packet-IO on IOS-XR : A Deep Dive](https://xrdocs.io/application-hosting/blogs/2019-08-19-application-hosting-and-packet-io-on-ios-xr-a-deep-dive/)
 
 **XR AppMgr:**
-As this is a very new technology, there are very limited resources available that explain it in depth. If you have access to the Cisco Live! recordings, you can watch this presentation [on demand](https://www.ciscolive.com/on-demand/on-demand-library.html?search=application%20hosting%20ios%20xr#/video/1636411306810002r6fy) (31:00-36:30), otherwise you will have to make do with just the [slide deck](https://www.ciscolive.com/c/dam/r/ciscolive/us/docs/2021/pdf/BRKSPG-2024.pdf) (Slides 36-41). You can read the official documentation [here](https://www.cisco.com/c/en/us/td/docs/iosxr/ncs5xx/applicationhosting/75x/b-app-hosting-config-guide-ncs540/m-host-apps-xr-ncs540.html).
+As this is a very new technology, there are limited resources available that explain it in depth. If you have access to the Cisco Live! recordings, you can watch this presentation [on demand](https://www.ciscolive.com/on-demand/on-demand-library.html?search=application%20hosting%20ios%20xr#/video/1636411306810002r6fy) (31:00-36:30), otherwise you will have to make do with just the [slide deck](https://www.ciscolive.com/c/dam/r/ciscolive/us/docs/2021/pdf/BRKSPG-2024.pdf) (Slides 36-41). You can read the official documentation [here](https://www.cisco.com/c/en/us/td/docs/iosxr/ncs5xx/applicationhosting/75x/b-app-hosting-config-guide-ncs540/m-host-apps-xr-ncs540.html).
 
 **XR Collector Health Monitor:**
 Throughout the tutorial, I will be referencing this application as the sample for packaging, installation, and activation.
@@ -37,20 +37,20 @@ Throughout the tutorial, I will be referencing this application as the sample fo
 - [Docker Hub](https://hub.docker.com/r/adhorton/xr-collector-health-monitor)
 - **OTHER XR DOC**
 	
-### What Can I Do with Docker on IOS-XR?
+## What Can I Do with Docker on IOS-XR?
 In short, almost anything.
 
 Thanks to the rich set of Model-Driven RPC-based APIs, docker containers hosted on IOS-XR have direct access to nearly all layers of IOS-XR. From high-level configuration management to direct programming of the RIB to a multitude of other applications, IOS-XR’s APIs supply third-party applications with the visibility and flexibility to innovate direct solutions to specific problems. One of the more famous examples of application hosting on IOS-XR is Open/R developed by Facebook. A fantastic blog detailing Open/R’s integration with IOS-XR can be found [here](https://xrdocs.io/cisco-service-layer/blogs/2018-02-16-xr-s-journey-to-the-we-b-st-open-r-integration-with-ios-xr/). Of course, application hosting on IOS-XR is not limited to these use cases, and you should take every opportunity to explore xrdocs or tinker with custom containers yourself to determine how you might best leverage application hosting to meet your needs.
 
-### How Do I Get Started?
+## How Do I Get Started?
 In my experience, the best way to learn a new technology is to follow an example. In this tutorial, I will walk through the process of packaging, installing, configuring, and activating the XR Collector Health Monitor, which is an app I developed to automate the configuration management of a telemetry stream. The details behind the design and function of the application are largely irrelevant for the purposes of this demonstration, but more details for the curious reader can be found [here](**OTHER XR DOCS POST**). We will be following the Quick Start workflow:
 
 ![Application Lifecycle](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/application-lifecycle.jpg)
 
-### Docker Development Tips and Tricks
+## Docker Development Tips and Tricks
 Designing your Docker Image for IOS-XR is specific to your solution, so I will not go into too much detail. However, there are a few things to know that can simplify development. It is important to have a strong grasp of the IOS-XR application hosting architecture. Your application must communicate with the box, so you need to understand the channels that make that communication possible. Check out the links on XR AppMgr and the IOS-XR App-Hosting Architecture. As you will see later, it can also be helpful to setup a CI/CD pipeline before you begin developing your application to quickly test the latest changes without having to go through the lengthy packaging and building process. For a sample workflow using GitHub Actions, you can check out the source code in the XR Collector Health Monitor repository [here](https://github.com/adhorton-cisco/xr-collector-health-monitor/blob/main/.github/workflows/build-rpm.yaml).
 
-### Packaging Your Docker Image as an RPM
+## Packaging Your Docker Image as an RPM
 Once you have built your Docker Image and want to test it directly on the router, it is time to package it as an RPM. If you have already set up CI/CD as mentioned in the previous section, this process is taken care of automatically for you. However, for the sake of demonstration and for your overall understanding, I will walk through the manual packaging process. We will be using another script to set up an environment similar to IOS-XR and build the RPM within that environment. You can start by cloning it from the [xr-appmgr-build](https://github.com/ios-xr/xr-appmgr-build) repository. After that step is complete, we will follow this workflow to assemble the package:
 
 ![Application Packaging Workflow](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/application-packaging-workflow.jpg)
@@ -73,7 +73,6 @@ docker.io/adhorton/xr-collector-health-monitor:1.3.1
 ```
 
 - **Save Image to TAR file:** This can simply be done with a docker save command. I make a subdirectory within the cloned xr-appmgr-build before saving the image to a TAR.
-
 ```bash
 cisco@cocoa:~/adam/appmgr/xr-appmgr-build$ mkdir monitor
 cisco@cocoa:~/adam/appmgr/xr-appmgr-build$ cd monitor
@@ -81,7 +80,6 @@ cisco@cocoa:~/adam/appmgr/xr-appmgr-build/monitor$ docker save adhorton/xr-colle
 ```
 
 - **Create build.yaml file:** The build.yaml file specifies the name, version, release platform, and location of your application as well as some other important configuration settings. A better explanation of what belongs in the build.yaml file can be found in the [xr-appmgr-build](https://github.com/ios-xr/xr-appmgr-build) README. My sample build.yaml file looks like this:
-
 ```
 packages:
 - name: "xr-collector-health-monitor"
@@ -92,8 +90,7 @@ packages:
       file: monitor/monitor-131.tar
 ```
 
-- ** Package with xr-appmgr-build:** To package the application, simply run the appmgr_build script and provide the path to your build.yaml file with the -b option.
-
+- **Package with xr-appmgr-build:** To package the application, simply run the appmgr_build script and provide the path to your build.yaml file with the -b option.
 ```bash
 cisco@cocoa:~/adam/appmgr/xr-appmgr-build$ ./appmgr_build -b monitor/build.yaml
 Starting to build package: xr-collector-health-monitor
@@ -148,18 +145,17 @@ xr-collector-health-monitor-1.3.1-eXR_7.3.1.x86_64.rpm
 Done building package xr-collector-health-monitor
 ```
 
-- **Find Your RPM:** Great! Your application has been packaged as an RPM and can be found in the RPMS/x86_64 directory
+- **Find Your RPM:** Great! Your application has been packaged as an RPM and can be found in the RPMS/x86_64 directory.
 ```bash
 cisco@cocoa:~/adam/appmgr/xr-appmgr-build$ cd RPMS/x86_64
 cisco@cocoa:~/adam/appmgr/xr-appmgr-build/RPMS/x86_64$ ls
 xr-collector-health-monitor-1.3.1-eXR_7.3.1.x86_64.rpm
 ```
 
-### Registering and Activating Your Application
+## Registering and Activating Your Application
 In the previous step, we packaged a Docker Image as an RPM to be hosted on IOS-XR with XR AppMgr. For applications that will be setup securely or for automated deployment across multiple routers, investigate secure onboarding with CLI/API, SZTP, or using a GISO. This demonstration is exclusively about getting your application up and running as quickly as possible, so I will shortcut some of the best practices for security and automation in an effort to speed up the visibility of results.
 
 - **Transfer RPM to the Router:** Enter the Linux environment from IOS-XR on your router and use scp to transfer the RPM from your machine to the router. The /misc/app_host directory is the preferred location to store RPMs.
-
 ```bash
 RP/0/RP0/CPU0:R1-MAcrocarpa#bash
 Thu Jul 14 20:43:19.887 UTC
@@ -170,8 +166,7 @@ cisco@cocoa’s password:
 xr-collector-health-monitor-1.3.1-eXR_7.3.1.x86_64.rpm                                 100%   74MB  36.9MB/s   00:02
 ```
 
-- **Install Package with XR AppMgr:** Return to the IOS-XR CLI and install the package with AppMgr
-
+- **Install Package with XR AppMgr:** Return to the IOS-XR CLI and install the package with AppMgr.
 ```
 [R1-MAcrocarpa:/misc/app_host]$ exit
 logout
@@ -187,17 +182,18 @@ xr-collector-health-monitor-1.3.1-eXR_7.3.1.x86_64
 
 - **XR COLLECTOR HEALTH MONITOR ONLY:** If you have been following this tutorial exactly, there are two more setup steps before you can run the XR Collector Health Monitor. If you are following this tutorial with your own application, feel free to skip this step. For those of you who are still reading, the XR Collector Health Monitor application requires gRPC to be enabled on the router and a config file to be mounted into the docker container be run properly. Let’s start by copying the [sample config file](https://github.com/adhorton-cisco/xr-collector-health-monitor/blob/main/config/sample.yaml) from the [GitHub repository](https://github.com/adhorton-cisco/xr-collector-health-monitor) into a new directory in the Linux environment.
 
-```bash
+<div class="highlighter-rouge">
+<pre class="highlight">
+<code>
 RP/0/RP0/CPU0:R1-MAcrocarpa#bash
 Thu Jul 14 21:05:31.597 UTC
 [R1-MAcrocarpa:~]$ cd /misc/app_host
 [[R1-MAcrocarpa:/misc/app_host]$ mkdir config
 [R1-MAcrocarpa:/misc/app_host]$ cd config
 [R1-MAcrocarpa:/misc/app_host/config]$ vim config.yaml
-```
-==*** Copy, Paste, Edit Credentials, and Save contents of config.yaml***==
 
-```
+<mark>Copy, Paste, Edit Credentials, and Save contents of config.yaml</mark>
+
 [R1-MAcrocarpa:/misc/app_host/config]$ cat config.yaml
 # This is a sample config file for the automated telemetry configuration changing script
 # It must be named config.yaml for the script to function
@@ -210,8 +206,8 @@ Thu Jul 14 21:05:31.597 UTC
 router:
   ip: "127.0.0.1"         # IP address of the router (Use 127.0.0.1 if running on local machine)
   port: 57777             # Port enabled for grpc communication
-  username: "YOUR USERNAME"       # Username of router
-  password: "YOUR PASSWORD"    # Password of router
+  <mark>username: "YOUR USERNAME"       # Username of router
+  password: "YOUR PASSWORD"    # Password of router</mark>
   tls: false               # Encrypt configuration messages from xr-collector-health-monitor
                           # Must have grpc configured with tls and /misc/config/grpc/ems.pem copied into mounted config directory
 
@@ -256,7 +252,9 @@ collectors:
       interval: 30000                        # Time interval to send the telemetry data
 
 # Further backup collectors can be added if necessary
-```
+</code>
+</pre>
+</div>
 
 Enable gRPC on the port specified in the config.yaml file:
 ```
@@ -300,7 +298,7 @@ monitor  Docker  Activated  Up 10 seconds
 NOTE: If you tried running XR Collector Health Monitor and the container has EXITED, more than likely, it is an error with the config.yaml file or the gRPC configuration of your router, not with you packaging the RPM and configuring the application. You can check the container logs for more details.
 {: .notice}
 
-- **Clean Up:** Before we wrap up the tutorial, let’s stop the application, remove it, and uninstall the package. You can also enter the linux environment and remove the RPM from the /misc/app_host directory.
+- **Clean Up:** Before we wrap up the tutorial, let’s stop the application, remove it, and uninstall the package. You can also enter the linux environment and remove the RPM from the /misc/app_host directory for extra cleanliness.
 
 ```
 RP/0/RP0/CPU0:R1-MAcrocarpa#appmgr application stop name monitor
@@ -316,12 +314,12 @@ RP/0/RP0/CPU0:R1-MAcrocarpa#appmgr package uninstall package xr-collector-health
 Fri Jul 15 14:46:53.133 UTC
 ```
 
-### Additional Tips with XR AppMgr
-The official documentation of XR AppMgr provides an easy-to-understand [table](https://www.cisco.com/c/en/us/td/docs/iosxr/ncs5xx/applicationhosting/75x/b-app-hosting-config-guide-ncs540/m-host-apps-xr-ncs540.html#Cisco_Concept.dita_f5a8f7b0-0076-49d7-aadf-39fe3af13c80) detailing the available CLI commands with XR AppMgr.
+## Additional Tips with XR AppMgr
+The official documentation of XR AppMgr provides an easy-to-understand [table](https://www.cisco.com/c/en/us/td/docs/iosxr/ncs5xx/applicationhosting/75x/b-app-hosting-config-guide-ncs540/m-host-apps-xr-ncs540.html#Cisco_Concept.dita_f5a8f7b0-0076-49d7-aadf-39fe3af13c80) detailing the available CLI commands with XR AppMgr.  
 Looking to use model-driven APIs with XR AppMgr? The associated YANG models are:
 - Cisco-IOS-XR-appmgr-oper (For operational data)
 - Cisco-IOS-XR-appmgr-cfg (For configuration settings)
 - Cisco-IOS-XR-appmgr-act (To perform operations on applications)
 
-### Conclusion
+## Conclusion
 Today we covered third-party application hosting on IOS-XR using Docker with the newly released XR AppMgr. We went over the packaging, installing, and activation of a Docker Image, as well as some features of XR AppMgr and common pitfalls. As you begin building your own Docker applications to run on IOS-XR, start with a small scope and increase complexity as you become more comfortable with the technologies. Good luck developing!
