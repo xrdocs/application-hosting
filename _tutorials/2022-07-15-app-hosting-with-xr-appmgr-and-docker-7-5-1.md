@@ -80,6 +80,7 @@ cisco@cocoa:~/adam/appmgr/xr-appmgr-build/monitor$ docker save adhorton/xr-colle
 ```
 
 - **Create build.yaml file:** The build.yaml file specifies the name, version, release platform, and location of your application as well as some other important configuration settings. A better explanation of what belongs in the build.yaml file can be found in the [xr-appmgr-build](https://github.com/ios-xr/xr-appmgr-build) README. My sample build.yaml file looks like this:
+
 ```
 packages:
 - name: "xr-collector-health-monitor"
@@ -91,6 +92,7 @@ packages:
 ```
 
 - **Package with xr-appmgr-build:** To package the application, simply run the appmgr_build script and provide the path to your build.yaml file with the -b option.
+
 ```bash
 cisco@cocoa:~/adam/appmgr/xr-appmgr-build$ ./appmgr_build -b monitor/build.yaml
 Starting to build package: xr-collector-health-monitor
@@ -146,6 +148,7 @@ Done building package xr-collector-health-monitor
 ```
 
 - **Find Your RPM:** Great! Your application has been packaged as an RPM and can be found in the RPMS/x86_64 directory.
+
 ```bash
 cisco@cocoa:~/adam/appmgr/xr-appmgr-build$ cd RPMS/x86_64
 cisco@cocoa:~/adam/appmgr/xr-appmgr-build/RPMS/x86_64$ ls
@@ -167,6 +170,7 @@ xr-collector-health-monitor-1.3.1-eXR_7.3.1.x86_64.rpm                          
 ```
 
 - **Install Package with XR AppMgr:** Return to the IOS-XR CLI and install the package with AppMgr.
+
 ```
 [R1-MAcrocarpa:/misc/app_host]$ exit
 logout
@@ -316,6 +320,7 @@ Fri Jul 15 14:46:53.133 UTC
 
 ## Additional Tips with XR AppMgr
 The official documentation of XR AppMgr provides an easy-to-understand [table](https://www.cisco.com/c/en/us/td/docs/iosxr/ncs5xx/applicationhosting/75x/b-app-hosting-config-guide-ncs540/m-host-apps-xr-ncs540.html#Cisco_Concept.dita_f5a8f7b0-0076-49d7-aadf-39fe3af13c80) detailing the available CLI commands with XR AppMgr.  
+  
 Looking to use model-driven APIs with XR AppMgr? The associated YANG models are:
 - Cisco-IOS-XR-appmgr-oper (For operational data)
 - Cisco-IOS-XR-appmgr-cfg (For configuration settings)
