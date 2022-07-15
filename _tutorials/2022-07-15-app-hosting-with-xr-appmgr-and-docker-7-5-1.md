@@ -9,6 +9,8 @@ excerpt: >-
   A quick tutorial to learn how to host Docker applications on IOS-XR with XR
   AppMgr
 ---
+{% include toc icon="table" title="App Hosting with XR AppMgr and Docker" %}
+
 ### Introduction
 Previous [tutorials](https://xrdocs.io/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/) have discussed running docker containers within the Linux environment on IOS-XR. However, with the recent debut of the XR AppMgr in release 7.5.1, there are now expanded capabilities to activate and manage the lifecycle of third-party docker containers directly within the XR Control Plane. My goal by the end of the article is to familiarize you with the ins and outs of AppMgr so you can begin developing and deploying custom solutions that meet your unique network demands.
 
@@ -296,7 +298,7 @@ Name   Type   Config State Status
 monitor  Docker  Activated  Up 10 seconds
 ```
 
-> NOTE: If you tried running XR Collector Health Monitor and the container has EXITED, more than likely, it is an error with the config.yaml file or the gRPC configuration of your router, not with you packaging the RPM and configuring the application. You can check the container logs for more details.
+NOTE: If you tried running XR Collector Health Monitor and the container has EXITED, more than likely, it is an error with the config.yaml file or the gRPC configuration of your router, not with you packaging the RPM and configuring the application. You can check the container logs for more details.
 
 - **Clean Up:** Before we wrap up the tutorial, let’s stop the application, remove it, and uninstall the package. You can also enter the linux environment and remove the RPM from the /misc/app_host directory.
 
@@ -323,12 +325,3 @@ Looking to use model-driven APIs with XR AppMgr? The associated YANG models are:
 
 ### Conclusion
 Today we covered third-party application hosting on IOS-XR using Docker with the newly released XR AppMgr. We went over the packaging, installing, and activation of a Docker Image, as well as some features of XR AppMgr and common pitfalls. As you begin building your own Docker applications to run on IOS-XR, start with a small scope and increase complexity as you become more comfortable with the technologies. Good luck developing!
-
-
-
-
-
-
-
-
-
