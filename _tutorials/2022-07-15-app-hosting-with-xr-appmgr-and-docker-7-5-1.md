@@ -8,6 +8,7 @@ author: Adam Horton
 excerpt: >-
   A quick tutorial to learn how to host Docker applications on IOS-XR with XR
   AppMgr
+position: hidden
 ---
 {% include toc %}
 
