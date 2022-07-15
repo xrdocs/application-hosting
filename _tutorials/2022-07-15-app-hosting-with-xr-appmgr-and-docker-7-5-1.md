@@ -1,9 +1,10 @@
 ---
-published: false
+published: true
 date: '2022-07-15 10:02 -0500'
 title: App Hosting with XR AppMgr and Docker (7.5.1+)
 tags:
   - iosxr
+  - cisco
 author: Adam Horton
 excerpt: >-
   A quick tutorial to learn how to host Docker applications on IOS-XR with XR
