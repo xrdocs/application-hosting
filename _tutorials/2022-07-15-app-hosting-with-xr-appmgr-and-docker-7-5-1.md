@@ -210,7 +210,7 @@ Thu Jul 14 21:05:31.597 UTC
 router:
   ip: "127.0.0.1"         # IP address of the router (Use 127.0.0.1 if running on local machine)
   port: 57777             # Port enabled for grpc communication
-  <mark>username: "YOUR USERNAME"       # Username of router
+<mark>  username: "YOUR USERNAME"       # Username of router
   password: "YOUR PASSWORD"    # Password of router</mark>
   tls: false               # Encrypt configuration messages from xr-collector-health-monitor
                           # Must have grpc configured with tls and /misc/config/grpc/ems.pem copied into mounted config directory
