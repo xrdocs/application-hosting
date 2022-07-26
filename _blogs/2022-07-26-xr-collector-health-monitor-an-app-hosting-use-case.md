@@ -58,9 +58,13 @@ In IOS-XR, operational and configuration data is accessible via a common format,
 
 ### Program Logic
 This section will discuss the brains of the XR Collector Health Monitor, and how it makes the decision to divert the telemetry stream to the backup collector. The first piece of information to realize, is that the Collector Health Monitor only knows information about the network that it finds in the config file. This is the location where primary and backup collectors are specified as well as information about their telemetry stream formats.  
+
 Telemetry data is streamed at regular intervals, so the Collector Health Monitor only has to check the status of the telemetry stream immediately prior to the data being sent. Luckily, there is a YANG model that describes the status of a telemetry subscription, Cisco-IOS-XR-telemetry-model-driven-oper. Should the telemetry stream to the primary collector fail, the Collector Health Monitor reconfigures a new subscription to the destination-group of the backup collector. When the primary collector comes back online, its subscription reactivates automatically (handled by IOS-XR), and the Collector Health Monitor knows to safely remove the subscription to the backup.  
+
 You may also optionally choose to set up TLS, either for communication between the IOS-XR and the Collector Health Monitor, or for the telemetry stream.  
+
 This [tutorial](https://xrdocs.io/telemetry/tutorials/2017-05-08-pipeline-with-grpc/#grpc-dialout-with-tls) describes how to prepare the certificates for telemetry streaming with TLS. If specified in the config file, the Collector Health Monitor will manage the router configuration while the user must place the certificates are in the correct directory.  
+
 You may also configure TLS between the Collector Health Monitor and IOS-XR by configuring gRPC with TLS on the router and copying the certificate in /misc/config/grpc into the directory with the config.yaml file. Although this is nearly useless when the Collector Health Monitor is being run on-box, it can be useful if the Collector Health Monitor is managing a router from an external host (Yes! It can do that too), and you want to ensure that configuration and operational data is private on the network.
 
 
