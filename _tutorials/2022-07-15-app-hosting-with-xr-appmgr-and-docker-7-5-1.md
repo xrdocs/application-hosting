@@ -15,19 +15,19 @@ position: hidden
 {% include base_path %}
 
 ## Introduction
-Previous [tutorials]({{ base_path }}/application-hosting/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/) have discussed running docker containers within the Linux environment on IOS-XR. However, with the recent debut of the XR AppMgr in release 7.5.1, there are now expanded capabilities to activate and manage the lifecycle of third-party docker containers directly within the XR Control Plane. My goal by the end of the article is to familiarize you with the ins and outs of AppMgr so you can begin developing and deploying custom solutions that meet your unique network demands.
+Previous [tutorials]({{ base_path }}/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/) have discussed running docker containers within the Linux environment on IOS-XR. However, with the recent debut of the XR AppMgr in release 7.5.1, there are now expanded capabilities to activate and manage the lifecycle of third-party docker containers directly within the XR Control Plane. My goal by the end of the article is to familiarize you with the ins and outs of AppMgr so you can begin developing and deploying custom solutions that meet your unique network demands.
 
 ## Before You Dive In
 I highly recommend you look at some other resources on the IOS-XR application hosting architecture before you start, as I will be expanding upon some of these concepts throughout the article. Or if you are eager to get started, you can skip them and come back if you get confused.
 
 **Vagrant Setup:**
 If you intend to follow along with this tutorial and do not have a physical router to test it on, look into using an IOS-XR Vagrant box
-- [XR toolbox, Part 1 : IOS-XR Vagrant Quick Start]({{ base_path }}/application-hosting/tutorials/iosxr-vagrant-quickstart)
-- [Building your own IOS XRv Vagrant box]({{ base_path }}/application-hosting/blogs/2016-07-12-building-an-ios-xrv-vagrant-virtualbox/)
+- [XR toolbox, Part 1 : IOS-XR Vagrant Quick Start]({{ base_path }}/tutorials/iosxr-vagrant-quickstart)
+- [Building your own IOS XRv Vagrant box]({{ base_path }}/blogs/2016-07-12-building-an-ios-xrv-vagrant-virtualbox/)
 
 **IOS-XR App Hosting Architecture:**
-- [XR App-hosting architecture: Quick Look!]({{ base_path }}/application-hosting/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/)
-- [Application-hosting and Packet-IO on IOS-XR : A Deep Dive]({{ base_path }}/application-hosting/blogs/2019-08-19-application-hosting-and-packet-io-on-ios-xr-a-deep-dive/)
+- [XR App-hosting architecture: Quick Look!]({{ base_path }}/blogs/2016-06-28-xr-app-hosting-architecture-quick-look/)
+- [Application-hosting and Packet-IO on IOS-XR : A Deep Dive]({{ base_path }}/blogs/2019-08-19-application-hosting-and-packet-io-on-ios-xr-a-deep-dive/)
 
 **XR AppMgr:**
 As this is a very new technology, there are limited resources available that explain it in depth. If you have access to the Cisco Live! recordings, you can watch this presentation [on demand](https://www.ciscolive.com/on-demand/on-demand-library.html?search=application%20hosting%20ios%20xr#/video/1636411306810002r6fy) (31:00-36:30), otherwise you will have to make do with just the [slide deck](https://www.ciscolive.com/c/dam/r/ciscolive/us/docs/2021/pdf/BRKSPG-2024.pdf) (Slides 36-41). You can read the official documentation [here](https://www.cisco.com/c/en/us/td/docs/iosxr/ncs5xx/applicationhosting/75x/b-app-hosting-config-guide-ncs540/m-host-apps-xr-ncs540.html).
@@ -36,12 +36,12 @@ As this is a very new technology, there are limited resources available that exp
 Throughout the tutorial, I will be referencing this application as the sample for packaging, installation, and activation.
 - [GitHub](https://github.com/adhorton-cisco/xr-collector-health-monitor)
 - [Docker Hub](https://hub.docker.com/r/adhorton/xr-collector-health-monitor)
-- [xrdoc]({{ base_path }}/application-hosting/blogs/2022-07-26-xr-collector-health-monitor-an-app-hosting-use-case) with more details
+- [xrdoc]({{ base_path }}/blogs/2022-07-26-xr-collector-health-monitor-an-app-hosting-use-case) with more details
 	
 ## What Can I Do with Docker on IOS-XR?
 In short, almost anything.
 
-Thanks to the rich set of Model-Driven RPC-based APIs, docker containers hosted on IOS-XR have direct access to nearly all layers of IOS-XR. From high-level configuration management to direct programming of the RIB to a multitude of other applications, IOS-XR’s APIs supply third-party applications with the visibility and flexibility to innovate direct solutions to specific problems. One of the more famous examples of application hosting on IOS-XR is Open/R developed by Facebook. A fantastic blog detailing Open/R’s integration with IOS-XR can be found [here]({{ base_path }}/cisco-service-layer/blogs/2018-02-16-xr-s-journey-to-the-we-b-st-open-r-integration-with-ios-xr/). Of course, application hosting on IOS-XR is not limited to these use cases, and you should take every opportunity to explore xrdocs or tinker with custom containers yourself to determine how you might best leverage application hosting to meet your needs.
+Thanks to the rich set of Model-Driven RPC-based APIs, docker containers hosted on IOS-XR have direct access to nearly all layers of IOS-XR. From high-level configuration management to direct programming of the RIB to a multitude of other applications, IOS-XR’s APIs supply third-party applications with the visibility and flexibility to innovate direct solutions to specific problems. One of the more famous examples of application hosting on IOS-XR is Open/R developed by Facebook. A fantastic blog detailing Open/R’s integration with IOS-XR can be found [here](https://xrdocs.io/cisco-service-layer/blogs/2018-02-16-xr-s-journey-to-the-we-b-st-open-r-integration-with-ios-xr/). Of course, application hosting on IOS-XR is not limited to these use cases, and you should take every opportunity to explore xrdocs or tinker with custom containers yourself to determine how you might best leverage application hosting to meet your needs.
 
 ## How Do I Get Started?
 In my experience, the best way to learn a new technology is to follow an example. In this tutorial, I will walk through the process of packaging, installing, configuring, and activating the XR Collector Health Monitor, which is an app I developed to automate the configuration management of a telemetry stream. The details behind the design and function of the application are largely irrelevant for the purposes of this demonstration, but more details for the curious reader can be found [here](**OTHER XR DOCS POST**). We will be following the Quick Start workflow:
