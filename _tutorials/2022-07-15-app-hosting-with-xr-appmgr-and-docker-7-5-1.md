@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2022-07-15 10:02 -0500'
-title: App Hosting with XR AppMgr and Docker (7.5.1+)
+title: App Hosting with XR AppMgr and Docker (7.3.1+)
 tags:
   - iosxr
   - cisco
@@ -15,7 +15,7 @@ position: hidden
 {% include base_path %}
 
 ## Introduction
-Previous [tutorials]({{ base_path }}/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/) have discussed running docker containers within the Linux environment on IOS-XR. However, with the recent debut of the XR AppMgr in release 7.5.1, there are now expanded capabilities to activate and manage the lifecycle of third-party docker containers directly within the XR Control Plane. My goal by the end of the article is to familiarize you with the ins and outs of AppMgr so you can begin developing and deploying custom solutions that meet your unique network demands.
+Previous [tutorials]({{ base_path }}/tutorials/2017-02-26-running-docker-containers-on-ios-xr-6-1-2/) have discussed running docker containers within the Linux environment on IOS-XR. However, with the recent debut of the XR AppMgr in release 7.3.1, there are now expanded capabilities to activate and manage the lifecycle of third-party docker containers directly within the XR Control Plane. My goal by the end of the article is to familiarize you with the ins and outs of AppMgr so you can begin developing and deploying custom solutions that meet your unique network demands.
 
 ## Before You Dive In
 I highly recommend you look at some other resources on the IOS-XR application hosting architecture before you start, as I will be expanding upon some of these concepts throughout the article. Or if you are eager to get started, you can skip them and come back if you get confused.
