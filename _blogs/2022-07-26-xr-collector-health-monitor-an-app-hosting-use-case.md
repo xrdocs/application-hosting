@@ -23,7 +23,7 @@ In this blog post, I will be discussing the motivation behind leveraging the app
 ## Telemetry Snapshot
 Before I begin discussing the XR-Collector-Health-Monitor in detail, I would like to get all readers up to speed with telemetry. If you are an expert on telemetry, feel free to skip this section. For those of you who are not, telemetry is the process by which data about the router, its performance, and other network metrics are transferred to an external collector where they can be monitored by network engineers and used to guide decisions about the network. A standard collector utilizes Telegraf to receive the incoming data, InfluxDB or Prometheus to store the data (Time-Series Database), and Grafana to display the statistics in a user-friendly format:
 
-![Telemetry Stack](https://xrdocs.github.io/xrdocs-images/assets/blog-images/telemetry-stack-FIXME.jpg)
+![Telemetry Stack](https://xrdocs.github.io/xrdocs-images/assets/blog-images/telemetry-stack.jpg)
 
 Telemetry is model-driven, meaning that information transferred in a telemetry stream is described by YANG models. A telemetry stream is made up of three components:
 
