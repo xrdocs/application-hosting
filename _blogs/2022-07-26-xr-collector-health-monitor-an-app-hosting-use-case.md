@@ -43,7 +43,7 @@ If you want to know how to set up an application for app hosting on XR AppMgr, c
 
 Now that we have broadly covered the topics that feed into the discussion on the XR Collector Health Monitor, we will dive into the details of how it works.
 
-#### Architecture
+### Architecture
 ![App-Hosting IOSXR](https://xrdocs.github.io/xrdocs-images/assets/blog-images/app-hosting-iosxr.jpg)
 
 The XR Collector Health Monitor is run as a docker container managed by IOS-XR AppMgr directly on top of the host hypervisor because the docker daemon is run on the host kernel. This means that containerized applications are entirely separate from the LXC that runs IOS-XR. This is a lot of information to take in all at once, so let’s break down those statements and the diagram further. First, IOS-XR exists within a Linux container running a Wind River Linux 7 distro. This is the Linux shell you enter when you use the bash command from the XR CLI. All other XR CLI commands are executed within the XR Control Plane, which handles the routing-related activities. Third-party applications (XR Collector Health Monitor in this case) are installed and managed by XR AppMgr, which is within the XR Control Plane, but are run by the Docker daemon. Because of the separation between IOS-XR and third-party containers, we have to employ slightly more advanced concepts to enable communication between them, which will be covered in the next section.
@@ -51,12 +51,12 @@ The XR Collector Health Monitor is run as a docker container managed by IOS-XR A
 For further details on the application hosting architecture of IOS-XR, check out [this blog post]({{ base_path }}/blogs/2019-08-19-application-hosting-and-packet-io-on-ios-xr-a-deep-dive/#understanding-app-hosting-on-ios-xr).
 {: .notice--info}
 
-#### Communication
+### Communication
 Because third-party applications have no direct means of accessing the data at the heart of IOS-XR, they must manipulate that data through communication protocols (NETCONF or gRPC). In my case, I chose gRPC/gNMI because of its smaller, more efficient messages. gRPC has the additional benefit of making it simple to encrypt data with TLS if you are worried about the security of communications on your network. In Python, there is a library, [pyGNMI](https://github.com/akarneliuk/pygnmi), that handles creating a gRPC/gNMI client which I leveraged in the XR Collector Health Monitor. You can view my source code [here](https://github.com/adhorton-cisco/xr-collector-health-monitor/blob/main/src/gnmi_config.py). When you configure your application, make sure you use the docker run option “\-\-network host” to share the host networking namespace with the container, so the container can talk to the gRPC/NETCONF server in IOS-XR at address 127.0.0.1.  
 
 In IOS-XR, operational and configuration data is accessible via a common format, YANG models. YANG models have been extensively covered in other tutorials, so I will send you to the [programmability](https://xrdocs.io/programmability or [telemetry](https://xrdocs.io/telemetry) pages to read more if you are interested. The relevant YANG model for the XR Collector Health Monitor that describes the configuration of model-driven telemetry is Cisco-IOS-XR-telemetry-model-driven-cfg. The application changes the telemetry stream destination over the lifetime of the program by managing subscriptions through this YANG model.
 
-#### Program Logic
+### Program Logic
 This section will discuss the brains of the XR Collector Health Monitor, and how it makes the decision to divert the telemetry stream to the backup collector. The first piece of information to realize, is that the Collector Health Monitor only knows information about the network that it finds in the config file. This is the location where primary and backup collectors are specified as well as information about their telemetry stream formats.  
 Telemetry data is streamed at regular intervals, so the Collector Health Monitor only has to check the status of the telemetry stream immediately prior to the data being sent. Luckily, there is a YANG model that describes the status of a telemetry subscription, Cisco-IOS-XR-telemetry-model-driven-oper. Should the telemetry stream to the primary collector fail, the Collector Health Monitor reconfigures a new subscription to the destination-group of the backup collector. When the primary collector comes back online, its subscription reactivates automatically (handled by IOS-XR), and the Collector Health Monitor knows to safely remove the subscription to the backup.  
 You may also optionally choose to set up TLS, either for communication between the IOS-XR and the Collector Health Monitor, or for the telemetry stream.  
