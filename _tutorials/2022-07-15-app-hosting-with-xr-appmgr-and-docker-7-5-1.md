@@ -57,21 +57,21 @@ Once you have built your Docker Image and want to test it directly on the router
 ![Application Packaging Workflow](https://xrdocs.github.io/xrdocs-images/assets/tutorial-images/application-packaging-workflow.jpg)
 
 ### Create Docker Image
-For the tutorial, I will be pulling my image for the XR Collector Health Monitor v1.3.1 from the [Docker Hub](https://hub.docker.com/r/adhorton/xr-collector-health-monitor). If you are working on your own application, you would most likely build it from scratch with a docker build command.
+For the tutorial, I will be pulling my image for the XR Collector Health Monitor v1.3.2 from the [Docker Hub](https://hub.docker.com/r/adhorton/xr-collector-health-monitor). If you are working on your own application, you would most likely build it from scratch with a docker build command.
 ```bash
-cisco@cocoa:~/adam/appmgr/xr-appmgr-build$ docker pull adhorton/xr-collector-health-monitor:1.3.1
-1.3.1: Pulling from adhorton/xr-collector-health-monitor
+cisco@cocoa:~/adam/appmgr/xr-appmgr-build$ docker pull adhorton/xr-collector-health-monitor:1.3.2
+1.3.2: Pulling from adhorton/xr-collector-health-monitor
 ac2fb615420c: Pull complete
 64d0f1d7987a: Pull complete
 54c425cbf621: Pull complete
 01eaa7c10346: Pull complete
 a3e61f8fbfcd: Pull complete
-1926b20809c9: Pull complete
-b421f53d7713: Pull complete
-9a7e46483d6b: Pull complete
-Digest: sha256:8c0bd22fbc5043d0f6ab65c303ae6e4a76df318a557df0cd804020d890d19bb8
-Status: Downloaded newer image for adhorton/xr-collector-health-monitor:1.3.1
-docker.io/adhorton/xr-collector-health-monitor:1.3.1
+113604aa28a4: Pull complete
+c737badf4067: Pull complete
+bfff7d1f3e6b: Pull complete
+Digest: sha256:5dd4662087a07aba61585d74922f1ac0e632064c229f3d58c8d075d7cc72ee8d
+Status: Downloaded newer image for adhorton/xr-collector-health-monitor:1.3.2
+docker.io/adhorton/xr-collector-health-monitor:1.3.2
 ```
 
 ### Save Image to TAR file
@@ -79,7 +79,7 @@ This can simply be done with a docker save command. I make a subdirectory within
 ```bash
 cisco@cocoa:~/adam/appmgr/xr-appmgr-build$ mkdir monitor
 cisco@cocoa:~/adam/appmgr/xr-appmgr-build$ cd monitor
-cisco@cocoa:~/adam/appmgr/xr-appmgr-build/monitor$ docker save adhorton/xr-collector-health-monitor:1.3.1 > monitor-131.tar
+cisco@cocoa:~/adam/appmgr/xr-appmgr-build/monitor$ docker save adhorton/xr-collector-health-monitor:1.3.2 > monitor-132.tar
 ```
 
 ### Create build.yaml file
@@ -89,10 +89,10 @@ The build.yaml file specifies the name, version, release platform, and location 
 packages:
 - name: "xr-collector-health-monitor"
   release: "eXR_7.3.1"
-  version: "1.3.1"
+  version: "1.3.2"
   sources:
     - name: xr-collector-health-monitor
-      file: monitor/monitor-131.tar
+      file: monitor/monitor-132.tar
 ```
 
 ### Package with xr-appmgr-build
@@ -116,22 +116,22 @@ Adding sources...
 Adding configs...
 Adding data...
 Creating source archive...
-Generating spec file: xr-collector-health-monitor-1.3.1-eXR_7.3.1.spec
+Generating spec file: xr-collector-health-monitor-1.3.2-eXR_7.3.1.spec
 Building RPM...
-/usr/sbin/build_rpm.sh --spec-file /usr/src/rpm/SPECS/xr-collector-health-monitor-1.3.1-eXR_7.3.1.spec --source-dir /usr/src/rpm/SOURCES --rpm-dir /usr/src/rpm/RPMS --output-dir /root/RPMS --verbose
+/usr/sbin/build_rpm.sh --spec-file /usr/src/rpm/SPECS/xr-collector-health-monitor-1.3.2-eXR_7.3.1.spec --source-dir /usr/src/rpm/SOURCES --rpm-dir /usr/src/rpm/RPMS --output-dir /root/RPMS --verbose
 + [[ '' == '' ]]
 + log_file=/tmp/rpmbuild.log
-+ [[ /usr/src/rpm/SPECS/xr-collector-health-monitor-1.3.1-eXR_7.3.1.spec == '' ]]
++ [[ /usr/src/rpm/SPECS/xr-collector-health-monitor-1.3.2-eXR_7.3.1.spec == '' ]]
 + [[ /usr/src/rpm/SOURCES == '' ]]
 + [[ /usr/src/rpm/RPMS == '' ]]
 + [[ /root/RPMS == '' ]]
 + mkdir -p /root/RPMS
 + chown -Rf root:root /root/RPMS
-+ chown -Rf root:root /usr/src/rpm/SOURCES/xr-collector-health-monitor-1.3.1-eXR_7.3.1.tar.gz
-++ dirname /usr/src/rpm/SPECS/xr-collector-health-monitor-1.3.1-eXR_7.3.1.spec
-+ chown -Rf root:root /usr/src/rpm/SPECS/xr-collector-health-monitor-1.3.1-eXR_7.3.1.spec
++ chown -Rf root:root /usr/src/rpm/SOURCES/xr-collector-health-monitor-1.3.2-eXR_7.3.1.tar.gz
+++ dirname /usr/src/rpm/SPECS/xr-collector-health-monitor-1.3.2-eXR_7.3.1.spec
++ chown -Rf root:root /usr/src/rpm/SPECS/xr-collector-health-monitor-1.3.2-eXR_7.3.1.spec
 + [[ '' != '' ]]
-+ /usr/bin/rpmbuild --verbose -bb /usr/src/rpm/SPECS/xr-collector-health-monitor-1.3.1-eXR_7.3.1.spec
++ /usr/bin/rpmbuild --verbose -bb /usr/src/rpm/SPECS/xr-collector-health-monitor-1.3.2-eXR_7.3.1.spec
 + rpm_build_ec=0
 + [[ 0 -eq 0 ]]
 + echo 'RPM built successfully, copying over the RPMs directory to /root/RPMS'
@@ -147,7 +147,7 @@ x86_64
 /root/RPMS/noarch:
 
 /root/RPMS/x86_64:
-xr-collector-health-monitor-1.3.1-eXR_7.3.1.x86_64.rpm
+xr-collector-health-monitor-1.3.2-eXR_7.3.1.x86_64.rpm
 
 Done building package xr-collector-health-monitor
 ```
@@ -161,7 +161,7 @@ Great! Your application has been packaged as an RPM and can be found in the RPMS
 ```bash
 cisco@cocoa:~/adam/appmgr/xr-appmgr-build$ cd RPMS/x86_64
 cisco@cocoa:~/adam/appmgr/xr-appmgr-build/RPMS/x86_64$ ls
-xr-collector-health-monitor-1.3.1-eXR_7.3.1.x86_64.rpm
+xr-collector-health-monitor-1.3.2-eXR_7.3.1.x86_64.rpm
 ```
 
 ## Registering and Activating Your Application
@@ -174,9 +174,9 @@ RP/0/RP0/CPU0:R1-MAcrocarpa#bash
 Thu Jul 14 20:43:19.887 UTC
 [R1-MAcrocarpa:~]$ cd /misc/app_host
 [R1-MAcrocarpa:/misc/app_host]$ scp cisco@cocoa:/home/cisco/adam/appmgr/xr-appmgr-build/RPMS/x86_64/xr-collector-
-health-monitor-1.3.1-eXR_7.3.1.x86_64.rpm /misc/app_host
+health-monitor-1.3.2-eXR_7.3.1.x86_64.rpm /misc/app_host
 cisco@cocoa’s password:
-xr-collector-health-monitor-1.3.1-eXR_7.3.1.x86_64.rpm                                 100%   74MB  36.9MB/s   00:02
+xr-collector-health-monitor-1.3.2-eXR_7.3.1.x86_64.rpm                                 100%   74MB  36.9MB/s   00:02
 ```
 
 ### Install Package with XR AppMgr
@@ -186,13 +186,13 @@ Return to the IOS-XR CLI and install the package with AppMgr.
 [R1-MAcrocarpa:/misc/app_host]$ exit
 logout
 
-RP/0/RP0/CPU0:R1-MAcrocarpa#appmgr package install rpm /misc/app_host/xr-collector-health-monitor-1.3.1-eXR_7.3.1.x86_64.rpm
+RP/0/RP0/CPU0:R1-MAcrocarpa#appmgr package install rpm /misc/app_host/xr-collector-health-monitor-1.3.2-eXR_7.3.1.x86_64.rpm
 Thu Jul 14 20:52:11.237 UTC
 RP/0/RP0/CPU0:R1-MAcrocarpa#show appmgr packages installed
 Thu Jul 14 20:54:03.996 UTC
 Package
 ------------------------------------------------------------
-xr-collector-health-monitor-1.3.1-eXR_7.3.1.x86_64
+xr-collector-health-monitor-1.3.2-eXR_7.3.1.x86_64
 ```
 
 ### Additional Step for XR Collector Health Monitor
@@ -329,7 +329,7 @@ RP/0/RP0/CPU0:R1-MAcrocarpa(config-appmgr)#no application monitor
 RP/0/RP0/CPU0:R1-MAcrocarpa(config-appmgr)#commit
 Fri Jul 15 14:45:07.226 UTC
 RP/0/RP0/CPU0:R1-MAcrocarpa(config-appmgr)#end
-RP/0/RP0/CPU0:R1-MAcrocarpa#appmgr package uninstall package xr-collector-health-monitor-1.3.1-eXR_7.3.1.x86_64
+RP/0/RP0/CPU0:R1-MAcrocarpa#appmgr package uninstall package xr-collector-health-monitor-1.3.2-eXR_7.3.1.x86_64
 Fri Jul 15 14:46:53.133 UTC
 ```
 
