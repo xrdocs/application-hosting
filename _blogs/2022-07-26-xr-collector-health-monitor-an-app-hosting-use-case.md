@@ -21,7 +21,7 @@ This blog post is primarily designed to provide additional information about the
 In this blog post, I will be discussing the motivation behind leveraging the application hosting capabilities of IOS-XR through the lens of a specific use case. The topic of this post is the XR Collector Health Monitor, which is a third-party application I developed to automate the configuration management of a telemetry stream. Over the course of the article, I will describe the process of designing an application specifically for IOS-XR, while highlighting a few important concepts related to application hosting. This post is specifically about the XR Collector Health Monitor, so I will also be briefly touching on some concepts from telemetry and programmability. 
 
 ## Telemetry Snapshot
-Before I begin discussing the XR-Collector-Health-Monitor in detail, I would like to get all readers up to speed with telemetry. If you are an expert on telemetry, feel free to skip this section. For those of you who are not, telemetry is the process by which data about the router, its performance, and other network metrics are transferred to an external collector where they can be monitored by network engineers and used to guide decisions about the network. A standard collector utilizes Pipeline or Telegraf to receive the incoming data, InfluxDB or Prometheus to store the data (Time-Series Database), and Grafana to display the statistics in a user-friendly format:
+Before I begin discussing the XR-Collector-Health-Monitor in detail, I would like to get all readers up to speed with telemetry. If you are an expert on telemetry, feel free to skip this section. For those of you who are not, telemetry is the process by which data about the router, its performance, and other network metrics are transferred to an external collector where they can be monitored by network engineers and used to guide decisions about the network. A standard collector utilizes Telegraf to receive the incoming data, InfluxDB or Prometheus to store the data (Time-Series Database), and Grafana to display the statistics in a user-friendly format:
 
 ![Telemetry Stack](https://xrdocs.github.io/xrdocs-images/assets/blog-images/telemetry-stack.jpg)
 
@@ -66,11 +66,3 @@ You may also optionally choose to set up TLS, either for communication between t
 This [tutorial](https://xrdocs.io/telemetry/tutorials/2017-05-08-pipeline-with-grpc/#grpc-dialout-with-tls) describes how to prepare the certificates for telemetry streaming with TLS. If specified in the config file, the Collector Health Monitor will manage the router configuration while the user must place the certificates are in the correct directory.  
 
 You may also configure TLS between the Collector Health Monitor and IOS-XR by configuring gRPC with TLS on the router and copying the certificate in /misc/config/grpc into the directory with the config.yaml file. Although this is nearly useless when the Collector Health Monitor is being run on-box, it can be useful if the Collector Health Monitor is managing a router from an external host (Yes! It can do that too), and you want to ensure that configuration and operational data is private on the network.
-
-
-
-
-
-
-
-
