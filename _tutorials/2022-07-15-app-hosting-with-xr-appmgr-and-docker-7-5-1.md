@@ -297,7 +297,7 @@ RP/0/RP0/CPU0:R1-MAcrocarpa(config)#appmgr application <CONTAINER NAME> activate
 ```
 RP/0/RP0/CPU0:R1-MAcrocarpa#config
 Thu Jul 14 21:20:43.901 UTC
-RP/0/RP0/CPU0:R1-MAcrocarpa(config)#appmgr application monitor activate type docker source xr-collector-health-monitor docker-run-opts “-itd -v /misc/app_host/config:/config:ro --network host”
+RP/0/RP0/CPU0:R1-MAcrocarpa(config)#appmgr application monitor activate type docker source xr-collector-health-monitor docker-run-opts “-v /misc/app_host/config:/config:ro --network host”
 RP/0/RP0/CPU0:R1-MAcrocarpa(config)#commit
 Thu Jul 14 21:21:42.322 UTC
 RP/0/RP0/CPU0:R1-MAcrocarpa(config)#end
