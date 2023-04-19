@@ -42,16 +42,15 @@ A public repository (https://github.com/ios-xr/xr-appmgr-build) contains scripts
 IOS XR comes with built in guardrails to prevent Third Party Applications from interfering with its functions as a Network OS.
 
 - While IOS XR does not limit the number of TPAs that can be run simultaneously, it does restrict the resources available to the docker daemon using Linux cgroups for the following parameters:
-1. CPU: ¼ CPU per core available in the platform.
-2. RAM: 1 G Max 
-3. Disk is limited by the partition size which varies by platform. Can be checked by executing “run df -h” and looking at the size of the /misc/app_host or /var/lib/docker mounts.
+	- CPU: ¼ CPU per core available in the platform.
+	- RAM: 1 G Max 
+	- Disk is limited by the partition size which varies by platform. Can be checked by executing “run df -h” and looking at the size of the /misc/app_host or /var/lib/docker mounts.
 
 - As discussed earlier, the docker daemon runs only on the Route Processor. Hence, any packets to and from the application go through the control plane protection mechanism on IOS XR called LPTS. 
 
 - Signed Applications are supported on IOS XR. Depending on the type of application, it can be either signed by Cisco or signed by users themselves. Users can sign their own applications by onboarding Owner Certificate (OC) using Ownership Voucher based workflows described in RFC 8366. After onboarding an Owner Certificate, users can sign applications with GPG keys based on the Owner Certificate which can then be verified while installing the application on the router.
 
 <h2>IOS XR appmgr</h2>
-
 
 
 Command reference:
