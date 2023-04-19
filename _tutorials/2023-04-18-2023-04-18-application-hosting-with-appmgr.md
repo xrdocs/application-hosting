@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2023-04-18 18:45 -0600'
-title: 2023-04-18-Application-Hosting-With-Appmgr
+title: Application Hosting With Appmgr
 author: Suhaib Ahmad
 excerpt: Technical Marketing Engineer at Cisco
 tags:
