@@ -46,7 +46,7 @@ IOS XR comes with built in guardrails to prevent Third Party Applications from i
 	- RAM: 1G Maximum
 	- Disk is limited by the partition size which varies by platform. Can be checked by executing “run df -h” and looking at the size of the /misc/app_host or /var/lib/docker mounts.
 
-- All packets to and from the application are policed by the XR control protection, LPTS. Read this blog to learn more about XR's LPTS https://xrdocs.io/ncs5500/tutorials/introduction-to-ncs55xx-and-ncs5xx-lpts/.
+- All packets to and from the application are policed by the XR control protection, LPTS. Read this blog to learn more about XR's LPTS [Introduction to NCS 55XX and NCS 5xx LPTS](https://xrdocs.io/ncs5500/tutorials/introduction-to-ncs55xx-and-ncs5xx-lpts/)
 
 - Signed Applications are supported on IOS XR. Users can sign their own applications by onboarding Owner Certificate (OC) using Ownership Voucher based workflows described in RFC 8366. After onboarding an Owner Certificate, users can sign applications with GPG keys based on the Owner Certificate which can then be verified while installing the application on the router.
 
