@@ -50,11 +50,11 @@ IOS XR comes with built in guardrails to prevent Third Party Applications from i
 
 - Signed Applications are supported on IOS XR. Users can sign their own applications by onboarding Owner Certificate (OC) using Ownership Voucher based workflows described in RFC 8366. After onboarding an Owner Certificate, users can sign applications with GPG keys based on the Owner Certificate which can then be verified while installing the application on the router.
 
-<img src="{{base_path}}/images/secure-app-workflow.png" alt="RFC 8366 app installation" style="padding:1px;border:thin solid black;" width="400" height="500">
+<img src="{{base_path}}/images/secure-app-workflow.png" width="300" height="300" alt="RFC 8366 app installation" style="padding:1px;border:thin solid black;">
 
 <h2>IOS XR appmgr</h2>
 
-<img src="{{base_path}}/images/appmgr-intro.png" alt="appmgr comparison" style="padding:1px;border:thin solid black;" width="400" height="500">
+<img src="{{base_path}}/images/appmgr-intro.png" width="700" height="800" alt="appmgr comparison" style="padding:1px;border:thin solid black;">
 
 
 Command reference:
