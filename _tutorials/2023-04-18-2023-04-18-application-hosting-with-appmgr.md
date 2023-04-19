@@ -28,9 +28,6 @@ Application Hosting on IOS-XR allows users to run third-party applications on Ci
 Now that we have established some use-cases for hosting applications on routers, let’s dive into IOS XR features that can help us in doing so.
 
 - Docker on IOS XR: The Docker daemon is packaged with IOS XR software on the base Linux OS. This provides native support for running applications inside docker containers on IOS XR. Docker is the preferred way to run TPAs on IOS XR.
-It is important to note that the docker daemon is present on the Route Processor (RP) and not the Line Card (LC). Figure 1 shows this architecture on different product families of IOS XR:
-
-
 
 - Appmgr: While the docker daemon comes packaged with IOS XR, docker applications can only managed using appmgr. Appmgr allows users to install applications packaged as rpms and then manage their lifecycle using IOS XR CLI and programmable models. We will discuss appmgr features in depth in later sections.
 A public repository (https://github.com/ios-xr/xr-appmgr-build) contains scripts that package docker images into appmgr supported rpms. We will use these scripts to build appmgr rpms in a later section of this article.
@@ -41,14 +38,18 @@ A public repository (https://github.com/ios-xr/xr-appmgr-build) contains scripts
 
 IOS XR comes with built in guardrails to prevent Third Party Applications from interfering with its functions as a Network OS.
 
-- While IOS XR does not limit the number of TPAs that can be run simultaneously, it does restrict the resources available to the docker daemon using Linux cgroups for the following parameters:
+- While IOS XR does not limit the number of TPAs that can be run simultaneously, it does restrict the resources available to the docker daemon for the following parameters:
 	- CPU: ¼ CPU per core available in the platform.
-	- RAM: 1G Max 
+	- RAM: 1G Maximum
 	- Disk is limited by the partition size which varies by platform. Can be checked by executing “run df -h” and looking at the size of the /misc/app_host or /var/lib/docker mounts.
 
-- All packets to and from the application are policed by the XR control protection, LPTS. Read this blog to learn more about XR's LPTS https://xrdocs.io/ncs5500/tutorials/introduction-to-ncs55xx-and-ncs5xx-lpts/
+- All packets to and from the application are policed by the XR control protection, LPTS. Read this blog to learn more about XR's LPTS https://xrdocs.io/ncs5500/tutorials/introduction-to-ncs55xx-and-ncs5xx-lpts/.
 
 - Signed Applications are supported on IOS XR. Users can sign their own applications by onboarding Owner Certificate (OC) using Ownership Voucher based workflows described in RFC 8366. After onboarding an Owner Certificate, users can sign applications with GPG keys based on the Owner Certificate which can then be verified while installing the application on the router.
+
+<div class="notice">
+<img src="https://github.com/xrdocs/application-hosting/tree/gh-pages/images/secure-app-workflow.png" alt="vagrant docker topo" style="padding:1px;border:thin solid black;">
+</div>
 
 <h2>IOS XR appmgr</h2>
 
