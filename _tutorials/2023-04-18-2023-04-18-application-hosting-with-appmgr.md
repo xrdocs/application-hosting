@@ -131,9 +131,9 @@ appmgr
 - Application logs: Show app logs [Docker equivalent: docker logs/journalctl]
 - Source table: Show information about available sources.
 
-#### Docker hello-world example
+#### Building your application
 
-Let us try running a docker hello-world container on a Cisco router running IOS XR using appmgr.
+Let us try building a docker application as a XR appmgr support rpm package.
 
 To get started, clone the appmgr-build repository on your development environment.
 
@@ -168,7 +168,7 @@ xr-appmgr-build
     └── ThinXR_7.3.15.ini
 ```
 
-Inside the xr-appmgr-build directory, let us create a directory specific to our application (hello-world). In the hello-world directory, we need to have the following:
+Inside the xr-appmgr-build directory, let us create a directory specific to our docker application (my-app). In the my-app directory, we need to have the following:
 
 - build.yaml file that will specify the build parameters for our application.
 - A tarball of the docker image
@@ -179,19 +179,18 @@ For our example, we will not set any config or data directories.
 
 ```
 cisco@cisco:~/demo$ cd xr-appmgr-build/
-cisco@cisco:~/demo/xr-appmgr-build$ mkdir hello-world
-cisco@cisco:~/demo/xr-appmgr-build$ cd hello-world/
+cisco@cisco:~/demo/xr-appmgr-build$ mkdir my-app
+cisco@cisco:~/demo/xr-appmgr-build$ cd my-app/
 cisco@cisco:~/demo/xr-appmgr-build/hello-world$ touch build.yaml
-cisco@cisco:~/demo/xr-appmgr-build/hello-world$ docker pull hello-world
+cisco@cisco:~/demo/xr-appmgr-build/hello-world$ docker pull my-app
 Using default tag: latest
-latest: Pulling from library/hello-world
+latest: Pulling from library/my-app
 Digest: sha256:aa0cc8055b82dc2509bed2e19b275c8f463506616377219d9642221ab53cf9fe
-Status: Image is up to date for hello-world:latest
-docker.io/library/hello-world:latest
-cisco@cisco:~/demo/xr-appmgr-build/hello-world$ docker save hello-world:latest > hello-world.tar
+Status: Image is up to date for my-app:latest
+cisco@cisco:~/demo/xr-appmgr-build/hello-world$ docker save my-app:latest > my-app.tar
 cisco@cisco:~/demo/xr-appmgr-build/hello-world$ ls
-build.yaml  hello-world.tar
-cisco@cisco:~/demo/xr-appmgr-build/hello-world$
+build.yaml  my-app.tar
+cisco@cisco:~/demo/xr-appmgr-build/my-app$
 ```
 
 The build.yaml contains parameters that specify how to build the rpm. 
@@ -206,30 +205,43 @@ The build.yaml contains parameters that specify how to build the rpm.
 Example build.yaml: 
  ```
 packages: 
-- name: "hello-world" 
+- name: "my-app" 
   release: "ThinXR_7.3.15" 
   version: "0.1.0" 
   sources: 
-    - name: hello-world 
-      file: hello-world/hello-world.tar
+    - name: my-app 
+      file: my-app/my-app.tar
  ```
  
 Once the steps above are completed, we can use the appmgr_build script to build the rpm. We run the script using the following command: 
  
-```./appmgr_build -b hello-world/build.yaml ```
+```./appmgr_build -b my-app/build.yaml ```
  
 In general: 
  
 ```./appmgr_build -b <path to target build.yaml> ```
  
 Once the build process is complete, the rpm should be present in the /RPMS/x86_64/ directory. 
-After building the application, we can copy it to the router using scp (ssh must be enabled on the router).
+After building the application, we can copy it to the router using the ``` copy ``` command. Copy supports the following external source:
 
-```scp ./hello-world-0.1.0-ThinXR_7.3.15.x86_64.rpm user@routerIP:/misc/disk1/ ```
+```
+  ftp:            Copy from ftp: file system
+  http:           Copy from http: file system
+  https:          Copy from https: file system
+  scp:            Copy from scp: file system
+  sftp:           Copy from sftp: file system
+  tftp:           Copy from tftp: file system
+```
+
+For example: ```copy https://<web-server>/<path-to-rpm>/ /misc/disk1/```
+
+#### Installing and running your application
+
+Now that we have learned how to package docker applications as appmgr rpms, let us try installing and running rpm packages using appmgr. 
 
 After copying the rpm onto the router, we can install it using appmgr CLI commands.
 
-```appmgr package install rpm /misc/disk1/hello-world-0.1.0-ThinXR_7.3.15.x86_64.rpm```
+```appmgr package install rpm /misc/disk1/my-app-0.1.0-ThinXR_7.3.15.x86_64.rpm```
 
 We can verify if the packaged was installed using:
 
@@ -238,12 +250,12 @@ RP/0/RP0/CPU0:8201#show appmgr packages installed
 Thu Jan 19 15:59:17.243 PST
 Package                                                     
 ------------------------------------------------------------
-hello-world-0.1.0-ThinXR_7.3.15.x86_64.rpm
+my-app-0.1.0-ThinXR_7.3.15.x86_64.rpm
 ```
 
 Once installed, the application can be activated using
 
-```appmgr application hello-world activate type docker source hello-world docker-run-opts “<YOUR DOCKER RUN OPTS>”```
+```appmgr application my-app activate type docker source hello-world docker-run-opts “<YOUR DOCKER RUN OPTS>”```
 
 Running applications can be viewed in the application table.
 
@@ -252,7 +264,7 @@ RP/0/RP0/CPU0:8201#show appmgr application-table
 Thu Jan 19 16:00:29.878 PST
 Name        Type   Config State Status                                         
 ----------- ------ ------------ --------------------------------
-hello-world Docker  Activated   Running                        
+my-app Docker  Activated   Running                        
 bgpfs2acl_1 Docker  Activated   Exited (137) 4 months ago                      
 bgpfs2acl_2 Docker  Activated   Exited (2) 2 months ago                        
 ```
