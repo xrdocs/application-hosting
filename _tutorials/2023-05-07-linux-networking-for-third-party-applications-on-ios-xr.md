@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 date: '2023-05-07 18:33 -0700'
 title: Linux Networking for Third Party Applications on IOS XR
 author: Suhaib Ahmad
@@ -11,7 +11,7 @@ position: hidden
 
 <h1>Linux Networking on XR</h1>
 <br>
-Application Hosting on IOS-XR allows users to run third-party applications on Cisco routers running IOS-XR software. This article will introduce the Application Hosting features and provide a step-by-step guide to running your own application on XR.
+IOS XR software runs on top of a base Linux Operating System. 
 
 <h2> XR Network Abstractions </h2>
 
@@ -22,6 +22,3 @@ Application Hosting on IOS-XR allows users to run third-party applications on Ci
 <h2> VRFs and Network Namespaces </h2>
 
 <h2> Appmgr VRF forwarding </h2>
-  
-  
-
