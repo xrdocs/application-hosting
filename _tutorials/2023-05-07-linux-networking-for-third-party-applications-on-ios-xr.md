@@ -2,6 +2,9 @@
 published: false
 date: '2023-05-07 18:33 -0700'
 title: Linux Networking for Third Party Applications on IOS XR
+author: Suhaib Ahmad
+excerpt: Technical Marketing Engineer at Cisco
+position: hidden
 ---
 {% include base_path %}
 {% include toc %}
