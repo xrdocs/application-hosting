@@ -3,7 +3,7 @@ published: true
 date: '2023-04-18 18:45 -0600'
 title: Application Hosting With Appmgr
 author: Suhaib Ahmad
-excerpt: Technical Marketing Engineer at Cisco
+excerpt: Learn how to use XR appmgr to build docker applications
 tags:
   - iosxr
   - cisco
