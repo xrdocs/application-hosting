@@ -21,7 +21,7 @@ position: top
 <br>
 Application Hosting on IOS-XR allows users to run third-party applications on Cisco routers running IOS-XR software. This article will introduce the Application Hosting features and provide a step-by-step guide to running your own application on XR.
 
-<h2> Why use third-party applications? </h2>
+<h2>Why use third-party applications?</h2>
 
 - You can use a third-party application to extend router capabilities to complement IOS-XR features.
 - TPAs help in optimizing the compute resources required in a deployment.
