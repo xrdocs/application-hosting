@@ -257,7 +257,7 @@ Once installed, the application can be activated using
 
 ```appmgr application my-app activate type docker source hello-world docker-run-opts “<YOUR DOCKER RUN OPTS>”```
 
-Running applications can be viewed in the application table.
+Running applications can be viewed in the application table:
 
 ```
 RP/0/RP0/CPU0:8201#show appmgr application-table 
