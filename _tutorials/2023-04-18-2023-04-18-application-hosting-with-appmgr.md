@@ -181,14 +181,14 @@ For our example, we will not set any config or data directories.
 cisco@cisco:~/demo$ cd xr-appmgr-build/
 cisco@cisco:~/demo/xr-appmgr-build$ mkdir my-app
 cisco@cisco:~/demo/xr-appmgr-build$ cd my-app/
-cisco@cisco:~/demo/xr-appmgr-build/hello-world$ touch build.yaml
-cisco@cisco:~/demo/xr-appmgr-build/hello-world$ docker pull my-app
+cisco@cisco:~/demo/xr-appmgr-build/my-app$ touch build.yaml
+cisco@cisco:~/demo/xr-appmgr-build/my-app$ docker pull my-app
 Using default tag: latest
 latest: Pulling from library/my-app
 Digest: sha256:aa0cc8055b82dc2509bed2e19b275c8f463506616377219d9642221ab53cf9fe
 Status: Image is up to date for my-app:latest
-cisco@cisco:~/demo/xr-appmgr-build/hello-world$ docker save my-app:latest > my-app.tar
-cisco@cisco:~/demo/xr-appmgr-build/hello-world$ ls
+cisco@cisco:~/demo/xr-appmgr-build/my-app$ docker save my-app:latest > my-app.tar
+cisco@cisco:~/demo/xr-appmgr-build/my-app$ ls
 build.yaml  my-app.tar
 cisco@cisco:~/demo/xr-appmgr-build/my-app$
 ```
