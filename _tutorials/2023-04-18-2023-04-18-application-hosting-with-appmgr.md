@@ -10,7 +10,6 @@ tags:
   - linux
   - appmgr
   - Application Hosting
-position: hidden
 ---
 {% include base_path %}
 {% include toc %}
