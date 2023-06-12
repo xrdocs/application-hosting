@@ -10,11 +10,12 @@ tags:
   - linux
   - appmgr
   - Application Hosting
-permalink: /tutorials/2023-04-18-application-hosting-with-appmgr
+permalink: /tutorials/application-hosting-with-appmgr
 position: top
 ---
 {% include base_path %}
-{% include toc %}
+{% include toc icon="table" title="application-hosting-with-appmgr" %}
+
 
 <h1>Third Party Application Hosting on IOS XR</h1>
 <br>
