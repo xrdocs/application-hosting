@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2023-05-07 18:33 -0700'
-title: Linux Networking for Third Party Applications on IOS XR
+title: Networking for Third Party Applications on IOS XR
 author: Suhaib Ahmad
 excerpt: Technical Marketing Engineer at Cisco
 position: hidden
@@ -11,7 +11,7 @@ position: hidden
 
 <h1>Linux Networking on XR</h1>
 <br>
-IOS XR software runs on top of a base Linux Operating System. 
+Third party applications run on a Linux environment on the Route Processor CPU on IOS-XR routers. On the Route Processor CPU, they get access to Linux interfaces and Linux routes to send and receive traffic outside the router. However, physical router interfaces are tied 
 
 <h2> XR Network Abstractions </h2>
 
