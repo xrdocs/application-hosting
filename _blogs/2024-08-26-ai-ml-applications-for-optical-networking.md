@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 date: '2024-08-26 14:46 +0200'
 title: AI/ML Applications for Optical Networking
 author: Maurizio Gazzola
