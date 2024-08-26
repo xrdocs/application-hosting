@@ -9,8 +9,7 @@ excerpt: >-
   Maurizio will explain how also optical networking can leverage the same
   technology to simplify the way how the Optical Network are managed
 ---
-## AI/ML Applications for Optical Networking
- 4 minutes read
+
 
 AI applications in optical networks are becoming increasingly important for enhancing the performance and reliability of data transport.
 By leveraging AI/ML in optical networks, network operators can achieve higher data rates, improved reliability, and lower operational costs. AI allows for the management of complex networks at a scale and speed that would be unattainable with traditional methods. As optical network technology evolves and data demands grow, the role of AI is expected to expand even further, driving innovation in network design, operation, and maintenance.
