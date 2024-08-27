@@ -1,7 +1,7 @@
 ---
 published: true
 date: '2024-08-26 14:46 +0200'
-title: AI/ML Applications for Optical Networking
+title: Six Key AI/ML Applications for Optical Networking
 author: Maurizio Gazzola
 excerpt: >-
   AI applications in optical networks are becoming increasingly important for
@@ -78,5 +78,3 @@ These principles are equally relevant to optical networks, where they unlock a m
 
 
 For more information, please refer to [NCS 1000](https://www.cisco.com/c/en/us/products/optical-networking/network-convergence-system-1000-series/index.html#~stickynav=4) product page
-
-
