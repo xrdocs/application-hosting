@@ -14,7 +14,11 @@ tags:
 
 
 Until recently, optical systems have been closed and proprietary. They came as a package that included client optics, transponders, a line system, and a management system. In the traditional optical architecture, these components were provided by a single vendor, and interfaces between those functions were closed and proprietary. While the concept of disaggregated or open optical components is not new, technolgy advances have made it the optimal solution in some networksallowing them to be sold separately. This enables providers to assemble a system themselves in the manner they choose.
-The integration of Coherent WDM interfaces directly in the Routing Switching layer is providing large benefits to network operators but is also raising the question. “What is the best approach to manage it?”. Leveraging existing management interface standards between host and pluggable, network operators are requesting full interoperability between any pluggable vendor and any hosts vendor in a seamless way.  This concept is also called “Any Plug in Any Host” 
+The integration of Coherent WDM interfaces directly in the Routing Switching layer is providing large benefits to network operators but is also raising the question. “What is the best approach to manage it?”.
+
+Leveraging existing management interface standards between host and pluggable, network operators are requesting full interoperability between any pluggable vendor and any hosts vendor in a seamless way.  
+
+This concept is also called “Any Plug in Any Host” 
 
 ## What is the real status of “Any Plug in Any Host”?
 OIF, Open ZR+ and OpenROADM provided a solid interoperability base but only on the WDM physical layer.
