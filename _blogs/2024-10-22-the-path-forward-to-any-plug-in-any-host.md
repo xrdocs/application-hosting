@@ -66,6 +66,7 @@ Two possible scenarios could be evaluated:
 2.	Host checks the advetised capability of the pluggable reading the 		above table, and then configures the right operational mode to the 			pluggable setting the 2 parameters that univocally identify the 			Operational mode : Media Code and Host Code.
 
 Both options could be valid and have pros and cons in terms of development efficiency but the important aspect is that this change drammatically reduces the dependancy of the pluggable from the Host software capability. At a high level it is required just to dump the table and the set a code to the pluggable.
-Of course this solution is not completely solving the interoperability Plug to Host issues as there will always be a custom mode requiring specific implementation. For example, thermal issues that cannot be solved without a full hardware test. However, it provides a clear improvement on the capability to have the host to accept many different coherent pluggables. 
+Of course this solution is not completely solving the interoperability Plug to Host issues as there will always be a custom mode requiring specific implementation. For example, thermal issues that cannot be solved without a full hardware test. However, it provides a clear improvement on the capability to have the host to accept many different coherent pluggables.
+
 While advancements have been made for multi-vendor interoperability with the [OIF CMIS 5.3](https://www.oiforum.com/wp-content/uploads/OIF-CMIS-05.3.pdf) release and white paper, work will continue in this area and Cisco will be part of it.
 
