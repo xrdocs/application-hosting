@@ -49,7 +49,7 @@ When both the optics and the router are from the same vendor, they are designed 
 
 ## Another Approach: AppSel Code
 Recently there has been movement in the right direction:
-The official release of [OIF CMIS 5.3](https://www.oiforum.com/wp-content/uploads/OIF-CMIS-05.3.pdf) and publication of OIF White Paper : “[CMIS: Path to Plug and Play](https://www.oiforum.com/wp-content/uploads/OIF-CMIS-Plug-and-Play-01.0.pdf)” 
+The official release of [OIF CMIS 5.3](https://www.oiforum.com/wp-content/uploads/OIF-CMIS-05.3.pdf) and publication of OIF White Paper: “[CMIS: Path to Plug and Play](https://www.oiforum.com/wp-content/uploads/OIF-CMIS-Plug-and-Play-01.0.pdf)”.
 The whitepaper describes how a host (a router for example) can use the advertised capabilities to configure a module for different applications in a generic manner. 
 The proposal is that Host platforms adopting two enhancements:
 1. Hosts use module advertising to create a table of applications and 		present that table in human readable form. Utilizing new CMIS Common 		Data Block (CBD) commands to extract the applications details. A 			description of the host/media codes stores in the optics module itself 		which enhances the solution by not requiring the host to know how to 		interpret the hex values
@@ -60,7 +60,7 @@ Table 1 shows an example of a subset of application code that a host could use t
 ![](https://raw.githubusercontent.com/xrdocs/xrdocs-images/0b6adef7d32a8f25d1f43b5b2c2bb70f1137d768/assets/images/Table%201%20blog%20AnyPlugAnyHost.jpg)
 Table 1 - AppSel Code Table
 
-It has to be noted that the Appselcode number is not univocally set for all the vendors. What is standardized is the Media Code and the Host Code but it could happen that AppSel code 1 for vendor A is equivalent to AppSel code 3 for a Vendor B.
+It has to be noted that the Appsel Code number is not univocally set for all the vendors. What is standardized is the Media Code and the Host Code but it could happen that AppSel code 1 for vendor A is equivalent to AppSel code 3 for a Vendor B.
 Two possible scenarios could be evaluated: 
 1.	Host checks the available capability of the coherent pluggable 			reading the above table, and then configures the right operational mode 	to the pluggable setting the AppSel Code in the first column as it 			combines those parameters in a single code.
 2.	Host checks the advetised capability of the pluggable reading the 		above table, and then configures the right operational mode to the 			pluggable setting the 2 parameters that univocally identify the 			Operational mode : Media Code and Host Code.
