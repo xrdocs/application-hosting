@@ -1,11 +1,11 @@
 ---
 published: true
 date: '2025-11-05 16:22 +0100'
-title: 2025-11-05-how-to-solve-the-AI-fiber-capacity-crunch
+title: 'How to solve the AI fiber capacity crunch '
 author: Maurizio Gazzola
 excerpt: An introduction to different strategy how to solve the fiber capacity crunch
 ---
-## How to solve the AI fiber capacity crunch 
+
 
 The rapid growth of AI-driven applications and the proliferation of massive datacenters have led to an unprecedented demand for optical network bandwidth, with requirements now reaching petabits per second. Traditional WDM (Wavelength Division Multiplexing) systems, which primarily utilize the C+L-band with capacities of around 50 Tbit/s, are no longer sufficient to meet this surge. To address this challenge, the industry is exploring several transformative innovations to sustain the explosive growth of data traffic and ensure the scalability of global optical networks.
  
