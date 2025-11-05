@@ -3,7 +3,7 @@ published: true
 date: '2025-11-05 16:22 +0100'
 title: 'How to solve the AI fiber capacity crunch '
 author: Maurizio Gazzola
-excerpt: An introduction to different strategy how to solve the fiber capacity crunch
+excerpt: An introduction to different strategies how to solve the fiber capacity crunch
 ---
 
 
