@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 date: '2025-11-05 16:22 +0100'
 title: 2025-11-05-how-to-solve-the-AI-fiber-capacity-crunch
 author: Maurizio Gazzola
@@ -71,6 +71,3 @@ Multi-Core Fibre: [High-capacity transmission using high-density multicore fiber
 Hollow-Core Fibre: [Recent Progress in Low-Loss Hollow-Core Anti-Resonant Fibers and Their Applications](https://ieeexplore.ieee.org/abstract/document/8919973)
 
 S-Band transmission: [Long-Haul >100-Tb/s Transmission Over >1000 km With High-Symbol-Rate Triple-Band WDM Signals](https://ieeexplore.ieee.org/document/10683993)
-
-
-
