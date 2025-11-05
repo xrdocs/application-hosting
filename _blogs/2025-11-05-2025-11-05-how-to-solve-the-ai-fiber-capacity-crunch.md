@@ -7,8 +7,9 @@ excerpt: An introduction to different strategy how to solve the fiber capacity c
 ---
 ## How to solve the AI fiber capacity crunch 
 
-The rapid growth of AI-driven applications and the proliferation of massive datacenters have led to an unprecedented demand for optical network bandwidth, with requirements now reaching petabits per second. Traditional WDM (Wavelength Division Multiplexing) systems, which primarily utilize the C+L-band with capacities of around 50 Tbit/s, are no longer sufficient to meet this surge. To address this challenge, the industry is exploring several transformative innovations to sustain the explosive growth of data traffic and ensure the scalability of global optical networks. 
-These include: **Multi-rail transmission, C+L+S band transmission, Hollow Core/Multi Core Fiber** (see Figure 1)
+The rapid growth of AI-driven applications and the proliferation of massive datacenters have led to an unprecedented demand for optical network bandwidth, with requirements now reaching petabits per second. Traditional WDM (Wavelength Division Multiplexing) systems, which primarily utilize the C+L-band with capacities of around 50 Tbit/s, are no longer sufficient to meet this surge. To address this challenge, the industry is exploring several transformative innovations to sustain the explosive growth of data traffic and ensure the scalability of global optical networks.
+ 
+These include: **Multi-rail transmission, C+L+S band transmission, Hollow Core/Multi Core Fiber** 
 
 ![Picture Blog capacity Fiber.jpg]({{site.baseurl}}/images/Picture Blog capacity Fiber.jpg)
 
@@ -64,9 +65,12 @@ Despite these advantages, challenges remain, including higher manufacturing cost
 
 
 These strategies collectively address the increasing capacity demands in optical networks by optimizing existing infrastructure, adopting innovative fiber technologies, and improving system design for power and cost efficiency. There are a lot of reference about those new technologies. You can learn more reading following articles:
-Multi-Core Fibre: High-capacity transmission using high-density multicore fiber
-Hollow-Core Fibre: Recent Progress in Low-Loss Hollow-Core Anti-Resonant Fibers and Their Applications
-S-Band transmission: Long-Haul >100-Tb/s Transmission Over >1000 km With High-Symbol-Rate Triple-Band WDM Signals
+
+Multi-Core Fibre: [High-capacity transmission using high-density multicore fiber](https://ieeexplore.ieee.org/abstract/document/7936906)
+
+Hollow-Core Fibre: [Recent Progress in Low-Loss Hollow-Core Anti-Resonant Fibers and Their Applications](https://ieeexplore.ieee.org/abstract/document/8919973)
+
+S-Band transmission: [Long-Haul >100-Tb/s Transmission Over >1000 km With High-Symbol-Rate Triple-Band WDM Signals](https://ieeexplore.ieee.org/document/10683993)
 
 
 
